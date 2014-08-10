@@ -31,7 +31,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-	public class CCPhysicsShapeInfo
+	internal class CCPhysicsShapeInfo
 	{
 
 		protected static Dictionary<cpShape, CCPhysicsShapeInfo> _map;

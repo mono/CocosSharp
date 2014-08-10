@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace ChipmunkSharp
 {
-	public static class cpExtension
+	internal static class cpExtension
 	{
 
 		public static cpVect ToCpVect(this CCPoint vec)
@@ -21,9 +21,7 @@ namespace ChipmunkSharp
 		{
 			return new CCPoint((float)vec.x, (float)vec.y);
 		}
-
-
-
+ 
 		public static CCColor4F ToCCColor4F(this cpColor color)
 		{
 			return new CCColor4F(color.r / 255, color.g / 255, color.b / 255, color.a / 255);

@@ -30,7 +30,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-	public class CCPhysicsContactInfo
+	internal class CCPhysicsContactInfo
 	{
 
 		private CCPhysicsContact _contact;

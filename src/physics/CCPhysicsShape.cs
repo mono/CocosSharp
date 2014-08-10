@@ -74,7 +74,7 @@ namespace CocosSharp
 		#region PROTECTED PARAMETERS
 
 		public CCPhysicsBody _body;
-		public CCPhysicsShapeInfo _info;
+		internal CCPhysicsShapeInfo _info;
 
 		protected PhysicsType _type;
 		protected float _area;
@@ -139,12 +139,12 @@ namespace CocosSharp
 			}
 		}
 
-		public CCPhysicsShape(float radius, CCPhysicsMaterial material, cpVect offset)
+		public CCPhysicsShape(float radius, CCPhysicsMaterial material, CCPoint offset)
 		{
 			// TODO: Complete member initialization
 			this.radius = radius;
 			this.material = material;
-			this.offset = offset;
+            this.offset = PhysicsHelper.CCPointToCpVect(offset);
 		}
 
 		#region PUBLIC METHODS
@@ -261,18 +261,18 @@ namespace CocosSharp
 		/** Calculate the default moment value */
 		public virtual float CalculateDefaultMoment() { return 0.0f; }
 		/** Get offset */
-		public virtual cpVect GetOffset() { return cpVect.Zero; }
+		public virtual CCPoint GetOffset() { return CCPoint.Zero; }
 		/** Get center of this shape */
-		public virtual cpVect GetCenter() { return GetOffset(); }
+        public virtual CCPoint GetCenter() { return GetOffset(); }
 		/** Test point is in shape or not */
-		public bool ContainsPoint(cpVect point)
+		public bool ContainsPoint(CCPoint point)
 		{
 
 
 			foreach (var shape in _info.getShapes())
 			{
 				cpPointQueryInfo info = null;
-				shape.PointQuery(point, ref info);
+                shape.PointQuery(PhysicsHelper.CCPointToCpVect(point), ref info);
 				if (info != null)
 				{
 					return true;
@@ -284,22 +284,24 @@ namespace CocosSharp
 
 
 		/** move the points to the center */
-		public static void RecenterPoints(cpVect[] points, int count, cpVect center)
+        public static void RecenterPoints(CCPoint[] points, int count, CCPoint center)
 		{
-			cp.RecenterPoly(count, points);
-			if (center != cpVect.Zero)
+            var cpPoints = PhysicsHelper.CCPointsTocpVects(points);
+			cp.RecenterPoly(count, cpPoints);
+            points = PhysicsHelper.cpVectsTpCCPoints(cpPoints);
+			if (center != CCPoint.Zero)
 			{
 				for (int i = 0; i < points.Length; ++i)
 				{
 					points[i] += center;
 				}
 			}
-
 		}
 		/** get center of the polyon points */
-		public static cpVect GetPolyonCenter(cpVect[] points, int count)
+        public static CCPoint GetPolyonCenter(CCPoint[] points, int count)
 		{
-			return cp.CentroidForPoly(count, points);
+            var cpPoints = PhysicsHelper.CCPointsTocpVects(points);
+            return PhysicsHelper.cpVectToCCPoint(cp.CentroidForPoly(count, PhysicsHelper.CCPointsTocpVects(points)));
 		}
 
 		/**
@@ -340,11 +342,12 @@ namespace CocosSharp
 			}
 		}
 
-		public void SetSurfaceVelocity(cpVect surfaceVelocity)
+		public void SetSurfaceVelocity(CCPoint surfaceVelocity)
 		{
+            var vel = PhysicsHelper.CCPointToCpVect(surfaceVelocity);
 			foreach (cpShape shape in _info.getShapes())
 			{
-				shape.SetSurfaceVelocity(surfaceVelocity);
+				shape.SetSurfaceVelocity(vel);
 			}
 		}
 
@@ -370,7 +373,7 @@ namespace CocosSharp
 		 * @brief PhysicsShape is PhysicsBody's friend class, but all the subclasses isn't. so this method is use for subclasses to catch the bodyInfo from PhysicsBody.
 		 */
 
-		public CCPhysicsBodyInfo BodyInfo
+		internal CCPhysicsBodyInfo BodyInfo
 		{
 			get
 			{
@@ -456,18 +459,18 @@ namespace CocosSharp
 	public class CCPhysicsShapeCircle : CCPhysicsShape
 	{
 
-		public CCPhysicsShapeCircle(float radius, cpVect offset)
+		public CCPhysicsShapeCircle(float radius, CCPoint offset)
 			: this(CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, radius, offset)
 		{
 
 		}
 
-		public CCPhysicsShapeCircle(CCPhysicsMaterial material, float radius, cpVect offset)
+		public CCPhysicsShapeCircle(CCPhysicsMaterial material, float radius, CCPoint offset)
 		{
 
 			_type = PhysicsType.CIRCLE;
 
-			cpShape shape = new cpCircleShape(CCPhysicsShapeInfo.getSharedBody(), radius, offset);
+            cpShape shape = new cpCircleShape(CCPhysicsShapeInfo.getSharedBody(), radius, PhysicsHelper.CCPointToCpVect(offset));
 
 			_info.add(shape);
 
@@ -487,10 +490,10 @@ namespace CocosSharp
 			return cp.AreaForCircle(0, radius);
 		}
 
-		public static float CalculateMoment(float mass, float radius, cpVect offset)
+		public static float CalculateMoment(float mass, float radius, CCPoint offset)
 		{
 			return mass == cp.Infinity ? cp.Infinity
-		  : (cp.MomentForCircle(mass, 0, radius, offset));
+                    : (cp.MomentForCircle(mass, 0, radius, PhysicsHelper.CCPointToCpVect(offset)));
 		}
 
 
@@ -515,7 +518,7 @@ namespace CocosSharp
 				float factor = cp.cpfabs(_newScaleX / _scaleX);
 
 				cpCircleShape shape = (cpCircleShape)_info.getShapes().FirstOrDefault();//->getShapes().front();
-				cpVect v = GetOffset();// cpCircleShapeGetOffset();
+                cpVect v = PhysicsHelper.CCPointToCpVect(GetOffset());// cpCircleShapeGetOffset();
 				v = cpVect.cpvmult(v, factor);
 				shape.c = v;
 
@@ -530,9 +533,9 @@ namespace CocosSharp
 		{
 			return (_info.getShapes().FirstOrDefault() as cpCircleShape).GetRadius();
 		}
-		public override cpVect GetOffset()
+		public override CCPoint GetOffset()
 		{
-			return (_info.getShapes().FirstOrDefault() as cpCircleShape).GetOffset();
+            return PhysicsHelper.cpVectToCCPoint((_info.getShapes().FirstOrDefault() as cpCircleShape).GetOffset());
 		}
 
 		#endregion
@@ -613,11 +616,11 @@ namespace CocosSharp
 
 		}
 
-		public void Init(cpVect[] vecs, int count, CCPhysicsMaterial material, float radius)
+		public void Init(CCPoint[] vecs, int count, CCPhysicsMaterial material, float radius)
 		{
 			_type = PhysicsType.POLYGEN;
 
-			cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.getSharedBody(), count, vecs, radius);
+            cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.getSharedBody(), count, PhysicsHelper.CCPointsTocpVects(vecs), radius);
 
 
 			_info.add(shape);
@@ -630,7 +633,7 @@ namespace CocosSharp
 
 		}
 
-		public CCPhysicsShapePolygon(cpVect[] vecs, int count, CCPhysicsMaterial material, float radius)
+		public CCPhysicsShapePolygon(CCPoint[] vecs, int count, CCPhysicsMaterial material, float radius)
 		{
 			Init(vecs, count, material, radius);
 
@@ -638,10 +641,10 @@ namespace CocosSharp
 
 		#region PUBLIC METHODS
 
-		public static float CalculateMoment(float mass, cpVect[] vecs, int count, cpVect offset)
+		public static float CalculateMoment(float mass, CCPoint[] vecs, int count, CCPoint offset)
 		{
 			float moment = mass == cp.Infinity ? cp.Infinity
-			: cp.MomentForPoly(mass, count, vecs, offset, 0.0f);
+                : cp.MomentForPoly(mass, count, PhysicsHelper.CCPointsTocpVects(vecs), PhysicsHelper.CCPointToCpVect(offset), 0.0f);
 
 			return moment;
 		}
@@ -653,15 +656,15 @@ namespace CocosSharp
 			: cp.MomentForPoly(_mass, shape.Count, shape.GetVertices(), cpVect.Zero, 0.0f);
 		}
 
-		public cpVect GetPoint(int i)
+		public CCPoint GetPoint(int i)
 		{
-			return ((cpPolyShape)_info.getShapes().FirstOrDefault()).GetVert(i);
+            return PhysicsHelper.cpVectToCCPoint(((cpPolyShape)_info.getShapes().FirstOrDefault()).GetVert(i));
 		}
 
-		public void GetPoints(out cpVect[] outPoints) //cpVect outPoints
+		public void GetPoints(out CCPoint[] outPoints) //cpVect outPoints
 		{
 			cpShape shape = _info.getShapes().FirstOrDefault();
-			outPoints = ((cpPolyShape)shape).GetVertices();
+            outPoints = PhysicsHelper.cpVectsTpCCPoints(((cpPolyShape)shape).GetVertices());
 		}
 
 		public int GetPointsCount()
@@ -687,18 +690,18 @@ namespace CocosSharp
 	public class CCPhysicsShapeEdgeSegment : CCPhysicsShape
 	{
 
-		public CCPhysicsShapeEdgeSegment(cpVect a, cpVect b, float border = 1)
+		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, float border = 1)
 			: this(a, b, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border)
 		{
 
 		}
 
-		public CCPhysicsShapeEdgeSegment(cpVect a, cpVect b, CCPhysicsMaterial material, float border = 1)
+		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, CCPhysicsMaterial material, float border = 1)
 		{
 
 			cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(),
-										   a,
-										   b,
+                PhysicsHelper.CCPointToCpVect(a),
+                PhysicsHelper.CCPointToCpVect(b),
 										   border);
 
 			_type = PhysicsType.EDGESEGMENT;
@@ -714,13 +717,13 @@ namespace CocosSharp
 
 		#region PUBLIC METHODS
 
-		public cpVect GetPointA()
+		public CCPoint GetPointA()
 		{
-			return ((cpSegmentShape)(_info.getShapes().FirstOrDefault())).ta;
+            return PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)(_info.getShapes().FirstOrDefault())).ta);
 		}
-		public cpVect GetPointB()
+		public CCPoint GetPointB()
 		{
-			return ((cpSegmentShape)(_info.getShapes().FirstOrDefault())).tb;
+            return PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)(_info.getShapes().FirstOrDefault())).tb);
 		}
 		#endregion
 
@@ -731,16 +734,16 @@ namespace CocosSharp
 	public class CCPhysicsShapeEdgeBox : CCPhysicsShape
 	{
 
-		public CCPhysicsShapeEdgeBox(CCSize size, CCPhysicsMaterial material, float border /* = 1 */, cpVect offset)
+        public CCPhysicsShapeEdgeBox(CCSize size, CCPhysicsMaterial material, CCPoint offset, float border = 1)
 		{
 
 			_type = PhysicsType.EDGEBOX;
 
 			List<cpVect> vec = new List<cpVect>() {
-              new cpVect(-size.Width/2+offset.x, -size.Height/2+offset.y),
-              new cpVect(+size.Width/2+offset.x, -size.Height/2+offset.y),
-              new cpVect(+size.Width/2+offset.x, +size.Height/2+offset.y),
-              new cpVect(-size.Width/2+offset.x, +size.Height/2+offset.y)
+                new cpVect(-size.Width/2+offset.X, -size.Height/2+offset.Y),
+                new cpVect(+size.Width/2+offset.X, -size.Height/2+offset.Y),
+                new cpVect(+size.Width/2+offset.X, +size.Height/2+offset.Y),
+                new cpVect(-size.Width/2+offset.X, +size.Height/2+offset.Y)
           };
 
 
@@ -760,19 +763,19 @@ namespace CocosSharp
 		}
 
 		#region PROTECTED PROPERTIES
-		protected cpVect _offset;
+		protected CCPoint _offset;
 		#endregion
 
 		#region PUBLIC PROPERTIES
 
-		public override cpVect GetOffset() { return _offset; }
-		public List<cpVect> GetPoints()
+        public override CCPoint GetOffset() { return _offset; }
+		public List<CCPoint> GetPoints()
 		{
-			List<cpVect> outPoints = new List<cpVect>();
+			List<CCPoint> outPoints = new List<CCPoint>();
 			// int i = 0;
 			foreach (var shape in _info.getShapes())
 			{
-				outPoints.Add(((cpSegmentShape)shape).a);
+                outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)shape).a));
 			}
 			return outPoints;
 		}
@@ -812,15 +815,16 @@ namespace CocosSharp
 		}
 
 
-		public CCPhysicsShapeEdgePolygon(cpVect[] vec, int count, CCPhysicsMaterial material, float border = 1)
+        public CCPhysicsShapeEdgePolygon(CCPoint[] vec, int count, CCPhysicsMaterial material, float border = 1)
 		{
 
 			_type = PhysicsType.EDGEPOLYGEN;
 
 			int i = 0;
+            var vecs = PhysicsHelper.CCPointsTocpVects(vec);
 			for (; i < count; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vec[i], vec[(i + 1) % count],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vecs[i], vecs[(i + 1) % count],
 												   border);
 
 				if (shape == null)
@@ -842,7 +846,7 @@ namespace CocosSharp
 
 		#region PUBLIC PROPERTIES
 
-		public override cpVect GetCenter()
+		public override CCPoint GetCenter()
 		{
 			var shapes = _info.getShapes();
 			int count = (int)shapes.Count;
@@ -855,12 +859,12 @@ namespace CocosSharp
 
 			cpVect center = cp.CentroidForPoly(count, points);
 
-			return center;
+            return PhysicsHelper.cpVectToCCPoint(center);
 		}
 
 
 
-		public cpVect[] GetPoints()
+		public CCPoint[] GetPoints()
 		{
 
 			var shapes = _info.getShapes();
@@ -871,7 +875,7 @@ namespace CocosSharp
 				outPoints[i] = new cpVect(((cpSegmentShape)shapes[i]).a);
 			}
 
-			return outPoints;
+            return PhysicsHelper.cpVectsTpCCPoints(outPoints);
 
 		}
 		public int GetPointsCount()
@@ -887,15 +891,15 @@ namespace CocosSharp
 	public class CCPhysicsShapeEdgeChain : CCPhysicsShape
 	{
 
-		public CCPhysicsShapeEdgeChain(cpVect[] vec, int count, CCPhysicsMaterial material, float border = 1)
+		public CCPhysicsShapeEdgeChain(CCPoint[] vec, int count, CCPhysicsMaterial material, float border = 1)
 		{
 
 			_type = PhysicsType.EDGECHAIN;
-
+            var vecs = PhysicsHelper.CCPointsTocpVects(vec);
 			int i = 0;
 			for (; i < count; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vec[i], vec[i + 1],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vecs[i], vecs[i + 1],
 											  border);
 				shape.SetElasticity(1.0f);
 				shape.SetFriction(1.0f);
@@ -910,23 +914,23 @@ namespace CocosSharp
 		}
 
 		#region PROTECTED PROPERTIES
-		protected cpVect _center;
+		protected CCPoint center;
 		#endregion
 
 		#region PUBLIC PROPERTIES
 
-		public override cpVect GetCenter()
+		public override CCPoint GetCenter()
 		{
-			return _center;
+            return center;
 		}
-		public List<cpVect> GetPoints()
+		public List<CCPoint> GetPoints()
 		{
-			List<cpVect> outPoints = new List<cpVect>();
+			List<CCPoint> outPoints = new List<CCPoint>();
 
 			foreach (var shape in _info.getShapes())
-				outPoints.Add(((cpSegmentShape)shape).a);
+                outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)shape).a));
 
-			outPoints.Add(((cpSegmentShape)_info.getShapes().LastOrDefault()).a);
+            outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)_info.getShapes().LastOrDefault()).a));
 
 			return outPoints;
 		}

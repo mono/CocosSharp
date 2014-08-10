@@ -43,7 +43,7 @@ namespace CocosSharp
 		public CCPhysicsBody _bodyA;
 		public CCPhysicsBody _bodyB;
 		public CCPhysicsWorld _world;
-		public CCPhysicsJointInfo _info;
+		internal CCPhysicsJointInfo _info;
 		bool _enable;
 		bool _collisionEnable;
 		public bool _destoryMark;
@@ -179,7 +179,7 @@ namespace CocosSharp
 		/**
 		 * PhysicsShape is PhysicsBody's friend class, but all the subclasses isn't. so this method is use for subclasses to catch the bodyInfo from PhysicsBody.
 		 */
-		protected CCPhysicsBodyInfo GetBodyInfo(CCPhysicsBody body)
+		internal CCPhysicsBodyInfo GetBodyInfo(CCPhysicsBody body)
 		{
 			return body._info;
 		}
@@ -198,11 +198,11 @@ namespace CocosSharp
 	public class CCPhysicsJointFixed : CCPhysicsJoint
 	{
 
-		public static CCPhysicsJointFixed Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr)
+        public static CCPhysicsJointFixed Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr)
 		{
 			CCPhysicsJointFixed joint = new CCPhysicsJointFixed();
 
-			if (joint != null && joint.Init(a, b, anchr))
+            if (joint != null && joint.Init(a, b, anchr))
 			{
 				return joint;
 			}
@@ -213,21 +213,21 @@ namespace CocosSharp
 
 		#region PROTECTED FUNC
 
-		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr)
+        protected bool Init(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr)
 		{
 
 			if (!base.Init(a, b))
 				return false;
 
-			GetBodyNode(a).Position = new CCPoint((float)anchr.x, (float)anchr.y);
-			GetBodyNode(b).Position = new CCPoint((float)anchr.x, (float)anchr.y);
+			GetBodyNode(a).Position = anchr;
+			GetBodyNode(b).Position = anchr;
 
 			// add a pivot joint to fixed two body together
 			//cpConstraint joint = cpPivotJoint.cpPivotJointNew(getBodyInfo(a).getBody(),
 			//                                       getBodyInfo(b).getBody(),
 			//                                      anchr);
 
-			cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(), anchr);
+            cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(), PhysicsHelper.CCPointToCpVect(anchr));
 
 			if (joint == null)
 				return false;
@@ -262,7 +262,7 @@ namespace CocosSharp
 
 		#region PUBLIC FUNC
 
-		public static CCPhysicsJointLimit Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr1, cpVect anchr2, float min, float max)
+		public static CCPhysicsJointLimit Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr1, CCPoint anchr2, float min, float max)
 		{
 			CCPhysicsJointLimit joint = new CCPhysicsJointLimit();
 
@@ -274,29 +274,29 @@ namespace CocosSharp
 			return null;
 		}
 
-		public static CCPhysicsJointLimit Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr1, cpVect anchr2)
+		public static CCPhysicsJointLimit Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr1, CCPoint anchr2)
 		{
 			return Construct(a, b, anchr1, anchr2, 0,
-				cpVect.cpvdist(b.Local2World(anchr1), a.Local2World(anchr2)));
+                cpVect.cpvdist(b.Local2World(PhysicsHelper.CCPointToCpVect(anchr1)), a.Local2World(PhysicsHelper.CCPointToCpVect(anchr2))));
 		}
 
 
-		public cpVect GetAnchr1()
+		public CCPoint GetAnchr1()
 		{
-			return _info.getJoints().FirstOrDefault().GetAnchorA();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetAnchorA());
 		}
-		public void SetAnchr1(cpVect anchr1)
+		public void SetAnchr1(CCPoint anchr1)
 		{
-			_info.getJoints().FirstOrDefault().SetAnchorA(anchr1);
+            _info.getJoints().FirstOrDefault().SetAnchorA(PhysicsHelper.CCPointToCpVect(anchr1));
 		}
-		public cpVect GetAnchr2()
+		public CCPoint GetAnchr2()
 		{
 			//getAnchr1
-			return _info.getJoints().FirstOrDefault().GetAnchorB();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetAnchorB());
 		}
-		public void SetAnchr2(cpVect anchr2)
+		public void SetAnchr2(CCPoint anchr2)
 		{
-			_info.getJoints().FirstOrDefault().SetAnchorA(anchr2);
+            _info.getJoints().FirstOrDefault().SetAnchorA(PhysicsHelper.CCPointToCpVect(anchr2));
 		}
 		public float GetMin()
 		{
@@ -320,15 +320,15 @@ namespace CocosSharp
 
 		#region PROTECTED FUNC
 
-		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr1, cpVect anchr2, float min, float max)
+		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr1, CCPoint anchr2, float min, float max)
 		{
 
 			if (!base.Init(a, b))
 				return false;
 
 			cpConstraint joint = new cpSlideJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(),
-										  anchr1,
-										  anchr2,
+                PhysicsHelper.CCPointToCpVect(anchr1),
+                PhysicsHelper.CCPointToCpVect(anchr2),
 										  min,
 										  max);
 
@@ -352,7 +352,7 @@ namespace CocosSharp
 	public class CCPhysicsJointPin : CCPhysicsJoint
 	{
 
-		public static CCPhysicsJointPin Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr)
+		public static CCPhysicsJointPin Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr)
 		{
 			CCPhysicsJointPin joint = new CCPhysicsJointPin();
 
@@ -368,14 +368,14 @@ namespace CocosSharp
 		#region PROTECTED FUNC
 
 
-		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr)
+        protected bool Init(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr)
 		{
 			if (!base.Init(a, b))
 				return false;
 
 
 			cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(),
-										   anchr);
+                PhysicsHelper.CCPointToCpVect(anchr));
 
 			if (joint == null)
 				return false;
@@ -407,10 +407,10 @@ namespace CocosSharp
 		}
 		#endregion
 
-		public static CCPhysicsJointDistance Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr1, cpVect anchr2)
+		public static CCPhysicsJointDistance Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr1, CCPoint anchr2)
 		{
 			CCPhysicsJointDistance joint = new CCPhysicsJointDistance();
-			if (joint != null && joint.Init(a, b, anchr1, anchr2))
+            if (joint != null && joint.Init(a, b, PhysicsHelper.CCPointToCpVect(anchr1), PhysicsHelper.CCPointToCpVect(anchr2)))
 			{
 				return joint;
 			}
@@ -447,7 +447,7 @@ namespace CocosSharp
 	public class CCPhysicsJointSpring : CCPhysicsJoint
 	{
 		#region PUBLIC FUNC
-		public static CCPhysicsJointSpring Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr1, cpVect anchr2, float stiffness, float damping)
+		public static CCPhysicsJointSpring Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr1, CCPoint anchr2, float stiffness, float damping)
 		{
 			CCPhysicsJointSpring joint = new CCPhysicsJointSpring();
 
@@ -457,22 +457,22 @@ namespace CocosSharp
 			}
 			return null;
 		}
-		public cpVect GetAnchr1()
+		public CCPoint GetAnchr1()
 		{
-			return _info.getJoints().FirstOrDefault().GetAnchorA();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetAnchorA());
 		}
-		public void SetAnchr1(cpVect anchr1)
+		public void SetAnchr1(CCPoint anchr1)
 		{
-			_info.getJoints().FirstOrDefault().SetAnchorA(anchr1);
+            _info.getJoints().FirstOrDefault().SetAnchorA(PhysicsHelper.CCPointToCpVect(anchr1));
 		}
-		public cpVect GetAnchr2()
+		public CCPoint GetAnchr2()
 		{
-			return _info.getJoints().FirstOrDefault().GetAnchorB();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetAnchorB());
 		}
-		public void SetAnchr2(cpVect anchr2)
+		public void SetAnchr2(CCPoint anchr2)
 		{
 
-			_info.getJoints().FirstOrDefault().SetAnchorB(anchr2);
+                    _info.getJoints().FirstOrDefault().SetAnchorB(PhysicsHelper.CCPointToCpVect(anchr2));
 		}
 		public float GetRestLength()
 		{
@@ -507,17 +507,19 @@ namespace CocosSharp
 
 		#region PROTECTED FUNC
 
-		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, cpVect anchr1, cpVect anchr2, float stiffness, float damping)
+		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, CCPoint anchr1, CCPoint anchr2, float stiffness, float damping)
 		{
 			if (!base.Init(a, b))
 				return false;
 
+            var anch1 = PhysicsHelper.CCPointToCpVect(anchr1);
+            var anch2 = PhysicsHelper.CCPointToCpVect(anchr2);
 			cpConstraint joint = new cpDampedSpring(GetBodyInfo(a).GetBody(),
 													GetBodyInfo(b).GetBody(),
-													anchr1,
-													anchr2,
+                anch1,
+                anch2,
 													cpVect.cpvdist(
-													_bodyB.Local2World(anchr1), _bodyA.Local2World(anchr2)),
+                    _bodyB.Local2World(anch1), _bodyA.Local2World(anch2)),
 													stiffness,
 													damping);
 
@@ -542,7 +544,7 @@ namespace CocosSharp
 
 		#region PUBLIC FUNC
 
-		public static CCPhysicsJointGroove Construct(CCPhysicsBody a, CCPhysicsBody b, cpVect grooveA, cpVect grooveB, cpVect anchr2)
+		public static CCPhysicsJointGroove Construct(CCPhysicsBody a, CCPhysicsBody b, CCPoint grooveA, CCPoint grooveB, CCPoint anchr2)
 		{
 			CCPhysicsJointGroove joint = new CCPhysicsJointGroove();
 
@@ -554,36 +556,36 @@ namespace CocosSharp
 			return null;
 		}
 
-		public cpVect GetGrooveA()
+		public CCPoint GetGrooveA()
 		{
-			return _info.getJoints().FirstOrDefault().GetGrooveA();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetGrooveA());
 		}
-		public void SetGrooveA(cpVect grooveA)
+		public void SetGrooveA(CCPoint grooveA)
 		{
-			_info.getJoints().FirstOrDefault().SetGrooveA(grooveA);
+            _info.getJoints().FirstOrDefault().SetGrooveA(PhysicsHelper.CCPointToCpVect(grooveA));
 		}
-		public cpVect GetGrooveB()
+		public CCPoint GetGrooveB()
 		{
-			return _info.getJoints().FirstOrDefault().GetGrooveB();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetGrooveB());
 		}
-		public void SetGrooveB(cpVect grooveB)
+		public void SetGrooveB(CCPoint grooveB)
 		{
-			_info.getJoints().FirstOrDefault().SetGrooveB(grooveB);
+            _info.getJoints().FirstOrDefault().SetGrooveB(PhysicsHelper.CCPointToCpVect(grooveB));
 		}
-		public cpVect GetAnchr2()
+		public CCPoint GetAnchr2()
 		{
-			return _info.getJoints().FirstOrDefault().GetAnchorB();
+            return PhysicsHelper.cpVectToCCPoint(_info.getJoints().FirstOrDefault().GetAnchorB());
 		}
-		public void SetAnchr2(cpVect anchr2)
+		public void SetAnchr2(CCPoint anchr2)
 		{
-			_info.getJoints().FirstOrDefault().SetAnchorB(anchr2);
+            _info.getJoints().FirstOrDefault().SetAnchorB(PhysicsHelper.CCPointToCpVect(anchr2));
 		}
 		#endregion
 
 
 		#region PROTECTED FUNC
 
-		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, cpVect grooveA, cpVect grooveB, cpVect anchr)
+		protected bool Init(CCPhysicsBody a, CCPhysicsBody b, CCPoint grooveA, CCPoint grooveB, CCPoint anchr)
 		{
 
 			if (!base.Init(a, b))
@@ -591,9 +593,9 @@ namespace CocosSharp
 
 			cpConstraint joint = new cpGrooveJoint(GetBodyInfo(a).GetBody(),
 												   GetBodyInfo(b).GetBody(),
-												  grooveA,
-												  grooveB,
-												  anchr);
+                PhysicsHelper.CCPointToCpVect(grooveA),
+                PhysicsHelper.CCPointToCpVect(grooveB),
+                PhysicsHelper.CCPointToCpVect(anchr));
 
 
 			if (joint == null)

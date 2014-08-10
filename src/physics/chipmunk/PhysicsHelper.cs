@@ -31,7 +31,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-	public class PhysicsHelper
+	internal class PhysicsHelper
 	{
 
 		//TODO: This conversion methods don't be necesary, Cocosharp works with cpVect
@@ -45,6 +45,49 @@ namespace CocosSharp
 		//public static float float2cpfloat(float f) { return f; }
 		public static cpBB rect2cpbb(CCRect rect) { return new cpBB(rect.Origin.X, rect.Origin.Y, rect.Origin.X + rect.Size.Width, rect.Origin.Y + rect.Size.Height); }
 		public static CCRect cpbb2rect(cpBB bb) { return new CCRect((float)bb.l, (float)bb.b, (float)(bb.r - bb.l), (float)(bb.t - bb.b)); }
+
+        internal static cpVect CCPointToCpVect(CCPoint vec)
+        {
+
+
+            return new cpVect(vec.X, vec.Y);
+        }
+
+        internal static CCPoint cpVectToCCPoint(cpVect vec)
+        {
+            return new CCPoint((float)vec.x, (float)vec.y);
+        }
+
+        internal static cpVect[] CCPointsTocpVects (CCPoint[] points)
+        {
+            var len = points.Length;
+            cpVect[] pointscp = new cpVect[len];
+            var wrkPoint = CCPoint.Zero;
+
+            for (int i = 0; i< len; i++)
+            {
+                wrkPoint = points[i];
+                pointscp[i] = new cpVect(wrkPoint.X, wrkPoint.Y);
+
+            }
+            return pointscp;
+        }
+
+        internal static CCPoint[] cpVectsTpCCPoints (cpVect[] points)
+        {
+            var len = points.Length;
+            var pointscp = new CCPoint[len];
+            var wrkPoint = cpVect.Zero;
+
+            for (int i = 0; i< len; i++)
+            {
+                wrkPoint = points[i];
+                pointscp[i] = new CCPoint(wrkPoint.x, wrkPoint.y);
+
+            }
+            return pointscp;
+        }
+
 
 		//public static List<cpVect> cpvs2points(List<cpVect> cpvs, List<cpVect> output, int count)
 		//{

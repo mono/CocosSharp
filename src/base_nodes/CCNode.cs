@@ -526,7 +526,7 @@ namespace CocosSharp
             get { return position; }
             set
             {
-                if (position != value) 
+                if (position != value || value == CCPoint.Zero) 
                 {
                     position = value;
                     UpdateTransform();
@@ -953,11 +953,11 @@ namespace CocosSharp
 				if (scene != null && scene.PhysicsWorld != null)
 				{
 					var pos = Parent == scene ? Position : scene.WorldToParentspace(Position);
-					_physicsBody.Position = new cpVect(PositionX, PositionY);
+                    _physicsBody.Position = Position;//new cpVect(PositionX, PositionY);
 				}
 				else
 				{
-					_physicsBody.Position = Position.ToCpVect();
+					_physicsBody.Position = Position;
 				}
 			}
 

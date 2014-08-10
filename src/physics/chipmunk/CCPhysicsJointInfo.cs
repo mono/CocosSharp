@@ -32,7 +32,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-	public class CCPhysicsJointInfo
+	internal class CCPhysicsJointInfo
 	{
 
 		protected List<cpConstraint> _joints;

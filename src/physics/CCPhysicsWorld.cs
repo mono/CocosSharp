@@ -38,18 +38,18 @@ namespace CocosSharp
 
 
 		public CCPhysicsShape shape;
-		public cpVect start;
-		public cpVect end;              //< in lua, it's name is "ended"
-		public cpVect contact;
-		public cpVect normal;
+		public CCPoint start;
+		public CCPoint end;              //< in lua, it's name is "ended"
+		public CCPoint contact;
+		public CCPoint normal;
 		public float fraction;
 		public object data;
 
 		public CCPhysicsRayCastInfo(CCPhysicsShape shape,
-								  cpVect start,
-								  cpVect end,
-								  cpVect contact,
-								  cpVect normal,
+								  CCPoint start,
+								  CCPoint end,
+								  CCPoint contact,
+								  CCPoint normal,
 								  float fraction,
 								  object data)
 		{
@@ -67,11 +67,11 @@ namespace CocosSharp
 	{
 		public CCPhysicsWorld world;
 		public Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func;
-		public cpVect p1;
-		public cpVect p2;
+		public CCPoint p1;
+		public CCPoint p2;
 		public object data;
 
-		public CCRayCastCallbackInfo(CCPhysicsWorld world, Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, cpVect p1, cpVect p2, object data)
+		public CCRayCastCallbackInfo(CCPhysicsWorld world, Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint p1, CCPoint p2, object data)
 		{
 			this.world = world;
 			this.func = func;
@@ -114,7 +114,7 @@ namespace CocosSharp
  * @return true to continue, false to terminate
  */
 
-	public class CCPhysicsWorldCallback
+	internal class CCPhysicsWorldCallback
 	{
 
 		public static bool CollisionBeginCallbackFunc(cpArbiter arb, cpSpace space, CCPhysicsWorld world)
@@ -155,7 +155,7 @@ namespace CocosSharp
 		}
 
 
-		public static void RayCastCallbackFunc(cpShape shape, float t, cpVect n, ref CCRayCastCallbackInfo info)
+		public static void RayCastCallbackFunc(cpShape shape, float t, CCPoint n, ref CCRayCastCallbackInfo info)
 		{
 			if (!continues)
 			{
@@ -170,8 +170,8 @@ namespace CocosSharp
 		it.getShape(),
 		info.p1,
 		info.p2,
-		new cpVect(info.p1.x + (info.p2.x - info.p1.x) * t, info.p1.y + (info.p2.y - info.p1.y) * t),
-		 new cpVect(n.x, n.y),
+		new CCPoint(info.p1.X + (info.p2.X - info.p1.X) * t, info.p1.Y + (info.p2.Y - info.p1.Y) * t),
+		 new CCPoint(n.Y, n.Y),
 		t, null
 	);
 
@@ -192,7 +192,7 @@ namespace CocosSharp
 			continues = info.func(info.world, it.getShape(), info.data);
 
 		}
-		public static void QueryPointFunc(cpShape shape, float distance, cpVect point, ref CCPointQueryCallbackInfo info)
+		public static void QueryPointFunc(cpShape shape, float distance, CCPoint point, ref CCPointQueryCallbackInfo info)
 		{
 			CCPhysicsShapeInfo it;
 
@@ -200,7 +200,7 @@ namespace CocosSharp
 
 			continues = info.func(info.world, it.getShape(), info.data);
 		}
-		public static void GetShapesAtPointFunc(cpShape shape, float distance, cpVect point, ref List<CCPhysicsShape> arr)
+		public static void GetShapesAtPointFunc(cpShape shape, float distance, CCPoint point, ref List<CCPhysicsShape> arr)
 		{
 			CCPhysicsShapeInfo it;
 
@@ -245,8 +245,8 @@ namespace CocosSharp
 
 
 
-		protected cpVect _gravity;
-		public CCPhysicsWorldInfo _info;
+		protected CCPoint _gravity;
+		internal CCPhysicsWorldInfo _info;
 		protected float _speed;
 		protected int _updateRate;
 		protected int _updateRateCount;
@@ -271,7 +271,7 @@ namespace CocosSharp
 		public CCPhysicsWorld(CCScene scene)
 		{
 
-			_gravity = new cpVect(0.0f, -98.0f);
+			_gravity = new CCPoint(0.0f, -98.0f);
 			_speed = 1.0f;
 			_updateRate = 1;
 			_updateRateCount = 0;
@@ -284,7 +284,7 @@ namespace CocosSharp
 
 			_scene = scene;
 
-			_info.SetGravity(_gravity);
+            _info.SetGravity(PhysicsHelper.CCPointToCpVect(_gravity));
 
 			var spc = _info.getSpace();
 
@@ -508,7 +508,7 @@ namespace CocosSharp
 
 
 		/** Searches for physics shapes that intersects the ray. */
-		public void RayCast(Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, cpVect point1, cpVect point2, object data)
+		public void RayCast(Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint point1, CCPoint point2, object data)
 		{
 			cp.AssertWarn(func != null, "func shouldn't be nullptr");
 
@@ -519,10 +519,10 @@ namespace CocosSharp
 				CCPhysicsWorldCallback.continues = true;
 
 				this._info.getSpace().SegmentQuery(
-									point1,
-									point2, 1f,
+                    PhysicsHelper.CCPointToCpVect(point1),
+                    PhysicsHelper.CCPointToCpVect(point2), 1f,
 									new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
-									(shape, v1, v2, f, o) => CCPhysicsWorldCallback.RayCastCallbackFunc(shape, f, v1, ref info), data
+                    (shape, v1, v2, f, o) => CCPhysicsWorldCallback.RayCastCallbackFunc(shape, f, PhysicsHelper.cpVectToCCPoint(v1), ref info), data
 									);
 			}
 		}
@@ -552,7 +552,7 @@ namespace CocosSharp
 		}
 
 		/** Searches for physics shapes that contains the point. */
-		public void QueryPoint(Func<CCPhysicsWorld, CCPhysicsShape, object, bool> func, cpVect point, object data)
+		public void QueryPoint(Func<CCPhysicsWorld, CCPhysicsShape, object, bool> func, CCPoint point, object data)
 		{
 			cp.AssertWarn(func != null, "func shouldn't be nullptr");
 
@@ -565,7 +565,7 @@ namespace CocosSharp
 				CCPhysicsWorldCallback.continues = true;
 
 				this._info.getSpace().PointQuery(
-					point, 0f,
+                    PhysicsHelper.CCPointToCpVect(point), 0f,
 					new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 					(s, v, f1, f2, o) => CCPhysicsWorldCallback.QueryPointFunc(s, 0f, point, ref info),
 					data
@@ -574,13 +574,13 @@ namespace CocosSharp
 		}
 
 		/** Get phsyics shapes that contains the point. */
-		public List<CCPhysicsShape> GetShapes(cpVect point)
+		public List<CCPhysicsShape> GetShapes(CCPoint point)
 		{
 			List<CCPhysicsShape> arr = new List<CCPhysicsShape>();
 
 			this._info.getSpace().PointQuery(
-									 point, 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
-									(s, v1, f, v2, o) => CCPhysicsWorldCallback.GetShapesAtPointFunc(s, f, v1, ref arr),
+                PhysicsHelper.CCPointToCpVect(point), 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
+                (s, v1, f, v2, o) => CCPhysicsWorldCallback.GetShapesAtPointFunc(s, f, PhysicsHelper.cpVectToCCPoint(v1), ref arr),
 									null
 									 );
 
@@ -588,13 +588,13 @@ namespace CocosSharp
 		}
 
 		/** return physics shape that contains the point. */
-		public CCPhysicsShape GetShape(cpVect point)
+		public CCPhysicsShape GetShape(CCPoint point)
 		{
 
 			cpShape shape = null;
 
 			this._info.getSpace().PointQuery(
-				point, 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
+                PhysicsHelper.CCPointToCpVect(point), 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 								  (s, v1, f, v2, o) => { shape = s; }, null);
 
 			if (shape == null)
@@ -632,10 +632,10 @@ namespace CocosSharp
 		public CCScene GetScene() { return _scene; }
 
 		/** get the gravity value */
-		public cpVect GetGravity() { return _gravity; }
+		public CCPoint GetGravity() { return _gravity; }
 
 		/** set the gravity value */
-		public void SetGravity(cpVect gravity)
+		public void SetGravity(CCPoint gravity)
 		{
 			if (_bodies.Count > 0)
 			{
@@ -644,7 +644,7 @@ namespace CocosSharp
 					// reset gravity for body
 					if (!body.IsGravityEnabled())
 					{
-						body.ApplyForce((_gravity - gravity) * body.GetMass());
+                        body.ApplyForce(PhysicsHelper.CCPointToCpVect((_gravity - gravity)) * body.GetMass());
 					}
 				}
 			}
@@ -1114,187 +1114,6 @@ namespace CocosSharp
 			_debugDrawMask = mask;
 		}
 	}
-
-	//public class PhysicsDebugDraw
-	//{
-
-	//	protected CCDrawNode _drawNode;
-	//	protected CCPhysicsWorld _world;
-
-	//	#region PROTECTED
-
-	//	public PhysicsDebugDraw(CCPhysicsWorld world)
-	//	{
-	//		_drawNode = null;
-	//		_world = world;
-
-	//		_drawNode = new CCDrawNode();
-	//		_world.GetScene().AddChild(_drawNode);
-	//	}
-
-	//	public virtual bool Begin()
-	//	{
-	//		_drawNode.Clear();
-	//		return true;
-
-	//	}
-
-	//	public virtual void End()
-	//	{
-	//	}
-
-	//	public virtual void DrawShape(CCPhysicsShape shape)
-	//	{
-
-	//		CCColor4F fillColor = new CCColor4F(1.0f, 0.0f, 0.0f, 0.3f);
-	//		CCColor4F outlineColor = new CCColor4F(0f, 0.0f, 0.0f, 1.0f);
-
-	//		foreach (cpShape subShape in shape._info.getShapes())
-
-
-	//			switch (subShape.shapeType)
-	//			{
-	//				case cpShapeType.Circle:
-	//					{
-
-	//						cpCircleShape cir = (cpCircleShape)subShape;
-
-	//						float radius = cir.GetRadius();
-	//						cpVect centre = cir.body.GetPosition() + cir.GetOffset();
-
-	//						int CIRCLE_SEG_NUM = 12;
-
-	//						CCPoint[] seg = new CCPoint[CIRCLE_SEG_NUM];
-	//						cpVect tmp;
-	//						for (int i = 0; i < CIRCLE_SEG_NUM; ++i)
-	//						{
-	//							float angle = (float)i * CCMathHelper.Pi / (float)CIRCLE_SEG_NUM * 2.0f;
-	//							cpVect d = new cpVect(radius * CCMathHelper.Cos(angle), radius * CCMathHelper.Sin(angle));
-
-	//							tmp = centre + d;
-	//							seg[i] = new CCPoint((float)tmp.x, (float)tmp.y);
-	//						}
-	//						_drawNode.DrawPolygon(seg, CIRCLE_SEG_NUM, fillColor, 1, outlineColor);
-	//						break;
-	//					}
-	//				case cpShapeType.Segment:
-	//					{
-	//						cpSegmentShape seg = (cpSegmentShape)subShape;
-	//						_drawNode.DrawSegment(new CCPoint(seg.ta.x, seg.ta.y),
-	//											  new CCPoint(seg.tb.x, seg.tb.y),
-	//											  seg.r == 0 ? 1 : seg.r, outlineColor);
-	//						break;
-	//					}
-	//				case cpShapeType.Polygon:
-	//					{
-
-	//						cpPolyShape poly = (cpPolyShape)subShape;
-	//						int num = poly.Count;
-	//						//Vec2* seg = new Vec2[num];
-
-	//						CCPoint[] tmp = new CCPoint[num];
-	//						for (int i = 0; i < poly.tVerts.Length; i += 2)
-	//							tmp[i] = new CCPoint(poly.tVerts[i], poly.tVerts[i + 1]);
-
-	//						_drawNode.DrawPolygon(tmp, num, fillColor, 1.0f, outlineColor);
-
-
-	//						break;
-	//					}
-	//				default:
-	//					break;
-	//			}
-
-	//	}
-
-	//	public virtual void DrawJoint(CCPhysicsJoint joint)
-	//	{
-
-	//		CCColor4F lineColor = new CCColor4F(0.0f, 0.0f, 1.0f, 1.0f);
-	//		CCColor4F jointPointColor = new CCColor4F(0.0f, 1.0f, 0.0f, 1.0f);
-
-
-	//		foreach (var it in joint._info.getJoints())
-	//		{
-	//			cpConstraint constraint = it;
-
-
-	//			cpBody body_a = constraint.a;
-	//			cpBody body_b = constraint.b;
-
-	//			Type klass = constraint.GetType();
-
-	//			if (klass == typeof(cpPinJoint))
-	//			{
-	//				cpPinJoint subJoint = (cpPinJoint)constraint;
-
-	//				var a = cpVect.cpvadd(body_a.GetPosition(), cpVect.cpvrotate(subJoint.anchr1, body_a.Rotation)).ToCCPoint();
-	//				var b = cpVect.cpvadd(body_b.GetPosition(), cpVect.cpvrotate(subJoint.anchr2, body_b.Rotation)).ToCCPoint();
-
-	//				_drawNode.DrawSegment(a, b, 1, lineColor);
-	//				_drawNode.DrawDot((a), 2, jointPointColor);
-	//				_drawNode.DrawDot((b), 2, jointPointColor);
-	//			}
-	//			else if (klass == typeof(cpSlideJoint))
-	//			{
-	//				cpSlideJoint subJoint = (cpSlideJoint)constraint;
-
-	//				var a = cpVect.cpvadd(body_a.GetPosition(), cpVect.cpvrotate(subJoint.anchorA, body_a.GetRotation())).ToCCPoint();
-	//				var b = cpVect.cpvadd(body_b.GetPosition(), cpVect.cpvrotate(subJoint.anchorB, body_b.GetRotation())).ToCCPoint();
-
-	//				_drawNode.DrawSegment(a, b, 1, lineColor);
-	//				_drawNode.DrawDot(a, 2, jointPointColor);
-	//				_drawNode.DrawDot(b, 2, jointPointColor);
-	//			}
-	//			else if (klass == typeof(cpPivotJoint))
-	//			{
-	//				cpPivotJoint subJoint = (cpPivotJoint)constraint;
-
-	//				var a = cpVect.cpvadd(body_a.GetPosition(), cpVect.cpvrotate(subJoint.anchorA, body_a.GetRotation())).ToCCPoint();
-	//				var b = cpVect.cpvadd(body_b.GetPosition(), cpVect.cpvrotate(subJoint.anchorB, body_b.GetRotation())).ToCCPoint();
-
-	//				_drawNode.DrawDot(a, 2, jointPointColor);
-	//				_drawNode.DrawDot(b, 2, jointPointColor);
-	//			}
-	//			else if (klass == typeof(cpGrooveJoint))
-	//			{
-	//				cpGrooveJoint subJoint = (cpGrooveJoint)constraint;
-
-	//				var a = cpVect.cpvadd(body_a.GetPosition(), cpVect.cpvrotate(subJoint.grv_a, body_a.GetRotation())).ToCCPoint();
-	//				var b = cpVect.cpvadd(body_a.GetPosition(), cpVect.cpvrotate(subJoint.grv_b, body_a.GetRotation())).ToCCPoint();
-	//				var c = cpVect.cpvadd(body_b.GetPosition(), cpVect.cpvrotate(subJoint.anchorB, body_b.GetRotation())).ToCCPoint();
-
-	//				_drawNode.DrawSegment((a), (b), 1, lineColor);
-	//				_drawNode.DrawDot((c), 2, jointPointColor);
-	//			}
-	//			else if (klass == typeof(cpDampedSpring))
-	//			{
-	//				cpDampedSpring subJoint = (cpDampedSpring)constraint;
-
-	//				var a = cpVect.cpvadd(body_a.GetPosition(), cpVect.cpvrotate(subJoint.GetAnchorA(), body_a.GetRotation())).ToCCPoint();
-	//				var b = cpVect.cpvadd(body_b.GetPosition(), cpVect.cpvrotate(subJoint.GetAnchorB(), body_b.GetRotation())).ToCCPoint();
-
-	//				_drawNode.DrawSegment(a, b, 1, lineColor);
-	//				_drawNode.DrawDot(a, 2, jointPointColor);
-	//				_drawNode.DrawDot(b, 2, jointPointColor);
-	//			}
-	//		}
-
-
-	//	}
-
-
-	//	#endregion
-
-	//	~PhysicsDebugDraw()
-	//	{
-	//		_drawNode.RemoveFromParent();
-	//		_drawNode = null;
-	//	}
-
-	//};
-
-
 
 }
 #endif

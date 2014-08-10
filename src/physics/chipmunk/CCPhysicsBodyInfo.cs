@@ -31,7 +31,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-	public class CCPhysicsBodyInfo
+	internal class CCPhysicsBodyInfo
 	{
 
 		private cpBody _body;

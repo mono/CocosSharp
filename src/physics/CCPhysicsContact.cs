@@ -44,7 +44,7 @@ namespace CocosSharp
 	public class CCPhysicsContactData
 	{
 		public const int POINT_MAX = 4;
-		public List<cpVect> points = new List<cpVect>();
+        public List<CCPoint> points = new List<CCPoint>();
 		public int count
 		{
 			get
@@ -52,7 +52,7 @@ namespace CocosSharp
 				return (points != null) ? points.Count : 0;
 			}
 		}
-		public cpVect normal;
+		public CCPoint normal;
 	};
 
 	/**  * @brief Contact infomation. it will created automatically when two shape contact with each other. and it will destoried automatically when two shape separated. */
@@ -173,10 +173,10 @@ namespace CocosSharp
 
 			for (int i = 0; i < _contactData.count && i < CCPhysicsContactData.POINT_MAX; ++i)
 			{
-				_contactData.points[i] = arb.GetPointA(i);
+                _contactData.points[i] = PhysicsHelper.cpVectToCCPoint(arb.GetPointA(i));
 			}
 
-			_contactData.normal = _contactData.count > 0 ? arb.GetNormal() : cpVect.Zero;
+            _contactData.normal = _contactData.count > 0 ? PhysicsHelper.cpVectToCCPoint(arb.GetNormal()) : CCPoint.Zero;
 		}
 
 		#endregion
@@ -205,9 +205,9 @@ namespace CocosSharp
 			return (_contactInfo as cpArbiter).u;
 		}
 		/** get surface velocity between two bodies*/
-		public cpVect GetSurfaceVelocity()
+		public CCPoint GetSurfaceVelocity()
 		{
-			return (_contactInfo as cpArbiter).surface_vr;
+            return PhysicsHelper.cpVectToCCPoint((_contactInfo as cpArbiter).surface_vr);
 		}
 		/** set the restitution*/
 		public void SetRestitution(float restitution)
@@ -220,9 +220,9 @@ namespace CocosSharp
 			(_contactInfo as cpArbiter).u = friction;
 		}
 		/** set the surface velocity*/
-		public void SetSurfaceVelocity(cpVect velocity)
+		public void SetSurfaceVelocity(CCPoint velocity)
 		{
-			(_contactInfo as cpArbiter).surface_vr = velocity;
+            (_contactInfo as cpArbiter).surface_vr = PhysicsHelper.CCPointToCpVect(velocity);
 		}
 		/** ignore the rest of the contact presolve and postsolve callbacks */
 		public void Ignore()

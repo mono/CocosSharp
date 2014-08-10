@@ -33,7 +33,7 @@ using System.Text;
 namespace CocosSharp
 {
 
-	public class CCPhysicsWorldInfo
+	internal class CCPhysicsWorldInfo
 	{
 
 		private cpSpace _space;

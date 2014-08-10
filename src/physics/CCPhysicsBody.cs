@@ -53,7 +53,7 @@ namespace CocosSharp
 		public List<CCPhysicsJoint> _joints = new List<CCPhysicsJoint>();
 		protected List<CCPhysicsShape> _shapes = new List<CCPhysicsShape>();
 		public CCPhysicsWorld _world;
-		public CCPhysicsBodyInfo _info;
+		internal CCPhysicsBodyInfo _info;
 		internal bool _dynamic;
 		internal bool _enabled;
 		internal bool _rotationEnabled;
@@ -102,17 +102,17 @@ namespace CocosSharp
 		}
 
 		public CCPhysicsBody(float mass, float moment)
-			: this(mass, MOMENT_DEFAULT, null)
+            : this(mass, MOMENT_DEFAULT, CCPoint.Zero)
 		{
 
 		}
 
 
 
-		public CCPhysicsBody(float mass, float moment, cpVect offset)
+		public CCPhysicsBody(float mass, float moment, CCPoint offset)
 		{
-
-			_positionOffset = offset != null ? offset : cpVect.Zero;
+            var offsetcp = new cpVect(offset.X, offset.Y); ;
+			_positionOffset = offsetcp != null ? offsetcp : cpVect.Zero;
 			_node = null;
 			_world = null;
 			_info = null;
@@ -144,14 +144,14 @@ namespace CocosSharp
 		}
 
 		public CCPhysicsBody(CCPhysicsShape shape)
-			: this(0f, 0f, cpVect.Zero)
+            : this(0f, 0f, CCPoint.Zero)
 		{
 			AddShape(shape);
 		}
 
 
 		public CCPhysicsBody(List<CCPhysicsShape> shapes)
-			: this(0f, 0f, cpVect.Zero)
+            : this(0f, 0f, CCPoint.Zero)
 		{
 
 			foreach (var item in shapes)
@@ -184,7 +184,7 @@ namespace CocosSharp
 			{
 				CCNode parent = _node.Parent;
 				CCScene scene = _world.GetScene();
-				cpVect vec = Position;
+                var vec = new cpVect(Position.X, Position.Y);
 
 				CCPoint parentPosition = new CCPoint((float)vec.x, (float)vec.y);   //ConvertToNodeSpace(scene.ConvertToWorldSpace(new CCPoint((float)vec.x, (float)vec.y)));
 
@@ -226,15 +226,17 @@ namespace CocosSharp
 		protected void UpdateDamping() { _isDamping = _linearDamping != 0.0f || _angularDamping != 0.0f; }
 		protected void UpdateMass(float oldMass, float newMass)
 		{
+            var gravity = _world.GetGravity();
+
 			if (_dynamic && !_gravityEnabled && _world != null && oldMass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(_world.GetGravity() * oldMass);
+				ApplyForce(gravity * oldMass);
 			}
 			_info.GetBody().SetMass(newMass);
 
 			if (_dynamic && !_gravityEnabled && _world != null && newMass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(-_world.GetGravity() * newMass);
+				ApplyForce(-gravity * newMass);
 			}
 		}
 
@@ -244,17 +246,17 @@ namespace CocosSharp
 
 
 		/** Create a body contains a circle shape. */
-		public static CCPhysicsBody CreateCircle(float radius, CCPhysicsMaterial material, cpVect offset)
+		public static CCPhysicsBody CreateCircle(float radius, CCPhysicsMaterial material, CCPoint offset)
 		{
 
 			CCPhysicsBody body = new CCPhysicsBody();
 			body.SetMass(MASS_DEFAULT);
-			body.AddShape(new CCPhysicsShapeCircle(material, radius, offset));
+            body.AddShape(new CCPhysicsShapeCircle(material, radius, offset));
 			return body;
 		}
 
 
-		public static CCPhysicsBody CreateCircle(float radius, cpVect offset)
+		public static CCPhysicsBody CreateCircle(float radius, CCPoint offset)
 		{
 			return CreateCircle(radius, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, offset);
 		}
@@ -277,7 +279,7 @@ namespace CocosSharp
 		 * @brief Create a body contains a polygon shape.
 		 * points is an array of cpVect structs defining a convex hull with a clockwise winding.
 		 */
-		public static CCPhysicsBody CreatePolygon(cpVect[] points, int count, CCPhysicsMaterial material, float radius)
+		public static CCPhysicsBody CreatePolygon(CCPoint[] points, int count, CCPhysicsMaterial material, float radius)
 		{
 
 			CCPhysicsBody body = new CCPhysicsBody();
@@ -285,74 +287,74 @@ namespace CocosSharp
 			return body;
 		}
 
-		public static CCPhysicsBody CreatePolygon(cpVect[] points, int count, float radius)
+		public static CCPhysicsBody CreatePolygon(CCPoint[] points, int count, float radius)
 		{
-			return CreatePolygon(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, radius);
+            return CreatePolygon(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, radius);
 		}
 
 
 		/** Create a body contains a EdgeSegment shape. */
-		public static CCPhysicsBody CreateEdgeSegment(cpVect a, cpVect b, CCPhysicsMaterial material, float border = 1)
+		public static CCPhysicsBody CreateEdgeSegment(CCPoint a, CCPoint b, CCPhysicsMaterial material, float border = 1)
 		{
 
 			CCPhysicsBody body = new CCPhysicsBody();
 
-			body.AddShape(new CCPhysicsShapeEdgeSegment(a, b, material, border));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(a, b, material, border));
 			body._dynamic = false;
 			return body;
 
 		}
 
-		public static CCPhysicsBody CreateEdgeSegment(cpVect a, cpVect b, float border = 1)
+		public static CCPhysicsBody CreateEdgeSegment(CCPoint a, CCPoint b, float border = 1)
 		{
-			return CreateEdgeSegment(a, b, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
+            return CreateEdgeSegment(a, b , CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
 		}
 
 
 
 		/** Create a body contains a EdgeBox shape. */
-		public static CCPhysicsBody CreateEdgeBox(CCSize size, CCPhysicsMaterial material, float border, cpVect offset)
+		public static CCPhysicsBody CreateEdgeBox(CCSize size, CCPhysicsMaterial material, float border, CCPoint offset)
 		{
 			CCPhysicsBody body = new CCPhysicsBody();
-			body.AddShape(new CCPhysicsShapeEdgeBox(size, material, border, offset));
+            body.AddShape(new CCPhysicsShapeEdgeBox(size, material, offset, border));
 			body._dynamic = false;
 			return body;
 		}
 
-		public static CCPhysicsBody CreateEdgeBox(CCSize size, float border, cpVect offset)
+		public static CCPhysicsBody CreateEdgeBox(CCSize size, float border, CCPoint offset)
 		{
-			return CreateEdgeBox(size, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border, offset);
+            return CreateEdgeBox(size, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border, offset);
 		}
 
 
 		/** Create a body contains a EdgePolygon shape. */
-		public static CCPhysicsBody CreateEdgePolygon(cpVect[] points, int count, CCPhysicsMaterial material, float border = 1)
+		public static CCPhysicsBody CreateEdgePolygon(CCPoint[] points, int count, CCPhysicsMaterial material, float border = 1)
 		{
 			CCPhysicsBody body = new CCPhysicsBody();
-			body.AddShape(new CCPhysicsShapeEdgePolygon(points, count, material, border));
+            body.AddShape(new CCPhysicsShapeEdgePolygon(points, count, material, border));
 			body._dynamic = false;
 			return body;
 		}
 
 
-		public static CCPhysicsBody CreateEdgePolygon(cpVect[] points, int count, float border = 1)
+        public static CCPhysicsBody CreateEdgePolygon(CCPoint[] points, int count, float border = 1)
 		{
-			return CreateEdgePolygon(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
+            return CreateEdgePolygon(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
 		}
 
 		/** Create a body contains a EdgeChain shape. */
-		public static CCPhysicsBody CreateEdgeChain(cpVect[] points, int count, CCPhysicsMaterial material, float border = 1)
+		public static CCPhysicsBody CreateEdgeChain(CCPoint[] points, int count, CCPhysicsMaterial material, float border = 1)
 		{
 			CCPhysicsBody body = new CCPhysicsBody();
-			body.AddShape(new CCPhysicsShapeEdgeChain(points, count, material, border));
+            body.AddShape(new CCPhysicsShapeEdgeChain(points, count, material, border));
 			body._dynamic = false;
 			return body;
 		}
 
 
-		public static CCPhysicsBody CreateEdgeChain(cpVect[] points, int count, float border = 1)
+		public static CCPhysicsBody CreateEdgeChain(CCPoint[] points, int count, float border = 1)
 		{
-			return CreateEdgeChain(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
+            return CreateEdgeChain(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
 		}
 
 		/*
@@ -488,18 +490,31 @@ namespace CocosSharp
 		}
 
 		/** Applies a immediate force to body. */
-		public virtual void ApplyForce(cpVect force)
+		public virtual void ApplyForce(CCPoint force)
 		{
-			ApplyForce(force, cpVect.Zero);
+            ApplyForce(force, CCPoint.Zero);
 		}
 		/** Applies a immediate force to body. */
-		public virtual void ApplyForce(cpVect force, cpVect offset)
+        public virtual void ApplyForce(CCPoint force, CCPoint offset)
 		{
-			if (_dynamic && _mass != cp.PHYSICS_INFINITY)
-			{
-				_info.GetBody().ApplyForce(force, offset);
-			}
+            ApplyForce(new cpVect(force.X,force.Y), new cpVect(offset.X,offset.Y));
 		}
+
+        /** Applies a immediate force to body. */
+        internal void ApplyForce(cpVect force)
+        {
+            ApplyForce(force, cpVect.Zero);
+        }
+
+        /** Applies a immediate force to body. */
+        internal void ApplyForce(cpVect force, cpVect offset)
+        {
+            if (_dynamic && _mass != cp.PHYSICS_INFINITY)
+            {
+                _info.GetBody().ApplyForce(force, offset);
+            }
+        }
+
 		/** reset all the force applied to body. */
 		public virtual void ResetForces()
 		{
@@ -510,17 +525,32 @@ namespace CocosSharp
 				ApplyForce(-_world.GetGravity() * _mass);
 			}
 		}
-		/** Applies a continuous force to body. */
-		public virtual void ApplyImpulse(cpVect impulse)
+
+        /** Applies a continuous force to body. */
+		public virtual void ApplyImpulse(CCPoint impulse)
 		{
-			ApplyImpulse(impulse, cpVect.Zero);
+            ApplyImpulse(impulse, CCPoint.Zero);
 		}
 		/** Applies a continuous force to body. */
-		public virtual void ApplyImpulse(cpVect impulse, cpVect offset)
+		public virtual void ApplyImpulse(CCPoint impulse, CCPoint offset)
 		{
 			// cpBodyApplyImpulse(_info->getBody(), PhysicsHelper::point2cpv(impulse), PhysicsHelper::point2cpv(offset));
-			_info.GetBody().ApplyImpulse(impulse, offset);
+            ApplyImpulse(new cpVect(impulse.X,impulse.Y), new cpVect(offset.X,offset.Y));
 		}
+
+        /** Applies a continuous force to body. */
+        internal void ApplyImpulse(cpVect impulse)
+        {
+            ApplyImpulse(impulse, cpVect.Zero);
+        }
+        /** Applies a continuous force to body. */
+        internal void ApplyImpulse(cpVect impulse, cpVect offset)
+        {
+            // cpBodyApplyImpulse(_info->getBody(), PhysicsHelper::point2cpv(impulse), PhysicsHelper::point2cpv(offset));
+            _info.GetBody().ApplyImpulse(impulse, offset);
+        }
+
+
 		/** Applies a torque force to body. */
 		public virtual void ApplyTorque(float torque)
 		{
@@ -528,21 +558,22 @@ namespace CocosSharp
 		}
 
 		/** set the velocity of a body */
-		public virtual void SetVelocity(cpVect velocity)
+        public virtual void SetVelocity(CCPoint velocity)
 		{
 			if (!_dynamic)
 			{
 				cp.AssertWarn("physics warning: your can't set velocity for a static body.");
 				return;
 			}
-			_info.GetBody().SetPosition(velocity);
+            _info.GetBody().SetPosition(new cpVect(velocity.X,velocity.Y));
 			//cpBodySetVel(_info->getBody(), PhysicsHelper::point2cpv(velocity));
 		}
 
 		/** get the velocity of a body */
-		public virtual cpVect GetVelocity()
+		public virtual CCPoint GetVelocity()
 		{
-			return _info.GetBody().GetVelocity();// getVel();
+            var velocity = _info.GetBody().GetVelocity();// getVel();
+            return new CCPoint(velocity.x, velocity.y);
 		}
 		/** set the angular velocity of a body */
 		public virtual void SetAngularVelocity(float velocity)
@@ -557,15 +588,29 @@ namespace CocosSharp
 			//cpBodySetAngVel(_info->getBody(), PhysicsHelper::float2cpfloat(velocity));
 		}
 		/** get the angular velocity of a body at a local point */
-		public virtual cpVect GetVelocityAtLocalPoint(cpVect point)
+		public virtual CCPoint GetVelocityAtLocalPoint(CCPoint point)
 		{
-			return _info.GetBody().GetVelocityAtLocalPoint(point);
+            var cpVec = GetVelocityAtLocalPoint(new cpVect(point.X,point.Y));
+            return new CCPoint(cpVec.x, cpVec.y);
 		}
 		/** get the angular velocity of a body at a world point */
-		public virtual cpVect GetVelocityAtWorldPoint(cpVect point)
+		public virtual CCPoint GetVelocityAtWorldPoint(CCPoint point)
 		{
-			return _info.GetBody().GetVelocityAtWorldPoint(point);
+            var cpVec = GetVelocityAtWorldPoint(new cpVect(point.X,point.Y));
+            return new CCPoint(cpVec.x, cpVec.y);
 		}
+
+        /** get the angular velocity of a body at a local point */
+        internal cpVect GetVelocityAtLocalPoint(cpVect point)
+        {
+            return _info.GetBody().GetVelocityAtLocalPoint(point);
+        }
+        /** get the angular velocity of a body at a world point */
+        internal cpVect GetVelocityAtWorldPoint(cpVect point)
+        {
+            return _info.GetBody().GetVelocityAtWorldPoint(point);
+        }
+
 		/** get the angular velocity of a body */
 		public virtual float GetAngularVelocity()
 		{
@@ -677,21 +722,21 @@ namespace CocosSharp
 
 
 		/** get the body position. */
-		public cpVect Position
+        public CCPoint Position
 		{
 			get
 			{
-				cpVect vec = _info.GetBody().GetPosition();
-				return vec - _positionOffset;
+				var vec = _info.GetBody().GetPosition();
+                var vecp = vec - _positionOffset;
+                return new CCPoint(vecp.x, vecp.y);
 
 			}
 			set
 			{
-				_info.GetBody().SetPosition(value + _positionOffset);
+                var newpos = new cpVect(value.X, value.Y);
+				_info.GetBody().SetPosition(newpos + _positionOffset);
 			}
 		}
-
-
 
 		/** get the body rotation. */
 		public float GetRotation()
@@ -701,21 +746,30 @@ namespace CocosSharp
 		}
 
 		/** set body position offset, it's the position witch relative to node */
-		public void setPositionOffset(cpVect position)
+        public void setPositionOffset(CCPoint position)
 		{
-			if (!_positionOffset.Equals(position))
-			{
-				cpVect pos = Position;
-				_positionOffset = position;
-				Position = pos;// setPosition(pos);
-			}
+            setPositionOffset(new cpVect(position.X, position.Y));
 		}
+
+        /** set body position offset, it's the position witch relative to node */
+        internal void setPositionOffset(cpVect position)
+        {
+            if (!_positionOffset.Equals(position))
+            {
+                var pos = Position;
+                _positionOffset = position;
+                Position = pos;// setPosition(pos);
+            }
+        }
+
 		/** get body position offset. */
-		public cpVect GetPositionOffset()
+		public CCPoint GetPositionOffset()
 		{
-			return _positionOffset;
+            var posOff = new CCPoint(_positionOffset.x, _positionOffset.y);
+			return posOff;
 		}
-		/** set body rotation offset, it's the rotation witch relative to node */
+
+        /** set body rotation offset, it's the rotation witch relative to node */
 		public void SetRotationOffset(float rotation)
 		{
 			if (Math.Abs(_rotationOffset - rotation) > 0.5f)
@@ -1056,18 +1110,32 @@ namespace CocosSharp
 		public void setTag(int tag) { _tag = tag; }
 
 		/** convert the world point to local */
-		public cpVect World2Local(cpVect point)
+		public CCPoint World2Local(CCPoint point)
 		{
-			return _info.GetBody().WorldToLocal(point);
+            var pp = World2Local(new cpVect(point.X, point.Y));
+            return new CCPoint(pp.x, pp.y);
 			//return PhysicsHelper::cpv2point(cpBodyWorld2Local(_info->getBody(), PhysicsHelper::point2cpv(point)));
 		}
+
 		/** convert the local point to world */
-		public cpVect Local2World(cpVect point)
+		public CCPoint Local2World(CCPoint point)
 		{
-			return _info.GetBody().LocalToWorld(point);
+            var pp = Local2World(new cpVect(point.X, point.Y));
+            return new CCPoint(pp.x, pp.y);
 		}
 
-		#endregion
+        /** convert the world point to local */
+        internal cpVect World2Local(cpVect point)
+        {
+            return _info.GetBody().WorldToLocal(point);
+            //return PhysicsHelper::cpv2point(cpBodyWorld2Local(_info->getBody(), PhysicsHelper::point2cpv(point)));
+        }
+        /** convert the local point to world */
+        internal cpVect Local2World(cpVect point)
+        {
+            return _info.GetBody().LocalToWorld(point);
+        }
+        #endregion
 
 
 		public void SetScale(float scale)
