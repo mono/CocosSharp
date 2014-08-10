@@ -47,14 +47,16 @@ namespace tests
         {
             this.Position = Position + (m_velocity * delta);
 
-            if (Position.X > CCVisibleRect.Right.X - radius())
+            var visibleRect = VisibleBoundsWorldspace;
+
+            if (Position.X > visibleRect.Right().X - radius())
             {
-				Position = new CCPoint(CCVisibleRect.Right.X - radius(), Position.Y);
+                Position = new CCPoint(visibleRect.Right().X - radius(), Position.Y);
                 m_velocity.X *= -1;
             }
-			else if (Position.X < CCVisibleRect.Left.X + radius())
+            else if (Position.X < visibleRect.Left().X + radius())
             {
-				Position = new CCPoint(CCVisibleRect.Left.X + radius(), Position.Y);
+                Position = new CCPoint(visibleRect.Left().X + radius(), Position.Y);
                 m_velocity.X *= -1;
             }
         }

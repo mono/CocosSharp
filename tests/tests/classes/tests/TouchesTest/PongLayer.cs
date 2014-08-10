@@ -45,7 +45,6 @@ namespace tests
             m_ballStartingVelocity = new CCPoint(20.0f, -100.0f);
 
             m_ball = Ball.ballWithTexture(CCTextureCache.SharedTextureCache.AddImage(s_Ball));
-            m_ball.Position = new CCPoint(160.0f, 240.0f);
             m_ball.Velocity = m_ballStartingVelocity;
             AddChild(m_ball);
 
@@ -57,15 +56,12 @@ namespace tests
             paddlesM.Add(paddle);
 
             paddle = new Paddle(paddleTexture);
-            paddle.Position = new CCPoint(160, 480 - 20f - 15);
             paddlesM.Add(paddle);
 
             paddle = new Paddle(paddleTexture);
-            paddle.Position = new CCPoint(160, 100);
             paddlesM.Add(paddle);
 
             paddle = new Paddle(paddleTexture);
-            paddle.Position = new CCPoint(160, 480 - 20.0f - 100);
             paddlesM.Add(paddle);
 
 			paddles = paddlesM;
@@ -85,10 +81,14 @@ namespace tests
         {
             base.AddedToScene();
 
-			paddles[0].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + 15);
-			paddles[1].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - kStatusBarHeight - 15);
-			paddles[2].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + 100);
-			paddles[3].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - kStatusBarHeight - 100);
+            var visibleRect = VisibleBoundsWorldspace;
+
+            paddles[0].Position = new CCPoint(visibleRect.Center.X, visibleRect.Bottom().Y + 15);
+            paddles[1].Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - kStatusBarHeight - 15);
+            paddles[2].Position = new CCPoint(visibleRect.Center.X, visibleRect.Bottom().Y + 100);
+            paddles[3].Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - kStatusBarHeight - 100);
+
+            m_ball.Position = VisibleBoundsWorldspace.Center;
 
 		}
 
@@ -97,7 +97,7 @@ namespace tests
         {
             m_ballStartingVelocity = new CCPoint(m_ballStartingVelocity.X * -1.1f, m_ballStartingVelocity.Y * -1.1f);
             m_ball.Velocity = m_ballStartingVelocity;
-            m_ball.Position = new CCPoint(160.0f, 240.0f);
+            m_ball.Position = VisibleBoundsWorldspace.Center;
 
             // TODO -- scoring
         }
@@ -113,7 +113,7 @@ namespace tests
                 m_ball.collideWithPaddle(paddle);
             }
 
-            if (m_ball.Position.Y > 480 - 20.0f + m_ball.radius())
+            if (m_ball.Position.Y > VisibleBoundsWorldspace.Size.Height - 20.0f + m_ball.radius())
                 resetAndScoreBallForPlayer((int)PlayerTouches.kLowPlayer);
             else if (m_ball.Position.Y < -m_ball.radius())
                 resetAndScoreBallForPlayer((int)PlayerTouches.kHighPlayer);
