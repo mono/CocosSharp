@@ -51,6 +51,8 @@ namespace CocosSharp
         internal event EventHandler SceneViewportChanged = delegate {};
         CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
 
+        CCSize contentSize = CCSize.Zero;
+
         #region Properties
 
         public CCSceneResolutionPolicy SceneResolutionPolicy 
@@ -163,7 +165,10 @@ namespace CocosSharp
 
         public override CCSize ContentSize
         {
-            get { return CCSize.Zero; }
+            get 
+            { 
+                return contentSize; 
+            }
             set {}
         }
 
@@ -271,6 +276,9 @@ namespace CocosSharp
                         unionedBounds.Size.Height = Math.Max (unionedBounds.MaxY, layer.VisibleBoundsWorldspace.MaxY) - unionedBounds.Origin.Y;
                     }
                 }
+
+                // we have the calculated size of all all the bounds
+                contentSize = unionedBounds.Size;
 
                 // Calculate viewport ratios if not set to custom
 
