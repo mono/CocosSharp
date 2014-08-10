@@ -20,11 +20,13 @@ namespace tests
 			AddChild(bg1, -1);
 
 			title = new CCLabelTtf((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
+            title.AnchorPoint = new CCPoint(0.5f, 0.5f);
 			AddChild(title);
 			title.Color = new CCColor3B(255, 32, 32);
 
 
 			label = new CCLabelTtf("SCENE 1", "MarkerFelt", 38);
+            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 			label.Color = (new CCColor3B(16, 16, 255));
 			AddChild(label);
 
