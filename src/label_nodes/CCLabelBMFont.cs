@@ -456,7 +456,8 @@ namespace CocosSharp
                 fontCharTextureRect.Origin.X += ImageOffset.X;
                 fontCharTextureRect.Origin.Y += ImageOffset.Y;
 
-                fontCharContentSize = Layer.ScreenToWorldspace(fontCharTextureRect.Size);
+                var ccs = ConvertToWorldspace(fontCharTextureRect);
+                fontCharContentSize = ccs.Size; //Layer.ScreenToWorldspace(fontCharTextureRect.Size);
 
                 CCSprite fontChar;
 
@@ -508,7 +509,9 @@ namespace CocosSharp
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
                         (float) nextFontPositionY + yOffset - fontCharTextureRect.Size.Height * 0.5f);
 
-                fontChar.Position = Layer.ScreenToWorldspace(fontPos);
+                var pp = ConvertToWorldspace(fontPos);
+//                var pppp = Layer.ScreenToWorldspace(fontPos);
+                fontChar.Position = pp; // ConvertToWorldspace(fontPos);
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;
@@ -877,7 +880,14 @@ namespace CocosSharp
                 UpdateLabel();
                 IsDirty = false;
             }
-
+//            if (Children != null && Children.Count != 0)
+//            {
+//                CCNode[] elements = Children.Elements;
+//                for (int i = 0, count = Children.Count; i < count; i++)
+//                {
+//                    ((CCSprite)elements[i]).UpdateTransformedSpriteTextureQuads();
+//                }
+//            }
             base.Draw();
         }
     }
