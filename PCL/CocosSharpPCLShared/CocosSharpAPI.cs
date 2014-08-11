@@ -343,7 +343,7 @@ namespace CocosSharp {
         public CocosSharp.CCDisplayOrientation CurrentOrientation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDisplayOrientation); } }
         public bool HandleMediaStateAutomatically { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCWindow MainWindow { get { return default(CocosSharp.CCWindow); } }
-        public bool Paused { get { return default(bool); } }
+        public bool Paused { get { return default(bool); } set { } }
         public bool PreferMultiSampling { get { return default(bool); } set { } }
         public CocosSharp.CCScheduler Scheduler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCScheduler); } }
         public void ClearTouches() { }
@@ -352,9 +352,7 @@ namespace CocosSharp {
         public override void Initialize() { }
         public virtual bool InitInstance() { return default(bool); }
         protected override void LoadContent() { }
-        public void PauseGame() { }
         public void PurgeAllCachedData() { }
-        public void ResumeGame() { }
         public void StartGame() { }
         public void ToggleFullScreen() { }
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime) { }
@@ -2181,6 +2179,7 @@ namespace CocosSharp {
         public virtual void Cleanup() { }
         public int CompareTo(CocosSharp.CCNode that) { return default(int); }
         public CocosSharp.CCPoint ConvertToWorldspace(CocosSharp.CCPoint point) { return default(CocosSharp.CCPoint); }
+        public CocosSharp.CCRect ConvertToWorldspace(CocosSharp.CCRect rect) { return default(CocosSharp.CCRect); }
         public virtual void Deserialize(System.IO.Stream stream) { }
         protected internal void DisableCascadeColor() { }
         protected virtual void DisableCascadeOpacity() { }
