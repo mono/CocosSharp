@@ -15,16 +15,15 @@
 
 	The viewport itself does not specify the particular render
 	target. Instead, a CCViewport object can be associated to a
-	<see cref="T:CocosSharp.CCScene"/> scene to affects its
+	<see cref="T:CocosSharp.CCScene" /> scene to affects its
 	rendering.
 
       </para>
-
       <para>
 	A CCScene scene maintains a CCViewport instance variable.
       </para>
-<example>
-<code lang="c#">
+      <example>
+        <code lang="c#">
 // Custom viewport
 // 
 // As with the default, with the exception that the scene uses a custom viewport
@@ -52,7 +51,7 @@ public class AppDelegate : CCApplicationDelegate
     }
 }
 </code>
-</example>
+      </example>
     </remarks>
   </Docs>
   <Members>

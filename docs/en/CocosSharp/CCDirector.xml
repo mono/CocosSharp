@@ -10,26 +10,20 @@
   <Interfaces />
   <Docs>
     <summary>
-      Maintains the <see cref="T:CocosSharp.CCScene"/> objects that are in charge of displaying your game elements.
+      Maintains the <see cref="T:CocosSharp.CCScene" /> objects that are in charge of displaying your game elements.
     </summary>
-
-
     <remarks>
       <para>
-	The director maintains a stack of <see
-	cref="T:CocosSharp.CCScene"/> objects that can be pushed, popped
+	The director maintains a stack of <see cref="T:CocosSharp.CCScene" /> objects that can be pushed, popped
 	or replaced throughout the director’s lifetime. 
       </para>
-      
       <para>
 	
 	The top-most scene on the stack is referred to as the
 	RunningScene.
       </para>
-      
-      <para> 
-	
-	<see cref="T:CocosSharp.CCWindow"/> maintains a list of
+      <para>
+        <see cref="T:CocosSharp.CCWindow" /> maintains a list of
 	CCDirecto objects.  During a window’s draw call, the window
 	iterates through each its directors and asks each of their
 	corresponding running scene’s to draw.
@@ -44,7 +38,8 @@
       <Parameters />
       <Docs>
         <summary>Creates a new CCDirector.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanPopScene">
@@ -70,8 +65,10 @@
       <Parameters />
       <Docs>
         <summary>Reads the serialized state of the director and all of its scenes.</summary>
-        <returns></returns>
-        <remarks></remarks>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSendCleanupToScene">
@@ -148,22 +145,22 @@
       </Docs>
     </Member>
     <Member MemberName="PushScene">
-      <MemberSignature Language="C#" Value="public void PushScene (CocosSharp.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushScene(class CocosSharp.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public void PushScene (CocosSharp.CCScene pScene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushScene(class CocosSharp.CCScene pScene) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="pScene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="scene">Scene to activate.</param>
+        <param name="pScene">Scene to activate.</param>
         <summary>Suspends the execution of the running scene, pushing it on the stack of suspended scenes.</summary>
         <remarks>
-	  <para>The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. </para>
-	  <para>Only call it if there is a running scene.  If you do not have a running scene, call <see cref="M:CocosSharp.CCDirector.RunWithScene"/> instead.</para>
-	</remarks>
+          <para>The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. </para>
+          <para>Only call it if there is a running scene.  If you do not have a running scene, call <see cref="M:CocosSharp.CCDirector.RunWithScene" /> instead.</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReplaceScene">
@@ -194,7 +191,8 @@
       <Parameters />
       <Docs>
         <summary>Clears the scene stack, stopping execution.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RunningScene">
@@ -206,7 +204,8 @@
       </ReturnValue>
       <Docs>
         <summary>Get currently running scene.</summary>
-        <value></value>
+        <value>
+        </value>
         <remarks />
       </Docs>
     </Member>
@@ -225,10 +224,9 @@
         <summary>Enters the main loop and starts your first scene.</summary>
         <remarks>
           <para>Enters the <see cref="T:CocosSharp.CCDirector" />'s
-          main loop with the given <see cref="T:CocosSharp.CCScene"
-          />. Call it to run only your first scene, do not call it if
+          main loop with the given <see cref="T:CocosSharp.CCScene" />. Call it to run only your first scene, do not call it if
           there is already a running scene.</para>
-          <para>This will call <see cref="M:CocosSharp.CCDirectory.PushScene"/>.</para>
+          <para>This will call <see cref="M:CocosSharp.CCDirectory.PushScene" />.</para>
         </remarks>
       </Docs>
     </Member>
@@ -242,7 +240,8 @@
       <Docs>
         <summary>Returns the number of scenes on the stack.</summary>
         <value>Scene count.</value>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SerializeState">
@@ -255,7 +254,8 @@
       <Parameters />
       <Docs>
         <summary>Write out the current state of the director and all of its scenes.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

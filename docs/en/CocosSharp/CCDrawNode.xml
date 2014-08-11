@@ -204,19 +204,57 @@
       </Docs>
     </Member>
     <Member MemberName="DrawRect">
-      <MemberSignature Language="C#" Value="public void DrawRect (CocosSharp.CCRect rect, CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawRect(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberSignature Language="C#" Value="public void DrawRect (CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawRect(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="rect" Type="CocosSharp.CCRect" />
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
-        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawRect">
+      <MemberSignature Language="C#" Value="public void DrawRect (CocosSharp.CCRect rect, CocosSharp.CCColor4B fillColor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawRect(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B fillColor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="fillColor" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="fillColor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawRect">
+      <MemberSignature Language="C#" Value="public void DrawRect (CocosSharp.CCRect rect, CocosSharp.CCColor4B fillColor, float borderWidth, CocosSharp.CCColor4B borderColor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawRect(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B fillColor, float32 borderWidth, valuetype CocosSharp.CCColor4B borderColor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="fillColor" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="borderWidth" Type="System.Single" />
+        <Parameter Name="borderColor" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="fillColor">To be added.</param>
+        <param name="borderWidth">To be added.</param>
+        <param name="borderColor">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

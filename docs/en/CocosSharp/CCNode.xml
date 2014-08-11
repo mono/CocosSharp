@@ -80,13 +80,13 @@
         <param name="paused">Whether the action is paused or not at startup.</param>
         <summary>Adds the specified action to the node.</summary>
         <remarks>
-	  <para>
+          <para>
 	    Adds the specific action to the node.
 	  </para>
-	  <para>
+          <para>
 	    When the target is paused, the queued actions won't be executed.
 	  </para>
-	</remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddActions">
@@ -108,7 +108,7 @@
       </Parameters>
       <Docs>
         <param name="paused">Whether the action is paused or not at startup.</param>
-        <param name="action">Actions to be added to this CCNode.</param>
+        <param name="actions">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1266,6 +1266,23 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ConvertToWorldspace">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect ConvertToWorldspace (CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCRect ConvertToWorldspace(valuetype CocosSharp.CCRect rect) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Deserialize">
       <MemberSignature Language="C#" Value="public virtual void Deserialize (System.IO.Stream stream);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Deserialize(class System.IO.Stream stream) cil managed" />
@@ -1886,10 +1903,10 @@
       <Docs>
         <summary>Method invoked when local transformation has changed.</summary>
         <remarks>
-	  <para>
+          <para>
 	    This is called when the transformation of the node has changed (for example Position, Scale and Skew).
 	  </para>
-	</remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Pause">

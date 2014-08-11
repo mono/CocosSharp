@@ -13,13 +13,11 @@
     <remarks>
       <para>
 
-	A CCWindow maintains a list of <see
-	cref="T:CocosSharp.CCDirector"/> objects. During a window's
+	A CCWindow maintains a list of <see cref="T:CocosSharp.CCDirector" /> objects. During a window's
 	draw call, the window iterates through each its directors and
 	asks each of their corresponding running scene's to redraw
 	themselves.
       </para>
-
     </remarks>
   </Docs>
   <Members>
@@ -32,8 +30,10 @@
       </ReturnValue>
       <Docs>
         <summary>Accesses the accelerator.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddSceneDirector">
@@ -50,7 +50,7 @@
         <param name="sceneDirector">Scene director to add to this window.</param>
         <summary>Adds a scene director to the window.</summary>
         <remarks>
-	  If the provided scene director is the first scene director that this window has, it becomes the <see cref="P:CocosSharp.CCWindow.DefaultDirector"/>. 
+	  If the provided scene director is the first scene director that this window has, it becomes the <see cref="P:CocosSharp.CCWindow.DefaultDirector" />. 
 	</remarks>
       </Docs>
     </Member>
@@ -76,8 +76,10 @@
       </ReturnValue>
       <Docs>
         <summary>Time in seconds used for animation.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Application">
@@ -89,8 +91,10 @@
       </ReturnValue>
       <Docs>
         <summary>Points to the CCApplication that owns this CCWindow.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentDisplayOrientation">
@@ -102,8 +106,10 @@
       </ReturnValue>
       <Docs>
         <summary>The current orientation of the display.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DefaultDirector">
@@ -115,9 +121,10 @@
       </ReturnValue>
       <Docs>
         <summary>Contains the scene director in current use.</summary>
-        <value></value>
+        <value>
+        </value>
         <remarks>
-	</remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DesignResolutionPolicy">
@@ -155,8 +162,9 @@
       </ReturnValue>
       <Docs>
         <summary>Controls the displaying of developer statistics on top of the rendered content.</summary>
-        <value></value>
-	<remarks>
+        <value>
+        </value>
+        <remarks>
 	  This turns on a developer time/debugging tool to show statistics on the screen about what is taking place. 
 	</remarks>
       </Docs>
@@ -435,8 +443,10 @@
       </ReturnValue>
       <Docs>
         <summary>Controls the screen orientations that are supported by this window.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WindowSizeInPixels">

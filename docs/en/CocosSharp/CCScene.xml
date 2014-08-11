@@ -9,25 +9,21 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>Toplevel node that is used to host CCNodes that share a common <see cref="T:CocosSharp.CCWindow"/> and a common <see cref="T:CocosSharp.CCViewport"/>.</summary>
+    <summary>Toplevel node that is used to host CCNodes that share a common <see cref="T:CocosSharp.CCWindow" /> and a common <see cref="T:CocosSharp.CCViewport" />.</summary>
     <remarks>
-
       <para>
 
-	A subclass of <see cref="T:CocosSharp.CCNode"/> that renders
+	A subclass of <see cref="T:CocosSharp.CCNode" /> that renders
 	all children in a common window and viewport.  In particular,
 	any node object that wishes to be rendered needs be associated
-	with a parent CCScene (as well as a <see cref="T:CocosSharp.CCLayer"/>).
+	with a parent CCScene (as well as a <see cref="T:CocosSharp.CCLayer" />).
       </para>
-
       <para>
-	A CCScene object has links to the <see
-	cref="T:CocosSharp.CCWindow"/> and <see
-	cref="T:CocosSharp.CCViewport"/>. During a draw call to a
+	A CCScene object has links to the <see cref="T:CocosSharp.CCWindow" /> and <see cref="T:CocosSharp.CCViewport" />. During a draw call to a
 	scene, the viewport is given to the underlying render target.
       </para>
-<example>
-<code lang="c#">
+      <example>
+        <code lang="c#">
 public class AppDelegate : CCApplicationDelegate
 {
     public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
@@ -59,7 +55,7 @@ public class AppDelegate : CCApplicationDelegate
     }
 }
 </code>
-</example>
+      </example>
     </remarks>
   </Docs>
   <Members>
@@ -73,7 +69,8 @@ public class AppDelegate : CCApplicationDelegate
       <Docs>
         <param name="scene">Reference scene.</param>
         <summary>Creates a scence by replicating the provided scene's Window, Viewport and Director.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -86,7 +83,8 @@ public class AppDelegate : CCApplicationDelegate
       <Docs>
         <param name="window">Window associated with the new scene.</param>
         <summary>Creates a scene and sets the window associated with it.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -101,7 +99,8 @@ public class AppDelegate : CCApplicationDelegate
         <param name="window">Window associated with the new scene.</param>
         <param name="director">Director associated with the new scene.</param>
         <summary>Creates a scene and sets the window and director associated with it.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -118,7 +117,8 @@ public class AppDelegate : CCApplicationDelegate
         <param name="viewport">Viewport associated with the new scene.</param>
         <param name="director">Director associated with the new scene.</param>
         <summary>Creates a scene and sets the window, viewport and director associated with it.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AffineLocalTransform">
@@ -143,8 +143,10 @@ public class AppDelegate : CCApplicationDelegate
       </ReturnValue>
       <Docs>
         <summary>This property always returns null for CCScene, and setting the value is ignored.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -169,21 +171,10 @@ public class AppDelegate : CCApplicationDelegate
       </ReturnValue>
       <Docs>
         <summary>The director associated with this scene.</summary>
-        <value></value>
-        <remarks></remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsTransition">
@@ -208,7 +199,8 @@ public class AppDelegate : CCApplicationDelegate
       </ReturnValue>
       <Docs>
         <summary>Returns this instance.</summary>
-        <value></value>
+        <value>
+        </value>
         <remarks>This is an overwritten method from CCNode that just returns this instance.</remarks>
       </Docs>
     </Member>
@@ -234,8 +226,10 @@ public class AppDelegate : CCApplicationDelegate
       </ReturnValue>
       <Docs>
         <summary>The viewport associated with this scene.</summary>
-        <value></value>
-        <remarks></remarks>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="VisibleBoundsScreenspace">
@@ -248,6 +242,19 @@ public class AppDelegate : CCApplicationDelegate
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visit">
+      <MemberSignature Language="C#" Value="public override void Visit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
