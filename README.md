@@ -6,6 +6,11 @@ Cocos2D-X engine via Cocos2D-XNA.
 
 This library is MIT licensed.
 
+Learn More
+----------
+
+To learn more, see the https://github.com/mono/CocosSharp/wiki
+
 License
 -------
 
