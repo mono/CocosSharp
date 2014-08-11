@@ -76,6 +76,13 @@ namespace CocosSharp
 
             InSceneNodeContainer.Visible = false;
 
+            OutSceneNodeContainer.AnchorPoint = CCPoint.AnchorMiddle;
+            OutSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+
+            InSceneNodeContainer.AnchorPoint = CCPoint.AnchorMiddle;
+            InSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+
+
             if (Orientation == CCTransitionOrientation.RightOver)
             {
                 inDeltaZ = 90;
