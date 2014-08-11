@@ -1,6 +1,6 @@
 <Namespace Name="CocosDenshion">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Simple audio engine for CocosSharp.</summary>
+    <remarks></remarks>
   </Docs>
 </Namespace>
