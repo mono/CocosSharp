@@ -10,11 +10,29 @@
   <Interfaces />
   <Docs>
     <summary>
-      <para>This class is responsible for maintaining a stack of <see cref="T:CocosSharp.CCScene" /> objects to be rendered.</para>
+      Maintains the <see cref="T:CocosSharp.CCScene"/> objects that are in charge of displaying your game elements.
     </summary>
+
+
     <remarks>
       <para>
-	This class is responsible for maintaining a stack of <see cref="T:CocosSharp.CCScene" /> objects to be rendered. 
+	The director maintains a stack of <see
+	cref="T:CocosSharp.CCScene"/> objects that can be pushed, popped
+	or replaced throughout the director’s lifetime. 
+      </para>
+      
+      <para>
+	
+	The top-most scene on the stack is referred to as the
+	RunningScene.
+      </para>
+      
+      <para> 
+	
+	<see cref="T:CocosSharp.CCWindow"/> maintains a list of
+	CCDirecto objects.  During a window’s draw call, the window
+	iterates through each its directors and asks each of their
+	corresponding running scene’s to draw.
       </para>
     </remarks>
   </Docs>

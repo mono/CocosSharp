@@ -17,7 +17,7 @@
       <para>
 
 	A CCApplication maintains a list of <see
-	cref="T:CocosSharp.CCWindow"> objects (due to current MonoGame
+	cref="T:CocosSharp.CCWindow"/> objects (due to current MonoGame
 	limitations, currently only supports a single window).  During
 	each iteration of the game run-loop, the application invokes the
 	an <see cref="M:CocosSharp.CCApplication.Update"/> methods call where it processes input-events, passing the

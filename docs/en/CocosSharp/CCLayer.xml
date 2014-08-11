@@ -13,9 +13,23 @@
     <summary>Node that associates a number of children with a common CCCamera.</summary>
     <remarks>
 
+      <para>
+
+	A subclass of <see cref="T:CocosSharp.CCNode"/> that associates all children with a common camera. 
+      </para>
+
+      <para>
+
+	Along with a <see cref="T:CocosSharp.CCScene"/>, any child
+	node object that wishes to be rendered needs to be associated
+	with a parent layer. Specifically, the node hierarchy should
+	be: Scene -> Layer -> Nodes.
+
+      </para>
+
       <para> 
-	CCCamera nodes have the unique ability of having a
-	CCCamera attached to them.  This means that all of the
+	CCLayer nodes have the unique ability of having a
+	<see cref="T:CocosSharp.CCCamera"/> attached to them.  This means that all of the
 	children of a given CCLayer will be rendered with the
 	transformation set for the specified camera.
       </para>
@@ -27,6 +41,7 @@
       </para>
 
       <para>CCLayer objects are not resizable, they take the entire viewport dimensions.</para>
+
     </remarks>
   </Docs>
   <Members>

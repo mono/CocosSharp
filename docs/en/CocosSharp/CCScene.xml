@@ -11,9 +11,22 @@
   <Docs>
     <summary>Toplevel node that is used to host CCNodes that share a common <see cref="T:CocosSharp.CCWindow"/> and a common <see cref="T:CocosSharp.CCViewport"/>.</summary>
     <remarks>
+
       <para>
-	A scene is rendered using the associated <see cref="P:CocosSharp.CCScene.CCViewport"/>.
+
+	A subclass of <see cref="T:CocosSharp.CCNode"/> that renders
+	all children in a common window and viewport.  In particular,
+	any node object that wishes to be rendered needs be associated
+	with a parent CCScene (as well as a <see cref="T:CocosSharp.CCLayer"/>).
       </para>
+
+      <para>
+	A CCScene object has links to the <see
+	cref="T:CocosSharp.CCWindow"/> and <see
+	cref="T:CocosSharp.CCViewport"/>. During a draw call to a
+	scene, the viewport is given to the underlying render target.
+      </para>
+
     </remarks>
   </Docs>
   <Members>

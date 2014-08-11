@@ -9,27 +9,37 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>A  is used in every . Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</summary>
+    <summary>Represents a camera whose properties specify the underlying view and projection matrices.</summary>
+
     <remarks>
-      <para>A <see cref="T:CocosSharp.CCCamera" /> is used in every <see cref="T:CocosSharp.CCNode" />. Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</para>
+      <para>
+	CCCameras are useful to look at the object from different views, they are used in every <see cref="T:CocosSharp.CCNode" />.
+      </para>
+
+      <para>
+	In particular, a user can alter a camera’s position, target, projection etc. and in-turn this will update the camera’s corresponding view and projection matrices.
+      </para>
+
+      <para>A <see cref="T:CocosSharp.CCCamera" /> is used in every . Useful to look at the object from different views. </para>
       <see cref="T:CocosSharp.CCCamera" />
       <see cref="T:CocosSharp.CCNode" />
       <para>If the object is transformed by any of the scale, rotation or position attributes, then they will override the camera.</para>
       <para>IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both. World coordinates won't work if you use the camera.</para>
-      <para>Limitations:<list type="bullet" /></para>
-      <list type="bullet" />
-      <item>
-        <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
-      </item>
-      <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
-      <item>
-        <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
-      </item>
-      <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
-      <item>
-        <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
-      </item>
-      <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+      <para>Limitations:</para>
+      <list type="bullet">
+	<item>
+	  <description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+	</item>
+	<description>Some nodes, like ParallaxNode, Particle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors) using the camera.</description>
+	<item>
+	  <description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+	</item>
+	<description>It doesn't work on batched nodes like Sprite objects when they are parented to a SpriteBatchNode object.</description>
+	<item>
+	  <description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+	</item>
+	<description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
+      </list>
     </remarks>
   </Docs>
   <Members>
