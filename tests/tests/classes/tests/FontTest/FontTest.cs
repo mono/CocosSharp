@@ -84,8 +84,40 @@ namespace tests.FontTest
         }
     }
 
+    public class Background : CCDrawNode
+    {
 
-    public class FontTest : CCLayer
+        public Background(CCColor4B color)
+        {
+            Color = new CCColor3B(color);
+            Opacity = color.A;
+            //AnchorPoint = CCPoint.AnchorLowerLeft;
+        }
+
+        public Background(CCSize size, CCColor4B color)
+        {
+            Color = new CCColor3B(color);
+            Opacity = color.A;
+            //AnchorPoint = CCPoint.AnchorMiddle;
+            ContentSize = size;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            var fillColor = new CCColor4B(Color.R, Color.G, Color.B, Opacity);
+            DrawRect(new CCRect(0,0,ContentSize.Width,ContentSize.Height), fillColor, 1f, CCColor4B.White);
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+            if (ContentSize == CCSize.Zero)
+                ContentSize = VisibleBoundsWorldspace.Size;
+        }
+    }
+
+    public class FontTest : TestNavigationLayer
     {
         private const int kTagLabel1 = 1;
         private const int kTagLabel2 = 2;
@@ -94,23 +126,21 @@ namespace tests.FontTest
 
         public FontTest()
         {
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
-            menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
-            item2.Position = new CCPoint(s.Width / 2, item2.ContentSize.Height / 2);
-            item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
-            AddChild(menu, 1);
+            //showFont(FontTestScene.restartAction());
+        }
 
-            var blockSize = new CCSize(s.Width / 3, 200);
+        public override void OnEnter()
+        {
+            base.OnEnter();
 
-            CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255));
-            CCLayerColor centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255));
-            CCLayerColor rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255));
+            var s = VisibleBoundsWorldspace.Size;
+
+            var blockSize = new CCSize(s.Width / 3, s.Height / 2);
+            //blockSize = new CCSize(50, 50);
+            var leftColor = new Background(blockSize, new CCColor4B(100, 100, 100, 255));
+            var centerColor = new Background(blockSize, new CCColor4B(200, 100, 100, 255));
+            var rightColor = new Background(blockSize, new CCColor4B(100, 100, 200, 255));
 
             leftColor.IgnoreAnchorPointForPosition = false;
             centerColor.IgnoreAnchorPointForPosition = false;
@@ -135,7 +165,7 @@ namespace tests.FontTest
         {
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            var blockSize = new CCSize(s.Width / 3, 200);
+            var blockSize = new CCSize(s.Width / 3, s.Height / 2);
             float fontSize = 26;
 
             RemoveChildByTag(kTagLabel1, true);
@@ -159,7 +189,7 @@ namespace tests.FontTest
             center.AnchorPoint = new CCPoint(0, 0.5f);
             right.AnchorPoint = new CCPoint(0, 0.5f);
 
-            top.Position = new CCPoint(s.Width / 2, s.Height - 20);
+            top.Position = TitleLabel.Position - new CCPoint(0, 20);
             left.Position = new CCPoint(0, s.Height / 2);
             center.Position = new CCPoint(blockSize.Width, s.Height / 2);
             right.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
@@ -170,24 +200,30 @@ namespace tests.FontTest
             AddChild(top, 0, kTagLabel4);
         }
 
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
+            base.RestartCallback(sender);
             showFont(FontTestScene.restartAction());
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
+            base.NextCallback(sender);
             showFont(FontTestScene.nextAction());
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
+            base.BackCallback(sender);
             showFont(FontTestScene.backAction());
         }
 
-        public virtual string title()
+        public override string Title
         {
-            return "Font test";
+            get
+            {
+                return "Font test";
+            }
         }
     }
 }
