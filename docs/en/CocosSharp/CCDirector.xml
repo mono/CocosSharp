@@ -14,7 +14,7 @@
     </summary>
     <remarks>
       <para>
-	This class is responsible for maintaingin a stack of <see cref="T:CocosSharp.CCScene" /> objects to be rendered. 
+	This class is responsible for maintaining a stack of <see cref="T:CocosSharp.CCScene" /> objects to be rendered. 
       </para>
     </remarks>
   </Docs>

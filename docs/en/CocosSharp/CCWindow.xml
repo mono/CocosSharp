@@ -9,8 +9,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a window in a game. Currently, there is only support for single-windowed applications.</summary>
+    <remarks>
+      <para>
+
+	A CCWindow maintains a list of <see
+	cref="T:CocosSharp.CCDirector"/> objects. During a window's
+	draw call, the window iterates through each its directors and
+	asks each of their corresponding running scene's to redraw
+	themselves.
+      </para>
+
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Accelerometer">
@@ -21,9 +31,9 @@
         <ReturnType>CocosSharp.CCAccelerometer</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Accesses the accelerator.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AddSceneDirector">
@@ -37,9 +47,11 @@
         <Parameter Name="sceneDirector" Type="CocosSharp.CCDirector" />
       </Parameters>
       <Docs>
-        <param name="sceneDirector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="sceneDirector">Scene director to add to this window.</param>
+        <summary>Adds a scene director to the window.</summary>
+        <remarks>
+	  If the provided scene director is the first scene director that this window has, it becomes the <see cref="P:CocosSharp.CCWindow.DefaultDirector"/>. 
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="AllowUserResizing">
@@ -50,9 +62,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Controls whether the window can be resized by the user.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>On platforms that allow window resizing, this controls whether the user can resize the window.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AnimationInterval">
@@ -63,9 +75,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Time in seconds used for animation.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Application">
@@ -76,9 +88,9 @@
         <ReturnType>CocosSharp.CCApplication</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Points to the CCApplication that owns this CCWindow.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentDisplayOrientation">
@@ -89,9 +101,9 @@
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The current orientation of the display.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="DefaultDirector">
@@ -102,9 +114,10 @@
         <ReturnType>CocosSharp.CCDirector</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Contains the scene director in current use.</summary>
+        <value></value>
+        <remarks>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="DesignResolutionPolicy">
@@ -141,9 +154,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Controls the displaying of developer statistics on top of the rendered content.</summary>
+        <value></value>
+	<remarks>
+	  This turns on a developer time/debugging tool to show statistics on the screen about what is taking place. 
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -157,8 +172,8 @@
         <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
       </Parameters>
       <Docs>
-        <param name="gameTime">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="gameTime">Snapshot of the game timing state expressed in values that can be used both by variable-step (real time) or fixed-step (game time) games.</param>
+        <summary>Method invoked to draw the contents of the window.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -286,7 +301,7 @@
         <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
       </Parameters>
       <Docs>
-        <param name="gameTime">To be added.</param>
+        <param name="gameTime">Snapshot of the game timing state expressed in values that can be used both by variable-step (real time) or fixed-step (game time) games.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -419,9 +434,9 @@
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Controls the screen orientations that are supported by this window.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="WindowSizeInPixels">

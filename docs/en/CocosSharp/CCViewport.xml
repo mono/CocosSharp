@@ -9,8 +9,22 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents an area of the render target that should be used when drawing.</summary>
+    <remarks>
+      <para>
+
+	The viewport itself does not specify the particular render
+	target. Instead, a CCViewport object can be associated to a
+	<see cref="T:CocosSharp.CCScene"/> scene to affects its
+	rendering.
+
+      </para>
+
+      <para>
+	A CCScene scene maintains a CCViewport instance variable.
+      </para>
+
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

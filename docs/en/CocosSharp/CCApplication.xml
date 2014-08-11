@@ -12,13 +12,23 @@
     <summary>Initializes game and handles input events.</summary>
     <remarks>
       <para>
-	Instances of this class are in charge of handling input
-	events.
+	Manages the running state, scheduling, event handling and rendering of a game.
       </para>
       <para>
-	The design allows for multiple instances to be
-	created, but currently is limited to a single instance, due to
-	the underlying MonoGame substrate that powers this.
+
+	A CCApplication maintains a list of <see
+	cref="T:CocosSharp.CCWindow"> objects (due to current MonoGame
+	limitations, currently only supports a single window).  During
+	each iteration of the game run-loop, the application invokes the
+	an <see cref="M:CocosSharp.CCApplication.Update"/> methods call where it processes input-events, passing the
+	relevant events to the corresponding windows. 
+      </para>
+
+      <para>
+	Additionally, in-game time-dependent events, such as running
+	actions, are also updated.  Subsequently, a Draw call is
+	received and each of the windows are asked to redraw
+	themselves.
       </para>
     </remarks>
   </Docs>
@@ -155,7 +165,7 @@
         <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
       </Parameters>
       <Docs>
-        <param name="gameTime">To be added.</param>
+        <param name="gameTime">Snapshot of the game timing state expressed in values that can be used both by variable-step (real time) or fixed-step (game time) games.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -234,9 +244,10 @@
         <ReturnType>CocosSharp.CCWindow</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The window that is currently receiving events.</summary>
+        <value></value>
+        <remarks>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Paused">
@@ -247,9 +258,17 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether the game has been paused or not.</summary>
+        <value></value>
+        <remarks>
+	  <para>
+	    When the game is paused the Update method on the <see
+	    cref="T:CocosSharp.CCWindow"/> is not invoked.  When the
+	    game is paused, touches, keyboard and mouse events are
+	    still dispatched, this allows a paused game to receive
+	    events that would allow the game to resume execution.
+	  </para>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="PauseGame">
@@ -354,9 +373,28 @@
         <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
       </Parameters>
       <Docs>
-        <param name="gameTime">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="gameTime">Snapshot of the game timing state expressed in values that can be used both by variable-step (real time) or fixed-step (game time) games.</param>
+        <summary>Method invoked during each iteration of the game run loop.</summary>
+        <remarks>
+	  <para>
+	    This method is invoked on each iteration of the game loop,
+	    and receives the gameTime parameter.  This method
+	    processes inputs events and passes the events to the
+	    running windows owned by the CCApplication.
+	  </para>
+
+	  <para>
+	    The pause state (controlled by the method <see
+	    cref="M:CocosSharp.CCApplication.PauseGame"/>) determines
+	    whether the windows receive the Update method call or not.
+	  </para>
+
+	  <para>
+	    This method dispatches touches, keyboard and mouse events
+	    to the window regardless of the paused state.
+	  </para>
+
+	</remarks>
       </Docs>
     </Member>
   </Members>

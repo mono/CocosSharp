@@ -10,7 +10,11 @@
   <Interfaces />
   <Docs>
     <summary>Toplevel node that is used to host CCNodes that share a common <see cref="T:CocosSharp.CCWindow"/> and a common <see cref="T:CocosSharp.CCViewport"/>.</summary>
-    <remarks></remarks>
+    <remarks>
+      <para>
+	A scene is rendered using the associated <see cref="P:CocosSharp.CCScene.CCViewport"/>.
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
