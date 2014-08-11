@@ -70,12 +70,12 @@ namespace tests
 
         public override void ApplicationDidEnterBackground(CCApplication application)
         {
-            application.PauseGame();
+            application.Paused = true;
         }
 
         public override void ApplicationWillEnterForeground(CCApplication application)
         {
-            application.ResumeGame();
+            application.Paused = false;
         }
     }
 }

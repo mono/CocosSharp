@@ -237,6 +237,16 @@ namespace CocosSharp
 		public bool Paused
 		{
 			get { return paused; }
+            set 
+            {
+                if (paused != value)
+                {
+                    paused = value;
+
+                    if (!paused)
+                        deltaTime = 0;
+                }
+            }
 		}
 
 		public bool PreferMultiSampling
@@ -471,22 +481,6 @@ namespace CocosSharp
 #if (WINDOWS && !WINRT) || WINDOWSGL || WINDOWSDX || MACOS
             xnaGame.Exit();
 #endif
-		}
-
-		public void PauseGame()
-		{
-			paused = true;
-		}
-
-		public void ResumeGame()
-		{
-			if (!paused)
-			{
-				return;
-			}
-
-			paused = false;
-			deltaTime = 0;
 		}
 
 		#endregion Game state

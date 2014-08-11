@@ -77,9 +77,9 @@ namespace tests
         public void onPause(object pSender)
         {
             if (Application.Paused)
-                Application.ResumeGame();
+                Application.Paused = true;
             else
-                Application.PauseGame();
+                Application.Paused = false;
         }
 
         public void step1(float dt)
