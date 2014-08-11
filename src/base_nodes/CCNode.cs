@@ -1276,8 +1276,15 @@ namespace CocosSharp
 
         public CCPoint ConvertToWorldspace(CCPoint point)
         {
-            CCPoint transformedPoint = AffineWorldTransform.Transform(point);
+            var transformedPoint = AffineWorldTransform.Transform(point);
             return transformedPoint;
+
+        }
+
+        public CCRect ConvertToWorldspace(CCRect rect)
+        {
+            var transformedRect = AffineWorldTransform.Transform(rect);
+            return transformedRect;
 
         }
 
