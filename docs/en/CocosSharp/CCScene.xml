@@ -26,7 +26,40 @@
 	cref="T:CocosSharp.CCViewport"/>. During a draw call to a
 	scene, the viewport is given to the underlying render target.
       </para>
+<example>
+<code lang="c#">
+public class AppDelegate : CCApplicationDelegate
+{
+    public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+    {
+        mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
 
+        var topLeftViewport = new CCViewport(new CCRect(0.0f, 0.0f, 0.5f, 0.5f));
+        var topRightViewport = new CCViewport(new CCRect(0.5f, 0.0f, 0.5f, 0.5f));
+
+        var sceneDirector1 = new CCDirector();
+        var sceneDirector2 = new CCDirector();
+
+        var scene1 = new CCScene(mainWindow, topLeftViewport, sceneDirector1) {
+            SceneResolutionPolicy = CCSceneResolutionPolicy.Custom
+	};
+
+        CCScene scene2 = new CCScene(mainWindow, topRightViewport, sceneDirector2) {
+            SceneResolutionPolicy = CCSceneResolutionPolicy.Custom 
+        };
+
+        var layer1 = new MyLayer();
+        var layer2 = new MyLayer2();
+
+        scene1.AddChild(layer1);
+        scene2.AddChild(layer2);
+
+        sceneDirector1.RunWithScene(scene1);
+        sceneDirector2.RunWithScene(scene2);
+    }
+}
+</code>
+</example>
     </remarks>
   </Docs>
   <Members>

@@ -40,6 +40,33 @@
 	</item>
 	<description>It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action Follow or position/scale/rotate. </description>
       </list>
+      <example>
+	<code lang="c#">
+// Using a custom camera
+
+public class AppDelegate : CCApplicationDelegate
+{
+    public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+    {
+        mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
+
+        var scene = new CCScene(mainWindow);
+        var layer = new MyLayer();
+
+        var cameraVisibleBounds = new CCSize(1000, 500);
+        var cameraTarget = new CCPoint3(0, 0, 3);
+        var cameraPosition = new CCPoint3(0, 0, 100);
+        var camera = new CCCamera(cameraVisibleBounds, cameraPosition, cameraTarget);
+        
+        layer.Camera = Camera;
+
+        scene.AddChild(layer);
+        sharedWindow.RunWithScene(scene);
+    }
+}
+	</code>
+      </example>
+
     </remarks>
   </Docs>
   <Members>

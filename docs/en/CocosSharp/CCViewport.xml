@@ -23,7 +23,36 @@
       <para>
 	A CCScene scene maintains a CCViewport instance variable.
       </para>
+<example>
+<code lang="c#">
+// Custom viewport
+// 
+// As with the default, with the exception that the scene uses a custom viewport
 
+public class AppDelegate : CCApplicationDelegate
+{
+    public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+    {
+        mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
+        
+        // Specify the ratio of the screen to occupy
+        // Note: top-left corner represents origin in screen space
+        CCViewport topLeftViewport = new CCViewport(new CCRect(0.0f, 0.0f, 0.5f, 0.5f));
+
+        var scene = new CCScene(mainWindow, topLeftViewport);
+        
+        // Make sure we set custom policy, or else we to default to policy set by window
+        // i.e. CCSceneResolutionPolicy.ShowAll implies that entire screen is used
+        scene.SceneResolutionPolicy = CCSceneResolutionPolicy.Custom;
+
+        var layer = new MyLayer();
+
+        scene.AddChild(layer);
+        sharedWindow.RunWithScene(scene);
+    }
+}
+</code>
+</example>
     </remarks>
   </Docs>
   <Members>
