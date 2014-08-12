@@ -6,6 +6,13 @@ Cocos2D-X engine via Cocos2D-XNA.
 
 This library is MIT licensed.
 
+Forums
+------
+
+Xamarin is hosting forums for CocosSharp here:
+
+http://forums.xamarin.com/categories/cocossharp
+
 Learn More
 ----------
 
