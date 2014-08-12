@@ -37,10 +37,11 @@ namespace tests
             base.AddedToScene();
 
             var s = Layer.VisibleBoundsWorldspace.Size;
+            var rowSplit = s.Height / 4;
 
-			label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
+			label1.Position = new CCPoint(s.Width / 2, s.Height - rowSplit);
 			label2.Position = s.Center;
-			label3.Position = new CCPoint(s.Width / 2, 0 + 100);
+			label3.Position = new CCPoint(s.Width / 2, rowSplit);
 		}
 
 
