@@ -20,15 +20,9 @@ namespace CocosSharp
         protected string labelText = string.Empty;
         protected CCPoint ImageOffset { get; set; }
         protected CCSize labelDimensions;
-        protected CCSprite m_pReusedChar;
+        protected CCSprite reusedChar;
         protected bool IsDirty { get; set; }
 
-        //        protected byte displayedOpacity = 255;
-        //        protected byte realOpacity = 255;
-        //        protected CCColor3B displayedColor = CCColor3B.White;
-        //        protected CCColor3B realColor = CCColor3B.White;
-        //        protected bool isColorCascaded = true;
-        //        protected bool isOpacityCascaded = true;
         protected bool isColorModifiedByOpacity = false;
 
         public override CCPoint AnchorPoint
@@ -294,9 +288,9 @@ namespace CocosSharp
 
             ImageOffset = imageOffset;
 
-            m_pReusedChar = new CCSprite(TextureAtlas.Texture);
-            m_pReusedChar.ContentSize = dimensions;
-            m_pReusedChar.BatchNode = this;
+            reusedChar = new CCSprite(TextureAtlas.Texture);
+            reusedChar.ContentSize = dimensions;
+            reusedChar.BatchNode = this;
 
             SetString(theString, true);
         }
@@ -395,7 +389,7 @@ namespace CocosSharp
 
             if (String.IsNullOrEmpty(labelText))
             {
-                return;
+                return; 
             }
 
             int stringLen = labelText.Length;
@@ -456,8 +450,8 @@ namespace CocosSharp
                 fontCharTextureRect.Origin.X += ImageOffset.X;
                 fontCharTextureRect.Origin.Y += ImageOffset.Y;
 
-                var ccs = ConvertToWorldspace(fontCharTextureRect);
-                fontCharContentSize = ccs.Size; //Layer.ScreenToWorldspace(fontCharTextureRect.Size);
+                var ctwRect = ConvertToWorldspace(fontCharTextureRect);
+                fontCharContentSize = ctwRect.Size;
 
                 CCSprite fontChar;
 
@@ -472,6 +466,7 @@ namespace CocosSharp
                     fontChar.IsTextureRectRotated = false;
                     fontChar.ContentSize = fontCharContentSize;
                     fontChar.TextureRectInPixels = fontCharTextureRect;
+
                 }
                 else
                 {
@@ -501,6 +496,10 @@ namespace CocosSharp
                     fontChar.UpdateDisplayedOpacity(DisplayedOpacity);
                 }
 
+                // updating previous sprite
+                //fontChar.SetTextureRect(rect, false, rect.Size);
+                //fontChar.ContentSize = fontCharContentSize;
+                //fontChar.TextureRectInPixels = fontCharTextureRect;
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = FontConfiguration.CommonHeight - fontDef.YOffset;
 
@@ -509,9 +508,8 @@ namespace CocosSharp
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
                         (float) nextFontPositionY + yOffset - fontCharTextureRect.Size.Height * 0.5f);
 
-                var pp = ConvertToWorldspace(fontPos);
-//                var pppp = Layer.ScreenToWorldspace(fontPos);
-                fontChar.Position = pp; // ConvertToWorldspace(fontPos);
+                var ctw = ConvertToWorldspace(fontPos);
+                fontChar.Position = ctw;
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;
@@ -534,8 +532,75 @@ namespace CocosSharp
             {
                 tmpSize.Width = longestLine;
             }
+
             tmpSize.Height = totalHeight;
             var tmpDimensions = labelDimensions;
+            tmpSize.Height = totalHeight;
+
+            labelDimensions = new CCSize(
+                labelDimensions.Width > 0 ? labelDimensions.Width : tmpSize.Width,
+                labelDimensions.Height > 0 ? labelDimensions.Height : tmpSize.Height
+            );
+
+
+            anchorPointInPoints = new CCPoint(labelDimensions.Width * AnchorPoint.X, labelDimensions.Height * AnchorPoint.Y);
+            labelDimensions = tmpDimensions;
+
+            UpdatePositionTransform();
+        }
+
+
+        private void UpdatePositionTransform()
+        {
+            // Translate values
+            float x = Position.X;
+            float y = Position.Y;
+
+            if (IgnoreAnchorPointForPosition)
+            {
+                x += anchorPointInPoints.X;
+                y += anchorPointInPoints.Y;
+            }
+
+            // Rotation values
+            // Change rotation code to handle X and Y
+            // If we skew with the exact same value for both x and y then we're simply just rotating
+            float cx = 1, sx = 0, cy = 1, sy = 0;
+            if (RotationX != 0 || RotationY != 0)
+            {
+                float radiansX = -CCMacros.CCDegreesToRadians(RotationX);
+                float radiansY = -CCMacros.CCDegreesToRadians(RotationY);
+                cx = (float)Math.Cos(radiansX);
+                sx = (float)Math.Sin(radiansX);
+                cy = (float)Math.Cos(radiansY);
+                sy = (float)Math.Sin(radiansY);
+            }
+
+            bool needsSkewMatrix = (SkewX != 0f || SkewY != 0f);
+
+            // optimization:
+            // inline anchor point calculation if skew is not needed
+            if (!needsSkewMatrix && !anchorPointInPoints.Equals(CCPoint.Zero))
+            {
+                x += cy * -anchorPointInPoints.X * ScaleX + -sx * -anchorPointInPoints.Y * ScaleY;
+                y += sy * -anchorPointInPoints.X * ScaleX + cx * -anchorPointInPoints.Y * ScaleY;
+            }
+
+            if (Children != null && Children.Count != 0)
+            {
+                CCNode[] elements = Children.Elements;
+                for (int i = 0, count = Children.Count; i < count; i++)
+                {
+                    var sprite = elements[i] as CCSprite;
+                    if (sprite.Visible)
+                    {
+                        var pos = ConvertToWorldspace(sprite.Position);
+
+                        sprite.PositionX = pos.X + x;
+                        sprite.PositionY = pos.Y + y;
+                    }
+                }
+            }
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)
@@ -847,6 +912,7 @@ namespace CocosSharp
                     characterSprite.PositionY += yOffset;
                 }
             }
+               
         }
 
         private float GetLetterPosXLeft(CCSprite sp)
@@ -880,14 +946,6 @@ namespace CocosSharp
                 UpdateLabel();
                 IsDirty = false;
             }
-//            if (Children != null && Children.Count != 0)
-//            {
-//                CCNode[] elements = Children.Elements;
-//                for (int i = 0, count = Children.Count; i < count; i++)
-//                {
-//                    ((CCSprite)elements[i]).UpdateTransformedSpriteTextureQuads();
-//                }
-//            }
             base.Draw();
         }
     }
