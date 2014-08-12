@@ -54,11 +54,11 @@ namespace tests
         {
             base.AddedToScene();
 
-            var s = Layer.VisibleBoundsWorldspace.Size;;
+            var visibleRect = VisibleBoundsWorldspace;
 
-			label1.Position = CCVisibleRect.LeftBottom;
-			label2.Position = CCVisibleRect.Center;
-			label3.Position = CCVisibleRect.RightTop;
+            label1.Position = visibleRect.LeftBottom();
+            label2.Position = visibleRect.Center();
+            label3.Position = visibleRect.RightTop();
 		}
 
 
@@ -68,13 +68,10 @@ namespace tests
             string stepString;
             stepString = string.Format("{0,2:f2} Test j", m_time);
 
-			var label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas1);
             label1.Text = stepString;
 
-			var label2 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
             label2.Text = stepString;
 
-			var label3 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas3);
             label3.Text = stepString;
         }
 
