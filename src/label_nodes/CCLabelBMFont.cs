@@ -631,7 +631,7 @@ namespace CocosSharp
         {
             SetString(labelInitialText, false);
 
-            if (labelText == null)
+            if (string.IsNullOrEmpty(labelText))
             {
                 return;
             }
