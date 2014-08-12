@@ -49,9 +49,11 @@ namespace tests
         {
             base.AddedToScene();
 
-			label1.Position = CCVisibleRect.LeftBottom;
-			label2.Position = CCVisibleRect.Center;
-			label3.Position = CCVisibleRect.RightTop;
+            var visibleRect = VisibleBoundsWorldspace;
+
+            label1.Position = visibleRect.LeftBottom();
+            label2.Position = visibleRect.Center();
+            label3.Position = visibleRect.RightTop();
 
 		}
 
