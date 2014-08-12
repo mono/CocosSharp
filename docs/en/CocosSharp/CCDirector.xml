@@ -24,7 +24,7 @@
       </para>
       <para>
         <see cref="T:CocosSharp.CCWindow" /> maintains a list of
-	CCDirecto objects.  During a window’s draw call, the window
+	CCDirector objects.  During a window’s draw call, the window
 	iterates through each its directors and asks each of their
 	corresponding running scene’s to draw.
       </para>

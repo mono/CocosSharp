@@ -31,9 +31,7 @@
 	transformation set for the specified camera.
       </para>
       <para>
-	This allows developers to split their game from the game
-	controllers by having each one have their own camera
-	associated with it. 
+	This allows developers for instance to separate the rendering of their game into two layers: an interface layer (e.g. game controls) and an in-game content layer, each with their own corresponding camera.
       </para>
       <para>CCLayer objects are not resizable, they take the entire viewport dimensions.</para>
     </remarks>
