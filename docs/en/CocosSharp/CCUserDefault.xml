@@ -9,12 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</summary>
+    <summary></summary>
     <remarks>
-      <para>
-        <see cref="T:CocosSharp.CCUserDefault" /> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</para>
-      <see cref="T:CocosSharp.CCUserDefault" />
-      <para>It supports the following base types: bool, int, float, double, string </para>
     </remarks>
   </Docs>
   <Members>

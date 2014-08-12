@@ -17,7 +17,7 @@
   </Interfaces>
   <Docs>
     <summary>
-      <para> is a singleton that manages all the actions. Normally you won't need to use this singleton directly. 99% of the cases you will use the  interface, which uses this singleton. But there are some cases where you might need to use this singleton. Examples: </para>
+      <para> manages all the actions. Normally you won't need to use this class directly. 99% of the cases you will use the interface, which in-turn will subsequently call the action manager. However, instances where you would use this class directly include: </para>
     </summary>
     <remarks>
       <para>
