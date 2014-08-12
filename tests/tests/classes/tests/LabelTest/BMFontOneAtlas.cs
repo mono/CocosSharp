@@ -23,7 +23,7 @@ namespace tests
         {
             base.AddedToScene();
 
-                    var s = Layer.VisibleBoundsWorldspace.Size;
+            var s = VisibleBoundsWorldspace.Size;
 
 			label1.Position = new CCPoint(s.Width / 2, s.Height / 3 * 2);
 			label2.Position = new CCPoint(s.Width / 2, s.Height / 3 * 1);

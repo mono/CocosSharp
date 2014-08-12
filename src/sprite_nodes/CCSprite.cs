@@ -593,7 +593,7 @@ namespace CocosSharp
 
                 CCRect subRectRatio = CCRect.Zero;
 
-                if (TextureRectInPixels.Size != CCSize.Zero)
+                if (untrimmedSizeInPixels.Width > 0 && untrimmedSizeInPixels.Height > 0)
                 {
                     subRectRatio = new CCRect(
                         subRectOrigin.X / untrimmedSizeInPixels.Width, 
