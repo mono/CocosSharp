@@ -198,7 +198,7 @@ namespace CocosSharp
             {
                 base.ContentSize = value;
 
-                if(untrimmedSizeInPixels == CCSize.Zero)
+//                if(untrimmedSizeInPixels == CCSize.Zero)
                     untrimmedSizeInPixels = value;
 
                 UpdateSpriteTextureQuads();

@@ -276,10 +276,7 @@ namespace CocosSharp
             horzAlignment = hAlignment;
             vertAlignment = vAlignment;
 
-            //            displayedOpacity = realOpacity = 255;
-            //            displayedColor = realColor = CCColor3B.White;
             IsOpacityCascaded = true;
-            //            isColorCascaded = true;
 
             ContentSize = CCSize.Zero;
 
@@ -372,8 +369,6 @@ namespace CocosSharp
 
         public void CreateFontChars()
         {
-            if(Scene == null || Layer == null)
-                return;
 
             int nextFontPositionX = 0;
             int nextFontPositionY = 0;
@@ -496,10 +491,6 @@ namespace CocosSharp
                     fontChar.UpdateDisplayedOpacity(DisplayedOpacity);
                 }
 
-                // updating previous sprite
-                //fontChar.SetTextureRect(rect, false, rect.Size);
-                //fontChar.ContentSize = fontCharContentSize;
-                //fontChar.TextureRectInPixels = fontCharTextureRect;
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = FontConfiguration.CommonHeight - fontDef.YOffset;
 
