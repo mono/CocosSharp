@@ -35,10 +35,9 @@ namespace CocosSharp
         internal GameWindow XnaWindow { get; private set; }
         internal GraphicsDeviceManager DeviceManager { get; private set; }
         internal CCSize designResolutionSize = CCSize.Zero;
+        private CCDirector defaultDirector;
 
         protected CCStats Stats { get; private set; }
-
-        public CCDirector DefaultDirector { get; internal set; }
 
         public bool IsUseAlphaBlending
         {
@@ -158,6 +157,23 @@ namespace CocosSharp
 
 
         #region Scene director management
+
+        public CCDirector DefaultDirector 
+        { 
+            get { return defaultDirector; } 
+            set 
+            {
+                if (value != null && value != defaultDirector)
+                {
+                    if (!sceneDirectors.Contains(value)) 
+                    {
+                        sceneDirectors.Add(value);
+                    }
+
+                    defaultDirector = value;
+                }
+            }
+        }
 
         public void AddSceneDirector(CCDirector sceneDirector)
         {
