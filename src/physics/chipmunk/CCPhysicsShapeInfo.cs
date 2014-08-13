@@ -42,31 +42,45 @@ namespace CocosSharp
 		protected int _group;
 		protected static cpBody _sharedBody;
 
-		public static Dictionary<cpShape, CCPhysicsShapeInfo> Map { get { return _map; } }
+		public static Dictionary<cpShape, CCPhysicsShapeInfo> Map {
+			get {
 
-		public static cpBody getSharedBody() { return _sharedBody; }
+
+				if (_map==null)
+					_map = new Dictionary<cpShape, CCPhysicsShapeInfo>();
+
+				return _map; 
+		
+			} 
+		}
+
+		public static cpBody SharedBody() {
+
+			if (_sharedBody == null)
+				_sharedBody = cpBody.NewStatic(); 
+
+			return _sharedBody; 
+
+		}
 
 
 		public CCPhysicsShapeInfo(CCPhysicsShape shape)
 		{
-
-			_map = new Dictionary<cpShape, CCPhysicsShapeInfo>();
+		
 			_shapes = new List<cpShape>();
 
 			// TODO: Complete member initialization
 			_shape = shape;
 
-			if (_sharedBody == null)
-				_sharedBody = cpBody.NewStatic(); // = cpBodyNewStatic(); ¿¿
-
+		
 			_body = _sharedBody;
 
 			_group = cp.NO_GROUP; //CP_NO_GROUP ?¿
 		}
 
-		public CCPhysicsShape getShape() { return _shape; }
+		public CCPhysicsShape Shape { get { return _shape; } }
 
-		public List<cpShape> getShapes()
+		public List<cpShape> GetShapes()
 		{
 			return _shapes;
 		}
@@ -78,17 +92,12 @@ namespace CocosSharp
 
 		~CCPhysicsShapeInfo()
 		{
-			//    foreach (var shape in _shapes)
-			//    {
-			//          var it = _map[shape];
-			//if (it != _map.end()) _map.erase(shape);
-
-			//cpShapeFree(shape);
-			//    }
+		
 			_shapes.Clear();
+
 		}
 
-		public void setGroup(int group)
+		public void SetGroup(int group)
 		{
 			this._group = group;
 
@@ -98,7 +107,7 @@ namespace CocosSharp
 			}
 		}
 
-		public void setBody(cpBody body)
+		public void SetBody(cpBody body)
 		{
 			if (this._body != body)
 			{
@@ -110,17 +119,17 @@ namespace CocosSharp
 			}
 		}
 
-		public void add(cpShape shape)
+		public void Add(cpShape shape)
 		{
 			if (shape == null) return;
 			shape.SetFilter(new cpShapeFilter(_group, cp.ALL_CATEGORIES, cp.ALL_CATEGORIES));
 
 			_shapes.Add(shape);
-			_map.Add(shape, this);
+			Map.Add(shape, this);
 
 		}
 
-		public void remove(cpShape shape)
+		public void Remove(cpShape shape)
 		{
 			if (shape == null) return;
 
@@ -133,20 +142,10 @@ namespace CocosSharp
 				if (_map.TryGetValue(shape, out tmp))
 					_map.Remove(shape);
 			}
-
-			//auto it = std::find(_shapes.begin(), _shapes.end(), shape);
-			//if (it != _shapes.end())
-			//{
-			//    _shapes.erase(it);
-
-			//    auto mit = _map.find(shape);
-			//    if (mit != _map.end()) _map.erase(mit);
-
-			//    cpShapeFree(shape);
-			//}
+		
 		}
 
-		public void removeAll()
+		public void RemoveAll()
 		{
 			foreach (cpShape shape in _shapes)
 			{
@@ -157,9 +156,6 @@ namespace CocosSharp
 
 			_shapes.Clear();
 		}
-
-
-
 
 	}
 }
