@@ -86,7 +86,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePhysics|AnyCPU'">
-    <OutputPath>bin\WindowsDX\Release\</OutputPath>
+    <OutputPath>bin\PhysicsWindowsDX\Release\</OutputPath>
     <DefineConstants>TRACE;WINDOWS;MONOGAME;USE_PHYSICS</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
