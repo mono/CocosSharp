@@ -48,8 +48,9 @@ namespace CocosSharp
 	public struct CCPhysicsMaterial
 	{
 
+		public const float PHYSICSSHAPE_MATERIAL_DEFAULT_DENSITY = 0.100000001f;
 
-		public static CCPhysicsMaterial PHYSICSSHAPE_MATERIAL_DEFAULT { get { return new CCPhysicsMaterial(0.100000001f, 0.5f, 0.5f); } }
+		public static CCPhysicsMaterial PHYSICSSHAPE_MATERIAL_DEFAULT { get { return new CCPhysicsMaterial(PHYSICSSHAPE_MATERIAL_DEFAULT_DENSITY, 0.5f, 0.5f); } }
 
 		public float density;          ///< The density of the object.
 		public float restitution;      ///< The bounciness of the physics body.
@@ -228,7 +229,7 @@ namespace CocosSharp
 		{
 			_material.restitution = restitution;
 
-			foreach (cpShape shape in _info.getShapes())
+			foreach (cpShape shape in _info.GetShapes())
 			{
 				shape.SetElasticity(restitution);
 			}
@@ -239,7 +240,7 @@ namespace CocosSharp
 		{
 			_material.friction = friction;
 
-			foreach (cpShape shape in _info.getShapes())
+			foreach (cpShape shape in _info.GetShapes())
 			{
 				shape.SetFriction(friction);
 			}
@@ -269,7 +270,7 @@ namespace CocosSharp
 		{
 
 
-			foreach (var shape in _info.getShapes())
+			foreach (var shape in _info.GetShapes())
 			{
 				cpPointQueryInfo info = null;
                 shape.PointQuery(PhysicsHelper.CCPointToCpVect(point), ref info);
@@ -328,7 +329,7 @@ namespace CocosSharp
 
 		public void SetCollisionType(ulong collisionType)
 		{
-			foreach (cpShape shape in _info.getShapes())
+			foreach (cpShape shape in _info.GetShapes())
 			{
 				shape.SetCollisionType(collisionType);
 			}
@@ -336,7 +337,7 @@ namespace CocosSharp
 
 		public void SetElasticity(float elasticity)
 		{
-			foreach (cpShape shape in _info.getShapes())
+			foreach (cpShape shape in _info.GetShapes())
 			{
 				shape.SetElasticity(elasticity);
 			}
@@ -345,7 +346,7 @@ namespace CocosSharp
 		public void SetSurfaceVelocity(CCPoint surfaceVelocity)
 		{
             var vel = PhysicsHelper.CCPointToCpVect(surfaceVelocity);
-			foreach (cpShape shape in _info.getShapes())
+			foreach (cpShape shape in _info.GetShapes())
 			{
 				shape.SetSurfaceVelocity(vel);
 			}
@@ -355,7 +356,7 @@ namespace CocosSharp
 
 		public void SetSensor(bool sensor)
 		{
-			foreach (cpShape shape in _info.getShapes())
+			foreach (cpShape shape in _info.GetShapes())
 			{
 				shape.SetSensor(sensor);
 			}
@@ -398,12 +399,12 @@ namespace CocosSharp
 
 			if (body == null)
 			{
-				_info.setBody(null);
+				_info.SetBody(null);
 				_body = null;
 			}
 			else
 			{
-				_info.setBody(body._info.GetBody());
+				_info.SetBody(body._info.GetBody());
 				_body = body;
 			}
 		}
@@ -470,9 +471,9 @@ namespace CocosSharp
 
 			_type = PhysicsType.CIRCLE;
 
-            cpShape shape = new cpCircleShape(CCPhysicsShapeInfo.getSharedBody(), radius, PhysicsHelper.CCPointToCpVect(offset));
+            cpShape shape = new cpCircleShape(CCPhysicsShapeInfo.SharedBody(), radius, PhysicsHelper.CCPointToCpVect(offset));
 
-			_info.add(shape);
+			_info.Add(shape);
 
 			_area = CalculateArea();
 			_mass = material.density == cp.Infinity ? cp.Infinity : material.density * _area;
@@ -500,7 +501,7 @@ namespace CocosSharp
 
 		public override float CalculateDefaultMoment()
 		{
-			cpShape shape = _info.getShapes().FirstOrDefault();
+			cpShape shape = _info.GetShapes().FirstOrDefault();
 
 			return _mass == cp.Infinity ? cp.Infinity
 			: cp.MomentForCircle(_mass, 0,
@@ -517,7 +518,7 @@ namespace CocosSharp
 			{
 				float factor = cp.cpfabs(_newScaleX / _scaleX);
 
-				cpCircleShape shape = (cpCircleShape)_info.getShapes().FirstOrDefault();//->getShapes().front();
+				cpCircleShape shape = (cpCircleShape)_info.GetShapes().FirstOrDefault();//->getShapes().front();
                 cpVect v = PhysicsHelper.CCPointToCpVect(GetOffset());// cpCircleShapeGetOffset();
 				v = cpVect.cpvmult(v, factor);
 				shape.c = v;
@@ -531,11 +532,11 @@ namespace CocosSharp
 
 		public float GetRadius()
 		{
-			return (_info.getShapes().FirstOrDefault() as cpCircleShape).GetRadius();
+			return (_info.GetShapes().FirstOrDefault() as cpCircleShape).GetRadius();
 		}
 		public override CCPoint GetOffset()
 		{
-            return PhysicsHelper.cpVectToCCPoint((_info.getShapes().FirstOrDefault() as cpCircleShape).GetOffset());
+            return PhysicsHelper.cpVectToCCPoint((_info.GetShapes().FirstOrDefault() as cpCircleShape).GetOffset());
 		}
 
 		#endregion
@@ -545,7 +546,7 @@ namespace CocosSharp
 
 		protected override float CalculateArea()
 		{
-			cpCircleShape circle = (cpCircleShape)_info.getShapes().FirstOrDefault();
+			cpCircleShape circle = (cpCircleShape)_info.GetShapes().FirstOrDefault();
 			return cp.AreaForCircle(0, circle.GetRadius());
 		}
 
@@ -579,9 +580,9 @@ namespace CocosSharp
 
                           };
 
-			cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.getSharedBody(), 4, vec, radius);
+			cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.SharedBody(), 4, vec, radius);
 
-			_info.add(shape);
+			_info.Add(shape);
 
 			//_offset = offset;
 			_area = CalculateArea();
@@ -596,7 +597,7 @@ namespace CocosSharp
 
 		public CCSize GetSize()
 		{
-			cpPolyShape shape = (_info.getShapes().FirstOrDefault() as cpPolyShape);//->getShapes().front();
+			cpPolyShape shape = (_info.GetShapes().FirstOrDefault() as cpPolyShape);//->getShapes().front();
 			return PhysicsHelper.cpv2size(
 				new cpVect(
 					cpVect.cpvdist(shape.GetVert(1), shape.GetVert(2)),
@@ -620,10 +621,10 @@ namespace CocosSharp
 		{
 			_type = PhysicsType.POLYGEN;
 
-            cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.getSharedBody(), count, PhysicsHelper.CCPointsTocpVects(vecs), radius);
+            cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.SharedBody(), count, PhysicsHelper.CCPointsTocpVects(vecs), radius);
 
 
-			_info.add(shape);
+			_info.Add(shape);
 
 			_area = CalculateArea();
 			_mass = material.density == cp.Infinity ? cp.Infinity : material.density * _area;
@@ -651,25 +652,25 @@ namespace CocosSharp
 
 		public override float CalculateDefaultMoment()
 		{
-			cpPolyShape shape = (cpPolyShape)_info.getShapes().FirstOrDefault();
+			cpPolyShape shape = (cpPolyShape)_info.GetShapes().FirstOrDefault();
 			return _mass == cp.Infinity ? cp.Infinity
 			: cp.MomentForPoly(_mass, shape.Count, shape.GetVertices(), cpVect.Zero, 0.0f);
 		}
 
 		public CCPoint GetPoint(int i)
 		{
-            return PhysicsHelper.cpVectToCCPoint(((cpPolyShape)_info.getShapes().FirstOrDefault()).GetVert(i));
+            return PhysicsHelper.cpVectToCCPoint(((cpPolyShape)_info.GetShapes().FirstOrDefault()).GetVert(i));
 		}
 
 		public void GetPoints(out CCPoint[] outPoints) //cpVect outPoints
 		{
-			cpShape shape = _info.getShapes().FirstOrDefault();
+			cpShape shape = _info.GetShapes().FirstOrDefault();
             outPoints = PhysicsHelper.cpVectsTpCCPoints(((cpPolyShape)shape).GetVertices());
 		}
 
 		public int GetPointsCount()
 		{
-			return ((cpPolyShape)_info.getShapes().FirstOrDefault()).Count;
+			return ((cpPolyShape)_info.GetShapes().FirstOrDefault()).Count;
 		}
 
 		#endregion
@@ -678,7 +679,8 @@ namespace CocosSharp
 
 		protected override float CalculateArea()
 		{
-			cpPolyShape shape = (cpPolyShape)_info.getShapes().FirstOrDefault(); //.front();
+			cpPolyShape shape = (cpPolyShape)_info.GetShapes().FirstOrDefault(); //.front();
+			shape.CacheBB();
 			return cp.AreaForPolyOld(shape.Count, shape.GetVertices());
 		}
 
@@ -699,7 +701,7 @@ namespace CocosSharp
 		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, CCPhysicsMaterial material, float border = 1)
 		{
 
-			cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(),
+			cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(),
                 PhysicsHelper.CCPointToCpVect(a),
                 PhysicsHelper.CCPointToCpVect(b),
 										   border);
@@ -707,7 +709,7 @@ namespace CocosSharp
 			_type = PhysicsType.EDGESEGMENT;
 
 
-			_info.add(shape);
+			_info.Add(shape);
 
 			_mass = cp.Infinity;
 			_moment = cp.Infinity;
@@ -719,11 +721,11 @@ namespace CocosSharp
 
 		public CCPoint GetPointA()
 		{
-            return PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)(_info.getShapes().FirstOrDefault())).ta);
+            return PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)(_info.GetShapes().FirstOrDefault())).ta);
 		}
 		public CCPoint GetPointB()
 		{
-            return PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)(_info.getShapes().FirstOrDefault())).tb);
+            return PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)(_info.GetShapes().FirstOrDefault())).tb);
 		}
 		#endregion
 
@@ -750,9 +752,9 @@ namespace CocosSharp
 			int i = 0;
 			for (; i < 4; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vec[i], vec[(i + 1) % 4],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(), vec[i], vec[(i + 1) % 4],
 												   border);
-				_info.add(shape);
+				_info.Add(shape);
 			}
 
 			_offset = offset;
@@ -773,7 +775,7 @@ namespace CocosSharp
 		{
 			List<CCPoint> outPoints = new List<CCPoint>();
 			// int i = 0;
-			foreach (var shape in _info.getShapes())
+			foreach (var shape in _info.GetShapes())
 			{
                 outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)shape).a));
 			}
@@ -799,7 +801,7 @@ namespace CocosSharp
 				float factorY = _newScaleY / _scaleY;
 
 
-				foreach (cpSegmentShape shape in _info.getShapes())
+				foreach (cpSegmentShape shape in _info.GetShapes())
 				{
 					cpVect a = shape.GetA();
 					a.x *= factorX;
@@ -824,7 +826,7 @@ namespace CocosSharp
             var vecs = PhysicsHelper.CCPointsTocpVects(vec);
 			for (; i < count; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vecs[i], vecs[(i + 1) % count],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(), vecs[i], vecs[(i + 1) % count],
 												   border);
 
 				if (shape == null)
@@ -833,7 +835,7 @@ namespace CocosSharp
 				shape.SetElasticity(1.0f);
 				shape.SetFriction(1.0f);
 
-				_info.add(shape);
+				_info.Add(shape);
 			}
 
 			_mass = cp.Infinity;
@@ -848,7 +850,7 @@ namespace CocosSharp
 
 		public override CCPoint GetCenter()
 		{
-			var shapes = _info.getShapes();
+			var shapes = _info.GetShapes();
 			int count = (int)shapes.Count;
 			cpVect[] points = new cpVect[count];
 			int i = 0;
@@ -867,7 +869,7 @@ namespace CocosSharp
 		public CCPoint[] GetPoints()
 		{
 
-			var shapes = _info.getShapes();
+			var shapes = _info.GetShapes();
 
 			cpVect[] outPoints = new cpVect[shapes.Count];
 			for (int i = 0; i < shapes.Count; i++)
@@ -880,7 +882,7 @@ namespace CocosSharp
 		}
 		public int GetPointsCount()
 		{
-			return (_info.getShapes().Count);
+			return (_info.GetShapes().Count);
 		}
 
 		#endregion
@@ -899,12 +901,12 @@ namespace CocosSharp
 			int i = 0;
 			for (; i < count; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.getSharedBody(), vecs[i], vecs[i + 1],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(), vecs[i], vecs[i + 1],
 											  border);
 				shape.SetElasticity(1.0f);
 				shape.SetFriction(1.0f);
 
-				_info.add(shape);
+				_info.Add(shape);
 			}
 
 			_mass = cp.Infinity;
@@ -927,17 +929,17 @@ namespace CocosSharp
 		{
 			List<CCPoint> outPoints = new List<CCPoint>();
 
-			foreach (var shape in _info.getShapes())
+			foreach (var shape in _info.GetShapes())
                 outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)shape).a));
 
-            outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)_info.getShapes().LastOrDefault()).a));
+            outPoints.Add(PhysicsHelper.cpVectToCCPoint(((cpSegmentShape)_info.GetShapes().LastOrDefault()).a));
 
 			return outPoints;
 		}
 
 		public int GetPointsCount()
 		{
-			return (_info.getShapes().Count + 1);
+			return (_info.GetShapes().Count + 1);
 		}
 
 		#endregion
