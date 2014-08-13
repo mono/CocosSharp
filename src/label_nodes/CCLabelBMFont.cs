@@ -543,9 +543,14 @@ namespace CocosSharp
 
         private void UpdatePositionTransform()
         {
+
+            // Since we are extending SpriteBatchNode we will have to do our own transforms on the sprites.
+
             // Translate values
             float x = Position.X;
             float y = Position.Y;
+
+            var affineLocalTransform = CCAffineTransform.Identity;
 
             if (IgnoreAnchorPointForPosition)
             {
@@ -577,6 +582,35 @@ namespace CocosSharp
                 y += sy * -anchorPointInPoints.X * ScaleX + cx * -anchorPointInPoints.Y * ScaleY;
             }
 
+            // Build Transform Matrix
+            // Adjusted transform calculation for rotational skew
+            affineLocalTransform.A = cy * ScaleX;
+            affineLocalTransform.B = sy * ScaleX;
+            affineLocalTransform.C = -sx * ScaleY;
+            affineLocalTransform.D = cx * ScaleY;
+            affineLocalTransform.Tx = x;
+            affineLocalTransform.Ty = y;
+
+            // XXX: Try to inline skew
+            // If skew is needed, apply skew and then anchor point
+            if (needsSkewMatrix)
+            {
+                var skewMatrix = new CCAffineTransform(
+                    1.0f, (float) Math.Tan(CCMacros.CCDegreesToRadians(SkewY)),
+                    (float) Math.Tan(CCMacros.CCDegreesToRadians(SkewX)), 1.0f,
+                    0.0f, 0.0f);
+
+                affineLocalTransform = CCAffineTransform.Concat(skewMatrix, affineLocalTransform);
+
+                // adjust anchor point
+                if (!anchorPointInPoints.Equals(CCPoint.Zero))
+                {
+                    affineLocalTransform = CCAffineTransform.Translate(affineLocalTransform,
+                        -anchorPointInPoints.X,
+                        -anchorPointInPoints.Y);
+                }
+            }
+
             if (Children != null && Children.Count != 0)
             {
                 CCNode[] elements = Children.Elements;
@@ -585,10 +619,14 @@ namespace CocosSharp
                     var sprite = elements[i] as CCSprite;
                     if (sprite.Visible)
                     {
-                        var pos = ConvertToWorldspace(sprite.Position);
+                        var pos = affineLocalTransform.Transform(sprite.Position);
 
-                        sprite.PositionX = pos.X + x;
-                        sprite.PositionY = pos.Y + y;
+                        sprite.PositionX = pos.X;
+                        sprite.PositionY = pos.Y;
+                        sprite.ScaleX = ScaleX;
+                        sprite.ScaleY = ScaleY;
+                        sprite.SkewX = SkewX;
+                        sprite.SkewY = SkewY;
                     }
                 }
             }

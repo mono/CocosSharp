@@ -20,10 +20,9 @@ namespace tests
         {
             base.AddedToScene();
 
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
+            var s = VisibleBoundsWorldspace.Size;
 
 			bmFont.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
-
 		}
         public override string title()
         {
@@ -32,7 +31,7 @@ namespace tests
 
         public override string subtitle()
         {
-            return "You should see: ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz.,'";
+            return "You should see: Alphabet and numbers'";
         }
     }
 }
