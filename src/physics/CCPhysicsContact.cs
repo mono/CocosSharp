@@ -141,7 +141,7 @@ namespace CocosSharp
 
 			_info = new CCPhysicsContactInfo(this);
 
-			if (_info != null)
+			if (_info == null)
 				return false;
 
 			_shapeA = a;
