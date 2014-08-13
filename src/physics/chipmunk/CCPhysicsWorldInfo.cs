@@ -41,20 +41,21 @@ namespace CocosSharp
 
 		#region PUBLIC METHODS
 
-		public cpSpace getSpace() { return _space; }
+		public cpSpace Space { get { return _space; } }
 
-		public void addShape(CCPhysicsShapeInfo shape)
+
+		public void AddShape(CCPhysicsShapeInfo shape)
 		{
 
-			foreach (var item in shape.getShapes())
+			foreach (var item in shape.GetShapes())
 			{
 				_space.AddShape(item);
 			}
 
 		}
-		public void removeShape(CCPhysicsShapeInfo shapeInf)
+		public void RemoveShape(CCPhysicsShapeInfo shapeInf)
 		{
-			foreach (var shape in shapeInf.getShapes())
+			foreach (var shape in shapeInf.GetShapes())
 			{
 				if (_space.ContainsShape(shape))
 					_space.RemoveShape(shape);
@@ -62,7 +63,7 @@ namespace CocosSharp
 
 		}
 
-		public void addBody(CCPhysicsBodyInfo bodyInf)
+		public void AddBody(CCPhysicsBodyInfo bodyInf)
 		{
 			cpBody body = bodyInf.GetBody();
 
@@ -72,7 +73,7 @@ namespace CocosSharp
 			}
 		}
 
-		public void removeBody(CCPhysicsBodyInfo bodyInf)
+		public void RemoveBody(CCPhysicsBodyInfo bodyInf)
 		{
 			var body = bodyInf.GetBody();
 			if (_space.ContainsBody(body))
@@ -89,7 +90,7 @@ namespace CocosSharp
 			}
 		}
 
-		public void removeJoint(CCPhysicsJointInfo joint)
+		public void RemoveJoint(CCPhysicsJointInfo joint)
 		{
 			foreach (var subjoint in joint.getJoints())
 			{
@@ -102,7 +103,7 @@ namespace CocosSharp
 			_space.SetGravity(gravity);
 		}
 
-		public bool isLocked() { return _space.IsLocked; } // 0 == _space.locked ? false : true; }
+		public bool IsLocked() { return _space.IsLocked; } // 0 == _space.locked ? false : true; }
 		public void Step(float delta) { _space.Step(delta); }
 
 
@@ -113,12 +114,6 @@ namespace CocosSharp
 			_space = new cpSpace();
 
 		}
-
-		//public void SetDebugDraw(cpDebugDraw debug)
-		//{
-		//	_space.SetDebugDraw(debug);
-		//}
-
 
 	}
 }
