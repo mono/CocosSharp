@@ -352,9 +352,7 @@ namespace CocosSharp {
         public override void Initialize() { }
         public virtual bool InitInstance() { return default(bool); }
         protected override void LoadContent() { }
-        public void PauseGame() { }
         public void PurgeAllCachedData() { }
-        public void ResumeGame() { }
         public void StartGame() { }
         public void ToggleFullScreen() { }
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime) { }
