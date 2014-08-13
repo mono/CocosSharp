@@ -125,10 +125,10 @@ namespace CocosSharp
 
 			CCPhysicsShapeInfo ita = null, itb = null;
 			cp.AssertWarn(CCPhysicsShapeInfo.Map.TryGetValue(a, out ita) && CCPhysicsShapeInfo.Map.TryGetValue(b, out itb));
-			if (a != null || b != null)
+			if (ita == null || itb == null)
 				return false;
 
-			CCPhysicsContact contact = new CCPhysicsContact(ita.getShape(), itb.getShape());
+			CCPhysicsContact contact = new CCPhysicsContact(ita.Shape, itb.Shape);
 			arb.data = contact;
 			contact._contactInfo = arb;
 
@@ -167,7 +167,7 @@ namespace CocosSharp
 			cp.AssertWarn(!CCPhysicsShapeInfo.Map.TryGetValue(shape, out it));
 
 			CCPhysicsRayCastInfo callbackInfo = new CCPhysicsRayCastInfo(
-		it.getShape(),
+		it.Shape,
 		info.p1,
 		info.p2,
 		new CCPoint(info.p1.X + (info.p2.X - info.p1.X) * t, info.p1.Y + (info.p2.Y - info.p1.Y) * t),
@@ -189,7 +189,7 @@ namespace CocosSharp
 				return;
 			}
 
-			continues = info.func(info.world, it.getShape(), info.data);
+			continues = info.func(info.world, it.Shape, info.data);
 
 		}
 		public static void QueryPointFunc(cpShape shape, float distance, CCPoint point, ref CCPointQueryCallbackInfo info)
@@ -198,7 +198,7 @@ namespace CocosSharp
 
 			cp.AssertWarn(!CCPhysicsShapeInfo.Map.TryGetValue(shape, out it));
 
-			continues = info.func(info.world, it.getShape(), info.data);
+			continues = info.func(info.world, it.Shape, info.data);
 		}
 		public static void GetShapesAtPointFunc(cpShape shape, float distance, CCPoint point, ref List<CCPhysicsShape> arr)
 		{
@@ -206,7 +206,7 @@ namespace CocosSharp
 
 			cp.AssertWarn(!CCPhysicsShapeInfo.Map.TryGetValue(shape, out it));
 
-			arr.Add(it.getShape());  // (it.second.getShape());
+			arr.Add(it.Shape);  // (it.second.getShape());
 
 		}
 
@@ -267,6 +267,13 @@ namespace CocosSharp
 		protected List<CCPhysicsJoint> _delayRemoveJoints = new List<CCPhysicsJoint>();
 
 		#endregion
+		public cpSpace Space
+		{
+			get
+			{
+				return _info.Space;
+			}
+		}
 
 		public CCPhysicsWorld(CCScene scene)
 		{
@@ -286,7 +293,7 @@ namespace CocosSharp
 
             _info.SetGravity(PhysicsHelper.CCPointToCpVect(_gravity));
 
-			var spc = _info.getSpace();
+			var spc = _info.Space;
 
 			spc.defaultHandler = new cpCollisionHandler()
 			{
@@ -310,15 +317,6 @@ namespace CocosSharp
 
 				_debugDraw.Flags = PhysicsDrawFlags.All;
 			}
-
-			//var space = this._info.getSpace();
-			//_debugDraw.Begin();
-			//space.EachShape(shape =>
-			//{
-			//	_debugDraw.DrawShape(shape);
-			//});
-			//_debugDraw.End();
-			//return;
 
 			if (_debugDraw != null && _bodies.Count > 0)
 			{
@@ -518,7 +516,7 @@ namespace CocosSharp
 				//Action<cpShape, cpVect, cpVect, float, object> func
 				CCPhysicsWorldCallback.continues = true;
 
-				this._info.getSpace().SegmentQuery(
+				this._info.Space.SegmentQuery(
                     PhysicsHelper.CCPointToCpVect(point1),
                     PhysicsHelper.CCPointToCpVect(point2), 1f,
 									new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
@@ -542,7 +540,7 @@ namespace CocosSharp
 
 				CCPhysicsWorldCallback.continues = true;
 
-				this._info.getSpace().BBQuery(
+				this._info.Space.BBQuery(
 									PhysicsHelper.rect2cpbb(rect),
 									new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 									(s, o) => CCPhysicsWorldCallback.QueryRectCallbackFunc(s, info),
@@ -564,7 +562,7 @@ namespace CocosSharp
 
 				CCPhysicsWorldCallback.continues = true;
 
-				this._info.getSpace().PointQuery(
+				this._info.Space.PointQuery(
                     PhysicsHelper.CCPointToCpVect(point), 0f,
 					new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 					(s, v, f1, f2, o) => CCPhysicsWorldCallback.QueryPointFunc(s, 0f, point, ref info),
@@ -578,7 +576,7 @@ namespace CocosSharp
 		{
 			List<CCPhysicsShape> arr = new List<CCPhysicsShape>();
 
-			this._info.getSpace().PointQuery(
+			this._info.Space.PointQuery(
                 PhysicsHelper.CCPointToCpVect(point), 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
                 (s, v1, f, v2, o) => CCPhysicsWorldCallback.GetShapesAtPointFunc(s, f, PhysicsHelper.cpVectToCCPoint(v1), ref arr),
 									null
@@ -593,7 +591,7 @@ namespace CocosSharp
 
 			cpShape shape = null;
 
-			this._info.getSpace().PointQuery(
+			this._info.Space.PointQuery(
                 PhysicsHelper.CCPointToCpVect(point), 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 								  (s, v1, f, v2, o) => { shape = s; }, null);
 
@@ -602,7 +600,7 @@ namespace CocosSharp
 
 			CCPhysicsShapeInfo dev;
 			if (CCPhysicsShapeInfo.Map.TryGetValue(shape, out dev))
-				return dev.getShape();
+				return dev.Shape;
 
 			return null;
 
@@ -648,6 +646,10 @@ namespace CocosSharp
 					}
 				}
 			}
+
+			_gravity = gravity;
+			_info.SetGravity(PhysicsHelper.CCPointToCpVect( gravity));
+
 		}
 
 		/** Set the speed of physics world, speed is the rate at which the simulation executes. default value is 1.0 */
@@ -694,7 +696,7 @@ namespace CocosSharp
 		{
 			if (shape != null)
 			{
-				_info.addShape(shape._info);
+				_info.AddShape(shape._info);
 				return shape;
 			}
 			return null;
@@ -704,7 +706,7 @@ namespace CocosSharp
 		{
 			if (shape != null)
 			{
-				_info.removeShape(shape._info);
+				_info.RemoveShape(shape._info);
 			}
 		}
 
@@ -731,63 +733,14 @@ namespace CocosSharp
 				_updateTime = 0.0f;
 			}
 
+			if (_debugDrawMask != DEBUGDRAW_NONE)
+			{
+				DebugDraw();
+			}
+
 
 		}
-
-		//public void Draw()
-		//{
-		//	if (DebugDrawMask != cpDrawFlags.None)
-		//	{
-		//		_debugDraw.Begin();
-		//		_info.getSpace().DrawDebugData();
-		//		_debugDraw.End();
-		//	}
-		//}
-
-
-		//public virtual void DebugDraw()
-		//{
-
-		//	if (_debugDraw == null)
-		//	{
-		//		_debugDraw = new PhysicsDebugDraw(this);
-		//	}
-
-		//	if (_debugDraw != null && _bodies.Count > 0)
-		//	{
-		//		if (_debugDraw.Begin())
-		//		{
-		//			if (DebugDrawMask == cpDrawFlags.ALL || DebugDrawMask == cpDrawFlags.Shape)
-		//			{
-		//				foreach (CCPhysicsBody body in _bodies)
-		//				{
-
-		//					if (!body.IsEnabled())
-		//					{
-		//						continue;
-		//					}
-
-		//					foreach (CCPhysicsShape shape in body.GetShapes())
-		//					{
-		//						_debugDraw.DrawShape(shape);
-
-		//					}
-		//				}
-		//			}
-
-		//			if (DebugDrawMask == cpDrawFlags.ALL || DebugDrawMask == cpDrawFlags.Joint)
-		//			{
-		//				foreach (CCPhysicsJoint joint in _joints)
-		//				{
-		//					_debugDraw.DrawJoint(joint);
-		//				}
-		//			}
-
-		//			_debugDraw.End();
-		//		}
-		//	}
-
-		//}
+	
 
 		public virtual bool CollisionBeginCallback(CCPhysicsContact contact)
 		{
@@ -795,8 +748,10 @@ namespace CocosSharp
 
 			CCPhysicsShape shapeA = contact.GetShapeA();
 			CCPhysicsShape shapeB = contact.GetShapeB();
+
 			CCPhysicsBody bodyA = shapeA.GetBody();
 			CCPhysicsBody bodyB = shapeB.GetBody();
+
 			List<CCPhysicsJoint> jointsA = bodyA.GetJoints();
 
 			// check the joint is collision enable or not
@@ -903,7 +858,7 @@ namespace CocosSharp
 				// add body to space
 				if (body.IsDynamic())
 				{
-					_info.addBody(body._info);
+					_info.AddBody(body._info);
 				}
 
 				// add shapes to space
@@ -931,7 +886,7 @@ namespace CocosSharp
 			}
 
 			// remove body
-			_info.removeBody(body._info);
+			_info.RemoveBody(body._info);
 		}
 
 		public virtual void DoAddJoint(CCPhysicsJoint joint)
@@ -946,7 +901,7 @@ namespace CocosSharp
 
 		public virtual void DoRemoveJoint(CCPhysicsJoint joint)
 		{
-			_info.removeJoint(joint._info);
+			_info.RemoveJoint(joint._info);
 		}
 
 		public virtual CCPhysicsBody AddBodyOrDelay(CCPhysicsBody body)
@@ -958,7 +913,7 @@ namespace CocosSharp
 				return null;
 			}
 
-			if (_info.isLocked())
+			if (_info.IsLocked())
 			{
 				if (_delayAddBodies.Exists(b => b == body))
 				{
@@ -982,7 +937,7 @@ namespace CocosSharp
 				return;
 			}
 
-			if (_info.isLocked())
+			if (_info.IsLocked())
 			{
 				if (_delayRemoveBodies.Exists(b => b == body))
 				{
@@ -1006,7 +961,7 @@ namespace CocosSharp
 				return;
 			}
 
-			if (_info.isLocked())
+			if (_info.IsLocked())
 			{
 
 				if (!_delayAddJoints.Exists(j => j == joint))
@@ -1029,7 +984,7 @@ namespace CocosSharp
 			{
 				_delayAddJoints.Remove(it);
 			}
-			if (_info.isLocked())
+			if (_info.IsLocked())
 			{
 
 				if (!_delayAddJoints.Exists(j => j == joint))
@@ -1046,7 +1001,7 @@ namespace CocosSharp
 
 		public virtual void UpdateBodies()
 		{
-			if (_info.isLocked())
+			if (_info.IsLocked())
 			{
 				return;
 			}
@@ -1075,7 +1030,7 @@ namespace CocosSharp
 
 		public virtual void UpdateJoints()
 		{
-			if (_info.isLocked())
+			if (_info.IsLocked())
 			{
 				return;
 			}
