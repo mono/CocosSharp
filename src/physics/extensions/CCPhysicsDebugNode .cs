@@ -107,7 +107,7 @@ namespace ChipmunkSharp
 		public PhysicsDebugDraw(CCPhysicsWorld world)
 		{
 			_world = world;
-			_space = world._info.getSpace();
+			_space = world._info.Space;
 			SelectFont("weblysleeku", 22);
 			_world.GetScene().AddChild(this); // getScene().addChild(_drawNode);
 
@@ -557,7 +557,7 @@ namespace ChipmunkSharp
 		#region DRAW PHYSICS
 		public void DrawShape(CCPhysicsShape shape)
 		{
-			foreach (cpShape item in shape._info.getShapes())
+			foreach (cpShape item in shape._info.GetShapes())
 				DrawShape(item);
 		}
 
