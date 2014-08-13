@@ -44,6 +44,9 @@ namespace CocosSharp
 			}
 		}
 
+		public cpBody Body { get { return _info.GetBody(); } }
+
+
 		public const float MASS_DEFAULT = 1.0f;
 		public const float MOMENT_DEFAULT = 200;
 
@@ -60,6 +63,10 @@ namespace CocosSharp
 		internal bool _gravityEnabled;
 		internal bool _massDefault;
 		internal bool _momentDefault;
+
+		internal float _elasticity;
+		internal float _friction;
+
 		internal float _mass;
 		internal float _area;
 		internal float _density;
@@ -82,6 +89,9 @@ namespace CocosSharp
 
 
 		#endregion
+
+		public cpBodyType BodyType { get { return _info.GetBody().bodyType; } set { _info.GetBody().bodyType = value; } }
+
 
 		/**
  * A body affect by physics.
@@ -142,6 +152,8 @@ namespace CocosSharp
 			_info.SetBody(new cpBody(_mass, _moment));
 
 		}
+
+		
 
 		public CCPhysicsBody(CCPhysicsShape shape)
             : this(0f, 0f, CCPoint.Zero)
@@ -226,6 +238,8 @@ namespace CocosSharp
 		protected void UpdateDamping() { _isDamping = _linearDamping != 0.0f || _angularDamping != 0.0f; }
 		protected void UpdateMass(float oldMass, float newMass)
 		{
+			if (_world == null)
+				return;
             var gravity = _world.GetGravity();
 
 			if (_dynamic && !_gravityEnabled && _world != null && oldMass != cp.PHYSICS_INFINITY)
@@ -814,14 +828,14 @@ namespace CocosSharp
 						}
 
 						// _world._info
-						_world._info.getSpace().AddBody(_info.GetBody());
+						_world._info.Space.AddBody(_info.GetBody());
 					}
 				}
 				else
 				{
 					if (_world != null)
 					{
-						_world._info.getSpace().RemoveBody(_info.GetBody());
+						_world._info.Space.RemoveBody(_info.GetBody());
 						// cpSpaceRemoveBody(_world->_info->getSpace(), _info->getBody());
 					}
 
@@ -1170,6 +1184,59 @@ namespace CocosSharp
 		}
 
 
+		public void SetType(cpBodyType type)
+		{
+			_info.GetBody().SetBodyType(type);
+		}
+
+		public float GetElasticity()
+		{
+			return _elasticity;
+		}
+
+		public void SetElasticity(float elasticity)
+		{
+			_elasticity = elasticity;
+			foreach (var shape in _shapes)
+			{
+				shape.SetElasticity(elasticity);
+			}
+		}
+
+
+		public float GetFriction()
+		{
+			return _friction;
+		}
+
+		public void SetFriction(float friction)
+		{
+			_friction = friction;
+			foreach (var shape in _shapes)
+			{
+				shape.SetFriction(friction);
+			}
+		}
+
+		public void SetFilter(cpShapeFilter filter)
+		{
+			SetGroup(filter.group);
+			SetCategoryBitmask(filter.categories);
+			SetCollisionBitmask(filter.mask);
+		}
+
+		public void SetAngle(float angle)
+		{
+			_info.GetBody().SetAngle(angle);
+		}
+
+		public void SetVelocityUpdateFunc(Action<cpVect, float, float> velocityFunc)
+		{
+			_info.GetBody().SetVelocityUpdateFunc(velocityFunc);
+		}
+
+
+	
 	}
 }
 #endif
