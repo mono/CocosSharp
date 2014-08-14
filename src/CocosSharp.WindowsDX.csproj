@@ -67,7 +67,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugPhysics|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\PhysicsWindowsDX\Debug\</OutputPath>
+    <OutputPath>bin\WindowsDX\Debug\</OutputPath>
     <DefineConstants>TRACE;DEBUG;WINDOWS;MONOGAME;USE_PHYSICS</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType>full</DebugType>
@@ -86,7 +86,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePhysics|AnyCPU'">
-    <OutputPath>bin\PhysicsWindowsDX\Release\</OutputPath>
+    <OutputPath>bin\WindowsDX\Release\</OutputPath>
     <DefineConstants>TRACE;WINDOWS;MONOGAME;USE_PHYSICS</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
