@@ -238,19 +238,17 @@ namespace CocosSharp
 		protected void UpdateDamping() { _isDamping = _linearDamping != 0.0f || _angularDamping != 0.0f; }
 		protected void UpdateMass(float oldMass, float newMass)
 		{
-			if (_world == null)
-				return;
-            var gravity = _world.GetGravity();
-
+          
 			if (_dynamic && !_gravityEnabled && _world != null && oldMass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(gravity * oldMass);
+
+				ApplyForce(_world.GetGravity() * oldMass);
 			}
 			_info.GetBody().SetMass(newMass);
 
 			if (_dynamic && !_gravityEnabled && _world != null && newMass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(-gravity * newMass);
+				ApplyForce(-_world.GetGravity() * newMass);
 			}
 		}
 
