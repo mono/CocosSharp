@@ -749,8 +749,8 @@ namespace CocosSharp
 			CCPhysicsShape shapeA = contact.GetShapeA();
 			CCPhysicsShape shapeB = contact.GetShapeB();
 
-			CCPhysicsBody bodyA = shapeA.GetBody();
-			CCPhysicsBody bodyB = shapeB.GetBody();
+			CCPhysicsBody bodyA = shapeA.Body;
+			CCPhysicsBody bodyB = shapeB.Body;
 
 			List<CCPhysicsJoint> jointsA = bodyA.GetJoints();
 
@@ -774,20 +774,20 @@ namespace CocosSharp
 			}
 
 			// bitmask check
-			if ((shapeA.GetCategoryBitmask() & shapeB.GetContactTestBitmask()) == 0
-				|| (shapeA.GetContactTestBitmask() & shapeB.GetCategoryBitmask()) == 0)
+			if ((shapeA.CategoryBitmask & shapeB.ContactTestBitmask) == 0
+				|| (shapeA.ContactTestBitmask & shapeB.CategoryBitmask) == 0)
 			{
 				contact.SetNotificationEnable(false);
 			}
 
-			if (shapeA.GetGroup() != 0 && shapeA.GetGroup() == shapeB.GetGroup())
+			if (shapeA.Group != 0 && shapeA.Group == shapeB.Group)
 			{
-				ret = shapeA.GetGroup() > 0;
+				ret = shapeA.Group > 0;
 			}
 			else
 			{
-				if ((shapeA.GetCategoryBitmask() & shapeB.GetCollisionBitmask()) == 0
-					|| (shapeB.GetCategoryBitmask() & shapeA.GetCollisionBitmask()) == 0)
+				if ((shapeA.CategoryBitmask & shapeB.CollisionBitmask) == 0
+					|| (shapeB.CategoryBitmask & shapeA.CollisionBitmask) == 0)
 				{
 					ret = false;
 				}
