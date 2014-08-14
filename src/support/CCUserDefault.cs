@@ -54,6 +54,7 @@ namespace CocosSharp
     #endif
         Dictionary<string, string> values = new Dictionary<string, string>();
 
+        string platformPath = string.Empty;
 
 		#region Properties
 
@@ -119,7 +120,7 @@ namespace CocosSharp
     		if ((!IsXMLFileExist())) {
 				CreateXMLFile();
     		}
-    		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
+            using (FileStream fileStream = new FileInfo(Path.Combine(platformPath,XML_FILE_NAME)).OpenRead()){
 				ParseXMLFile(fileStream);
     		}
 
@@ -305,6 +306,17 @@ namespace CocosSharp
 		bool IsXMLFileExist()
     	{
     		bool bRet = false;
+
+            #if MACOS
+            // xml file is stored in cache directory and seems to be the default.
+            // if we do not do this then we may default to the root directory which may
+            // throw an Unauthorized exception if not running as administrator.
+            var paths = MonoMac.Foundation.NSSearchPath.GetDirectories(MonoMac.Foundation.NSSearchPathDirectory.CachesDirectory, 
+                MonoMac.Foundation.NSSearchPathDomain.User);
+            platformPath = paths[0];
+            #endif
+
+
     #if NETFX_CORE
             // use the StorageContainer to determine if the file exists.
             if (myIsolatedStorage.FileExists(XML_FILE_NAME))
@@ -312,7 +324,8 @@ namespace CocosSharp
                 bRet = true;
             }
     #elif WINDOWS || LINUX || MACOS
-    		if (new FileInfo(XML_FILE_NAME).Exists) 
+
+            if (new FileInfo(Path.Combine(platformPath,XML_FILE_NAME)).Exists) 
     		{
     			bRet = true;
     		}
@@ -332,7 +345,7 @@ namespace CocosSharp
     #if NETFX_CORE
             using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
     #elif WINDOWS || LINUX || MACOS
-    		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
+            using (StreamWriter writeFile = new StreamWriter(Path.Combine(platformPath,XML_FILE_NAME))) 
     #else
             using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
     #endif
