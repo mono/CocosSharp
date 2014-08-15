@@ -109,7 +109,7 @@ namespace ChipmunkSharp
 			_world = world;
 			_space = world._info.Space;
 			SelectFont("weblysleeku", 22);
-			_world.GetScene().AddChild(this); // getScene().addChild(_drawNode);
+			_world.Scene.AddChild(this); // getScene().addChild(_drawNode);
 
 		}
 

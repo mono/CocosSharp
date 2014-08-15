@@ -34,13 +34,13 @@ namespace CocosSharp
 	internal class CCPhysicsShapeInfo
 	{
 
-		protected static Dictionary<cpShape, CCPhysicsShapeInfo> _map;
-		protected List<cpShape> _shapes;
+		private static Dictionary<cpShape, CCPhysicsShapeInfo> _map;
+		private List<cpShape> _shapes;
 
-		protected CCPhysicsShape _shape;
-		protected cpBody _body;
-		protected int _group;
-		protected static cpBody _sharedBody;
+		private CCPhysicsShape _shape;
+		private cpBody _body;
+		private int _group;
+		private static cpBody _sharedBody;
 
 		public static Dictionary<cpShape, CCPhysicsShapeInfo> Map {
 			get {
@@ -54,69 +54,73 @@ namespace CocosSharp
 			} 
 		}
 
-		public static cpBody SharedBody() {
+		public CCPhysicsShape Shape { get { return _shape; } }
 
-			if (_sharedBody == null)
-				_sharedBody = cpBody.NewStatic(); 
+		public static cpBody SharedBody
+		{
+			get
+			{
+				if (_sharedBody == null)
+					_sharedBody = cpBody.NewStatic();
 
-			return _sharedBody; 
-
+				return _sharedBody;
+			}
 		}
-
 
 		public CCPhysicsShapeInfo(CCPhysicsShape shape)
 		{
-		
 			_shapes = new List<cpShape>();
 
 			// TODO: Complete member initialization
 			_shape = shape;
-
 		
 			_body = _sharedBody;
 
 			_group = cp.NO_GROUP; //CP_NO_GROUP ?¿
+
 		}
 
-		public CCPhysicsShape Shape { get { return _shape; } }
-
+	
 		public List<cpShape> GetShapes()
 		{
 			return _shapes;
 		}
 
-		public cpBody getBody() { return _body; }
-		public int getGroup() { return _group; }
+		public cpBody Body
+		{
+			get { return _body; }
+			set
+			{
+				if (this._body != value)
+				{
+					this._body = value;
+					foreach (cpShape shape in _shapes)
+					{
+						shape.SetBody(value == null ? _sharedBody : value);
+					}
+				}
+			}
+		}
 
+		public int Group
+		{
+			get { return _group; }
+			set
+			{
+				this._group = value;
 
+				foreach (cpShape shape in _shapes)
+				{
+					shape.SetFilter(new cpShapeFilter(value, cp.ALL_CATEGORIES, cp.ALL_CATEGORIES));
+				}
+			}
+		}
 
 		~CCPhysicsShapeInfo()
 		{
 		
 			_shapes.Clear();
 
-		}
-
-		public void SetGroup(int group)
-		{
-			this._group = group;
-
-			foreach (cpShape shape in _shapes)
-			{
-				shape.SetFilter(new cpShapeFilter(group, cp.ALL_CATEGORIES, cp.ALL_CATEGORIES));
-			}
-		}
-
-		public void SetBody(cpBody body)
-		{
-			if (this._body != body)
-			{
-				this._body = body;
-				foreach (cpShape shape in _shapes)
-				{
-					shape.SetBody(body == null ? _sharedBody : body);
-				}
-			}
 		}
 
 		public void Add(cpShape shape)

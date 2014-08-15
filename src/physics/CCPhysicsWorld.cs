@@ -258,8 +258,7 @@ namespace CocosSharp
 
 		protected bool _delayDirty;
 		public PhysicsDebugDraw _debugDraw;
-		int _debugDrawMask;
-
+		private int _debugDrawMask;
 
 		protected List<CCPhysicsBody> _delayAddBodies = new List<CCPhysicsBody>();
 		protected List<CCPhysicsBody> _delayRemoveBodies = new List<CCPhysicsBody>();
@@ -291,7 +290,7 @@ namespace CocosSharp
 
 			_scene = scene;
 
-            _info.SetGravity(PhysicsHelper.CCPointToCpVect(_gravity));
+            _info.Gravity = PhysicsHelper.CCPointToCpVect(_gravity);
 
 			var spc = _info.Space;
 
@@ -368,7 +367,7 @@ namespace CocosSharp
 		/** Adds a joint to the physics world.*/
 		public virtual void AddJoint(CCPhysicsJoint joint)
 		{
-			if (joint.GetWorld() != null && joint.GetWorld() != this)
+			if (joint.World != null && joint.World != this)
 			{
 				joint.RemoveFormWorld();
 			}
@@ -381,7 +380,7 @@ namespace CocosSharp
 
 		public virtual void RemoveJoint(CCPhysicsJoint joint, bool destroy = true)
 		{
-			if (joint.GetWorld() != this)
+			if (joint.World != this)
 			{
 				if (destroy)
 				{
@@ -398,14 +397,14 @@ namespace CocosSharp
 			// clean the connection to this joint
 			if (destroy)
 			{
-				if (joint.GetBodyA() != null)
+				if (joint.BodyA != null)
 				{
-					joint.GetBodyA().RemoveJoint(joint);
+					joint.BodyA.RemoveJoint(joint);
 				}
 
-				if (joint.GetBodyB() != null)
+				if (joint.BodyB != null)
 				{
-					joint.GetBodyB().RemoveJoint(joint);
+					joint.BodyB.RemoveJoint(joint);
 				}
 
 				// test the distraction is delaied or not
@@ -427,14 +426,14 @@ namespace CocosSharp
 				// clean the connection to this joint
 				if (destroy)
 				{
-					if (joint.GetBodyA() != null)
+					if (joint.BodyA != null)
 					{
-						joint.GetBodyA().RemoveJoint(joint);
+						joint.BodyA.RemoveJoint(joint);
 					}
 
-					if (joint.GetBodyB() != null)
+					if (joint.BodyB != null)
 					{
-						joint.GetBodyB().RemoveJoint(joint);
+						joint.BodyB.RemoveJoint(joint);
 					}
 
 					// test the distraction is delaied or not
@@ -462,7 +461,7 @@ namespace CocosSharp
 				// set destroy param to false to keep the iterator available
 				RemoveJoint(joint, false);
 
-				CCPhysicsBody other = (joint.GetBodyA() == body ? joint.GetBodyB() : joint.GetBodyA());
+				CCPhysicsBody other = (joint.BodyA == body ? joint.BodyB : joint.BodyA);
 				other.RemoveJoint(joint);
 
 
@@ -484,7 +483,7 @@ namespace CocosSharp
 		{
 			foreach (var body in _bodies)
 			{
-				if (body.GetTag() == tag)
+				if (body.Tag == tag)
 				{
 					RemoveBody(body);
 					return;
@@ -516,7 +515,7 @@ namespace CocosSharp
 				//Action<cpShape, cpVect, cpVect, float, object> func
 				CCPhysicsWorldCallback.continues = true;
 
-				this._info.Space.SegmentQuery(
+				this.Space.SegmentQuery(
                     PhysicsHelper.CCPointToCpVect(point1),
                     PhysicsHelper.CCPointToCpVect(point2), 1f,
 									new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
@@ -540,7 +539,7 @@ namespace CocosSharp
 
 				CCPhysicsWorldCallback.continues = true;
 
-				this._info.Space.BBQuery(
+				this.Space.BBQuery(
 									PhysicsHelper.rect2cpbb(rect),
 									new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 									(s, o) => CCPhysicsWorldCallback.QueryRectCallbackFunc(s, info),
@@ -562,7 +561,7 @@ namespace CocosSharp
 
 				CCPhysicsWorldCallback.continues = true;
 
-				this._info.Space.PointQuery(
+				this.Space.PointQuery(
                     PhysicsHelper.CCPointToCpVect(point), 0f,
 					new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 					(s, v, f1, f2, o) => CCPhysicsWorldCallback.QueryPointFunc(s, 0f, point, ref info),
@@ -576,7 +575,7 @@ namespace CocosSharp
 		{
 			List<CCPhysicsShape> arr = new List<CCPhysicsShape>();
 
-			this._info.Space.PointQuery(
+			this.Space.PointQuery(
                 PhysicsHelper.CCPointToCpVect(point), 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
                 (s, v1, f, v2, o) => CCPhysicsWorldCallback.GetShapesAtPointFunc(s, f, PhysicsHelper.cpVectToCCPoint(v1), ref arr),
 									null
@@ -591,7 +590,7 @@ namespace CocosSharp
 
 			cpShape shape = null;
 
-			this._info.Space.PointQuery(
+			this.Space.PointQuery(
                 PhysicsHelper.CCPointToCpVect(point), 0, new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
 								  (s, v1, f, v2, o) => { shape = s; }, null);
 
@@ -617,7 +616,7 @@ namespace CocosSharp
 		{
 			foreach (var body in _bodies)
 			{
-				if (body.GetTag() == tag)
+				if (body.Tag == tag)
 				{
 					return body;
 				}
@@ -627,46 +626,43 @@ namespace CocosSharp
 		}
 
 		/** Get scene contain this physics world */
-		public CCScene GetScene() { return _scene; }
+		public CCScene Scene { get { return _scene; } }
 
 		/** get the gravity value */
-		public CCPoint GetGravity() { return _gravity; }
-
-		/** set the gravity value */
-		public void SetGravity(CCPoint gravity)
+		public CCPoint Gravity
 		{
-			if (_bodies.Count > 0)
+			get { return _gravity; }
+			set
 			{
-				foreach (var body in _bodies)
+				if (_bodies.Count > 0)
 				{
-					// reset gravity for body
-					if (!body.IsGravityEnabled())
+					foreach (var body in _bodies)
 					{
-                        body.ApplyForce(PhysicsHelper.CCPointToCpVect((_gravity - gravity)) * body.GetMass());
+						// reset gravity for body
+						if (!body.IsGravityEnabled())
+						{
+							body.ApplyForce(PhysicsHelper.CCPointToCpVect((_gravity - value)) * body.GetMass());
+						}
 					}
 				}
+
+				_gravity = value;
+				_info.Gravity = PhysicsHelper.CCPointToCpVect(value);
 			}
-
-			_gravity = gravity;
-			_info.SetGravity(PhysicsHelper.CCPointToCpVect( gravity));
-
 		}
 
-		/** Set the speed of physics world, speed is the rate at which the simulation executes. default value is 1.0 */
-		public void SetSpeed(float speed) { if (speed >= 0.0f) { _speed = speed; } }
-
+		
 		/** get the speed of physics world */
-		public float GetSpeed() { return _speed; }
+		public float Speed { get { return _speed; } set { if (value >= 0.0f) { _speed = value; } } }
 
 		/** 
 		 * set the update rate of physics world, update rate is the value of EngineUpdateTimes/PhysicsWorldUpdateTimes.
 		 * set it higher can improve performance, set it lower can improve accuracy of physics world simulation.
 		 * default value is 1.0
 		 */
-		public void SetUpdateRate(int rate) { if (rate > 0) { _updateRate = rate; } }
+		public int UpdateRate { get { return _updateRate; } set { if (value > 0) { _updateRate = value; } } }
 
-		/** get the update rate */
-		public int GetUpdateRate() { return _updateRate; }
+		public int DebugDrawMask { get { return _debugDrawMask; } set { _debugDrawMask = value; } }
 
 
 		#endregion
@@ -763,7 +759,7 @@ namespace CocosSharp
 
 				if (!joint.IsCollisionEnabled())
 				{
-					CCPhysicsBody body = joint.GetBodyA() == bodyA ? joint.GetBodyB() : joint.GetBodyA();
+					CCPhysicsBody body = joint.BodyA == bodyA ? joint.BodyB : joint.BodyA;
 
 					if (body == bodyB)
 					{
@@ -1064,10 +1060,7 @@ namespace CocosSharp
 		#endregion
 
 
-		public void SetDebugDrawMask(int mask)
-		{
-			_debugDrawMask = mask;
-		}
+	
 	}
 
 }

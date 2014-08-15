@@ -399,12 +399,12 @@ namespace CocosSharp
 
 			if (body == null)
 			{
-				_info.SetBody(null);
+				_info.Body = null;
 				_body = null;
 			}
 			else
 			{
-				_info.SetBody(body._info.GetBody());
+				_info.Body = body._info.Body;
 				_body = body;
 			}
 		}
@@ -471,7 +471,7 @@ namespace CocosSharp
 
 			_type = PhysicsType.CIRCLE;
 
-            cpShape shape = new cpCircleShape(CCPhysicsShapeInfo.SharedBody(), radius, PhysicsHelper.CCPointToCpVect(offset));
+            cpShape shape = new cpCircleShape(CCPhysicsShapeInfo.SharedBody, radius, PhysicsHelper.CCPointToCpVect(offset));
 
 			_info.Add(shape);
 
@@ -580,7 +580,7 @@ namespace CocosSharp
 
                           };
 
-			cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.SharedBody(), 4, vec, radius);
+			cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.SharedBody, 4, vec, radius);
 
 			_info.Add(shape);
 
@@ -621,7 +621,7 @@ namespace CocosSharp
 		{
 			_type = PhysicsType.POLYGEN;
 
-            cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.SharedBody(), count, PhysicsHelper.CCPointsTocpVects(vecs), radius);
+            cpShape shape = new cpPolyShape(CCPhysicsShapeInfo.SharedBody, count, PhysicsHelper.CCPointsTocpVects(vecs), radius);
 
 
 			_info.Add(shape);
@@ -701,7 +701,7 @@ namespace CocosSharp
 		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, CCPhysicsMaterial material, float border = 1)
 		{
 
-			cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(),
+			cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody,
                 PhysicsHelper.CCPointToCpVect(a),
                 PhysicsHelper.CCPointToCpVect(b),
 										   border);
@@ -752,7 +752,7 @@ namespace CocosSharp
 			int i = 0;
 			for (; i < 4; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(), vec[i], vec[(i + 1) % 4],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody, vec[i], vec[(i + 1) % 4],
 												   border);
 				_info.Add(shape);
 			}
@@ -826,7 +826,7 @@ namespace CocosSharp
             var vecs = PhysicsHelper.CCPointsTocpVects(vec);
 			for (; i < count; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(), vecs[i], vecs[(i + 1) % count],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody, vecs[i], vecs[(i + 1) % count],
 												   border);
 
 				if (shape == null)
@@ -901,7 +901,7 @@ namespace CocosSharp
 			int i = 0;
 			for (; i < count; ++i)
 			{
-				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody(), vecs[i], vecs[i + 1],
+				cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody, vecs[i], vecs[i + 1],
 											  border);
 				shape.SetElasticity(1.0f);
 				shape.SetFriction(1.0f);

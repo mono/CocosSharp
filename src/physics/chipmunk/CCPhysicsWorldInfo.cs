@@ -36,12 +36,15 @@ namespace CocosSharp
 	internal class CCPhysicsWorldInfo
 	{
 
-		private cpSpace _space;
-
+	
 
 		#region PUBLIC METHODS
 
-		public cpSpace Space { get { return _space; } }
+		private cpSpace _space;
+
+		internal cpSpace Space { get { return _space; } }
+		internal cpVect Gravity { get { return _space.GetGravity(); } set { _space.SetGravity(value); } }
+
 
 
 		public void AddShape(CCPhysicsShapeInfo shape)
@@ -65,7 +68,7 @@ namespace CocosSharp
 
 		public void AddBody(CCPhysicsBodyInfo bodyInf)
 		{
-			cpBody body = bodyInf.GetBody();
+			cpBody body = bodyInf.Body;
 
 			if (!_space.ContainsBody(body))
 			{
@@ -75,7 +78,7 @@ namespace CocosSharp
 
 		public void RemoveBody(CCPhysicsBodyInfo bodyInf)
 		{
-			var body = bodyInf.GetBody();
+			var body = bodyInf.Body;
 			if (_space.ContainsBody(body))
 			{
 				_space.RemoveBody(body);
@@ -98,12 +101,9 @@ namespace CocosSharp
 			}
 		}
 
-		public void SetGravity(cpVect gravity)
-		{
-			_space.SetGravity(gravity);
-		}
-
+	
 		public bool IsLocked() { return _space.IsLocked; } // 0 == _space.locked ? false : true; }
+		
 		public void Step(float delta) { _space.Step(delta); }
 
 
