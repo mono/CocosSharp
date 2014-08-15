@@ -381,15 +381,15 @@ namespace CocosSharp
 			// add shape to body
 			if (!_shapes.Exists((s) => s == shape))
 			{
-				shape.SetBody(this);
+				shape.Body = this;
 
 				// calculate the area, mass, and desity
 				// area must update before mass, because the density changes depend on it.
 				if (addMassAndMoment)
 				{
-					_area += shape.GetArea();
-					AddMass(shape.GetMass());
-					AddMoment(shape.GetMoment());
+					_area += shape.Area;
+					AddMass(shape.Mass);
+					AddMoment(shape.Moment);
 				}
 
 				if (_world != null)
@@ -399,9 +399,9 @@ namespace CocosSharp
 
 				_shapes.Add(shape);
 
-				if (_group != cp.NO_GROUP && shape.GetGroup() == cp.NO_GROUP)
+				if (_group != cp.NO_GROUP && shape.Group == cp.NO_GROUP)
 				{
-					shape.SetGroup(_group);
+					shape.Group = _group;
 				}
 			}
 
@@ -420,9 +420,9 @@ namespace CocosSharp
 				// area must update before mass, because the density changes depend on it.
 				if (reduceMassAndMoment)
 				{
-					_area -= shape.GetArea();
-					AddMass(-shape.GetMass());
-					AddMoment(-shape.GetMoment());
+					_area -= shape.Area;
+					AddMass(-shape.Mass);
+					AddMoment(-shape.Moment);
 				}
 
 				//remove
@@ -433,7 +433,7 @@ namespace CocosSharp
 
 				// set shape->_body = nullptr make the shape->setBody will not trigger the _body->removeShape function call.
 				shape._body = null;
-				shape.SetBody(null);
+				shape.Body = null;
 
 				_shapes.Remove(shape);
 			}
@@ -449,7 +449,7 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				if (shape.GetTag() == tag)
+				if (shape.Tag == tag)
 				{
 					RemoveShape(shape, reduceMassAndMoment);
 					return;
@@ -465,9 +465,9 @@ namespace CocosSharp
 				// area must update before mass, because the density changes depend on it.
 				if (reduceMassAndMoment)
 				{
-					_area -= shape.GetArea();
-					AddMass(-shape.GetMass());
-					AddMoment(-shape.GetMoment());
+					_area -= shape.Area;
+					AddMass(-shape.Mass);
+					AddMoment(-shape.Moment);
 				}
 
 				if (_world != null)
@@ -477,7 +477,7 @@ namespace CocosSharp
 
 				// set shape->_body = nullptr make the shape->setBody will not trigger the _body->removeShape function call.
 				shape._body = null;
-				shape.SetBody(null);
+				shape.Body = null;
 			}
 			_shapes.Clear();
 		}
@@ -491,7 +491,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				if (shape.GetTag() == tag)
+				if (shape.Tag == tag)
 				{
 					return shape;
 				}
@@ -678,7 +678,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				shape.SetCategoryBitmask(bitmask);
+				shape.CategoryBitmask = bitmask;
 			}
 
 		}
@@ -693,7 +693,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				shape.SetContactTestBitmask(bitmask);
+				shape.ContactTestBitmask = bitmask;
 			}
 		}
 		/**
@@ -707,7 +707,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				shape.SetCollisionBitmask(bitmask);
+				shape.CollisionBitmask = bitmask;
 			}
 		}
 		/** get the category bit mask */
@@ -726,7 +726,7 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetGroup(group);
+				shape.Group = group;
 			}
 		}
 		/** get the group of body */
@@ -1152,7 +1152,7 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetScale(scale);
+				shape.Scale = scale;
 			}
 		}
 
@@ -1168,14 +1168,14 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetScaleX(scaleX);
+				shape.ScaleX = scaleX;
 			}
 		}
 		public void SetScaleY(float scaleY)
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetScaleY(scaleY);
+				shape.ScaleY = scaleY;
 			}
 		}
 
@@ -1195,7 +1195,7 @@ namespace CocosSharp
 			_elasticity = elasticity;
 			foreach (var shape in _shapes)
 			{
-				shape.SetElasticity(elasticity);
+				shape.Elasticity = elasticity;
 			}
 		}
 
@@ -1210,7 +1210,7 @@ namespace CocosSharp
 			_friction = friction;
 			foreach (var shape in _shapes)
 			{
-				shape.SetFriction(friction);
+				shape.Friction = friction;
 			}
 		}
 
