@@ -37,13 +37,13 @@ namespace CocosSharp
 	{
 
 
-		public CCPhysicsShape shape;
-		public CCPoint start;
-		public CCPoint end;              //< in lua, it's name is "ended"
-		public CCPoint contact;
-		public CCPoint normal;
-		public float fraction;
-		public object data;
+        public CCPhysicsShape Shape { get; set; }
+        public CCPoint Start { get; set; }
+        public CCPoint End { get; set; }              //< in lua, it's name is "ended"
+        public CCPoint Contact { get; set; }
+        public CCPoint Normal { get; set; }
+        public float Fraction { get; set; }
+        public object Data { get; set; }
 
 		public CCPhysicsRayCastInfo(CCPhysicsShape shape,
 								  CCPoint start,
@@ -51,53 +51,54 @@ namespace CocosSharp
 								  CCPoint contact,
 								  CCPoint normal,
 								  float fraction,
-								  object data)
+                                    object data) : this()
 		{
-			this.shape = shape;
-			this.start = start;
-			this.end = end;          //< in lua, it's name is "ended"
-			this.contact = contact;
-			this.normal = normal;
-			this.fraction = fraction;
-			this.data = data;
+			this.Shape = shape;
+			this.Start = start;
+			this.End = end;          //< in lua, it's name is "ended"
+			this.Contact = contact;
+			this.Normal = normal;
+			this.Fraction = fraction;
+			this.Data = data;
 		}
 	};
 
 	public struct CCRayCastCallbackInfo
 	{
-		public CCPhysicsWorld world;
-		public Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func;
-		public CCPoint p1;
-		public CCPoint p2;
-		public object data;
+        public CCPhysicsWorld World { get; set; }
+        public Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> Function { get; set; }
+        public CCPoint Pont1 { get; set; }
+        public CCPoint Point2 { get; set; }
+        public object Data { get; set; }
 
 		public CCRayCastCallbackInfo(CCPhysicsWorld world, Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint p1, CCPoint p2, object data)
+            : this()
 		{
-			this.world = world;
-			this.func = func;
-			this.p1 = p1;
-			this.p2 = p2;
-			this.data = data;
+			this.World = world;
+			this.Function = func;
+			this.Pont1 = p1;
+			this.Point2 = p2;
+			this.Data = data;
 
 		}
 	}
 
 	public class CCRectQueryCallbackInfo
 	{
-		public CCPhysicsWorld world;
-		public Func<CCPhysicsWorld, CCPhysicsShape, object, bool> func;
-		public object data;
+        public CCPhysicsWorld World { get; set; }
+        public Func<CCPhysicsWorld, CCPhysicsShape, object, bool> Function { get; set; }
+        public object Data { get; set; }
 	};
 
 	public class CCPointQueryCallbackInfo
 	{
-		public CCPhysicsWorld world;
-		public Func<CCPhysicsWorld, CCPhysicsShape, object, bool> func;
-		public object data;
+        public CCPhysicsWorld World { get; set; }
+        public Func<CCPhysicsWorld, CCPhysicsShape, object, bool> Function { get; set; }
+        public object Data { get; set; }
 
 		public CCPointQueryCallbackInfo(CCPhysicsWorld w, Func<CCPhysicsWorld, CCPhysicsShape, object, bool> f, object d)
 		{
-			world = w; func = f; data = d;
+			World = w; Function = f; Data = d;
 		}
 
 	}
@@ -157,7 +158,7 @@ namespace CocosSharp
 
 		public static void RayCastCallbackFunc(cpShape shape, float t, CCPoint n, ref CCRayCastCallbackInfo info)
 		{
-			if (!continues)
+			if (!Continues)
 			{
 				return;
 			}
@@ -167,15 +168,15 @@ namespace CocosSharp
 			cp.AssertWarn(!CCPhysicsShapeInfo.Map.TryGetValue(shape, out it));
 
 			CCPhysicsRayCastInfo callbackInfo = new CCPhysicsRayCastInfo(
-		it.Shape,
-		info.p1,
-		info.p2,
-		new CCPoint(info.p1.X + (info.p2.X - info.p1.X) * t, info.p1.Y + (info.p2.Y - info.p1.Y) * t),
-		 new CCPoint(n.Y, n.Y),
-		t, null
-	);
+        		it.Shape,
+        		info.Pont1,
+        		info.Point2,
+        		new CCPoint(info.Pont1.X + (info.Point2.X - info.Pont1.X) * t, info.Pont1.Y + (info.Point2.Y - info.Pont1.Y) * t),
+        		 new CCPoint(n.Y, n.Y),
+        		t, null
+        	);
 
-			continues = info.func(info.world, callbackInfo, info.data);
+			Continues = info.Function(info.World, callbackInfo, info.Data);
 		}
 
 		public static void QueryRectCallbackFunc(cpShape shape, CCRectQueryCallbackInfo info)
@@ -184,12 +185,12 @@ namespace CocosSharp
 
 			cp.AssertWarn(!CCPhysicsShapeInfo.Map.TryGetValue(shape, out it));
 
-			if (!continues)
+			if (!Continues)
 			{
 				return;
 			}
 
-			continues = info.func(info.world, it.Shape, info.data);
+			Continues = info.Function(info.World, it.Shape, info.Data);
 
 		}
 		public static void QueryPointFunc(cpShape shape, float distance, CCPoint point, ref CCPointQueryCallbackInfo info)
@@ -198,7 +199,7 @@ namespace CocosSharp
 
 			cp.AssertWarn(!CCPhysicsShapeInfo.Map.TryGetValue(shape, out it));
 
-			continues = info.func(info.world, it.Shape, info.data);
+			Continues = info.Function(info.World, it.Shape, info.Data);
 		}
 		public static void GetShapesAtPointFunc(cpShape shape, float distance, CCPoint point, ref List<CCPhysicsShape> arr)
 		{
@@ -210,7 +211,7 @@ namespace CocosSharp
 
 		}
 
-		public static bool continues = true;
+		public static bool Continues = true;
 
 	};
 
@@ -246,53 +247,60 @@ namespace CocosSharp
 
 
 		protected CCPoint _gravity;
-		internal CCPhysicsWorldInfo _info;
+        internal CCPhysicsWorldInfo Info { get; set; }
 		protected float _speed;
 		protected int _updateRate;
 		protected int _updateRateCount;
 		protected float _updateTime;
 
-		protected List<CCPhysicsBody> _bodies = new List<CCPhysicsBody>();
-		protected List<CCPhysicsJoint> _joints = new List<CCPhysicsJoint>();
-		protected CCScene _scene;
+        public List<CCPhysicsBody> Bodies { get; protected set; }
+        protected List<CCPhysicsJoint> Joints { get; set; }
+        public CCScene Scene  { get; protected set; }
 
-		protected bool _delayDirty;
+        protected bool DelayDirty { get; set; }
 		public PhysicsDebugDraw _debugDraw;
-		private int _debugDrawMask;
+        private int debugDrawMask;
 
-		protected List<CCPhysicsBody> _delayAddBodies = new List<CCPhysicsBody>();
-		protected List<CCPhysicsBody> _delayRemoveBodies = new List<CCPhysicsBody>();
-		protected List<CCPhysicsJoint> _delayAddJoints = new List<CCPhysicsJoint>();
-		protected List<CCPhysicsJoint> _delayRemoveJoints = new List<CCPhysicsJoint>();
+        protected List<CCPhysicsBody> DelayAddBodies { get; set; }
+        protected List<CCPhysicsBody> DelayRemoveBodies { get; set; }
+        protected List<CCPhysicsJoint> DelayAddJoints { get; set; }
+        protected List<CCPhysicsJoint> DelayRemoveJoints { get; set; }
 
 		#endregion
 		public cpSpace Space
 		{
 			get
 			{
-				return _info.Space;
+				return Info.Space;
 			}
 		}
 
 		public CCPhysicsWorld(CCScene scene)
 		{
+            DelayAddBodies = new List<CCPhysicsBody>();
+            DelayRemoveBodies = new List<CCPhysicsBody>();
+            DelayAddJoints = new List<CCPhysicsJoint>();
+            DelayRemoveJoints = new List<CCPhysicsJoint>();
+
+            Bodies = new List<CCPhysicsBody>();
+            Joints = new List<CCPhysicsJoint>();
 
 			_gravity = new CCPoint(0.0f, -98.0f);
 			_speed = 1.0f;
 			_updateRate = 1;
 			_updateRateCount = 0;
 			_updateTime = 0.0f;
-			_info = null;
-			_scene = null;
-			_delayDirty = false;
+			Info = null;
+			Scene = null;
+			DelayDirty = false;
 
-			_info = new CCPhysicsWorldInfo();
+			Info = new CCPhysicsWorldInfo();
 
-			_scene = scene;
+			Scene = scene;
 
-            _info.Gravity = PhysicsHelper.CCPointToCpVect(_gravity);
+            Info.Gravity = PhysicsHelper.CCPointToCpVect(_gravity);
 
-			var spc = _info.Space;
+			var spc = Info.Space;
 
 			spc.defaultHandler = new cpCollisionHandler()
 			{
@@ -317,13 +325,13 @@ namespace CocosSharp
 				_debugDraw.Flags = PhysicsDrawFlags.All;
 			}
 
-			if (_debugDraw != null && _bodies.Count > 0)
+			if (_debugDraw != null && Bodies.Count > 0)
 			{
 				if (_debugDraw.Begin())
 				{
-					if ((_debugDrawMask & DEBUGDRAW_SHAPE) > 0)
+					if ((debugDrawMask & DEBUGDRAW_SHAPE) > 0)
 					{
-						foreach (CCPhysicsBody body in _bodies)
+						foreach (CCPhysicsBody body in Bodies)
 						{
 							//hysicsBody body = dynamic_cast<PhysicsBody*>(obj);
 
@@ -339,9 +347,9 @@ namespace CocosSharp
 						}
 					}
 
-					if ((_debugDrawMask & DEBUGDRAW_JOINT) > 0)
+					if ((debugDrawMask & DEBUGDRAW_JOINT) > 0)
 					{
-						foreach (CCPhysicsJoint joint in _joints)
+						foreach (CCPhysicsJoint joint in Joints)
 						{
 							_debugDraw.DrawJoint(joint);
 						}
@@ -373,7 +381,7 @@ namespace CocosSharp
 			}
 
 			AddJointOrDelay(joint);
-			_joints.Add(joint);
+			Joints.Add(joint);
 			joint._world = this;
 		}
 		/** Remove a joint from physics world.*/
@@ -391,7 +399,7 @@ namespace CocosSharp
 
 			RemoveJointOrDelay(joint);
 
-			_joints.Remove(joint);
+			Joints.Remove(joint);
 			joint._world = null;
 
 			// clean the connection to this joint
@@ -408,7 +416,7 @@ namespace CocosSharp
 				}
 
 				// test the distraction is delaied or not
-				if (_delayRemoveJoints.Exists(j => j == joint))
+				if (DelayRemoveJoints.Exists(j => j == joint))
 				{
 					joint._destoryMark = true;
 				}
@@ -418,7 +426,7 @@ namespace CocosSharp
 		/** Remove all joints from physics world.*/
 		public virtual void RemoveAllJoints(bool destroy = true)
 		{
-			foreach (var joint in _joints)
+			foreach (var joint in Joints)
 			{
 				RemoveJointOrDelay(joint);
 				joint._world = null;
@@ -437,12 +445,12 @@ namespace CocosSharp
 					}
 
 					// test the distraction is delaied or not
-					if (_delayRemoveJoints.Exists(j => j == joint))
+					if (DelayRemoveJoints.Exists(j => j == joint))
 						joint._destoryMark = true;
 				}
 			}
 
-			_joints.Clear();
+			Joints.Clear();
 		}
 
 		/** Remove a body from physics world. */
@@ -465,7 +473,7 @@ namespace CocosSharp
 				other.RemoveJoint(joint);
 
 
-				if (_delayRemoveJoints.Exists(j => j == joint))
+				if (DelayRemoveJoints.Exists(j => j == joint))
 					joint._destoryMark = true;
 
 			}
@@ -473,7 +481,7 @@ namespace CocosSharp
 			body._joints.Clear();
 
 			RemoveBodyOrDelay(body);
-			_bodies.Remove(body);
+			Bodies.Remove(body);
 			body._world = null;
 
 		}
@@ -481,7 +489,7 @@ namespace CocosSharp
 		/** Remove body by tag. */
 		public virtual void RemoveBody(int tag)
 		{
-			foreach (var body in _bodies)
+			foreach (var body in Bodies)
 			{
 				if (body.Tag == tag)
 				{
@@ -494,13 +502,13 @@ namespace CocosSharp
 		/** Remove all bodies from physics world. */
 		public virtual void RemoveAllBodies()
 		{
-			foreach (var child in _bodies)
+			foreach (var child in Bodies)
 			{
 				RemoveBodyOrDelay(child);
 				child._world = null;
 			}
 
-			_bodies.Clear();
+			Bodies.Clear();
 		}
 
 
@@ -513,7 +521,7 @@ namespace CocosSharp
 			{
 				CCRayCastCallbackInfo info = new CCRayCastCallbackInfo(this, func, point1, point2, data);
 				//Action<cpShape, cpVect, cpVect, float, object> func
-				CCPhysicsWorldCallback.continues = true;
+				CCPhysicsWorldCallback.Continues = true;
 
 				this.Space.SegmentQuery(
                     PhysicsHelper.CCPointToCpVect(point1),
@@ -532,12 +540,12 @@ namespace CocosSharp
 			{
 				CCRectQueryCallbackInfo info = new CCRectQueryCallbackInfo()
 					{
-						world = this,
-						func = func,
-						data = data
+						World = this,
+						Function = func,
+						Data = data
 					};
 
-				CCPhysicsWorldCallback.continues = true;
+				CCPhysicsWorldCallback.Continues = true;
 
 				this.Space.BBQuery(
 									PhysicsHelper.rect2cpbb(rect),
@@ -559,7 +567,7 @@ namespace CocosSharp
 
 				CCPointQueryCallbackInfo info = new CCPointQueryCallbackInfo(this, func, data);
 
-				CCPhysicsWorldCallback.continues = true;
+				CCPhysicsWorldCallback.Continues = true;
 
 				this.Space.PointQuery(
                     PhysicsHelper.CCPointToCpVect(point), 0f,
@@ -605,16 +613,10 @@ namespace CocosSharp
 
 		}
 
-		/** Get all the bodys that in the physics world. */
-		public List<CCPhysicsBody> GetAllBodies()
-		{
-			return _bodies;
-		}
-
 		/** Get body by tag */
 		public CCPhysicsBody GetBody(int tag)
 		{
-			foreach (var body in _bodies)
+			foreach (var body in Bodies)
 			{
 				if (body.Tag == tag)
 				{
@@ -625,18 +627,15 @@ namespace CocosSharp
 			return null;
 		}
 
-		/** Get scene contain this physics world */
-		public CCScene Scene { get { return _scene; } }
-
 		/** get the gravity value */
 		public CCPoint Gravity
 		{
 			get { return _gravity; }
 			set
 			{
-				if (_bodies.Count > 0)
+				if (Bodies.Count > 0)
 				{
-					foreach (var body in _bodies)
+					foreach (var body in Bodies)
 					{
 						// reset gravity for body
 						if (!body.IsGravityEnabled())
@@ -647,7 +646,7 @@ namespace CocosSharp
 				}
 
 				_gravity = value;
-				_info.Gravity = PhysicsHelper.CCPointToCpVect(value);
+				Info.Gravity = PhysicsHelper.CCPointToCpVect(value);
 			}
 		}
 
@@ -662,7 +661,7 @@ namespace CocosSharp
 		 */
 		public int UpdateRate { get { return _updateRate; } set { if (value > 0) { _updateRate = value; } } }
 
-		public int DebugDrawMask { get { return _debugDrawMask; } set { _debugDrawMask = value; } }
+		public int DebugDrawMask { get { return debugDrawMask; } set { debugDrawMask = value; } }
 
 
 		#endregion
@@ -682,7 +681,7 @@ namespace CocosSharp
 			}
 
 			AddBodyOrDelay(body);
-			_bodies.Add(body);
+			Bodies.Add(body);
 			body._world = this;
 
 			return body;
@@ -692,7 +691,7 @@ namespace CocosSharp
 		{
 			if (shape != null)
 			{
-				_info.AddShape(shape._info);
+				Info.AddShape(shape._info);
 				return shape;
 			}
 			return null;
@@ -702,26 +701,26 @@ namespace CocosSharp
 		{
 			if (shape != null)
 			{
-				_info.RemoveShape(shape._info);
+				Info.RemoveShape(shape._info);
 			}
 		}
 
 		public virtual void Update(float delta)
 		{
-			while (_delayDirty)
+			while (DelayDirty)
 			{
 				// the updateJoints must run before the updateBodies.
 				UpdateJoints();
 				UpdateBodies();
 
-				_delayDirty = !(_delayAddBodies.Count == 0 && _delayRemoveBodies.Count == 0 && _delayAddJoints.Count == 0 && _delayRemoveJoints.Count == 0);
+				DelayDirty = !(DelayAddBodies.Count == 0 && DelayRemoveBodies.Count == 0 && DelayAddJoints.Count == 0 && DelayRemoveJoints.Count == 0);
 			}
 
 			_updateTime += delta;
 			if (++_updateRateCount >= _updateRate)
 			{
-				_info.Step(_updateTime * _speed);
-				foreach (var body in _bodies)
+				Info.Step(_updateTime * _speed);
+				foreach (var body in Bodies)
 				{
 					body.Update(_updateTime * _speed);
 				}
@@ -729,7 +728,7 @@ namespace CocosSharp
 				_updateTime = 0.0f;
 			}
 
-			if (_debugDrawMask != DEBUGDRAW_NONE)
+			if (debugDrawMask != DEBUGDRAW_NONE)
 			{
 				DebugDraw();
 			}
@@ -754,7 +753,7 @@ namespace CocosSharp
 			foreach (CCPhysicsJoint joint in jointsA)
 			{
 
-				if (!_joints.Exists(j => j == joint))
+				if (!Joints.Exists(j => j == joint))
 					continue;
 
 				if (!joint.IsCollisionEnabled())
@@ -794,7 +793,7 @@ namespace CocosSharp
 				contact.SetEventCode(EventCode.BEGIN);
 				contact.SetWorld(this);
 
-				_scene.DispatchEvent(contact);
+				Scene.DispatchEvent(contact);
 			}
 
 
@@ -812,7 +811,7 @@ namespace CocosSharp
 
 			contact.SetEventCode(EventCode.PRESOLVE);
 			contact.SetWorld(this);
-			_scene.DispatchEvent(contact);
+			Scene.DispatchEvent(contact);
 
 			return contact.ResetResult() ? true : false;
 		}
@@ -826,7 +825,7 @@ namespace CocosSharp
 
 			contact.SetEventCode(EventCode.POSTSOLVE);
 			contact.SetWorld(this);
-			_scene.DispatchEvent(contact);
+			Scene.DispatchEvent(contact);
 		}
 
 		public virtual void CollisionSeparateCallback(CCPhysicsContact contact)
@@ -838,7 +837,7 @@ namespace CocosSharp
 
 			contact.SetEventCode(EventCode.SEPERATE);
 			contact.SetWorld(this);
-			_scene.DispatchEvent(contact);
+			Scene.DispatchEvent(contact);
 		}
 
 		public virtual void DoAddBody(CCPhysicsBody body)
@@ -854,7 +853,7 @@ namespace CocosSharp
 				// add body to space
 				if (body.IsDynamic())
 				{
-					_info.AddBody(body._info);
+					Info.AddBody(body._info);
 				}
 
 				// add shapes to space
@@ -882,7 +881,7 @@ namespace CocosSharp
 			}
 
 			// remove body
-			_info.RemoveBody(body._info);
+			Info.RemoveBody(body._info);
 		}
 
 		public virtual void DoAddJoint(CCPhysicsJoint joint)
@@ -892,29 +891,29 @@ namespace CocosSharp
 				return;
 			}
 
-			_info.AddJoint(joint._info);
+			Info.AddJoint(joint._info);
 		}
 
 		public virtual void DoRemoveJoint(CCPhysicsJoint joint)
 		{
-			_info.RemoveJoint(joint._info);
+			Info.RemoveJoint(joint._info);
 		}
 
 		public virtual CCPhysicsBody AddBodyOrDelay(CCPhysicsBody body)
 		{
-			CCPhysicsBody removeBodyIter = _delayRemoveBodies.Find(b => b == body);
+			CCPhysicsBody removeBodyIter = DelayRemoveBodies.Find(b => b == body);
 			if (removeBodyIter != null)
 			{
-				_delayRemoveBodies.Remove(removeBodyIter);
+				DelayRemoveBodies.Remove(removeBodyIter);
 				return null;
 			}
 
-			if (_info.IsLocked())
+			if (Info.IsLocked())
 			{
-				if (_delayAddBodies.Exists(b => b == body))
+				if (DelayAddBodies.Exists(b => b == body))
 				{
-					_delayAddBodies.Add(body);
-					_delayDirty = true;
+					DelayAddBodies.Add(body);
+					DelayDirty = true;
 				}
 			}
 			else
@@ -927,18 +926,18 @@ namespace CocosSharp
 
 		public virtual void RemoveBodyOrDelay(CCPhysicsBody body)
 		{
-			if (_delayAddBodies.Exists(b => b == body))
+			if (DelayAddBodies.Exists(b => b == body))
 			{
-				_delayAddBodies.Remove(body);
+				DelayAddBodies.Remove(body);
 				return;
 			}
 
-			if (_info.IsLocked())
+			if (Info.IsLocked())
 			{
-				if (_delayRemoveBodies.Exists(b => b == body))
+				if (DelayRemoveBodies.Exists(b => b == body))
 				{
-					_delayRemoveBodies.Add(body);
-					_delayDirty = true;
+					DelayRemoveBodies.Add(body);
+					DelayDirty = true;
 				}
 			}
 			else
@@ -950,20 +949,20 @@ namespace CocosSharp
 		public virtual void AddJointOrDelay(CCPhysicsJoint joint)
 		{
 
-			var it = _delayRemoveJoints.Find(j => j == joint);
+			var it = DelayRemoveJoints.Find(j => j == joint);
 			if (it != null)
 			{
-				_delayRemoveJoints.Remove(it);
+				DelayRemoveJoints.Remove(it);
 				return;
 			}
 
-			if (_info.IsLocked())
+			if (Info.IsLocked())
 			{
 
-				if (!_delayAddJoints.Exists(j => j == joint))
+				if (!DelayAddJoints.Exists(j => j == joint))
 				{
-					_delayAddJoints.Add(joint);
-					_delayDirty = true;
+					DelayAddJoints.Add(joint);
+					DelayDirty = true;
 				}
 
 			}
@@ -975,18 +974,18 @@ namespace CocosSharp
 
 		public virtual void RemoveJointOrDelay(CCPhysicsJoint joint)
 		{
-			var it = _delayAddJoints.Find(j => j == joint);
+			var it = DelayAddJoints.Find(j => j == joint);
 			if (it != null)
 			{
-				_delayAddJoints.Remove(it);
+				DelayAddJoints.Remove(it);
 			}
-			if (_info.IsLocked())
+			if (Info.IsLocked())
 			{
 
-				if (!_delayAddJoints.Exists(j => j == joint))
+				if (!DelayAddJoints.Exists(j => j == joint))
 				{
-					_delayRemoveJoints.Add(joint);
-					_delayDirty = true;
+					DelayRemoveJoints.Add(joint);
+					DelayDirty = true;
 				}
 			}
 			else
@@ -997,26 +996,26 @@ namespace CocosSharp
 
 		public virtual void UpdateBodies()
 		{
-			if (_info.IsLocked())
+			if (Info.IsLocked())
 			{
 				return;
 			}
 
 			// Fixed: netonjm >  issue #4944, contact callback will be invoked when add/remove body, _delayAddBodies maybe changed, so we need make a copy.
 
-			CCPhysicsBody[] addCopy = new CCPhysicsBody[_delayAddBodies.Count];
-			_delayAddBodies.CopyTo(addCopy);
-			_delayAddBodies.Clear();
+			CCPhysicsBody[] addCopy = new CCPhysicsBody[DelayAddBodies.Count];
+			DelayAddBodies.CopyTo(addCopy);
+			DelayAddBodies.Clear();
 
 			foreach (var body in addCopy)
 			{
 				DoAddBody(body);
 			}
 
-			CCPhysicsBody[] removeCopy = new CCPhysicsBody[_delayRemoveBodies.Count];
-			_delayRemoveBodies.CopyTo(removeCopy);
+			CCPhysicsBody[] removeCopy = new CCPhysicsBody[DelayRemoveBodies.Count];
+			DelayRemoveBodies.CopyTo(removeCopy);
 
-			_delayRemoveBodies.Clear();
+			DelayRemoveBodies.Clear();
 
 			foreach (var body in removeCopy)
 			{
@@ -1026,26 +1025,26 @@ namespace CocosSharp
 
 		public virtual void UpdateJoints()
 		{
-			if (_info.IsLocked())
+			if (Info.IsLocked())
 			{
 				return;
 			}
 
-			CCPhysicsJoint[] addCopy = new CCPhysicsJoint[_delayAddJoints.Count];
+			CCPhysicsJoint[] addCopy = new CCPhysicsJoint[DelayAddJoints.Count];
 
-			_delayAddJoints.CopyTo(addCopy);
+			DelayAddJoints.CopyTo(addCopy);
 
-			_delayAddJoints.Clear();
+			DelayAddJoints.Clear();
 
 			foreach (var joint in addCopy)
 			{
 				DoAddJoint(joint);
 			}
 
-			CCPhysicsJoint[] removeCopy = new CCPhysicsJoint[_delayRemoveJoints.Count];
-			_delayRemoveJoints.CopyTo(removeCopy);
+			CCPhysicsJoint[] removeCopy = new CCPhysicsJoint[DelayRemoveJoints.Count];
+			DelayRemoveJoints.CopyTo(removeCopy);
 
-			_delayRemoveJoints.Clear();
+			DelayRemoveJoints.Clear();
 			foreach (var joint in removeCopy)
 			{
 				DoRemoveJoint(joint);
