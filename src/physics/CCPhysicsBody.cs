@@ -44,7 +44,7 @@ namespace CocosSharp
 			}
 		}
 
-		public cpBody Body { get { return _info.GetBody(); } }
+		public cpBody Body { get { return _info.Body; } }
 
 
 		public const float MASS_DEFAULT = 1.0f;
@@ -90,7 +90,7 @@ namespace CocosSharp
 
 		#endregion
 
-		public cpBodyType BodyType { get { return _info.GetBody().bodyType; } set { _info.GetBody().bodyType = value; } }
+		public cpBodyType BodyType { get { return _info.Body.bodyType; } set { _info.Body.bodyType = value; } }
 
 
 		/**
@@ -149,7 +149,7 @@ namespace CocosSharp
 			_rotationOffset = 0;
 
 			_info = new CCPhysicsBodyInfo();
-			_info.SetBody(new cpBody(_mass, _moment));
+			_info.Body = new cpBody(_mass, _moment);
 
 		}
 
@@ -177,7 +177,7 @@ namespace CocosSharp
 		{
 			foreach (var joint in _joints)
 			{
-				CCPhysicsBody other = joint.GetBodyA() == this ? joint.GetBodyB() : joint.GetBodyA();
+				CCPhysicsBody other = joint.BodyA == this ? joint.BodyB : joint.BodyA;
 				other.RemoveJoint(joint);
 			}
 		}
@@ -187,7 +187,7 @@ namespace CocosSharp
 
 		protected virtual void SetRotation(float rotation)
 		{
-			_info.GetBody().SetAngle(-((rotation + _rotationOffset) * (CCMathHelper.Pi / 180.0f)));
+			_info.Body.SetAngle(-((rotation + _rotationOffset) * (CCMathHelper.Pi / 180.0f)));
 		}
 
 		public void Update(float delta)
@@ -195,7 +195,7 @@ namespace CocosSharp
 			if (_node != null)
 			{
 				CCNode parent = _node.Parent;
-				CCScene scene = _world.GetScene();
+				CCScene scene = _world.Scene;
                 var vec = new cpVect(Position.X, Position.Y);
 
 				CCPoint parentPosition = new CCPoint((float)vec.x, (float)vec.y);   //ConvertToNodeSpace(scene.ConvertToWorldSpace(new CCPoint((float)vec.x, (float)vec.y)));
@@ -221,9 +221,9 @@ namespace CocosSharp
 				// damping compute
 				if (_isDamping && _dynamic && !IsResting())
 				{
-					_info.GetBody().v.x *= cp.cpfclamp(1.0f - delta * _linearDamping, 0.0f, 1.0f);
-					_info.GetBody().v.y *= cp.cpfclamp(1.0f - delta * _linearDamping, 0.0f, 1.0f);
-					_info.GetBody().w *= cp.cpfclamp(1.0f - delta * _angularDamping, 0.0f, 1.0f);
+					_info.Body.v.x *= cp.cpfclamp(1.0f - delta * _linearDamping, 0.0f, 1.0f);
+					_info.Body.v.y *= cp.cpfclamp(1.0f - delta * _linearDamping, 0.0f, 1.0f);
+					_info.Body.w *= cp.cpfclamp(1.0f - delta * _angularDamping, 0.0f, 1.0f);
 				}
 			}
 		}
@@ -238,19 +238,17 @@ namespace CocosSharp
 		protected void UpdateDamping() { _isDamping = _linearDamping != 0.0f || _angularDamping != 0.0f; }
 		protected void UpdateMass(float oldMass, float newMass)
 		{
-			if (_world == null)
-				return;
-            var gravity = _world.GetGravity();
-
+          
 			if (_dynamic && !_gravityEnabled && _world != null && oldMass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(gravity * oldMass);
+
+				ApplyForce(_world.Gravity * oldMass);
 			}
-			_info.GetBody().SetMass(newMass);
+			_info.Body.SetMass(newMass);
 
 			if (_dynamic && !_gravityEnabled && _world != null && newMass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(-gravity * newMass);
+				ApplyForce(-_world.Gravity * newMass);
 			}
 		}
 
@@ -383,15 +381,15 @@ namespace CocosSharp
 			// add shape to body
 			if (!_shapes.Exists((s) => s == shape))
 			{
-				shape.SetBody(this);
+				shape.Body = this;
 
 				// calculate the area, mass, and desity
 				// area must update before mass, because the density changes depend on it.
 				if (addMassAndMoment)
 				{
-					_area += shape.GetArea();
-					AddMass(shape.GetMass());
-					AddMoment(shape.GetMoment());
+					_area += shape.Area;
+					AddMass(shape.Mass);
+					AddMoment(shape.Moment);
 				}
 
 				if (_world != null)
@@ -401,9 +399,9 @@ namespace CocosSharp
 
 				_shapes.Add(shape);
 
-				if (_group != cp.NO_GROUP && shape.GetGroup() == cp.NO_GROUP)
+				if (_group != cp.NO_GROUP && shape.Group == cp.NO_GROUP)
 				{
-					shape.SetGroup(_group);
+					shape.Group = _group;
 				}
 			}
 
@@ -422,9 +420,9 @@ namespace CocosSharp
 				// area must update before mass, because the density changes depend on it.
 				if (reduceMassAndMoment)
 				{
-					_area -= shape.GetArea();
-					AddMass(-shape.GetMass());
-					AddMoment(-shape.GetMoment());
+					_area -= shape.Area;
+					AddMass(-shape.Mass);
+					AddMoment(-shape.Moment);
 				}
 
 				//remove
@@ -435,7 +433,7 @@ namespace CocosSharp
 
 				// set shape->_body = nullptr make the shape->setBody will not trigger the _body->removeShape function call.
 				shape._body = null;
-				shape.SetBody(null);
+				shape.Body = null;
 
 				_shapes.Remove(shape);
 			}
@@ -451,7 +449,7 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				if (shape.GetTag() == tag)
+				if (shape.Tag == tag)
 				{
 					RemoveShape(shape, reduceMassAndMoment);
 					return;
@@ -467,9 +465,9 @@ namespace CocosSharp
 				// area must update before mass, because the density changes depend on it.
 				if (reduceMassAndMoment)
 				{
-					_area -= shape.GetArea();
-					AddMass(-shape.GetMass());
-					AddMoment(-shape.GetMoment());
+					_area -= shape.Area;
+					AddMass(-shape.Mass);
+					AddMoment(-shape.Moment);
 				}
 
 				if (_world != null)
@@ -479,7 +477,7 @@ namespace CocosSharp
 
 				// set shape->_body = nullptr make the shape->setBody will not trigger the _body->removeShape function call.
 				shape._body = null;
-				shape.SetBody(null);
+				shape.Body = null;
 			}
 			_shapes.Clear();
 		}
@@ -493,7 +491,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				if (shape.GetTag() == tag)
+				if (shape.Tag == tag)
 				{
 					return shape;
 				}
@@ -525,18 +523,18 @@ namespace CocosSharp
         {
             if (_dynamic && _mass != cp.PHYSICS_INFINITY)
             {
-                _info.GetBody().ApplyForce(force, offset);
+				_info.Body.ApplyForce(force, offset);
             }
         }
 
 		/** reset all the force applied to body. */
 		public virtual void ResetForces()
 		{
-			_info.GetBody().ResetForces();
+			_info.Body.ResetForces();
 			// if _gravityEnabled is false, add a reverse of gravity force to body
 			if (_world != null && _dynamic && !_gravityEnabled && _mass != cp.PHYSICS_INFINITY)
 			{
-				ApplyForce(-_world.GetGravity() * _mass);
+				ApplyForce(-_world.Gravity * _mass);
 			}
 		}
 
@@ -561,14 +559,14 @@ namespace CocosSharp
         internal void ApplyImpulse(cpVect impulse, cpVect offset)
         {
             // cpBodyApplyImpulse(_info->getBody(), PhysicsHelper::point2cpv(impulse), PhysicsHelper::point2cpv(offset));
-            _info.GetBody().ApplyImpulse(impulse, offset);
+			_info.Body.ApplyImpulse(impulse, offset);
         }
 
 
 		/** Applies a torque force to body. */
 		public virtual void ApplyTorque(float torque)
 		{
-			_info.GetBody().SetTorque(torque);
+			_info.Body.SetTorque(torque);
 		}
 
 		/** set the velocity of a body */
@@ -579,14 +577,14 @@ namespace CocosSharp
 				cp.AssertWarn("physics warning: your can't set velocity for a static body.");
 				return;
 			}
-            _info.GetBody().SetPosition(new cpVect(velocity.X,velocity.Y));
+			_info.Body.SetPosition(new cpVect(velocity.X, velocity.Y));
 			//cpBodySetVel(_info->getBody(), PhysicsHelper::point2cpv(velocity));
 		}
 
 		/** get the velocity of a body */
 		public virtual CCPoint GetVelocity()
 		{
-            var velocity = _info.GetBody().GetVelocity();// getVel();
+			var velocity = _info.Body.GetVelocity();// getVel();
             return new CCPoint(velocity.x, velocity.y);
 		}
 		/** set the angular velocity of a body */
@@ -598,7 +596,7 @@ namespace CocosSharp
 				return;
 			}
 
-			_info.GetBody().SetAngularVelocity(velocity);
+			_info.Body.SetAngularVelocity(velocity);
 			//cpBodySetAngVel(_info->getBody(), PhysicsHelper::float2cpfloat(velocity));
 		}
 		/** get the angular velocity of a body at a local point */
@@ -617,18 +615,18 @@ namespace CocosSharp
         /** get the angular velocity of a body at a local point */
         internal cpVect GetVelocityAtLocalPoint(cpVect point)
         {
-            return _info.GetBody().GetVelocityAtLocalPoint(point);
+			return _info.Body.GetVelocityAtLocalPoint(point);
         }
         /** get the angular velocity of a body at a world point */
         internal cpVect GetVelocityAtWorldPoint(cpVect point)
         {
-            return _info.GetBody().GetVelocityAtWorldPoint(point);
+			return _info.Body.GetVelocityAtWorldPoint(point);
         }
 
 		/** get the angular velocity of a body */
 		public virtual float GetAngularVelocity()
 		{
-			return _info.GetBody().GetAngularVelocity(); //GetAngVel();
+			return _info.Body.GetAngularVelocity(); //GetAngVel();
 		}
 		/** set the max of velocity */
 		//public virtual void SetVelocityLimit(float limit)
@@ -680,7 +678,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				shape.SetCategoryBitmask(bitmask);
+				shape.CategoryBitmask = bitmask;
 			}
 
 		}
@@ -695,7 +693,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				shape.SetContactTestBitmask(bitmask);
+				shape.ContactTestBitmask = bitmask;
 			}
 		}
 		/**
@@ -709,7 +707,7 @@ namespace CocosSharp
 
 			foreach (var shape in _shapes)
 			{
-				shape.SetCollisionBitmask(bitmask);
+				shape.CollisionBitmask = bitmask;
 			}
 		}
 		/** get the category bit mask */
@@ -728,7 +726,7 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetGroup(group);
+				shape.Group = group;
 			}
 		}
 		/** get the group of body */
@@ -740,7 +738,7 @@ namespace CocosSharp
 		{
 			get
 			{
-				var vec = _info.GetBody().GetPosition();
+				var vec = _info.Body.GetPosition();
                 var vecp = vec - _positionOffset;
                 return new CCPoint(vecp.x, vecp.y);
 
@@ -748,14 +746,14 @@ namespace CocosSharp
 			set
 			{
                 var newpos = new cpVect(value.X, value.Y);
-				_info.GetBody().SetPosition(newpos + _positionOffset);
+				_info.Body.SetPosition(newpos + _positionOffset);
 			}
 		}
 
 		/** get the body rotation. */
 		public float GetRotation()
 		{
-			return -(_info.GetBody().GetAngle() * 180f / cp.M_PI) - _rotationOffset;
+			return -(_info.Body.GetAngle() * 180f / cp.M_PI) - _rotationOffset;
 			//return -(_info.GetBody().GetAngle() * (180.0 / CCMathHelper.Pi)) - _rotationOffset;
 		}
 
@@ -815,8 +813,8 @@ namespace CocosSharp
 				_dynamic = dynamic;
 				if (dynamic)
 				{
-					_info.GetBody().SetMass(_mass);
-					_info.GetBody().SetMoment(_moment);
+					_info.Body.SetMass(_mass);
+					_info.Body.SetMoment(_moment);
 
 					if (_world != null)
 					{
@@ -828,19 +826,19 @@ namespace CocosSharp
 						}
 
 						// _world._info
-						_world._info.Space.AddBody(_info.GetBody());
+						_world.Info.Space.AddBody(_info.Body);
 					}
 				}
 				else
 				{
 					if (_world != null)
 					{
-						_world._info.Space.RemoveBody(_info.GetBody());
+						_world.Info.Space.RemoveBody(_info.Body);
 						// cpSpaceRemoveBody(_world->_info->getSpace(), _info->getBody());
 					}
 
 					// avoid incorrect collion simulation.
-					var body = _info.GetBody();
+					var body = _info.Body;
 					body.SetMass(CCPhysicsBody.MASS_DEFAULT);
 					body.SetMoment(CCPhysicsBody.MOMENT_DEFAULT);
 					body.SetVelocity(cpVect.Zero);
@@ -949,24 +947,23 @@ namespace CocosSharp
 			}
 		}
 
-		/**
-		 * @brief set the body moment of inertia.
-		 * @note if you need add/subtract moment to body, don't use setMoment(getMoment() +/- moment), because the moment of body may be equal to PHYSICS_INFINITY, it will cause some unexpected result, please use addMoment() instead.
-		 */
-		public void SetMoment(float moment)
-		{
-			_moment = moment;
-			_momentDefault = false;
-
-			// the static body's mass and moment is always infinity
-			if (_rotationEnabled && _dynamic)
-			{
-				_info.GetBody().SetMoment(moment); //   cpBodySetMoment(_info->getBody(), PhysicsHelper::float2cpfloat(_moment));
-			}
-
-		}
+	
 		/** get the body moment of inertia. */
-		public float GetMoment() { return _moment; }
+		public float Moment
+		{
+			get { return _moment; }
+			set
+			{
+				_moment = value;
+				_momentDefault = false;
+
+				// the static body's mass and moment is always infinity
+				if (_rotationEnabled && _dynamic)
+				{
+					_info.Body.SetMoment(value); //   cpBodySetMoment(_info->getBody(), PhysicsHelper::float2cpfloat(_moment));
+				}
+			}
+		}
 		/**
 		 * @brief add moment of inertia to body.
 		 * if _moment(moment of the body) == PHYSICS_INFINITY, it remains.
@@ -1015,7 +1012,7 @@ namespace CocosSharp
 			if (_rotationEnabled && _dynamic)
 			{
 				//cpBodySetMoment(, PhysicsHelper::float2cpfloat(_moment));
-				_info.GetBody().SetMoment(_moment);
+				_info.Body.SetMoment(_moment);
 			}
 
 		}
@@ -1040,18 +1037,18 @@ namespace CocosSharp
 		public bool IsResting()
 		{
 			//TODO: it's not clear  new cpBody(0, 0) = ((cpBody*)0);
-			return _info.GetBody().nodeRoot != null; //  (_info->getBody()->node).root != ((cpBody*)0);
+			return _info.Body.nodeRoot != null; //  (_info->getBody()->node).root != ((cpBody*)0);
 		}
 		/** set body to rest */
 		public void SetResting(bool rest)
 		{
 			if (rest && !IsResting())
 			{
-				_info.GetBody().Sleep();
+				_info.Body.Sleep();
 			}
 			else if (!rest && IsResting())
 			{
-				_info.GetBody().Activate();
+				_info.Body.Activate();
 			}
 		}
 		/** 
@@ -1090,7 +1087,7 @@ namespace CocosSharp
 		{
 			if (_rotationEnabled != enable)
 			{
-				_info.GetBody().SetMoment(enable ? _moment : cp.Infinity);
+				_info.Body.SetMoment(enable ? _moment : cp.Infinity);
 				_rotationEnabled = enable;
 			}
 		}
@@ -1108,20 +1105,19 @@ namespace CocosSharp
 				{
 					if (enable)
 					{
-						ApplyForce(_world.GetGravity() * _mass);
+						ApplyForce(_world.Gravity * _mass);
 					}
 					else
 					{
-						ApplyForce(-_world.GetGravity() * _mass);
+						ApplyForce(-_world.Gravity * _mass);
 					}
 				}
 			}
 		}
 
 		/** get the body's tag */
-		public int GetTag() { return _tag; }
+		public int Tag { get { return _tag; } set { _tag = value; } }
 		/** set the body's tag */
-		public void setTag(int tag) { _tag = tag; }
 
 		/** convert the world point to local */
 		public CCPoint World2Local(CCPoint point)
@@ -1141,13 +1137,13 @@ namespace CocosSharp
         /** convert the world point to local */
         internal cpVect World2Local(cpVect point)
         {
-            return _info.GetBody().WorldToLocal(point);
+			return _info.Body.WorldToLocal(point);
             //return PhysicsHelper::cpv2point(cpBodyWorld2Local(_info->getBody(), PhysicsHelper::point2cpv(point)));
         }
         /** convert the local point to world */
         internal cpVect Local2World(cpVect point)
         {
-            return _info.GetBody().LocalToWorld(point);
+			return _info.Body.LocalToWorld(point);
         }
         #endregion
 
@@ -1156,7 +1152,7 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetScale(scale);
+				shape.Scale = scale;
 			}
 		}
 
@@ -1172,51 +1168,48 @@ namespace CocosSharp
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetScaleX(scaleX);
+				shape.ScaleX = scaleX;
 			}
 		}
 		public void SetScaleY(float scaleY)
 		{
 			foreach (var shape in _shapes)
 			{
-				shape.SetScaleY(scaleY);
+				shape.ScaleY = scaleY;
 			}
 		}
 
 
 		public void SetType(cpBodyType type)
 		{
-			_info.GetBody().SetBodyType(type);
+			_info.Body.SetBodyType(type);
 		}
 
-		public float GetElasticity()
-		{
-			return _elasticity;
-		}
+		public float Elasticity
+        {
+            get { return _elasticity; }
+            set
+            {
+                _elasticity = value;
+                foreach (var shape in _shapes)
+                {
+                    shape.Elasticity = value;
+                }
+            }
 
-		public void SetElasticity(float elasticity)
-		{
-			_elasticity = elasticity;
-			foreach (var shape in _shapes)
-			{
-				shape.SetElasticity(elasticity);
-			}
-		}
-
-
-		public float GetFriction()
-		{
-			return _friction;
-		}
-
-		public void SetFriction(float friction)
-		{
-			_friction = friction;
-			foreach (var shape in _shapes)
-			{
-				shape.SetFriction(friction);
-			}
-		}
+        }
+		public float Friction
+        {
+            get { return _friction; }
+            set
+            {
+                _friction = value;
+                foreach (var shape in _shapes)
+                {
+                    shape.Friction = value;
+                }
+            }
+        }
 
 		public void SetFilter(cpShapeFilter filter)
 		{
@@ -1227,12 +1220,12 @@ namespace CocosSharp
 
 		public void SetAngle(float angle)
 		{
-			_info.GetBody().SetAngle(angle);
+			_info.Body.SetAngle(angle);
 		}
 
 		public void SetVelocityUpdateFunc(Action<cpVect, float, float> velocityFunc)
 		{
-			_info.GetBody().SetVelocityUpdateFunc(velocityFunc);
+			_info.Body.SetVelocityUpdateFunc(velocityFunc);
 		}
 
 

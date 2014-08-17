@@ -73,12 +73,13 @@ namespace CocosSharp
 
 		#region PUBLIC FUNCTIONS
 
-		public CCPhysicsBody GetBodyA() { return _bodyA; }
-		public CCPhysicsBody GetBodyB() { return _bodyB; }
-		public CCPhysicsWorld GetWorld() { return _world; }
-		public int GetTag() { return _tag; }
-		public void SetTag(int tag) { _tag = tag; }
-		public bool IsEnabled() { return _enable; }
+		public CCPhysicsBody BodyA { get { return _bodyA; } }
+		public CCPhysicsBody BodyB { get { return _bodyB; } }
+
+		public CCPhysicsWorld World { get { return _world; } }
+		public int Tag { get { return _tag; } set { _tag = value; } }
+		public bool IsEnabled { get { return _enable; } }
+
 		/** Enable/Disable the joint */
 		public void SetEnable(bool enable)
 		{
@@ -99,6 +100,7 @@ namespace CocosSharp
 				}
 			}
 		}
+
 		public bool IsCollisionEnabled() { return _collisionEnable; }
 		/** Enable/disable the collision between two bodies */
 		public void SetCollisionEnable(bool enable)
@@ -227,7 +229,7 @@ namespace CocosSharp
 			//                                       getBodyInfo(b).getBody(),
 			//                                      anchr);
 
-            cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(), PhysicsHelper.CCPointToCpVect(anchr));
+			cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).Body, GetBodyInfo(b).Body, PhysicsHelper.CCPointToCpVect(anchr));
 
 			if (joint == null)
 				return false;
@@ -236,7 +238,7 @@ namespace CocosSharp
 
 
 			// add a gear joint to make two body have the same rotation.
-			joint = new cpGearJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(), 0, 1);
+			joint = new cpGearJoint(GetBodyInfo(a).Body, GetBodyInfo(b).Body, 0, 1);
 
 			if (joint == null)
 				return false;
@@ -326,7 +328,7 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpSlideJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpSlideJoint(GetBodyInfo(a).Body, GetBodyInfo(b).Body,
                 PhysicsHelper.CCPointToCpVect(anchr1),
                 PhysicsHelper.CCPointToCpVect(anchr2),
 										  min,
@@ -374,7 +376,7 @@ namespace CocosSharp
 				return false;
 
 
-			cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).GetBody(), GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpPivotJoint(GetBodyInfo(a).Body, GetBodyInfo(b).Body,
                 PhysicsHelper.CCPointToCpVect(anchr));
 
 			if (joint == null)
@@ -425,8 +427,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpPinJoint(GetBodyInfo(a).GetBody(),
-												GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpPinJoint(GetBodyInfo(a).Body,
+												GetBodyInfo(b).Body,
 											   anchr1,
 											   anchr2);
 
@@ -514,8 +516,8 @@ namespace CocosSharp
 
             var anch1 = PhysicsHelper.CCPointToCpVect(anchr1);
             var anch2 = PhysicsHelper.CCPointToCpVect(anchr2);
-			cpConstraint joint = new cpDampedSpring(GetBodyInfo(a).GetBody(),
-													GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpDampedSpring(GetBodyInfo(a).Body,
+													GetBodyInfo(b).Body,
                 anch1,
                 anch2,
 													cpVect.cpvdist(
@@ -591,8 +593,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpGrooveJoint(GetBodyInfo(a).GetBody(),
-												   GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpGrooveJoint(GetBodyInfo(a).Body,
+												   GetBodyInfo(b).Body,
                 PhysicsHelper.CCPointToCpVect(grooveA),
                 PhysicsHelper.CCPointToCpVect(grooveB),
                 PhysicsHelper.CCPointToCpVect(anchr));
@@ -663,8 +665,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpDampedRotarySpring(GetBodyInfo(a).GetBody(),
-												   GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpDampedRotarySpring(GetBodyInfo(a).Body,
+												   GetBodyInfo(b).Body,
 													_bodyB.GetRotation() - _bodyA.GetRotation(),
 													stiffness,
 													damping);
@@ -727,8 +729,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpRotaryLimitJoint(GetBodyInfo(a).GetBody(),
-												   GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpRotaryLimitJoint(GetBodyInfo(a).Body,
+												   GetBodyInfo(b).Body,
 												   min, max);
 
 			if (joint == null)
@@ -800,8 +802,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpRatchetJoint(GetBodyInfo(a).GetBody(),
-												   GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpRatchetJoint(GetBodyInfo(a).Body,
+												   GetBodyInfo(b).Body,
 												   phase, ratchet);
 
 			if (joint == null)
@@ -858,8 +860,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpGearJoint(GetBodyInfo(a).GetBody(),
-												   GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpGearJoint(GetBodyInfo(a).Body,
+												   GetBodyInfo(b).Body,
 												   phase, ratio);
 
 			if (joint == null)
@@ -908,8 +910,8 @@ namespace CocosSharp
 			if (!base.Init(a, b))
 				return false;
 
-			cpConstraint joint = new cpSimpleMotor(GetBodyInfo(a).GetBody(),
-												   GetBodyInfo(b).GetBody(),
+			cpConstraint joint = new cpSimpleMotor(GetBodyInfo(a).Body,
+												   GetBodyInfo(b).Body,
 												  rate);
 
 			if (joint == null)

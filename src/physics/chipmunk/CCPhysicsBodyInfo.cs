@@ -36,8 +36,7 @@ namespace CocosSharp
 
 		private cpBody _body;
 
-		public cpBody GetBody() { return _body; }
-		public void SetBody(cpBody body) { _body = body; }
+		public cpBody Body { get { return _body; } set { _body = value; } }
 
 	}
 }
