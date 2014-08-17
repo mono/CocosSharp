@@ -5,105 +5,76 @@ using CocosDenshion;
 
 namespace $safeprojectname$
 {
-	public class AppDelegate : CCApplication
-	{
+    public class AppDelegate : CCApplicationDelegate
+    {
+        static CCWindow sharedWindow;
 
-		int preferredWidth;
-		int preferredHeight;
+        public static CCWindow SharedWindow
+        {
+            get { return sharedWindow; }
+        }
 
-		public AppDelegate(Game game, GraphicsDeviceManager graphics)
-			: base(game, graphics)
-		{
-			s_pSharedApplication = this;
-#if WINDOWS || MACOS || LINUX || OUYA || XBOX
-            preferredWidth = 1024;
-            preferredHeight = 768;
-#else
-			preferredWidth = 480;
-			preferredHeight = 320;
+        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+        {
+            //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
+            //application.AllowUserResizing = true;
+            //application.PreferMultiSampling = false;
+            application.ContentRootDirectory = "Content";
 
-#endif
-			graphics.PreferredBackBufferWidth = preferredWidth;
-			graphics.PreferredBackBufferHeight = preferredHeight;
+            sharedWindow = mainWindow;
 
-            CCDrawManager.InitializeDisplay(game, 
-			                              graphics, 
-			                              DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
-			
-			
-			graphics.PreferMultiSampling = false;
-			
-		}
-		
-		/// <summary>
-		/// Implement for initialize OpenGL instance, set source path, etc...
-		/// </summary>
-		public override bool InitInstance()
-		{
-			return base.InitInstance();
-		}
-		
-		/// <summary>
-		///  Implement CCDirector and CCScene init code here.
-		/// </summary>
-		/// <returns>
-		///  true  Initialize success, app continue.
-		///  false Initialize failed, app terminate.
-		/// </returns>
-		public override bool ApplicationDidFinishLaunching()
-		{
-			//initialize director
-			CCDirector pDirector = CCDirector.SharedDirector;
-			pDirector.SetOpenGlView();
+            mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
+
+            #if WINDOWS || WINDOWSGL || WINDOWSDX 
+			//application.PreferredBackBufferWidth = 1024;
+			//application.PreferredBackBufferHeight = 768;
+            #elif MACOS
+            //application.PreferredBackBufferWidth = 960;
+            //application.PreferredBackBufferHeight = 640;
+            #endif
+
+            #if WINDOWS_PHONE8
+            application.HandleMediaStateAutomatically = false; // Bug in MonoGame - https://github.com/Cocos2DXNA/cocos2d-xna/issues/325
+            #endif
+
+            CCSpriteFontCache.FontScale = 0.6f;
+            CCSpriteFontCache.RegisterFont("arial", 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 50, 64);
+            CCSpriteFontCache.RegisterFont("MarkerFelt", 16, 18, 22, 32);
+            CCSpriteFontCache.RegisterFont("MarkerFelt-Thin", 12, 18);
+            CCSpriteFontCache.RegisterFont("Paint Boy", 26);
+            CCSpriteFontCache.RegisterFont("Schwarzwald Regular", 26);
+            CCSpriteFontCache.RegisterFont("Scissor Cuts", 26);
+            CCSpriteFontCache.RegisterFont("A Damn Mess", 26);
+            CCSpriteFontCache.RegisterFont("Abberancy", 26);
+            CCSpriteFontCache.RegisterFont("Abduction", 26);
+
+            //sharedDirector = new CCDirector();
+            //director.DisplayStats = true;
+            //director.AnimationInterval = 1.0 / 60;
 
 
-			// 2D projection
-			pDirector.Projection = CCDirectorProjection.Projection2D;
+//            if (sharedWindow.WindowSizeInPixels.Height > 320)
+//            {
+//                application.ContentSearchPaths.Insert(0,"HD");
+//            }
 
-#if WINDOWS || MACOS || LINUX || OUYA || XBOX
-			var resPolicy = CCResolutionPolicy.ExactFit; // This will stretch out your game
-#else
-			var resPolicy = CCResolutionPolicy.ShowAll; // This will letterbox your game
-#endif
+            //sharedWindow.AddSceneDirector(sharedDirector);
 
-			CCDrawManager.SetDesignResolutionSize(preferredWidth, 
-			                                      preferredHeight, 
-			                                      resPolicy);
+            CCScene scene = new CCScene(sharedWindow);
+            CCLayer layer = new TestController();
 
-			// turn on display FPS
-			//pDirector.DisplayStats = true;
+            scene.AddChild(layer);
+            sharedWindow.RunWithScene(scene);
+        }
 
-			// set FPS. the default value is 1.0/60 if you don't call this
-			pDirector.AnimationInterval = 1.0 / 60;
-			
-			CCScene pScene = IntroLayer.Scene;
+        public override void ApplicationDidEnterBackground(CCApplication application)
+        {
+            application.Paused = true;
+        }
 
-			pDirector.RunWithScene(pScene);
-			return true;
-		}
-		
-		/// <summary>
-		/// The function be called when the application enters the background
-		/// </summary>
-		public override void ApplicationDidEnterBackground()
-		{
-            // stop all of the animation actions that are running.
-			CCDirector.SharedDirector.Pause();
-			
-			// if you use SimpleAudioEngine, your music must be paused
-			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = true;
-		}
-		
-		/// <summary>
-		/// The function be called when the application enter foreground  
-		/// </summary>
-		public override void ApplicationWillEnterForeground()
-		{
-            CCDirector.SharedDirector.Resume();
-			
-			// if you use SimpleAudioEngine, your background music track must resume here. 
-			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = false;
-
-		}
-	}
+        public override void ApplicationWillEnterForeground(CCApplication application)
+        {
+            application.Paused = false;
+        }
+    }
 }

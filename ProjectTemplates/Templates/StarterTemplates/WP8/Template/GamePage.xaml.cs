@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Xna.Framework;
+using CocosSharp;
 using MonoGame.Framework.WindowsPhone;
 
 namespace $safeprojectname$
@@ -21,7 +22,7 @@ namespace $safeprojectname$
         {
             InitializeComponent();
 
-            _game = XamlGame<Game1>.Create("", this);
+            CocosSharp.CCApplication.Create(new tests.AppDelegate(), "", this);
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
