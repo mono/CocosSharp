@@ -258,8 +258,8 @@ namespace CocosSharp
         public CCScene Scene  { get; protected set; }
 
         protected bool DelayDirty { get; set; }
+        public int DebugDrawMask { get; set; }
 		public PhysicsDebugDraw _debugDraw;
-        private int debugDrawMask;
 
         protected List<CCPhysicsBody> DelayAddBodies { get; set; }
         protected List<CCPhysicsBody> DelayRemoveBodies { get; set; }
@@ -329,7 +329,7 @@ namespace CocosSharp
 			{
 				if (_debugDraw.Begin())
 				{
-					if ((debugDrawMask & DEBUGDRAW_SHAPE) > 0)
+					if ((DebugDrawMask & DEBUGDRAW_SHAPE) > 0)
 					{
 						foreach (CCPhysicsBody body in Bodies)
 						{
@@ -347,7 +347,7 @@ namespace CocosSharp
 						}
 					}
 
-					if ((debugDrawMask & DEBUGDRAW_JOINT) > 0)
+					if ((DebugDrawMask & DEBUGDRAW_JOINT) > 0)
 					{
 						foreach (CCPhysicsJoint joint in Joints)
 						{
@@ -661,9 +661,6 @@ namespace CocosSharp
 		 */
 		public int UpdateRate { get { return _updateRate; } set { if (value > 0) { _updateRate = value; } } }
 
-		public int DebugDrawMask { get { return debugDrawMask; } set { debugDrawMask = value; } }
-
-
 		#endregion
 
 		#region PROTECTED
@@ -728,7 +725,7 @@ namespace CocosSharp
 				_updateTime = 0.0f;
 			}
 
-			if (debugDrawMask != DEBUGDRAW_NONE)
+			if (DebugDrawMask != DEBUGDRAW_NONE)
 			{
 				DebugDraw();
 			}
