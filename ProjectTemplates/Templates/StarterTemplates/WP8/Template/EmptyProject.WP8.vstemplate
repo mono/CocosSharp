@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Cocos2D-XNA Empty Game Windows Phone 8</Name>
-    <Description>Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
+    <Name>CocosSharp Empty Game Windows Phone 8</Name>
+    <Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
     <SortOrder>1000</SortOrder>
     <CreateNewFolder>true</CreateNewFolder>
-    <DefaultName>Cocos2DGame</DefaultName>
+    <DefaultName>CocosSharpGame</DefaultName>
     <ProvideDefaultName>true</ProvideDefaultName>
     <LocationField>Enabled</LocationField>
     <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -35,7 +35,6 @@
           <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-22.xnb">MarkerFelt-22.xnb</ProjectItem>
         </Folder>
       </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="Game1.cs">Game1.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="GamePage.xaml">GamePage.xaml</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="GamePage.xaml.cs">GamePage.xaml.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="IntroLayer.cs">IntroLayer.cs</ProjectItem>
@@ -57,8 +56,8 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension"
-          repositoryId="EmptyProject.0e049194-4b93-4875-aac8-6d7bb6fcf64d">
-      <package id="Cocos2D-XNA.WindowsPhone8" version="1.2.0.0" />
+          repositoryId="EmptyProject.C20A9025-B3B3-43E6-A5A9-C02F456F1B4F">
+      <package id="CocosSharp.WindowsPhone8" version="1.0.0.0" />
     </packages>
   </WizardData>
 </VSTemplate>

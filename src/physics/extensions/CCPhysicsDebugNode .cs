@@ -107,7 +107,7 @@ namespace ChipmunkSharp
 		public PhysicsDebugDraw(CCPhysicsWorld world)
 		{
 			_world = world;
-			_space = world._info.Space;
+			_space = world.Info.Space;
 			SelectFont("weblysleeku", 22);
 			_world.Scene.AddChild(this); // getScene().addChild(_drawNode);
 

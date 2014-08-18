@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-	<Identifier Id="EmptyProject.0e049194-4b93-4875-aac8-6d7bb6fcf64d">
-		<Name>Cocos2D-XNA Empty Game Windows Phone 8</Name>
-		<Author>Cocos2D-XNA</Author>
+	<Identifier Id="EmptyProject.C20A9025-B3B3-43E6-A5A9-C02F456F1B4F">
+		<Name>CocosSharp Empty Game Windows Phone 8</Name>
+		<Author>Xamarin</Author>
 		<Version>1.0</Version>
-		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
+		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>
@@ -38,9 +38,9 @@
 <!-- Comment out the Version 2.0 so that we can target VS2010 as well 
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
 	<Metadata>
-		<Identity Id="EmptyProject.0e049194-4b93-4875-aac8-6d7bb6fcf64d" Version="1.0" Language="en-US" Publisher="Cocos2D-XNA" />
+		<Identity Id="EmptyProject.C20A9025-B3B3-43E6-A5A9-C02F456F1B4F" Version="1.0" Language="en-US" Publisher="CocosSharp" />
 		<DisplayName>EmptyProject</DisplayName>
-		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast
+		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast
 </Description>
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>
@@ -59,7 +59,7 @@
 		<Dependency d:Source="Installed" Id="Microsoft.VisualStudio.TemplateProviders" DisplayName="Microsoft Visual Studio Template Providers" Version="[10.0,11.0)" />
 	</Dependencies>
 	<Assets>
-		<Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\Cocos2D-XNA.EmptyProject.zip" />
+		<Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\CocosSharp.EmptyProject.zip" />
 	</Assets>
 	<References>
 		<Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="2.5.40416.9020">

@@ -45,12 +45,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsPhone8.1.2.0.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.WindowsPhone8.1.2.0.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\CocosSharp.WindowsPhone8.1.0.0.0.nupkg">
+      <Link>Packages\CocosSharp.WindowsPhone8.1.0.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.WP8.zip">
-      <Link>ProjectTemplates\Cocos2D-XNA\Windows Phone\EmptyProject.WP8.zip</Link>
+      <Link>ProjectTemplates\CocosSharp\Windows Phone\EmptyProject.WP8.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

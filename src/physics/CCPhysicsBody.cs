@@ -826,14 +826,14 @@ namespace CocosSharp
 						}
 
 						// _world._info
-						_world._info.Space.AddBody(_info.Body);
+						_world.Info.Space.AddBody(_info.Body);
 					}
 				}
 				else
 				{
 					if (_world != null)
 					{
-						_world._info.Space.RemoveBody(_info.Body);
+						_world.Info.Space.RemoveBody(_info.Body);
 						// cpSpaceRemoveBody(_world->_info->getSpace(), _info->getBody());
 					}
 
@@ -1185,34 +1185,31 @@ namespace CocosSharp
 			_info.Body.SetBodyType(type);
 		}
 
-		public float GetElasticity()
-		{
-			return _elasticity;
-		}
+		public float Elasticity
+        {
+            get { return _elasticity; }
+            set
+            {
+                _elasticity = value;
+                foreach (var shape in _shapes)
+                {
+                    shape.Elasticity = value;
+                }
+            }
 
-		public void SetElasticity(float elasticity)
-		{
-			_elasticity = elasticity;
-			foreach (var shape in _shapes)
-			{
-				shape.Elasticity = elasticity;
-			}
-		}
-
-
-		public float GetFriction()
-		{
-			return _friction;
-		}
-
-		public void SetFriction(float friction)
-		{
-			_friction = friction;
-			foreach (var shape in _shapes)
-			{
-				shape.Friction = friction;
-			}
-		}
+        }
+		public float Friction
+        {
+            get { return _friction; }
+            set
+            {
+                _friction = value;
+                foreach (var shape in _shapes)
+                {
+                    shape.Friction = value;
+                }
+            }
+        }
 
 		public void SetFilter(cpShapeFilter filter)
 		{
