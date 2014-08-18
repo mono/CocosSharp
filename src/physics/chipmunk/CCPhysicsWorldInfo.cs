@@ -36,8 +36,6 @@ namespace CocosSharp
 	internal class CCPhysicsWorldInfo
 	{
 
-	
-
 		#region PUBLIC METHODS
 
 		private cpSpace _space;
@@ -115,6 +113,20 @@ namespace CocosSharp
 
 		}
 
+		public void SetGravity(cpVect gravity)
+		{
+			_space.SetGravity(gravity);
+		}
+
+		public void SetIterations(int iterations)
+		{
+			_space.SetIterations(iterations);
+		}
+
+		public void SetSleepTimeThreshold(float sleepTimeThreshold)
+		{
+			_space.SetSleepTimeThreshold(sleepTimeThreshold);
+		}
 	}
 }
 #endif
