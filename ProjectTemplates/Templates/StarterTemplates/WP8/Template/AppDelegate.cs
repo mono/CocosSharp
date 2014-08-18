@@ -22,7 +22,7 @@ namespace $safeprojectname$
 
             application.HandleMediaStateAutomatically = false;
 
-	    var introScene = IntroLayer.Scene(mainWindow);
+	    var introScene = IntroLayer.CreateScene(mainWindow);
             sharedWindow.RunWithScene(introScene);
         }
 

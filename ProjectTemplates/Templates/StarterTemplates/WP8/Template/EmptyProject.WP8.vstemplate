@@ -56,7 +56,7 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension"
-          repositoryId="EmptyProject.0e049194-4b93-4875-aac8-6d7bb6fcf64d">
+          repositoryId="EmptyProject.C20A9025-B3B3-43E6-A5A9-C02F456F1B4F">
       <package id="CocosSharp.WindowsPhone8" version="1.0.0.0" />
     </packages>
   </WizardData>

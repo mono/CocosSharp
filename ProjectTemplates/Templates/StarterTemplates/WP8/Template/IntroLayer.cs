@@ -13,6 +13,7 @@ namespace $safeprojectname$
 
 			// create and initialize a Label
 			label = new CCLabelTtf("Hello CocosSharp", "MarkerFelt", 22);
+			label.AnchorPoint = CCPoint.AnchorMiddle;
 
 			// add the label as a child to this Layer
 			AddChild(label);
@@ -32,7 +33,7 @@ namespace $safeprojectname$
 			label.Position = windowSize.Center;
         	}
 
-		public static CCScene Scene (CCWindow mainWindow) 
+		public static CCScene CreateScene (CCWindow mainWindow) 
 		{
 			var scene = new CCScene(mainWindow);
 			var layer = new IntroLayer();
