@@ -1001,16 +1001,7 @@ namespace CocosSharp
 			Material = material;
 		}
 
-		#region PROTECTED PROPERTIES
-		private CCPoint center;
-		#endregion
-
 		#region PUBLIC PROPERTIES
-
-		public override CCPoint Center
-		{
-            get { return center; }
-		}
 
 		public List<CCPoint> Points
 		{

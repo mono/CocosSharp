@@ -1058,23 +1058,19 @@ namespace CocosSharp
 
 		#endregion
 
+      
+        public int Iterations { get { return Info.Iterations; } set { Info.Iterations = value; } }
 
+        public float SleepTimeThreshold { get { return Info.SleepTimeThreshold; } set { Info.SleepTimeThreshold = value; } }
 
+        public float CurrentTimeStep { get { return Info.CurrentTimeStep; } }
 
-		public void SetGravity(cpVect gravity)
-		{
-			_info.SetGravity(gravity);
-		}
+        public float Damping { get { return Info.Damping; } set { Info.Damping = value; } }
 
-		public void SetSleepTimeThreshold(float sleepTimeThreshold)
-		{
-			_info.SetSleepTimeThreshold(sleepTimeThreshold);
-		}
+        public float IdleSpeedThreshold { get { return Info.IdleSpeedThreshold; } set { Info.IdleSpeedThreshold = value; } }
 
-		public void SetIterations(int iterations)
-		{
-			_info.SetIterations(iterations);
-		}
+        public cpBody StaticBody { get { return Info.StaticBody; } }
+        
 	}
 
 }
