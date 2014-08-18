@@ -1232,7 +1232,15 @@ namespace CocosSharp
 		}
 
 
-	
+		public void Sleep()
+		{
+			_info.Body.Sleep();
+		}
+
+		public void SetCenterOfGravity(cpVect gravity)
+		{
+			_info.Body.SetCenterOfGravity(gravity);
+		}
 	}
 }
 #endif
