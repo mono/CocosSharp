@@ -1060,7 +1060,22 @@ namespace CocosSharp
 		#endregion
 
 
-	
+
+
+		public void SetGravity(cpVect gravity)
+		{
+			_info.SetGravity(gravity);
+		}
+
+		public void SetSleepTimeThreshold(float sleepTimeThreshold)
+		{
+			_info.SetSleepTimeThreshold(sleepTimeThreshold);
+		}
+
+		public void SetIterations(int iterations)
+		{
+			_info.SetIterations(iterations);
+		}
 	}
 
 }
