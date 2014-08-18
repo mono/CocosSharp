@@ -4,7 +4,7 @@
 		<Name>CocosSharp Empty Game Windows Phone 8</Name>
 		<Author>Xamarin</Author>
 		<Version>1.0</Version>
-		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
+		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>

@@ -1,19 +1,18 @@
 using System;
-using Cocos2D;
+using CocosSharp;
 using Microsoft.Xna.Framework;
 
 namespace $safeprojectname$
 {
 	public class IntroLayer : CCLayerColor
 	{
+		CCLabelTtf label;
+
 		public IntroLayer () 
 		{
 
 			// create and initialize a Label
-			var label = new CCLabelTTF("Hello Cocos2D-XNA", "MarkerFelt", 22);
-
-			// position the label on the center of the screen
-			label.Position = CCDirector.SharedDirector.WinSize.Center;
+			label = new CCLabelTtf("Hello CocosSharp", "MarkerFelt", 22);
 
 			// add the label as a child to this Layer
 			AddChild(label);
@@ -23,24 +22,26 @@ namespace $safeprojectname$
 			Opacity = 255;
 
 		}
+	        protected override void AddedToScene()
+        	{
+	        	base.AddedToScene();
 
-		public static CCScene Scene 
+			var windowSize = VisibleBoundsWorldspace.Size;
+
+			// position the label on the center of the screen
+			label.Position = windowSize.Center;
+        	}
+
+		public static CCScene Scene (CCMainWindow mainWindow) 
 		{
-			get {
-				// 'scene' is an autorelease object.
-				var scene = new CCScene();
+			var scene = new CCScene(mainWindow);
+			var layer = new IntroLayer();
 
-				// 'layer' is an autorelease object.
-				var layer = new IntroLayer();
+			// add layer as a child to scene
+			scene.AddChild(layer);
 
-				// add layer as a child to scene
-				scene.AddChild(layer);
-
-				// return the scene
-				return scene;
-
-			}
-
+			// return the scene
+			return scene;
 		}
 
 	}
