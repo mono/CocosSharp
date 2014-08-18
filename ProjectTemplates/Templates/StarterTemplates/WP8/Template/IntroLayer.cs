@@ -18,7 +18,7 @@ namespace $safeprojectname$
 			AddChild(label);
 
 			// setup our color for the background
-			Color = new CCColor3B (Microsoft.Xna.Framework.Color.Blue);
+			Color = new CCColor3B (CCColor4B.Blue);
 			Opacity = 255;
 
 		}
@@ -32,7 +32,7 @@ namespace $safeprojectname$
 			label.Position = windowSize.Center;
         	}
 
-		public static CCScene Scene (CCMainWindow mainWindow) 
+		public static CCScene Scene (CCWindow mainWindow) 
 		{
 			var scene = new CCScene(mainWindow);
 			var layer = new IntroLayer();

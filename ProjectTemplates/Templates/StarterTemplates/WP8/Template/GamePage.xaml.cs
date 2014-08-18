@@ -15,14 +15,13 @@ namespace $safeprojectname$
 {
     public partial class GamePage : PhoneApplicationPage
     {
-        private Game1 _game;
 
         // Constructor
         public GamePage()
         {
             InitializeComponent();
 
-            CocosSharp.CCApplication.Create(new tests.AppDelegate(), "", this);
+            CCApplication.Create(new AppDelegate(), "", this);
 
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
