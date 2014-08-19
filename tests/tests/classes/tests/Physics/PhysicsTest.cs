@@ -137,7 +137,7 @@ namespace tests
         {
             base.AddedToScene();
 
-            Scene.PhysicsWorld.DebugDrawMask = CCPhysicsWorld.DEBUGDRAW_SHAPE;
+            Scene.PhysicsWorld.DebugDrawMask = CCPhysicsWorld.DEBUGDRAW_SHAPE | CCPhysicsWorld.DEBUGDRAW_JOINT;
             //Scene.Position = Window.WindowSizeInPixels.Center;
             eTouch = new CCEventListenerTouchAllAtOnce();
             eTouch.OnTouchesEnded = OnTouchesEnded;
