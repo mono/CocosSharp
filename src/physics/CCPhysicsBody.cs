@@ -244,6 +244,8 @@ namespace CocosSharp
 
 				ApplyForce(_world.Gravity * oldMass);
 			}
+
+            if (_info.Body.bodyType == cpBodyType.DYNAMIC && newMass != cp.Infinity)
 			_info.Body.SetMass(newMass);
 
 			if (_dynamic && !_gravityEnabled && _world != null && newMass != cp.PHYSICS_INFINITY)
