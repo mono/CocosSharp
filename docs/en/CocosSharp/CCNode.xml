@@ -47,8 +47,8 @@
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Default Constructor for CCNode.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -59,9 +59,9 @@
         <Parameter Name="contentSize" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
-        <param name="contentSize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="contentSize">A CCSize structure that specifies the ContentSize of the CCNode being created.</param>
+        <summary>Constructor that creates a CCNode with the ContentSize initialized to contentSize</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AddAction">
