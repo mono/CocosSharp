@@ -442,7 +442,7 @@ namespace tests
 
             ScheduleOnce(UpdateOnce, 3.0f);
 
-            for(int i=0; i<14; i++)
+            for(int i=0; i<5; i++)
             {
                 for(int j=0; j<=i; j++)
                 {
