@@ -132,19 +132,88 @@ namespace tests
         public CCScene scene;
 
         CCTexture2D spriteTexture;
+        Dictionary<int, CCNode> mouses;
 
         protected override void AddedToScene()
         {
             base.AddedToScene();
 
+            mouses = new Dictionary<int, CCNode>();
+
             Scene.PhysicsWorld.DebugDrawMask = CCPhysicsWorld.DEBUGDRAW_SHAPE | CCPhysicsWorld.DEBUGDRAW_JOINT;
             //Scene.Position = Window.WindowSizeInPixels.Center;
             eTouch = new CCEventListenerTouchAllAtOnce();
+            eTouch.OnTouchesBegan = OnTouchesBegan;
+            eTouch.OnTouchesMoved = OnTouchesMoved;
             eTouch.OnTouchesEnded = OnTouchesEnded;
             AddEventListener(eTouch);
 
             eAccel = new CCEventListenerAccelerometer();
             eAccel.OnAccelerate = OnAccelerate;
+
+        }
+
+        public virtual void OnTouchesBegan(List<CCTouch> touches, CCEvent arg2)
+        {
+            CCTouch touch = touches.FirstOrDefault();
+            CCPoint location = touch.Location;
+
+            List<CCPhysicsShape> shapes = Scene.PhysicsWorld.GetShapes(location);
+
+
+            CCPhysicsBody body = null;
+
+            foreach (var obj in shapes)
+            {
+                if ((obj.Body.Tag & DRAG_BODYS_TAG) != 0)
+                {
+                    body = obj.Body;
+                    break;
+                }
+            }
+
+            if (body != null)
+            {
+                CCNode mouse = new CCNode();
+
+                mouse.PhysicsBody = new CCPhysicsBody();
+                mouse.PhysicsBody.SetDynamic(false);
+                mouse.Position = location;
+                AddChild(mouse);
+
+                CCPhysicsJointPin join = CCPhysicsJointPin.Construct(mouse.PhysicsBody, body, location);
+                join.SetMaxForce(5000 * body.GetMass());
+                Scene.PhysicsWorld.AddJoint(join);
+                mouses.Add(touch.Id, mouse);
+
+
+            }
+
+
+        }
+
+        public virtual void OnTouchesMoved(List<CCTouch> touches, CCEvent arg2)
+        {
+
+            var touch = touches.FirstOrDefault();
+            CCNode node;
+            if (mouses.TryGetValue(touch.Id, out node))
+            {
+                node.Position = touch.Location;
+            }
+
+        }
+
+        public virtual void OnTouchesEnded(List<CCTouch> touches, CCEvent e)
+        {
+            var touch = touches.FirstOrDefault();
+
+            CCNode it;
+            if (mouses.TryGetValue(touch.Id, out it))
+            {
+                RemoveChild(it);
+                mouses.Remove(touch.Id);
+            }
 
         }
 
@@ -163,11 +232,6 @@ namespace tests
             {
                 Scene.PhysicsWorld.Gravity = v;
             }
-        }
-
-        public virtual void OnTouchesEnded(List<CCTouch> touches, CCEvent e)
-        {
-
         }
 
         public CCSprite MakeBox(CCPoint point, CCSize size)
