@@ -12,8 +12,13 @@ namespace tests
         CCMenuItemLabelTTF pMenuItem;
         CCLayer contentLayer;
 
+        #if USE_PHYSICS
+        public TestScene(bool physics = false)
+            : base(AppDelegate.SharedWindow, physics)
+        #else
         public TestScene()
             : base(AppDelegate.SharedWindow)
+        #endif
         {
             contentLayer = new CCLayer();
             AddChild(contentLayer, MENU_LEVEL);

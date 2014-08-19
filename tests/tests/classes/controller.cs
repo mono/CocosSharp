@@ -431,6 +431,11 @@ namespace tests
                 case(int)TestCases.TEST_EVENTDISPATCHER:
                     scene = new EventDispatcherTestScene();
                     break;
+                    #if USE_PHYSICS
+                case(int)TestCases.TEST_PHYSICS:
+                    scene = new PhysicsTestScene();
+                    break;
+                    #endif
                 default:
                     break;
             }
