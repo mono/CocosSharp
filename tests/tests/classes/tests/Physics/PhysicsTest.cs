@@ -259,7 +259,7 @@ namespace tests
         {
             base.OnEnter();
 
-            spriteTexture = new CCSpriteBatchNode("grossini_dance_atlas", 100);
+            spriteTexture = new CCSpriteBatchNode("images/grossini_dance_atlas", 100);
             AddChild(spriteTexture, 0, parentnode);
 
             //Create a boundin box container room
