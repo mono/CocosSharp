@@ -33,6 +33,8 @@ using System.Text;
 namespace CocosSharp
 {
 
+    public delegate bool RayCastDelegate(CCPhysicsWorld world, CCPhysicsRayCastInfo info, ref object obj);
+
 	public struct CCPhysicsRayCastInfo
 	{
 
@@ -66,12 +68,12 @@ namespace CocosSharp
 	public struct CCRayCastCallbackInfo
 	{
         public CCPhysicsWorld World { get; set; }
-        public Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> Function { get; set; }
+        public RayCastDelegate Function { get; set; }
         public CCPoint Pont1 { get; set; }
         public CCPoint Point2 { get; set; }
         public object Data { get; set; }
 
-		public CCRayCastCallbackInfo(CCPhysicsWorld world, Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint p1, CCPoint p2, object data)
+        public CCRayCastCallbackInfo(CCPhysicsWorld world, RayCastDelegate func, CCPoint p1, CCPoint p2, object data)
             : this()
 		{
 			this.World = world;
@@ -176,7 +178,9 @@ namespace CocosSharp
         		t, null
         	);
 
-			Continues = info.Function(info.World, callbackInfo, info.Data);
+            object data = info.Data;
+
+            Continues = info.Function(info.World, callbackInfo, ref data);
 		}
 
 		public static void QueryRectCallbackFunc(cpShape shape, CCRectQueryCallbackInfo info)
@@ -252,7 +256,7 @@ namespace CocosSharp
         protected bool DelayDirty { get; set; }
         public PhysicsDrawFlags DebugDrawMask
         {
-            get { return _debugDraw.Flags; }
+            get { return debugDraw.Flags; }
             set
             {
                 debugDraw.Flags = value;
@@ -518,8 +522,10 @@ namespace CocosSharp
 		}
 
 
+     
+
 		/** Searches for physics shapes that intersects the ray. */
-		public void RayCast(Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint point1, CCPoint point2, object data)
+        public void RayCast(RayCastDelegate func, CCPoint point1, CCPoint point2, object data)
 		{
 			cp.AssertWarn(func != null, "func shouldn't be nullptr");
 
