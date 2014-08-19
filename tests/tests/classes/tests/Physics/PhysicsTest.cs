@@ -72,7 +72,7 @@ namespace tests
         public static CCLayer NextAction()
         {
             ++sceneIndex;
-            sceneIndex = sceneIndex % (int)EventDispatchTests.TEST_CASE_COUNT;
+            sceneIndex = sceneIndex % (int)PhysicsTests.TEST_CASE_COUNT;
 
             var testLayer = CreateLayer(sceneIndex);
 
@@ -83,7 +83,7 @@ namespace tests
         {
             --sceneIndex;
             if (sceneIndex < 0)
-                sceneIndex += (int)EventDispatchTests.TEST_CASE_COUNT;
+                sceneIndex += (int)PhysicsTests.TEST_CASE_COUNT;
 
             var testLayer = CreateLayer(sceneIndex);
 
