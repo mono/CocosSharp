@@ -945,7 +945,15 @@ namespace CocosSharp
 
             if (imageFormat == CCImageFormat.Jpg || imageFormat == CCImageFormat.Png || imageFormat == CCImageFormat.Gif)
             {
-                result = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, stream);
+                try
+                {
+                    result = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, stream);
+                }
+                catch (Exception)
+                {
+                    // Some platforms do not implement FromStream or do not support the format that may be passed.
+                    CCLog.Log("CocosSharp: unable to load texture from stream.");
+                }
             }
 
             return result;
