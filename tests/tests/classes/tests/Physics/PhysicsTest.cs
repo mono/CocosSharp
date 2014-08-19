@@ -182,12 +182,13 @@ namespace tests
 
             CCSprite ball = new CCSprite(yellow ? "Images/YellowSquare.png" : "Images/CyanSquare.png");
 
-            ball.ScaleX = Window.WindowSizeInPixels.Width / 100.0f;
-            ball.ScaleY = Window.WindowSizeInPixels.Height / 100.0f;
-
             var body = CCPhysicsBody.CreateBox(size, material, 0.0f);
             ball.PhysicsBody = body;
             ball.Position = point;// new cpVect(point.X, point.Y);
+
+            ball.ScaleX = size.Width / 100.0f;
+            ball.ScaleY = size.Height / 100.0f;
+
 
             return ball;
         }
@@ -199,7 +200,7 @@ namespace tests
 
         public CCSprite MakeBall(CCPoint point, float radius, CCPhysicsMaterial material)
         {
-            CCSprite ball = new CCSprite("ball.png");
+            CCSprite ball = new CCSprite("Images/ball.png");
             ball.Scale = 0.13f * radius;
             var body = CCPhysicsBody.CreateCircle(radius, material, CCPoint.Zero);
             ball.PhysicsBody = body;
