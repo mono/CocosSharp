@@ -568,7 +568,7 @@ namespace CocosSharp
             {
 
 #if USE_PHYSICS
-				if (_physicsBody == null || !value.Equals(CCPoint.AnchorMiddle))
+				if (_physicsBody != null && !value.Equals(CCPoint.AnchorMiddle))
 				{
 					CCLog.Log("Node warning: This node has a physics body, the anchor must be in the middle, you cann't change this to other value.");
 					UpdatePhysicsBodyPosition(Scene);
