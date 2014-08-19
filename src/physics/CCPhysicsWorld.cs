@@ -227,24 +227,16 @@ namespace CocosSharp
  * @return true to continue, false to terminate
  */
 
+
 	/**
  * @brief An PhysicsWorld object simulates collisions and other physical properties. You do not create PhysicsWorld objects directly; instead, you can get it from an Scene object.
  */
 	public class CCPhysicsWorld
 	{
 
-		public const int DEBUGDRAW_NONE = 0x00;        ///< draw nothing
-		public const int DEBUGDRAW_SHAPE = 0x01;       ///< draw shapes
-		public const int DEBUGDRAW_JOINT = 0x02;
-		public const int DEBUGDRAW_CONTACT = 0x04;
-		public const int DEBUGDRAW_ALL = DEBUGDRAW_SHAPE | DEBUGDRAW_JOINT | DEBUGDRAW_CONTACT;
-
-
 		public string DEFAULT_FONT = "fonts/MarkerFelt-22";
 
 		#region PROTECTED
-
-
 
 		protected CCPoint _gravity;
         internal CCPhysicsWorldInfo Info { get; set; }
@@ -258,8 +250,30 @@ namespace CocosSharp
         public CCScene Scene  { get; protected set; }
 
         protected bool DelayDirty { get; set; }
-        public int DebugDrawMask { get; set; }
-		public PhysicsDebugDraw _debugDraw;
+        public PhysicsDrawFlags DebugDrawMask
+        {
+            get { return _debugDraw.Flags; }
+            set
+            {
+                debugDraw.Flags = value;
+            }
+        }
+
+
+		private PhysicsDebugDraw _debugDraw;
+
+        public PhysicsDebugDraw debugDraw
+        {
+            get
+            {
+                if (_debugDraw == null)
+                {
+                    _debugDraw = new PhysicsDebugDraw(this);
+                    _debugDraw.Flags = DebugDrawMask; //Sets the actual mask
+                }
+                return _debugDraw;
+            }
+        }
 
         protected List<CCPhysicsBody> DelayAddBodies { get; set; }
         protected List<CCPhysicsBody> DelayRemoveBodies { get; set; }
@@ -317,24 +331,16 @@ namespace CocosSharp
 		public void DebugDraw()
 		{
 
-			if (_debugDraw == null)
+
+
+            if (debugDraw != null && Bodies.Count > 0)
 			{
-
-				_debugDraw = new PhysicsDebugDraw(this);
-
-				_debugDraw.Flags = PhysicsDrawFlags.All;
-			}
-
-			if (_debugDraw != null && Bodies.Count > 0)
-			{
-				if (_debugDraw.Begin())
+                if (debugDraw.Begin())
 				{
-					if ((DebugDrawMask & DEBUGDRAW_SHAPE) > 0)
+                    if (((int) DebugDrawMask & (int)PhysicsDrawFlags.Shapes) > 0)
 					{
 						foreach (CCPhysicsBody body in Bodies)
 						{
-							//hysicsBody body = dynamic_cast<PhysicsBody*>(obj);
-
 							if (!body.IsEnabled())
 							{
 								continue;
@@ -342,20 +348,20 @@ namespace CocosSharp
 
 							foreach (CCPhysicsShape shape in body.GetShapes())
 							{
-								_debugDraw.DrawShape(shape);
+                                debugDraw.DrawShape(shape);
 							}
 						}
 					}
 
-					if ((DebugDrawMask & DEBUGDRAW_JOINT) > 0)
+                    if (((int)DebugDrawMask & (int)PhysicsDrawFlags.Joints) > 0)
 					{
 						foreach (CCPhysicsJoint joint in Joints)
 						{
-							_debugDraw.DrawJoint(joint);
+                            debugDraw.DrawJoint(joint);
 						}
 					}
 
-					_debugDraw.End();
+                    debugDraw.End();
 				}
 			}
 		}
@@ -725,7 +731,7 @@ namespace CocosSharp
 				_updateTime = 0.0f;
 			}
 
-			if (DebugDrawMask != DEBUGDRAW_NONE)
+			if (DebugDrawMask !=  PhysicsDrawFlags.None)
 			{
 				DebugDraw();
 			}
