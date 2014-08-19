@@ -313,6 +313,7 @@
     <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest1.cs" />
     <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest2.cs" />
     <Compile Include="classes\tests\PerformanceTest\PerformBasicLayer.cs" />
+    <Compile Include="classes\tests\Physics\PhysicsTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs" />
@@ -447,17 +448,25 @@
       <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
       <Name>box2d.WindowsGL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows.csproj">
+      <Project>{87a71215-7cac-4b80-9d43-1700decfb828}</Project>
+      <Name>MonoGame.Framework.Net.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows.csproj">
+      <Project>{7de47032-a904-4c29-bd22-2d235e8d91ba}</Project>
+      <Name>MonoGame.Framework.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\CocosSharp.WindowsDX.csproj">
       <Project>{2b5ca459-536c-4b8c-a8c4-b7bec723fe7a}</Project>
       <Name>CocosSharp.WindowsDX</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows.csproj">
-      <Project>{7de47032-a904-4c29-bd22-2d235e8d91ba}</Project>
-      <Name>MonoGame.Framework.WindowsGL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
       <Project>{ae483c29-042e-4226-ba52-d247ce7676da}</Project>
       <Name>Lidgren.Network.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Win32.csproj">
+      <Project>{fd50437f-b756-4bd8-99be-b723f6e1eb45}</Project>
+      <Name>ChipmunkSharp.Win32</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
