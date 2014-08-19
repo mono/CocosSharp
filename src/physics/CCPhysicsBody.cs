@@ -813,6 +813,8 @@ namespace CocosSharp
 				_dynamic = dynamic;
 				if (dynamic)
 				{
+
+                    _info.Body.bodyType = cpBodyType.DYNAMIC;
 					_info.Body.SetMass(_mass);
 					_info.Body.SetMoment(_moment);
 
@@ -839,10 +841,16 @@ namespace CocosSharp
 
 					// avoid incorrect collion simulation.
 					var body = _info.Body;
-					body.SetMass(CCPhysicsBody.MASS_DEFAULT);
+
+                  
+                    body.SetMass(CCPhysicsBody.MASS_DEFAULT);
 					body.SetMoment(CCPhysicsBody.MOMENT_DEFAULT);
+
 					body.SetVelocity(cpVect.Zero);
+
 					body.SetAngularVelocity(0.0f);
+
+                    body.bodyType = cpBodyType.STATIC;
 
 					ResetForces();
 				}
