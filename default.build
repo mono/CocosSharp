@@ -38,7 +38,7 @@
 
     <call target="buildnugets"/>
 
-    <call target="buildtemplates"/>
+    <!--call target="buildtemplates"/-->
   </target>
 
   <target name="monogame" description="Build MonoGame Release" depends="checkos">
