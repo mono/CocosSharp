@@ -742,6 +742,62 @@ namespace CocosSharp
         }
     }
 
+
+    #if !WINDOWS_PHONE && !NETFX_CORE
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    #endif
+    public struct CCNearAndFarClipping
+    {
+        public float Near;
+        public float Far;
+
+        public CCNearAndFarClipping(float near, float far)
+        {
+            Near = near;
+            Far = far;
+        }
+
+        #region Equality
+
+        public static bool Equal(ref CCNearAndFarClipping clipping1, ref CCNearAndFarClipping clipping2)
+        {
+            return ((clipping1.Near == clipping2.Near) && (clipping1.Far == clipping2.Far));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (Equals((CCNearAndFarClipping) obj));
+        }
+
+        public bool Equals(CCNearAndFarClipping clipping)
+        {
+            return Near == clipping.Near && Far == clipping.Far;
+        }
+
+        public override int GetHashCode()
+        {
+            return Near.GetHashCode() + Far.GetHashCode();
+        }
+
+        #endregion Equality
+
+
+        #region Operators
+
+        public static bool operator ==(CCNearAndFarClipping clipping1, CCNearAndFarClipping clipping2)
+        {
+            return clipping1.Near == clipping2.Near && clipping1.Far == clipping2.Far;
+        }
+
+        public static bool operator !=(CCNearAndFarClipping clipping1, CCNearAndFarClipping clipping2)
+        {
+            return clipping1.Near != clipping2.Near || clipping1.Far != clipping2.Far;
+        }
+
+        #endregion Operators
+    }
+
+
 #if !WINDOWS_PHONE && !NETFX_CORE
     [Serializable, StructLayout(LayoutKind.Sequential)]
 #endif
