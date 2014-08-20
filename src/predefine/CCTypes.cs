@@ -406,6 +406,11 @@ namespace CocosSharp
         public float Z { get; set; }
 
 
+        internal Vector3 XnaVector
+        {
+            get { return new Vector3(X, Y, Z); }
+        }
+
         #region Constructors
         
         public CCVertex3F(float x, float y, float z) : this()
@@ -422,6 +427,7 @@ namespace CocosSharp
         {
             return String.Format("CCVertex3F x:{0}, y:{1}, z:{2}", X, Y, Z);
         }
+
     }
 
     #endregion Vertices
