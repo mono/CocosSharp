@@ -47,6 +47,8 @@ namespace CocosSharp
 
         #region Properties
 
+        public bool IsUseDepthTesting { get; set; }
+
         public override CCLayer Layer 
         {
             get { return this; }
@@ -123,7 +125,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCLayer()
-            : this(CCSize.Zero)
+            : this(null)
         {  }
 
         public CCLayer(CCSize visibleBoundsDimensions, CCClipMode clipMode = CCClipMode.None)
@@ -166,16 +168,10 @@ namespace CocosSharp
         {
             base.AddedToScene();
 
-            // If the visible bounds size is zero then that use the visible screenspace in pixels
-            // i.e. the visible worldspace bounds rect will be (0,0, pixelWidth, pixelHeight)
-            if(VisibleBoundsWorldspace.Size == CCSize.Zero)
+            if(Camera == null)
             {
                 CCRect visibleBoundsScreenspace = Scene.VisibleBoundsScreenspace;
-                CCPoint centerInScreenspace = visibleBoundsScreenspace.Center;
-
-                Camera.OrthographicViewSizeWorldspace = visibleBoundsScreenspace.Size;
-                Camera.TargetInWorldspace = new CCPoint3(centerInScreenspace, Layer.VertexZ);
-                Camera.CenterInWorldspace = new CCPoint3(centerInScreenspace, Camera.NearAndFarOrthographicZClipping.X);
+                Camera = new CCCamera(visibleBoundsScreenspace);
             }
 
         }
@@ -334,6 +330,8 @@ namespace CocosSharp
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
             CCDrawManager drawManager = Window.DrawManager;
+
+            drawManager.DepthTest = IsUseDepthTesting;
 
             if (ChildClippingMode == CCClipMode.Bounds && Window != null)
             {
