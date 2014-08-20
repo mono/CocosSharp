@@ -176,7 +176,7 @@ namespace tests
                 CCNode mouse = new CCNode();
 
                 mouse.PhysicsBody = new CCPhysicsBody();
-                mouse.PhysicsBody.SetDynamic(false);
+                mouse.PhysicsBody.IsDynamic = false;
                 mouse.Position = location;
                 AddChild(mouse);
 
@@ -349,7 +349,7 @@ namespace tests
         {
             get
             {
-                return "No title";
+                return "Physics Test";
             }
         }
 
@@ -372,7 +372,6 @@ namespace tests
             //Create a boundin box container room
             var node = new CCNode();
             node.PhysicsBody = CCPhysicsBody.CreateEdgeBox(VisibleBoundsWorldspace.Size, 1.0f, CCPoint.Zero);
-            node.PhysicsBody.BodyType = cpBodyType.STATIC;
             node.Position = VisibleBoundsWorldspace.Center;
             AddChild(node);
 
@@ -389,20 +388,11 @@ namespace tests
 
         }
 
-
-        public override string Title
-        {
-            get
-            {
-                return "Click Add Test";
-            }
-        }
-
         public override string Subtitle
         {
             get
             {
-                return "Mouse Move, Buttons and Scroll";
+                return "Multi touch to add Grossini";
             }
         }
 
@@ -430,7 +420,6 @@ namespace tests
             
             var node = new CCNode();
             node.PhysicsBody = CCPhysicsBody.CreateEdgeSegment(visibleRect.LeftBottom() + new CCPoint(0, 50), visibleRect.RightBottom() + new CCPoint(0, 50));
-            node.PhysicsBody.BodyType = cpBodyType.STATIC;
             AddChild(node);
 
             var ball = new CCSprite("Images/ball.png");
@@ -744,7 +733,7 @@ namespace tests
             CCNode node = new CCNode();
             CCPhysicsBody box = new CCPhysicsBody();
             node.PhysicsBody = box;
-            box.SetDynamic(false);
+            box.IsDynamic = false;
             node.Position = CCPoint.Zero;
             AddChild(node);
 
