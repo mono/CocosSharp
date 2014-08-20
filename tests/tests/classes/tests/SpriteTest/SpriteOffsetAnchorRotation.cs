@@ -20,9 +20,16 @@ namespace tests
 
         public override string Title
         {
-            get { return "Sprite offset + anchor + rot"; }
+            get { return "Testing Sprite"; }
         }
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "offset + anchor + rot";
+            }
+        }
         #endregion Properties
 
 

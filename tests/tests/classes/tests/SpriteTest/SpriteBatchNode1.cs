@@ -13,9 +13,16 @@ namespace tests
 
         public override string Title
         {
-            get { return "SpriteBatchNode (tap screen)"; }
+            get { return "Testing SpriteBatchNode"; }
         }
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "Tap screen to add more sprites";
+            }
+        }
         #endregion Properties
 
 
