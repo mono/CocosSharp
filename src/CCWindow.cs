@@ -54,6 +54,12 @@ namespace CocosSharp
             }
         }
 
+        public bool IsUseDepthTesting
+        {
+            get { return DrawManager.DepthTest; }
+            set { DrawManager.DepthTest = value; }
+        }
+
         public bool DisplayStats 
         {
             get { return Stats.IsEnabled; }
@@ -133,6 +139,7 @@ namespace CocosSharp
 
 
             IsUseAlphaBlending = true;
+            IsUseDepthTesting = false;
 
             this.XnaWindow = xnaWindow;
             xnaWindow.OrientationChanged += OnOrientationChanged;
