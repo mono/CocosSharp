@@ -38,7 +38,7 @@ namespace ChipmunkSharp
 		/// <summary>
 		/// Draw All connections.
 		/// </summary>
-		All = 1 << 10,
+        All = PhysicsDrawFlags.Shapes | PhysicsDrawFlags.BB | PhysicsDrawFlags.ContactPoints | PhysicsDrawFlags.Joints
 
 	}
 
