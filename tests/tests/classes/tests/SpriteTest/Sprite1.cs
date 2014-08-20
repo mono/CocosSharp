@@ -177,10 +177,9 @@ namespace tests
 
         #endregion Constructors
 
-
-        protected override void VisibleBoundsChanged()
+        public override void OnEnter()
         {
-            base.VisibleBoundsChanged();
+            base.OnEnter();
             AddNewSpriteWithCoords(Layer.VisibleBoundsWorldspace.Center);
         }
 
