@@ -579,7 +579,7 @@ namespace CocosSharp
 				cp.AssertWarn("physics warning: your can't set velocity for a static body.");
 				return;
 			}
-			_info.Body.SetPosition(new cpVect(velocity.X, velocity.Y));
+			_info.Body.SetVelocity(new cpVect(velocity.X, velocity.Y));
 			//cpBodySetVel(_info->getBody(), PhysicsHelper::point2cpv(velocity));
 		}
 
