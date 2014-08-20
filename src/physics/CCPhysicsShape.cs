@@ -757,13 +757,13 @@ namespace CocosSharp
 	public class CCPhysicsShapeEdgeSegment : CCPhysicsShape
 	{
 
-		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, float border = 0)
+		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, float border = 1)
 			: this(a, b, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border)
 		{
 
 		}
 
-		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, CCPhysicsMaterial material, float border = 0)
+		public CCPhysicsShapeEdgeSegment(CCPoint a, CCPoint b, CCPhysicsMaterial material, float border = 1)
 		{
 
 			cpShape shape = new cpSegmentShape(CCPhysicsShapeInfo.SharedBody,
