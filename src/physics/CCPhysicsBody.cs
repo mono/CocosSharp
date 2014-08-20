@@ -362,6 +362,14 @@ namespace CocosSharp
             return CreateEdgeChain(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
 		}
 
+        public virtual void AddShape(List<CCPhysicsShape> shapes, bool addMassAndMoment = true)
+        {
+            foreach (var item in shapes)
+            {
+                AddShape(item, addMassAndMoment);
+            }
+        }
+
 		/*
 		 * @brief add a shape to body
 		 * @param shape the shape to be added
@@ -852,7 +860,7 @@ namespace CocosSharp
                         // avoid incorrect collion simulation.
                         var body = _info.Body;
 
-                  
+
                         body.SetMass(CCPhysicsBody.MASS_DEFAULT);
                         body.SetMoment(CCPhysicsBody.MOMENT_DEFAULT);
 
