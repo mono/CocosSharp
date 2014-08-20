@@ -71,13 +71,13 @@ namespace CocosSharp
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 
-            Matrix projection = Matrix.CreateOrthographicOffCenter(
-                -1.0f / widthRatio, 1.0f / widthRatio,
-                -1.0f / heightRatio, 1.0f / heightRatio,
-                -1, 1
-            );
-
-            drawManager.MultMatrix(ref projection);
+//            Matrix projection = Matrix.CreateOrthographicOffCenter(
+//                -1.0f / widthRatio, 1.0f / widthRatio,
+//                -1.0f / heightRatio, 1.0f / heightRatio,
+//                -1, 1
+//            );
+//
+//            drawManager.MultMatrix(ref projection);
 
             drawManager.SetRenderTarget(Texture);
 
@@ -116,7 +116,7 @@ namespace CocosSharp
         public void ClearStencil(int stencilValue)
         {
             Begin();
-            CCDrawManager.SharedDrawManager.Clear(ClearOptions.Stencil, Microsoft.Xna.Framework.Color.White, 0, stencilValue);
+            CCDrawManager.SharedDrawManager.Clear(ClearOptions.Stencil, Microsoft.Xna.Framework.Color.White, 1, stencilValue);
             End();
         }
 

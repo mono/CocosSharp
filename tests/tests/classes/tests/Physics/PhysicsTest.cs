@@ -372,7 +372,7 @@ namespace tests
             //Create a boundin box container room
             var node = new CCNode();
             node.PhysicsBody = CCPhysicsBody.CreateEdgeBox(VisibleBoundsWorldspace.Size, 1.0f, CCPoint.Zero);
-            node.PhysicsBody.SetType(cpBodyType.STATIC);
+            node.PhysicsBody.BodyType = cpBodyType.STATIC;
             node.Position = VisibleBoundsWorldspace.Center;
             AddChild(node);
 
@@ -430,6 +430,7 @@ namespace tests
             
             var node = new CCNode();
             node.PhysicsBody = CCPhysicsBody.CreateEdgeSegment(visibleRect.LeftBottom() + new CCPoint(0, 50), visibleRect.RightBottom() + new CCPoint(0, 50));
+            node.PhysicsBody.BodyType = cpBodyType.STATIC;
             AddChild(node);
 
             var ball = new CCSprite("Images/ball.png");

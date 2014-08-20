@@ -567,17 +567,17 @@ namespace CocosSharp
 
         public void Clear(CCColor4B color, float depth, int stencil)
         {
-            graphicsDevice.Clear(ClearOptions.Target | ClearOptions.Stencil | ClearOptions.DepthBuffer, color.ToColor(), depth, stencil);
+            Clear(ClearOptions.Target | ClearOptions.Stencil | ClearOptions.DepthBuffer, color.ToColor(), depth, stencil);
         }
 
         public void Clear(CCColor4B color, float depth)
         {
-            graphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, color.ToColor(), depth, 0);
+            Clear(color, depth, 0);
         }
 
         public void Clear(CCColor4B color)
         {
-            graphicsDevice.Clear(color.ToColor());
+            Clear(color, 1.0f);
         }
 
         internal void BeginDraw()
@@ -599,7 +599,7 @@ namespace CocosSharp
             {
                 try
                 {
-                    Clear(CCColor4B.Black, 0, 0);
+                    Clear(CCColor4B.Black, 1, 0);
                 }
                 catch (InvalidOperationException)
                 {

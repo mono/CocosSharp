@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -608,7 +609,7 @@ namespace CocosSharp
                 float x2 = x1 + (subRectRatio.Size.Width * ContentSize.Width);
                 float y2 = y1 + (subRectRatio.Size.Height * ContentSize.Height);
 
-                // Don't update Z.
+                // Don't set z-value: The node's transform will be set to include z offset
                 quad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
                 quad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
                 quad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
@@ -702,9 +703,27 @@ namespace CocosSharp
         {
             if(batchNode == null || AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
                 return;
+                
+            transformedQuad = quad;
 
-            transformedQuad = 
-                AffineWorldTransform.Transform(quad);
+            // We can't use the AffineWorldTransform because that's the 2d projection of a 3d transformation
+            // i.e. The Z coords of our quad would remain unaltered which in general incorrect
+            // Instead, we need use the XnaWolrdTransform which incorporates any potential z-transforms
+            Matrix worldMatrix = XnaWorldMatrix;
+            Vector3 topLeft = quad.TopLeft.Vertices.XnaVector;
+            Vector3 topRight = quad.TopRight.Vertices.XnaVector;
+            Vector3 bottomLeft = quad.BottomLeft.Vertices.XnaVector;
+            Vector3 bottomRight = quad.BottomRight.Vertices.XnaVector;
+
+            topLeft = Vector3.Transform(topLeft, worldMatrix);
+            topRight = Vector3.Transform(topRight, worldMatrix);
+            bottomLeft = Vector3.Transform(bottomLeft, worldMatrix);
+            bottomRight = Vector3.Transform(bottomRight, worldMatrix);
+
+            transformedQuad.TopLeft.Vertices = new CCVertex3F(topLeft.X, topLeft.Y, topLeft.Z);
+            transformedQuad.TopRight.Vertices = new CCVertex3F(topRight.X, topRight.Y, topRight.Z);
+            transformedQuad.BottomLeft.Vertices = new CCVertex3F(bottomLeft.X, bottomLeft.Y, bottomLeft.Z);
+            transformedQuad.BottomRight.Vertices = new CCVertex3F(bottomRight.X, bottomRight.Y, bottomRight.Z);
 
             if(textureAtlas != null && textureAtlas.TotalQuads > AtlasIndex)
                 textureAtlas.UpdateQuad(ref transformedQuad, AtlasIndex);

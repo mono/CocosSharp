@@ -85,6 +85,7 @@ namespace CocosSharp
         int zOrder;
         int localZOrder;
         float globalZOrder;
+        float vertexZ;
 
         float rotationX;
         float rotationY;
@@ -116,7 +117,7 @@ namespace CocosSharp
 
         CCNode parent;
 
-        Matrix xnaWorldMatrix;
+        Matrix xnaLocalMatrix;
         CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
 
@@ -193,7 +194,6 @@ namespace CocosSharp
         public virtual bool Visible { get; set; }
         public virtual bool IsSerializable { get; protected set; }      // If this is true, the screen will be recorded into the director's state
 
-        public virtual float VertexZ { get; set; }
         public object UserData { get; set; }
         public object UserObject { get; set; }
         public string Name { get; set; }
@@ -367,6 +367,19 @@ namespace CocosSharp
                         EventDispatcher.MarkDirty = this;
                 }
 
+            }
+        }
+
+        public virtual float VertexZ 
+        {
+            get { return vertexZ; }
+            set
+            {
+                if (vertexZ != value)
+                {
+                    vertexZ = value;
+                    UpdateTransform();
+                }
             }
         }
 
@@ -820,12 +833,27 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
-        protected internal Matrix XnaWorldMatrix 
+        protected internal Matrix XnaLocalMatrix 
         { 
-            get { return xnaWorldMatrix; }
+            get { return xnaLocalMatrix; }
             private set 
             {
-                xnaWorldMatrix = value;
+                xnaLocalMatrix = value;
+            }
+        }
+
+        protected internal Matrix XnaWorldMatrix 
+        { 
+            get
+            {
+                Matrix xnaWorldMatrix = xnaLocalMatrix;
+                CCNode parent = this.Parent;
+                if (parent != null)
+                {
+                    xnaWorldMatrix *= parent.XnaWorldMatrix;
+                }
+
+                return xnaWorldMatrix;
             }
         }
 
@@ -913,7 +941,7 @@ namespace CocosSharp
 #endif
 
             additionalTransform = CCAffineTransform.Identity;
-            xnaWorldMatrix = Matrix.Identity;
+            xnaLocalMatrix = Matrix.Identity;
             scaleX = 1.0f;
             scaleY = 1.0f;
             Visible = true;
@@ -2051,7 +2079,8 @@ namespace CocosSharp
             if (Grid != null && Grid.Active)
             {
                 Grid.AfterDraw(this);
-                Window.DrawManager.MultMatrix(AffineWorldTransform, VertexZ);
+                Matrix worldMatrix = XnaWorldMatrix;
+                Window.DrawManager.MultMatrix(ref worldMatrix);
                 Grid.Blit();
             }
 
@@ -2060,7 +2089,7 @@ namespace CocosSharp
 
         public void Transform()
         {
-            Window.DrawManager.MultMatrix(ref xnaWorldMatrix);
+            Window.DrawManager.MultMatrix(ref xnaLocalMatrix);
         }
 
         public void TransformAncestors()
@@ -2563,10 +2592,10 @@ namespace CocosSharp
                 fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, VertexZ));
             }
 
+            XnaLocalMatrix = fauxLocalCameraTransform * affineLocalTransform.XnaMatrix;
+            xnaLocalMatrix.M43 = VertexZ;
+
             affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
-
-
-            XnaWorldMatrix = affineLocalTransform.XnaMatrix;
 
             if (Children != null)
             {

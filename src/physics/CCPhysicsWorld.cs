@@ -860,7 +860,7 @@ namespace CocosSharp
 				}
 
 				// add body to space
-				if (body.IsDynamic())
+				if (body.IsDynamic)
 				{
 					Info.AddBody(body._info);
 				}

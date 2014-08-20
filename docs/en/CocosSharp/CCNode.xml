@@ -215,10 +215,10 @@
         <Parameter Name="node" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
-        <param name="listener">The listening event.</param>
+        <param name="listener">The listener of a specific event</param>
         <param name="node">The node that the listener should be added to.</param>
         <summary>When the Event Dispatcher starts generating events the listner that is specified is called on the node. </summary>
-        <remarks>The priority and order of the event depends on the Scene Graph Global Z Order</remarks>
+        <remarks>The priority and order of the event depends on the Scene Graph Global Z Order of the node</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddEventListener">
@@ -233,10 +233,10 @@
         <Parameter Name="fixedPriority" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="listener">To be added.</param>
-        <param name="fixedPriority">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="listener">The listener of a specific event</param>
+        <param name="fixedPriority">The fixed priority</param>
+        <summary>When the Event Dispatcher starts generating events the listner that is specified is called on the node. </summary>
+        <remarks>The priority and order of the event is set with the parameter fixedPriority.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AdditionalTransform">
@@ -3054,7 +3054,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Calls children's updateTransform() method recursively.</summary>
+        <summary>Calls children's UpdateTransform() method recursively.</summary>
         <remarks>
           <para>Calls children's <ref refid="classcocos2d_1_1_node_1a36c8969b2ac4c489092729363ee496cd" kindref="member">updateTransform()</ref> method recursively.</para>
           <ref refid="classcocos2d_1_1_node_1a36c8969b2ac4c489092729363ee496cd" kindref="member">updateTransform()</ref>
@@ -3074,12 +3074,14 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Sets a custom user data pointer</summary>
-        <value>To be added.</value>
+        <summary>Gets/Sets a custom user defined data.</summary>
+        <value>User defined information</value>
         <remarks>
           <para>Sets a custom user data pointer</para>
-          <para>You can set everything in UserData pointer, a data block, a structure or an object, etc. <para>Don't forget to release the memroy manually, especially before you change this data pointer, and before this node is autoreleased.</para></para>
+          <para>You can set anything in UserData, a data block, a structure or an object, etc. </para>
           <para>Don't forget to release the memroy manually, especially before you change this data pointer, and before this node is autoreleased.</para>
+          <para>UserData will be set to null in <see cref="T:CocosSharp.CCNode" />'s destructure.</para>
+          <see cref="T:CocosSharp.CCNode" />
         </remarks>
       </Docs>
     </Member>
@@ -3092,10 +3094,10 @@
       </ReturnValue>
       <Docs>
         <summary>Returns a user assigned Object</summary>
-        <value>To be added.</value>
+        <value>User defined object</value>
         <remarks>
           <para>Returns a user assigned Object</para>
-          <para>Similar to UserData, but instead of holding a void* it holds an object. The UserObject will be retained once in this method, and the previous UserObject (if existed) will be relese. The UserObject will be released in <see cref="T:CocosSharp.CCNode" />'s destructure.</para>
+          <para>Similar to UserData, but holds an objectThe UserObject will be set to null in <see cref="T:CocosSharp.CCNode" />'s destructure.</para>
           <see cref="T:CocosSharp.CCNode" />
           <para />
         </remarks>
@@ -3109,22 +3111,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets OpenGL Z vertex of this node.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Gets OpenGL Z vertex of this node.</para>
-          <para>
-            <para>
-              <ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member">setVertexZ(float)</ref>
-            </para>
-            <para>OpenGL Z vertex of this node </para>
-          </para>
-          <para>
-            <ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member">setVertexZ(float)</ref>
-          </para>
-          <ref refid="group__base__nodes_1gaaabfa28f96e520e204c68900aa8e94fa" kindref="member">setVertexZ(float)</ref>
-          <para>OpenGL Z vertex of this node </para>
-        </remarks>
+        <summary>Gets/Sets Z vertex of this node.</summary>
+        <value>Float value of the Z vertex</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Viewport">
@@ -3135,9 +3124,9 @@
         <ReturnType>CocosSharp.CCViewport</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Viewport of the Scene</summary>
+        <value>A viewport that is specified on the Scene</value>
+        <remarks>This is automatically created by the scene if a custom viewport is not passed to the scene constructor.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ViewportChanged">
@@ -3149,8 +3138,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method when developer wants to be notified when the Scenes viewport values change.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Visible">
@@ -3179,8 +3168,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Override this method when you want to be notified when the Visible Bounds of the node changes.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="VisibleBoundsWorldspace">
@@ -3191,9 +3180,9 @@
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>A CCRect that contains the visible bounds in world space that the Scenes viewport is set to.</summary>
+        <value>CCRect with Origin and Size set to the visible bounds</value>
+        <remarks>This is can be accessed after the node is added to a Scene.  Override AddedToScene method.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Visit">
@@ -3217,9 +3206,9 @@
         <ReturnType>CocosSharp.CCWindow</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>This is the windows that this node is associated to</summary>
+        <value>Created Window</value>
+        <remarks>The window is set during scene creationg.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WorldToParentspace">
@@ -3233,10 +3222,10 @@
         <Parameter Name="point" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="point">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="point">Point to be transformed.</param>
+        <summary>This will transform the x,y values to the Parent space.</summary>
+        <returns>A CCPoint with transformed x,y values</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="XnaWorldMatrix">
@@ -3260,10 +3249,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the Z order of this node.</summary>
-        <value>To be added.</value>
+        <summary>Gets/Sets the Z order of this node.</summary>
+        <value>An integer value</value>
         <remarks>
-          <para>Gets the Z order of this node.</para>
+          <para>Gets/Sets the Z order of this node.</para>
           <para>
             <para>
               <ref refid="group__base__nodes_1ga8349948f38f20b24737e579a22553756" kindref="member">setZOrder(int)</ref>

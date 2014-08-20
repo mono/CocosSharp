@@ -667,7 +667,7 @@ namespace CocosSharp
 
 			cpConstraint joint = new cpDampedRotarySpring(GetBodyInfo(a).Body,
 												   GetBodyInfo(b).Body,
-													_bodyB.GetRotation() - _bodyA.GetRotation(),
+													_bodyB.Rotation - _bodyA.Rotation,
 													stiffness,
 													damping);
 

@@ -64,12 +64,12 @@ namespace tests
             base.OnEnter();
 
             //Scene.Director.Projection = (CCDirectorProjection.Projection3D);
-			Scene.Window.IsUseDepthTesting =  (true);
+            Window.IsUseDepthTesting =  (true);
         }
 
         public override void OnExit()
         {
-			Scene.Window.IsUseDepthTesting =  (false);
+            Window.IsUseDepthTesting =  (false);
             //Scene.Director.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }

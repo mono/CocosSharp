@@ -9,6 +9,8 @@ namespace tests
         {
             base.OnEnter();
 
+            Window.IsUseDepthTesting = true;
+
             CCRect visibleBounds = VisibleBoundsWorldspace;
 
             // To reuse a grid the grid size and the grid type must be the same.
@@ -16,24 +18,8 @@ namespace tests
             //     Lens3D is Grid3D and it's size is (15,10)
             //     Waves3D is Grid3D and it's size is (15,10)
 
-
-            CCCamera contentCamera = contentLayer.Camera;
-
-            contentCamera.Projection = CCCameraProjection.Projection3D;
-            contentCamera.PerspectiveAspectRatio = 1.0f;
-
-            CCPoint3 cameraCenter = contentCamera.CenterInWorldspace;
-            CCPoint3 cameraTarget = contentCamera.TargetInWorldspace;
-
-            float targeCenterLength = (cameraTarget - cameraCenter).Length;
-
-
-            contentCamera.NearAndFarPerspectiveClipping = new CCPoint (0.1f, 100.0f);
-
-            contentCamera.PerspectiveFieldOfView = (float)Math.PI / 3.0f; //(float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
-
-            var lens = new CCLens3D(0.0f, new CCGridSize(15, 10), bgNode.ContentSize.Center, 90);
-			var waves = new CCWaves3D(10, new CCGridSize(15, 10), 18, 15);
+            var lens = new CCLens3D(3.0f, new CCGridSize(15, 10), bgNode.ContentSize.Center, 200);
+			var waves = new CCWaves3D(10, new CCGridSize(15, 10), 18, 30);
 
 
 			var reuse = new CCReuseGrid(1);
@@ -49,8 +35,6 @@ namespace tests
 
         public override void OnExit()
         {
-            contentLayer.Camera.Projection = CCCameraProjection.Projection2D;
-
             base.OnExit();
         }
 

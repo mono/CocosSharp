@@ -85,7 +85,7 @@ namespace CocosSharp
         public CCLayerColor() : this(CCColor4B.Transparent)
         { }
 
-        public CCLayerColor(CCColor4B color) : this(CCSize.Zero, color)
+        public CCLayerColor(CCColor4B color) : this(null, color)
         {
         }
 

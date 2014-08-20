@@ -31,24 +31,15 @@ namespace CocosSharp
     {
         Projection2D,           // Sets a 2D projection (orthogonal projection)
         Projection3D,           // Sets a 3D projection
-        Default = Projection2D  // Default projection is 3D projection
+        Default = Projection3D  // Default projection is 3D projection
     }
 
-    /// <summary>
-    /// A CCCamera is used in every CCNode.
-    /// Useful to look at the object from different views.
-    ///
-    /// If the object is transformed by any of the scale, rotation or
-    /// position attributes, then they will override the camera.
-    /// IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both.
-    /// World coordinates won't work if you use the camera.
-    /// </summary>
     public class CCCamera
     {
-        static float defaultFieldOfView = (float)Math.PI / 4.0f;
+        static float defaultFieldOfView = (float)Math.PI / 3.0f;
         static float defaultAspectRatio = 1.0f;
-        static CCPoint defaultNearAndFarOrthoClipping = new CCPoint (1024f, -1024f);
-        static CCPoint defaultNearAndFarPerspClipping = new CCPoint (0.1f, 1000f);
+        static CCNearAndFarClipping defaultNearAndFarOrthoClipping = new CCNearAndFarClipping (1024f, -1024f);
+        static CCNearAndFarClipping defaultNearAndFarPerspClipping = new CCNearAndFarClipping (0.01f, 100f);
 
         internal event EventHandler OnCameraVisibleBoundsChanged = delegate {};
 
@@ -63,8 +54,8 @@ namespace CocosSharp
         CCPoint3 targetInWorldspace;
         CCPoint3 upDirection;
 
-        CCPoint nearAndFarOrthographicZClipping;
-        CCPoint nearAndFarPerspectiveClipping;
+        CCNearAndFarClipping nearAndFarOrthographicZClipping;
+        CCNearAndFarClipping nearAndFarPerspectiveClipping;
 
         Matrix viewMatrix;
         Matrix projectionMatrix;
@@ -116,7 +107,7 @@ namespace CocosSharp
             }
         }
 
-        public CCPoint NearAndFarOrthographicZClipping
+        public CCNearAndFarClipping NearAndFarOrthographicZClipping
         {
             get { return nearAndFarOrthographicZClipping; }
             set 
@@ -129,7 +120,7 @@ namespace CocosSharp
             }
         }
 
-        public CCPoint NearAndFarPerspectiveClipping
+        public CCNearAndFarClipping NearAndFarPerspectiveClipping
         {
             get { return nearAndFarPerspectiveClipping; }
             set 
@@ -210,43 +201,78 @@ namespace CocosSharp
 
         #region Constructors
 
-        CCCamera(CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
+        // Defaults for both 2d and 3d projections
+        CCCamera(CCPoint3 targetInWorldspaceIn)
         {
             targetInWorldspace = targetInWorldspaceIn;
-            centerInWorldspace = cameraCenterPositionWorldspaceIn;
 
             nearAndFarOrthographicZClipping = defaultNearAndFarOrthoClipping;
             nearAndFarPerspectiveClipping = defaultNearAndFarPerspClipping;
-            upDirection = new CCPoint3 (Vector3.Up.X, Vector3.Up.Y, Vector3.Up.Z);
-
             fieldOfView = defaultFieldOfView;
             aspectRatio = defaultAspectRatio;
+            upDirection = new CCPoint3 (Vector3.Up.X, Vector3.Up.Y, Vector3.Up.Z);
         }
 
-        public CCCamera(CCSize orthographicViewSizeWorldspaceIn, CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
-            : this(cameraCenterPositionWorldspaceIn, targetInWorldspaceIn)
+        public CCCamera(CCCameraProjection projection, CCSize targetVisibleDimensionsWorldspace, CCPoint3 targetInWorldspaceIn)
+            : this(targetInWorldspaceIn)
         {
-            cameraProjection = CCCameraProjection.Projection2D;
+            cameraProjection = projection;
 
-            orthographicViewSizeWorldspace = orthographicViewSizeWorldspaceIn;
+            if (cameraProjection == CCCameraProjection.Projection2D)
+            {
+                centerInWorldspace = new CCPoint3(targetInWorldspaceIn.X, 
+                    targetInWorldspaceIn.Y, 
+                    targetInWorldspaceIn.Z + defaultNearAndFarOrthoClipping.Near);
+
+                orthographicViewSizeWorldspace = targetVisibleDimensionsWorldspace;
+            }
+            else
+            {
+                aspectRatio = targetVisibleDimensionsWorldspace.Width / targetVisibleDimensionsWorldspace.Height;
+
+                centerInWorldspace 
+                    = CalculatePerspectiveCameraCenter(targetVisibleDimensionsWorldspace, targetInWorldspace);
+
+
+                /* Make sure the far clipping distance is longer than distance frame camera to target
+                *  Give ourselves a little extra distance buffer so that there's no clipping when rotating etc
+                * 
+                *  If users want to customise the near and far clipping bounds, they can do that and then call
+                *  UpdatePerspectiveCameraTargetBounds
+                */
+                nearAndFarPerspectiveClipping.Far 
+                    = Math.Max(Math.Abs((centerInWorldspace.Z - targetInWorldspaceIn.Z) * 3.0f), defaultNearAndFarPerspClipping.Far);
+            }
 
             UpdateCameraMatrices();
         }
 
-        public CCCamera(CCSize orthographicViewSizeWorldspaceIn)
-            : this(new CCPoint3(orthographicViewSizeWorldspaceIn.Center , 100.0f), new CCPoint3(orthographicViewSizeWorldspaceIn.Center, 0.0f))
+        public CCCamera(CCCameraProjection projection, CCRect targetVisibleBoundsWorldspace) 
+            : this(projection, targetVisibleBoundsWorldspace.Size, new CCPoint3(targetVisibleBoundsWorldspace.Center, 0))
         {
-            cameraProjection = CCCameraProjection.Projection2D;
+        }
 
-            orthographicViewSizeWorldspace = orthographicViewSizeWorldspaceIn;
+        public CCCamera(CCCameraProjection projection, CCSize targetVisibleDimensionsWorldspace)
+            : this(projection, targetVisibleDimensionsWorldspace, new CCPoint3(targetVisibleDimensionsWorldspace.Center, 0))
+        {
+        }
 
-            UpdateCameraMatrices();
+        public CCCamera(CCSize targetVisibleDimensionsWorldspace) 
+            : this(CCCameraProjection.Projection3D, targetVisibleDimensionsWorldspace)
+        {
+        }
+
+        public CCCamera(CCRect targetVisibleBoundsWorldspace) 
+            : this(CCCameraProjection.Projection3D, targetVisibleBoundsWorldspace)
+        {
         }
 
         public CCCamera(float perspectiveFieldOfViewIn, float perspectiveAspectRatioIn, CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
-            : this(cameraCenterPositionWorldspaceIn, targetInWorldspaceIn)
+            : this(targetInWorldspaceIn)
         {
             cameraProjection = CCCameraProjection.Projection3D;
+
+            centerInWorldspace = cameraCenterPositionWorldspaceIn;
 
             fieldOfView = perspectiveFieldOfViewIn;
             aspectRatio = perspectiveAspectRatioIn;
@@ -256,6 +282,46 @@ namespace CocosSharp
 
         #endregion Constructors
 
+
+        public void UpdatePerspectiveCameraTargetBounds(CCRect targetVisibleBoundsWorldspaceIn)
+        {
+            this.UpdatePerspectiveCameraTargetBounds(targetVisibleBoundsWorldspaceIn.Size, 
+                new CCPoint3(targetVisibleBoundsWorldspaceIn.Center, 0));
+        }
+
+        public void UpdatePerspectiveCameraTargetBounds(CCSize targetVisibleDimensionsWorldspaceIn, CCPoint3 targetWorldspaceIn)
+        {
+            cameraProjection = CCCameraProjection.Projection3D;
+
+            aspectRatio = targetVisibleDimensionsWorldspaceIn.Width / targetVisibleDimensionsWorldspaceIn.Height;
+
+            targetInWorldspace = targetWorldspaceIn;
+
+            centerInWorldspace 
+                = CalculatePerspectiveCameraCenter(targetVisibleDimensionsWorldspaceIn, targetWorldspaceIn);
+
+            UpdateCameraMatrices();
+        }
+
+        CCPoint3 CalculatePerspectiveCameraCenter(CCSize targetVisibleBounds, CCPoint3 target)
+        {
+            CCPoint3 newCenter = target;
+
+            /*
+            * Given our field of view and near and far clipping, need to find z position of camera center
+            * The top coord of near bounding frustrum is y_p = - (near * y_eye) / z_eye = near * Tan(fov / 2)
+            * Here, we want y_eye = 1/2 * bounds height
+            * Solve for above for target z_eye
+            * Finally, the center we're setting is in world coords (i.e. z_center = z_target - z_eye.
+            * Note z_eye will generally have a negative value, so - z_eye > 0.
+            */
+
+            float zEye = - (targetVisibleBounds.Height / 2.0f) * (1 / (float)Math.Tan(fieldOfView / 2.0f));
+
+            newCenter.Z -= zEye;
+
+            return newCenter;
+        }
 
         void UpdateCameraMatrices()
         {
@@ -267,14 +333,14 @@ namespace CocosSharp
             {
                 projectionMatrix = Matrix.CreateOrthographic (
                     orthographicViewSizeWorldspace.Width, orthographicViewSizeWorldspace.Height, 
-                    nearAndFarOrthographicZClipping.X, nearAndFarOrthographicZClipping.Y);
+                    nearAndFarOrthographicZClipping.Near, nearAndFarOrthographicZClipping.Far);
             } 
             else if (Projection == CCCameraProjection.Projection3D) 
             {
-                projectionMatrix = Matrix.CreatePerspective(
-                    fieldOfView,
-                    aspectRatio,
-                    nearAndFarPerspectiveClipping.X, nearAndFarPerspectiveClipping.Y
+                projectionMatrix = Matrix.CreatePerspectiveFieldOfView(
+                        fieldOfView,
+                        aspectRatio,
+                        nearAndFarPerspectiveClipping.Near, nearAndFarPerspectiveClipping.Far
                 );
             }
 
