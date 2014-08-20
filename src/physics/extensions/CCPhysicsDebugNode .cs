@@ -453,7 +453,7 @@ namespace ChipmunkSharp
 			cpColor fill = new cpColor(color);
 			fill.a = cp.cpflerp(color.a, 1.0f, 0.5f);
 
-			DrawSegment(ta, tb, Math.Max(1, r), fill);
+			DrawSegment(ta, tb, Math.Max(0.05f, r), fill);
 		}
 
 		public void Draw(cpVect point)
