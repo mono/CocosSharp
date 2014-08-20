@@ -1436,27 +1436,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
-        <remarks>
-          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          <item>
-            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-          </item>
-          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-        </remarks>
+        <summary>Override this method to draw your own node.</summary>
+        <remarks>When extending a CCNode this is usually one of the methods that is overridden if user wants to represent something to the user.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -1519,7 +1500,7 @@
       <Docs>
         <param name="tag">An identifier to find the child node.</param>
         <summary>Gets a child from the container with its tag</summary>
-        <returns>To be added.</returns>
+        <returns>The node that is identified by the value passed or null</returns>
         <remarks>
           <para>Gets a child from the container with its tag</para>
           <para>
@@ -2954,7 +2935,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Unschedule all scheduled method functions: custom functions, and the Update action.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2969,9 +2950,9 @@
         <Parameter Name="dt" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="dt">Delta time</param>
+        <summary>Override this method to control the updating of the node if it depends on a time difference element.</summary>
+        <remarks>When extending a CCNode this is usually one of the methods that is overridden if user wants to represent something to the user that depends on a time element.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateCascadeColor">
@@ -2983,8 +2964,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Propogates the color to the child nodes of this node.</summary>
+        <remarks>Override this method to control how the propogation is performed</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateCascadeOpacity">
@@ -2996,8 +2977,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Propogates the opacity to the child nodes of this node.</summary>
+        <remarks>Override this method to control how the propogation is performed</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
@@ -3009,8 +2990,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Update the color property of this node</summary>
+        <remarks>Override this property to control how the color value is set.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedColor">
@@ -3024,9 +3005,13 @@
         <Parameter Name="parentColor" Type="CocosSharp.CCColor3B" />
       </Parameters>
       <Docs>
-        <param name="parentColor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="parentColor">Color of parent</param>
+        <summary>Propagates the children nodes with the Color of their parent</summary>
+        <remarks>Override this method to control how the color value is propogated to the children of this node.
+        <see cref="T:CocosSharp.CCSprite" />
+        <see cref="T:CocosSharp.CCLayer" />
+        <see cref="T:CocosSharp.CCLayerColor" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedOpacity">
@@ -3040,9 +3025,13 @@
         <Parameter Name="parentOpacity" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="parentOpacity">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="parentOpacity">Opacity of parent</param>
+        <summary>Propogates the children nodes with Opacity of their parent</summary>
+        <remarks>Override this method to control how the opacity value is propogated to the children of this node.
+        <see cref="T:CocosSharp.CCSprite" />
+        <see cref="T:CocosSharp.CCLayer" />
+        <see cref="T:CocosSharp.CCLayerColor" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateTransform">
