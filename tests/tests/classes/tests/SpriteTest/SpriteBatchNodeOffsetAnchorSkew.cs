@@ -21,7 +21,15 @@ namespace tests
 
         public override string Title
         {
-            get { return "SpriteBatchNode offset + anchor + skew"; }
+            get { return "Testing SpriteBatchNode"; }
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "offset + anchor + skew";
+            }
         }
 
         #endregion Properties
