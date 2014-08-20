@@ -47,8 +47,6 @@ namespace CocosSharp
 
         #region Properties
 
-        public bool IsUseDepthTesting { get; set; }
-
         public override CCLayer Layer 
         {
             get { return this; }
@@ -330,8 +328,6 @@ namespace CocosSharp
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
             CCDrawManager drawManager = Window.DrawManager;
-
-            drawManager.DepthTest = IsUseDepthTesting;
 
             if (ChildClippingMode == CCClipMode.Bounds && Window != null)
             {
