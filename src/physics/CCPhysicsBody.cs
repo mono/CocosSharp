@@ -1189,12 +1189,6 @@ namespace CocosSharp
 			}
 		}
 
-
-		public void SetType(cpBodyType type)
-		{
-			_info.Body.SetBodyType(type);
-		}
-
 		public float Elasticity
         {
             get { return _elasticity; }
