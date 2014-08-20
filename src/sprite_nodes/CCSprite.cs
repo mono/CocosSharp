@@ -237,6 +237,9 @@ namespace CocosSharp
                 if(textureRectInPixels != value) 
                 {
                     textureRectInPixels = value;
+                    if (ContentSize == CCSize.Zero)
+                        ContentSize = textureRectInPixels.Size;
+
                     UpdateSpriteTextureQuads();
                 }
             }
@@ -352,7 +355,25 @@ namespace CocosSharp
         #region Constructors
 
         public CCSprite()
-        {
+        {  
+            // do not remove this
+            // This sets up the atlas index correctly.  If not set correctly lot of weird sprite artifacts start showing up.
+            BatchNode = null;
+
+            IsTextureRectRotated = false;
+
+            opacityModifyRGB = true;
+            BlendFunc = CCBlendFunc.AlphaBlend;
+
+            //AnchorPoint = CCPoint.AnchorMiddle;
+
+            quad = new CCV3F_C4B_T2F_Quad();
+            quad.BottomLeft.Colors = CCColor4B.White;
+            quad.BottomRight.Colors = CCColor4B.White;
+            quad.TopLeft.Colors = CCColor4B.White;
+            quad.TopRight.Colors = CCColor4B.White;
+
+            UpdateSpriteTextureQuads();        
         }
 
         public CCSprite(CCTexture2D texture=null, CCRect? texRectInPixels=null, bool rotated=false)
@@ -383,13 +404,14 @@ namespace CocosSharp
             BatchNode = null;
 
             IsTextureRectRotated = rotated;
-            CCSize texSize = texture.ContentSizeInPixels;
+            CCSize texSize = (texture != null) ? texture.ContentSizeInPixels : CCSize.Zero;
+
             textureRectInPixels = texRectInPixels ?? new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height);
 
             opacityModifyRGB = true;
             BlendFunc = CCBlendFunc.AlphaBlend;
 
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            AnchorPoint = CCPoint.AnchorMiddle;
 
             quad = new CCV3F_C4B_T2F_Quad();
             quad.BottomLeft.Colors = CCColor4B.White;

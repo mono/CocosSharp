@@ -35,12 +35,14 @@ namespace tests
             sprite1.TextureRectInPixels = new CCRect(0, 0, 300, 300);
             sprite1.Color = CCColor3B.Red;
             sprite1.Opacity = 128;
+            sprite1.AnchorPoint = CCPoint.AnchorMiddle;
             AddChild(sprite1, 100);
 
             sprite2 = new CCSprite();
             sprite2.TextureRectInPixels = new CCRect(0, 0, 300, 300);
             sprite2.Color = CCColor3B.Blue;
             sprite2.Opacity = 128;
+            sprite2.AnchorPoint = CCPoint.AnchorMiddle;
             AddChild(sprite2, 100);
         }
 
@@ -51,7 +53,9 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             sprite1.Position = (new CCPoint(3 * windowSize.Width / 4, windowSize.Height / 2));
             sprite2.Position = (new CCPoint(1 * windowSize.Width / 4, windowSize.Height / 2));
