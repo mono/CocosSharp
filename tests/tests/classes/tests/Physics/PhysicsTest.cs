@@ -16,6 +16,7 @@ namespace tests
         PYRAMID_STACK,
         JOINTS,
         LOGO_SMASH,
+        RAYCAST,
         TEST_CASE_COUNT
     };
 
@@ -48,6 +49,9 @@ namespace tests
                     break;
                 case (int)PhysicsTests.LOGO_SMASH:
                     testLayer = new LogoSmashTest();
+                    break;
+                case (int)PhysicsTests.RAYCAST:
+                    testLayer = new RayCastTest();
                     break;
                 default:
                     break;
@@ -243,7 +247,7 @@ namespace tests
 
             bool yellow = (color == 0) ? CCRandom.Float_0_1() > 0.5f : color == 1;
 
-            CCSprite box = new CCSprite(yellow ? "Images/YellowSquare.png" : "Images/CyanSquare.png");
+            CCSprite box = new CCSprite(yellow ? "Images/YellowSquare" : "Images/CyanSquare");
 
             box.ScaleX = size.Width / 100.0f;
             box.ScaleY = size.Height / 100.0f;
@@ -262,12 +266,54 @@ namespace tests
 
         public CCSprite MakeBall(CCPoint point, float radius, CCPhysicsMaterial material)
         {
-            CCSprite ball = new CCSprite("Images/ball.png");
+            CCSprite ball = new CCSprite("Images/ball");
             ball.Scale = 0.13f * radius;
             var body = CCPhysicsBody.CreateCircle(radius, material, CCPoint.Zero);
             ball.PhysicsBody = body;
             ball.Position = point;// new cpVect(point.X, point.Y);
             return ball;
+        }
+
+        public CCSprite MakeTriangle(CCPoint point, CCSize size)
+        {
+            return MakeTriangle(point, size, 0, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT);
+        }
+
+        public CCSprite MakeTriangle(CCPoint point, CCSize size, int color, CCPhysicsMaterial material)
+        {
+            bool yellow = false;
+            if (color == 0)
+            {
+                yellow = CCRandom.Float_0_1() > 0.5f;
+            }
+            else
+            {
+                yellow = color == 1;
+            }
+
+            var triangle = yellow ? new CCSprite("Images/YellowTriangle") : new CCSprite("Images/CyanTriangle");
+
+            if (size.Height == 0)
+            {
+                triangle.Scale = size.Width / 100.0f;
+            }
+            else
+            {
+                triangle.ScaleX = size.Width / 50.0f;
+                triangle.ScaleY = size.Height / 43.5f;
+            }
+
+            CCPoint[] vers = new CCPoint[] {
+        new CCPoint(0, size.Height/2), 
+        new CCPoint(size.Width/2, -size.Height/2),
+        new CCPoint(-size.Width/2, -size.Height/2)
+    };
+
+            var body = CCPhysicsBody.CreateEdgePolygon(vers, 3, material);
+            triangle.PhysicsBody = body;
+            triangle.Position = new CCPoint(point.X, point.Y);
+
+            return triangle;
         }
 
         public override void Update(float dt)
@@ -432,7 +478,7 @@ namespace tests
 
             ScheduleOnce(UpdateOnce, 3.0f);
 
-            for(int i=0; i<5; i++)
+            for(int i=0; i<7; i++)
             {
                 for(int j=0; j<=i; j++)
                 {
@@ -966,6 +1012,207 @@ namespace tests
                 return "Join Test";
             }
         }
+    }
+
+
+    public class RayCastTest : PhysicsTest
+    {
+
+        float _angle;
+        CCDrawNode _node;
+        int _mode;
+
+        public CCColor4F STATIC_COLOR = new CCColor4F(1.0f, 0.0f, 0.0f, 1.0f);
+
+
+        public RayCastTest()
+        {
+
+        }
+
+        void UpdateOnce(float delta)
+        {
+
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+
+            Scene.PhysicsWorld.Gravity = CCPoint.Zero;
+
+            CCDrawNode node = new CCDrawNode();
+            node.PhysicsBody = CCPhysicsBody.CreateEdgeSegment(
+                new CCPoint(0, 50),
+                new CCPoint(Window.WindowSizeInPixels.Width, 0) + new CCPoint(0, 50)
+                );
+
+            node.DrawSegment(new CCPoint(0, 50),
+                new CCPoint(Window.WindowSizeInPixels.Width, 0) + new CCPoint(0, 50), 1, STATIC_COLOR);
+            AddChild(node);
+
+            var item = new CCMenuItemFont("Change Mode(any)", ChangeModeCallback);
+            var menu = new CCMenu(item);
+            AddChild(menu);
+
+            menu.Position = new CCPoint(100, 100);
+
+            Schedule();
+
+        }
+
+        public void ChangeModeCallback(object sender)
+        {
+            _mode = (_mode + 1) % 3;
+
+            switch (_mode)
+            {
+                case 0:
+                    ((CCMenuItemFont)sender).LabelTTF.Text = "Change Mode(any)";
+                    break;
+                case 1:
+                    ((CCMenuItemFont)sender).LabelTTF.Text = "Change Mode(nearest)";
+                    break;
+                case 2:
+                    ((CCMenuItemFont)sender).LabelTTF.Text = "Change Mode(multiple)";
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public override void Update(float dt)
+        {
+            base.Update(dt);
+
+            float L = 150.0f;
+            CCPoint point1 = Window.WindowSizeInPixels.Center;
+            CCPoint d = new CCPoint(L * (float)Math.Cos(_angle), L * (float)Math.Sin(_angle));
+            CCPoint point2 = point1 + d;
+
+            RemoveChild(_node);
+            _node = new CCDrawNode();
+            switch (_mode)
+            {
+                case 0:
+                    {
+                        CCPoint point3 = point2;
+                        //var func = Func< (PhysicsDemoRayCast::anyRay, this);
+
+                        var ctx = new RayCastContext(point3);
+
+                        Scene.PhysicsWorld.RayCast((world, info, data) =>
+                        {
+                            point3 = info.Contact;
+                            return false;
+
+                        }, point1, point2, ctx);
+
+                        _node.DrawSegment(point1, point3, 1, STATIC_COLOR);
+
+                        if (point2 != point3)
+                        {
+                            _node.DrawDot(point3, 2, new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f));
+                        }
+
+                        AddChild(_node);
+
+                        break;
+                    }
+                case 1:
+                    {
+                        CCPoint point3 = point2;
+                        float friction = 1.0f;
+
+                        Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool> func = new Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool>(
+                           (world, info, ctx) =>
+                           {
+                               if (friction > info.Fraction)
+                               {
+                                   point3 = info.Contact;
+                                   friction = info.Fraction;
+                               }
+
+                               return true;
+                           });
+
+                        _node.DrawSegment(point1, point3, 1, STATIC_COLOR);
+
+                        if (point2 != point3)
+                        {
+                            _node.DrawDot(point3, 2, new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f));
+                        }
+                        AddChild(_node);
+
+                        break;
+                    }
+                case 2:
+                    {
+                        int MAX_MULTI_RAYCAST_NUM = 5;
+                        CCPoint[] points = new CCPoint[MAX_MULTI_RAYCAST_NUM];
+                        int num = 0;
+
+                        Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool> func = new Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool>(
+                             (world, info, data) =>
+                             {
+                                 if (num < MAX_MULTI_RAYCAST_NUM)
+                                 {
+                                     points[num++] = info.Contact;
+                                 }
+
+                                 return true;
+                             });
+
+                        // Scene.PhysicsWorld.RayCast(func, point1, point2, null);
+
+                        _node.DrawSegment(point1, point2, 1, STATIC_COLOR);
+
+                        for (int i = 0; i < num; ++i)
+                        {
+                            _node.DrawDot(points[i], 2, new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f));
+                        }
+
+                        AddChild(_node);
+
+                        break;
+                    }
+
+                default:
+                    break;
+            }
+
+            _angle += 0.25f * (float)cp.M_PI / 180.0f;
+
+
+        }
+
+        public override void OnTouchesEnded(List<CCTouch> touches, CCEvent e)
+        {
+            base.OnTouchesEnded(touches, e);
+
+            CCPoint location = touches.FirstOrDefault().Location;
+            //location.Y = Window.WindowSizeInPixels.Height - location.Y;
+
+            float r = CCRandom.Float_0_1();
+
+            if (r < 1.0f / 3.0f)
+            {
+                AddChild(MakeBall(location, 5 + CCRandom.Float_0_1() * 10));
+            }
+            else if (r < 2.0f / 3.0f)
+            {
+                AddChild(MakeBox(location, new CCSize(10 + CCRandom.Float_0_1() * 15, 10 + CCRandom.Float_0_1() * 15)));
+            }
+            else
+            {
+                AddChild(MakeTriangle(location, new CCSize(10 + CCRandom.Float_0_1() * 20, 10 + CCRandom.Float_0_1() * 20)));
+            }
+
+        }
+      
+
     }
 
 }
