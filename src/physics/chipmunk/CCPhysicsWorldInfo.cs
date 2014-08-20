@@ -36,16 +36,12 @@ namespace CocosSharp
 	internal class CCPhysicsWorldInfo
 	{
 
-	
-
 		#region PUBLIC METHODS
 
 		private cpSpace _space;
 
 		internal cpSpace Space { get { return _space; } }
 		internal cpVect Gravity { get { return _space.GetGravity(); } set { _space.SetGravity(value); } }
-
-
 
 		public void AddShape(CCPhysicsShapeInfo shape)
 		{
@@ -114,6 +110,21 @@ namespace CocosSharp
 			_space = new cpSpace();
 
 		}
+
+
+
+        public int Iterations { get { return _space.GetIterations(); } set { _space.SetIterations(value); } }
+
+        public float SleepTimeThreshold { get { return _space.GetSleepTimeThreshold(); } set { _space.SetSleepTimeThreshold(value); } }
+
+        public float CurrentTimeStep { get { return _space.GetCurrentTimeStep(); } }
+
+        public float Damping { get { return _space.GetDamping(); } set { _space.SetDamping(value); } }
+
+        public float IdleSpeedThreshold { get { return _space.GetIdleSpeedThreshold(); } set { _space.SetIdleSpeedThreshold(value); } }
+
+        public cpBody StaticBody { get { return _space.GetStaticBody(); } }
+        
 
 	}
 }

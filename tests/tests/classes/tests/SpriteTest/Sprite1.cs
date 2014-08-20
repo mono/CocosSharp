@@ -157,9 +157,16 @@ namespace tests
 
         public override string Title
         {
-            get { return "Sprite (tap screen)"; }
+            get { return "Testing Sprite"; }
         }
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "Tap screen to add more sprites";
+            }
+        }
         #endregion Properties
 
 
@@ -177,10 +184,9 @@ namespace tests
 
         #endregion Constructors
 
-
-        protected override void VisibleBoundsChanged()
+        public override void OnEnter()
         {
-            base.VisibleBoundsChanged();
+            base.OnEnter();
             AddNewSpriteWithCoords(Layer.VisibleBoundsWorldspace.Center);
         }
 

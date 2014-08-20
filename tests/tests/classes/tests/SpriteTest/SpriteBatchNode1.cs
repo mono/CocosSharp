@@ -13,9 +13,16 @@ namespace tests
 
         public override string Title
         {
-            get { return "SpriteBatchNode (tap screen)"; }
+            get { return "Testing SpriteBatchNode"; }
         }
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "Tap screen to add more sprites";
+            }
+        }
         #endregion Properties
 
 
@@ -25,19 +32,6 @@ namespace tests
         {
             CCSpriteBatchNode BatchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
             AddChild(BatchNode, 0, (int)kTags.kTagSpriteBatchNode);
-        }
-
-        #endregion Constructors
-
-
-        #region Setup content
-
-        protected override void AddedToScene()
-        {
-            base.AddedToScene(); 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
-
-            AddNewSpriteWithCoords(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
 
             // Register Touch Event
             var touchListener = new CCEventListenerTouchAllAtOnce();
@@ -46,12 +40,23 @@ namespace tests
             AddEventListener(touchListener);
         }
 
+        #endregion Constructors
+
+
+        #region Setup content
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            AddNewSpriteWithCoords(VisibleBoundsWorldspace.Center);
+        }
+
         #endregion Setup content
 
 
         void AddNewSpriteWithCoords(CCPoint p)
         {
-            CCSpriteBatchNode BatchNode = (CCSpriteBatchNode)GetChildByTag((int)kTags.kTagSpriteBatchNode);
+            CCSpriteBatchNode BatchNode = (CCSpriteBatchNode)this[(int)kTags.kTagSpriteBatchNode];
 
             int idx = (int)(CCRandom.NextDouble() * 1400 / 100);
             int x = (idx % 5) * 85;

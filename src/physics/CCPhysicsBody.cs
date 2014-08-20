@@ -244,6 +244,8 @@ namespace CocosSharp
 
 				ApplyForce(_world.Gravity * oldMass);
 			}
+
+            if (_info.Body.bodyType == cpBodyType.DYNAMIC && newMass != cp.Infinity)
 			_info.Body.SetMass(newMass);
 
 			if (_dynamic && !_gravityEnabled && _world != null && newMass != cp.PHYSICS_INFINITY)
@@ -577,7 +579,7 @@ namespace CocosSharp
 				cp.AssertWarn("physics warning: your can't set velocity for a static body.");
 				return;
 			}
-			_info.Body.SetPosition(new cpVect(velocity.X, velocity.Y));
+			_info.Body.SetVelocity(new cpVect(velocity.X, velocity.Y));
 			//cpBodySetVel(_info->getBody(), PhysicsHelper::point2cpv(velocity));
 		}
 
@@ -813,6 +815,8 @@ namespace CocosSharp
 				_dynamic = dynamic;
 				if (dynamic)
 				{
+
+                    _info.Body.bodyType = cpBodyType.DYNAMIC;
 					_info.Body.SetMass(_mass);
 					_info.Body.SetMoment(_moment);
 
@@ -839,10 +843,16 @@ namespace CocosSharp
 
 					// avoid incorrect collion simulation.
 					var body = _info.Body;
-					body.SetMass(CCPhysicsBody.MASS_DEFAULT);
+
+                  
+                    body.SetMass(CCPhysicsBody.MASS_DEFAULT);
 					body.SetMoment(CCPhysicsBody.MOMENT_DEFAULT);
+
 					body.SetVelocity(cpVect.Zero);
+
 					body.SetAngularVelocity(0.0f);
+
+                    body.bodyType = cpBodyType.STATIC;
 
 					ResetForces();
 				}
@@ -1229,7 +1239,15 @@ namespace CocosSharp
 		}
 
 
-	
+		public void Sleep()
+		{
+			_info.Body.Sleep();
+		}
+
+		public void SetCenterOfGravity(cpVect gravity)
+		{
+			_info.Body.SetCenterOfGravity(gravity);
+		}
 	}
 }
 #endif

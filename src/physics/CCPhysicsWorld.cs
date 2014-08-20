@@ -33,6 +33,8 @@ using System.Text;
 namespace CocosSharp
 {
 
+    public delegate bool RayCastDelegate(CCPhysicsWorld world, CCPhysicsRayCastInfo info, ref object obj);
+
 	public struct CCPhysicsRayCastInfo
 	{
 
@@ -66,12 +68,12 @@ namespace CocosSharp
 	public struct CCRayCastCallbackInfo
 	{
         public CCPhysicsWorld World { get; set; }
-        public Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> Function { get; set; }
+        public RayCastDelegate Function { get; set; }
         public CCPoint Pont1 { get; set; }
         public CCPoint Point2 { get; set; }
         public object Data { get; set; }
 
-		public CCRayCastCallbackInfo(CCPhysicsWorld world, Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint p1, CCPoint p2, object data)
+        public CCRayCastCallbackInfo(CCPhysicsWorld world, RayCastDelegate func, CCPoint p1, CCPoint p2, object data)
             : this()
 		{
 			this.World = world;
@@ -176,7 +178,9 @@ namespace CocosSharp
         		t, null
         	);
 
-			Continues = info.Function(info.World, callbackInfo, info.Data);
+            object data = info.Data;
+
+            Continues = info.Function(info.World, callbackInfo, ref data);
 		}
 
 		public static void QueryRectCallbackFunc(cpShape shape, CCRectQueryCallbackInfo info)
@@ -227,24 +231,16 @@ namespace CocosSharp
  * @return true to continue, false to terminate
  */
 
+
 	/**
  * @brief An PhysicsWorld object simulates collisions and other physical properties. You do not create PhysicsWorld objects directly; instead, you can get it from an Scene object.
  */
 	public class CCPhysicsWorld
 	{
 
-		public const int DEBUGDRAW_NONE = 0x00;        ///< draw nothing
-		public const int DEBUGDRAW_SHAPE = 0x01;       ///< draw shapes
-		public const int DEBUGDRAW_JOINT = 0x02;
-		public const int DEBUGDRAW_CONTACT = 0x04;
-		public const int DEBUGDRAW_ALL = DEBUGDRAW_SHAPE | DEBUGDRAW_JOINT | DEBUGDRAW_CONTACT;
-
-
 		public string DEFAULT_FONT = "fonts/MarkerFelt-22";
 
 		#region PROTECTED
-
-
 
 		protected CCPoint _gravity;
         internal CCPhysicsWorldInfo Info { get; set; }
@@ -258,8 +254,30 @@ namespace CocosSharp
         public CCScene Scene  { get; protected set; }
 
         protected bool DelayDirty { get; set; }
-		public PhysicsDebugDraw _debugDraw;
-        private int debugDrawMask;
+        public PhysicsDrawFlags DebugDrawMask
+        {
+            get { return debugDraw.Flags; }
+            set
+            {
+                debugDraw.Flags = value;
+            }
+        }
+
+
+		private PhysicsDebugDraw _debugDraw;
+
+        public PhysicsDebugDraw debugDraw
+        {
+            get
+            {
+                if (_debugDraw == null)
+                {
+                    _debugDraw = new PhysicsDebugDraw(this);
+                    _debugDraw.Flags = DebugDrawMask; //Sets the actual mask
+                }
+                return _debugDraw;
+            }
+        }
 
         protected List<CCPhysicsBody> DelayAddBodies { get; set; }
         protected List<CCPhysicsBody> DelayRemoveBodies { get; set; }
@@ -317,24 +335,16 @@ namespace CocosSharp
 		public void DebugDraw()
 		{
 
-			if (_debugDraw == null)
+
+
+            if (debugDraw != null && Bodies.Count > 0)
 			{
-
-				_debugDraw = new PhysicsDebugDraw(this);
-
-				_debugDraw.Flags = PhysicsDrawFlags.All;
-			}
-
-			if (_debugDraw != null && Bodies.Count > 0)
-			{
-				if (_debugDraw.Begin())
+                if (debugDraw.Begin())
 				{
-					if ((debugDrawMask & DEBUGDRAW_SHAPE) > 0)
+                    if (((int) DebugDrawMask & (int)PhysicsDrawFlags.Shapes) > 0)
 					{
 						foreach (CCPhysicsBody body in Bodies)
 						{
-							//hysicsBody body = dynamic_cast<PhysicsBody*>(obj);
-
 							if (!body.IsEnabled())
 							{
 								continue;
@@ -342,20 +352,20 @@ namespace CocosSharp
 
 							foreach (CCPhysicsShape shape in body.GetShapes())
 							{
-								_debugDraw.DrawShape(shape);
+                                debugDraw.DrawShape(shape);
 							}
 						}
 					}
 
-					if ((debugDrawMask & DEBUGDRAW_JOINT) > 0)
+                    if (((int)DebugDrawMask & (int)PhysicsDrawFlags.Joints) > 0)
 					{
 						foreach (CCPhysicsJoint joint in Joints)
 						{
-							_debugDraw.DrawJoint(joint);
+                            debugDraw.DrawJoint(joint);
 						}
 					}
 
-					_debugDraw.End();
+                    debugDraw.End();
 				}
 			}
 		}
@@ -512,8 +522,10 @@ namespace CocosSharp
 		}
 
 
+     
+
 		/** Searches for physics shapes that intersects the ray. */
-		public void RayCast(Func<CCPhysicsWorld, CCPhysicsRayCastInfo, object, bool> func, CCPoint point1, CCPoint point2, object data)
+        public void RayCast(RayCastDelegate func, CCPoint point1, CCPoint point2, object data)
 		{
 			cp.AssertWarn(func != null, "func shouldn't be nullptr");
 
@@ -661,9 +673,6 @@ namespace CocosSharp
 		 */
 		public int UpdateRate { get { return _updateRate; } set { if (value > 0) { _updateRate = value; } } }
 
-		public int DebugDrawMask { get { return debugDrawMask; } set { debugDrawMask = value; } }
-
-
 		#endregion
 
 		#region PROTECTED
@@ -728,7 +737,7 @@ namespace CocosSharp
 				_updateTime = 0.0f;
 			}
 
-			if (debugDrawMask != DEBUGDRAW_NONE)
+			if (DebugDrawMask !=  PhysicsDrawFlags.None)
 			{
 				DebugDraw();
 			}
@@ -1058,8 +1067,19 @@ namespace CocosSharp
 
 		#endregion
 
+      
+        public int Iterations { get { return Info.Iterations; } set { Info.Iterations = value; } }
 
-	
+        public float SleepTimeThreshold { get { return Info.SleepTimeThreshold; } set { Info.SleepTimeThreshold = value; } }
+
+        public float CurrentTimeStep { get { return Info.CurrentTimeStep; } }
+
+        public float Damping { get { return Info.Damping; } set { Info.Damping = value; } }
+
+        public float IdleSpeedThreshold { get { return Info.IdleSpeedThreshold; } set { Info.IdleSpeedThreshold = value; } }
+
+        public cpBody StaticBody { get { return Info.StaticBody; } }
+        
 	}
 
 }

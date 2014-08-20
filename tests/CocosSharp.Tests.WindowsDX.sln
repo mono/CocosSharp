@@ -172,6 +172,7 @@ Global
 		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Any CPU.ActiveCfg = Debug|Any CPU
 		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Any CPU.Build.0 = Debug|Any CPU
 		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Mixed Platforms.Build.0 = Debug|Any CPU
 		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Windows Phone.ActiveCfg = Debug|Any CPU
 		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|x86.ActiveCfg = Debug|Any CPU
 		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Xbox 360.ActiveCfg = Debug|Any CPU

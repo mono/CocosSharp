@@ -40,6 +40,9 @@ namespace CocosSharp
         TEST_PARALLAX,
         TEST_PARTICLE,
         TEST_PERFORMANCE,
+        #if USE_PHYSICS
+        TEST_PHYSICS,
+        #endif
         TEST_RENDERTEXTURE,
         TEST_ROTATE_WORLD,
         TEST_SCENE,
@@ -98,6 +101,9 @@ namespace CocosSharp
             "ParallaxTest",
             "ParticleTest",
             "PerformanceTest",
+            #if USE_PHYSICS
+            "Physics",
+            #endif
             "RenderTextureTest",
             "RotateWorldTest",
             "SceneTest",

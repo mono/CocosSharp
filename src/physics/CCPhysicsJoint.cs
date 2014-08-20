@@ -167,7 +167,7 @@ namespace CocosSharp
 			cp.AssertWarn(a != b, "the two bodies are equal");
 			_info = new CCPhysicsJointInfo(this);
 
-			if (_info != null)
+			if (_info == null)
 				return false;
 
 			_bodyA = a;
