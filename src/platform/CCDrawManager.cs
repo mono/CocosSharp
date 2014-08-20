@@ -599,7 +599,7 @@ namespace CocosSharp
             {
                 try
                 {
-                    Clear(CCColor4B.Black, 0, 1);
+                    Clear(CCColor4B.Black, 1, 0);
                 }
                 catch (InvalidOperationException)
                 {
