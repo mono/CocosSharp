@@ -15,7 +15,7 @@ namespace tests
 		{
 
             contentLayer = new CCLayer();
-            CCCamera contentCamera = new CCCamera(Camera.OrthographicViewSizeWorldspace, Camera.CenterInWorldspace, Camera.TargetInWorldspace);
+            CCCamera contentCamera = Camera;
             contentLayer.Camera = contentCamera;
 
             var bg = new CCSprite(TestResource.s_back3);
@@ -64,7 +64,7 @@ namespace tests
             float targeCenterLength = (cameraTarget - cameraCenter).Length;
 
 
-            contentCamera.NearAndFarPerspectiveClipping = new CCPoint (0.15f, 100.0f);
+            contentCamera.NearAndFarPerspectiveClipping = new CCNearAndFarClipping (0.15f, 100.0f);
 
             contentCamera.PerspectiveFieldOfView = (float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
 
@@ -91,7 +91,6 @@ namespace tests
 			// This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
 			// TransitionTests and TileTests may have set the DepthTest to true so we need
 			// to make sure we reset it.
-			Window.IsUseDepthTesting = false;
 
 			switch (nIndex)
 			{
@@ -138,7 +137,6 @@ namespace tests
 				case 20:                             
 					return new SplitColsDemo(t);
 				case 21:
-					Window.IsUseDepthTesting = true;
 					return new PageTurn3DDemo(t);
 			}
 

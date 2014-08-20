@@ -13,14 +13,15 @@ namespace tests
         int dir;
         float time;
 
-        CCNode node;
         CCSprite[] sprites;
+        CCNode node;
+        CCLayer contentLayer;
 
         #region Properties
 
         public override string Title
         {
-            get { return "Sprite: openGL Z vertex"; }
+            get { return "Sprite: Z vertex"; }
         }
 
         #endregion Properties
@@ -39,12 +40,31 @@ namespace tests
             // transparent parts.
             //
 
+
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            contentLayer = new CCLayer();
+            Window.IsUseDepthTesting = true;
+            node = new CCNode(Layer.VisibleBoundsWorldspace.Size);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
+            node.IgnoreAnchorPointForPosition = true;
+
+            AddChild(contentLayer);
+            contentLayer.AddChild(node);
+
             dir = 1;
             time = 0;
             sprites = new CCSprite[numOfSprites];
 
-            node = new CCNode();
-            AddChild(node, 0);
 
             for (int i = 0; i < 5; i++)
             {
@@ -61,37 +81,26 @@ namespace tests
             }
         }
 
-        #endregion Constructors
-
-
-        #region Setup content
-
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize layerSize = contentLayer.VisibleBoundsWorldspace.Size;
 
-            Camera.Projection = CCCameraProjection.Projection3D;
-
-            // camera uses the center of the image as the pivoting point
-            node.ContentSize = (new CCSize(windowSize.Width, windowSize.Height));
-            node.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-            node.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
-
-            float step = windowSize.Width / 12;
+            float step = layerSize.Width / 12;
 
             for (int i = 0; i < 5; i++)
             {
-                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
-                //sprites[i].VertexZ = (10 + i * 40);
+                sprites[i].Position = (new CCPoint((i + 1) * step, layerSize.Height / 2));
+                sprites[i].VertexZ = (10 + i * 20);
             }
 
             for (int i = 5; i < 11; i++)
             {
-                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
-                //sprites[i].VertexZ = 10 + (10 - i) * 40;
+                sprites[i].Position = (new CCPoint((i + 1) * step, layerSize.Height / 2));
+                sprites[i].VertexZ = 10 + (10 - i) * 20;
             }
 
-            //node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
+            node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
         #endregion Setup content
@@ -108,9 +117,9 @@ namespace tests
 
         public override void OnExit()
         {
-            Camera.Projection = CCCameraProjection.Projection2D;
-
             base.OnExit();
+
+            Window.IsUseDepthTesting = false;
         }
 
     }

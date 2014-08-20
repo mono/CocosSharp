@@ -12,13 +12,14 @@ namespace tests
 
         CCSpriteBatchNode batch;
         CCSprite[] sprites;
-
+        CCNode node;
+        CCLayer contentLayer;
 
         #region Properties
 
         public override string Title
         {
-            get { return "SpriteBatchNode: openGL Z vertex"; }
+            get { return "SpriteBatchNode: Z vertex"; }
         }
 
         #endregion Properties
@@ -37,26 +38,7 @@ namespace tests
             // transparent parts.
             //
 
-            // small capacity. Testing resizing.
-            // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
-            AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            sprites = new CCSprite[numOfSprites];
-
-            for (int i = 0; i < 5; i++)
-            {
-                sprites[i] = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
-                sprites[i].VertexZ = (10 + i * 40);
-                batch.AddChild(sprites[i], 0);
-            }
-
-            for (int i = 5; i < 11; i++)
-            {
-                sprites[i] = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
-                sprites[i].VertexZ = 10 + (10 - i) * 40;
-                batch.AddChild(sprites[i], 0);
-            }
 
         }
 
@@ -65,36 +47,52 @@ namespace tests
 
         #region Setup content
 
-        public override void OnEnter()
+        protected override void AddedToScene()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.AddedToScene();
 
-            float step = windowSize.Width / 12;
+            contentLayer = new CCLayer();
+            Window.IsUseDepthTesting = true;
+            node = new CCNode(Layer.VisibleBoundsWorldspace.Size);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
+            node.IgnoreAnchorPointForPosition = true;
 
+            AddChild(contentLayer);
+            contentLayer.AddChild(node);
 
-            Camera.Projection = CCCameraProjection.Projection3D;
+            CCSize layerSize = contentLayer.VisibleBoundsWorldspace.Size;
 
-            // camera uses the center of the image as the pivoting point
-            batch.ContentSize = windowSize;
-            batch.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-            batch.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+            float step = layerSize.Width / 12;
 
-            for (int i = 0; i < numOfSprites; i++)
+            // small capacity. Testing resizing.
+            // Don't use capacity=1 in your real game. It is expensive to resize the capacity
+            batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
+            node.AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
+
+            sprites = new CCSprite[numOfSprites];
+
+            for (int i = 0; i < 5; i++)
             {
-                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
+                sprites[i] = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
+                sprites[i].Position = (new CCPoint((i + 1) * step, layerSize.Height / 2));
+                sprites[i].VertexZ = (10 + i * 20);
+                batch.AddChild(sprites[i], 0);
             }
 
-            batch.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
+            for (int i = 5; i < 11; i++)
+            {
+                sprites[i] = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
+                sprites[i].Position = (new CCPoint((i + 1) * step, layerSize.Height / 2));
+                sprites[i].VertexZ = 10 + (10 - i) * 20;
+                batch.AddChild(sprites[i], 0);
+            }
+
+            // camera uses the center of the image as the pivoting point
+            node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
         #endregion Setup contetn
 
-
-        public override void OnExit()
-        {
-            Camera.Projection = CCCameraProjection.Projection2D;
-            base.OnExit();
-        }
 
     }
 }

@@ -35,7 +35,7 @@ namespace tests
             // small capacity. Testing resizing
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
             batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
-            AddChild(batch, 0, tagSpriteBatchNode);
+
 
             // SpriteBatchNode actions
             rotate = new CCRotateBy(5, 360);
@@ -61,7 +61,9 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            Layer.AddChild(batch);
 
             float step = windowSize.Width / 4;
 
@@ -78,8 +80,6 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             batch.AnchorPoint = new CCPoint(0.5f, 0.5f);
             batch.ContentSize = (new CCSize(windowSize.Width, windowSize.Height));
 
-            batch.RepeatForever(scale, scale_back);
-            batch.RepeatForever(rotate, rotate_back);
         }
 
         #endregion Setup content
