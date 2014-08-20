@@ -256,9 +256,7 @@ namespace CocosSharp
 		/** Create a body contains a circle shape. */
 		public static CCPhysicsBody CreateCircle(float radius, CCPhysicsMaterial material, CCPoint offset)
 		{
-
 			CCPhysicsBody body = new CCPhysicsBody();
-			body.SetMass(MASS_DEFAULT);
             body.AddShape(new CCPhysicsShapeCircle(material, radius, offset));
 			return body;
 		}
@@ -279,7 +277,6 @@ namespace CocosSharp
 
 		public static CCPhysicsBody CreateBox(CCSize size, float radius)
 		{
-
 			return CreateBox(size, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, radius);
 		}
 
