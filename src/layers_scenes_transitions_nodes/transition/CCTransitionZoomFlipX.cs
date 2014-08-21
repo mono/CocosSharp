@@ -78,9 +78,9 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
             InSceneNodeContainer.Visible = false;
             InSceneNodeContainer.Scale = 0.5f;
