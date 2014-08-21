@@ -102,6 +102,19 @@ namespace CocosSharp
             }
         }
 
+        public CCPoint Position
+        {
+            get { return base.Position; }
+            set
+            {
+                if (base.Position != value)
+                {
+                    base.Position = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
         public CCSize Dimensions
         {
             get { return labelDimensions; }
@@ -878,31 +891,23 @@ namespace CocosSharp
                         if (lastChar == null)
                             continue;
 
-                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
+                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Center.X;
 
-                        float shift = 0;
-                        switch (horzAlignment)
+                        if (horzAlignment != CCTextAlignment.Left)
                         {
-                        case CCTextAlignment.Center:
-                            shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
-                            break;
-                        case CCTextAlignment.Right:
-                            shift = ContentSize.Width - lineWidth;
-                            break;
-                        default:
-                            break;
-                        }
+                            var shift = PositionX + (labelDimensions.Width - lineWidth);
+                            if (horzAlignment == CCTextAlignment.Center)
+                                    shift /= 2;
 
-                        if (shift != 0)
-                        {
                             for (int j = 0; j < line_length; j++)
                             {
                                 index = i + j + lineNumber;
                                 if (index < 0) continue;
 
-                                var characterSprite = (CCSprite) this[index];
-                                characterSprite.Position = characterSprite.Position + new CCPoint(shift, 0.0f);
+                                var characterSprite = this[index];
+                                characterSprite.PositionX += shift;
                             }
+
                         }
 
                         i += line_length;
