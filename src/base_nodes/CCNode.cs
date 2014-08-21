@@ -2580,6 +2580,9 @@ namespace CocosSharp
 
             affineLocalTransform = CCAffineTransform.Concat(additionalTransform, affineLocalTransform);
 
+            // The affine transform is only 2d, so we need to manually incorporate the vertexZ translation
+            xnaLocalMatrix = affineLocalTransform.XnaMatrix;
+            xnaLocalMatrix.M43 = VertexZ;
 
             Matrix fauxLocalCameraTransform = Matrix.Identity;
 
@@ -2589,11 +2592,10 @@ namespace CocosSharp
                     new Vector3(FauxLocalCameraCenter.X, FauxLocalCameraCenter.Y, FauxLocalCameraCenter.Z),
                     new Vector3(FauxLocalCameraTarget.X, FauxLocalCameraTarget.Y, FauxLocalCameraTarget.Z),
                     new Vector3(FauxLocalCameraUpDirection.X, FauxLocalCameraUpDirection.Y, FauxLocalCameraUpDirection.Z));
-                fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, VertexZ));
+                fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, 0));
             }
 
-            XnaLocalMatrix = fauxLocalCameraTransform * affineLocalTransform.XnaMatrix;
-            xnaLocalMatrix.M43 = VertexZ;
+            XnaLocalMatrix = fauxLocalCameraTransform * xnaLocalMatrix;
 
             affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
 
