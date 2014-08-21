@@ -99,7 +99,9 @@ namespace tests
         {
             base.Draw();
 
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
+            CCSize size = Layer.VisibleBoundsWorldspace.Size;
+
+            var visibleRect = VisibleBoundsWorldspace;
 
             CCDrawingPrimitives.Begin();
 
@@ -114,23 +116,22 @@ namespace tests
 			// Anti-Aliased
 			//  glEnable(GL_LINE_SMOOTH);
 			CCDrawingPrimitives.LineWidth = 1 ;
-            CCDrawingPrimitives.DrawLine(Layer.VisibleBoundsWorldspace.LeftBottom(), Layer.VisibleBoundsWorldspace.RightTop());
+            CCDrawingPrimitives.DrawLine(visibleRect.LeftBottom(), visibleRect.RightTop());
 
 			// line: color, width, aliased
 			CCDrawingPrimitives.LineWidth = 5 ;
 			CCDrawingPrimitives.DrawColor = CCColor4B.Red;
-            CCDrawingPrimitives.DrawLine(Layer.VisibleBoundsWorldspace.LeftTop(), Layer.VisibleBoundsWorldspace.RightBottom());
+            CCDrawingPrimitives.DrawLine(visibleRect.LeftTop(), visibleRect.RightBottom());
 
 			// TIP:
 			// If you are going to use always thde same color or width, you don't
 			// need to call it before every draw
 			//
-			// Remember: OpenGL is a state-machine.
 
 			// draw big point in the center
 			CCDrawingPrimitives.PointSize = 64 ;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 0, 255, 128);
-            CCDrawingPrimitives.DrawPoint(Layer.VisibleBoundsWorldspace.Center());
+            CCDrawingPrimitives.DrawPoint(visibleRect.Center());
 
             // draw 4 small points
 			CCPoint[] points = {new CCPoint(60, 60), new CCPoint(70, 70), new CCPoint(60, 70), new CCPoint(70, 60)};
@@ -142,19 +143,19 @@ namespace tests
             // draw a green circle with 10 segments
 			CCDrawingPrimitives.LineWidth = 16 ;
 			CCDrawingPrimitives.DrawColor = CCColor4B.Green;
-            CCDrawingPrimitives.DrawCircle(Layer.VisibleBoundsWorldspace.Center(), 100, 0, 10, false);
+            CCDrawingPrimitives.DrawCircle(visibleRect.Center, 100, 0, 10, false);
 
 
             // draw a green circle with 50 segments with line to center
 			CCDrawingPrimitives.LineWidth = 2 ;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 255, 255, 255);
-			CCDrawingPrimitives.DrawCircle(CCVisibleRect.Center, 50, CCMacros.CCDegreesToRadians(45), 50, true);
+            CCDrawingPrimitives.DrawCircle(visibleRect.Center, 50, CCMacros.CCDegreesToRadians(45), 50, true);
 
 
 			// draw a pink solid circle with 50 segments
 			CCDrawingPrimitives.LineWidth = 2 ;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(255, 0, 255, 255);
-            CCDrawingPrimitives.DrawSolidCircle(Layer.VisibleBoundsWorldspace.Center() + new CCPoint(140, 0), 40, CCMacros.CCDegreesToRadians(90), 50);
+            CCDrawingPrimitives.DrawSolidCircle(visibleRect.Center + new CCPoint(140, 0), 40, CCMacros.CCDegreesToRadians(90), 50);
 
 
             // draw an arc within rectangular region
@@ -197,17 +198,17 @@ namespace tests
 			CCDrawingPrimitives.DrawPoly(vertices2, true);
 
             // draw quad bezier path
-            CCDrawingPrimitives.DrawQuadBezier(new CCPoint(0, s.Height),
-                new CCPoint(s.Width / 2, s.Height / 2),
-                new CCPoint(s.Width, s.Height),
+            CCDrawingPrimitives.DrawQuadBezier(new CCPoint(0, size.Height),
+                visibleRect.Center,
+                (CCPoint)visibleRect.Size,
                 50,
                 new CCColor4B(255, 0, 255, 255));
 
             // draw cubic bezier path
-            CCDrawingPrimitives.DrawCubicBezier(new CCPoint(s.Width / 2, s.Height / 2),
-                new CCPoint(s.Width / 2 + 30, s.Height / 2 + 50),
-                new CCPoint(s.Width / 2 + 60, s.Height / 2 - 50),
-                new CCPoint(s.Width, s.Height / 2), 100);
+            CCDrawingPrimitives.DrawCubicBezier(visibleRect.Center,
+                new CCPoint(size.Width / 2 + 30, size.Height / 2 + 50),
+                new CCPoint(size.Width / 2 + 60, size.Height / 2 - 50),
+                new CCPoint(size.Width, size.Height / 2), 100);
 
             //draw a solid polygon
             CCPoint[] vertices3 =
