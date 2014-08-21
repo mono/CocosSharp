@@ -838,8 +838,19 @@ namespace CocosSharp
                     {
 
                         _info.Body.bodyType = cpBodyType.DYNAMIC;
-                        _info.Body.SetMass(_mass);
-                        _info.Body.SetMoment(_moment);
+
+                        if (_mass != cp.Infinity)
+                        {
+                            _info.Body.SetMass(_mass);
+                            _info.Body.SetMoment(_moment);
+                        }
+                        else
+                        {
+                            //Restart  the mass and moment like the parent's body
+                            _mass = 0;
+                            _moment = 0;
+                        }
+                   
 
                         if (_world != null)
                         {
