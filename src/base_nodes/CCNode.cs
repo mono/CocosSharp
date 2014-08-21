@@ -2581,7 +2581,7 @@ namespace CocosSharp
             affineLocalTransform = CCAffineTransform.Concat(additionalTransform, affineLocalTransform);
 
             // The affine transform is only 2d, so we need to manually incorporate the vertexZ translation
-            xnaLocalMatrix = affineLocalTransform.XnaMatrix;
+            XnaLocalMatrix = affineLocalTransform.XnaMatrix;
             xnaLocalMatrix.M43 = VertexZ;
 
             Matrix fauxLocalCameraTransform = Matrix.Identity;
