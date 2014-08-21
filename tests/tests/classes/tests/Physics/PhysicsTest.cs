@@ -17,6 +17,8 @@ namespace tests
         JOINTS,
         LOGO_SMASH,
         RAYCAST,
+        ACTIONS,
+        PUMP,
         TEST_CASE_COUNT
     };
 
@@ -52,6 +54,12 @@ namespace tests
                     break;
                 case (int)PhysicsTests.RAYCAST:
                     testLayer = new RayCastTest();
+                    break;
+                case (int)PhysicsTests.ACTIONS:
+                    testLayer = new ActionsTest();
+                    break;
+                case (int)PhysicsTests.PUMP:
+                    testLayer = new PumpTest();
                     break;
                 default:
                     break;
@@ -144,7 +152,6 @@ namespace tests
 
             mouses = new Dictionary<int, CCNode>();
 
-            //Scene.Position = Window.WindowSizeInPixels.Center;
             eTouch = new CCEventListenerTouchAllAtOnce();
             eTouch.OnTouchesBegan = OnTouchesBegan;
             eTouch.OnTouchesMoved = OnTouchesMoved;
@@ -162,7 +169,6 @@ namespace tests
             CCPoint location = touch.Location;
 
             List<CCPhysicsShape> shapes = Scene.PhysicsWorld.GetShapes(location);
-
 
             CCPhysicsBody body = null;
 
@@ -188,7 +194,6 @@ namespace tests
                 join.SetMaxForce(5000 * body.GetMass());
                 Scene.PhysicsWorld.AddJoint(join);
                 mouses.Add(touch.Id, mouse);
-
 
             }
 
@@ -363,6 +368,13 @@ namespace tests
             return sp;
         }
 
+        public void ToggleDebug()
+        {
+            if (Scene.PhysicsWorld.debugDraw != null)
+            {
+                Scene.PhysicsWorld.DebugDrawMask = PhysicsDrawFlags.Shapes | PhysicsDrawFlags.Joints;
+            }
+        }
 
         public override void RestartCallback(object sender)
         {
@@ -406,6 +418,21 @@ namespace tests
                 return string.Empty;
             }
         }
+
+        #region Position Properties
+
+        public CCPoint Center { get { return new CCPoint(Window.WindowSizeInPixels.Width * .5f, Window.WindowSizeInPixels.Height * .5f); } }
+        public CCPoint Left { get { return new CCPoint(0, Window.WindowSizeInPixels.Height * .5f); } }
+        public CCPoint LeftBottom { get { return new CCPoint(0, 0); } }
+        public CCPoint LeftTop { get { return new CCPoint(0, Window.WindowSizeInPixels.Height); } }
+        public CCPoint RightBottom { get { return new CCPoint(Window.WindowSizeInPixels.Width, 0); } }
+        public CCPoint RightTop { get { return new CCPoint(Window.WindowSizeInPixels.Width, Window.WindowSizeInPixels.Height); } }
+        public CCPoint Right { get { return new CCPoint(Window.WindowSizeInPixels.Width, Window.WindowSizeInPixels.Height * .5f); } }
+        public CCPoint Top { get { return new CCPoint(Window.WindowSizeInPixels.Width * .5f, Window.WindowSizeInPixels.Height); } }
+        public CCPoint Bottom { get { return new CCPoint(Window.WindowSizeInPixels.Width * .5f, 0); } }
+
+        #endregion
+
     }
 
     public class ClickAddTest : PhysicsTest
@@ -1024,17 +1051,10 @@ namespace tests
 
         public CCColor4F STATIC_COLOR = new CCColor4F(1.0f, 0.0f, 0.0f, 1.0f);
 
-
         public RayCastTest()
         {
-
         }
-
-        void UpdateOnce(float delta)
-        {
-
-        }
-
+        
         public override void OnEnter()
         {
             base.OnEnter();
@@ -1211,8 +1231,241 @@ namespace tests
             }
 
         }
-      
+
+        public override string Title
+        {
+            get
+            {
+                return "RayCast Test";
+            }
+        }
+
 
     }
+
+    public class ActionsTest : PhysicsTest
+    {
+        public ActionsTest()
+        {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            Scene.PhysicsWorld.Gravity = CCPoint.Zero;
+
+            //Create a boundin box container room
+            var node = new CCNode();
+            node.PhysicsBody = CCPhysicsBody.CreateEdgeBox(Window.WindowSizeInPixels, 1.0f, CCPoint.Zero);
+            node.Position = Window.WindowSizeInPixels.Center;
+            AddChild(node);
+
+            //drops a grosini sprite on center on window
+            CCSprite sp1 = AddGrossiniAtPosition(Center);
+            CCSprite sp2 = AddGrossiniAtPosition(Left + new CCPoint(50, 0));
+            CCSprite sp3 = AddGrossiniAtPosition(Right + new CCPoint(20, 0));
+            CCSprite sp4 = AddGrossiniAtPosition(LeftTop + new CCPoint(50, -50));
+
+            sp1.PhysicsBody.Tag = DRAG_BODYS_TAG;
+            sp2.PhysicsBody.Tag = DRAG_BODYS_TAG;
+            sp3.PhysicsBody.Tag = DRAG_BODYS_TAG;
+            sp4.PhysicsBody.Tag = DRAG_BODYS_TAG;
+
+            var actionTo = new CCJumpTo(2, new CCPoint(100, 100), 50, 4);
+            var actionBy = new CCJumpTo(2, new CCPoint(300, 0), 50, 4);
+            var actionUp = new CCJumpTo(2, new CCPoint(0, 50), 80, 4);
+            var actionByBack = actionBy.Reverse();
+            var rotateBy = new CCRotateBy(2, 180);
+            var rotateByBack = new CCRotateBy(2, -180);
+
+            sp1.RunAction(new CCRepeatForever(actionUp));
+            sp2.RunAction(new CCRepeatForever(actionBy, actionByBack));
+            sp3.RunAction(actionTo);
+            sp4.RunAction(new CCRepeatForever(rotateBy, rotateByBack));
+
+            ToggleDebug();
+
+            Schedule();
+        }
+        
+
+        public override string Title
+        {
+            get
+            {
+                return "Actions Test";
+            }
+        }
+
+    }
+
+    public class PumpTest : PhysicsTest
+    {
+
+        float _distance;
+        float _rotationV;
+
+
+        public PumpTest()
+        {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            ToggleDebug();
+
+            _distance = 0.0f;
+            _rotationV = 0.0f;
+
+            Scene.Scale = 0.5f;
+
+            //Create a boundin box container room
+            var node = new CCNode();
+            var body = new CCPhysicsBody();
+            body.IsDynamic = false;
+
+            CCPhysicsMaterial staticMaterial = new CCPhysicsMaterial(cp.PHYSICS_INFINITY,
+                0, 0.5f);
+
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(50, 0), LeftTop + new CCPoint(50, -130), staticMaterial, 2.0f));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(190, 0), LeftTop + new CCPoint(100, -50), staticMaterial, 2.0f));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(100, -50), LeftTop + new CCPoint(100, -90), staticMaterial, 2.0f));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(50, -130), LeftTop + new CCPoint(100, -145), staticMaterial, 2.0f));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(100, -145), LeftBottom + new CCPoint(100, 80), staticMaterial, 2.0f));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(150, -80), LeftBottom + new CCPoint(150, 80), staticMaterial, 2.0f));
+            body.AddShape(new CCPhysicsShapeEdgeSegment(LeftTop + new CCPoint(150, -80), RightTop + new CCPoint(-100, -150), staticMaterial, 2.0f));
+
+            body.SetCategoryBitmask(0x01);
+
+            for (int i = 0; i < 6; ++i)
+            {
+                var ball = MakeBall(LeftTop + new CCPoint(75 + CCRandom.Float_0_1() * 90, 0), 22, new CCPhysicsMaterial(0.05f, 0, 0.1f));
+                ball.PhysicsBody.Tag = DRAG_BODYS_TAG;
+                AddChild(ball);
+            }
+
+            node.PhysicsBody = body;
+            AddChild(node);
+
+            CCPoint[] vec = new CCPoint[4] {
+				new CCPoint(LeftTop + new CCPoint(102,-148)),
+				new CCPoint(LeftTop + new CCPoint(148,-161)),
+				new CCPoint(LeftBottom + new CCPoint(148,20)),
+				new CCPoint(LeftBottom + new CCPoint(102,20))
+			};
+
+            var world = Scene.PhysicsWorld;
+
+            // small gear
+            var sgear = new CCNode();// Node::create();
+            var sgearB = CCPhysicsBody.CreateCircle(44, CCPoint.Zero);
+            sgear.PhysicsBody = sgearB;
+            sgear.Position = LeftBottom + new CCPoint(125, 0);
+            this.AddChild(sgear);
+            //sgearB.SetCategoryBitmask(0x04);
+            //sgearB.SetCollisionBitmask(0x04);
+            sgearB.Tag = 1;
+            world.AddJoint(CCPhysicsJointPin.Construct(body, sgearB, sgearB.Position));
+
+            // big gear
+            var bgear = new CCNode();
+            var bgearB = CCPhysicsBody.CreateCircle(100);
+            bgear.PhysicsBody = (bgearB);
+            bgear.Position = LeftBottom + new CCPoint(275, 0);
+            this.AddChild(bgear);
+            //bgearB.SetCategoryBitmask(0x04);
+            world.AddJoint(CCPhysicsJointPin.Construct(body, bgearB, bgearB.Position));
+
+            // pump
+            var pump = new CCNode();
+            var center = CCPhysicsShape.GetPolygonCenter(vec, 4);
+            pump.Position = center;
+            var pumpB = CCPhysicsBody.CreatePolygon(vec, 4, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, 0.0f);
+            pump.PhysicsBody = pumpB;
+            this.AddChild(pump);
+            //pumpB.SetCategoryBitmask(0x02);
+            pumpB.SetGravityEnable(false);
+            world.AddJoint(CCPhysicsJointDistance.Construct(pumpB, sgearB, new CCPoint(0, 0), new CCPoint(0, -44)));
+
+            // plugger
+            CCPoint[] seg = new CCPoint[] { LeftTop + new CCPoint(75, -120), LeftBottom + new CCPoint(75, -100) };
+            CCPoint segCenter = (seg[1] + seg[0]) / 2;
+            seg[1] -= segCenter;
+            seg[0] -= segCenter;
+            var plugger = new CCNode();
+            var pluggerB = CCPhysicsBody.CreateEdgeSegment(seg[0], seg[1], new CCPhysicsMaterial(0.01f, 0.0f, 0.5f), 20);
+            pluggerB.IsDynamic = true;
+            pluggerB.SetMass(30);
+            pluggerB.Moment = 100000;
+            plugger.PhysicsBody = pluggerB;
+            plugger.Position = segCenter;
+            this.AddChild(plugger);
+            //pluggerB.SetCategoryBitmask(0x02);
+            //sgearB.SetCollisionBitmask(0x04 | 0x01);
+            world.AddJoint(CCPhysicsJointPin.Construct(body, pluggerB, LeftBottom + new CCPoint(75, -90)));
+            world.AddJoint(CCPhysicsJointDistance.Construct(pluggerB, sgearB, pluggerB.World2Local(LeftBottom + new CCPoint(75, 0)), new CCPoint(44, 0)));
+
+            //drops a grosini sprite on center on window
+
+            Schedule();
+        }
+
+        public override void Update(float dt)
+        {
+            base.Update(dt);
+
+            foreach (var body in Scene.PhysicsWorld.Bodies)
+            {
+                if (body.Tag == DRAG_BODYS_TAG && body.Position.Y < 0.0f)
+                {
+                    body.Node.Position = LeftTop + new CCPoint(75 + CCRandom.Float_0_1() * 90, 0);
+                    body.SetVelocity(CCPoint.Zero);
+                }
+            }
+
+            CCPhysicsBody gear = Scene.PhysicsWorld.GetBody(1);
+
+            if (gear != null)
+            {
+                if (_distance != 0.0f)
+                {
+                    _rotationV += _distance / 2500.0f;
+
+                    if (_rotationV > 30) _rotationV = 30.0f;
+                    if (_rotationV < -30) _rotationV = -30.0f;
+                }
+
+                gear.SetAngularVelocity(_rotationV);
+                _rotationV *= 0.995f;
+            }
+
+        }
+
+        public override void OnTouchesBegan(List<CCTouch> touches, CCEvent arg2)
+        {
+            base.OnTouchesBegan(touches, arg2);
+            CCTouch touch = touches.FirstOrDefault();
+            _distance = touch.Location.X - Center.X;
+        }
+
+        public override void OnTouchesMoved(List<CCTouch> touches, CCEvent arg2)
+        {
+            base.OnTouchesMoved(touches, arg2);
+            CCTouch touch = touches.FirstOrDefault();
+            _distance = touch.Location.X - Center.X;
+        }
+
+        public override void OnTouchesEnded(List<CCTouch> touches, CCEvent e)
+        {
+            base.OnTouchesEnded(touches, e);
+            _distance = 0;
+
+        }
+
+
+    }
+
 
 }
