@@ -1079,9 +1079,9 @@ namespace CocosSharp
 
 				if (body != null)
 				{
-					if (body.GetNode() != null)
+					if (body.Node != null)
 					{
-						body.GetNode().PhysicsBody = null;
+						body.Node.PhysicsBody = null;
 					}
 
 					body._node = this;
