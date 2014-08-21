@@ -75,7 +75,7 @@ namespace tests.FontTest
 #endif
 		};
 
-		public static int vAlignIdx = 0;
+		public static int verticalAlignIdx = 0;
 
 		public static CCVerticalTextAlignment[] verticalAlignment =
 		{
@@ -110,7 +110,7 @@ namespace tests.FontTest
 			if (fontIdx >= fontList.Length)
 			{
 				fontIdx = 0;
-				vAlignIdx = (vAlignIdx + 1) % verticalAlignment.Length;
+				verticalAlignIdx = (verticalAlignIdx + 1) % verticalAlignment.Length;
 			}
 			return fontList[fontIdx];
 		}
@@ -121,9 +121,9 @@ namespace tests.FontTest
 			if (fontIdx < 0)
 			{
 				fontIdx = fontList.Length - 1;
-				vAlignIdx--;
-				if (vAlignIdx < 0)
-					vAlignIdx = verticalAlignment.Length - 1;
+				verticalAlignIdx--;
+				if (verticalAlignIdx < 0)
+					verticalAlignIdx = verticalAlignment.Length - 1;
 			}
 
 			return fontList[fontIdx];
@@ -136,7 +136,8 @@ namespace tests.FontTest
 	}
 
 
-	public class SystemFontTest : CCLayer
+
+	public class SystemFontTest : TestNavigationLayer
 	{
 		private const int kTagLabel1 = 1;
 		private const int kTagLabel2 = 2;
@@ -144,49 +145,51 @@ namespace tests.FontTest
 		private const int kTagLabel4 = 4;
 
 		private CCSize blockSize;
-		private CCSize size;
+        private CCSize visibleRect;
 		private float fontSize = 26;
 
 
 		public SystemFontTest()
 		{
-			size = Layer.VisibleBoundsWorldspace.Size;
-
-			CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-			CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-			CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
-
-			CCMenu menu = new CCMenu(item1, item2, item3);
-			menu.Position = CCPoint.Zero;
-			item1.Position = new CCPoint(size.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
-			item2.Position = new CCPoint(size.Width / 2, item2.ContentSize.Height / 2);
-			item3.Position = new CCPoint(size.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
-			AddChild(menu, 1);
-
-			blockSize = new CCSize(size.Width / 3, 200);
-
-			var leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255));
-			var centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255));
-			var rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255));
-
-			leftColor.IgnoreAnchorPointForPosition = false;
-			centerColor.IgnoreAnchorPointForPosition = false;
-			rightColor.IgnoreAnchorPointForPosition = false;
-
-			leftColor.AnchorPoint = CCPoint.AnchorMiddleLeft;
-			centerColor.AnchorPoint = CCPoint.AnchorMiddleLeft;
-			rightColor.AnchorPoint = CCPoint.AnchorMiddleLeft;
-
-			leftColor.Position = new CCPoint(0, size.Height / 2);
-			centerColor.Position = new CCPoint(blockSize.Width, size.Height / 2);
-			rightColor.Position = new CCPoint(blockSize.Width * 2, size.Height / 2);
-
-			AddChild(leftColor, -1);
-			AddChild(rightColor, -1);
-			AddChild(centerColor, -1);
-
-			showFont(SystemFontTestScene.restartAction());
 		}
+
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var leftColor = new Background(blockSize, new CCColor4B(100, 100, 100, 255));
+            var centerColor = new Background(blockSize, new CCColor4B(200, 100, 100, 255));
+            var rightColor = new Background(blockSize, new CCColor4B(100, 100, 200, 255));
+
+            leftColor.IgnoreAnchorPointForPosition = false;
+            centerColor.IgnoreAnchorPointForPosition = false;
+            rightColor.IgnoreAnchorPointForPosition = false;
+
+            leftColor.AnchorPoint = new CCPoint(0, 0.5f);
+            centerColor.AnchorPoint = new CCPoint(0, 0.5f);
+            rightColor.AnchorPoint = new CCPoint(0, 0.5f);
+
+            leftColor.Position = new CCPoint(0, visibleRect.Height / 2);
+            centerColor.Position = new CCPoint(blockSize.Width, visibleRect.Height / 2);
+            rightColor.Position = new CCPoint(blockSize.Width * 2, visibleRect.Height / 2);
+
+            AddChild(leftColor, -1);
+            AddChild(rightColor, -1);
+            AddChild(centerColor, -1);
+
+            showFont(FontTestScene.restartAction());
+        }
+
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            visibleRect = VisibleBoundsWorldspace.Size;
+            blockSize = new CCSize(visibleRect.Width / 3, visibleRect.Height / 2);
+        }
+
 
 		public void showFont(string pFont)
 		{
@@ -200,51 +203,56 @@ namespace tests.FontTest
 
 			var left = new CCLabel("alignment left", pFont, fontSize,
 				blockSize, CCTextAlignment.Left,
-				SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+				SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]);
 
 			var center = new CCLabel("alignment center", pFont, fontSize,
 				blockSize, CCTextAlignment.Center,
-				SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+				SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]);
 
 			var right = new CCLabel("alignment right", pFont, fontSize,
 				blockSize, CCTextAlignment.Right,
-				SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+				SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]);
 
-			top.AnchorPoint = new CCPoint(0.5f, 1);
-			left.AnchorPoint = CCPoint.AnchorMiddleLeft;
-			center.AnchorPoint = CCPoint.AnchorMiddleLeft;
-			right.AnchorPoint = CCPoint.AnchorMiddleLeft;
+            top.AnchorPoint = CCPoint.AnchorMiddleTop;
+            left.AnchorPoint = CCPoint.AnchorMiddleLeft;
+            center.AnchorPoint = CCPoint.AnchorMiddleLeft;
+            right.AnchorPoint = CCPoint.AnchorMiddleLeft;
 
-			top.Position = new CCPoint(size.Width / 2, size.Height - 20);
-			left.Position = new CCPoint(0, size.Height / 2);
-			center.Position = new CCPoint(blockSize.Width, size.Height / 2);
+            top.Position = TitleLabel.Position - new CCPoint(0, 20);
+            left.Position = new CCPoint(0, visibleRect.Height / 2);
+            center.Position = new CCPoint(blockSize.Width, visibleRect.Height / 2);
+            right.Position = new CCPoint(blockSize.Width * 2, visibleRect.Height / 2);
 
-			right.Position = new CCPoint(blockSize.Width * 2, size.Height / 2);
-
-			AddChild(left, 0, kTagLabel1);
-			AddChild(right, 0, kTagLabel2);
-			AddChild(center, 0, kTagLabel3);
-			AddChild(top, 0, kTagLabel4);
+            AddChild(left, 0, kTagLabel1);
+            AddChild(right, 0, kTagLabel2);
+            AddChild(center, 0, kTagLabel3);
+            AddChild(top, 0, kTagLabel4);
 		}
 
-		public void restartCallback(object pSender)
-		{
+        public override void RestartCallback(object sender)
+        {
+            base.RestartCallback(sender);
 			showFont(SystemFontTestScene.restartAction());
 		}
 
-		public void nextCallback(object pSender)
-		{
+        public override void NextCallback(object sender)
+        {
+            base.NextCallback(sender);
 			showFont(SystemFontTestScene.nextAction());
 		}
 
-		public void backCallback(object pSender)
-		{
+        public override void BackCallback(object sender)
+        {
+            base.BackCallback(sender);
 			showFont(SystemFontTestScene.backAction());
 		}
 
-		public virtual string title()
-		{
-			return "System Font test";
-		}
+        public override string Title
+        {
+            get
+            {
+                return "System Font test";
+            }
+        }
 	}
 }

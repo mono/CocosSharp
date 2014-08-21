@@ -21,7 +21,7 @@ namespace tests.FontTest
                 "Scissor Cuts",
             };
 
-        public static int vAlignIdx = 0;
+        public static int verticalAlignIdx = 0;
 
         public static CCVerticalTextAlignment[] verticalAlignment =
             {
@@ -59,7 +59,7 @@ namespace tests.FontTest
             if (fontIdx >= fontList.Length)
             {
                 fontIdx = 0;
-                vAlignIdx = (vAlignIdx + 1) % verticalAlignment.Length;
+                verticalAlignIdx = (verticalAlignIdx + 1) % verticalAlignment.Length;
             }
             return fontList[fontIdx];
         }
@@ -70,9 +70,9 @@ namespace tests.FontTest
             if (fontIdx < 0)
             {
                 fontIdx = fontList.Length - 1;
-                vAlignIdx--;
-                if (vAlignIdx < 0)
-                    vAlignIdx = verticalAlignment.Length - 1;
+                verticalAlignIdx--;
+                if (verticalAlignIdx < 0)
+                    verticalAlignIdx = verticalAlignment.Length - 1;
             }
 
             return fontList[fontIdx];
@@ -124,6 +124,9 @@ namespace tests.FontTest
         private const int kTagLabel3 = 3;
         private const int kTagLabel4 = 4;
 
+        private CCSize blockSize;
+        private CCSize visibleRect;
+
         public FontTest()
         {
 
@@ -134,10 +137,7 @@ namespace tests.FontTest
         {
             base.OnEnter();
 
-            var s = VisibleBoundsWorldspace.Size;
 
-            var blockSize = new CCSize(s.Width / 3, s.Height / 2);
-            //blockSize = new CCSize(50, 50);
             var leftColor = new Background(blockSize, new CCColor4B(100, 100, 100, 255));
             var centerColor = new Background(blockSize, new CCColor4B(200, 100, 100, 255));
             var rightColor = new Background(blockSize, new CCColor4B(100, 100, 200, 255));
@@ -150,9 +150,9 @@ namespace tests.FontTest
             centerColor.AnchorPoint = new CCPoint(0, 0.5f);
             rightColor.AnchorPoint = new CCPoint(0, 0.5f);
 
-            leftColor.Position = new CCPoint(0, s.Height / 2);
-            centerColor.Position = new CCPoint(blockSize.Width, s.Height / 2);
-            rightColor.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
+            leftColor.Position = new CCPoint(0, visibleRect.Height / 2);
+            centerColor.Position = new CCPoint(blockSize.Width, visibleRect.Height / 2);
+            rightColor.Position = new CCPoint(blockSize.Width * 2, visibleRect.Height / 2);
 
             AddChild(leftColor, -1);
             AddChild(rightColor, -1);
@@ -161,11 +161,18 @@ namespace tests.FontTest
             showFont(FontTestScene.restartAction());
         }
 
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            visibleRect = VisibleBoundsWorldspace.Size;
+            blockSize = new CCSize(visibleRect.Width / 3, visibleRect.Height / 2);
+        }
+
+
         public void showFont(string pFont)
         {
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            var blockSize = new CCSize(s.Width / 3, s.Height / 2);
             float fontSize = 26;
 
             RemoveChildByTag(kTagLabel1, true);
@@ -173,26 +180,26 @@ namespace tests.FontTest
             RemoveChildByTag(kTagLabel3, true);
             RemoveChildByTag(kTagLabel4, true);
 
-            CCLabelTtf top = new CCLabelTtf(pFont, "Arial", 24);
-            CCLabelTtf left = new CCLabelTtf("alignment left", pFont, fontSize,
+            var top = new CCLabelTtf(pFont, "Arial", 24);
+            var left = new CCLabelTtf("alignment left", pFont, fontSize,
                                              blockSize, CCTextAlignment.Left,
-                                             FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-            CCLabelTtf center = new CCLabelTtf("alignment center", pFont, fontSize,
+                                             FontTestScene.verticalAlignment[FontTestScene.verticalAlignIdx]);
+            var center = new CCLabelTtf("alignment center", pFont, fontSize,
                                                blockSize, CCTextAlignment.Center,
-                                               FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-            CCLabelTtf right = new CCLabelTtf("alignment right", pFont, fontSize,
+                                               FontTestScene.verticalAlignment[FontTestScene.verticalAlignIdx]);
+            var right = new CCLabelTtf("alignment right", pFont, fontSize,
                                               blockSize, CCTextAlignment.Right,
-                                              FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
+                                              FontTestScene.verticalAlignment[FontTestScene.verticalAlignIdx]);
 
-            top.AnchorPoint = new CCPoint(0.5f, 1);
-            left.AnchorPoint = new CCPoint(0, 0.5f);
-            center.AnchorPoint = new CCPoint(0, 0.5f);
-            right.AnchorPoint = new CCPoint(0, 0.5f);
+            top.AnchorPoint = CCPoint.AnchorMiddleTop;
+            left.AnchorPoint = CCPoint.AnchorMiddleLeft;
+            center.AnchorPoint = CCPoint.AnchorMiddleLeft;
+            right.AnchorPoint = CCPoint.AnchorMiddleLeft;
 
             top.Position = TitleLabel.Position - new CCPoint(0, 20);
-            left.Position = new CCPoint(0, s.Height / 2);
-            center.Position = new CCPoint(blockSize.Width, s.Height / 2);
-            right.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
+            left.Position = new CCPoint(0, visibleRect.Height / 2);
+            center.Position = new CCPoint(blockSize.Width, visibleRect.Height / 2);
+            right.Position = new CCPoint(blockSize.Width * 2, visibleRect.Height / 2);
 
             AddChild(left, 0, kTagLabel1);
             AddChild(right, 0, kTagLabel2);
