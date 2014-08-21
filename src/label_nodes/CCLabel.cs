@@ -21,35 +21,35 @@ namespace CocosSharp
             public float C;
         }
 
-		private static CCTexture2D m_pTexture;
-        static bool m_bTextureDirty = true;
+		private static CCTexture2D labelTexture;
+        static bool isTextureDirty = true;
 
-        string m_FontName;
-        float m_FontSize;
-        bool m_bFontDirty;
+        string fontName;
+        float fontSize;
+        bool isFontDirty;
 
         public string FontName
         {
-            get { return m_FontName; }
+            get { return fontName; }
             set
             {
-                if (m_FontName != value)
+                if (fontName != value)
                 {
-                    m_FontName = value;
-                    m_bFontDirty = true;
+                    fontName = value;
+                    isFontDirty = true;
                 }
             }
         }
 
         public float FontSize
         {
-            get { return m_FontSize; }
+            get { return fontSize; }
             set
             {
-                if (m_FontSize != value)
+                if (fontSize != value)
                 {
-                    m_FontSize = value;
-                    m_bFontDirty = true;
+                    fontSize = value;
+                    isFontDirty = true;
                 }
             }
         }
@@ -74,7 +74,7 @@ namespace CocosSharp
             m_nHeight = height;
             m_nDepth = 4;
 
-            m_pTexture = new CCTexture2D();
+            labelTexture = new CCTexture2D();
             m_pData = new int[width * height];
 
             m_pNodes.Clear();
@@ -119,9 +119,9 @@ namespace CocosSharp
         {
             // Can't call base(text, ...), becasue we have to initialize font first
             InitializeFont(fontName, fontSize, text);
-            m_FontName = fontName;
-            m_FontSize = fontSize;
-            base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
+            this.fontName = fontName;
+            this.fontSize = fontSize;
+            base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, labelTexture);
         }
 
         #endregion Constructors
@@ -135,7 +135,7 @@ namespace CocosSharp
 
             if (Scene != null)
             {
-                m_bFontDirty = true;
+                isFontDirty = true;
             }
         }
 
@@ -271,23 +271,23 @@ namespace CocosSharp
                 }
             }
 
-            m_bTextureDirty = true;
+            isTextureDirty = true;
 
             return fontConfig;
         }
 
         protected override void Draw()
         {
-            if (m_bFontDirty)
+            if (isFontDirty)
             {
-                FontConfiguration = InitializeFont(m_FontName, m_FontSize, Text);
-                m_bFontDirty = false;
+                FontConfiguration = InitializeFont(fontName, fontSize, Text);
+                isFontDirty = false;
             }
 
-            if (m_bTextureDirty)
+            if (isTextureDirty)
             {
-				m_pTexture.InitWithRawData(m_pData, CCSurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
-                m_bTextureDirty = false;
+				labelTexture.InitWithRawData(m_pData, CCSurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
+                isTextureDirty = false;
             }
 
             base.Draw();
