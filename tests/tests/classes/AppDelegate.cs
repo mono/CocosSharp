@@ -49,17 +49,13 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abberancy", 26);
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
-            //sharedDirector = new CCDirector();
-            //director.DisplayStats = true;
-            //director.AnimationInterval = 1.0 / 60;
+            mainWindow.DisplayStats = true;
 
 
-//            if (sharedWindow.WindowSizeInPixels.Height > 320)
+//            if (mainWindow.WindowSizeInPixels.Height > 320)
 //            {
 //                application.ContentSearchPaths.Insert(0,"HD");
 //            }
-
-            //sharedWindow.AddSceneDirector(sharedDirector);
 
             CCScene scene = new CCScene(sharedWindow);
             CCLayer layer = new TestController();
