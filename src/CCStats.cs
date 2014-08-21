@@ -68,6 +68,7 @@ namespace CocosSharp
         CCLabelAtlas memoryLabel;
         CCLabelAtlas gcLabel;
 
+        CCWindow window;
 
 		#region Properties
 
@@ -155,8 +156,8 @@ namespace CocosSharp
                 }
             }
 
-            var factor = 1.0f;
-            var pos = CCPoint.Zero; //CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+            var factor = 2;
+            var pos = CCPoint.Zero;
 
             fpsLabel.Scale = factor;
             updateTimeLabel.Scale = factor;
@@ -218,6 +219,14 @@ namespace CocosSharp
                         memoryLabel.Text = String.Format ("{0}", GC.GetTotalMemory (false));
                         gcLabel.Text = String.Format ("{0}", gcCounter);
                     }
+
+                    var scene = window.DefaultDirector.RunningScene;
+                    drawCallLabel.Scene = scene;
+                    fpsLabel.Scene = scene;
+                    updateTimeLabel.Scene = scene;
+                    drawTimeLabel.Scene = scene;
+                    memoryLabel.Scene = scene;
+                    gcLabel.Scene = scene;
 
                     drawCallLabel.Visit ();
                     fpsLabel.Visit ();

@@ -124,7 +124,7 @@ namespace CocosSharp
             AddSceneDirector(new CCDirector());
 
             EventDispatcher = new CCEventDispatcher(this);
-            //Stats = new CCStats();
+            Stats = new CCStats();
 
             #if !NETFX_CORE
             Accelerometer = new CCAccelerometer(this);
@@ -150,7 +150,7 @@ namespace CocosSharp
 
             designResolutionSize = WindowSizeInPixels;
             DesignResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
-            //Stats.Initialize();
+            Stats.Initialize();
         }
 
         #endregion Constructors
@@ -307,7 +307,7 @@ namespace CocosSharp
 
         protected void Draw(CCGameTime gameTime)
         {
-            //Stats.UpdateStart();
+            Stats.UpdateStart();
 
             DrawManager.PushMatrix();
 
@@ -335,12 +335,12 @@ namespace CocosSharp
 
             DrawManager.PopMatrix();
 
-            //Stats.Draw(this);
+            Stats.Draw(this);
         }
 
         internal void Update(float deltaTime)
         {
-            //Stats.UpdateStart();
+            Stats.UpdateStart();
 
             if(EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE)) 
             {
@@ -362,7 +362,7 @@ namespace CocosSharp
                 }
             }
 
-            //Stats.UpdateEnd(deltaTime);
+            Stats.UpdateEnd(deltaTime);
         }
 
         #endregion Drawing and updating
