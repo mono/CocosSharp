@@ -52,7 +52,7 @@ namespace CocosSharp
 
 		#region PROTECTED PARAMETERS
 
-		public CCNode _node;
+		internal CCNode _node;
 		public List<CCPhysicsJoint> _joints = new List<CCPhysicsJoint>();
 		protected List<CCPhysicsShape> _shapes = new List<CCPhysicsShape>();
 		public CCPhysicsWorld _world;
@@ -252,6 +252,11 @@ namespace CocosSharp
 
 		#region PUBLIC METHODS
 
+
+		public static CCPhysicsBody CreateCircle(float radius)
+		{
+			return CreateCircle(radius, CCPoint.Zero);
+		}
 
 		/** Create a body contains a circle shape. */
 		public static CCPhysicsBody CreateCircle(float radius, CCPhysicsMaterial material, CCPoint offset)
@@ -665,7 +670,7 @@ namespace CocosSharp
 		public List<CCPhysicsJoint> GetJoints() { return _joints; }
 
 		/** get the sprite the body set to. */
-		public CCNode GetNode() { return _node; }
+		public CCNode Node { get { return _node; } }
 
 		/**
 		 * A mask that defines which categories this physics body belongs to.
