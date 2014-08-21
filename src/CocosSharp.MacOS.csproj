@@ -3,14 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A83510D8-7AED-411E-9616-DCFEA180969E}</ProjectGuid>
     <ProjectTypeGuids>{42C0BBD9-55CE-4FC1-8D90-A7348ABAFB23};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <Description>CocosSharp for MonoMac</Description>
     <RootNamespace>CocosSharp</RootNamespace>
     <AssemblyName>CocosSharp</AssemblyName>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -426,10 +426,6 @@
     <Folder Include="physics\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
-      <Project>{A84510D8-7AED-411E-9616-DCFEA180969E}</Project>
-      <Name>box2d.MacOS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
       <Project>{5C3DC4FF-FE5A-4B94-B4A6-6F79E63F3130}</Project>
       <Name>Lidgren.Network.MacOS</Name>

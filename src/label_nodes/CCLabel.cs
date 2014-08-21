@@ -144,8 +144,6 @@ namespace CocosSharp
 
         private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
         {
-            if (Director == null)
-                return null;
 
             if (m_pData == null)
             {
