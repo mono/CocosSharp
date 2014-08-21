@@ -184,12 +184,6 @@ namespace CocosSharp
 
 		#region PROTECTED METHODS
 
-
-		protected virtual void SetRotation(float rotation)
-		{
-			_info.Body.SetAngle(-((rotation + _rotationOffset) * (CCMathHelper.Pi / 180.0f)));
-		}
-
 		public void Update(float delta)
 		{
 			if (_node != null)
@@ -205,7 +199,7 @@ namespace CocosSharp
 					: vec;
 
 				//->convertToNodeSpace(scene->convertToWorldSpace(getPosition())) : getPosition();
-				float rotation = GetRotation();
+				float rotation = Rotation;
 				for (; parent != scene; parent = parent.Parent)
 				{
 					rotation -= parent.RotationX;
@@ -262,9 +256,7 @@ namespace CocosSharp
 		/** Create a body contains a circle shape. */
 		public static CCPhysicsBody CreateCircle(float radius, CCPhysicsMaterial material, CCPoint offset)
 		{
-
 			CCPhysicsBody body = new CCPhysicsBody();
-			body.SetMass(MASS_DEFAULT);
             body.AddShape(new CCPhysicsShapeCircle(material, radius, offset));
 			return body;
 		}
@@ -285,7 +277,6 @@ namespace CocosSharp
 
 		public static CCPhysicsBody CreateBox(CCSize size, float radius)
 		{
-
 			return CreateBox(size, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, radius);
 		}
 
@@ -314,7 +305,7 @@ namespace CocosSharp
 			CCPhysicsBody body = new CCPhysicsBody();
 
             body.AddShape(new CCPhysicsShapeEdgeSegment(a, b, material, border));
-			body._dynamic = false;
+			body.IsDynamic = false;
 			return body;
 
 		}
@@ -331,7 +322,7 @@ namespace CocosSharp
 		{
 			CCPhysicsBody body = new CCPhysicsBody();
             body.AddShape(new CCPhysicsShapeEdgeBox(size, material, offset, border));
-			body._dynamic = false;
+			body.IsDynamic = false;
 			return body;
 		}
 
@@ -346,7 +337,7 @@ namespace CocosSharp
 		{
 			CCPhysicsBody body = new CCPhysicsBody();
             body.AddShape(new CCPhysicsShapeEdgePolygon(points, count, material, border));
-			body._dynamic = false;
+			body.IsDynamic = false;
 			return body;
 		}
 
@@ -361,7 +352,7 @@ namespace CocosSharp
 		{
 			CCPhysicsBody body = new CCPhysicsBody();
             body.AddShape(new CCPhysicsShapeEdgeChain(points, count, material, border));
-			body._dynamic = false;
+			body.IsDynamic = false;
 			return body;
 		}
 
@@ -370,6 +361,14 @@ namespace CocosSharp
 		{
             return CreateEdgeChain(points, count, CCPhysicsMaterial.PHYSICSSHAPE_MATERIAL_DEFAULT, border);
 		}
+
+        public virtual void AddShape(List<CCPhysicsShape> shapes, bool addMassAndMoment = true)
+        {
+            foreach (var item in shapes)
+            {
+                AddShape(item, addMassAndMoment);
+            }
+        }
 
 		/*
 		 * @brief add a shape to body
@@ -752,18 +751,35 @@ namespace CocosSharp
 			}
 		}
 
-		/** get the body rotation. */
-		public float GetRotation()
-		{
-			return -(_info.Body.GetAngle() * 180f / cp.M_PI) - _rotationOffset;
-			//return -(_info.GetBody().GetAngle() * (180.0 / CCMathHelper.Pi)) - _rotationOffset;
-		}
+		/** get/set the body rotation. */
+		public virtual float Rotation
+        {
+            get
+            {
+                return -(_info.Body.GetAngle() * 180f / cp.M_PI) - _rotationOffset;
+            }
+        
+            protected set 
+            {
+                _info.Body.SetAngle(-((value + _rotationOffset) * (CCMathHelper.Pi / 180.0f)));
+            }
+        }
 
-		/** set body position offset, it's the position witch relative to node */
-        public void setPositionOffset(CCPoint position)
-		{
-            setPositionOffset(new cpVect(position.X, position.Y));
-		}
+        // set body position offset, it's the position witch relative to node 
+		public CCPoint PositionOffset
+        {
+            get
+            {
+                var posOff = new CCPoint(_positionOffset.x, _positionOffset.y);
+                return posOff;
+            }
+		
+
+            set
+            {
+                setPositionOffset(PhysicsHelper.CCPointToCpVect(value));
+            }
+        }
 
         /** set body position offset, it's the position witch relative to node */
         internal void setPositionOffset(cpVect position)
@@ -776,89 +792,90 @@ namespace CocosSharp
             }
         }
 
-		/** get body position offset. */
-		public CCPoint GetPositionOffset()
-		{
-            var posOff = new CCPoint(_positionOffset.x, _positionOffset.y);
-			return posOff;
-		}
+        /** get/set body rotation offset, it's the rotation witch relative to node */
+        public float RotationOffset
+        {
+            get
+            {
+                return _rotationOffset;
+            }
+        
+            set
+            {
+                if (Math.Abs(_rotationOffset - value) > 0.5f)
+                {
+                    float rot = Rotation;
+                    _rotationOffset = value;
+                    Rotation = rot;
+                }
+            }
+        }
 
-        /** set body rotation offset, it's the rotation witch relative to node */
-		public void SetRotationOffset(float rotation)
-		{
-			if (Math.Abs(_rotationOffset - rotation) > 0.5f)
-			{
-				float rot = GetRotation();
-				_rotationOffset = rotation;
-				SetRotation(rot);
-			}
-		}
-		/** set the body rotation offset */
-		public float GetRotationOffset()
-		{
-			return _rotationOffset;
-		}
+        /// <summary>
+        /// Determines whether this instance is dynamic or not.
+        /// 
+        /// A dynamic body will be effected by gravity
+        /// </summary>
+        /// <returns><c>true</c> if this instance is dynamic; otherwise, <c>false</c>.</returns>
+		public bool IsDynamic
+        { 
+            get
+            {
+                return _dynamic; 
+            }
+        
+            set
+            {
+                if (value != _dynamic)
+                {
+                    _dynamic = value;
+                    if (value)
+                    {
 
-		/**
-		 * @brief test the body is dynamic or not.
-		 * a dynamic body will effect with gravity.
-		 */
-		public bool IsDynamic() { return _dynamic; }
-		/**
-		 * @brief set dynamic to body.
-		 * a dynamic body will effect with gravity.
-		 */
-		public void SetDynamic(bool dynamic)
-		{
-			if (dynamic != _dynamic)
-			{
-				_dynamic = dynamic;
-				if (dynamic)
-				{
+                        _info.Body.bodyType = cpBodyType.DYNAMIC;
+                        _info.Body.SetMass(_mass);
+                        _info.Body.SetMoment(_moment);
 
-                    _info.Body.bodyType = cpBodyType.DYNAMIC;
-					_info.Body.SetMass(_mass);
-					_info.Body.SetMoment(_moment);
+                        if (_world != null)
+                        {
+                            // reset the gravity enable
+                            if (IsGravityEnabled())
+                            {
+                                _gravityEnabled = false;
+                                SetGravityEnable(true);
+                            }
 
-					if (_world != null)
-					{
-						// reset the gravity enable
-						if (IsGravityEnabled())
-						{
-							_gravityEnabled = false;
-							SetGravityEnable(true);
-						}
+                            // _world._info
+                            _world.Info.Space.AddBody(_info.Body);
+                        }
+                    }
+                    else
+                    {
+                        if (_world != null)
+                        {
+                            _world.Info.Space.RemoveBody(_info.Body);
+                            // cpSpaceRemoveBody(_world->_info->getSpace(), _info->getBody());
+                        }
 
-						// _world._info
-						_world.Info.Space.AddBody(_info.Body);
-					}
-				}
-				else
-				{
-					if (_world != null)
-					{
-						_world.Info.Space.RemoveBody(_info.Body);
-						// cpSpaceRemoveBody(_world->_info->getSpace(), _info->getBody());
-					}
+                        // avoid incorrect collion simulation.
+                        var body = _info.Body;
 
-					// avoid incorrect collion simulation.
-					var body = _info.Body;
 
-                  
-                    body.SetMass(CCPhysicsBody.MASS_DEFAULT);
-					body.SetMoment(CCPhysicsBody.MOMENT_DEFAULT);
+                        body.SetMass(CCPhysicsBody.MASS_DEFAULT);
+                        body.SetMoment(CCPhysicsBody.MOMENT_DEFAULT);
 
-					body.SetVelocity(cpVect.Zero);
+                        body.SetVelocity(cpVect.Zero);
 
-					body.SetAngularVelocity(0.0f);
+                        body.SetAngularVelocity(0.0f);
 
-                    body.bodyType = cpBodyType.STATIC;
+                        body.bodyType = cpBodyType.STATIC;
 
-					ResetForces();
-				}
+                        ResetForces();
+                    }
 
-			}
-		}
+                }
+            }
+        }
 
 		/**
 		 * @brief set the body mass.
@@ -1187,12 +1204,6 @@ namespace CocosSharp
 			{
 				shape.ScaleY = scaleY;
 			}
-		}
-
-
-		public void SetType(cpBodyType type)
-		{
-			_info.Body.SetBodyType(type);
 		}
 
 		public float Elasticity

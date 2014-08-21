@@ -33,12 +33,19 @@ using System.Text;
 namespace CocosSharp
 {
 
-    public delegate bool RayCastDelegate(CCPhysicsWorld world, CCPhysicsRayCastInfo info, ref object obj);
+    public class RayCastContext
+    {
+        public object data;
+
+        public RayCastContext(object data)
+        {
+            this.data = data;
+        }
+
+    }
 
 	public struct CCPhysicsRayCastInfo
 	{
-
-
         public CCPhysicsShape Shape { get; set; }
         public CCPoint Start { get; set; }
         public CCPoint End { get; set; }              //< in lua, it's name is "ended"
@@ -65,15 +72,18 @@ namespace CocosSharp
 		}
 	};
 
+    //public delegate bool RayCastDelegate(CCPhysicsWorld world, CCPhysicsRayCastInfo info, RayCastContext obj);
+
 	public struct CCRayCastCallbackInfo
 	{
+     
         public CCPhysicsWorld World { get; set; }
-        public RayCastDelegate Function { get; set; }
+        public Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool> Function { get; set; }
         public CCPoint Pont1 { get; set; }
         public CCPoint Point2 { get; set; }
         public object Data { get; set; }
 
-        public CCRayCastCallbackInfo(CCPhysicsWorld world, RayCastDelegate func, CCPoint p1, CCPoint p2, object data)
+        public CCRayCastCallbackInfo(CCPhysicsWorld world, Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool> func, CCPoint p1, CCPoint p2, object data)
             : this()
 		{
 			this.World = world;
@@ -178,9 +188,9 @@ namespace CocosSharp
         		t, null
         	);
 
-            object data = info.Data;
+            //var data = new CocosSharp.CCPhysicsWorld.RayCastContext info.Data;
 
-            Continues = info.Function(info.World, callbackInfo, ref data);
+            Continues = info.Function(info.World, callbackInfo,new RayCastContext(info.Data));
 		}
 
 		public static void QueryRectCallbackFunc(cpShape shape, CCRectQueryCallbackInfo info)
@@ -521,17 +531,16 @@ namespace CocosSharp
 			Bodies.Clear();
 		}
 
-
      
 
 		/** Searches for physics shapes that intersects the ray. */
-        public void RayCast(RayCastDelegate func, CCPoint point1, CCPoint point2, object data)
+        public void RayCast(Func<CCPhysicsWorld, CCPhysicsRayCastInfo, RayCastContext, bool>  func, CCPoint point1, CCPoint point2, RayCastContext context)
 		{
 			cp.AssertWarn(func != null, "func shouldn't be nullptr");
 
 			if (func != null)
 			{
-				CCRayCastCallbackInfo info = new CCRayCastCallbackInfo(this, func, point1, point2, data);
+                CCRayCastCallbackInfo info = new CCRayCastCallbackInfo(this, func, point1, point2, context.data);
 				//Action<cpShape, cpVect, cpVect, float, object> func
 				CCPhysicsWorldCallback.Continues = true;
 
@@ -539,7 +548,7 @@ namespace CocosSharp
                     PhysicsHelper.CCPointToCpVect(point1),
                     PhysicsHelper.CCPointToCpVect(point2), 1f,
 									new cpShapeFilter(cp.NO_GROUP, cp.ALL_LAYERS, cp.ALL_LAYERS),
-                    (shape, v1, v2, f, o) => CCPhysicsWorldCallback.RayCastCallbackFunc(shape, f, PhysicsHelper.cpVectToCCPoint(v1), ref info), data
+                    (shape, v1, v2, f, o) => CCPhysicsWorldCallback.RayCastCallbackFunc(shape, f, PhysicsHelper.cpVectToCCPoint(v1), ref info), context.data
 									);
 			}
 		}
@@ -860,7 +869,7 @@ namespace CocosSharp
 				}
 
 				// add body to space
-				if (body.IsDynamic())
+				if (body.IsDynamic)
 				{
 					Info.AddBody(body._info);
 				}

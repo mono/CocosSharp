@@ -140,12 +140,14 @@ namespace CocosSharp
 			}
 		}
 
-		public CCPhysicsShape(float radius, CCPhysicsMaterial material, CCPoint offset)
+		public CCPhysicsShape(float radius, CCPhysicsMaterial material, CCPoint offset) :this()
 		{
+
 			// TODO: Complete member initialization
 			this.radius = radius;
 			this.material = material;
             this.offset = PhysicsHelper.CCPointToCpVect(offset);
+
 		}
 
 
@@ -176,6 +178,7 @@ namespace CocosSharp
                 }
                 else
                 {
+                    
                     _info.Body = value._info.Body;
                     _body = value;
                 }
@@ -770,8 +773,7 @@ namespace CocosSharp
 
 			_type = PhysicsType.EDGESEGMENT;
 
-
-			_info.Add(shape);
+            _info.Add(shape);
 
 			_mass = cp.Infinity;
 			_moment = cp.Infinity;

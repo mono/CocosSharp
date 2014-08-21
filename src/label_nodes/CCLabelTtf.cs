@@ -5,22 +5,22 @@ namespace CocosSharp
 {
     public class CCLabelTtf : CCSprite, ICCTextContainer
     {
-        private float m_fFontSize;
-        private CCTextAlignment m_hAlignment;
-        private string m_pFontName;
-        protected string m_pString = String.Empty;
-        private CCSize m_tDimensions;
-        private CCVerticalTextAlignment m_vAlignment;
+        private float fontSize;
+        private CCTextAlignment horzTextAlignment;
+        private string fontName;
+        protected string labelText = String.Empty;
+        private CCSize dimensions;
+        private CCVerticalTextAlignment vertTextAlignment;
 
         public string FontName
         {
-            get { return m_pFontName; }
+            get { return fontName; }
             set
             {
-                if (m_pFontName != value)
+                if (fontName != value)
                 {
-                    m_pFontName = value;
-                    if (m_pString.Length > 0)
+                    fontName = value;
+                    if (labelText.Length > 0)
                     {
                         Refresh();
                     }
@@ -30,13 +30,13 @@ namespace CocosSharp
 
         public float FontSize
         {
-            get { return m_fFontSize; }
+            get { return fontSize; }
             set
             {
-                if (m_fFontSize != value)
+                if (fontSize != value)
                 {
-                    m_fFontSize = value;
-                    if (m_pString.Length > 0)
+                    fontSize = value;
+                    if (labelText.Length > 0)
                     {
                         Refresh();
                     }
@@ -46,13 +46,13 @@ namespace CocosSharp
 
         public CCSize Dimensions
         {
-            get { return m_tDimensions; }
+            get { return dimensions; }
             set
             {
-                if (!m_tDimensions.Equals(value))
+                if (!dimensions.Equals(value))
                 {
-                    m_tDimensions = value;
-                    if (m_pString.Length > 0)
+                    dimensions = value;
+                    if (labelText.Length > 0)
                     {
                         Refresh();
                     }
@@ -62,13 +62,13 @@ namespace CocosSharp
 
         public CCVerticalTextAlignment VerticalAlignment
         {
-            get { return m_vAlignment; }
+            get { return vertTextAlignment; }
             set
             {
-                if (m_vAlignment != value)
+                if (vertTextAlignment != value)
                 {
-                    m_vAlignment = value;
-                    if (m_pString.Length > 0)
+                    vertTextAlignment = value;
+                    if (labelText.Length > 0)
                     {
                         Refresh();
                     }
@@ -78,13 +78,13 @@ namespace CocosSharp
 
         public CCTextAlignment HorizontalAlignment
         {
-            get { return m_hAlignment; }
+            get { return horzTextAlignment; }
             set
             {
-                if (m_hAlignment != value)
+                if (horzTextAlignment != value)
                 {
-                    m_hAlignment = value;
-                    if (m_pString.Length > 0)
+                    horzTextAlignment = value;
+                    if (labelText.Length > 0)
                     {
                         Refresh();
                     }
@@ -122,13 +122,13 @@ namespace CocosSharp
             // shader program
             //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
 
-            m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
-            m_hAlignment = hAlignment;
-            m_vAlignment = vAlignment;
+            this.dimensions = new CCSize(dimensions.Width, dimensions.Height);
+            horzTextAlignment = hAlignment;
+            vertTextAlignment = vAlignment;
 			if (fontName == null)
 				fontName = "arial";
-			m_pFontName = (!string.IsNullOrEmpty(fontName.Trim())) ? fontName : "arial";
-            m_fFontSize = fontSize;
+			this.fontName = (!string.IsNullOrEmpty(fontName.Trim())) ? fontName : "arial";
+            this.fontSize = fontSize;
 
             this.Text = text;          
         }
@@ -168,13 +168,13 @@ namespace CocosSharp
 */
         public string Text
         {
-            get { return m_pString; }
+            get { return labelText; }
             set
             {
                 // This is called in the update() call, so it should not do any drawing ...
-                if (m_pString != value)
+                if (labelText != value)
                 {
-                    m_pString = value;
+                    labelText = value;
                     updateTexture();
                 }
             }
@@ -184,7 +184,7 @@ namespace CocosSharp
 
         public override string ToString()
         {
-            return string.Format("FontName:{0}, FontSize:{1}", m_pFontName, m_fFontSize);
+            return string.Format("FontName:{0}, FontSize:{1}", fontName, fontSize);
         }
 
         private void updateTexture()
@@ -201,12 +201,12 @@ namespace CocosSharp
             // let system compute label's width or height when its value is 0
             // refer to cocos2d-x issue #1430
             tex = new CCTexture2D(
-                m_pString,
-				m_tDimensions,
-                m_hAlignment,
-                m_vAlignment,
-                m_pFontName,
-                m_fFontSize);
+                labelText,
+				dimensions,
+                horzTextAlignment,
+                vertTextAlignment,
+                fontName,
+                fontSize);
 
 //#if MACOS || IPHONE || IOS
 //			// There was a problem loading the text for some reason or another if result is not true
@@ -229,8 +229,6 @@ namespace CocosSharp
             rect.Size = Texture.ContentSizeInPixels;
             TextureRectInPixels = rect;
 
-            if (ContentSize == CCSize.Zero)
-                ContentSize = rect.Size;
         }
     }
 }
