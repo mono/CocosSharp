@@ -45,6 +45,14 @@ namespace CocosSharp
             get { return CCAffineTransform.Identity; }
         }
 
+        protected internal override Matrix XnaLocalMatrix 
+        { 
+            get { return Matrix.Identity; }
+            protected set 
+            {
+            }
+        }
+
         #endregion Properties
 
 

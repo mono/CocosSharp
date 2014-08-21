@@ -833,10 +833,10 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
-        protected internal Matrix XnaLocalMatrix 
+        protected internal virtual Matrix XnaLocalMatrix 
         { 
             get { return xnaLocalMatrix; }
-            private set 
+            protected set 
             {
                 xnaLocalMatrix = value;
             }
