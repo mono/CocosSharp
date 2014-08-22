@@ -146,7 +146,7 @@ namespace tests.FontTest
 
 		private CCSize blockSize;
         private CCSize visibleRect;
-		private float fontSize = 26;
+		private float fontSize = 36;
 
 
 		public SystemFontTest()
