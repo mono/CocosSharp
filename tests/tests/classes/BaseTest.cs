@@ -9,17 +9,19 @@ namespace tests.classes
         {
             base.OnEnter();
 
+            var visibleRect = VisibleBoundsWorldspace;
+
             // add title and subtitle
             var label = new CCLabelTtf(Title(), "Arial", 32);
             AddChild(label, 9999);
-            label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 30);
+            label.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 30);
 
             string strSubtitle = Subtitle();
             if (!string.IsNullOrEmpty(strSubtitle))
             {
                 var l = new CCLabelTtf(strSubtitle, "Thonburi", 16);
                 AddChild(l, 9999);
-                l.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 60);
+                l.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 60);
             }
 
             // add menu
@@ -34,12 +36,12 @@ namespace tests.classes
             var menu = new CCMenu(item1, item2, item3);
 
             menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(CCVisibleRect.Center.X - item2.ContentSize.Width * 2,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-            item2.Position = new CCPoint(CCVisibleRect.Center.X,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-            item3.Position = new CCPoint(CCVisibleRect.Center.X + item2.ContentSize.Width * 2,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
+            item1.Position = new CCPoint(visibleRect.Center.X - item2.ContentSize.Width * 2,
+                visibleRect.Bottom().Y + item2.ContentSize.Height / 2);
+            item2.Position = new CCPoint(visibleRect.Center.X,
+                visibleRect.Bottom().Y + item2.ContentSize.Height / 2);
+            item3.Position = new CCPoint(visibleRect.Center.X + item2.ContentSize.Width * 2,
+                visibleRect.Bottom().Y + item2.ContentSize.Height / 2);
 
             AddChild(menu, 9999);
         }
