@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using CocosSharp;
-
+#if NETFX_CORE
+using System.Diagnostics;
+#endif
 namespace tests.Clipping
 {
 
@@ -687,8 +689,13 @@ namespace tests.Clipping
             CCPoint point = clipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
             m_bScrolling = clipper.BoundingBoxTransformedToWorld.ContainsPoint(point);
-            Console.WriteLine("Touched: " + point + "clipper.BB: " + clipper.BoundingBoxTransformedToWorld + " scrolling: " + m_bScrolling );
-            m_lastPoint = point;
+
+#if NETFX_CORE
+			Debug.WriteLine("Touched: " + point + "clipper.BB: " + clipper.BoundingBoxTransformedToWorld + " scrolling: " + m_bScrolling);
+#else
+			Console.WriteLine("Touched: " + point + "clipper.BB: " + clipper.BoundingBoxTransformedToWorld + " scrolling: " + m_bScrolling);
+#endif
+			m_lastPoint = point;
         }
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
