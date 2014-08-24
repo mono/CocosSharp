@@ -88,9 +88,15 @@ namespace CocosSharp
             var graphics = new GraphicsDeviceManager(this);
 #endif
 
-#if WINDOWS || WINDOWSGL || MACOS
+#if WINDOWS || WINDOWSGL || MACOS || WINRT
             this.IsMouseVisible = true;
 #endif
+
+#if WINRT
+            TouchPanel.EnableMouseTouchPoint = true;
+            TouchPanel.EnableMouseGestures = true;
+#endif
+
 		}
 
         /// <summary>
