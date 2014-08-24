@@ -30,7 +30,7 @@ namespace tests.FontTest
 			"fonts/ThonburiBold.ttf"
 
 #endif
-#if WINDOWS || WINDOWSGL
+#if WINDOWS || WINDOWSGL || NETFX_CORE
 			"Comic Sans MS",
 			"Felt",
 			"MoolBoran",
