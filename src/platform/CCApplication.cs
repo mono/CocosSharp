@@ -415,8 +415,15 @@ namespace CocosSharp
 		{
 			if (isFullscreen)
 			{
-				windowSizeInPixels.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-				windowSizeInPixels.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+#if NETFX_CORE
+                //  GraphicsAdapter values are not set correctly when it gets to here so we used the
+                //  DeviceManager values.
+                windowSizeInPixels.Width = xnaDeviceManager.PreferredBackBufferWidth;
+                windowSizeInPixels.Height = xnaDeviceManager.PreferredBackBufferHeight;
+#else
+                windowSizeInPixels.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                windowSizeInPixels.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+#endif
 			}
 
 			xnaDeviceManager.IsFullScreen = isFullscreen;

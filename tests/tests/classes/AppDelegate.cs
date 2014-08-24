@@ -19,7 +19,7 @@ namespace tests
         {
             //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
             //application.AllowUserResizing = true;
-            //application.PreferMultiSampling = false;
+            application.PreferMultiSampling = false;
             application.ContentRootDirectory = "Content";
 
             sharedWindow = mainWindow;
@@ -51,7 +51,7 @@ namespace tests
 
             mainWindow.DisplayStats = true;
 
-
+            
 //            if (mainWindow.WindowSizeInPixels.Height > 320)
 //            {
 //                application.ContentSearchPaths.Insert(0,"HD");
