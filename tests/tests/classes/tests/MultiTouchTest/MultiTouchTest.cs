@@ -29,7 +29,7 @@ namespace tests
         {
             base.AddedToScene();
 
-            title.Position = Layer.VisibleBoundsWorldspace.Top() + new CCPoint(0, -40);
+            title.Position = VisibleBoundsWorldspace.Top() + new CCPoint(0, -40);
 		}
 
         private CCColor3B[] s_TouchColors = new CCColor3B[] 
@@ -49,8 +49,7 @@ namespace tests
             {
                 CCTouch touch = (item);
                 TouchPoint touchPoint = TouchPoint.TouchPointWithParent(this);
-                CCPoint location = touch.LocationOnScreen;
-                location = Layer.ScreenToWorldspace(location);
+                CCPoint location = touch.Location;
                 touchPoint.SetTouchPos(location);
                 touchPoint.SetTouchColor(s_TouchColors[touch.Id % 5]);
 
