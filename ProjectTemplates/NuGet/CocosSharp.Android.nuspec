@@ -2,11 +2,11 @@
 <package >
   <metadata>
     <id>CocosSharp.Android</id>
-    <version>1.2.0.0</version>
+    <version>1.0.0.0</version>
     <title>CocosSharp for Android</title>
-    <authors>Xamarin Inc</authors>
-    <owners>Xamarin Inc</owners>
-    <licenseUrl>https://github.com/xamarin/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
+    <authors>Xamarin</authors>
+    <owners>Xamarin</owners>
+    <licenseUrl>https://github.com/mono/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
     <projectUrl>http://github.com/mono/CocosSharp</projectUrl>
     <iconUrl>http://github.com/mono/CocosSharp</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
