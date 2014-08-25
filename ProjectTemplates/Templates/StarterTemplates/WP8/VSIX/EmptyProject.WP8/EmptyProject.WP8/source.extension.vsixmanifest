@@ -9,13 +9,13 @@
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>
 		<SupportedProducts>
-			<VisualStudio Version="10.0">
+			<VisualStudio Version="11.0">
 				<Edition>Ultimate</Edition>
 				<Edition>Premium</Edition>
 				<Edition>Pro</Edition>
 				<Edition>VCSExpress</Edition>
 			</VisualStudio>
-			<VisualStudio Version="11.0">
+			<VisualStudio Version="12.0">
 				<Edition>Ultimate</Edition>
 				<Edition>Premium</Edition>
 				<Edition>Pro</Edition>
@@ -24,12 +24,6 @@
 		</SupportedProducts>
 		<SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
 	</Identifier>
-	<References>
-		<Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="2.5.40416.9020">
-			<Name>NuGet Package Manager</Name>
-			<MoreInfoUrl>http://docs.nuget.org/</MoreInfoUrl>
-		</Reference>
-	</References>
 	<Content>
 		<ProjectTemplate>ProjectTemplates</ProjectTemplate>
 	</Content>
