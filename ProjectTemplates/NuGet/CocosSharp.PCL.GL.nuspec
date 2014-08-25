@@ -4,8 +4,8 @@
     <id>CocosSharp.PCL.Shared.GL</id>
     <version>1.0.0.0</version>
     <title>CocosSharp PCL - OpenGL</title>
-    <authors>Xamarin Inc</authors>
-    <owners>Xamarin Inc</owners>
+    <authors>Xamarin</authors>
+    <owners>Xamarin</owners>
     <licenseUrl>http://github.com/xamarin/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
     <projectUrl>https://github.com/xamarin/CocosSharp</projectUrl>
     <iconUrl>http://CocosSharp.xamarin.com</iconUrl>
@@ -49,10 +49,11 @@
 
      <!--Windows8-->
     <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.*;..\..\src\bin\Windows8\Release\Sharp*.*"/>
-    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\*.*" target="lib\netcore"/>
+    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\MonoGame*.*" target="lib\netcore"/>
+    <file src="..\..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
     <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\Themes\*.*" target="lib\netcore\MonoGame.Framework\Themes"/>
 
-     <!--Windows Phone 8-->
+    <!--Windows Phone 8-->
 	<file src="..\..\src\bin\WindowsPhone\x86\Release\*.dll" target="build\wp8\x86" exclude="..\..\src\bin\WindowsPhone\x86\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\x86\Release\Sharp*.*" />
 	<file src="..\..\MonoGame\MonoGame.Framework\bin\WindowsPhone\x86\Release\*.*" target="build\wp8\x86" />
 	<file src="..\..\src\bin\WindowsPhone\ARM\Release\*.dll" target="build\wp8\ARM" exclude="..\..\src\bin\WindowsPhone\ARM\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\ARM\Release\Sharp*.*" />
