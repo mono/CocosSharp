@@ -511,6 +511,7 @@ namespace CocosSharp
 
             if (vertexData == null)
             {
+                sameIndexCount = false;
                 vertexData = new CCV3F_C4B_T2F[index + 3];
             }
 
