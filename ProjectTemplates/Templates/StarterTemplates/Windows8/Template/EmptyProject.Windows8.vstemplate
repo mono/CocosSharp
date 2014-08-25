@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
 	<TemplateData>
-		<Name>Cocos2D-XNA Empty Game Windows Store</Name>
-		<Description>Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for targeting Windows Store.</Description>
+		<Name>CocosSharp Empty Game Windows Store</Name>
+		<Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for targeting Windows Store.</Description>
 		<ProjectType>CSharp</ProjectType>
 		<ProjectSubType>
 		</ProjectSubType>
 		<SortOrder>1000</SortOrder>
 		<CreateNewFolder>true</CreateNewFolder>
-		<DefaultName>Cocos2DGame</DefaultName>
+		<DefaultName>CocosSharpGame</DefaultName>
 		<ProvideDefaultName>true</ProvideDefaultName>
 		<LocationField>Enabled</LocationField>
 		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -29,7 +29,6 @@
 				</Folder>
 			</Folder>
 			<ProjectItem ReplaceParameters="false" TargetFileName="$safeprojectname$_TemporaryKey.pfx">EmptyProject.Windows8_TemporaryKey.pfx</ProjectItem>
-			<ProjectItem ReplaceParameters="true" TargetFileName="Game1.cs">Game1.cs</ProjectItem>
 			<ProjectItem ReplaceParameters="true" TargetFileName="IntroLayer.cs">IntroLayer.cs</ProjectItem>
 			<ProjectItem ReplaceParameters="true" TargetFileName="Package.appxmanifest">Package.appxmanifest</ProjectItem>
 			<ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
@@ -44,8 +43,8 @@
 	</WizardExtension>
 	<WizardData>
 		<packages repository="extension"
-			  repositoryId="EmptyProject.0ab22475-63ab-43e9-8713-cb2e3af7c2b8">
-			<package id="Cocos2D-XNA.Windows8" version="1.2.0.0" />
+			  repositoryId="EmptyProject.CA68C8A0-4391-47E5-A8F6-A77035B971FE">
+			<package id="CocosSharp.Windows8" version="1.0.0.0" />
 		</packages>
 	</WizardData>
 
