@@ -63,11 +63,6 @@ namespace CocosSharp
 
         #region Properties
 
-        internal static float ZEye
-        {
-            get { return 1.192092896e-07F; }
-        }
-
         public CCCameraProjection Projection
         {
             get { return cameraProjection; }
