@@ -448,7 +448,7 @@ namespace CocosSharp
 				scale9Image.AddChild(centre, 0, (int)Positions.Centre);
 
 				// Top
-				top = new CCSprite(scale9Image.Texture, centerbounds);
+                top = new CCSprite(scale9Image.Texture, centertopbounds);
 				scale9Image.AddChild(top, 1, (int)Positions.Top);
 
 				// Bottom
