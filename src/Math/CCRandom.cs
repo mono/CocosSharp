@@ -6,7 +6,7 @@ namespace CocosSharp
     public class CCRandom
     {
         // random seed 
-		private static System.Random _random = new System.Random((int)DateTime.Now.Ticks);
+        private static System.Random _random = new System.Random((int)DateTime.UtcNow.Ticks);
 
         public static void Randomize(int seed)
         {

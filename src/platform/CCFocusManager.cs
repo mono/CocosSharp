@@ -188,7 +188,7 @@ namespace CocosSharp
             {
                 if (scrollingPrevious)
                 {
-                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - timeOfLastFocus);
+                    TimeSpan ts = new TimeSpan(DateTime.UtcNow.Ticks - timeOfLastFocus);
                     if (ts.TotalMilliseconds > MenuScrollDelay)
                     {
                         FocusPreviousItem();
@@ -197,14 +197,14 @@ namespace CocosSharp
                 else
                 {
                     scrollingPrevious = true;
-                    timeOfLastFocus = DateTime.Now.Ticks;
+                    timeOfLastFocus = DateTime.UtcNow.Ticks;
                 }
             }
             else if (rightButton == CCGamePadButtonStatus.Pressed || downButton == CCGamePadButtonStatus.Pressed)
             {
                 if (scrollingNext)
                 {
-                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - timeOfLastFocus);
+                    TimeSpan ts = new TimeSpan(DateTime.UtcNow.Ticks - timeOfLastFocus);
                     if (ts.TotalMilliseconds > MenuScrollDelay)
                     {
                         FocusNextItem();
@@ -213,7 +213,7 @@ namespace CocosSharp
                 else
                 {
                     scrollingNext = true;
-                    timeOfLastFocus = DateTime.Now.Ticks;
+                    timeOfLastFocus = DateTime.UtcNow.Ticks;
                 }
             }
         }

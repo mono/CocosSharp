@@ -220,7 +220,7 @@ namespace CocosSharp
                     accelerationValue.X = stateValue.X;
                     accelerationValue.Y = stateValue.Y;
                     accelerationValue.Z = stateValue.Z;
-                    accelerationValue.TimeStamp = DateTime.Now.Ticks;
+                    accelerationValue.TimeStamp = DateTime.UtcNow.Ticks;
                 }
 
                 accelerateEvent.Acceleration = accelerationValue;
