@@ -39,7 +39,7 @@ namespace CocosSharp
         static float defaultFieldOfView = (float)Math.PI / 3.0f;
         static float defaultAspectRatio = 1.0f;
         static CCNearAndFarClipping defaultNearAndFarOrthoClipping = new CCNearAndFarClipping (1024f, -1024f);
-        static CCNearAndFarClipping defaultNearAndFarPerspClipping = new CCNearAndFarClipping (0.01f, 100f);
+        static CCNearAndFarClipping defaultNearAndFarPerspClipping = new CCNearAndFarClipping (0.1f, 100f);
 
         internal event EventHandler OnCameraVisibleBoundsChanged = delegate {};
 

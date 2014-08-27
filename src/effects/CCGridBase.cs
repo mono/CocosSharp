@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace CocosSharp
 {
@@ -101,7 +102,7 @@ namespace CocosSharp
             Texture = texture;
             textureFlipped = flipped;
             CCSize texSize = texture.ContentSizeInPixels;
-            Step = new CCPoint (texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
+            Step = new CCPoint ((float)Math.Ceiling(texSize.Width / GridSize.X), (float)Math.Ceiling(texSize.Height / GridSize.Y));
         }
 
         #endregion Constructors
