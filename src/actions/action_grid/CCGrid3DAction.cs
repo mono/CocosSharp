@@ -45,26 +45,12 @@ namespace CocosSharp
         {
             get 
             {
-                CCSprite spriteTarget = Target as CCSprite;
+                gridTextureSizeInPixels = Target.Scene.VisibleBoundsScreenspace.Size;
 
-                if (spriteTarget != null && !spriteTarget.ContentSize.Equals (CCSize.Zero))
-                {
-                    gridTextureSizeInPixels = spriteTarget.TextureRectInPixels.Size;
-                    gridTextureSizeInPoints = spriteTarget.ContentSize;
-
-                    gridTexture = new CCTexture2D(
-                        (int)gridTextureSizeInPixels.Width, (int)gridTextureSizeInPixels.Height, CCSurfaceFormat.Color, true, false);
-                } 
-                else 
-                {
-                    gridTextureSizeInPixels = Target.Scene.Viewport.ViewportInPixels.Size;
-                    gridTextureSizeInPoints = Target.Layer.VisibleBoundsWorldspace.Size;
-                }
-
-                gridRenderTexture = new CCRenderTexture(gridTextureSizeInPoints, gridTextureSizeInPixels);
-                gridTexture = gridRenderTexture.Texture;
+                gridTexture = new CCTexture2D(
+                    (int)gridTextureSizeInPixels.Width, (int)gridTextureSizeInPixels.Height, CCSurfaceFormat.Color, true, false);
                 grid3D = new CCGrid3D (GridSize, gridTexture);
-  
+
                 grid3D.Scene = Scene;
 
                 return grid3D;
