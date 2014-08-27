@@ -53,21 +53,6 @@ namespace tests
 
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
-            CCCamera contentCamera = contentLayer.Camera;
-
-            contentCamera.Projection = CCCameraProjection.Projection3D;
-            contentCamera.PerspectiveAspectRatio = 3.0f;
-
-            CCPoint3 cameraCenter = contentCamera.CenterInWorldspace;
-            CCPoint3 cameraTarget = contentCamera.TargetInWorldspace;
-
-            float targeCenterLength = (cameraTarget - cameraCenter).Length;
-
-
-            contentCamera.NearAndFarPerspectiveClipping = new CCNearAndFarClipping (0.15f, 100.0f);
-
-            contentCamera.PerspectiveFieldOfView = (float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
-
             Schedule(checkAnim);
 
             BaseNode.Position = windowSize.Center;
