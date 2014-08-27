@@ -599,18 +599,18 @@ namespace CocosSharp
             {
                 try
                 {
-                    Clear(CCColor4B.Black, 1, 0);
+                    Clear(CCColor4B.Transparent, 1, 0);
                 }
                 catch (InvalidOperationException)
                 {
                     // no stencil buffer
                     hasStencilBuffer = false;
-                    Clear(CCColor4B.Black);
+                    Clear(CCColor4B.Transparent);
                 }
             }
             else
             {
-                Clear(CCColor4B.Black);
+                Clear(CCColor4B.Transparent);
             }
 
             DrawCount = 0;
