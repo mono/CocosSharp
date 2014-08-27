@@ -180,9 +180,9 @@ namespace CocosSharp
                 for (int y = 0; y < GridSize.Y; y++)
                 {
                     float x1 = x * Step.X;
-                    float x2 = x1 + Step.X;
+                    float x2 = x == GridSize.X - 1 ? width : x1 + Step.X;
                     float y1 = y * Step.Y;
-                    float y2 = y1 + Step.Y;
+                    float y2 = y == GridSize.Y - 1 ? height : y1 + Step.Y;
 
                     vertArray[index + 0].Vertices = new CCVertex3F(x1, y1, 0);
                     vertArray[index + 1].Vertices = new CCVertex3F(x2, y1, 0);

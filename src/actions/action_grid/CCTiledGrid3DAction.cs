@@ -43,7 +43,7 @@ namespace CocosSharp
                 CCTexture2D gridTexture = new CCTexture2D( 
                     (int)gridTextureSizeInPixels.Width, (int)gridTextureSizeInPixels.Height, CCSurfaceFormat.Color, true, false);
                 tiledGrid3D = new CCTiledGrid3D (GridSize, gridTexture);
-                tiledGrid3D.Scene = Scene;
+                tiledGrid3D.Scene = Target.Scene;
                 return tiledGrid3D;
             }
             protected set 
