@@ -37,7 +37,7 @@ namespace CocosSharp
     public class CCLayerColor : CCLayer, ICCBlendable
     {
 
-		internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
+        internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
         #region Properties
 
@@ -130,17 +130,17 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-			if(Camera != null)
-			{
-				var drawManager = Window.DrawManager;
+            if(Camera != null)
+            {
+                var drawManager = Window.DrawManager;
 
-				drawManager.TextureEnabled = false;
-				drawManager.BlendFunc(BlendFunc);
-				drawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
+                drawManager.TextureEnabled = false;
+                drawManager.BlendFunc(BlendFunc);
+                drawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
 
-				drawManager.ViewMatrix = Camera.ViewMatrix;
-				drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
-			}
+                drawManager.ViewMatrix = Camera.ViewMatrix;
+                drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+            }
 
         }
 
@@ -157,12 +157,20 @@ namespace CocosSharp
         void UpdateVerticesPosition()
         {
             CCSize contentSize = ContentSize;
+            CCRect visibleBounds = VisibleBoundsWorldspace;
 
             //1, 2, 3, 3
-            SquareVertices[1].Position.X = contentSize.Width;
-            SquareVertices[2].Position.Y = contentSize.Height;
-            SquareVertices[3].Position.X = contentSize.Width;
-            SquareVertices[3].Position.Y = contentSize.Height;
+            SquareVertices[0].Position.X = visibleBounds.Origin.X;
+            SquareVertices[0].Position.Y = visibleBounds.Origin.Y;
+
+            SquareVertices[1].Position.X = SquareVertices[0].Position.X + visibleBounds.Size.Width;
+            SquareVertices[1].Position.Y = SquareVertices[0].Position.Y;
+
+            SquareVertices[2].Position.X = SquareVertices[0].Position.X;
+            SquareVertices[2].Position.Y = SquareVertices[0].Position.Y + visibleBounds.Size.Height;
+
+            SquareVertices[3].Position.X = SquareVertices[0].Position.X + visibleBounds.Size.Width;
+            SquareVertices[3].Position.Y = SquareVertices[0].Position.Y + visibleBounds.Size.Height;
         }
     }
 
