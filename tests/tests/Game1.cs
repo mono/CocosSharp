@@ -22,7 +22,7 @@ namespace tests
             //CCApplication application = new AppDelegate(this);
             //Components.Add(application);
 
-#if !WINDOWS_PHONE && !XBOX && !WINRT && !WINDOWSDX && !NETFX_CORE
+#if !WINDOWS_PHONE && !XBOX && !WINDOWSDX && !NETFX_CORE
             //GamerServicesComponent component = new GamerServicesComponent(this);
             //this.Components.Add(component);
 #endif

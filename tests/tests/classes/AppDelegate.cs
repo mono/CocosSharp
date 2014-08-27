@@ -17,6 +17,7 @@ namespace tests
 
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
+            mainWindow.SupportedDisplayOrientations = CCDisplayOrientation.LandscapeLeft | CCDisplayOrientation.LandscapeRight;
             //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
             //application.AllowUserResizing = true;
             application.PreferMultiSampling = false;

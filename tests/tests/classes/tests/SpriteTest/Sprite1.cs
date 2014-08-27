@@ -78,7 +78,7 @@ namespace tests
 
         Stream GetEmbeddedResource(string name)
         {
-            #if !WINRT && !NETFX_CORE
+            #if !NETFX_CORE
             System.Reflection.Assembly assem = System.Reflection.Assembly.GetExecutingAssembly();
             Stream stream = assem.GetManifestResourceStream(name);
             if (stream == null)

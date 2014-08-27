@@ -20,7 +20,7 @@ using System.Resources;
 [assembly: AssemblyDescription("Cocos2D-XNA for Android")]
 #elif IPHONE
 [assembly: AssemblyDescription("Cocos2D-XNA for iOS")]
-#elif WINRT
+#elif NETFX_CORE
 [assembly: AssemblyDescription("Cocos2D-XNA for Windows RT")]
 #elif WINDOWS_PHONE8
 [assembly: AssemblyDescription("Cocos2D-XNA for Windows Phone 8")]
