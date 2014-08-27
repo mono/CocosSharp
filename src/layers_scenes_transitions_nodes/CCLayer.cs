@@ -168,8 +168,7 @@ namespace CocosSharp
 
             if(Camera == null)
             {
-                CCRect visibleBoundsScreenspace = Scene.VisibleBoundsScreenspace;
-                Camera = new CCCamera(visibleBoundsScreenspace);
+                Camera = new CCCamera (this.Window.DesignResolutionSize);
             }
 
         }
@@ -234,8 +233,8 @@ namespace CocosSharp
 
             visibleBoundsWorldspace = new CCRect(
                 bottomLeftPoint.X, bottomLeftPoint.Y, 
-                (int)((bottomRightPoint.X - bottomLeftPoint.X)), 
-                (int)((topLeftPoint.Y - bottomLeftPoint.Y)));
+                (float)Math.Ceiling(bottomRightPoint.X - bottomLeftPoint.X), 
+                (float)Math.Ceiling(topLeftPoint.Y - bottomLeftPoint.Y));
 
             anchorPointInPoints = new CCPoint(visibleBoundsWorldspace.Size.Width * AnchorPoint.X, visibleBoundsWorldspace.Size.Height * AnchorPoint.Y);
         }
