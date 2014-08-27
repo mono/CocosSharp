@@ -77,7 +77,7 @@ namespace CocosSharp
 
 		Dictionary<string, AssetEntry> loadedAssets;
 		Dictionary<string, string> assetLookupDict = new Dictionary<string, string>();
-		Dictionary<string, string> failedAssets = new Dictionary<string, string>();
+		Dictionary<Tuple<string, Type>, string> failedAssets = new Dictionary<Tuple<string, Type>, string>();
 
 		List<string> searchPaths = new List<string>();
 		List<string> searchResolutionsOrder = new List<string>(); 
@@ -180,7 +180,8 @@ namespace CocosSharp
 
 		public T TryLoad<T>(string assetName, bool weakReference=false)
         {
-            if (failedAssets.ContainsKey(assetName))
+            var assetKey = Tuple.Create(assetName, typeof(T));
+            if (failedAssets.ContainsKey(assetKey))
             {
                 return default(T);
             }
@@ -191,7 +192,7 @@ namespace CocosSharp
             }
             catch (Exception)
             {
-                failedAssets[assetName] = null;
+                failedAssets[assetKey] = null;
                 
                 return default(T);
             }
@@ -199,7 +200,8 @@ namespace CocosSharp
 
         public override T Load<T>(string assetName)
         {
-            if (failedAssets.ContainsKey(assetName))
+            var assetKey = Tuple.Create(assetName, typeof(T));
+            if (failedAssets.ContainsKey(assetKey))
             {
                 throw new ContentLoadException("Failed to load the asset file from " + assetName);
             }
@@ -210,7 +212,7 @@ namespace CocosSharp
             }
             catch (Exception)
             {
-                failedAssets[assetName] = null;
+                failedAssets[assetKey] = null;
 
                 throw;
             }
