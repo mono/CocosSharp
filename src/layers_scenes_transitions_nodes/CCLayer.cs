@@ -232,9 +232,9 @@ namespace CocosSharp
             CCPoint bottomRightPoint = new CCPoint(bottomRight.X, bottomRight.Y);
 
             visibleBoundsWorldspace = new CCRect(
-                bottomLeftPoint.X, bottomLeftPoint.Y, 
-                (float)Math.Ceiling(bottomRightPoint.X - bottomLeftPoint.X), 
-                (float)Math.Ceiling(topLeftPoint.Y - bottomLeftPoint.Y));
+                (float)Math.Round(bottomLeftPoint.X), (float)Math.Round(bottomLeftPoint.Y), 
+                (float)Math.Round(bottomRightPoint.X - bottomLeftPoint.X), 
+                (float)Math.Round(topLeftPoint.Y - bottomLeftPoint.Y));
 
             anchorPointInPoints = new CCPoint(visibleBoundsWorldspace.Size.Width * AnchorPoint.X, visibleBoundsWorldspace.Size.Height * AnchorPoint.Y);
         }
