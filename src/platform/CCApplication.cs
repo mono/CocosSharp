@@ -412,7 +412,7 @@ namespace CocosSharp
 		{
 		}
 
-		CCApplication(CCGame game, bool isFullScreen = true, CCSize? mainWindowSizeInPixels = null,
+		internal CCApplication(CCGame game, bool isFullScreen = true, CCSize? mainWindowSizeInPixels = null,
 			CCDisplayOrientation supportedOrientations = CCDisplayOrientation.Default)
 			: base(game)
 		{
