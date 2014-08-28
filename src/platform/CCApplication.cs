@@ -16,6 +16,14 @@ using MonoGame.Framework.WindowsPhone;
 using Microsoft.Phone.Controls;
 #endif
 
+#if NETFX_CORE
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.ApplicationModel.Activation;
+#endif
+
+
+
 namespace CocosSharp
 {
 	[Flags]
@@ -81,22 +89,26 @@ namespace CocosSharp
 	{
 
 		public CCGame()
-		{
+        {
 
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || NETFX_CORE
             // This is needed for Windows Phone 8 to initialize correctly
             var graphics = new GraphicsDeviceManager(this);
 #endif
 
-#if WINDOWS || WINDOWSGL || MACOS || WINRT
+#if WINDOWS || WINDOWSGL || MACOS || NETFX_CORE
             this.IsMouseVisible = true;
 #endif
 
-#if WINRT
+#if NETFX_CORE
             TouchPanel.EnableMouseTouchPoint = true;
             TouchPanel.EnableMouseGestures = true;
-#endif
 
+            // Since there is no entry point for Windows8 XAML that allows us to add the CCApplication after initialization
+            // of the CCGame we have to load it here.  Later on when we add the delegate it will need to be initialized 
+            // separately.  Please see ApplicationDelegate property of CCApplication.
+            new CCApplication(this);
+#endif
 		}
 
         /// <summary>
@@ -114,6 +126,12 @@ namespace CocosSharp
 
         protected override void Draw(GameTime gameTime)
         {
+#if NETFX_CORE
+            // Windows8 XAML needs to have it's graphics device cleared.  This seems to be the
+            // only platform that needs this.  Unfortunately we need to do the same for all
+            // Windows8 platforms.
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+#endif
             base.Draw(gameTime);
 #if OUYA
 
@@ -138,16 +156,16 @@ namespace CocosSharp
 
         }
 
-		protected override void Update(GameTime gameTime)
+        protected override void Update(GameTime gameTime)
 		{
 			base.Update(gameTime);
 
-			// Allows the game to exit
-#if (WINDOWS && !WINRT) || WINDOWSGL || WINDOWSDX || MACOS
+            // Allows the game to exit
+#if (WINDOWS && !NETFX_CORE) || WINDOWSGL || WINDOWSDX || MACOS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 #endif
-		}
+        }
 	}
 
 	public class CCApplicationDelegate
@@ -201,6 +219,7 @@ namespace CocosSharp
 
 		CCWindow mainWindow;
 		List<CCWindow> gameWindows;
+        private CCApplicationDelegate applicationDelegate;
 
 
 		#region Properties
@@ -212,14 +231,33 @@ namespace CocosSharp
 			Action<CCGame, Windows.ApplicationModel.Activation.IActivatedEventArgs> initAction =
 			   delegate(CCGame game, Windows.ApplicationModel.Activation.IActivatedEventArgs args)
 			   {
-
-				   var instance = new CCApplication(game);
-				   instance.ApplicationDelegate = appDelegate;
+                   foreach (var component in game.Components)
+                   {
+                       if (component is CCApplication)
+                       {
+                           var instance = component as CCApplication;
+                           instance.ApplicationDelegate = appDelegate;
+                       }
+                   }
 			   };
 			var factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>(initAction);
 			Windows.ApplicationModel.Core.CoreApplication.Run(factory);
 
 		}
+
+        public static void Create(CCApplicationDelegate appDelegate, LaunchActivatedEventArgs args, Windows.UI.Core.CoreWindow coreWindow, SwapChainBackgroundPanel swapChainBackgroundPanel)
+        {
+            var game = MonoGame.Framework.XamlGame<CCGame>.Create(args, coreWindow, swapChainBackgroundPanel);
+            foreach (var component in game.Components)
+            {
+                if (component is CCApplication)
+                {
+                    var instance = component as CCApplication;
+                    instance.ApplicationDelegate = appDelegate;
+                }
+            }
+
+        }
 
 #endif
 
@@ -233,14 +271,31 @@ namespace CocosSharp
         }
 
 #endif
+
 		// Instance properties
 		public bool HandleMediaStateAutomatically { get; set; }
 		public CCDisplayOrientation CurrentOrientation { get; private set; }
-		public CCApplicationDelegate ApplicationDelegate { get; set; }
 		public CCActionManager ActionManager { get; private set; }
 		public CCScheduler Scheduler { get; private set; }
 
-		public bool Paused
+        public CCApplicationDelegate ApplicationDelegate
+        {
+            get { return applicationDelegate; }
+            set
+            {
+                applicationDelegate = value;
+                // If the CCApplication has already been initilized then we need to call the delegates
+                // ApplicationDidFinishLaunching method so that initialization can take place.
+                // This only happens on Windows 8 XAML applications but because of the changes
+                // that were needed to incorporate Windows 8 in general it will happen on all 
+                // Windows 8 platforms.
+                if (initialized)
+                    applicationDelegate.ApplicationDidFinishLaunching(this, MainWindow);
+
+            }
+        }
+
+        public bool Paused
 		{
 			get { return paused; }
             set 
@@ -501,11 +556,11 @@ namespace CocosSharp
 			foreach (CCWindow window in gameWindows)
 			{
 				window.EndAllSceneDirectors();
-			}
-#if (WINDOWS && !WINRT) || WINDOWSGL || WINDOWSDX || MACOS
+            }
+#if (WINDOWS && !NETFX_CORE) || WINDOWSGL || WINDOWSDX || MACOS
             xnaGame.Exit();
 #endif
-		}
+        }
 
 		#endregion Game state
 
