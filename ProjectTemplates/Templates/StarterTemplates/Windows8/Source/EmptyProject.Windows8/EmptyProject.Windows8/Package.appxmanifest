@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
 
   <Identity Name="a1e48aa9-5352-4e49-95b4-0754e7a8df3b"
-            Publisher="CN=Jimmy"
+            Publisher="CN=CocosSharp"
             Version="1.0.0.0" />
 
   <Properties>

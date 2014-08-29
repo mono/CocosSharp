@@ -121,37 +121,19 @@
   <ItemGroup />
   <ItemGroup>
     <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\box2d.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Windows8\Release\box2d.dll</HintPath>
     </Reference>
     <Reference Include="CocosSharp">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\CocosSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Windows8\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Windows8\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Windows8\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.Direct2D1.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.MediaFoundation">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.MediaFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XAudio2">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.XAudio2.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\SharpDX.XInput.dll</HintPath>
+    <Reference Include="MonoGame.Framework.Net">
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Windows8\Release\MonoGame.Framework.Net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
