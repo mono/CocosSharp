@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.Windows8</id>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <title>CocosSharp for Windows 8</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>
@@ -14,14 +14,22 @@
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d CocosSharp xna monogame 2D games visualization engine  surface windowsrt</tags>
 
+    <references>
+      <group targetFramework="netcore">
+        <reference file="box2d.dll"></reference>
+        <reference file="CocosSharp.dll"></reference>
+        <reference file="ICSharpCode.SharpZipLib.dll"></reference>
+        <reference file="MonoGame.Framework.dll"></reference>
+        <reference file="MonoGame.Framework.Net.dll"></reference>
+      </group>
+    </references>
+
   </metadata>
 
   <files>
-     <!--Windows8-->
+    <!--Windows8-->
     <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.*;..\..\src\bin\Windows8\Release\Sharp*.*"/>
     <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\MonoGame*.*" target="lib\netcore"/>
     <file src="..\..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
-    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\Themes\*.*" target="lib\netcore\MonoGame.Framework\Themes"/>
   </files>
-
 </package>

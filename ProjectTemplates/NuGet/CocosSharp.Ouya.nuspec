@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.Ouya</id>
-    <version>1.0.0.0</version>
+    <version>1.0.1.0</version>
     <title>CocosSharp for OUYA</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>
@@ -10,8 +10,8 @@
     <projectUrl>http://github.com/mono/CocosSharp</projectUrl>
     <iconUrl>http://github.com/mono/CocosSharp</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Xamarin for OUYA is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
-    <copyright>Xamarin Inc</copyright>
+    <description>CocosSharp for OUYA is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
+    <copyright>Xamarin</copyright>
     <tags>cocos2d CocosSharp xna monogame 2D games visualization engine  android google</tags>
 
   </metadata>
