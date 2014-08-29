@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="448d4f54-dc54-4715-a1a5-3fdc0176e427" Publisher="CN=Jimmy" Version="1.0.0.0" />
+  <Identity Name="448d4f54-dc54-4715-a1a5-3fdc0176e427" Publisher="CN=CocosSharp" Version="1.0.0.0" />
   <Properties>
     <DisplayName>$safeprojectname$</DisplayName>
     <PublisherDisplayName>Cocos2D-XNA</PublisherDisplayName>

@@ -3,7 +3,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using MonoGame.Framework;
 using Windows.ApplicationModel.Activation;
-
+using CocosSharp;
 
 namespace $safeprojectname$
 {
@@ -12,14 +12,12 @@ namespace $safeprojectname$
     /// </summary>
     public sealed partial class GamePage : SwapChainBackgroundPanel
     {
-        readonly Game1 _game;
-
         public GamePage(LaunchActivatedEventArgs args)
         {
             this.InitializeComponent();
 
             // Create the game.
-            _game = XamlGame<Game1>.Create(args, Window.Current.CoreWindow, this);
+            CCApplication.Create(new AppDelegate(), args, Window.Current.CoreWindow, this);
         }
     }
 }
