@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
 	<Identifier Id="EmptyProject.CA68C8A0-4391-47E5-A8F6-A77035B971FE">
-		<Name>CocosSharp Empty Game Windows Store</Name>
+		<Name>Empty Game Windows Store</Name>
 		<Author>Xamarin</Author>
 		<Version>1.0</Version>
 		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for targeting Windows Store.</Description>
