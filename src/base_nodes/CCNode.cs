@@ -2043,9 +2043,13 @@ namespace CocosSharp
                 // draw children zOrder < 0
                 for (; i < count; ++i)
                 {
-                    if (elements[i].Visible && elements[i].zOrder < 0)
+                    if (elements[i].zOrder < 0)
                     {
-                        elements[i].Visit();
+                        // don't break loop on invisible children
+                        if (elements[i].Visible)
+                        {
+                            elements[i].Visit();
+                        }
                     }
                     else
                     {
