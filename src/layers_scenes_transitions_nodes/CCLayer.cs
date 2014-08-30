@@ -290,7 +290,8 @@ namespace CocosSharp
                     CCNode child = arrayData[i];
                     if (child.ZOrder < 0)
                     {
-                        child.Visit();
+                        if(child.Visible)
+                            child.Visit();
                     }
                     else
                     {

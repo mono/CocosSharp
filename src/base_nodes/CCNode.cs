@@ -2063,7 +2063,7 @@ namespace CocosSharp
                 for (; i < count; ++i)
                 {
                     // Draw the z >= 0 order children next.
-                    if (elements[i].Visible/* && elements[i].m_nZOrder >= 0*/)
+                    if (elements[i].Visible)
                     {
                         elements[i].Visit();
                     }
