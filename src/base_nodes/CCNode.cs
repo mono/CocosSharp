@@ -502,13 +502,13 @@ namespace CocosSharp
             }
         }
 
-        public float PositionX
+        public virtual float PositionX
         {
             get { return position.X; }
             set { Position = new CCPoint(value, position.Y); }
         }
 
-        public float PositionY
+        public virtual float PositionY
         {
             get { return position.Y; }
             set { Position = new CCPoint(position.X, value); }

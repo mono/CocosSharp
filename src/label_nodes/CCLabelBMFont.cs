@@ -102,7 +102,7 @@ namespace CocosSharp
             }
         }
 
-        public CCPoint Position
+        public override CCPoint Position
         {
             get { return base.Position; }
             set
@@ -110,6 +110,46 @@ namespace CocosSharp
                 if (base.Position != value)
                 {
                     base.Position = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public override float PositionX
+        {
+            get { return base.PositionX; }
+            set
+            {
+                if (base.PositionX != value)
+                {
+                    base.PositionX = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public override float PositionY
+        {
+            get { return base.PositionY; }
+            set
+            {
+                if (base.PositionY != value)
+                {
+                    base.PositionY = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        CCSize contentSize;
+        public CCSize ContentSize
+        {
+            get { return contentSize; }
+            set
+            {
+                if (contentSize != value)
+                {
+                    contentSize = value;
                     IsDirty = true;
                 }
             }
@@ -547,9 +587,9 @@ namespace CocosSharp
             );
 
 
+            ContentSize = tmpDimensions;
             anchorPointInPoints = new CCPoint(labelDimensions.Width * AnchorPoint.X, labelDimensions.Height * AnchorPoint.Y);
             labelDimensions = tmpDimensions;
-
             UpdatePositionTransform();
         }
 
