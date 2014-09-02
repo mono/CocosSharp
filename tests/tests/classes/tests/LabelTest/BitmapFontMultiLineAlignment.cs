@@ -50,13 +50,13 @@ namespace tests
             base.AddedToScene();
 
             // ask director the the window size
-            var size = Layer.VisibleBoundsWorldspace.Size;
+            var size = VisibleBoundsWorldspace.Size;
 
-			// create and initialize a Label
+            // create and initialize a Label
 			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
 				CCTextAlignment.Center);
 
-			arrowsBar = new CCSprite("Images/arrowsBar");
+            arrowsBar = new CCSprite("Images/arrowsBar");
 			arrows = new CCSprite("Images/arrows");
 
 			CCMenuItemFont.FontSize = 20;
@@ -120,13 +120,13 @@ namespace tests
             switch (item.Tag)
             {
                 case LongSentences:
-                    label.Text = (LongSentencesExample);
+                    label.Text = LongSentencesExample;
                     break;
                 case LineBreaks:
-                    label.Text = (LineBreaksExample);
+                    label.Text = LineBreaksExample;
                     break;
                 case Mixed:
-                    label.Text = (MixedExample);
+                    label.Text = MixedExample;
                     break;
 
                 default:
@@ -165,7 +165,7 @@ namespace tests
 		void onTouchesBegan(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             CCTouch touch = pTouches[0];
-            CCPoint location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint location = touch.Location;
 
             if (arrows.BoundingBox.ContainsPoint(location))
             {
@@ -190,9 +190,9 @@ namespace tests
             }
 
             CCTouch touch = pTouches[0];
-            CCPoint location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint location = touch.Location;
 
-            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+            CCSize winSize = VisibleBoundsWorldspace.Size;
 
             arrows.Position = new CCPoint(Math.Max(Math.Min(location.X, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
                                                          arrows.Position.Y);
