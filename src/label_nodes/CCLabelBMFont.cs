@@ -942,8 +942,9 @@ namespace CocosSharp
 
                 for (int i = 0; i < str_len; i++)
                 {
-                    var characterSprite = this[i];
-                    characterSprite.PositionY += yOffset;
+                    var characterSprite = this[i] as CCSprite;
+                    if (characterSprite != null && characterSprite.Visible)
+                        characterSprite.PositionY += yOffset;
                 }
             }
                
