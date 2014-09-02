@@ -131,6 +131,10 @@ namespace CocosSharp
                     return;
                 }
 
+                // We will remove the texture cc_fps_images from our cache to fix a problem of loosing the texture
+                // when the cache is purged.  If not then the statistics no longer show because it has been Disposed of.
+                textureCache.RemoveTextureForKey("cc_fps_images");
+
                 try {
                     texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
 
