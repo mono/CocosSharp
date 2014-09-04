@@ -30,7 +30,7 @@
   <files>
 
 <!--Core-->
-     <file src="..\..\PCL\CocosSharpPCLShared\bin\Release\CocosSharp.dll" target="lib\portable-net40+sl50+wp8+win8+MonoAndroid10+MonoTouch10+MonoMac10\CocosSharp.dll" />
+     <file src="..\..\PCL\CocosSharpPCLShared\bin\Release\*.dll" target="lib\portable-net40+sl50+wp8+win8+MonoAndroid10+MonoTouch10+MonoMac10" />
 
      <!--Xamarin.Android-->
     <file src="..\..\src\bin\Android\Release\*.dll" target="lib\MonoAndroid10\" />

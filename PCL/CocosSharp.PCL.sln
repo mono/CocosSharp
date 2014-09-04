@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.PCL.Shared", "CocosSharpPCLShared\CocosSharp.PCL.Shared.csproj", "{6EC840D4-8CE9-4176-9F47-CFFF93CB6172}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.PCL.Shared", "MonoGamePCLShared\MonoGame.PCL.Shared.csproj", "{54D017B5-3525-40AA-8DE1-A4D4BCE220BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -11,6 +13,10 @@ Global
 		Per|Any CPU = Per|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54D017B5-3525-40AA-8DE1-A4D4BCE220BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D017B5-3525-40AA-8DE1-A4D4BCE220BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54D017B5-3525-40AA-8DE1-A4D4BCE220BF}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{54D017B5-3525-40AA-8DE1-A4D4BCE220BF}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{6EC840D4-8CE9-4176-9F47-CFFF93CB6172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EC840D4-8CE9-4176-9F47-CFFF93CB6172}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC840D4-8CE9-4176-9F47-CFFF93CB6172}.Distribution|Any CPU.ActiveCfg = Debug|Any CPU

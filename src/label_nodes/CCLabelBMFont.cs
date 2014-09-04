@@ -142,7 +142,7 @@ namespace CocosSharp
         }
 
         CCSize contentSize;
-        public CCSize ContentSize
+        public override CCSize ContentSize
         {
             get { return contentSize; }
             set

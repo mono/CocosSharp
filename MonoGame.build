@@ -75,11 +75,10 @@
     <call target="buildandroid" />
     <call target="buildwindows8" />
     <call target="buildwindowsphone" />
-    <!--
     <call target="buildmac" />
     <call target="buildios" />
     <call target="buildpsm" />
--->
+
     <call target="buildtools"/>
     <call target="buildcontentprocessor"/>
 
