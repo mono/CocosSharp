@@ -24,7 +24,7 @@ namespace CocosSharp
         /// This is to be implemented in each platform partial class implementaion
         /// </summary>
         /// <param name="factory">The factory.</param>
-        //public PrivateFontLoader(Factory factory, string fontName)
+        //public PrivateFontLoader(Factory factory)
         //{
         //}
 

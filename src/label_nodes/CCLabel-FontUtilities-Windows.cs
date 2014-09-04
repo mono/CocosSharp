@@ -17,7 +17,7 @@ namespace CocosSharp
         /// Initializes a new instance of the <see cref="PrivateFontLoader"/> class.
         /// </summary>
         /// <param name="factory">The factory.</param>
-        public PrivateFontLoader(Factory factory, string fontName)
+        public PrivateFontLoader(Factory factory)
         {
             _factory = factory;
 
