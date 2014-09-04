@@ -16,6 +16,7 @@ using FactoryImaging = SharpDX.WIC.ImagingFactory;
 
 namespace CocosSharp
 {
+
     public partial class CCLabel
     {
         [StructLayout(LayoutKind.Sequential)]
@@ -48,18 +49,20 @@ namespace CocosSharp
         private static TextFormat textFormat;
         static float dpiScale = 96f / 72f;  // default but will be recalculated below
         
-        // This should be a FontCollection
-        //private static PrivateFontCollection _loadedFonts = new PrivateFontCollection();
+        // our private font collection and fontLoader
+        private static PrivateFontLoader privateFontLoader;
+        private static FontCollection privateFontCollection;
+
+        private static FontCollection _currentFontCollection;
 
         private static FontFamily GetFontFamily (string familyName)
         {
-            var fontList = FactoryDWrite.GetSystemFontCollection(true);
             int fontIndex = 0;
-            fontList.FindFamilyName(familyName, out fontIndex);
+            _currentFontCollection.FindFamilyName(familyName, out fontIndex);
             if (fontIndex < 0)
                 return null;
 
-            var fontFamily = fontList.GetFontFamily(fontIndex);
+            var fontFamily = _currentFontCollection.GetFontFamily(fontIndex);
             return fontFamily;
         }
 
@@ -77,9 +80,8 @@ namespace CocosSharp
 
             if (_fontFamily == null)
             {
-                var fontList = FactoryDWrite.GetSystemFontCollection(true);
                 int fontIndex = 0;
-                _fontFamily = fontList.GetFontFamily(fontIndex);
+                _fontFamily = _currentFontCollection.GetFontFamily(fontIndex);
             }
             var _font = _fontFamily.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
 
@@ -89,8 +91,25 @@ namespace CocosSharp
         private static Font GetFont(string fontName, float fontSize)
         {
             var fontFamily = GetFontFamily(fontName);
+
             if (fontFamily == null)
+            {
+                if (privateFontLoader == null)
+                {
+                    privateFontLoader = new PrivateFontLoader(FactoryDWrite);
+                    privateFontCollection = new FontCollection(FactoryDWrite, privateFontLoader, privateFontLoader.Key);
+                }
+
+                _currentFontCollection = privateFontCollection;
+                fontFamily = GetFontFamily(fontName);
+
+            }
+
+            if (fontFamily == null)
+            {
+                _currentFontCollection = FactoryDWrite.GetSystemFontCollection(true);
                 return GenericSanSerif();
+            }
 
             // This is generic right now.  We should be able to handle different styles in the future
             var font = fontFamily.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
@@ -109,7 +128,10 @@ namespace CocosSharp
                 
                 dpi = Factory2D.DesktopDpi;
                 dpiScale = dpi.Height / 72f;
+
             }
+
+            _currentFontCollection = FactoryDWrite.GetSystemFontCollection(true);
 
             if (_defaultFont == null)
             {
@@ -126,41 +148,53 @@ namespace CocosSharp
 
                 _currentFont = _defaultFont;
 
-                if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
-                {
-                    //var appPath = AppDomain.CurrentDomain.BaseDirectory;
-                    //var contentPath = Path.Combine(appPath, CCApplication.SharedApplication.Content.RootDirectory);
-                    //var fontPath = Path.Combine(contentPath, fontName);
+                //if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
+                //{
 
-                    //if (File.Exists(fontPath))
-                    //{
-                       // try
-                        //{
-                            //var fontFileReference = new FontCollection(
-                            //_loadedFonts.AddFontFile(fontPath);
+                //    //var appPath = AppDomain.CurrentDomain.BaseDirectory;
+                //    //var contentPath = Path.Combine(appPath, CCContentManager.SharedContentManager.RootDirectory);
+                //    //var fontPath = Path.Combine(contentPath, fontName);
 
-                    //        //fontFamily = _loadedFonts.Families[_loadedFonts.Families.Length - 1];
+                //    //if (File.Exists(fontPath))
+                //    //{
+                //    //    try
+                //    //    {
+                //    //        if (privateFontLoader == null)
+                //    //        {
+                //    //            privateFontLoader = new PrivateFontLoader(FactoryDWrite, fontName);
+                //    //            privateFontCollection = new FontCollection(FactoryDWrite, privateFontLoader, privateFontLoader.Key);
+                //    //        }
 
-                    //        //_currentFont = new Font(fontFamily, fontSize);
-                    //    }
-                    //    catch
-                    //    {
-                    //        _currentFont = _defaultFont;
-                    //    }
-                    //}
-                    //else
-                    //{
-                        _currentFont = _defaultFont;
-                        _currentFontSizeEm = fontSize;
-                        _currentDIP = ConvertPointSizeToDIP(fontSize);
-                    //}
-                }
-                else
-                {
+                //    //        _currentFontCollection = privateFontCollection;
+
+                //    //        var family = _currentFontCollection.GetFontFamily(0);
+                //    //        // This is generic right now.  We should be able to handle different styles in the future
+                //    //        var font = family.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
+                //    //        _currentFont = font;
+                //    //        _currentFontSizeEm = fontSize;
+                //    //        _currentDIP = ConvertPointSizeToDIP(fontSize);
+                //    //    }
+                //    //    catch
+                //    //    {
+                //    //        _currentFont = _defaultFont;
+                //    //        _currentFontSizeEm = fontSize;
+                //    //        _currentDIP = ConvertPointSizeToDIP(fontSize);
+                //    //    }
+                //    //}
+
+                //    //else
+                //    //{
+                //    //    _currentFont = _defaultFont;
+                //    //    _currentFontSizeEm = fontSize;
+                //    //    _currentDIP = ConvertPointSizeToDIP(fontSize);
+                //    //}
+                //}
+                //else
+                //{
                     _currentFont = GetFont(fontName, fontSize);
                     _currentFontSizeEm = fontSize;
                     _currentDIP = ConvertPointSizeToDIP(fontSize);
-                }
+                //}
 
                 _fontFamilyCache.Add(fontName, _currentFont.FontFamily);
             }
@@ -170,8 +204,10 @@ namespace CocosSharp
                 _currentFontSizeEm = fontSize;
                 _currentDIP = ConvertPointSizeToDIP(fontSize);
             }
+
             fontName = _currentFont.FontFamily.FamilyNames.GetString(0); 
-            textFormat = new TextFormat(FactoryDWrite, fontName, _currentDIP);
+            textFormat = new TextFormat(FactoryDWrite, fontName, 
+                _currentFontCollection, FontWeight.Regular, FontStyle.Normal, FontStretch.Normal, _currentDIP);
             
             GetKerningInfo(charset);
 
