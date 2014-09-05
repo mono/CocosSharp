@@ -142,6 +142,8 @@
     <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
+    <Compile Include="label_nodes\CCLabel-FontUtilities-Windows.cs" />
+    <Compile Include="label_nodes\CCLabel-FontUtilities.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="physics\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="physics\chipmunk\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />

@@ -1,7 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWin8Store", "..\testWin8Store\TestWin8Store.csproj", "{090E163E-AD6C-4922-970F-861202E2FB87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Windows8", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows8.csproj", "{0518563C-ACCA-4A14-8C5D-DDBE93E2605F}"
@@ -120,6 +118,7 @@ Global
 		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Debug|x86.Build.0 = Debug|Any CPU
 		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A65B8326-1DDD-4E5D-8130-E74F70919E81}.Release|ARM.ActiveCfg = Release|Any CPU

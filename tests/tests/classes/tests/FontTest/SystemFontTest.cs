@@ -31,6 +31,15 @@ namespace tests.FontTest
 
 #endif
 #if WINDOWS || WINDOWSGL || NETFX_CORE
+            "A Damn Mess",  // A Damn Mess.ttf
+            "Abberancy",    // Abberancy.ttf
+            "Abduction",    //Abduction.ttf
+            "AmerType Md BT",  // American Typewriter.ttf
+            "Scissor Cuts", //Scissor Cuts.ttf
+            "Felt",         //Marker Felt.ttf
+            "arial",
+            "Courier New",
+            "Marker Felt",
 			"Comic Sans MS",
 			"Felt",
 			"MoolBoran",
@@ -40,19 +49,19 @@ namespace tests.FontTest
             "Wingdings",
 			"Arial",
 
-            "fonts/A Damn Mess.ttf",
-            "fonts/Abberancy.ttf",
-            "fonts/Abduction.ttf",
-            "fonts/American Typewriter.ttf",
-            "fonts/arial.ttf",
-            "fonts/Courier New.ttf",
-            "fonts/Marker Felt.ttf",
-            "fonts/Paint Boy.ttf",
-            "fonts/Schwarzwald Regular.ttf",
-            "fonts/Scissor Cuts.ttf",
-            "fonts/tahoma.ttf",
-            "fonts/Thonburi.ttf",
-            "fonts/ThonburiBold.ttf"
+            //"fonts/A Damn Mess.ttf",
+            //"fonts/Abberancy.ttf",
+            //"fonts/Abduction.ttf",
+            //"fonts/American Typewriter.ttf",
+            //"fonts/arial.ttf",
+            //"fonts/Courier New.ttf",
+            //"fonts/Marker Felt.ttf",
+            //"fonts/Paint Boy.ttf",
+            //"fonts/Schwarzwald Regular.ttf",
+            //"fonts/Scissor Cuts.ttf",
+            //"fonts/tahoma.ttf",
+            //"fonts/Thonburi.ttf",
+            //"fonts/ThonburiBold.ttf"
 #endif
 #if ANDROID
 			"Arial",

@@ -1225,9 +1225,6 @@
     <Compile Include="..\tests\tests\classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs">
       <Link>classes\tests\EventDispatcherTest\EventDispatcherTestDemo</Link>
     </Compile>
-    <Compile Include="..\tests\tests\Game1.cs">
-      <Link>Game1.cs</Link>
-    </Compile>
     <Compile Include="..\tests\tests\Program.cs">
       <Link>Program.cs</Link>
     </Compile>
