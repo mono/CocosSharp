@@ -541,7 +541,9 @@ namespace CocosSharp
 			byte[] buffer = objectTable.GetRange(headerPosition + 1, byteCount).ToArray();
 			Array.Reverse(buffer);
 
-			return new PlistReal(BitConverter.ToSingle(RegulateNullBytes(buffer, 8), 0));
+            // There are 8 * 8 bits, => convert to double and then cast
+            // Otherwise we will ignore bits
+            return new PlistReal((float)BitConverter.ToDouble(RegulateNullBytes(buffer, 8), 0));
 		}
 
 		PlistString ParseBinaryAsciiString(int headerPosition)
