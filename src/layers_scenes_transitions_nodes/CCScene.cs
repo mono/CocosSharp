@@ -130,6 +130,18 @@ namespace CocosSharp
 
         public override CCDirector Director { get; set; }
 
+        public override CCLayer Layer
+        {
+            get
+            {
+                return null;
+            }
+
+            internal set
+            {
+            }
+        }
+
         public override CCCamera Camera 
         { 
             get { return null; }
