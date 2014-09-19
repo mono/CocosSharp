@@ -65,7 +65,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCBox2dDraw(string spriteFontName)
+        public CCBox2dDraw(string spriteFontName, int ptmRatio) : base(ptmRatio)
         {
             primitiveBatch = new CCPrimitiveBatch(5000);
             spriteFont = CCContentManager.SharedContentManager.Load<SpriteFont>(spriteFontName);
@@ -85,12 +85,12 @@ namespace CocosSharp
 
             for (int i = 0; i < vertexCount - 1; i++)
             {
-                primitiveBatch.AddVertex(vertices[i].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-                primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+                primitiveBatch.AddVertex(vertices[i].ToCCVector2() * PTMRatio, color.ToCCColor4B(), PrimitiveType.LineList);
+                primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2() * PTMRatio, color.ToCCColor4B(), PrimitiveType.LineList);
             }
 
-            primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-            primitiveBatch.AddVertex(vertices[0].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2() * PTMRatio, color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(vertices[0].ToCCVector2() * PTMRatio, color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -110,9 +110,9 @@ namespace CocosSharp
 
             for (int i = 1; i < vertexCount - 1; i++)
             {
-                primitiveBatch.AddVertex(vertices[0].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
-                primitiveBatch.AddVertex(vertices[i].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
-                primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(vertices[0].ToCCVector2() * PTMRatio, colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(vertices[i].ToCCVector2() * PTMRatio, colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2() * PTMRatio, colorFill, PrimitiveType.TriangleList);
             }
 
             DrawPolygon(vertices, vertexCount, color);
@@ -132,10 +132,10 @@ namespace CocosSharp
 
             for (int i = 0, count = CircleSegments; i < count; i++)
             {
-                CCVector2 v1 = centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
-                CCVector2 v2 = centr +
+                CCVector2 v1 = (centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta))) * PTMRatio;
+                CCVector2 v2 = (centr +
                     radius *
-                    new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
+                    new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment))) * PTMRatio;
 
                 primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
                 primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
@@ -159,11 +159,18 @@ namespace CocosSharp
             CCVector2 v0 = center.ToCCVector2() + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
             theta += increment;
 
+            v0 *= PTMRatio;
+
             for (int i = 1; i < CircleSegments - 1; i++)
             {
                 var v1 = centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
+
+                v1 *= PTMRatio;
+
                 var v2 = centr +
                     radius * new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
+
+                v2 *= PTMRatio;
 
                 primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
                 primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
@@ -182,8 +189,8 @@ namespace CocosSharp
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
-            primitiveBatch.AddVertex(p1.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-            primitiveBatch.AddVertex(p2.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(p1.ToCCVector2() * PTMRatio , color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(p2.ToCCVector2() * PTMRatio, color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawTransform(b2Transform xf)
@@ -235,19 +242,19 @@ namespace CocosSharp
         {
             primitiveBatch.End();
 
-//            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
-//
-//            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-//
-//            for (int i = 0; i < stringData.Count; i++)
-//            {
-//                stringBuilder.Length = 0;
-//                stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
-//                _batch.DrawString(spriteFont, stringBuilder, new Vector2(stringData[i].X, stringData[i].Y),
-//                    stringData[i].Color);
-//            }
-//
-//            _batch.End();
+            //            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+            //
+            //            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            //
+            //            for (int i = 0; i < stringData.Count; i++)
+            //            {
+            //                stringBuilder.Length = 0;
+            //                stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
+            //                _batch.DrawString(spriteFont, stringBuilder, new Vector2(stringData[i].X, stringData[i].Y),
+            //                    stringData[i].Color);
+            //            }
+            //
+            //            _batch.End();
 
             stringData.Clear();
         }

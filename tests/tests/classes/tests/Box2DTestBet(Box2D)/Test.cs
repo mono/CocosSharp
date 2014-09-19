@@ -186,7 +186,7 @@ namespace Box2D.TestBed
         public Test()
         {
             m_destructionListener = new DestructionListener();
-            m_debugDraw = new CCBox2dDraw("fonts/arial-12");
+            m_debugDraw = new CCBox2dDraw("fonts/arial-12", 1);
 
             b2Vec2 gravity = new b2Vec2();
             gravity.Set(0.0f, -10.0f);
