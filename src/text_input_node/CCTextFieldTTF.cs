@@ -1,5 +1,5 @@
 using System;
-#if !WINDOWS_PHONE
+#if !WINDOWS_PHONE && !ANDROID
 using Microsoft.Xna.Framework.GamerServices;
 #endif
 namespace CocosSharp
@@ -81,7 +81,7 @@ namespace CocosSharp
 
         public void Edit(string title, string defaultText)
         {
-            #if !WINDOWS_PHONE
+            #if !WINDOWS_PHONE && !ANDROID
             if (!readOnly && !Guide.IsVisible)
             {
                 var canceled = false;
@@ -101,7 +101,7 @@ namespace CocosSharp
 
         void InputHandler(IAsyncResult result)
         {
-            #if !WINDOWS_PHONE
+            #if !WINDOWS_PHONE && !ANDROID
             var newText = Guide.EndShowKeyboardInput(result);
 
             guideShowHandle = null;
@@ -146,7 +146,7 @@ namespace CocosSharp
         {
             if (guideShowHandle != null)
             {
-                #if !WINDOWS_PHONE
+                #if !WINDOWS_PHONE && !ANDROID
                 Guide.EndShowKeyboardInput(guideShowHandle);
                 #endif
                 guideShowHandle = null;

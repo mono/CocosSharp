@@ -16,7 +16,8 @@
     <MandroidI18n />
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.2</TargetFrameworkVersion>
+    <AndroidUseLatestPlatformSdk>False</AndroidUseLatestPlatformSdk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2099,10 +2100,5 @@
   <ItemGroup>
     <Folder Include="classes\tests\EventDispatcherTest\" />
     <Folder Include="Extensions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\..\Extensions\**\*.*">
-      <Link>Extensions\CocosSharp\%25%28RecursiveDir%29%25%28FileName%29%25%28Extension%29</Link>
-    </Compile>
   </ItemGroup>
 </Project>

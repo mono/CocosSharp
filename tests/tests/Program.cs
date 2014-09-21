@@ -104,7 +104,7 @@ namespace tests
     ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
     LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
     MainLauncher = true,
-    ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
+    ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
     ]
 #if OUYA
     [IntentFilter(new[] { Intent.ActionMain }, Categories = new[] { Intent.CategoryLauncher, "ouya.intent.category.GAME" })]
