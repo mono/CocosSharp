@@ -101,12 +101,12 @@ namespace CocosSharp
         internal static void Initialize(IServiceProvider serviceProvider, string rootDirectory)
         {
             SharedContentManager = new CCContentManager(serviceProvider, rootDirectory);
-#if IOS || WINDOWS_PHONE8
+#if WINDOWS_PHONE8
             InitializeContentTypeReaders();
 #endif
         }
 
-#if IOS || WINDOWS_PHONE8
+#if WINDOWS_PHONE8
         static bool readersInited;
 
         static void InitializeContentTypeReaders()
