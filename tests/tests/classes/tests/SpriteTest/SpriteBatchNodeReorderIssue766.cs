@@ -18,12 +18,12 @@ namespace tests
 
         public override string Title
         {
-            get { return "SpriteBatchNode: reorder issue #766"; }
+            get { return "Testing SpriteBatchNode"; }
         }
 
         public override string Subtitle
         {
-            get { return "In 2 seconds 1 sprite will be reordered"; }
+            get { return "reorder issue #766. In 2 seconds 1 sprite will be reordered"; }
         }
 
         #endregion Properties
@@ -48,7 +48,8 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             sprite1.Position = (new CCPoint(200, 160));
             sprite2.Position = (new CCPoint(264, 160));
