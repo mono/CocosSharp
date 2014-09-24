@@ -6,7 +6,7 @@ namespace CocosSharp
 {
     public enum TestCases
     {
-        TEST_ACCELEROMRTER = 0,
+        TEST_ACCELEROMRTER,
         TEST_ACTION_MANAGER,
         TEST_EASE_ACTIONS,
         TEST_PROGRESS_ACTIONS,
@@ -57,9 +57,9 @@ namespace CocosSharp
         TEST_TRANSITIONS,
         //TEST_USERDEFAULT,
         TEST_ZWOPTEX,
-#if IOS || MACOS || WINDOWSGL || WINDOWS || ANDROID || NETFX_CORE
-        TEST_SYSTEM_FONTS,
-#endif
+//#if IOS || MACOS || WINDOWSGL || WINDOWS || ANDROID || NETFX_CORE
+//        TEST_SYSTEM_FONTS,
+//#endif
         TESTS_COUNT,
     };
 
