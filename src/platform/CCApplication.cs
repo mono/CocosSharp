@@ -41,8 +41,7 @@ namespace CocosSharp
 	{
 		public static bool IsPortrait(this CCDisplayOrientation orientation)
 		{
-			orientation = orientation & CCDisplayOrientation.Portrait;
-			orientation = orientation & CCDisplayOrientation.PortraitDown;
+            orientation = orientation & (CCDisplayOrientation.Portrait | CCDisplayOrientation.PortraitDown);
 
 			return orientation != CCDisplayOrientation.Default;
 		}

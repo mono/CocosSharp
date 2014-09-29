@@ -14,11 +14,15 @@ namespace CocosSharp
 
         // The entire application fills the specified area, without distortion but possibly with some cropping, 
         // while maintaining the original aspect ratio of the application.
-        AspectFill,
+        AspectFillLandscape,
+
+        AspectFillPortrait,
 
         // The entire application is visible in the specified area without distortion while maintaining the original 
         // aspect ratio of the application. Borders can appear on two sides of the application.
-        AspectFit
+        AspectFitLandscape,
+
+        AspectFitPortrait
     }
 
     #endregion Enums
@@ -140,7 +144,7 @@ namespace CocosSharp
 
         public CCViewport(
 			CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn, 
-            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.ExactFit, 
+            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFitLandscape, 
             CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
         {
             if(exactFitPortraitRatioIn == default(CCRect))
@@ -156,7 +160,7 @@ namespace CocosSharp
 
 		public CCViewport(
 			CCRect exactFitLandscapeRatioIn, 
-			CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.ExactFit, 
+            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFitLandscape, 
 			CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
 			: this (exactFitLandscapeRatioIn, exactFitLandscapeRatioIn, resolutionPolicyIn, displayOrientationIn)
 		{	}
@@ -172,7 +176,8 @@ namespace CocosSharp
             bool isPortrat = DisplayOrientation.IsPortrait();
 
             CCRect exactFitRectRatio = isPortrat ? ExactFitPortraitRatio : ExactFitLandscapeRatio;
-            CCSize screenSize = isPortrat ? landscapeScreenSizeInPixels.Inverted : landscapeScreenSizeInPixels;
+            CCSize portraitScreenSize = landscapeScreenSizeInPixels.Inverted;
+            CCSize screenSize = isPortrat ? portraitScreenSize : landscapeScreenSizeInPixels;
 
             Rectangle exactFitRectPixels = new Rectangle (
                 (int)(exactFitRectRatio.Origin.X * screenSize.Width), 
@@ -184,30 +189,53 @@ namespace CocosSharp
             Rectangle xnaViewportRect = exactFitRectPixels;
 
             float exactFitAspectRatio = exactFitRectPixels.Width / exactFitRectPixels.Height;
-            float screenAspectRatio = screenSize.Width / (float)screenSize.Height;
+            float screenAspectRatioLandscape = landscapeScreenSizeInPixels.Width / landscapeScreenSizeInPixels.Height;
+            float screenAspectRatioPortrait = portraitScreenSize.Width / portraitScreenSize.Height;
 
             switch(ResolutionPolicy) 
             {
-                case CCViewportResolutionPolicy.AspectFit:
+                case CCViewportResolutionPolicy.AspectFitLandscape:
                     // The screen width > screen height    
-                    if (screenAspectRatio > 1.0f) 
+                    if (screenAspectRatioLandscape > 1.0f) 
                     {
-                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatio);
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioLandscape);
                     } 
                     else 
                     {
-                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatio);
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioLandscape);
                     }
                     break;
-                case CCViewportResolutionPolicy.AspectFill:
+                case CCViewportResolutionPolicy.AspectFitPortrait:
+                    // The screen width > screen height    
+                    if (screenAspectRatioPortrait > 1.0f) 
+                    {
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioPortrait);
+                    } 
+                    else 
+                    {
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioPortrait);
+                    }
+                    break;
+                case CCViewportResolutionPolicy.AspectFillLandscape:
                     // The exact fit viewport width > exact fit viewport height   
                     if (exactFitAspectRatio > 1.0f) 
                     {
-                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatio);
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioLandscape);
                     } 
                     else 
                     {
-                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatio);
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioLandscape);
+                    }    
+                    break;
+                case CCViewportResolutionPolicy.AspectFillPortrait:
+                    // The exact fit viewport width > exact fit viewport height   
+                    if (exactFitAspectRatio > 1.0f) 
+                    {
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioPortrait);
+                    } 
+                    else 
+                    {
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioPortrait);
                     }    
                     break;
                     // Defaults to exact fit
