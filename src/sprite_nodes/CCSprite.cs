@@ -212,9 +212,6 @@ namespace CocosSharp
             {
                 base.ContentSize = value;
 
-//                if(untrimmedSizeInPixels == CCSize.Zero)
-                    untrimmedSizeInPixels = value;
-
                 UpdateSpriteTextureQuads();
             }
         }
@@ -251,9 +248,9 @@ namespace CocosSharp
             {
                 return new CCSpriteFrame(                    
                     ContentSize,
-                    texture,
-                    textureRectInPixels,
-                    untrimmedSizeInPixels,
+                    Texture,
+                    TextureRectInPixels,
+                    UntrimmedSizeInPixels,
                     IsTextureRectRotated,
                     unflippedOffsetPositionFromCenter
                 );
@@ -274,9 +271,9 @@ namespace CocosSharp
                     IsTextureRectRotated = value.IsRotated;
                     textureRectInPixels = value.TextureRectInPixels;
                     unflippedOffsetPositionFromCenter = value.OffsetInPixels;
-                    untrimmedSizeInPixels = value.OriginalSizeInPixels;
+                    UntrimmedSizeInPixels = value.OriginalSizeInPixels;
 
-                    ContentSize = untrimmedSizeInPixels;
+                    ContentSize = UntrimmedSizeInPixels;
 
                     UpdateSpriteTextureQuads();
                 }
@@ -347,6 +344,18 @@ namespace CocosSharp
                     UpdateBlendFunc();
                 }
             }
+        }
+
+        CCSize UntrimmedSizeInPixels
+        {
+            get
+            {
+                if(untrimmedSizeInPixels == CCSize.Zero)
+                    return TextureRectInPixels.Size;
+                return untrimmedSizeInPixels;
+            }
+
+            set { untrimmedSizeInPixels = value; }
         }
 
         #endregion Properties
@@ -424,7 +433,6 @@ namespace CocosSharp
             // If content size not initialized, assume worldspace dimensions match texture dimensions
             if(ContentSize == CCSize.Zero)
                 ContentSize = textureRectInPixels.Size;
-
 
             UpdateSpriteTextureQuads();
         }
@@ -609,20 +617,20 @@ namespace CocosSharp
                     relativeOffset.Y = -relativeOffset.Y;
                 }
 
-                CCPoint centerPoint = untrimmedSizeInPixels.Center + relativeOffset;
+                CCPoint centerPoint = UntrimmedSizeInPixels.Center + relativeOffset;
                 CCPoint subRectOrigin;
                 subRectOrigin.X = centerPoint.X - textureRectInPixels.Size.Width / 2.0f;
                 subRectOrigin.Y = centerPoint.Y - textureRectInPixels.Size.Height / 2.0f;
 
                 CCRect subRectRatio = CCRect.Zero;
 
-                if (untrimmedSizeInPixels.Width > 0 && untrimmedSizeInPixels.Height > 0)
+                if (UntrimmedSizeInPixels.Width > 0 && UntrimmedSizeInPixels.Height > 0)
                 {
                     subRectRatio = new CCRect(
-                        subRectOrigin.X / untrimmedSizeInPixels.Width, 
-                        subRectOrigin.Y / untrimmedSizeInPixels.Height,
-                        textureRectInPixels.Size.Width / untrimmedSizeInPixels.Width,
-                        textureRectInPixels.Size.Height / untrimmedSizeInPixels.Height);
+                        subRectOrigin.X / UntrimmedSizeInPixels.Width, 
+                        subRectOrigin.Y / UntrimmedSizeInPixels.Height,
+                        textureRectInPixels.Size.Width / UntrimmedSizeInPixels.Width,
+                        textureRectInPixels.Size.Height / UntrimmedSizeInPixels.Height);
                 }
 
                 // Atlas: Vertex
