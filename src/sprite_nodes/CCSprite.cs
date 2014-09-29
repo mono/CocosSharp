@@ -91,6 +91,19 @@ namespace CocosSharp
             }
         }
 
+        public override bool Visible
+        {
+            get
+            {
+                return base.Visible;
+            }
+            set
+            {
+                base.Visible = value;
+                UpdateSpriteTextureQuads();
+            }
+        }
+
         public override byte Opacity
         {
             get { return base.Opacity; }
@@ -178,19 +191,6 @@ namespace CocosSharp
             set
             {
                 base.ScaleY = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        public override bool Visible
-        {
-            get
-            {
-                return base.Visible;
-            }
-            set
-            {
-                base.Visible = value;
                 UpdateSpriteTextureQuads();
             }
         }
