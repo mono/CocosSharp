@@ -224,7 +224,7 @@ namespace CocosSharp
 			: this(window, new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f)), director, physics)
 #else
 		public CCScene(CCWindow window, CCDirector director)
-			: this(window, new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f)), director)
+            : this(window, new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f), window.SupportedDisplayOrientations), director)
 #endif
         {
         }

@@ -45,7 +45,15 @@ namespace CocosSharp
 
 			return orientation != CCDisplayOrientation.Default;
 		}
+
+        public static bool IsLandscape(this CCDisplayOrientation orientation)
+        {
+            orientation = orientation & (CCDisplayOrientation.LandscapeLeft | CCDisplayOrientation.LandscapeRight);
+
+            return orientation != CCDisplayOrientation.Default;
+        }
 	}
+
 
 	public class CCGameTime
 	{
