@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Vsix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-	<Identifier Id="EmptyProject.346aa2ec-5a76-4321-a311-628aa73664b9">
-		<Name>Cocos2D-XNA Empty Game iOS</Name>
-		<Author>Cocos2D-XNA</Author>
+	<Identifier Id="EmptyProject.F4B9EE66-6302-4B20-B798-2CEE8BCA936D">
+		<Name>CocosSharp Empty Game iOS</Name>
+		<Author>CocosSharp</Author>
 		<Version>1.0</Version>
-		<Description xml:space="preserve">Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for iOS.</Description>
+		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for iOS.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
 		<PreviewImage>powered.png</PreviewImage>
 		<SupportedProducts>
-			<VisualStudio Version="10.0">
+			<VisualStudio Version="11.0">
 				<Edition>Ultimate</Edition>
 				<Edition>Premium</Edition>
 				<Edition>Pro</Edition>
 				<Edition>VCSExpress</Edition>
 			</VisualStudio>
-			<VisualStudio Version="11.0">
+			<VisualStudio Version="12.0">
 				<Edition>Ultimate</Edition>
 				<Edition>Premium</Edition>
 				<Edition>Pro</Edition>
