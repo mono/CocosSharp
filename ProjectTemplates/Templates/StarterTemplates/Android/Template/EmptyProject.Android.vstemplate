@@ -1,13 +1,13 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
 	<TemplateData>
-		<Name>Cocos2D-XNA Empty Game Android</Name>
-		<Description>Creates a simple Cocos2D-XNA minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Android.</Description>
+		<Name>CocosSharp Empty Game Android</Name>
+		<Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Android.</Description>
 		<ProjectType>CSharp</ProjectType>
 		<ProjectSubType>
 		</ProjectSubType>
 		<SortOrder>1000</SortOrder>
 		<CreateNewFolder>true</CreateNewFolder>
-		<DefaultName>Cocos2DGame</DefaultName>
+		<DefaultName>CocosSharpGame</DefaultName>
 		<ProvideDefaultName>true</ProvideDefaultName>
 		<LocationField>Enabled</LocationField>
 		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
@@ -25,7 +25,6 @@
           </Folder>
         </Folder>
       </Folder>
-      <ProjectItem ReplaceParameters="true" TargetFileName="Game1.cs">Game1.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="IntroLayer.cs">IntroLayer.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
       <Folder Name="Properties" TargetFolderName="Properties">
@@ -52,8 +51,8 @@
 	</WizardExtension>
 	<WizardData>
 		<packages repository="extension"
-			  repositoryId="EmptyProject.4bae5412-bb98-40f1-b0ba-5b4e479b8fc1">
-			<package id="Cocos2D-XNA.Android" version="1.2.0.0" />
+			  repositoryId="EmptyProject.548623EE-B1A5-49B8-9C03-6C6C4762A734">
+			<package id="CocosSharp.Android" version="1.0.1.0" />
 		</packages>
 	</WizardData>
 </VSTemplate>
