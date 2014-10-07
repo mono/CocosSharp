@@ -25,10 +25,6 @@
 		<SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
 	</Identifier>
 	<References>
-		<Reference Id="NuPackToolsVsix.Microsoft.67e54e40-0ae3-42c5-a949-fddf5739e7a5" MinVersion="2.5.40416.9020">
-			<Name>NuGet Package Manager</Name>
-			<MoreInfoUrl>http://docs.nuget.org/</MoreInfoUrl>
-		</Reference>
 	</References>
 	<Content>
 		<ProjectTemplate>ProjectTemplates</ProjectTemplate>
