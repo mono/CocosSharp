@@ -16,7 +16,7 @@ namespace CocosSharp
 
     public class CCAccelerometer
     {
-        #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
+        #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
         // the accelerometer sensor on the device
         static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
         #endif
@@ -45,7 +45,7 @@ namespace CocosSharp
                 enabled = value;
                 if (enabled && !Active)
                 {
-                    #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
+                    #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
                     try
                     {
                         if(Microsoft.Devices.Sensors.Accelerometer.IsSupported)
@@ -65,7 +65,7 @@ namespace CocosSharp
                     }
                     #endif
 
-                    if(!Active)
+                    if (!Active)
                     {
                         Active = true;
                         Emulating = true;
@@ -79,7 +79,7 @@ namespace CocosSharp
                 {
                     if (Active && !Emulating)
                     {
-                        #if !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL
+                        #if !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
                         if (accelerometer != null)
                         {
                             accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
@@ -105,7 +105,7 @@ namespace CocosSharp
         {
             Window = window;
 
-            #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
+            #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
             try
             {
                 accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
@@ -128,7 +128,7 @@ namespace CocosSharp
             accelerationValue.Z = 0;
         }
 
-        #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
+        #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
         void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
             // We have to use reflection to get the Vector3 value out of Acceleration
