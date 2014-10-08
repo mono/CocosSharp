@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.WindowsDX</id>
-    <version>$version$</version>
+    <version>1.1.0.0</version>
     <title>CocosSharp for Windows using DirectX</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>

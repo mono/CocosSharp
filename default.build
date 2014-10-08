@@ -187,10 +187,9 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone8.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
-      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}Cocos2D.MGCB.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"  ' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"' />
     </if>
     <if test="${os == 'MacOS'}">
 
@@ -213,7 +212,6 @@
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.iOS.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Android.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
-      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Ouya.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath "./src/external lib/ChipmunkSharp/"' /> 
     </if>
   </target>

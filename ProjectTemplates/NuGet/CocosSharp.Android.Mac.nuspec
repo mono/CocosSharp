@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.Android</id>
-    <version>$version$</version>
+    <version>1.1.0.0</version>
     <title>CocosSharp for Android</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>

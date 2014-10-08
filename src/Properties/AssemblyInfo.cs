@@ -26,7 +26,6 @@ using System.Resources;
 #else
 [assembly: AssemblyDescription("CocosSharp for Windows Desktop (XNA)")]
 #endif
-#endif
 
 [assembly: AssemblyCompany("Open Source Software Provided As-Is")]
 [assembly: AssemblyTrademark("")]
@@ -51,5 +50,6 @@ using System.Resources;
 //      Revision
 //
 [assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyInformationalVersion("1.1.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 
