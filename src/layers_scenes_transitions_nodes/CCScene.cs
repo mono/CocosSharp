@@ -300,6 +300,11 @@ namespace CocosSharp
 
                 if (unionedBounds != CCRect.Zero)
                 {
+                    // The following code after this block assumes we started in landscape
+                    // So invert unioned bounds if we're in portrait
+                    if(Window.CurrentDisplayOrientation.IsPortrait())
+                        unionedBounds = unionedBounds.InvertedSize;
+
                     // Calculate Landscape Ratio
                     var viewportRect = CalculateResolutionRatio(unionedBounds, resolutionPolicy);
                     dirtyViewport = Viewport.exactFitLandscapeRatio != viewportRect;
