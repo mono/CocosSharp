@@ -77,7 +77,6 @@
     <Content Include="Content\fonts\MarkerFelt-22.xnb" />
     <None Include="Info.plist" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="IntroLayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,28 +88,25 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="box2diOS">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\box2diOS.dll</HintPath>
+    <Reference Include="box2d">
+      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\box2diOS.dll</HintPath>
     </Reference>
     <Reference Include="CocosSharp">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\CocosSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\Lidgren.Network.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="zlib.net">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\zlib.net.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
 </Project>

@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\..\..\..\NuGet\bin\CocosSharp.Windows8.1.0.1.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.Windows8.1.2.0.0.nupkg</Link>
+      <Link>Packages\CocosSharp.Windows8.1.0.1.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.Windows8.zip">

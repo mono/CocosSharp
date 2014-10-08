@@ -11,6 +11,8 @@ using Android.Widget;
 using Uri = Android.Net.Uri;
 using Microsoft.Xna.Framework;
 
+using CocosSharp;
+
 namespace $safeprojectname$
 {
 
@@ -24,20 +26,19 @@ namespace $safeprojectname$
         , ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)]
     public class Program : AndroidGameActivity
     {
+        
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            Game1.Activity = this;
-            var game = new Game1();
+            CCApplication application = new CCApplication();
+			application.ApplicationDelegate = new AppDelegate();
 
-            var frameLayout = new FrameLayout(this);
-            frameLayout.AddView(game.Window);
-            this.SetContentView(frameLayout);
+			this.SetContentView(application.AndroidContentView);
 
-            //SetContentView(game.Window);
-            game.Run(GameRunBehavior.Asynchronous);
-        }
+			application.StartGame();
+
+        }        
     }
 
 

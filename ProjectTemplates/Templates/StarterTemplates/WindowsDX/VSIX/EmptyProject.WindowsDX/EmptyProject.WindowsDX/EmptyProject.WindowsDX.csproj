@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,8 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.WindowsDX.1.2.0.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.WindowsGL.1.2.0.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\CocosSharp.WindowsDX.1.0.1.0.nupkg">
+      <Link>Packages\CocosSharp.WindowsGL.1.0.1.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\..\..\Template\EmptyProject.WindowsDX.vstemplate">
@@ -54,7 +59,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.WindowsDX.zip">
-      <Link>ProjectTemplates\Cocos2D-XNA\Windows\EmptyProject.WindowsDX.zip</Link>
+      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.WindowsDX.zip</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

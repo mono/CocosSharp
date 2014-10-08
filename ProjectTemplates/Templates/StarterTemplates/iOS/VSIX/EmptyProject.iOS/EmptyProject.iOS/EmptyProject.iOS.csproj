@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
@@ -46,11 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\Template\bin\EmptyProject.iOS.zip">
-      <Link>ProjectTemplates\Cocos2D-XNA\iOS\EmptyProject.iOS.zip</Link>
+      <Link>ProjectTemplates\CocosSharp\iOS\EmptyProject.iOS.zip</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\Cocos2D-XNA.iOS.1.2.0.0.nupkg">
-      <Link>Packages\Cocos2D-XNA.iOS.1.2.0.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\CocosSharp.iOS.1.0.1.0.nupkg">
+      <Link>Packages\CocosSharp.iOS.1.0.1.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">

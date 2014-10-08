@@ -43,22 +43,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Android\Release\box2d.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Android\Release\box2d.dll</HintPath>
     </Reference>
     <Reference Include="CocosSharp">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Android\Release\CocosSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Android\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Android\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Android\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Android\Release\Lidgren.Network.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Android\Release\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Android\Release\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\Bin\Android\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="OpenTK" />
@@ -66,16 +66,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="zlib.net">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Android\Release\zlib.net.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="IntroLayer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
