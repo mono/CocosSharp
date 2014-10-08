@@ -144,7 +144,7 @@ namespace CocosSharp
 
         public CCViewport(
             CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn, 
-            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFitLandscape, 
+            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFitLandscape,
             CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
         {
             if(exactFitPortraitRatioIn == default(CCRect))
@@ -167,10 +167,11 @@ namespace CocosSharp
 
         internal CCViewport(
             CCRect exactFitLandscapeRatioIn,
-            CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
+            CCDisplayOrientation supportedDisplayOrientationIn,
+            CCDisplayOrientation currentDisplayOrientationIn)
             : this( exactFitLandscapeRatioIn, 
-                displayOrientationIn.IsLandscape() ? CCViewportResolutionPolicy.AspectFitLandscape :  CCViewportResolutionPolicy.AspectFitPortrait,
-                displayOrientationIn)
+                supportedDisplayOrientationIn.IsLandscape() ? CCViewportResolutionPolicy.AspectFitLandscape :  CCViewportResolutionPolicy.AspectFitPortrait,
+                currentDisplayOrientationIn)
         {
         }
 
@@ -203,53 +204,53 @@ namespace CocosSharp
 
             switch(ResolutionPolicy) 
             {
-            case CCViewportResolutionPolicy.AspectFitLandscape:
-                // The screen width > screen height    
-                if (screenAspectRatioLandscape > 1.0f) 
-                {
-                    xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioLandscape);
-                } 
-                else 
-                {
-                    xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioLandscape);
-                }
-                break;
-            case CCViewportResolutionPolicy.AspectFitPortrait:
-                // The screen width > screen height    
-                if (screenAspectRatioPortrait > 1.0f) 
-                {
-                    xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioPortrait);
-                } 
-                else 
-                {
-                    xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioPortrait);
-                }
-                break;
-            case CCViewportResolutionPolicy.AspectFillLandscape:
-                // The exact fit viewport width > exact fit viewport height   
-                if (exactFitAspectRatio > 1.0f) 
-                {
-                    xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioLandscape);
-                } 
-                else 
-                {
-                    xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioLandscape);
-                }    
-                break;
-            case CCViewportResolutionPolicy.AspectFillPortrait:
-                // The exact fit viewport width > exact fit viewport height   
-                if (exactFitAspectRatio > 1.0f) 
-                {
-                    xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioPortrait);
-                } 
-                else 
-                {
-                    xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioPortrait);
-                }    
-                break;
-                // Defaults to exact fit
-            default:
-                break;
+                case CCViewportResolutionPolicy.AspectFitLandscape:
+                    // The screen width > screen height    
+                    if (screenAspectRatioLandscape > 1.0f) 
+                    {
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioLandscape);
+                    } 
+                    else 
+                    {
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioLandscape);
+                    }
+                    break;
+                case CCViewportResolutionPolicy.AspectFitPortrait:
+                    // The screen width > screen height    
+                    if (screenAspectRatioPortrait > 1.0f) 
+                    {
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioPortrait);
+                    } 
+                    else 
+                    {
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioPortrait);
+                    }
+                    break;
+                case CCViewportResolutionPolicy.AspectFillLandscape:
+                    // The exact fit viewport width > exact fit viewport height   
+                    if (exactFitAspectRatio > 1.0f) 
+                    {
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioLandscape);
+                    } 
+                    else 
+                    {
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioLandscape);
+                    }    
+                    break;
+                case CCViewportResolutionPolicy.AspectFillPortrait:
+                    // The exact fit viewport width > exact fit viewport height   
+                    if (exactFitAspectRatio > 1.0f) 
+                    {
+                        xnaViewportRect.Height = (int) (xnaViewportRect.Width / screenAspectRatioPortrait);
+                    } 
+                    else 
+                    {
+                        xnaViewportRect.Width = (int) (xnaViewportRect.Height * screenAspectRatioPortrait);
+                    }    
+                    break;
+                    // Defaults to exact fit
+                default:
+                    break;
             }
 
             xnaViewportRect.X = (int)Math.Floor((exactFitRectPixels.Width - xnaViewportRect.Width) / 2.0f) + exactFitRectPixels.X;

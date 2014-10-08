@@ -96,13 +96,11 @@ namespace CocosSharp
         public CCDisplayOrientation SupportedDisplayOrientations
         {
             get { return DrawManager.SupportedDisplayOrientations; }
-            set { DrawManager.SupportedDisplayOrientations = value; }
         }
 
         public CCDisplayOrientation CurrentDisplayOrientation
         {
             get { return (CCDisplayOrientation)XnaWindow.CurrentOrientation; }
-            set { DrawManager.CurrentDisplayOrientation = value; }
         }
 
         public CCApplication Application { get; private set; }
@@ -258,8 +256,6 @@ namespace CocosSharp
 
         void OnOrientationChanged(object sender, EventArgs e)
         {
-            CurrentDisplayOrientation = (CCDisplayOrientation)XnaWindow.CurrentOrientation;
-
             foreach(CCDirector director in sceneDirectors) 
             {
                 if(director.RunningScene != null) 

@@ -17,7 +17,6 @@ namespace tests
 
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
-            mainWindow.SupportedDisplayOrientations = CCDisplayOrientation.LandscapeLeft | CCDisplayOrientation.LandscapeRight;
             //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
             //application.AllowUserResizing = true;
             application.PreferMultiSampling = false;
@@ -25,7 +24,8 @@ namespace tests
 
             sharedWindow = mainWindow;
 
-            mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
+            CCSize winSize = mainWindow.WindowSizeInPixels;
+            mainWindow.SetDesignResolutionSize(winSize.Width, winSize.Height, CCSceneResolutionPolicy.ShowAll);
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
 			//application.PreferredBackBufferWidth = 1024;
