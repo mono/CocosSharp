@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
-<project name="Cococs2D-XNA Build Script" default="build" basedir=".">
-  <description>Default Cocos2D-XNA Automated Build script</description>
+<project name="CococsSharp Build Script" default="build" basedir=".">
+  <description>Default CocosSharp Automated Build script</description>
   <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
   <property name="mdtooldir" value="/Applications/Xamarin\ Studio.app/Contents/MacOS"/>
   <property name="configuration" value="Release" unless="${property::exists('configuration')}" />
-  <!--property name="psmtooldir" value="C:\Program Files (x86)\SCE\PSM\tools\PsmStudio\bin" /-->
 
   <target name="checkos" description="check the operating system">
     <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}"/>
@@ -33,9 +32,7 @@
     <call target="buildios"/>
     <call target="buildmac"/>
     <call target="buildandroid"/>
-    <call target="buildouya"/>
     <call target="buildwindows8"/>
-
     <call target="buildnugets"/>
 
     <!--call target="buildtemplates"/-->

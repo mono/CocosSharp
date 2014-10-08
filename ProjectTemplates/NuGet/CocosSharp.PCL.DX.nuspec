@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.PCL.Shared.DX</id>
-    <version>1.0.1.0</version>
+    <version>$version$</version>
     <title>CocosSharp PCL - DX</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>

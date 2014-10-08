@@ -8,7 +8,6 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCompany("Open Source Software Provided As-Is")]
-[assembly: AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("2.2.4.0")]
+[assembly: AssemblyVersion("1.1.0.0")]

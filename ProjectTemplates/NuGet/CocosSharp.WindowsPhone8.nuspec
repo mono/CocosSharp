@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.WindowsPhone8</id>
-    <version>1.0.1.0</version>
+    <version>$version$</version>
     <title>CocosSharp for Windows Phone 8</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>

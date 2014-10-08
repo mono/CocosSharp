@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.iOS</id>
-    <version>1.0.1.0</version>
+    <version>$version$</version>
     <title>CocosSharp for iOS</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>

@@ -9,34 +9,26 @@ using System.Resources;
 [assembly: AssemblyTitle("CocosSharp")]
 [assembly: AssemblyProduct("CocosSharp")]
 
-#if OUYA
-[assembly: AssemblyDescription("Cocos2D-XNA for Ouya")]
-#else
 #if WINDOWSDX
-[assembly: AssemblyDescription("Cocos2D-XNA for Windows Desktop (DX)")]
+[assembly: AssemblyDescription("CocosSharp for Windows Desktop (DX)")]
 #elif WINDOWSGL
-[assembly: AssemblyDescription("Cocos2D-XNA for Windows Desktop (OpenGL)")]
+[assembly: AssemblyDescription("CocosSharp for Windows Desktop (OpenGL)")]
 #elif ANDROID
-[assembly: AssemblyDescription("Cocos2D-XNA for Android")]
+[assembly: AssemblyDescription("CocosSharp for Android")]
 #elif IPHONE
-[assembly: AssemblyDescription("Cocos2D-XNA for iOS")]
+[assembly: AssemblyDescription("CocosSharp for iOS")]
 #elif NETFX_CORE
-[assembly: AssemblyDescription("Cocos2D-XNA for Windows RT")]
+[assembly: AssemblyDescription("CocosSharp for Windows RT")]
 #elif WINDOWS_PHONE8
-[assembly: AssemblyDescription("Cocos2D-XNA for Windows Phone 8")]
-#elif WINDOWS_PHONE
-[assembly: AssemblyDescription("Cocos2D-XNA for Windows Phone 7")]
-#elif XBOX360
-[assembly: AssemblyDescription("Cocos2D-XNA for XBox 360")]
+[assembly: AssemblyDescription("CocosSharp for Windows Phone 8")]
 #elif MACOS
-[assembly: AssemblyDescription("Cocos2D-XNA for Mac OSX")]
+[assembly: AssemblyDescription("CocosSharp for Mac OSX")]
 #else
-[assembly: AssemblyDescription("Cocos2D-XNA for Windows Desktop (XNA)")]
+[assembly: AssemblyDescription("CocosSharp for Windows Desktop (XNA)")]
 #endif
 #endif
 
 [assembly: AssemblyCompany("Open Source Software Provided As-Is")]
-[assembly: AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -58,6 +50,6 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.2.4.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 
