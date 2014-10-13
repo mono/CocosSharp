@@ -108,7 +108,6 @@ as our TestBed for each platform.
 You can find those in the [tests directory](https://github.com/xamarin/CocosSharp/tree/master/tests "Test Bed")
 
 	CocosSharp.Tests.Android.sln	
-	CocosSharp.Tests.Ouya.sln	
 	CocosSharp.Tests.Windows.sln	
 	CocosSharp.Tests.Windows8.sln	
 	CocosSharp.Tests.WindowsDX.sln	
