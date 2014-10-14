@@ -500,7 +500,7 @@ namespace CocosSharp
 
             // Setting up the window correctly requires knowledge of the phone app page which needs to be set first
             #if !WINDOWS_PHONE
-            InitializeMainWindow((mainWindowSizeInPixels.HasValue) ? mainWindowSizeInPixels.Value : CCSize.Zero, isFullScreen);
+            InitializeMainWindow((mainWindowSizeInPixels.HasValue) ? mainWindowSizeInPixels.Value : new CCSize(800,480), isFullScreen);
             #endif
         }
 
