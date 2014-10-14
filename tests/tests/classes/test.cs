@@ -57,9 +57,9 @@ namespace CocosSharp
         TEST_TRANSITIONS,
         //TEST_USERDEFAULT,
         TEST_ZWOPTEX,
-//#if IOS || MACOS || WINDOWSGL || WINDOWS || ANDROID || NETFX_CORE
-//        TEST_SYSTEM_FONTS,
-//#endif
+#if IOS || MACOS || WINDOWSGL || WINDOWS || ANDROID || NETFX_CORE
+        TEST_SYSTEM_FONTS,
+#endif
         TESTS_COUNT,
     };
 
