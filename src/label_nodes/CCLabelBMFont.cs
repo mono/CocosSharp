@@ -933,21 +933,17 @@ namespace CocosSharp
 
                         lineWidth = lastChar.Position.X + lastChar.ContentSize.Center.X;
 
-                        if (horzAlignment != CCTextAlignment.Left)
+                        var shift = PositionX + (labelDimensions.Width - lineWidth);
+                        if (horzAlignment == CCTextAlignment.Center)
+                                shift /= 2;
+
+                        for (int j = 0; j < line_length; j++)
                         {
-                            var shift = PositionX + (labelDimensions.Width - lineWidth);
-                            if (horzAlignment == CCTextAlignment.Center)
-                                    shift /= 2;
+                            index = i + j + lineNumber;
+                            if (index < 0) continue;
 
-                            for (int j = 0; j < line_length; j++)
-                            {
-                                index = i + j + lineNumber;
-                                if (index < 0) continue;
-
-                                var characterSprite = this[index];
-                                characterSprite.PositionX += shift;
-                            }
-
+                            var characterSprite = this[index];
+                            characterSprite.PositionX += shift;
                         }
 
                         i += line_length;
