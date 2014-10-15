@@ -271,7 +271,7 @@ namespace CocosSharp
 
         #region Resolution Policy
 
-        void UpdateResolutionRatios ()
+        void UpdateResolutionRatios()
         {
 
             if (Children != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
@@ -344,9 +344,6 @@ namespace CocosSharp
             var viewPortRect = CCRect.Zero;
             float resolutionScaleX, resolutionScaleY;
 
-            // Not set anywhere right now.
-            var frameZoomFactor = 1;
-
             var screenSize = Scene.Window.WindowSizeInPixels;
 
             resolutionScaleX = screenSize.Width / designResolutionSize.Width;
@@ -379,13 +376,14 @@ namespace CocosSharp
             float viewPortW = designResolutionSize.Width * resolutionScaleX;
             float viewPortH = designResolutionSize.Height * resolutionScaleY;
 
-            viewPortRect = new CCRect((screenSize.Width - viewPortW) / 2, (screenSize.Height - viewPortH) / 2, viewPortW, viewPortH);
+            viewPortRect 
+                = new CCRect((screenSize.Width - viewPortW) / 2, (screenSize.Height - viewPortH) / 2, viewPortW, viewPortH);
 
             var viewportRatio = new CCRect(
-                ((x * resolutionScaleX * frameZoomFactor + viewPortRect.Origin.X * frameZoomFactor) / screenSize.Width),
-                ((y * resolutionScaleY * frameZoomFactor + viewPortRect.Origin.Y * frameZoomFactor) / screenSize.Height),
-                ((width * resolutionScaleX * frameZoomFactor) / screenSize.Width),
-                ((height * resolutionScaleY * frameZoomFactor) / screenSize.Height)
+                ((viewPortRect.Origin.X) / screenSize.Width),
+                ((viewPortRect.Origin.Y) / screenSize.Height),
+                ((viewPortRect.Size.Width) / screenSize.Width),
+                ((viewPortRect.Size.Height) / screenSize.Height)
             );
 
             return viewportRatio;
@@ -444,6 +442,16 @@ namespace CocosSharp
 #endif
 		
 		#endregion
+
+        public override void AddChild (CCNode child, int zOrder, int tag)
+        {
+            if (child is CCLayer) {
+                base.AddChild (child, zOrder, tag);
+                UpdateResolutionRatios ();
+            } else {
+                Debug.Fail ("CocosSharp: CCScene: AddChild: attempting to add child that is not of type CCLayer");
+            }
+        }
 
         public override void Visit()
         {
