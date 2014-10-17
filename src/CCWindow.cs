@@ -26,7 +26,6 @@ namespace CocosSharp
         #endif
 
         public bool GamePadEnabled { get; set; }
-        public virtual double AnimationInterval { get; set; }
         public CCNode NotificationNode { get; set; }
         internal CCEventDispatcher EventDispatcher { get; private set; }
 
