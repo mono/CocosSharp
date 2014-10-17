@@ -192,8 +192,8 @@ namespace CocosSharp
             Rectangle exactFitRectPixels = new Rectangle (
                 (int)(exactFitRectRatio.Origin.X * screenSize.Width), 
                 (int)(exactFitRectRatio.Origin.Y * screenSize.Height),
-                (int)(exactFitRectRatio.Size.Width * screenSize.Width),
-                (int)(exactFitRectRatio.Size.Height * screenSize.Height)
+                (int)Math.Ceiling(exactFitRectRatio.Size.Width * screenSize.Width),
+                (int)Math.Ceiling(exactFitRectRatio.Size.Height * screenSize.Height)
             );
 
             Rectangle xnaViewportRect = exactFitRectPixels;
