@@ -30,7 +30,7 @@ namespace tests
 		private CCSprite arrows;
 		private CCLabelBMFont label;
 		private bool drag;
-        private CCMenuItemFont m_pLastAlignmentItem;
+        private CCMenuItemFont lastAlignmentItem;
 		private CCMenuItemFont lastSentenceItem;
 
         public BitmapFontMultiLineAlignment()
@@ -53,7 +53,7 @@ namespace tests
             var size = VisibleBoundsWorldspace.Size;
 
             // create and initialize a Label
-			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
+			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 3f,
 				CCTextAlignment.Center);
 
             arrowsBar = new CCSprite("Images/arrowsBar");
@@ -83,7 +83,7 @@ namespace tests
 			alignmentMenu.AlignItemsHorizontally(alignmentItemPadding);
 
 			center.Color = CCColor3B.Red;
-			m_pLastAlignmentItem = center;
+            lastAlignmentItem = center;
 			left.Tag = LeftAlign;
 			center.Tag = CenterAlign;
 			right.Tag = RightAlign;
@@ -114,8 +114,8 @@ namespace tests
         {
             var item = (CCMenuItemFont) sender;
             item.Color = CCColor3B.Red;
-            m_pLastAlignmentItem.Color = CCColor3B.White;
-            m_pLastAlignmentItem = item;
+            lastAlignmentItem.Color = CCColor3B.White;
+            lastAlignmentItem = item;
 
             switch (item.Tag)
             {
@@ -140,8 +140,8 @@ namespace tests
         {
             var item = (CCMenuItemFont) sender;
             item.Color = CCColor3B.Red;
-            m_pLastAlignmentItem.Color = CCColor3B.White;
-            m_pLastAlignmentItem = item;
+            lastAlignmentItem.Color = CCColor3B.White;
+            lastAlignmentItem = item;
 
             switch (item.Tag)
             {
@@ -197,16 +197,15 @@ namespace tests
             arrows.Position = new CCPoint(Math.Max(Math.Min(location.X, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
                                                          arrows.Position.Y);
 
-            float labelWidth = Math.Abs(arrows.Position.X - label.Position.X) * 2;
+            float labelWidth = Math.Abs(arrows.Position.X - label.Position.X);
 
             label.Dimensions = new CCSize(labelWidth, 0);
         }
 
         private void snapArrowsToEdge()
         {
-            arrows.Position =
-				new CCPoint(label.Position.X + label.ContentSize.Width / 2,
-                            label.Position.Y);
+            arrows.PositionX = label.Position.X + label.ContentSize.Width;
+            arrows.PositionY = label.Position.Y;
         }
 
         public override string title()
