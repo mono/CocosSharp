@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Template>
+	<TemplateConfiguration>
+		<_Name>CCLayer</_Name>
+		<Icon>md-class-file</Icon>
+		<_Category>CocosSharp</_Category>
+		<LanguageName>C#</LanguageName>
+		<_Description>Create a new custom CCLayer</_Description>
+	</TemplateConfiguration>
+	
+	<TemplateFiles>
+		<File name="${Name}.${LanguageExtension}" AddStandardHeader="True" src="EmptyLayer.cs" />
+	</TemplateFiles>
+</Template>

@@ -1,0 +1,114 @@
+<Addin 
+		id				="CocosSharp.Mobile"
+		namespace		="MonoDevelop"
+		name			="CocosSharp project templates for mobile targets" 
+		author			="Rami Tabbara" 
+		copyright		="MIT X11" 
+		url				="https://github.com/mono/CocosSharp" 
+		description		="Setup separate CocosSharp projects for targeting either iOS or Android devices; or a project that targets both iOS and Android devices with a common PCL project for shared code."
+		category		="CocosSharp"
+		version			="1.1.0.0">
+
+	<Runtime>
+		<!---iOS files -->
+		<Import file	="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPhoneProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPadProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.UniversalProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPhoneProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPadProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyUniversalProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPhone.plist.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPad.plist.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Common.iOS/Default-568h.png" />
+		<Import file	="MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
+
+		<!---Android files -->
+		<Import file	="MonoDevelop.CocosSharp.Android/SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Empty.Android/MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/Icon-md.png" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/AboutAssets.txt" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/AboutResources.txt" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/Main.axml" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/AssemblyInfo.Android.cs" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/MainActivity.cs" />
+		<Import file	="MonoDevelop.CocosSharp.Android/Common.Android/Resource.cs" />
+
+		<!---PCL Mobile files -->
+		<Import file	="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
+		<Import file	="MonoDevelop.CocosSharp.Mobile/Empty.Mobile/MonoDevelop.CocosSharp.Mobile.EmptyProject.xpt.xml" />
+
+		<!---Common files -->
+		<Import file	="Common/MonoDevelop.CocosSharp.NewLayer.xft.xml" />
+		<Import file	="Common/EmptyLayer.cs" />
+		<Import file	="Common/monkey.png" />
+		<Import file	="Common/monkey.xnb" />
+		<Import file	="Common/GameAppDelegate.Desktop.cs" />
+		<Import file	="Common/GameAppDelegate.Mobile.cs" />
+		<Import file	="Common/GameLayer.cs" />
+
+		<!-- NuGet packages -->
+		<Import file	="Packages/CocosSharp.Android.1.1.0.0.nupkg" />
+		<Import file	="Packages/CocosSharp.iOS.1.1.0.0.nupkg" />
+		<Import file	="Packages/CocosSharp.PCL.Shared.1.1.0.0.nupkg" />
+	</Runtime>
+
+	<Dependencies>
+		<Addin id="Core"		version="5.0"/>
+		<Addin id="Ide"			version="5.0"/>
+		<Addin id="IPhone"		version="5.0"/>
+		<Addin id="MonoAndroid"	version="5.0"/>
+	</Dependencies>
+
+
+	<Extension path="/MonoDevelop/Ide/ProjectTemplatePackageRepositories">
+		<PackageRepository path="Packages" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
+		
+		<!---iOS project templates -->
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.iOS.iPhoneProject.SW" 
+						file	="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPhoneProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.iOS.iPadProject.SW" 
+						file	="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPadProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.iOS.UniversalProject.SW" 
+						file	="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.UniversalProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.iOS.iPhoneProject.Empty" 
+						file	="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPhoneProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.iOS.iPadProject.Empty" 
+						file	="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPadProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.iOS.UniversalProject.Empty" 
+						file	="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyUniversalProject.xpt.xml" />
+		
+		<!---Android project templates -->
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.Android.AndroidProject.SW" 
+						file	="MonoDevelop.CocosSharp.Android/SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.Android.AndroidProject.Empty" 
+						file	="MonoDevelop.CocosSharp.Android/Empty.Android/MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml" />
+		
+		<!-- Mobile project templates -->
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.Mobile.MobileProject.SW" 
+						file	="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
+		<ProjectTemplate
+						id		="MonoDevelop.CocosSharp.Mobile.MobileProject.Empty" 
+						file	="MonoDevelop.CocosSharp.Mobile/Empty.Mobile/MonoDevelop.CocosSharp.Mobile.EmptyProject.xpt.xml" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
+		<FileTemplate
+						id		="MonoDevelop.CocosSharp.NewLayer"
+						file	="Common/MonoDevelop.CocosSharp.NewLayer.xft.xml"/>
+	</Extension>
+
+</Addin>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Template>
+	<TemplateConfiguration>
+		<_Name>CocosSharp empty project</_Name>
+		<_Category>C#/iOS/Classic API/iPad</_Category>
+		<Icon>md-project-iphone</Icon>
+		<LanguageName>C#</LanguageName>
+		<_Description>An empty CocosSharp project for iPad.</_Description>
+	</TemplateConfiguration>
+	
+	<Actions>
+		<Open filename = "GameLayer.cs"/>
+	</Actions>
+	
+	<Combine name = "${ProjectName}" directory = ".">
+		<Options>
+			<StartupProject>${ProjectName}</StartupProject>
+		</Options>
+		
+		<Project name = "${ProjectName}" directory = "." type = "MonoTouch">
+			<References>
+				<Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+				<Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+				<Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+				<Reference type="Gac" refto="monotouch" />
+			</References>
+
+			<Files>
+				<Directory name="Resources">
+					<RawFile name="Default-568h@2x.png" src="../Common.iOS/Default-568h.png" />
+				</Directory>
+				<Directory name="Content">
+					<Directory name="animations"></Directory>
+					<Directory name="fonts"></Directory>
+					<Directory name="images"></Directory>
+					<Directory name="sounds"></Directory>
+				</Directory>
+				<File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_iPad.plist.xml" />
+				<File name="Entitlements.plist" AddStandardHeader="False" src="../Common.iOS/Entitlements.plist.xml" />
+				<File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.iOS/AppDelegate.cs" />
+				<File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
+				<File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
+			</Files>
+
+			<Packages>
+				<Package id="CocosSharp.iOS" />
+			</Packages>
+		</Project>
+	</Combine>
+</Template>
