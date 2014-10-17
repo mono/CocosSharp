@@ -25,6 +25,8 @@ namespace CocosSharp
 
         protected bool isColorModifiedByOpacity = false;
 
+        protected int LineHeight { get; set; }
+
         public override CCPoint AnchorPoint
         {
             get { return base.AnchorPoint; }
@@ -457,11 +459,11 @@ namespace CocosSharp
                 }
             }
 
-            var commonHeight = FontConfiguration.CommonHeight;
+            LineHeight = FontConfiguration.CommonHeight;
 
-            totalHeight = commonHeight * quantityOfLines;
+            totalHeight = LineHeight * quantityOfLines;
             nextFontPositionY = 0 -
-                (commonHeight - commonHeight * quantityOfLines);
+                (LineHeight - LineHeight * quantityOfLines);
 
             CCBMFontConfiguration.CCBMGlyphDef fontDef = null;
             CCRect fontCharTextureRect;
@@ -474,7 +476,7 @@ namespace CocosSharp
                 if (c == '\n')
                 {
                     nextFontPositionX = 0;
-                    nextFontPositionY -= commonHeight;
+                    nextFontPositionY -= LineHeight;
                     continue;
                 }
 
@@ -586,8 +588,7 @@ namespace CocosSharp
                 labelDimensions.Height > 0 ? labelDimensions.Height : tmpSize.Height
             );
 
-
-            ContentSize = tmpDimensions;
+            ContentSize = labelDimensions;
             anchorPointInPoints = new CCPoint(labelDimensions.Width * AnchorPoint.X, labelDimensions.Height * AnchorPoint.Y);
             labelDimensions = tmpDimensions;
             UpdatePositionTransform();
@@ -600,16 +601,16 @@ namespace CocosSharp
             // Since we are extending SpriteBatchNode we will have to do our own transforms on the sprites.
 
             // Translate values
+
             float x = Position.X;
             float y = Position.Y;
 
-            var affineLocalTransform = CCAffineTransform.Identity;
-
-            if (IgnoreAnchorPointForPosition)
+            if (!IgnoreAnchorPointForPosition && labelDimensions.Width > 0)
             {
-                x += anchorPointInPoints.X;
-                y += anchorPointInPoints.Y;
+                x -= AnchorPointInPoints.X;
             }
+
+            var affineLocalTransform = CCAffineTransform.Identity;
 
             // Rotation values
             // Change rotation code to handle X and Y
@@ -988,12 +989,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-            return sp.Position.X * ScaleX - (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
+            return sp.Position.X * ScaleX;
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-            return sp.Position.X * ScaleX + (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
+            return (sp.Position.X + sp.ContentSize.Width) * ScaleX;
         }
 
 
