@@ -626,12 +626,12 @@ namespace CocosSharp
             {
                 CCPoint boundingBoxOrigin = Position;
 
-                if(IgnoreAnchorPointForPosition == false) 
+                if(!IgnoreAnchorPointForPosition) 
                 {
                     boundingBoxOrigin -= AnchorPointInPoints;
                 }
 
-                return new CCRect(boundingBoxOrigin.X, boundingBoxOrigin.Y, contentSize.Width, contentSize.Height);
+                return new CCRect(boundingBoxOrigin.X, boundingBoxOrigin.Y, ContentSize.Width, ContentSize.Height);
             }
         }
 
@@ -641,7 +641,7 @@ namespace CocosSharp
             get 
             { 
                 CCAffineTransform localTransform = AffineLocalTransform;
-                CCRect transformedBounds = localTransform.Transform(new CCRect(0.0f, 0.0f, contentSize.Width, contentSize.Height));
+                CCRect transformedBounds = localTransform.Transform(new CCRect(0.0f, 0.0f, ContentSize.Width, ContentSize.Height));
                 return transformedBounds; 
             }
         }
@@ -652,7 +652,7 @@ namespace CocosSharp
             get 
             { 
                 CCAffineTransform localTransform = AffineWorldTransform;
-                CCRect worldtransformedBounds = localTransform.Transform(new CCRect(0.0f, 0.0f, contentSize.Width, contentSize.Height));
+                CCRect worldtransformedBounds = localTransform.Transform(new CCRect(0.0f, 0.0f, ContentSize.Width, ContentSize.Height));
                 return worldtransformedBounds; 
             }
         }
