@@ -38,7 +38,7 @@ namespace CocosSharp
     {
         static float defaultFieldOfView = (float)Math.PI / 3.0f;
         static float defaultAspectRatio = 1.0f;
-        static CCNearAndFarClipping defaultNearAndFarOrthoClipping = new CCNearAndFarClipping (1024f, -1024f);
+        static CCNearAndFarClipping defaultNearAndFarOrthoClipping = new CCNearAndFarClipping (-1024f, 1024f);
         static CCNearAndFarClipping defaultNearAndFarPerspClipping = new CCNearAndFarClipping (0.1f, 100f);
 
         internal event EventHandler OnCameraVisibleBoundsChanged = delegate {};
@@ -217,7 +217,7 @@ namespace CocosSharp
             {
                 centerInWorldspace = new CCPoint3(targetInWorldspaceIn.X, 
                     targetInWorldspaceIn.Y, 
-                    targetInWorldspaceIn.Z + defaultNearAndFarOrthoClipping.Near);
+                    targetInWorldspaceIn.Z - defaultNearAndFarOrthoClipping.Near / 2.0f);
 
                 orthographicViewSizeWorldspace = targetVisibleDimensionsWorldspace;
             }
@@ -237,6 +237,13 @@ namespace CocosSharp
                 */
                 nearAndFarPerspectiveClipping.Far 
                     = Math.Max(Math.Abs((centerInWorldspace.Z - targetInWorldspaceIn.Z) * 3.0f), defaultNearAndFarPerspClipping.Far);
+
+                /* Make sure near clipping distance is close to target
+                 * The futher away the near clipping plane is from z=0 the more inaccurate the projection at z = 0 will be
+                 * In particular, this will result in imprecise visible bounds
+                 */ 
+                nearAndFarPerspectiveClipping.Near
+                    = Math.Max(Math.Abs ((centerInWorldspace.Z - targetInWorldspaceIn.Z) / 2.0f), defaultNearAndFarPerspClipping.Near);
             }
 
             UpdateCameraMatrices();
