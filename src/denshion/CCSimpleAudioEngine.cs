@@ -6,62 +6,50 @@ namespace CocosDenshion
 {
     public class CCSimpleAudioEngine
     {
-		static Dictionary<int, CCEffectPlayer> list = new Dictionary<int,CCEffectPlayer>();
-		static CCMusicPlayer music = new CCMusicPlayer();
-		static CCSimpleAudioEngine instance = new CCSimpleAudioEngine();
+        internal static readonly string[] AllowedTypesMac = { "m4a", "aac", "mp3", "wav", "aifc", "caf" };
+        static CCSimpleAudioEngine instance = new CCSimpleAudioEngine();
 
         // The list of sounds that are configured for looping. These need to be stopped when the game pauses.
-		Dictionary<int, int> loopedSounds = new Dictionary<int, int>();
+        Dictionary<int, int> loopedSounds = new Dictionary<int, int>();
 
-		float effectsVolume = 1.0f;
+        Dictionary<int, CCEffectPlayer> list = new Dictionary<int,CCEffectPlayer>();
+        CCMusicPlayer music = new CCMusicPlayer();
+        float effectsVolume = 1.0f;
 
-		internal static readonly string[] AllowedTypesMac = { "m4a", "aac", "mp3", "wav", "aifc", "caf" };
+        #region Properties
 
-		#region Properties
-
-		public static CCSimpleAudioEngine SharedEngine
-		{
-			get { return instance; }
-		}
-
-        // The shared sound effect list. The key is the hashcode of the file path.
-        public static Dictionary<int, CCEffectPlayer> SharedList
+        public static CCSimpleAudioEngine SharedEngine
         {
-			get { return list; }
+            get { return instance; }
         }
 
-        static CCMusicPlayer SharedMusic
+        public bool BackgroundMusicPlaying
         {
-            get { return music; }
+            get { return music.Playing; }
         }
 
-		public bool BackgroundMusicPlaying
-		{
-			get { return SharedMusic.Playing; }
-		}
-
-		public float BackgroundMusicVolume
+        public float BackgroundMusicVolume
         {
-            get { return SharedMusic.Volume; }
-            set { SharedMusic.Volume = value; }
+            get { return music.Volume; }
+            set { music.Volume = value; }
         }
 
-		// The volume of the effects max value is 1.0,the min value is 0.0
+        // The volume of the effects max value is 1.0,the min value is 0.0
         public float EffectsVolume
         {
-			get { return effectsVolume; }
-			set 
-			{ 
-				effectsVolume = CCMathHelper.Clamp(value, 0.0f, 1.0f);
+            get { return effectsVolume; }
+            set 
+            { 
+                effectsVolume = CCMathHelper.Clamp(value, 0.0f, 1.0f);
 
-				foreach (CCEffectPlayer soundEffect in list.Values) 
-				{
-					soundEffect.Volume = effectsVolume;
-				}
-			}
+                foreach (CCEffectPlayer soundEffect in list.Values) 
+                {
+                    soundEffect.Volume = effectsVolume;
+                }
+            }
         }
 
-		#endregion Properties
+        #endregion Properties
 
 
         public static string FullPath(string path)
@@ -72,16 +60,16 @@ namespace CocosDenshion
 
         public void End()
         {
-            SharedMusic.Close();
+            music.Close();
 
-            lock (SharedList) 
-			{
-                foreach (var kvp in SharedList) 
-				{
+            lock (list) 
+            {
+                foreach (var kvp in list) 
+                {
                     kvp.Value.Close();
                 }
 
-                SharedList.Clear();
+                list.Clear();
             }
         }
 
@@ -91,55 +79,61 @@ namespace CocosDenshion
         /// </summary>
         public void RestoreMediaState()
         {
-            SharedMusic.RestoreMediaState();
+            music.RestoreMediaState();
         }
 
         public void SaveMediaState()
         {
-            SharedMusic.SaveMediaState();
+            music.SaveMediaState();
         }
 
         public void PreloadBackgroundMusic(string filename)
         {
-            SharedMusic.Open(FullPath(filename), filename.GetHashCode());
+            music.Open(FullPath(filename), filename.GetHashCode());
         }
 
-		public void PlayBackgroundMusic(string filename, bool loop=false)
+        public void PlayBackgroundMusic(string filename, bool loop=false)
         {
             if (null == filename)
             {
                 return;
             }
 
-            SharedMusic.Open(FullPath(filename), filename.GetHashCode());
-            SharedMusic.Play(loop);
+            float musicVolume = music.Volume;
+
+            // Opening a music file resets the volume
+            music.Open(FullPath(filename), filename.GetHashCode());
+
+            music.Volume = musicVolume;
+
+            music.Play(loop);
         }
 
-		public void StopBackgroundMusic(bool releaseData=false)
+        public void StopBackgroundMusic(bool releaseData=false)
         {
             if (releaseData)
             {
-                SharedMusic.Close();
+                music.Close();
             }
             else
             {
-                SharedMusic.Stop();
+                music.Stop();
             }
         }
 
         public void PauseBackgroundMusic()
         {
-            SharedMusic.Pause();
+            music.Pause();
         }
 
         public void ResumeBackgroundMusic()
         {
-            SharedMusic.Resume();
+            music.Resume();
         }
 
         public void RewindBackgroundMusic()
         {
-            SharedMusic.Rewind();
+            music.Rewind();
         }
 
         public bool WillPlayBackgroundMusic()
@@ -151,9 +145,9 @@ namespace CocosDenshion
         {
             try
             {
-                if (SharedList.ContainsKey(fxid))
+                if (list.ContainsKey(fxid))
                 {
-                    SharedList[fxid].Pause();
+                    list[fxid].Pause();
                 }
             }
             catch (Exception ex)
@@ -167,12 +161,12 @@ namespace CocosDenshion
         {
             List<CCEffectPlayer> l = new List<CCEffectPlayer>();
 
-            lock (SharedList)
+            lock (list)
             {
                 try
                 {
-                    l.AddRange(SharedList.Values);
-                    SharedList.Clear();
+                    l.AddRange(list.Values);
+                    list.Clear();
                 }
                 catch (Exception ex)
                 {
@@ -195,13 +189,13 @@ namespace CocosDenshion
 
         public int PlayEffect(int fxid, bool bLoop)
         {
-            lock (SharedList)
+            lock (list)
             {
                 try
                 {
-                    if (SharedList.ContainsKey(fxid))
+                    if (list.ContainsKey(fxid))
                     {
-                        SharedList[fxid].Play(bLoop);
+                        list[fxid].Play(bLoop);
                         if (bLoop)
                         {
                             loopedSounds[fxid] = fxid;
@@ -218,19 +212,19 @@ namespace CocosDenshion
             return fxid;
         }
 
-		public int PlayEffect (string filename, bool loop=false)
+        public int PlayEffect (string filename, bool loop=false)
         {
             int nId = filename.GetHashCode ();
 
             PreloadEffect (filename);
 
-            lock (SharedList)
+            lock (list)
             {
                 try
                 {
-                    if (SharedList.ContainsKey(nId))
+                    if (list.ContainsKey(nId))
                     {
-                        SharedList[nId].Play(loop);
+                        list[nId].Play(loop);
                         if (loop)
                         {
                             loopedSounds[nId] = nId;
@@ -249,11 +243,11 @@ namespace CocosDenshion
 
         public void StopEffect(int soundId)
         {
-            lock (SharedList)
+            lock (list)
             {
-                if (SharedList.ContainsKey(soundId))
+                if (list.ContainsKey(soundId))
                 {
-                    SharedList[soundId].Stop();
+                    list[soundId].Stop();
                 }
             }
             lock (loopedSounds)
@@ -267,7 +261,7 @@ namespace CocosDenshion
 
         public void StopAllLoopingEffects()
         {
-            lock (SharedList)
+            lock (list)
             {
                 if (loopedSounds.Count > 0)
                 {
@@ -291,27 +285,27 @@ namespace CocosDenshion
             }
 
             int nId = filename.GetHashCode();
-            lock (SharedList)
+            lock (list)
             {
-                if (SharedList.ContainsKey(nId))
+                if (list.ContainsKey(nId))
                 {
                     return;
                 }
             }
             CCEffectPlayer eff = new CCEffectPlayer();
             eff.Open(FullPath(filename), nId);
-			eff.Volume = effectsVolume;
-            SharedList[nId] = eff;
+            eff.Volume = effectsVolume;
+            list[nId] = eff;
         }
 
         public void UnloadEffect(string filename)
         {
             int nId = filename.GetHashCode();
-            lock (SharedList) 
-			{
-                if (SharedList.ContainsKey(nId))
+            lock (list) 
+            {
+                if (list.ContainsKey(nId))
                 {
-                    SharedList.Remove(nId);
+                    list.Remove(nId);
                 }
             }
             lock (loopedSounds)
