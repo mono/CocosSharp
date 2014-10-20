@@ -66,6 +66,8 @@ namespace CocosDenshion
 			#if IOS
 			AVAudioSession.SharedInstance().Init();
 			#endif
+
+            Volume = 1.0f;
 		}
 
 		#endregion Constructor
@@ -169,6 +171,7 @@ namespace CocosDenshion
 				try 
 				{
 					music = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
+                    music.Volume = Volume;
 				}
 				catch 
 				{
