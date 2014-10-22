@@ -36,6 +36,8 @@ namespace CocosSharp
         bool restoreScissor;
         bool noDrawChildren;
 
+        CCCameraProjection initCameraProjection;
+
         CCRenderTexture renderTexture;
         CCClipMode childClippingMode;
         CCCamera camera;
@@ -122,20 +124,27 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayer()
+        public CCLayer(CCCameraProjection cameraProjection = CCCameraProjection.Projection3D)
             : this(null)
         {  }
 
-        public CCLayer(CCSize visibleBoundsDimensions, CCClipMode clipMode = CCClipMode.None)
-            : this(new CCCamera(visibleBoundsDimensions), clipMode)
+        public CCLayer(CCSize visibleBoundsDimensions, 
+            CCCameraProjection cameraProjection = CCCameraProjection.Projection3D, 
+            CCClipMode clipMode = CCClipMode.None)
+            : this(new CCCamera(cameraProjection, visibleBoundsDimensions), clipMode)
         {  }
 
         public CCLayer(CCCamera camera, CCClipMode clipMode) : base()
         {
             ChildClippingMode = clipMode;
             IgnoreAnchorPointForPosition = true;
-			AnchorPoint = CCPoint.AnchorMiddle;
+            AnchorPoint = CCPoint.AnchorMiddle;
             Camera = camera;
+
+            if(camera != null)
+                initCameraProjection = camera.Projection;
+            else
+                initCameraProjection = CCCameraProjection.Projection3D;
         }
 
         public CCLayer(CCCamera camera) : this(camera, CCClipMode.None)
@@ -168,9 +177,8 @@ namespace CocosSharp
 
             if(Camera == null)
             {
-                Camera = new CCCamera (this.Window.DesignResolutionSize);
+                Camera = new CCCamera (initCameraProjection, this.Window.DesignResolutionSize);
             }
-
         }
 
         void OnCameraVisibleBoundsChanged(object sender, EventArgs e)
