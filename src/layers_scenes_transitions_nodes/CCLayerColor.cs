@@ -82,29 +82,34 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerColor() : this(CCColor4B.Transparent)
-        { }
-
-        public CCLayerColor(CCColor4B color) : this(null, color)
+        public CCLayerColor(CCColor4B color = default(CCColor4B)) 
+            : this(CCLayer.DefaultCameraProjection, color)
         {
         }
 
-        public CCLayerColor(CCSize visibleBoundsDimensions) 
-            : this(new CCCamera(visibleBoundsDimensions), CCColor4B.Transparent)
-        { }
-
-        public CCLayerColor(CCSize visibleBoundsDimensions, CCColor4B color) 
-            : this(new CCCamera(visibleBoundsDimensions), color)
-        { }
-
-        public CCLayerColor(CCCamera camera) : this(camera, CCColor4B.Transparent)
+        public CCLayerColor(CCSize visibleBoundsDimensions, CCColor4B color = default(CCColor4B)) 
+            : this(visibleBoundsDimensions, CCLayer.DefaultCameraProjection, color)
         {
         }
 
-        /// <summary>
-        /// creates a CCLayer with color, width and height in Points
-        /// </summary>
-        public CCLayerColor (CCCamera camera, CCColor4B color) : base(camera)
+        public CCLayerColor(CCSize visibleBoundsDimensions, CCCameraProjection projection, CCColor4B color = default(CCColor4B))
+            : this(new CCCamera(projection, visibleBoundsDimensions), color)
+        {
+        }
+
+        public CCLayerColor(CCCamera camera, CCColor4B color = default(CCColor4B)) 
+            : base(camera)
+        {
+            SetupCCLayerColor(color);
+        }
+
+        public CCLayerColor(CCCameraProjection cameraProjection, CCColor4B color = default(CCColor4B)) 
+            : base(cameraProjection)
+        {
+            SetupCCLayerColor(color);
+        }
+
+        void SetupCCLayerColor(CCColor4B color)
         {
             DisplayedColor = RealColor = new CCColor3B(color.R, color.G, color.B);
             DisplayedOpacity = RealOpacity = color.A;
@@ -113,6 +118,7 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
 
         protected override void VisibleBoundsChanged()
         {

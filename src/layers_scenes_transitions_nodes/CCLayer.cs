@@ -33,6 +33,8 @@ namespace CocosSharp
 {
     public class CCLayer : CCNode
     {
+        public static CCCameraProjection DefaultCameraProjection = CCCameraProjection.Projection3D;
+
         bool restoreScissor;
         bool noDrawChildren;
 
@@ -124,31 +126,38 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayer(CCCameraProjection cameraProjection = CCCameraProjection.Projection3D)
-            : this(null)
-        {  }
+        public CCLayer()
+            : this(DefaultCameraProjection)
+        { 
+        }
 
         public CCLayer(CCSize visibleBoundsDimensions, 
-            CCCameraProjection cameraProjection = CCCameraProjection.Projection3D, 
+            CCClipMode clipMode = CCClipMode.None)
+            : this(visibleBoundsDimensions, DefaultCameraProjection, clipMode)
+        {  
+        }
+
+        public CCLayer(CCSize visibleBoundsDimensions, 
+            CCCameraProjection cameraProjection, 
             CCClipMode clipMode = CCClipMode.None)
             : this(new CCCamera(cameraProjection, visibleBoundsDimensions), clipMode)
-        {  }
+        {  
+        }
 
-        public CCLayer(CCCamera camera, CCClipMode clipMode) : base()
+        public CCLayer(CCCamera camera, CCClipMode clipMode = CCClipMode.None) 
+            : this(camera.Projection, clipMode)
+        {
+            Camera = camera;
+        }
+
+        public CCLayer(CCCameraProjection cameraProjection, CCClipMode clipMode = CCClipMode.None)
+            : base()
         {
             ChildClippingMode = clipMode;
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = CCPoint.AnchorMiddle;
-            Camera = camera;
 
-            if(camera != null)
-                initCameraProjection = camera.Projection;
-            else
-                initCameraProjection = CCCameraProjection.Projection3D;
-        }
-
-        public CCLayer(CCCamera camera) : this(camera, CCClipMode.None)
-        {
+            initCameraProjection = cameraProjection;
         }
 
         void UpdateClipping()
