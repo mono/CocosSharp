@@ -45,6 +45,7 @@
     <Folder Include="Empty.Android\" />
     <Folder Include="Common.Android\" />
     <Folder Include="Packages\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SingleWindowed.Mobile\MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml">
@@ -147,6 +148,34 @@
     </None>
     <None Include="..\Packages\CocosSharp.iOS.1.1.0.0.nupkg">
       <Link>Packages\CocosSharp.iOS.1.1.0.0.nupkg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\MonoDevelop.CocosSharp.NewLayer.xft.xml">
+      <Link>Common\MonoDevelop.CocosSharp.NewLayer.xft.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\monkey.png">
+      <Link>Common\monkey.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\monkey.xnb">
+      <Link>Common\monkey.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\EmptyLayer.cs">
+      <Link>Common\EmptyLayer.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\GameAppDelegate.Desktop.cs">
+      <Link>Common\GameAppDelegate.Desktop.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\GameAppDelegate.Mobile.cs">
+      <Link>Common\GameAppDelegate.Mobile.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\GameLayer.cs">
+      <Link>Common\GameLayer.cs</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
