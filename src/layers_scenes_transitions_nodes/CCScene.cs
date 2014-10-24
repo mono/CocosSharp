@@ -273,51 +273,34 @@ namespace CocosSharp
 
         void UpdateResolutionRatios()
         {
-
-            if (Children != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
+            if (Children != null && Window != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
             {
                 bool dirtyViewport = false;
-                var unionedBounds = CCRect.Zero;
+                CCSize designSize = window.DesignResolutionSize;
+                CCRect designBounds = new CCRect(0.0f, 0.0f, designSize.Width, designSize.Height);
 
-                foreach (var child in Children)
-                {
-                    if (child != null && child is CCLayer)
-                    {
-                        var layer = child as CCLayer;
-                        unionedBounds.Origin.X = Math.Min (unionedBounds.Origin.X, layer.VisibleBoundsWorldspace.Origin.X);
-                        unionedBounds.Origin.Y = Math.Min (unionedBounds.Origin.Y, layer.VisibleBoundsWorldspace.Origin.Y);
-                        unionedBounds.Size.Width = Math.Max (unionedBounds.MaxX, layer.VisibleBoundsWorldspace.MaxX) - unionedBounds.Origin.X;
-                        unionedBounds.Size.Height = Math.Max (unionedBounds.MaxY, layer.VisibleBoundsWorldspace.MaxY) - unionedBounds.Origin.Y;
-                    }
-                }
-
-                // we have the calculated size of all all the bounds
-                contentSize = unionedBounds.Size;
+                contentSize = designSize;
                 anchorPointInPoints = new CCPoint(contentSize.Width * AnchorPoint.X, contentSize.Height * AnchorPoint.Y);
-                // Calculate viewport ratios if not set to custom
 
-                //var resolutionPolicy = Scene.SceneResolutionPolicy;
-
-                if (unionedBounds != CCRect.Zero)
+                if (designBounds != CCRect.Zero)
                 {
                     // The following code after this block assumes we started in landscape
                     // So invert unioned bounds if we're in portrait
                     if(Window.CurrentDisplayOrientation.IsPortrait())
-                        unionedBounds = unionedBounds.InvertedSize;
+                        designBounds = designBounds.InvertedSize;
 
                     // Calculate Landscape Ratio
-                    var viewportRect = CalculateResolutionRatio(unionedBounds, resolutionPolicy);
+                    var viewportRect = CalculateResolutionRatio(designBounds, resolutionPolicy);
                     dirtyViewport = Viewport.exactFitLandscapeRatio != viewportRect;
                     Viewport.exactFitLandscapeRatio = viewportRect;
 
                     // Calculate Portrait Ratio
-                    var portraitBounds = unionedBounds.InvertedSize;
+                    var portraitBounds = designBounds.InvertedSize;
                     viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
                     dirtyViewport = Viewport.exactFitPortraitRatio != viewportRect;
                     Viewport.exactFitPortraitRatio = viewportRect;
 
                     // End Calculate viewport ratios
-
                 }
 
                 if (dirtyViewport)
@@ -442,16 +425,6 @@ namespace CocosSharp
 #endif
 		
 		#endregion
-
-        public override void AddChild (CCNode child, int zOrder, int tag)
-        {
-            if (child is CCLayer) {
-                base.AddChild (child, zOrder, tag);
-                UpdateResolutionRatios ();
-            } else {
-                Debug.Fail ("CocosSharp: CCScene: AddChild: attempting to add child that is not of type CCLayer");
-            }
-        }
 
         public override void Visit()
         {
