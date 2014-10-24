@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{7DBEB09D-BB9F-4D92-A141-A009135475EF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{FE62E0CA-6AE1-416A-BE20-CF23068B7875}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MonoDevelop.CocosSharp.Android.addin</RootNamespace>
+    <AssemblyName>MonoDevelop.CocosSharp.Android.addin</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Mono.Addins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <Package>/Applications/Xamarin Studio.app/Contents/Resources/lib/monodevelop/bin/Mono.Addins.dll</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MonoDevelop.CocosSharp.Android.addin.xml">
+      <Link>MonoDevelop.CocosSharp.Android.addin.xml</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="Common.Android\AboutAssets.txt">
+      <Link>Common.Android\AboutAssets.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Common.Android\AboutResources.txt">
+      <Link>Common.Android\AboutResources.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Common.Android\Icon-md.png">
+      <Link>Common.Android\Icon-md.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Common.Android\Main.axml">
+      <Link>Common.Android\Main.axml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Empty.Android\MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml">
+      <Link>Empty.Android\MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SingleWindowed.Android\MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml">
+      <Link>SingleWindowed.Android\MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Common.Android\MainActivity.cs">
+      <Link>Common.Android\MainActivity.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Common.Android\Resource.cs">
+      <Link>Common.Android\Resource.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Common.Android\AssemblyInfo.Android.cs">
+      <Link>Common.Android\AssemblyInfo.Android.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\MonoDevelop.CocosSharp.NewLayer.xft.xml">
+      <Link>Common\MonoDevelop.CocosSharp.NewLayer.xft.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\monkey.png">
+      <Link>Common\monkey.png</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\monkey.xnb">
+      <Link>Common\monkey.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\EmptyLayer.cs">
+      <Link>Common\EmptyLayer.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\GameAppDelegate.Desktop.cs">
+      <Link>Common\GameAppDelegate.Desktop.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\GameAppDelegate.Mobile.cs">
+      <Link>Common\GameAppDelegate.Mobile.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Common\GameLayer.cs">
+      <Link>Common\GameLayer.cs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Packages\CocosSharp.Android.1.1.0.0.nupkg">
+      <Link>Packages\CocosSharp.Android.1.1.0.0.nupkg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
+    <Folder Include="Packages\" />
+  </ItemGroup>
+</Project>

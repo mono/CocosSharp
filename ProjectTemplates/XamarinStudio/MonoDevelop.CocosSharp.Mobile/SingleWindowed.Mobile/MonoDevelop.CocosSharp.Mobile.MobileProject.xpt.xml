@@ -1,115 +1,115 @@
 <?xml version="1.0"?>
 <Template>
-	<TemplateConfiguration>
-		<_Name>CocosSharp showcase</_Name>
-		<_Category>C#/Mobile Apps</_Category>
-		<LanguageName>C#</LanguageName>
-		<_Description>A CocosSharp showcase for iOS and Android with a PCL for shared code</_Description>
-	</TemplateConfiguration>
-	
-	<Actions>
-		<Open filename ="GameLayer.cs"/>
-	</Actions>
-	
-	<Combine name ="${ProjectName}" directory =".">
-		<Options>
-			<StartupProject>${ProjectName}.iOS</StartupProject>
-		</Options>
+    <TemplateConfiguration>
+        <_Name>CocosSharp showcase</_Name>
+        <_Category>C#/Mobile Apps</_Category>
+        <LanguageName>C#</LanguageName>
+        <_Description>A CocosSharp showcase for iOS and Android with a PCL for shared code</_Description>
+    </TemplateConfiguration>
+    
+    <Actions>
+        <Open filename ="GameLayer.cs"/>
+    </Actions>
+    
+    <Combine name ="${ProjectName}" directory =".">
+        <Options>
+            <StartupProject>${ProjectName}.iOS</StartupProject>
+        </Options>
 
-		<!---iOS project -->
-		<Project name = "${ProjectName}.iOS" directory = "." type = "MonoTouch">
-			<References>
-				<Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="monotouch" />
-				<Reference type="Project" refto="${ProjectName}"/>
-			</References>
-			<Files>
-				<Directory name="Resources">
-					<RawFile name="Default-568h@2x.png" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Default-568h.png" />
-				</Directory>
-				<Directory name="Content">
-					<Directory name="animations"></Directory>
-					<Directory name="fonts"></Directory>
-					<Directory name="images">
-						<RawFile name="monkey.png" src="../../Common/monkey.png" />
-					</Directory>
-					<Directory name="sounds"></Directory>
-				</Directory>
-				<File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
-				<File name="Entitlements.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
-				<File name="AppDelegate.cs" AddStandardHeader="True" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
-			</Files>
+        <!---iOS project -->
+        <Project name = "${ProjectName}.iOS" directory = "." type = "MonoTouch">
+            <References>
+                <Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="monotouch" />
+                <Reference type="Project" refto="${ProjectName}"/>
+            </References>
+            <Files>
+                <Directory name="Resources">
+                    <RawFile name="Default-568h@2x.png" src="../Common.iOS/Default-568h.png" />
+                </Directory>
+                <Directory name="Content">
+                    <Directory name="animations"></Directory>
+                    <Directory name="fonts"></Directory>
+                    <Directory name="images">
+                        <RawFile name="monkey.png" src="../Common/monkey.png" />
+                    </Directory>
+                    <Directory name="sounds"></Directory>
+                </Directory>
+                <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_Universal.plist.xml" />
+                <File name="Entitlements.plist" AddStandardHeader="False" src="../Common.iOS/Entitlements.plist.xml" />
+                <File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.iOS/AppDelegate.cs" />
+            </Files>
 
-			<Packages>
-				<Package Id="CocosSharp.iOS" /> 
-			</Packages>
-		</Project>
+            <Packages>
+                <Package Id="CocosSharp.iOS" /> 
+            </Packages>
+        </Project>
 
-		<!---Android project -->
-		<Project name ="${ProjectName}.Android" directory ="." type ="MonoDroid">
-			<Options
-				AndroidApplication="true"
-				AndroidResgenFile="Resources/Resource.designer.cs"
-				AndroidResgenClass="Resource" />
-			<References>
-				<Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="Mono.Android" />
-				<Reference type="Project" refto="${ProjectName}"/>
-			</References>
-			<Files>
-				<File name="MainActivity.cs" src="../../MonoDevelop.CocosSharp.Android/Common.Android/MainActivity.cs" />
-				<Directory name="Resources">
-					<File name="Resource.designer.cs" src="../../MonoDevelop.CocosSharp.Android/Common.Android/Resource.cs" />
-					<RawFile name="AboutResources.txt" src="../../MonoDevelop.CocosSharp.Android/Common.Android/AboutResources.txt" />
-					<Directory name="layout">
-						<File name="Main.axml" src="../../MonoDevelop.CocosSharp.Android/Common.Android/Main.axml" />
-					</Directory>
-					<Directory name="values">
-						<File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+        <!---Android project -->
+        <Project name ="${ProjectName}.Android" directory ="." type ="MonoDroid">
+            <Options
+                AndroidApplication="true"
+                AndroidResgenFile="Resources/Resource.designer.cs"
+                AndroidResgenClass="Resource" />
+            <References>
+                <Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="Mono.Android" />
+                <Reference type="Project" refto="${ProjectName}"/>
+            </References>
+            <Files>
+                <File name="MainActivity.cs" src="../Common.Android/MainActivity.cs" />
+                <Directory name="Resources">
+                    <File name="Resource.designer.cs" src="../Common.Android/Resource.cs" />
+                    <RawFile name="AboutResources.txt" src="../Common.Android/AboutResources.txt" />
+                    <Directory name="layout">
+                        <File name="Main.axml" src="../Common.Android/Main.axml" />
+                    </Directory>
+                    <Directory name="values">
+                        <File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">${ProjectName}</string>
 </resources>]]></File>
-					</Directory>
-					<Directory name ="drawable">
-						<RawFile name="Icon.png" src="../../MonoDevelop.CocosSharp.Android/Common.Android/Icon-md.png" />
-					</Directory>
-				</Directory>
-				<Directory name="Properties">
-					<File name="AssemblyInfo.cs" src="../../MonoDevelop.CocosSharp.Android/Common.Android/AssemblyInfo.Android.cs" />
-				</Directory>
-				<Directory name="Assets">
-					<RawFile name="AboutAssets.txt" src="../../MonoDevelop.CocosSharp.Android/Common.Android/AboutAssets.txt" BuildAction="None" />
-					<Directory name="Content">
-						<Directory name="animations"></Directory>
-						<Directory name="fonts"></Directory>
-						<Directory name="images">
-							<RawFile name="monkey.xnb" src="../../Common/monkey.xnb" />
-						</Directory>
-						<Directory name="sounds"></Directory>
-					</Directory>
-				</Directory>
-			</Files>
+                    </Directory>
+                    <Directory name ="drawable">
+                        <RawFile name="Icon.png" src="../Common.Android/Icon-md.png" />
+                    </Directory>
+                </Directory>
+                <Directory name="Properties">
+                    <File name="AssemblyInfo.cs" src="../Common.Android/AssemblyInfo.Android.cs" />
+                </Directory>
+                <Directory name="Assets">
+                    <RawFile name="AboutAssets.txt" src="../Common.Android/AboutAssets.txt" BuildAction="None" />
+                    <Directory name="Content">
+                        <Directory name="animations"></Directory>
+                        <Directory name="fonts"></Directory>
+                        <Directory name="images">
+                            <RawFile name="monkey.xnb" src="../Common/monkey.xnb" />
+                        </Directory>
+                        <Directory name="sounds"></Directory>
+                    </Directory>
+                </Directory>
+            </Files>
 
-			<Packages>
-				<Package Id="CocosSharp.Android" /> 
-			</Packages>
-		</Project>
+            <Packages>
+                <Package Id="CocosSharp.Android" /> 
+            </Packages>
+        </Project>
 
-		<!---PCL project -->
-		<Project name = "${ProjectName}" directory = "." type = "PortableDotNet">
-			<Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.0,Profile=Profile136"/>
-			<Files>
-				<File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
-				<File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
-			</Files>
-			<Packages>
-				<Package Id="CocosSharp.PCL.Shared" /> 
-			</Packages>
-		</Project>
-	</Combine>
+        <!---PCL project -->
+        <Project name = "${ProjectName}" directory = "." type = "PortableDotNet">
+            <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.0,Profile=Profile136"/>
+            <Files>
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../Common/GameAppDelegate.Mobile.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../Common/GameLayer.cs" />
+            </Files>
+            <Packages>
+                <Package Id="CocosSharp.PCL.Shared" /> 
+            </Packages>
+        </Project>
+    </Combine>
 </Template>

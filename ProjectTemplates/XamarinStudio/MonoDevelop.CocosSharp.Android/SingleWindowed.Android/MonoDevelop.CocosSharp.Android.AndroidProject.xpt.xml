@@ -1,73 +1,73 @@
 <?xml version="1.0"?>
 <Template>
-	<TemplateConfiguration>
-		<_Name>CocosSharp showcase</_Name>
-		<_Category>C#/Android</_Category>
-		<Icon>monodroid-project</Icon>
-		<LanguageName>C#</LanguageName>
-		<_Description>A CocosSharp showcase for Android.</_Description>
-	</TemplateConfiguration>
-	
-	<Actions>
-		<Open filename ="GameLayer.cs"/>
-	</Actions>
-	
-	<Combine name ="${ProjectName}" directory =".">
-		<Options>
-			<StartupProject>${ProjectName}</StartupProject>
-		</Options>
-		
-		<Project name ="${ProjectName}" directory ="." type ="MonoDroid">
-			<Options
-				AndroidApplication="true"
-				AndroidResgenFile="Resources/Resource.designer.cs"
-				AndroidResgenClass="Resource" />
-			<References>
-				<Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-				<Reference type="Gac" refto="Mono.Android" />
-			</References>
-			<Files>
-				<File name="MainActivity.cs" src="../Common.Android/MainActivity.cs" />
-				<Directory name="Resources">
-					<File name="Resource.designer.cs" src="../Common.Android/Resource.cs" />
-					<RawFile name="AboutResources.txt" src="../Common.Android/AboutResources.txt" />
-					<Directory name="layout">
-						<File name="Main.axml" src="../Common.Android/Main.axml" />
-					</Directory>
-					<Directory name="values">
-						<File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+    <TemplateConfiguration>
+        <_Name>CocosSharp showcase</_Name>
+        <_Category>C#/Android</_Category>
+        <Icon>monodroid-project</Icon>
+        <LanguageName>C#</LanguageName>
+        <_Description>A CocosSharp showcase for Android.</_Description>
+    </TemplateConfiguration>
+    
+    <Actions>
+        <Open filename ="GameLayer.cs"/>
+    </Actions>
+    
+    <Combine name ="${ProjectName}" directory =".">
+        <Options>
+            <StartupProject>${ProjectName}</StartupProject>
+        </Options>
+        
+        <Project name ="${ProjectName}" directory ="." type ="MonoDroid">
+            <Options
+                AndroidApplication="true"
+                AndroidResgenFile="Resources/Resource.designer.cs"
+                AndroidResgenClass="Resource" />
+            <References>
+                <Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="Mono.Android" />
+            </References>
+            <Files>
+                <File name="MainActivity.cs" src="../Common.Android/MainActivity.cs" />
+                <Directory name="Resources">
+                    <File name="Resource.designer.cs" src="../Common.Android/Resource.cs" />
+                    <RawFile name="AboutResources.txt" src="../Common.Android/AboutResources.txt" />
+                    <Directory name="layout">
+                        <File name="Main.axml" src="../Common.Android/Main.axml" />
+                    </Directory>
+                    <Directory name="values">
+                        <File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">${ProjectName}</string>
 </resources>]]></File>
-					</Directory>
-					<Directory name ="drawable">
-						<RawFile name="Icon.png" src="../Common.Android/Icon-md.png" />
-					</Directory>
-				</Directory>
-				<Directory name="Properties">
-					<File name="AssemblyInfo.cs" src="../Common.Android/AssemblyInfo.Android.cs" />
-				</Directory>
-				<Directory name="Assets">
-					<RawFile name="AboutAssets.txt" src="../Common.Android/AboutAssets.txt" BuildAction="None" />
-					<Directory name="Content">
-						<Directory name="animations"></Directory>
-						<Directory name="fonts"></Directory>
-						<Directory name="images">
-							<RawFile name="monkey.xnb" src="../../Common/monkey.xnb" />
-						</Directory>
-						<Directory name="sounds"></Directory>
-					</Directory>
-				</Directory>
-				<File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
-				<File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
-			</Files>
+                    </Directory>
+                    <Directory name ="drawable">
+                        <RawFile name="Icon.png" src="../Common.Android/Icon-md.png" />
+                    </Directory>
+                </Directory>
+                <Directory name="Properties">
+                    <File name="AssemblyInfo.cs" src="../Common.Android/AssemblyInfo.Android.cs" />
+                </Directory>
+                <Directory name="Assets">
+                    <RawFile name="AboutAssets.txt" src="../Common.Android/AboutAssets.txt" BuildAction="None" />
+                    <Directory name="Content">
+                        <Directory name="animations"></Directory>
+                        <Directory name="fonts"></Directory>
+                        <Directory name="images">
+                            <RawFile name="monkey.xnb" src="../Common/monkey.xnb" />
+                        </Directory>
+                        <Directory name="sounds"></Directory>
+                    </Directory>
+                </Directory>
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../Common/GameAppDelegate.Mobile.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../Common/GameLayer.cs" />
+            </Files>
 
-			<Packages>
-				<Package id="CocosSharp.Android" />
-			</Packages>
-		</Project>
-	</Combine>
+            <Packages>
+                <Package id="CocosSharp.Android" />
+            </Packages>
+        </Project>
+    </Combine>
 </Template>

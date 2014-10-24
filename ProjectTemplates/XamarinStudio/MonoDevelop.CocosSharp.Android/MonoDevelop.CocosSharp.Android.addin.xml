@@ -1,0 +1,62 @@
+<Addin 
+        id              ="CocosSharp.Android"
+        namespace       ="MonoDevelop"
+        name            ="CocosSharp project templates for Android" 
+        author          ="Rami Tabbara" 
+        copyright       ="MIT X11" 
+        url             ="https://github.com/mono/CocosSharp" 
+        description     ="Setup a CocosSharp project that targets Android devices"
+        category        ="CocosSharp"
+        version         ="1.1.0.0">
+
+    <Runtime>
+        <!---Android files -->
+        <Import file    ="SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
+        <Import file    ="Empty.Android/MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml" />
+        <Import file    ="Common.Android/Icon-md.png" />
+        <Import file    ="Common.Android/AboutAssets.txt" />
+        <Import file    ="Common.Android/AboutResources.txt" />
+        <Import file    ="Common.Android/Main.axml" />
+        <Import file    ="Common.Android/AssemblyInfo.Android.cs" />
+        <Import file    ="Common.Android/MainActivity.cs" />
+        <Import file    ="Common.Android/Resource.cs" />
+
+        <!---Common files -->
+        <Import file    ="Common/MonoDevelop.CocosSharp.NewLayer.xft.xml" />
+        <Import file    ="Common/EmptyLayer.cs" />
+        <Import file    ="Common/monkey.xnb" />
+        <Import file    ="Common/GameAppDelegate.Desktop.cs" />
+        <Import file    ="Common/GameAppDelegate.Mobile.cs" />
+        <Import file    ="Common/GameLayer.cs" />
+
+        <!-- NuGet packages -->
+        <Import file    ="Packages/CocosSharp.Android.1.1.0.0.nupkg" />
+    </Runtime>
+
+    <Dependencies>
+        <Addin id="Core"        version="5.0"/>
+        <Addin id="Ide"         version="5.0"/>
+        <Addin id="MonoAndroid" version="5.0"/>
+    </Dependencies>
+
+
+    <Extension path="/MonoDevelop/Ide/ProjectTemplatePackageRepositories">
+        <PackageRepository path="Packages" />
+    </Extension>
+
+    <Extension path="/MonoDevelop/Ide/ProjectTemplates">
+        <ProjectTemplate
+                        id      ="MonoDevelop.CocosSharp.Android.AndroidProject.SW" 
+                        file    ="SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
+        <ProjectTemplate
+                        id      ="MonoDevelop.CocosSharp.Android.AndroidProject.Empty" 
+                        file    ="Empty.Android/MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml" />
+    </Extension>
+
+    <Extension path="/MonoDevelop/Ide/FileTemplates">
+        <FileTemplate
+                        id      ="MonoDevelop.CocosSharp.NewLayer"
+                        file    ="Common/MonoDevelop.CocosSharp.NewLayer.xft.xml"/>
+    </Extension>
+
+</Addin>
