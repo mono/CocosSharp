@@ -31,6 +31,7 @@
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.CocosSharp.AllTargets.addin.xml">
       <Link>MonoDevelop.CocosSharp.AllTargets.addin.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
