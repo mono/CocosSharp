@@ -1,7 +1,0 @@
-<AddinProject appVersion="5.0">
-	<Project platforms="Mac Win32">
-		<AddinFile>bin/Debug/MonoDevelop.CocosSharp.Android.addin.dll</AddinFile>
-		<BuildFile>MonoDevelop.CocosSharp.Android.addin.csproj</BuildFile>
-		<BuildConfiguration>Debug</BuildConfiguration>
-	</Project>
-</AddinProject>

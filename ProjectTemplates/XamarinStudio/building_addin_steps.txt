@@ -1,0 +1,11 @@
+#
+# Building CocosSharp project templates add-in for Xamarin Studio / MonoDevelop
+#
+
+1. Place built CococSharp NuGet packages into Packages/
+
+As this add-in is only targeting Mac/Mobile devices, you can omit including Windows-specific NuGets.
+
+2. Within the directory of the addin xml run:
+
+[Location of MonoDevelop or Xamarin Studio]/Xamarin\ Studio.app/Contents/MacOS/mdtool setup pack MonoDevelop.CocosSharp.addin.xml

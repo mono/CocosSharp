@@ -59,8 +59,8 @@
                         <Directory name="sounds"></Directory>
                     </Directory>
                 </Directory>
-                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../Common/GameAppDelegate.Mobile.cs" />
-                <File name="GameLayer.cs" AddStandardHeader="True" src="../Common/EmptyLayer.cs" />
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
             </Files>
 
             <Packages>

@@ -32,14 +32,14 @@
                     <Directory name="animations"></Directory>
                     <Directory name="fonts"></Directory>
                     <Directory name="images">
-                        <RawFile name="monkey.png" src="../Common/monkey.png" />
+                        <RawFile name="monkey.png" src="../../Common/monkey.png" />
                     </Directory>
                     <Directory name="sounds"></Directory>
                 </Directory>
                 <File name="Info.plist" AddStandardHeader="False" src="../Common.Mac/Info_Mac.plist.xml" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.Mac/AppDelegate.cs" />
-                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../Common/GameAppDelegate.Desktop.cs" />
-                <File name="GameLayer.cs" AddStandardHeader="True" src="../Common/GameLayer.cs" />
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Desktop.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
             </Files>
             <Packages>
                 <Package id="CocosSharp.MacOS" />

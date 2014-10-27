@@ -35,8 +35,8 @@
                 <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_iPhone.plist.xml" />
                 <File name="Entitlements.plist" AddStandardHeader="False" src="../Common.iOS/Entitlements.plist.xml" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.iOS/AppDelegate.cs" />
-                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../Common/GameAppDelegate.Mobile.cs" />
-                <File name="GameLayer.cs" AddStandardHeader="True" src="../Common/EmptyLayer.cs" />
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
             </Files>
 
             <Packages>

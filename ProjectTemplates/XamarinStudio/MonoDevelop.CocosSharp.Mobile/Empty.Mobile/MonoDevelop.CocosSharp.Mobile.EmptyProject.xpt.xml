@@ -27,7 +27,7 @@
             </References>
             <Files>
                 <Directory name="Resources">
-                    <RawFile name="Default-568h@2x.png" src="../Common.iOS/Default-568h.png" />
+                    <RawFile name="Default-568h@2x.png" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Default-568h.png" />
                 </Directory>
                 <Directory name="Content">
                     <Directory name="animations"></Directory>
@@ -35,9 +35,9 @@
                     <Directory name="images"></Directory>
                     <Directory name="sounds"></Directory>
                 </Directory>
-                <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_Universal.plist.xml" />
-                <File name="Entitlements.plist" AddStandardHeader="False" src="../Common.iOS/Entitlements.plist.xml" />
-                <File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.iOS/AppDelegate.cs" />
+                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
+                <File name="Entitlements.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
+                <File name="AppDelegate.cs" AddStandardHeader="True" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
             </Files>
 
             <Packages>
@@ -61,8 +61,8 @@
             <Files>
                 <File name="MainActivity.cs" src="../Common.Android/MainActivity.cs" />
                 <Directory name="Resources">
-                    <File name="Resource.designer.cs" src="../Common.Android/Resource.cs" />
-                    <RawFile name="AboutResources.txt" src="../Common.Android/AboutResources.txt" />
+                    <File name="Resource.designer.cs" src="../../MonoDevelop.CocosSharp.Android/Common.Android/Resource.cs" />
+                    <RawFile name="AboutResources.txt" src="../../MonoDevelop.CocosSharp.Android/Common.Android/AboutResources.txt" />
                     <Directory name="layout">
                         <File name="Main.axml" src="../Common.Android/Main.axml" />
                     </Directory>
@@ -74,14 +74,14 @@
 </resources>]]></File>
                     </Directory>
                     <Directory name ="drawable">
-                        <RawFile name="Icon.png" src="../Common.Android/Icon-md.png" />
+                        <RawFile name="Icon.png" src="../../MonoDevelop.CocosSharp.Android/Common.Android/Icon-md.png" />
                     </Directory>
                 </Directory>
                 <Directory name="Properties">
-                    <File name="AssemblyInfo.cs" src="../Common.Android/AssemblyInfo.Android.cs" />
+                    <File name="AssemblyInfo.cs" src="../../MonoDevelop.CocosSharp.Android/Common.Android/AssemblyInfo.Android.cs" />
                 </Directory>
                 <Directory name="Assets">
-                    <RawFile name="AboutAssets.txt" src="../Common.Android/AboutAssets.txt" BuildAction="None" />
+                    <RawFile name="AboutAssets.txt" src="../../MonoDevelop.CocosSharp.Android/Common.Android/AboutAssets.txt" BuildAction="None" />
                     <Directory name="Content">
                         <Directory name="animations"></Directory>
                         <Directory name="fonts"></Directory>
@@ -100,8 +100,8 @@
         <Project name = "${ProjectName}" directory = "." type = "PortableDotNet">
             <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.0,Profile=Profile136"/>
             <Files>
-                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../Common/GameAppDelegate.Mobile.cs" />
-                <File name="GameLayer.cs" AddStandardHeader="True" src="../Common/EmptyLayer.cs" />
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
             </Files>
             <Packages>
                 <Package Id="CocosSharp.PCL.Shared" /> 

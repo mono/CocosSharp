@@ -1,7 +1,0 @@
-<AddinProject appVersion="5.0">
-	<Project platforms="Mac">
-		<AddinFile>bin/Debug/MonoDevelop.CocosSharp.Mobile.addin.dll</AddinFile>
-		<BuildFile>MonoDevelop.CocosSharp.Mobile.addin.csproj</BuildFile>
-		<BuildConfiguration>Debug</BuildConfiguration>
-	</Project>
-</AddinProject>
