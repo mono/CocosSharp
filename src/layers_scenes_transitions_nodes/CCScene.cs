@@ -217,6 +217,8 @@ namespace CocosSharp
 #endif
 
             SceneResolutionPolicy = window.DesignResolutionPolicy;
+
+            UpdateResolutionRatios();
         }
 
 #if USE_PHYSICS
@@ -273,7 +275,7 @@ namespace CocosSharp
 
         void UpdateResolutionRatios()
         {
-            if (Children != null && Window != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
+            if (Window != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
             {
                 bool dirtyViewport = false;
                 CCSize designSize = window.DesignResolutionSize;
