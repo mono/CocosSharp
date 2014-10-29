@@ -104,6 +104,21 @@ namespace CocosSharp
             }
         }
 
+        public override CCScene Scene 
+        {
+            get { return base.Scene; }
+            internal set 
+            {
+                if (Scene != value)
+                {
+                    base.Scene = value;
+                    foreach (CCMenuItem item in menuItems) {
+                        item.Scene = value;
+                    }
+                }
+            }
+        }
+
         #endregion Properties
 
 

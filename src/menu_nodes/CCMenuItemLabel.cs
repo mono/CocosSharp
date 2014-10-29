@@ -100,8 +100,8 @@ namespace CocosSharp
                 LabelWillChange(label, value);
                 label = value;
 
-                if(label !=null && Window != null)
-                    label.Window = Window;
+                if(label !=null && Scene != null)
+                    label.Scene = Scene;
             }
         }
 
@@ -151,6 +151,7 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
     }
     #endif
 
@@ -169,8 +170,8 @@ namespace CocosSharp
                 LabelWillChange(labelAtlas, value);
                 labelAtlas = value;
 
-                if(labelAtlas != null && Window != null)
-                    labelAtlas.Window = Window;
+                if(labelAtlas != null && Scene != null)
+                    labelAtlas.Scene = Scene;
             }
         }
 
@@ -253,8 +254,8 @@ namespace CocosSharp
                 LabelWillChange(labelTTF, value);
                 labelTTF = value;
 
-                if(labelTTF != null && Window != null)
-                    labelTTF.Window = Window;
+                if(labelTTF != null && Scene != null)
+                    labelTTF.Scene = Scene;
             }
         }
 
@@ -328,8 +329,8 @@ namespace CocosSharp
                 LabelWillChange(labelBMFont, value);
                 labelBMFont = value;
 
-                if(labelBMFont != null && Window != null)
-                    labelBMFont.Window = Window;
+                if(labelBMFont != null && Scene != null)
+                    labelBMFont.Scene = Scene;
             }
         }
 
