@@ -68,7 +68,6 @@ namespace CocosDenshion {
         public float BackgroundMusicVolume { get { return default(float); } set { } }
         public float EffectsVolume { get { return default(float); } set { } }
         public static CocosDenshion.CCSimpleAudioEngine SharedEngine { get { return default(CocosDenshion.CCSimpleAudioEngine); } }
-        public static System.Collections.Generic.Dictionary<System.Int32, CocosDenshion.CCEffectPlayer> SharedList { get { return default(System.Collections.Generic.Dictionary<System.Int32, CocosDenshion.CCEffectPlayer>); } }
         public void End() { }
         public static string FullPath(string path) { return default(string); }
         public void PauseBackgroundMusic() { }
@@ -1776,7 +1775,7 @@ namespace CocosSharp {
         public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
         public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
         public override CocosSharp.CCPoint AnchorPoint { get { return default(CocosSharp.CCPoint); } set { } }
-        public new CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
+        public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
         public CocosSharp.CCSize Dimensions { get { return default(CocosSharp.CCSize); } set { } }
         public string FntFile { get { return default(string); } set { } }
         public CocosSharp.CCTextAlignment HorizontalAlignment { get { return default(CocosSharp.CCTextAlignment); } set { } }
@@ -1784,7 +1783,10 @@ namespace CocosSharp {
         public override bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
         protected bool IsDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool LineBreakWithoutSpace { get { return default(bool); } set { } }
-        public new CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
+        protected int LineHeight { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public override CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
+        public override float PositionX { get { return default(float); } set { } }
+        public override float PositionY { get { return default(float); } set { } }
         public override float Scale { set { } }
         public override float ScaleX { get { return default(float); } set { } }
         public override float ScaleY { get { return default(float); } set { } }
@@ -1815,9 +1817,11 @@ namespace CocosSharp {
         public override string ToString() { return default(string); }
     }
     public partial class CCLayer : CocosSharp.CCNode {
+        public static CocosSharp.CCCameraProjection DefaultCameraProjection;
         public CCLayer() { }
-        public CCLayer(CocosSharp.CCCamera camera) { }
-        public CCLayer(CocosSharp.CCCamera camera, CocosSharp.CCClipMode clipMode) { }
+        public CCLayer(CocosSharp.CCCamera camera, CocosSharp.CCClipMode clipMode=(CocosSharp.CCClipMode)(0)) { }
+        public CCLayer(CocosSharp.CCCameraProjection cameraProjection, CocosSharp.CCClipMode clipMode=(CocosSharp.CCClipMode)(0)) { }
+        public CCLayer(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCCameraProjection cameraProjection, CocosSharp.CCClipMode clipMode=(CocosSharp.CCClipMode)(0)) { }
         public CCLayer(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCClipMode clipMode=(CocosSharp.CCClipMode)(0)) { }
         public override CocosSharp.CCAffineTransform AffineLocalTransform { get { return default(CocosSharp.CCAffineTransform); } }
         public override CocosSharp.CCCamera Camera { get { return default(CocosSharp.CCCamera); } set { } }
@@ -1836,12 +1840,11 @@ namespace CocosSharp {
         public CocosSharp.CCSize WorldToScreenspace(CocosSharp.CCSize size) { return default(CocosSharp.CCSize); }
     }
     public partial class CCLayerColor : CocosSharp.CCLayer, CocosSharp.ICCBlendable {
-        public CCLayerColor() { }
-        public CCLayerColor(CocosSharp.CCCamera camera) { }
-        public CCLayerColor(CocosSharp.CCCamera camera, CocosSharp.CCColor4B color) { }
-        public CCLayerColor(CocosSharp.CCColor4B color) { }
-        public CCLayerColor(CocosSharp.CCSize visibleBoundsDimensions) { }
-        public CCLayerColor(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCColor4B color) { }
+        public CCLayerColor(CocosSharp.CCCamera camera, CocosSharp.CCColor4B color=default(CCColor4B)) { }
+        public CCLayerColor(CocosSharp.CCCameraProjection cameraProjection, CocosSharp.CCColor4B color=default(CCColor4B)) { }
+        public CCLayerColor(CocosSharp.CCColor4B color=default(CCColor4B)) { }
+        public CCLayerColor(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCCameraProjection projection, CocosSharp.CCColor4B color=default(CCColor4B)) { }
+        public CCLayerColor(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCColor4B color=default(CCColor4B)) { }
         public virtual CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
@@ -1852,10 +1855,10 @@ namespace CocosSharp {
         protected override void VisibleBoundsChanged() { }
     }
     public partial class CCLayerGradient : CocosSharp.CCLayerColor {
-        public CCLayerGradient() { }
-        public CCLayerGradient(CocosSharp.CCColor4B start, CocosSharp.CCColor4B end) { }
-        public CCLayerGradient(CocosSharp.CCColor4B start, CocosSharp.CCColor4B end, CocosSharp.CCPoint gradientDirection) { }
-        public CCLayerGradient(byte startOpacity, byte endOpacity) { }
+        public CCLayerGradient() : base (default(CocosSharp.CCColor4B)) { }
+        public CCLayerGradient(CocosSharp.CCColor4B start, CocosSharp.CCColor4B end) : base (default(CocosSharp.CCColor4B)) { }
+        public CCLayerGradient(CocosSharp.CCColor4B start, CocosSharp.CCColor4B end, CocosSharp.CCPoint gradientDirection) : base (default(CocosSharp.CCColor4B)) { }
+        public CCLayerGradient(byte startOpacity, byte endOpacity) : base (default(CocosSharp.CCColor4B)) { }
         public CocosSharp.CCColor3B EndColor { get { return default(CocosSharp.CCColor3B); } set { } }
         public byte EndOpacity { get { return default(byte); } set { } }
         public bool IsCompressedInterpolation { get { return default(bool); } set { } }
@@ -2162,8 +2165,8 @@ namespace CocosSharp {
         public CocosSharp.CCNode Parent { get { return default(CocosSharp.CCNode); } }
         public virtual CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
         public virtual CocosSharp.CCPoint PositionWorldspace { get { return default(CocosSharp.CCPoint); } }
-        public float PositionX { get { return default(float); } set { } }
-        public float PositionY { get { return default(float); } set { } }
+        public virtual float PositionX { get { return default(float); } set { } }
+        public virtual float PositionY { get { return default(float); } set { } }
         protected CocosSharp.CCColor3B RealColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected byte RealOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual float Rotation { set { } }
@@ -2319,6 +2322,10 @@ namespace CocosSharp {
         protected float RadX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected float RadZ { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void Update(float time) { }
+    }
+    public static partial class CCOrientationExtension {
+        public static bool IsLandscape(this CocosSharp.CCDisplayOrientation orientation) { return default(bool); }
+        public static bool IsPortrait(this CocosSharp.CCDisplayOrientation orientation) { return default(bool); }
     }
     public partial class CCPageTurn3D : CocosSharp.CCGrid3DAction {
         public CCPageTurn3D(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
@@ -3048,6 +3055,7 @@ namespace CocosSharp {
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
         public override CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual bool IsTransition { get { return default(bool); } }
+        public override CocosSharp.CCLayer Layer { get { return default(CocosSharp.CCLayer); } }
         public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
         public CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy { get { return default(CocosSharp.CCSceneResolutionPolicy); } set { } }
         public override CocosSharp.CCViewport Viewport { get { return default(CocosSharp.CCViewport); } set { } }
@@ -4227,17 +4235,11 @@ namespace CocosSharp {
         Top = 0,
     }
     public partial class CCViewport {
-        public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCRect exactFitPortraitRatioIn, CocosSharp.CCViewportResolutionPolicy resolutionPolicyIn=(CocosSharp.CCViewportResolutionPolicy)(0), CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
-        public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCViewportResolutionPolicy resolutionPolicyIn=(CocosSharp.CCViewportResolutionPolicy)(0), CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
+        public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
+        public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCRect exactFitPortraitRatioIn, CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
         public float AspectRatio { get { return default(float); } }
         public CocosSharp.CCRect ExactFitLandscapeRatio { get { return default(CocosSharp.CCRect); } set { } }
         public CocosSharp.CCRect ExactFitPortraitRatio { get { return default(CocosSharp.CCRect); } set { } }
-        public CocosSharp.CCViewportResolutionPolicy ResolutionPolicy { get { return default(CocosSharp.CCViewportResolutionPolicy); } set { } }
-    }
-    public enum CCViewportResolutionPolicy {
-        AspectFill = 1,
-        AspectFit = 2,
-        ExactFit = 0,
     }
     public partial class CCWaves : CocosSharp.CCLiquid {
         public CCWaves(float duration, CocosSharp.CCGridSize gridSize, int waves=0, float amplitude=0f, bool horizontal=true, bool vertical=true) : base (default(float), default(CocosSharp.CCGridSize), default(int), default(float)) { }
@@ -4277,9 +4279,8 @@ namespace CocosSharp {
         public static string EVENT_PROJECTION_CHANGED;
         public CocosSharp.CCAccelerometer Accelerometer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAccelerometer); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool AllowUserResizing { get { return default(bool); } set { } }
-        public virtual double AnimationInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(double); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCApplication Application { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCApplication); } }
-        public CocosSharp.CCDisplayOrientation CurrentDisplayOrientation { get { return default(CocosSharp.CCDisplayOrientation); } set { } }
+        public CocosSharp.CCDisplayOrientation CurrentDisplayOrientation { get { return default(CocosSharp.CCDisplayOrientation); } }
         public CocosSharp.CCDirector DefaultDirector { get { return default(CocosSharp.CCDirector); } set { } }
         public CocosSharp.CCSceneResolutionPolicy DesignResolutionPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSceneResolutionPolicy); } }
         public CocosSharp.CCSize DesignResolutionSize { get { return default(CocosSharp.CCSize); } }
@@ -4291,7 +4292,7 @@ namespace CocosSharp {
         public CocosSharp.CCNode NotificationNode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool PreferMultiSampling { get { return default(bool); } set { } }
         protected CocosSharp.CCStats Stats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCStats); } }
-        public CocosSharp.CCDisplayOrientation SupportedDisplayOrientations { get { return default(CocosSharp.CCDisplayOrientation); } set { } }
+        public CocosSharp.CCDisplayOrientation SupportedDisplayOrientations { get { return default(CocosSharp.CCDisplayOrientation); } }
         public CocosSharp.CCSize WindowSizeInPixels { get { return default(CocosSharp.CCSize); } }
         public void AddSceneDirector(CocosSharp.CCDirector sceneDirector) { }
         protected void Draw(CocosSharp.CCGameTime gameTime) { }
@@ -4361,14 +4362,11 @@ namespace CocosSharp {
     public partial interface ICCUpdatable {
         void Update(float dt);
     }
-    public static partial class OrientationExtension {
-        public static bool IsPortrait(this CocosSharp.CCDisplayOrientation orientation) { return default(bool); }
-    }
-    public partial class PlistArray : CocosSharp.PlistObject<System.Collections.Generic.List<CocosSharp.PlistObjectBase>>, System.Collections.Generic.IEnumerable<CocosSharp.PlistObjectBase>, System.Collections.IEnumerable {
-        public PlistArray() : base (default(System.Collections.Generic.List<CocosSharp.PlistObjectBase>)) { }
-        public PlistArray(System.Collections.Generic.List<CocosSharp.PlistObjectBase> value) : base (default(System.Collections.Generic.List<CocosSharp.PlistObjectBase>)) { }
-        public PlistArray(System.Collections.IEnumerable value) : base (default(System.Collections.Generic.List<CocosSharp.PlistObjectBase>)) { }
-        public PlistArray(int capacity) : base (default(System.Collections.Generic.List<CocosSharp.PlistObjectBase>)) { }
+    public partial class PlistArray : CocosSharp.PlistObjectBase, System.Collections.Generic.IEnumerable<CocosSharp.PlistObjectBase>, System.Collections.IEnumerable {
+        public PlistArray() { }
+        public PlistArray(System.Collections.Generic.List<CocosSharp.PlistObjectBase> value) { }
+        public PlistArray(System.Collections.IEnumerable value) { }
+        public PlistArray(int capacity) { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
@@ -4388,8 +4386,8 @@ namespace CocosSharp {
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return default(System.Collections.IEnumerator); }
         public override void Write(System.Xml.XmlWriter writer) { }
     }
-    public partial class PlistBoolean : CocosSharp.PlistObject<System.Boolean> {
-        public PlistBoolean(bool value) : base (default(bool)) { }
+    public partial class PlistBoolean : CocosSharp.PlistObjectBase {
+        public PlistBoolean(bool value) { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
@@ -4413,8 +4411,8 @@ namespace CocosSharp {
         public override string AsString { get { return default(string); } }
         public override void Write(System.Xml.XmlWriter writer) { }
     }
-    public partial class PlistDate : CocosSharp.PlistObject<System.DateTime> {
-        public PlistDate(System.DateTime value) : base (default(System.DateTime)) { }
+    public partial class PlistDate : CocosSharp.PlistObjectBase {
+        public PlistDate(System.DateTime value) { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
@@ -4472,8 +4470,8 @@ namespace CocosSharp {
         public override void Write(System.Xml.XmlWriter writer) { }
         public void WriteToFile(string filename) { }
     }
-    public partial class PlistInteger : CocosSharp.PlistObject<System.Int32> {
-        public PlistInteger(int value) : base (default(int)) { }
+    public partial class PlistInteger : CocosSharp.PlistObjectBase {
+        public PlistInteger(int value) { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
@@ -4484,8 +4482,8 @@ namespace CocosSharp {
         public override string AsString { get { return default(string); } }
         public override void Write(System.Xml.XmlWriter writer) { }
     }
-    public partial class PlistNull : CocosSharp.PlistObject<System.Nullable<System.Int32>> {
-        public PlistNull() : base (default(System.Nullable<System.Int32>)) { }
+    public partial class PlistNull : CocosSharp.PlistObjectBase {
+        public PlistNull() { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
@@ -4518,8 +4516,8 @@ namespace CocosSharp {
         public static implicit operator CocosSharp.PlistObjectBase (string value) { return default(CocosSharp.PlistObjectBase); }
         public abstract void Write(System.Xml.XmlWriter writer);
     }
-    public partial class PlistReal : CocosSharp.PlistObject<System.Single> {
-        public PlistReal(float value) : base (default(float)) { }
+    public partial class PlistReal : CocosSharp.PlistObjectBase {
+        public PlistReal(float value) { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
@@ -4530,8 +4528,8 @@ namespace CocosSharp {
         public override string AsString { get { return default(string); } }
         public override void Write(System.Xml.XmlWriter writer) { }
     }
-    public partial class PlistString : CocosSharp.PlistObject<System.String> {
-        public PlistString(string value) : base (default(string)) { }
+    public partial class PlistString : CocosSharp.PlistObjectBase {
+        public PlistString(string value) { }
         public override CocosSharp.PlistArray AsArray { get { return default(CocosSharp.PlistArray); } }
         public override System.Byte[] AsBinary { get { return default(System.Byte[]); } }
         public override bool AsBool { get { return default(bool); } }
