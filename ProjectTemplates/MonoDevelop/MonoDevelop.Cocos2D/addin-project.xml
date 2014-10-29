@@ -1,7 +1,0 @@
-﻿<AddinProject appVersion="3.0">
-	<Project platforms="Mac Linux Win32">
-		<AddinFile>MonoDevelop.Cocos2D/bin/ReleaseLinux/MonoDevelop.Cocos2D.dll</AddinFile>
-		<BuildFile>MonoDevelop.Cocos2D.sln</BuildFile>
-		<BuildConfiguration>ReleaseLinux</BuildConfiguration>
-	</Project>	
-</AddinProject>
