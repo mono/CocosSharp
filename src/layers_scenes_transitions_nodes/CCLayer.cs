@@ -196,8 +196,8 @@ namespace CocosSharp
 
             if(camera != null && camera == Camera && Scene != null) 
             {
-                LayerVisibleBoundsChanged(this, null);
                 VisibleBoundsChanged();
+                LayerVisibleBoundsChanged(this, null);
             }
         }
 
