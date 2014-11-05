@@ -59,7 +59,7 @@ namespace CocosDenshion
 		{
 			if (soundEffect !=null)
 			{
-				soundEffect.NumberOfLoops = loop ? -1 : 1;
+				soundEffect.NumberOfLoops = loop ? -1 : 0;
 				soundEffect.Play();
 			}
 		}
