@@ -20,7 +20,6 @@ namespace CocosSharp
         protected string labelText = string.Empty;
         protected CCPoint ImageOffset { get; set; }
         protected CCSize labelDimensions;
-        protected CCSprite reusedChar;
         protected bool IsDirty { get; set; }
 
         protected bool isColorModifiedByOpacity = false;
@@ -143,15 +142,14 @@ namespace CocosSharp
             }
         }
 
-        CCSize contentSize;
         public override CCSize ContentSize
         {
-            get { return contentSize; }
+            get { return base.ContentSize; }
             set
             {
-                if (contentSize != value)
+                if (ContentSize != value)
                 {
-                    contentSize = value;
+                    base.ContentSize = value;
                     IsDirty = true;
                 }
             }
@@ -336,13 +334,9 @@ namespace CocosSharp
             ContentSize = CCSize.Zero;
 
             IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            AnchorPoint = CCPoint.AnchorMiddle;
 
             ImageOffset = imageOffset;
-
-            reusedChar = new CCSprite(TextureAtlas.Texture);
-            reusedChar.ContentSize = dimensions;
-            reusedChar.BatchNode = this;
 
             SetString(theString, true);
         }
@@ -360,13 +354,6 @@ namespace CocosSharp
             {
                 CreateFontChars();
             }
-        }
-
-        protected override void VisibleBoundsChanged ()
-        {
-            base.VisibleBoundsChanged();
-
-            CreateFontChars();
         }
 
         #endregion Scene handling
@@ -500,8 +487,7 @@ namespace CocosSharp
                 fontCharTextureRect.Origin.X += ImageOffset.X;
                 fontCharTextureRect.Origin.Y += ImageOffset.Y;
 
-                var ctwRect = ConvertToWorldspace(fontCharTextureRect);
-                fontCharContentSize = ctwRect.Size;
+                fontCharContentSize = fontCharTextureRect.Size;
 
                 CCSprite fontChar;
 
@@ -554,8 +540,7 @@ namespace CocosSharp
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
                         (float) nextFontPositionY + yOffset - fontCharTextureRect.Size.Height * 0.5f);
 
-                var ctw = ConvertToWorldspace(fontPos);
-                fontChar.Position = ctw;
+                fontChar.Position = fontPos;
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;
@@ -581,7 +566,6 @@ namespace CocosSharp
 
             tmpSize.Height = totalHeight;
             var tmpDimensions = labelDimensions;
-            tmpSize.Height = totalHeight;
 
             labelDimensions = new CCSize(
                 labelDimensions.Width > 0 ? labelDimensions.Width : tmpSize.Width,
@@ -589,101 +573,7 @@ namespace CocosSharp
             );
 
             ContentSize = labelDimensions;
-            anchorPointInPoints = new CCPoint(labelDimensions.Width * AnchorPoint.X, labelDimensions.Height * AnchorPoint.Y);
             labelDimensions = tmpDimensions;
-            UpdatePositionTransform();
-        }
-
-
-        private void UpdatePositionTransform()
-        {
-
-            // Since we are extending SpriteBatchNode we will have to do our own transforms on the sprites.
-
-            // Translate values
-
-            float x = Position.X;
-            float y = Position.Y;
-
-            if (!IgnoreAnchorPointForPosition && labelDimensions.Width > 0)
-            {
-                x -= AnchorPointInPoints.X;
-            }
-
-            var affineLocalTransform = CCAffineTransform.Identity;
-
-            // Rotation values
-            // Change rotation code to handle X and Y
-            // If we skew with the exact same value for both x and y then we're simply just rotating
-            float cx = 1, sx = 0, cy = 1, sy = 0;
-            if (RotationX != 0 || RotationY != 0)
-            {
-                float radiansX = -CCMacros.CCDegreesToRadians(RotationX);
-                float radiansY = -CCMacros.CCDegreesToRadians(RotationY);
-                cx = (float)Math.Cos(radiansX);
-                sx = (float)Math.Sin(radiansX);
-                cy = (float)Math.Cos(radiansY);
-                sy = (float)Math.Sin(radiansY);
-            }
-
-            bool needsSkewMatrix = (SkewX != 0f || SkewY != 0f);
-
-            // optimization:
-            // inline anchor point calculation if skew is not needed
-            if (!needsSkewMatrix && !anchorPointInPoints.Equals(CCPoint.Zero))
-            {
-                x += cy * -anchorPointInPoints.X * ScaleX + -sx * -anchorPointInPoints.Y * ScaleY;
-                y += sy * -anchorPointInPoints.X * ScaleX + cx * -anchorPointInPoints.Y * ScaleY;
-            }
-
-            // Build Transform Matrix
-            // Adjusted transform calculation for rotational skew
-            affineLocalTransform.A = cy * ScaleX;
-            affineLocalTransform.B = sy * ScaleX;
-            affineLocalTransform.C = -sx * ScaleY;
-            affineLocalTransform.D = cx * ScaleY;
-            affineLocalTransform.Tx = x;
-            affineLocalTransform.Ty = y;
-
-            // XXX: Try to inline skew
-            // If skew is needed, apply skew and then anchor point
-            if (needsSkewMatrix)
-            {
-                var skewMatrix = new CCAffineTransform(
-                    1.0f, (float) Math.Tan(CCMacros.CCDegreesToRadians(SkewY)),
-                    (float) Math.Tan(CCMacros.CCDegreesToRadians(SkewX)), 1.0f,
-                    0.0f, 0.0f);
-
-                affineLocalTransform = CCAffineTransform.Concat(skewMatrix, affineLocalTransform);
-
-                // adjust anchor point
-                if (!anchorPointInPoints.Equals(CCPoint.Zero))
-                {
-                    affineLocalTransform = CCAffineTransform.Translate(affineLocalTransform,
-                        -anchorPointInPoints.X,
-                        -anchorPointInPoints.Y);
-                }
-            }
-
-            if (Children != null && Children.Count != 0)
-            {
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    var sprite = elements[i] as CCSprite;
-                    if (sprite.Visible)
-                    {
-                        var pos = affineLocalTransform.Transform(sprite.Position);
-
-                        sprite.PositionX = pos.X;
-                        sprite.PositionY = pos.Y;
-                        sprite.ScaleX = ScaleX;
-                        sprite.ScaleY = ScaleY;
-                        sprite.SkewX = SkewX;
-                        sprite.SkewY = SkewY;
-                    }
-                }
-            }
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)
@@ -913,6 +803,8 @@ namespace CocosSharp
                 int lineNumber = 0;
                 int str_len = labelText.Length;
                 var last_line = new CCRawList<char>();
+                // If label dim is 0, then we need to use the content size width instead
+                float maxLabelWidth = labelDimensions.Width > 0 ? labelDimensions.Width : ContentSize.Width;
                 for (int ctr = 0; ctr <= str_len; ++ctr)
                 {
                     if (ctr == str_len || labelText[ctr] == '\n')
@@ -932,9 +824,9 @@ namespace CocosSharp
                         if (lastChar == null)
                             continue;
 
-                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Center.X;
+                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width;
 
-                        var shift = PositionX + (labelDimensions.Width - lineWidth);
+                        var shift = maxLabelWidth - lineWidth;
                         if (horzAlignment == CCTextAlignment.Center)
                                 shift /= 2;
 
@@ -984,7 +876,6 @@ namespace CocosSharp
                         characterSprite.PositionY += yOffset;
                 }
             }
-               
         }
 
         private float GetLetterPosXLeft(CCSprite sp)
