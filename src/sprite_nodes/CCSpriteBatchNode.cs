@@ -31,28 +31,28 @@ namespace CocosSharp
             }
         }
 
-        // Size of batch node in world space makes no sense
-        public override CCSize ContentSize
-        {
-            get { return CCSize.Zero; }
-            set
-            {
-            }
-        }
-
-        public override CCAffineTransform AffineLocalTransform
-        {
-            get { return CCAffineTransform.Identity; }
-        }
-
-        protected internal override Matrix XnaLocalMatrix 
-        { 
-            get { return Matrix.Identity; }
-            protected set 
-            {
-            }
-        }
-
+//        // Size of batch node in world space makes no sense
+//        public override CCSize ContentSize
+//        {
+//            get { return CCSize.Zero; }
+//            set
+//            {
+//            }
+//        }
+//
+//        public override CCAffineTransform AffineLocalTransform
+//        {
+//            get { return CCAffineTransform.Identity; }
+//        }
+//
+//        protected internal override Matrix XnaLocalMatrix 
+//        { 
+//            get { return Matrix.Identity; }
+//            protected set 
+//            {
+//            }
+//        }
+//
         #endregion Properties
 
 
@@ -92,6 +92,14 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+        protected override void AddedToScene ()
+        {
+            base.AddedToScene ();
+
+            if(ContentSize == CCSize.Zero)
+                ContentSize = Layer.VisibleBoundsWorldspace.Size;
+        }
 
 
         public override void Visit()
