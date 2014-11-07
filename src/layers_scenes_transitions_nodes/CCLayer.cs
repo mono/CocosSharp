@@ -252,8 +252,6 @@ namespace CocosSharp
                 (float)Math.Round(bottomLeftPoint.X), (float)Math.Round(bottomLeftPoint.Y), 
                 (float)Math.Round(bottomRightPoint.X - bottomLeftPoint.X), 
                 (float)Math.Round(topLeftPoint.Y - bottomLeftPoint.Y));
-
-            anchorPointInPoints = new CCPoint(visibleBoundsWorldspace.Size.Width * AnchorPoint.X, visibleBoundsWorldspace.Size.Height * AnchorPoint.Y);
         }
 
         #endregion Content layout

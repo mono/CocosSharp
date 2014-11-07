@@ -99,7 +99,7 @@ namespace CocosSharp
         CCColor3B displayedColor;
 
         CCPoint anchorPoint;
-        internal CCPoint anchorPointInPoints;
+        CCPoint anchorPointInPoints;
         CCPoint position;
 
         CCSize contentSize;

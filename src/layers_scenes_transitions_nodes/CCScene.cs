@@ -282,7 +282,6 @@ namespace CocosSharp
                 CCRect designBounds = new CCRect(0.0f, 0.0f, designSize.Width, designSize.Height);
 
                 contentSize = designSize;
-                anchorPointInPoints = new CCPoint(contentSize.Width * AnchorPoint.X, contentSize.Height * AnchorPoint.Y);
 
                 if (designBounds != CCRect.Zero)
                 {
