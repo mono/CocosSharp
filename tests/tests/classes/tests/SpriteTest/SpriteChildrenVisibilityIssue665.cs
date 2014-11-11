@@ -48,7 +48,7 @@ namespace tests
             sprite1.AddChild(sprite3, 2);
 
             aParent2 = new CCNode();
-            AddChild(aParent, 0);
+            AddChild(aParent2, 0);
 
             sprite4 = new CCSprite("grossini_dance_01.png");
             sprite5 = new CCSprite("grossini_dance_02.png");
