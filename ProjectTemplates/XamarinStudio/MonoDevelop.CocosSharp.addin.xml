@@ -58,7 +58,7 @@
         <Import file    ="Packages/CocosSharp.Android.1.2.0.0.nupkg" />
         <Import file    ="Packages/CocosSharp.iOS.1.2.0.0.nupkg" />
         <Import file    ="Packages/CocosSharp.MacOS.1.2.0.0.nupkg" />
-        <Import file    ="Packages/CocosSharp.PCL.Shared.1.2.0.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.PCL.Shared.1.2.0.1.nupkg" />
     </Runtime>
 
     <!--- Common dependencies -->
@@ -143,13 +143,13 @@
             <Addin id="MonoAndroid" version="5.0"/>
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
-	        <ProjectTemplate
-	                        id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.SW" 
-	                        file    ="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
+            <ProjectTemplate
+                            id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.SW" 
+                            file    ="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
 
-	        <ProjectTemplate
-	                        id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.Empty" 
-	                        file    ="MonoDevelop.CocosSharp.Mobile/Empty.Mobile/MonoDevelop.CocosSharp.Mobile.EmptyProject.xpt.xml" />
+            <ProjectTemplate
+                            id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.Empty" 
+                            file    ="MonoDevelop.CocosSharp.Mobile/Empty.Mobile/MonoDevelop.CocosSharp.Mobile.EmptyProject.xpt.xml" />
         </Extension>
     </Module>
 

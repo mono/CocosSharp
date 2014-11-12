@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 
 using CocosSharp;
 
-namespace ${Namespace}
+namespace ${SolutionName}
 {
     [Activity(
         Label = "${ProjectName}",

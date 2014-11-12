@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using CocosSharp;
 
-namespace ${Namespace}
+namespace ${SolutionName}
 {
     public class GameLayer : CCLayerGradient
     {

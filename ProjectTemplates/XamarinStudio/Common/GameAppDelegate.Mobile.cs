@@ -2,7 +2,7 @@ using System;
 using CocosSharp;
 
 
-namespace ${Namespace}
+namespace ${SolutionName}
 {
     public class GameAppDelegate : CCApplicationDelegate
     {

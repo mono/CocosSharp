@@ -3,7 +3,7 @@ using MonoMac.AppKit;
 using MonoMac;
 using CocosSharp;
 
-namespace ${Namespace}
+namespace ${SolutionName}
 {
     public class AppDelegate : NSApplicationDelegate
     {
