@@ -779,6 +779,13 @@ namespace CocosSharp
             {
                 var sprite = child as CCSprite;
 
+                // Adding sprite to batch node breaks scene graph hierarchy
+                // => When adding we make sure child sprite has the same visibility
+                // This is a bit of a hack because visibility is only updated during Add
+                // In the future, we will separate rendering from scene graph allowing us to elimnate
+                // CCSpriteBatchNode so that problems like these don't occur
+                sprite.Visible = Visible;
+
                 Debug.Assert(sprite != null, "CCSprite only supports CCSprites as children when using CCSpriteBatchNode");
                 Debug.Assert(sprite.Texture.Name == textureAtlas.Texture.Name);
 
