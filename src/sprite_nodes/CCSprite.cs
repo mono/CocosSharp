@@ -27,6 +27,18 @@ namespace CocosSharp
 
         #region Properties
 
+        // Static properties
+
+        public static float DefaultTexelToContentSizeRatio
+        {
+            set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
+        }
+
+        public static CCSize DefaultTexelToContentSizeRatios { get; set; }
+
+
+        // Instance properties
+
         public int AtlasIndex { get ; internal set; }
         public CCBlendFunc BlendFunc { get; set; }
 
@@ -235,7 +247,7 @@ namespace CocosSharp
                 {
                     textureRectInPixels = value;
                     if (ContentSize == CCSize.Zero)
-                        ContentSize = textureRectInPixels.Size;
+                        ContentSize = textureRectInPixels.Size / DefaultTexelToContentSizeRatios;
 
                     UpdateSpriteTextureQuads();
                 }
@@ -273,7 +285,7 @@ namespace CocosSharp
                     unflippedOffsetPositionFromCenter = value.OffsetInPixels;
                     UntrimmedSizeInPixels = value.OriginalSizeInPixels;
 
-                    ContentSize = UntrimmedSizeInPixels;
+                    ContentSize = UntrimmedSizeInPixels / DefaultTexelToContentSizeRatios;
 
                     UpdateSpriteTextureQuads();
                 }
@@ -339,7 +351,7 @@ namespace CocosSharp
                     }
 
                     if(ContentSize == CCSize.Zero)
-                        ContentSize = textureRectInPixels.Size;
+                        ContentSize = textureRectInPixels.Size / DefaultTexelToContentSizeRatios;
 
                     UpdateBlendFunc();
                 }
@@ -362,6 +374,11 @@ namespace CocosSharp
 
 
         #region Constructors
+
+        static CCSprite()
+        {
+            DefaultTexelToContentSizeRatios = CCSize.One;
+        }
 
         public CCSprite()
         {  
@@ -432,7 +449,7 @@ namespace CocosSharp
 
             // If content size not initialized, assume worldspace dimensions match texture dimensions
             if(ContentSize == CCSize.Zero)
-                ContentSize = textureRectInPixels.Size;
+                ContentSize = textureRectInPixels.Size / CCSprite.DefaultTexelToContentSizeRatios;
 
             UpdateSpriteTextureQuads();
         }

@@ -567,7 +567,7 @@ namespace CocosSharp
 				scale9Image.AddChild(bottomRight, 2, (int)Positions.BottomRight);
 			}
 
-			ContentSize = rect.Size;
+            ContentSize = rect.Size / CCSprite.DefaultTexelToContentSizeRatios;
 			AddChild(scale9Image);
 
 			if (spritesGenerated)

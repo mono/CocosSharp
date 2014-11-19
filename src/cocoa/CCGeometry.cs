@@ -661,6 +661,11 @@ namespace CocosSharp
             return pt;
         }
 
+        public static CCPoint operator /(CCPoint p, CCSize size)
+        {
+            return new CCPoint(p.X / size.Width, p.Y / size.Height);
+        }
+
         #endregion
 
 
@@ -804,6 +809,7 @@ namespace CocosSharp
     public struct CCSize
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
+        public static readonly CCSize One = new CCSize(1, 1);
 
         public float Width;
         public float Height;
@@ -897,9 +903,19 @@ namespace CocosSharp
             return (new CCSize(p.Width * f, p.Height * f));
         }
 
+        public static CCSize operator *(CCSize p1, CCSize p2)
+        {
+            return new CCSize(p1.Width * p2.Width, p1.Height * p2.Height);
+        }
+
         public static CCSize operator /(CCSize p, float f)
         {
             return (new CCSize(p.Width / f, p.Height / f));
+        }
+
+        public static CCSize operator /(CCSize p1, CCSize p2)
+        {
+            return (new CCSize(p1.Width / p2.Width, p1.Height / p2.Height));
         }
 
         public static CCSize operator +(CCSize p, float f)
@@ -1162,6 +1178,12 @@ namespace CocosSharp
         public static bool operator !=(CCRect p1, CCRect p2)
         {
             return (!p1.Equals(p2));
+        }
+
+        public static CCRect operator *(CCRect rect, CCSize size)
+        {
+            return new CCRect(rect.Origin.X * size.Width, rect.Origin.Y * size.Height, 
+                rect.Size.Width * size.Width, rect.Size.Height * size.Height);
         }
 
 

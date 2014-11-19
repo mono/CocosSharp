@@ -23,6 +23,18 @@ namespace CocosSharp
 
         #region Properties
 
+        // Static properties
+
+        public static float DefaultTexelToContentSizeRatio
+        {
+            set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
+        }
+
+        public static CCSize DefaultTexelToContentSizeRatios { get; set; }
+
+
+        // Instance properties
+
         public string LayerName { get; set; }
 
         public CCTMXOrientation LayerOrientation { get; set; }          // Should be same as map orientation
@@ -66,6 +78,11 @@ namespace CocosSharp
 
 
         #region Constructors
+
+        static CCTMXLayer()
+        {
+            DefaultTexelToContentSizeRatios = CCSize.One;
+        }
 
         public CCTMXLayer(CCTMXTilesetInfo tileSetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
             : this(tileSetInfo, layerInfo, mapInfo, layerInfo.LayerSize)
@@ -112,10 +129,7 @@ namespace CocosSharp
 
             atlasIndexArray = new List<int>((int) totalNumberOfTiles);
 
-            var contentSize = new CCSize(LayerSize.Width * MapTileSize.Width,
-                LayerSize.Height * MapTileSize.Height);
-
-            ContentSize = contentSize;
+            ContentSize = LayerSize * MapTileSize;
 
             useAutomaticVertexZ = false;
             vertexZvalue = 0;
@@ -384,7 +398,7 @@ namespace CocosSharp
                     {
                         CCRect rect = TileSet.RectForGID(gid);
 
-                        sprite.ContentSize = rect.Size;
+                        sprite.ContentSize = rect.Size / DefaultTexelToContentSizeRatios;
                         sprite.TextureRectInPixels = rect;
                         sprite.IsTextureRectRotated = false;
 
@@ -600,10 +614,7 @@ namespace CocosSharp
 
         CCSprite UpdateTileForGID(uint gid, CCPoint tileCoord)
         {
-            float contentScaleFactor = 1.0f;
             CCRect rect = TileSet.RectForGID(gid);
-            rect = new CCRect(rect.Origin.X / contentScaleFactor, rect.Origin.Y / contentScaleFactor, rect.Size.Width / contentScaleFactor,
-                rect.Size.Height / contentScaleFactor);
             var z = (int) (tileCoord.X + tileCoord.Y * LayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
@@ -679,10 +690,12 @@ namespace CocosSharp
 
         CCSprite ReusedTileWithRect(CCRect rect)
         {
+            CCSize contentSize = rect.Size / DefaultTexelToContentSizeRatios;
+
             if (reusedTile == null)
             {
                 reusedTile = new CCSprite(TextureAtlas.Texture, rect, false);
-                reusedTile.ContentSize = rect.Size;
+                reusedTile.ContentSize = contentSize;
                 reusedTile.BatchNode = this;
             }
             else
@@ -692,7 +705,7 @@ namespace CocosSharp
                 reusedTile.BatchNode = null;
 
                 // Re-init the sprite
-                reusedTile.ContentSize = rect.Size;
+                reusedTile.ContentSize = contentSize;
                 reusedTile.IsTextureRectRotated = false;
                 reusedTile.TextureRectInPixels = rect;
 

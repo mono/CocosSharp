@@ -24,6 +24,19 @@ namespace CocosSharp
 
         protected bool isColorModifiedByOpacity = false;
 
+
+        // Static properties
+
+        public new static float DefaultTexelToContentSizeRatio
+        {
+            set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
+        }
+
+        public new static CCSize DefaultTexelToContentSizeRatios { get; set; }
+
+
+        // Instance properties
+
         protected int LineHeight { get; set; }
 
         public override CCPoint AnchorPoint
@@ -223,6 +236,11 @@ namespace CocosSharp
 
 
         #region Constructors
+
+        static CCLabelBMFont()
+        {
+            DefaultTexelToContentSizeRatios = CCSize.One;
+        }
 
         public CCLabelBMFont() : this("", "")
         {
@@ -487,7 +505,7 @@ namespace CocosSharp
                 fontCharTextureRect.Origin.X += ImageOffset.X;
                 fontCharTextureRect.Origin.Y += ImageOffset.Y;
 
-                fontCharContentSize = fontCharTextureRect.Size;
+                fontCharContentSize = fontCharTextureRect.Size / DefaultTexelToContentSizeRatios;
 
                 CCSprite fontChar;
 

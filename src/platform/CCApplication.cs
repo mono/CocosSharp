@@ -291,6 +291,23 @@ namespace CocosSharp
 
         #endif
 
+
+        public static float DefaultTexelToContentSizeRatio
+        {
+            set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
+        }
+
+        public static CCSize DefaultTexelToContentSizeRatios
+        {
+            set 
+            {
+                CCSprite.DefaultTexelToContentSizeRatios = value;
+                CCLabelTtf.DefaultTexelToContentSizeRatios = value;
+                CCLabelBMFont.DefaultTexelToContentSizeRatios = value;
+                CCTMXLayer.DefaultTexelToContentSizeRatios = value;
+            }
+        }
+
         // Instance properties
         public bool HandleMediaStateAutomatically { get; set; }
         public CCDisplayOrientation CurrentOrientation { get; private set; }

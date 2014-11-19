@@ -5,12 +5,26 @@ namespace CocosSharp
 {
     public class CCLabelTtf : CCSprite, ICCTextContainer
     {
-        private float fontSize;
-        private CCTextAlignment horzTextAlignment;
-        private string fontName;
+        float fontSize;
+        CCTextAlignment horzTextAlignment;
+        string fontName;
+        CCSize dimensions;
+        CCVerticalTextAlignment vertTextAlignment;
+
         protected string labelText = String.Empty;
-        private CCSize dimensions;
-        private CCVerticalTextAlignment vertTextAlignment;
+
+
+        // Static properties
+
+        public new static float DefaultTexelToContentSizeRatio
+        {
+            set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
+        }
+
+        public new static CCSize DefaultTexelToContentSizeRatios { get; set; }
+
+
+        // Instance properties
 
         public string FontName
         {
@@ -95,6 +109,11 @@ namespace CocosSharp
 
         #region Constructors
 
+        static CCLabelTtf()
+        {
+            DefaultTexelToContentSizeRatios = CCSize.One;
+        }
+
         public CCLabelTtf () : this("", "Helvetica", 12.0f)
         {
         }
@@ -138,16 +157,7 @@ namespace CocosSharp
 
         internal void Refresh()
         {
-            //
-            // This can only happen when the frame buffer is ready...
-            //
-            try
-            {
-                updateTexture();
-            }
-            catch (Exception)
-            {
-            }
+            UpdateTexture();
         }
 
         #region ICCLabelProtocol Members
@@ -175,7 +185,7 @@ namespace CocosSharp
                 if (labelText != value)
                 {
                     labelText = value;
-                    updateTexture();
+                    UpdateTexture();
                 }
             }
         }
@@ -187,7 +197,7 @@ namespace CocosSharp
             return string.Format("FontName:{0}, FontSize:{1}", fontName, fontSize);
         }
 
-        private void updateTexture()
+        void UpdateTexture()
         {
 
             CCTexture2D tex;
@@ -228,7 +238,7 @@ namespace CocosSharp
             CCRect rect = CCRect.Zero;
             rect.Size = Texture.ContentSizeInPixels;
             TextureRectInPixels = rect;
-
+            ContentSize = rect.Size / DefaultTexelToContentSizeRatios;
         }
     }
 }
