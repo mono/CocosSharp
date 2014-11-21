@@ -33,14 +33,15 @@
                     <Directory name="animations"></Directory>
                     <Directory name="fonts"></Directory>
                     <Directory name="images">
-                        <RawFile name="monkey.png" src="../../Common/monkey.png" />
+                        <Directory name="hd"><RawFile name="monkey.png" src="../../Common/monkey.png" /></Directory>
+                        <Directory name="ld"><RawFile name="monkey.png" src="../../Common/monkey_hd.png" /></Directory>
                     </Directory>
                     <Directory name="sounds"></Directory>
                 </Directory>
                 <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_iPad.plist.xml" />
                 <File name="Entitlements.plist" AddStandardHeader="False" src="../Common.iOS/Entitlements.plist.xml" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.iOS/AppDelegate.cs" />
-                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.Mobile.cs" />
+                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.cs" />
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
             </Files>
 

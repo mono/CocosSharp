@@ -50,8 +50,9 @@
         <Import file    ="Common/EmptyLayer.cs" />
         <Import file    ="Common/monkey.png" />
         <Import file    ="Common/monkey.xnb" />
-        <Import file    ="Common/GameAppDelegate.Desktop.cs" />
-        <Import file    ="Common/GameAppDelegate.Mobile.cs" />
+        <Import file    ="Common/monkey_hd.png" />
+        <Import file    ="Common/monkey_hd.xnb" />
+        <Import file    ="Common/GameAppDelegate.cs" />
         <Import file    ="Common/GameLayer.cs" />
 
         <!-- NuGet packages -->
