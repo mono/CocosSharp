@@ -33,8 +33,8 @@
                     <Directory name="animations"></Directory>
                     <Directory name="fonts"></Directory>
                     <Directory name="images">
-                        <Directory name="hd"><RawFile name="monkey.png" src="../../Common/monkey.png" /></Directory>
-                        <Directory name="ld"><RawFile name="monkey.png" src="../../Common/monkey_hd.png" /></Directory>
+                        <Directory name="ld"><RawFile name="monkey.png" src="../../Common/monkey.png" /></Directory>
+                        <Directory name="hd"><RawFile name="monkey.png" src="../../Common/monkey_hd.png" /></Directory>
                     </Directory>
                     <Directory name="sounds"></Directory>
                 </Directory>
