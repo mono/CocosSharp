@@ -100,11 +100,29 @@ namespace CocosSharp
             CCDrawManager.SharedDrawManager.Clear(new CCColor4B(r, g, b, a), depthValue);
         }
 
-        public void BeginWithClear(float r, float g, float b, float a, float depthValue, int stencilValue)
-        {
-            Begin();
-            CCDrawManager.SharedDrawManager.Clear(new CCColor4B(r, g, b, a), depthValue, stencilValue);
-        }
+		public void BeginWithClear(float r, float g, float b, float a, float depthValue, int stencilValue)
+		{
+			Begin();
+			CCDrawManager.SharedDrawManager.Clear(new CCColor4B(r, g, b, a), depthValue, stencilValue);
+		}
+
+		public void BeginWithClear(CCColor4B col)
+		{
+			Begin();
+			CCDrawManager.SharedDrawManager.Clear(col);
+		}
+
+		public void BeginWithClear(CCColor4B col, float depthValue)
+		{
+			Begin();
+			CCDrawManager.SharedDrawManager.Clear(col, depthValue);
+		}
+
+		public void BeginWithClear(CCColor4B col, float depthValue, int stencilValue)
+		{
+			Begin();
+			CCDrawManager.SharedDrawManager.Clear(col, depthValue, stencilValue);
+		}
 
         public void ClearDepth(float depthValue)
         {
@@ -127,11 +145,17 @@ namespace CocosSharp
             CCDrawManager.SharedDrawManager.SetRenderTarget((CCTexture2D) null);
         }
 
-        public void Clear(float r, float g, float b, float a)
-        {
-            BeginWithClear(r, g, b, a);
-            End();
-        }
+		public void Clear(float r, float g, float b, float a)
+		{
+			BeginWithClear(r, g, b, a);
+			End();
+		}
+
+		public void Clear(CCColor4B col)
+		{
+			BeginWithClear(col);
+			End();
+		}
 
         public bool SaveToStream(Stream stream, CCImageFormat format)
         {
