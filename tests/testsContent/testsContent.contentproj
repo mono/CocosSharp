@@ -2155,7 +2155,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d.Content.Pipeline.Importers\CocosSharp.Content.Pipeline.Importers.csproj">
+    <ProjectReference Include="..\..\CocosSharp.Content.Pipeline.Importers\CocosSharp.Content.Pipeline.Importers.csproj">
       <Project>{ad41b56e-e912-45af-a98f-c8371406a547}</Project>
       <Name>CocosSharp.Content.Pipeline.Importers</Name>
     </ProjectReference>
