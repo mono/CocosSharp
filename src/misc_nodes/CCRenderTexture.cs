@@ -65,12 +65,6 @@ namespace CocosSharp
             // Save the current matrix
             drawManager.PushMatrix();
 
-            CCSize texSize = Texture.ContentSizeInPixels;
-
-            CCSize size = Scene.Viewport.ViewportInPixels.Size;
-            float widthRatio = size.Width / texSize.Width;
-            float heightRatio = size.Height / texSize.Height;
-
 //            Matrix projection = Matrix.CreateOrthographicOffCenter(
 //                -1.0f / widthRatio, 1.0f / widthRatio,
 //                -1.0f / heightRatio, 1.0f / heightRatio,
