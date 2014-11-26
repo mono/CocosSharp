@@ -44,6 +44,7 @@ namespace tests
             brush.Color = CCColor3B.Red;
             brush.Opacity = 20;
 
+            AddChild(brush);
 
             // Save image menu
             CCMenuItemFont.FontSize = 16;
@@ -102,8 +103,8 @@ namespace tests
         void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches[0];
-            CCPoint start = touch.LocationOnScreen;
-            CCPoint end = touch.PreviousLocationOnScreen;
+            CCPoint start = touch.Location;
+            CCPoint end = touch.PreviousLocation;
 
             // begin drawing to the render texture
             target.Begin();
