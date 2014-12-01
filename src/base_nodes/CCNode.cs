@@ -2023,8 +2023,8 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                Window.DrawManager.SetIdentityMatrix();
                 Grid.BeforeDraw();
+                Transform ();
             }
             else
             {
@@ -2078,8 +2078,7 @@ namespace CocosSharp
             if (Grid != null && Grid.Active)
             {
                 Grid.AfterDraw(this);
-                Matrix worldMatrix = XnaWorldMatrix;
-                Window.DrawManager.MultMatrix(ref worldMatrix);
+                Window.DrawManager.SetIdentityMatrix();
                 Grid.Blit();
             }
 
