@@ -9,18 +9,15 @@ namespace tests
 		private static int MAX_LAYER = 22;
 		public static CCNode BaseNode;
 
-        protected CCLayer contentLayer;
-
 		public TextLayer() : base()
 		{
+            var backGround = new CCLayerColor(new CCColor4B(32, 128, 32, 255));
+            AddChild(backGround, -20);
 
-            contentLayer = new CCLayer();
-            CCCamera contentCamera = Camera;
-            contentLayer.Camera = contentCamera;
-
+            BaseNode = new CCNode();
             var bg = new CCSprite(TestResource.s_back3);
-            BaseNode = bg;
-            contentLayer.AddChild(bg, 0, EffectTestScene.kTagBackground);
+            BaseNode.ContentSize = bg.ContentSize;
+            BaseNode.AddChild(bg, 0, EffectTestScene.kTagBackground);
 
             var Kathia = new CCSprite(TestResource.s_pPathSister2);
             BaseNode.AddChild(Kathia, 1, EffectTestScene.kTagKathia);
@@ -37,30 +34,27 @@ namespace tests
             var sc2_back = sc2.Reverse();
             Tamara.RunAction(new CCRepeatForever(sc2, sc2_back));
 
-            var colorBackground = new CCLayerColor(new CCColor4B(32, 128, 32, 255));
-            contentLayer.AddChild(colorBackground, -1);
+            AddChild(BaseNode);
 		}
-
-        protected override void AddedToScene ()
-        {
-            base.AddedToScene();
-            Scene.AddChild(contentLayer, -1);
-        }
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); 
+
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
-            Schedule(checkAnim);
-
             BaseNode.Position = windowSize.Center;
-			var size = BaseNode.ContentSize;
-			BaseNode[EffectTestScene.kTagKathia].Position = new CCPoint(size.Width / 3, size.Center.Y);
-			BaseNode[EffectTestScene.kTagTamara].Position = new CCPoint(2 * size.Width / 3,size.Center.Y);
+            var size = BaseNode.ContentSize;
+
+			BaseNode[EffectTestScene.kTagKathia].PositionX = -size.Width / 3;
+			BaseNode[EffectTestScene.kTagTamara].PositionX = size.Width / 3;
 
             BaseNode.RunAction(CurrentAction);
+
+            Schedule(checkAnim);
+
 		}
 
 		public override string Title
@@ -139,10 +133,10 @@ namespace tests
 
 		public void checkAnim(float dt)
 		{
-			var s2 = contentLayer[EffectTestScene.kTagBackground];
+            var s2 = BaseNode;//[EffectTestScene.kTagBackground];
 			if (s2.NumberOfRunningActions == 0 && s2.Grid != null)
 				s2.Grid = null;
-			;
+			
 		}
 
 		public override void RestartCallback(object sender)
