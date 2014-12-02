@@ -50,7 +50,7 @@ namespace CocosSharp
 			CGImageDestination dest = CGImageDestination.FromUrl (url, typeIdentifier, 1);
 
 			// Add an image to the destination
-			dest.AddImage(bitmap.GetImage(), null);
+            dest.AddImage(bitmap.GetImage(),(NSDictionary) null);
 
 			// Finish the export
 			bool success = dest.Close ();
