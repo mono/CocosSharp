@@ -41,7 +41,9 @@ namespace CocosSharp
         static CCNearAndFarClipping defaultNearAndFarOrthoClipping = new CCNearAndFarClipping (-1024f, 1024f);
         static CCNearAndFarClipping defaultNearAndFarPerspClipping = new CCNearAndFarClipping (0.1f, 100f);
 
-        internal event EventHandler OnCameraVisibleBoundsChanged = delegate {};
+        // A delegate type for hooking up Camera Visible Bounds change notifications.
+        internal delegate void CameraVisibleBoundsChangedEventHandler(object sender, EventArgs e);
+        internal event CameraVisibleBoundsChangedEventHandler OnCameraVisibleBoundsChanged = delegate {};
 
         CCCameraProjection cameraProjection;
 

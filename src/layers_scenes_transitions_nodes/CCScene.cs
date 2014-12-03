@@ -48,7 +48,10 @@ namespace CocosSharp
         CCViewport viewport;
         CCWindow window;
 
-        internal event EventHandler SceneViewportChanged = delegate {};
+        // A delegate type for hooking up SceneViewport change notifications.
+        internal delegate void SceneViewportChangedEventHandler(object sender, EventArgs e);
+        internal event SceneViewportChangedEventHandler SceneViewportChanged;
+
         CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
 
         CCSize contentSize = CCSize.Zero;
@@ -265,7 +268,8 @@ namespace CocosSharp
             if(viewport != null && viewport == Viewport) 
             {
                 UpdateResolutionRatios();
-                SceneViewportChanged(this, null);
+                if (SceneViewportChanged != null)
+                    SceneViewportChanged(this, null);
             }
         }
 

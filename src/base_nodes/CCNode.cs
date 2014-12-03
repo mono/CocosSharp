@@ -708,7 +708,7 @@ namespace CocosSharp
                 }
             }
         }
-
+            
         public virtual CCScene Scene
         {
             get { return scene; }
@@ -718,7 +718,8 @@ namespace CocosSharp
                 {
                     if(scene != null) 
                     {
-                        scene.SceneViewportChanged -= OnSceneViewportChanged;
+                        scene.SceneViewportChanged -= 
+                            new CocosSharp.CCScene.SceneViewportChangedEventHandler(OnSceneViewportChanged);
                     }
 
                     scene = value;
@@ -737,7 +738,8 @@ namespace CocosSharp
 
                     if (scene != null) 
                     {
-                        scene.SceneViewportChanged += OnSceneViewportChanged;
+                        scene.SceneViewportChanged += 
+                            new CocosSharp.CCScene.SceneViewportChangedEventHandler(OnSceneViewportChanged);
 
                         OnSceneViewportChanged(this, null);
 
@@ -761,7 +763,8 @@ namespace CocosSharp
                 {
                     if (layer != null) 
                     {
-                        layer.LayerVisibleBoundsChanged -= OnLayerVisibleBoundsChanged;
+                        layer.LayerVisibleBoundsChanged -= 
+                            new CocosSharp.CCLayer.LayerVisibleBoundsChangedEventHandler(OnLayerVisibleBoundsChanged);
                     }
 
                     layer = value;
@@ -777,7 +780,8 @@ namespace CocosSharp
 
                     if (layer != null) 
                     {
-                        layer.LayerVisibleBoundsChanged += OnLayerVisibleBoundsChanged;
+                        layer.LayerVisibleBoundsChanged += 
+                                        new CocosSharp.CCLayer.LayerVisibleBoundsChangedEventHandler(OnLayerVisibleBoundsChanged);
 
                         OnLayerVisibleBoundsChanged(this, null);
                     }
@@ -785,7 +789,7 @@ namespace CocosSharp
                     if (grid != null)
                         grid.Scene = scene;
 
-                    if (layer.Scene != null)
+                    if (layer != null && layer.Scene != null)
                         this.Scene = layer.Scene;
                 }
             }
@@ -818,7 +822,11 @@ namespace CocosSharp
         public virtual CCCamera Camera
         {
             get { return (Layer == null) ? null : Layer.Camera; }
-            set { Layer.Camera = value; }
+            set 
+            { 
+                if (Layer != null)
+                    Layer.Camera = value; 
+            }
         }
 
         public virtual CCWindow Window 
@@ -1297,6 +1305,9 @@ namespace CocosSharp
                 }
             }
 
+            Scene = null;
+            Layer = null;
+            Camera = null;
             isCleaned = true;
         }
 

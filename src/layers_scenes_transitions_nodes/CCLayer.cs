@@ -46,7 +46,9 @@ namespace CocosSharp
 
         CCRect visibleBoundsWorldspace;
 
-        internal event EventHandler LayerVisibleBoundsChanged = delegate {};
+        // A delegate type for hooking up Layer Visible Bounds change notifications.
+        internal delegate void LayerVisibleBoundsChangedEventHandler(object sender, EventArgs e);
+        internal event LayerVisibleBoundsChangedEventHandler LayerVisibleBoundsChanged;
 
 
         #region Properties
@@ -67,14 +69,20 @@ namespace CocosSharp
                 if (camera != value) 
                 {
                     // Stop listening to previous camera's event
-                    if(camera != null)
-                        camera.OnCameraVisibleBoundsChanged -= OnCameraVisibleBoundsChanged;
+                    if (camera != null)
+                    {
+                        camera.OnCameraVisibleBoundsChanged -= 
+                            new CocosSharp.CCCamera.CameraVisibleBoundsChangedEventHandler(OnCameraVisibleBoundsChanged);
+                    }
 
                     camera = value;
 
-                    camera.OnCameraVisibleBoundsChanged += OnCameraVisibleBoundsChanged;
-
-                    OnCameraVisibleBoundsChanged(camera, null);
+                    if (camera != null)
+                    {
+                        camera.OnCameraVisibleBoundsChanged += 
+                            new CocosSharp.CCCamera.CameraVisibleBoundsChangedEventHandler(OnCameraVisibleBoundsChanged);
+                        OnCameraVisibleBoundsChanged(camera, null);
+                    }
                 }
             }
         }
@@ -197,7 +205,8 @@ namespace CocosSharp
             if(camera != null && camera == Camera && Scene != null) 
             {
                 VisibleBoundsChanged();
-                LayerVisibleBoundsChanged(this, null);
+                if (LayerVisibleBoundsChanged != null)
+                    LayerVisibleBoundsChanged(this, null);
             }
         }
 
