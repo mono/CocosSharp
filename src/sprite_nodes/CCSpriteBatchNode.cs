@@ -287,7 +287,6 @@ namespace CocosSharp
         public void AppendChild(CCSprite sprite)
         {
             IsReorderChildDirty = true;
-            sprite.BatchNode = this;
 
             if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
             {
@@ -299,6 +298,7 @@ namespace CocosSharp
             int index = Descendants.Count - 1;
 
             sprite.AtlasIndex = index;
+            sprite.BatchNode = this;
 
             TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
 
