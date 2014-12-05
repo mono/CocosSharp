@@ -9,6 +9,14 @@ namespace tests
 {
     public class SpriteBatchNode1 : SpriteTestDemo
     {
+
+
+        static CCScaleBy scaleBy = new CCScaleBy(3, 2);
+        static CCRotateBy rotateBy = new CCRotateBy (3, 360);
+        static CCBlink blink = new CCBlink (1, 3);
+        static CCTintBy tintBy = new CCTintBy (2, 0, -255, -255);
+        static CCFadeOut fadeOut = new CCFadeOut  (2);
+
         #region Properties
 
         public override string Title
@@ -69,23 +77,21 @@ namespace tests
 
 
             CCFiniteTimeAction action = null;
-            float random = (float)CCRandom.NextDouble();
+            var random = (float)CCRandom.NextDouble();
 
             if (random < 0.20)
-                action = new CCScaleBy(3, 2);
+                action = scaleBy;
             else if (random < 0.40)
-                action = new CCRotateBy (3, 360);
+                action = rotateBy;
             else if (random < 0.60)
-                action = new CCBlink (1, 3);
+                action = blink;
             else if (random < 0.8)
-                action = new CCTintBy (2, 0, -255, -255);
+                action = tintBy;
             else
-                action = new CCFadeOut  (2);
+                action = fadeOut;
 
-            CCFiniteTimeAction action_back = (CCFiniteTimeAction)action.Reverse();
-            CCFiniteTimeAction seq = (CCFiniteTimeAction)(new CCSequence(action, action_back));
+            sprite.RepeatForever(action, action.Reverse());
 
-            sprite.RunAction(new CCRepeatForever (seq));
         }
 
         void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
