@@ -90,7 +90,12 @@ namespace tests
         }
 
         public MenuLayer2()
+        {  }
+
+        protected override void AddedToScene()
         {
+            base.AddedToScene();
+
             for (int i = 0; i < 2; i++)
             {
                 CCMenuItemImage item1 = new CCMenuItemImage(s_PlayNormal, s_PlaySelect, menuCallback);
@@ -113,6 +118,7 @@ namespace tests
             m_alignedH = true;
             alignMenusH();
         }
+
         public void menuCallback(object pSender)
         {
             CCLayerMultiplex m = Parent as CCLayerMultiplex;

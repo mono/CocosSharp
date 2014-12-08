@@ -51,12 +51,19 @@ namespace tests
 
 			AddEventListener(touchListener, 1);
 
-			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
-			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
-			// modify this here to make sure we have the correct sizes when they are passed.
-			CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            // We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
+            // rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
+            // modify this here to make sure we have the correct sizes when they are passed.
+            CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+            CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+            CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
             var item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
@@ -71,11 +78,11 @@ namespace tests
             item3.Color = new CCColor3B(200, 200, 255);
 
             // Font Item
-			CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", (sender) => 
-				{
-					disabledItem.Enabled = !disabledItem.Enabled;
+            CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", (sender) => 
+                {
+                    disabledItem.Enabled = !disabledItem.Enabled;
 
-				});
+                });
 
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
@@ -85,28 +92,23 @@ namespace tests
             // Testing issue #500
             item5.Scale = 0.8f;
 
-			CCMenuItemFont.FontSize = 30;
+            CCMenuItemFont.FontSize = 30;
             // Events
             CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
 
             // Font Item
-			CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
-			item7.RepeatForever(color_action, color_action.Reverse());
+            CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
+            item7.RepeatForever(color_action, color_action.Reverse());
 
-			menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
-			menu.AlignItemsVertically();
+            menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
+            menu.AlignItemsVertically();
 
             disabledItem = item3;
             disabledItem.Enabled = false;
 
             AddChild(menu);
-			menu.Scale = 0;
-			menu.RunAction(new CCScaleTo(1, 1));
-        }
-
-        protected override void AddedToScene()
-        {
-            base.AddedToScene();
+            menu.Scale = 0;
+            menu.RunAction(new CCScaleTo(1, 1));
 
 			// elastic effect
             CCSize s = Layer.VisibleBoundsWorldspace.Size;

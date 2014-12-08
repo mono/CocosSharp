@@ -35,48 +35,55 @@ namespace tests
         protected CCMenuItem m_disabledItem;
 
         string s_MenuItem = "Images/menuitemsprite";
+
         public MenuLayer3()
+        {        }
+
+        protected override void AddedToScene()
         {
-			var label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
+            base.AddedToScene();
+
+            var label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
             var item1 = new CCMenuItemLabelBMFont(label, this.menuCallback2);
 
-			CCMenuItemFont.FontSize = 28;
-			CCMenuItemFont.FontName = "arial";
+            CCMenuItemFont.FontSize = 28;
+            CCMenuItemFont.FontName = "arial";
 
             var item2 = new CCMenuItemFont("--- Go Back ---", this.menuCallback);
 
-			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
-			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
-			// modify this here to make sure we have the correct sizes when they are passed.
-			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+            // We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
+            // rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
+            // modify this here to make sure we have the correct sizes when they are passed.
+            var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+            var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+            var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
             var item3 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
             m_disabledItem = item3;
             m_disabledItem.Enabled = false;
 
-			var menu = new CCMenu(item1, item2, item3);
+            var menu = new CCMenu(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
 
-			var s = Layer.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
             item1.Position = new CCPoint(s.Width / 2 - 150, s.Height / 2);
             item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);
             item3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 100);
 
-			var jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
-			item2.RepeatForever(jump, jump.Reverse());
+            var jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
+            item2.RepeatForever(jump, jump.Reverse());
 
-			var spin1 = new CCRotateBy (3, 360);
+            var spin1 = new CCRotateBy (3, 360);
 
-			item1.RepeatForever(spin1);
-			item2.RepeatForever(spin1);
-			item3.RepeatForever(spin1);
+            item1.RepeatForever(spin1);
+            item2.RepeatForever(spin1);
+            item3.RepeatForever(spin1);
 
             AddChild(menu);
         }
+
 
         public void menuCallback(object pSender)
         {

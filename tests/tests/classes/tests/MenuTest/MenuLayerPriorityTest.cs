@@ -38,6 +38,13 @@ namespace tests
 
         public MenuLayerPriorityTest()
         {
+
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
             // Testing empty menu
             m_pMenu1 = new CCMenu();
             m_pMenu2 = new CCMenu();

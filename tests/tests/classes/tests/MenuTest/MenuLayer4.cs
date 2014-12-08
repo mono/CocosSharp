@@ -34,42 +34,50 @@ namespace tests
     {
         public MenuLayer4()
         {
-			CCMenuItemFont.FontSize = 18;
-			CCMenuItemFont.FontName = "arial";
+
+        }
+
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            CCMenuItemFont.FontSize = 18;
+            CCMenuItemFont.FontName = "arial";
 
             CCMenuItemFont title1 = new CCMenuItemFont("Sound");
             title1.Enabled = false;
 
-			CCMenuItemFont.FontSize = 34;
-            
+            CCMenuItemFont.FontSize = 34;
+
             CCMenuItemToggle item1 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("On"),
                 new CCMenuItemFont("Off"));
 
-			CCMenuItemFont.FontSize = 18;
+            CCMenuItemFont.FontSize = 18;
 
-			CCMenuItemFont title2 = new CCMenuItemFont("Music");
+            CCMenuItemFont title2 = new CCMenuItemFont("Music");
             title2.Enabled = false;
 
-			CCMenuItemFont.FontSize = 34;
+            CCMenuItemFont.FontSize = 34;
             CCMenuItemToggle item2 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("On"),
-				new CCMenuItemFont("Off"));
+                new CCMenuItemFont("Off"));
 
-			CCMenuItemFont.FontSize = 18;
+            CCMenuItemFont.FontSize = 18;
             CCMenuItemFont title3 = new CCMenuItemFont("Quality");
             title3.Enabled = false;
 
-			CCMenuItemFont.FontSize = 34;
+            CCMenuItemFont.FontSize = 34;
             CCMenuItemToggle item3 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("High"),
                 new CCMenuItemFont("Low"));
-                
-				CCMenuItemFont.FontSize = 18;
+
+            CCMenuItemFont.FontSize = 18;
             CCMenuItemFont title4 = new CCMenuItemFont("Orientation");
             title4.Enabled = false;
 
-				CCMenuItemFont.FontSize = 34;
+            CCMenuItemFont.FontSize = 34;
 
             CCMenuItemToggle item4 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("Off"));
@@ -83,11 +91,11 @@ namespace tests
             CCMenuItemLabelBMFont back = new CCMenuItemLabelBMFont(label, this.backCallback);
 
             CCMenu menu = new CCMenu(
-                          title1, title2,
-                          item1, item2,
-                          title3, title4,
-                          item3, item4,
-				back) { Tag = 36 }; // 9 items.
+                title1, title2,
+                item1, item2,
+                title3, title4,
+                item3, item4,
+                back) { Tag = 36 }; // 9 items.
 
             menu.AlignItemsInColumns(2, 2, 2, 2, 1);
 
