@@ -23,27 +23,15 @@ namespace $safeprojectname$
 			Opacity = 255;
 
 		}
-	        protected override void AddedToScene()
-        	{
-	        	base.AddedToScene();
+        protected override void AddedToScene()
+       	{
+        	base.AddedToScene();
 
 			var windowSize = VisibleBoundsWorldspace.Size;
 
 			// position the label on the center of the screen
 			label.Position = windowSize.Center;
-        	}
-
-		public static CCScene CreateScene (CCWindow mainWindow) 
-		{
-			var scene = new CCScene(mainWindow);
-			var layer = new IntroLayer();
-
-			// add layer as a child to scene
-			scene.AddChild(layer);
-
-			// return the scene
-			return scene;
-		}
+       	}
 
 	}
 }

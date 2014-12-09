@@ -52,7 +52,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="EmptyProject.548623EE-B1A5-49B8-9C03-6C6C4762A734">
-			<package id="CocosSharp.Android" version="1.0.1.0" />
+			<package id="CocosSharp.Android" version="1.2.1.0" />
 		</packages>
 	</WizardData>
 </VSTemplate>
