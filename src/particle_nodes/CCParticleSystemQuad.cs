@@ -341,7 +341,7 @@ namespace CocosSharp
 
         public override void UpdateQuads()
         {
-            if (!Visible)
+            if (!Visible || Layer == null)
             {
                 return;
             }
