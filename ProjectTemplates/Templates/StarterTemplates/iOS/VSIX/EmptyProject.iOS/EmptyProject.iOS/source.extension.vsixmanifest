@@ -3,7 +3,7 @@
 	<Identifier Id="EmptyProject.F4B9EE66-6302-4B20-B798-2CEE8BCA936D">
 		<Name>CocosSharp Empty Game iOS</Name>
 		<Author>CocosSharp</Author>
-		<Version>1.0</Version>
+		<Version>1.2.1.0</Version>
 		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for iOS.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>

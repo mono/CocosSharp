@@ -3,7 +3,7 @@
 	<Identifier Id="EmptyProject.548623EE-B1A5-49B8-9C03-6C6C4762A734">
 		<Name>CocosSharp Empty Game Android</Name>
 		<Author>Xamarin Inc</Author>
-		<Version>1.0</Version>
+		<Version>1.2.1.0</Version>
 		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Android.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
