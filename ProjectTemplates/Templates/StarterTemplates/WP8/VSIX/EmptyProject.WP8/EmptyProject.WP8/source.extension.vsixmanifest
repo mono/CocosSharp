@@ -3,7 +3,7 @@
 	<Identifier Id="EmptyProject.C20A9025-B3B3-43E6-A5A9-C02F456F1B4F">
 		<Name>Empty Game Windows Phone 8</Name>
 		<Author>Xamarin</Author>
-		<Version>1.0</Version>
+		<Version>1.2.1.0</Version>
 		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>
