@@ -11,10 +11,10 @@ namespace $safeprojectname$
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
             application.ContentRootDirectory = "Content";
-            CCSize windowSize = mainWindow.WindowSizeInPixels;
+            var windowSize = mainWindow.WindowSizeInPixels;
 
-            float desiredWidth = 1024.0f;
-            float desiredHeight = 768.0f;
+            var desiredWidth = 1024.0f;
+            var desiredHeight = 768.0f;
             
             // This will set the world bounds to be (0,0, w, h)
             // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
@@ -25,12 +25,12 @@ namespace $safeprojectname$
             // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
             if (desiredWidth < windowSize.Width)
             {
-                application.ContentSearchPaths.Add("images/hd");
+                application.ContentSearchPaths.Add("hd");
                 CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
             }
             else
             {
-                application.ContentSearchPaths.Add("images/ld");
+                application.ContentSearchPaths.Add("ld");
                 CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
             }
             

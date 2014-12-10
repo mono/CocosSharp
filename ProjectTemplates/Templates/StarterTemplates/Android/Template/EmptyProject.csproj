@@ -85,6 +85,13 @@
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\Content\hd\images" />
+    <Folder Include="Assets\Content\hd\animations" />
+    <Folder Include="Assets\Content\hd\fonts" />
+    <Folder Include="Assets\Content\ld\images" />
+    <Folder Include="Assets\Content\ld\animations" />
+    <Folder Include="Assets\Content\ld\fonts" />
+    <Folder Include="Assets\Content\sounds" />
     <Folder Include="Resources\Layout\" />
   </ItemGroup>
   <ItemGroup>
