@@ -39,7 +39,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="EmptyProject.F4B9EE66-6302-4B20-B798-2CEE8BCA936D">
-			<package id="CocosSharp.iOS" version="1.0.1.0" />
+			<package id="CocosSharp.iOS" version="1.2.1.0" />
 		</packages>
 	</WizardData>
 </VSTemplate>
