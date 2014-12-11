@@ -139,6 +139,15 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\hd\images" />
+    <Folder Include="Content\hd\animations" />
+    <Folder Include="Content\hd\fonts" />
+    <Folder Include="Content\ld\images" />
+    <Folder Include="Content\ld\animations" />
+    <Folder Include="Content\ld\fonts" />
+    <Folder Include="Content\sounds" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="box2d, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\src\Bin\Windows8\Release\box2d.dll</HintPath>

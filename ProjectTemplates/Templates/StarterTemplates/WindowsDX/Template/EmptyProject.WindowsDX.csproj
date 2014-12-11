@@ -41,6 +41,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\hd\images" />
+    <Folder Include="Content\hd\animations" />
+    <Folder Include="Content\hd\fonts" />
+    <Folder Include="Content\ld\images" />
+    <Folder Include="Content\ld\animations" />
+    <Folder Include="Content\ld\fonts" />
+    <Folder Include="Content\sounds" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="BitMiracle.LibTiff.NET">
       <HintPath>..\..\..\..\..\..\..\src\Bin\WindowsDX\Release\BitMiracle.LibTiff.NET.dll</HintPath>
     </Reference>
