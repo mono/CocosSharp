@@ -24,3 +24,18 @@ sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplat
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WP8/Template/EmptyProject.WP8.vstemplate 
 sed -i '' "s/CocosSharp.WindowsPhone8\..*.nupkg/CocosSharp.WindowsPhone8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/WP8/VSIX/EmptyProject.WP8/EmptyProject.WP8/EmptyProject.WP8.csproj
 sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/WP8/VSIX/EmptyProject.WP8/EmptyProject.WP8/source.extension.vsixmanifest
+
+# Update Windows DX Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsDX/Template/EmptyProject.WindowsDX.vstemplate 
+sed -i '' "s/CocosSharp.WindowsDX\..*.nupkg/CocosSharp.WindowsDX.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsDX/VSIX/EmptyProject.WindowsDX/EmptyProject.WindowsDX/EmptyProject.WindowsDX.csproj
+sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsDX/VSIX/EmptyProject.WindowsDX/EmptyProject.WindowsDX/source.extension.vsixmanifest
+
+# Update Windows Store Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Windows8/Template/EmptyProject.Windows8.vstemplate 
+sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/Windows8/VSIX/EmptyProject.Windows8/EmptyProject.Windows8/EmptyProject.Windows8.csproj
+sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/Windows8/VSIX/EmptyProject.Windows8/EmptyProject.Windows8/source.extension.vsixmanifest
+
+# Update Windows8 XAML Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/Template/EmptyProject.Win8XAML.vstemplate 
+sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/VSIX/EmptyProject.Win8XAML/EmptyProject.Win8XAML/EmptyProject.Win8XAML.csproj
+sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/VSIX/EmptyProject.Win8XAML/EmptyProject.Win8XAML/source.extension.vsixmanifest
