@@ -3,7 +3,7 @@
 	<Identifier Id="EmptyProject.D77B5035-2DCE-4323-85E7-AD7916F70CCA">
 		<Name>Empty Game Windows Store XAML</Name>
 		<Author>Xamarin</Author>
-		<Version>1.0</Version>
+		<Version>1.2.1.0</Version>
 		<Description xml:space="preserve">Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for targeting Windows Store (XAML).</Description>
 		<Locale>1033</Locale>
 		<Icon>powered.ico</Icon>

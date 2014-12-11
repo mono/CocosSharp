@@ -50,7 +50,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="EmptyProject.D77B5035-2DCE-4323-85E7-AD7916F70CCA">
-			<package id="CocosSharp.Windows8" version="1.0.1.0" />
+			<package id="CocosSharp.Windows8" version="1.2.1.0" />
 		</packages>
 	</WizardData>
 </VSTemplate>

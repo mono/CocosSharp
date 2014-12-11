@@ -50,8 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\..\..\NuGet\bin\CocosSharp.Windows8.1.0.1.0.nupkg">
-      <Link>Packages\CocosSharp.Windows8.1.0.1.0.nupkg</Link>
+    <Content Include="..\..\..\..\..\..\NuGet\bin\CocosSharp.Windows8.1.2.1.0.nupkg">
+      <Link>Packages\CocosSharp.Windows8.1.2.1.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\..\..\Template\bin\EmptyProject.Win8XAML.zip">
