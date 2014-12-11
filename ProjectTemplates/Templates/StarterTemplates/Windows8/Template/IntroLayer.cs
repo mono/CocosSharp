@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 
@@ -8,43 +9,45 @@ namespace $safeprojectname$
 	{
 		CCLabelTtf label;
 
-		public IntroLayer () 
-		{
+        public IntroLayer()
+        {
 
-			// create and initialize a Label
-			label = new CCLabelTtf("Hello CocosSharp", "MarkerFelt", 22);
-			label.AnchorPoint = CCPoint.AnchorMiddle;
+            // create and initialize a Label
+            label = new CCLabelTtf("Hello CocosSharp", "MarkerFelt", 22);
+            label.AnchorPoint = CCPoint.AnchorMiddle;
 
-			// add the label as a child to this Layer
-			AddChild(label);
+            // add the label as a child to this Layer
+            AddChild(label);
 
-			// setup our color for the background
-			Color = new CCColor3B (CCColor4B.Blue);
-			Opacity = 255;
+            // setup our color for the background
+            Color = new CCColor3B(CCColor4B.Blue);
+            Opacity = 255;
 
-		}
-	        protected override void AddedToScene()
-        	{
-	        	base.AddedToScene();
+        }
 
-			var windowSize = VisibleBoundsWorldspace.Size;
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
 
-			// position the label on the center of the screen
-			label.Position = windowSize.Center;
-        	}
+            // Use the bounds to layout the positioning of our drawable assets
+            var bounds = VisibleBoundsWorldspace;
 
-		public static CCScene CreateScene (CCWindow mainWindow) 
-		{
-			var scene = new CCScene(mainWindow);
-			var layer = new IntroLayer();
+            // position the label on the center of the screen
+            label.Position = bounds.Center;
 
-			// add layer as a child to scene
-			scene.AddChild(layer);
+            // Register for touch events
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesEnded = OnTouchesEnded;
+            AddEventListener(touchListener, this);
+        }
 
-			// return the scene
-			return scene;
-		}
-
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        {
+            if (touches.Count > 0)
+            {
+                // Perform touch handling here
+            }
+        }
 	}
 }
 
