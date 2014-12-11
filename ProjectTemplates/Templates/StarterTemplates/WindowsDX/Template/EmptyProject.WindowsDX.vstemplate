@@ -37,7 +37,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="EmptyProject.BBC60DCF-BF52-4B84-BA6F-897301844B37">
-			<package id="CocosSharp.WindowsDX" version="1.0.1.0" />
+			<package id="CocosSharp.WindowsDX" version="1.2.1.0" />
 		</packages>
 	</WizardData>
 </VSTemplate>
