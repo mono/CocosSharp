@@ -1,100 +1,55 @@
 using System.Reflection;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 using CocosDenshion;
 
 namespace $safeprojectname$
 {
-	public class AppDelegate : CCApplication
-	{
+    public class AppDelegate : CCApplicationDelegate
+    {
 
-		int preferredWidth;
-		int preferredHeight;
+        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+        {
+            application.ContentRootDirectory = "Content";
+            var windowSize = mainWindow.WindowSizeInPixels;
 
-		public AppDelegate(Game game, GraphicsDeviceManager graphics)
-			: base(game, graphics)
-		{
-			s_pSharedApplication = this;
+            var desiredWidth = 1024.0f;
+            var desiredHeight = 768.0f;
+            
+            // This will set the world bounds to be (0,0, w, h)
+            // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
+            mainWindow.SetDesignResolutionSize(desiredWidth, desiredHeight, CCSceneResolutionPolicy.ShowAll);
+            
+            // Determine whether to use the high or low def versions of our images
+            // Make sure the default texel to content size ratio is set correctly
+            // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
+            if (desiredWidth < windowSize.Width)
+            {
+                application.ContentSearchPaths.Add("hd");
+                CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
+            }
+            else
+            {
+                application.ContentSearchPaths.Add("ld");
+                CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
+            }
+            
+            var scene = new CCScene(mainWindow);
+            var introLayer = new IntroLayer();
 
-            preferredWidth = 1024;
-            preferredHeight = 768;
-			graphics.PreferredBackBufferWidth = preferredWidth;
-			graphics.PreferredBackBufferHeight = preferredHeight;
+            scene.AddChild(introLayer);
 
-            CCDrawManager.InitializeDisplay(game, 
-			                              graphics, 
-			                              DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
-			
-			
-			graphics.PreferMultiSampling = false;
-			
-		}
-		
-		/// <summary>
-		/// Implement for initialize OpenGL instance, set source path, etc...
-		/// </summary>
-		public override bool InitInstance()
-		{
-			return base.InitInstance();
-		}
-		
-		/// <summary>
-		///  Implement CCDirector and CCScene init code here.
-		/// </summary>
-		/// <returns>
-		///  true  Initialize success, app continue.
-		///  false Initialize failed, app terminate.
-		/// </returns>
-		public override bool ApplicationDidFinishLaunching()
-		{
-			//initialize director
-			CCDirector pDirector = CCDirector.SharedDirector;
-			pDirector.SetOpenGlView();
+            mainWindow.RunWithScene(scene);
+        }
 
+        public override void ApplicationDidEnterBackground(CCApplication application)
+        {
+            application.Paused = true;
+        }
 
-			// 2D projection
-			pDirector.Projection = CCDirectorProjection.Projection2D;
-
-			var resPolicy = CCResolutionPolicy.ExactFit; // This will stretch out your game
-
-			CCDrawManager.SetDesignResolutionSize(preferredWidth, 
-			                                      preferredHeight, 
-			                                      resPolicy);
-
-			// turn on display FPS
-			//pDirector.DisplayStats = true;
-
-			// set FPS. the default value is 1.0/60 if you don't call this
-			pDirector.AnimationInterval = 1.0 / 60;
-			
-			CCScene pScene = IntroLayer.Scene;
-
-			pDirector.RunWithScene(pScene);
-			return true;
-		}
-		
-		/// <summary>
-		/// The function be called when the application enters the background
-		/// </summary>
-		public override void ApplicationDidEnterBackground()
-		{
-            // stop all of the animation actions that are running.
-			CCDirector.SharedDirector.Pause();
-			
-			// if you use SimpleAudioEngine, your music must be paused
-			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = true;
-		}
-		
-		/// <summary>
-		/// The function be called when the application enter foreground  
-		/// </summary>
-		public override void ApplicationWillEnterForeground()
-		{
-            CCDirector.SharedDirector.Resume();
-			
-			// if you use SimpleAudioEngine, your background music track must resume here. 
-			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = false;
-
-		}
-	}
+        public override void ApplicationWillEnterForeground(CCApplication application)
+        {
+            application.Paused = false;
+        }
+    }
 }

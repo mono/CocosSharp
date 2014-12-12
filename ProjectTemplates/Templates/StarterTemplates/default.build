@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<project name="Cocos2D-XNA Template Build Script" default="build" basedir=".">
-	<description>Default Cocos2D-XNA Template Automated Build script</description>
+<project name="CocosSharp Template Build Script" default="build" basedir=".">
+	<description>Default CocosSharp Template Automated Build script</description>
 	<property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
 
-	<target name="build" description="Build Cococs2D-XNA Visual Studio Templates">
+	<target name="build" description="Build CocosSharp Visual Studio Templates">
 		<call target="ziptemplates"/>
 		<call target="buildvsix"/>
 		<call target="zipdistribution"/>
@@ -73,7 +73,7 @@
 				<include name="**/Release/*.vsix" />
 			</fileset>
 		</copy-->
-		<zip zipfile="./bin/Cocos2D-XNATemplates.zip" flatten="true">
+		<zip zipfile="./bin/CocosSharpTemplates.zip" flatten="true">
 		  <fileset basedir="./">			    
 		     <!--include name="./bin/*.vsix" /-->
 			<include name="**/Release/*.vsix" />
