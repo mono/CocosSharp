@@ -39,3 +39,8 @@ sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplat
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/Template/EmptyProject.Win8XAML.vstemplate 
 sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/VSIX/EmptyProject.Win8XAML/EmptyProject.Win8XAML/EmptyProject.Win8XAML.csproj
 sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/VSIX/EmptyProject.Win8XAML/EmptyProject.Win8XAML/source.extension.vsixmanifest
+
+# Update Windows GL Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
+sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/VSIX/EmptyProject.WindowsGL/EmptyProject.WindowsGL/EmptyProject.WindowsGL.csproj
+sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/VSIX/EmptyProject.WindowsGL/EmptyProject.WindowsGL/source.extension.vsixmanifest
