@@ -991,7 +991,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = Layer.WorldToScreenspace(m_tamara.Position);
+            CCPoint p = m_tamara.Position;
 			CCNode map = this[kTagTileMap];
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -1050,7 +1050,8 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCSize s = map.ContentSize;
             map.Position = new CCPoint(-s.Width / 2, 0);
