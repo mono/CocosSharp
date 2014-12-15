@@ -33,13 +33,9 @@
                 <Directory name="Resources">
                     <File name="Resource.designer.cs" src="../Common.Android/Resource.cs" />
                     <RawFile name="AboutResources.txt" src="../Common.Android/AboutResources.txt" />
-                    <Directory name="layout">
-                        <File name="Main.axml" src="../Common.Android/Main.axml" />
-                    </Directory>
                     <Directory name="values">
                         <File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">${ProjectName}</string>
 </resources>]]></File>
                     </Directory>

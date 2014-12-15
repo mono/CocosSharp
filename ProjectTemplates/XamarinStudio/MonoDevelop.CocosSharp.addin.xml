@@ -30,7 +30,6 @@
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/Icon-md.png" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AboutAssets.txt" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AboutResources.txt" />
-        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/Main.axml" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AssemblyInfo.Android.cs" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/MainActivity.cs" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/Resource.cs" />
