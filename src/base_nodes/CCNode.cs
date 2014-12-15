@@ -1730,6 +1730,10 @@ namespace CocosSharp
 
         public virtual void ReorderChild(CCNode child, int zOrder)
         {
+            // lets not do anything here if the z-order is not to be changed
+            if (child.localZOrder == zOrder && child.zOrder == zOrder)
+                return;
+
             Debug.Assert(child != null, "Child must be non-null");
 
             IsReorderChildDirty = true;

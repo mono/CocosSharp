@@ -898,7 +898,7 @@ namespace tests
             m_tamara = new CCSprite(pathSister1);
             map.AddChild(m_tamara, map.Children.Count);
 
-            m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
+            m_tamara.AnchorPoint = CCPoint.AnchorMiddleBottom;
 
 			m_tamara.RepeatForever(move, back);
 
@@ -915,7 +915,7 @@ namespace tests
 			map.Position = new CCPoint(-s.Width / 2, 0);
 
 			float mapWidth = map.MapSize.Width * map.TileSize.Width;
-            m_tamara.Position = Layer.ScreenToWorldspace(new CCPoint (mapWidth / 2, 0));
+            m_tamara.Position = map.WorldToParentspace(new CCPoint (mapWidth / 2, 0));
 		}
 
 
@@ -927,8 +927,9 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = Layer.WorldToScreenspace(m_tamara.Position);
+            CCPoint p = m_tamara.Position;//         Layer.WorldToScreenspace(m_tamara.Position);
             CCNode map = this[kTagTileMap];
+
 
             // there are only 4 layers. (grass and 3 trees layers)
             // if tamara < 48, z=4
@@ -938,10 +939,10 @@ namespace tests
             int newZ = (int)(4 - (p.Y / 48));
             newZ = Math.Max(newZ, 0);
 
-            if (m_tamara.ZOrder != newZ)
-            {
+            //if (m_tamara.LocalZOrder != newZ)
+            //{
                 map.ReorderChild(m_tamara, newZ);
-            }
+            //}
         }
 
 		public override string Title

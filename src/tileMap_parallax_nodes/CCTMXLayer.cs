@@ -196,6 +196,41 @@ namespace CocosSharp
             return i;
         }
 
+        public override void Visit()
+        {
+            // CAREFUL:
+            // This visit is almost identical to CCNode#visit
+            // with the exception that it doesn't call visit on it's children
+            //
+            // The alternative is to have a void CCSprite#visit, but
+            // although this is less mantainable, is faster
+            //
+            if (!Visible || Window == null)
+            {
+                return;
+            }
+
+            Window.DrawManager.PushMatrix();
+
+            if (Grid != null && Grid.Active)
+            {
+                Grid.BeforeDraw();
+                TransformAncestors();
+            }
+
+            SortAllChildren();
+            Transform();
+
+            Draw();
+
+            if (Grid != null && Grid.Active)
+            {
+                Grid.AfterDraw(this);
+            }
+
+            Window.DrawManager.PopMatrix();
+        }
+
         protected override void Draw()
         {
             var alphaTest = Window.DrawManager.AlphaTestEffect;
