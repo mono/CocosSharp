@@ -143,22 +143,12 @@ namespace tests
             CCSize s = map.ContentSize;
             CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
 
-            /*
-            CCArray pChildrenArray = map.getChildren();
-            CCSpriteBatchNode* child = NULL;
-            object* pObject = NULL;
-            CCARRAY_FOREACH(pChildrenArray, pObject)
-            {
-                child = (CCSpriteBatchNode*) pObject;
+            var scale = new CCScaleBy(10, 0.1f);
+            var back = scale.Reverse();
+            map.RepeatForever(scale, back);
 
-                if (!child)
-                    break;
 
-                child.Texture.setAntiAliasTexParameters();
-            }
-            */
-
-            float x, y, z;
+            //float x, y, z;
             //map.Camera.GetEyeXyz(out x, out y, out z);
             //map.Camera.SetEyeXyz(x - 200, y, z + 300);
         }
