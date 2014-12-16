@@ -108,6 +108,6 @@ namespace CocosSharp
         /*
          * Macros defined in CCSprite.h
          */
-        internal static readonly int CCSpriteIndexNotInitialized = 320000000; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
+        internal static readonly int CCSpriteIndexNotInitialized = -1; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
     }
 }

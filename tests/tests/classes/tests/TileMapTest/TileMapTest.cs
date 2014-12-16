@@ -266,35 +266,20 @@ namespace tests
             CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test4");
             AddChild(map, 0, kTagTileMap);
 
-            /*
-            CCArray* pChildrenArray = map.getChildren();
-            CCSpriteBatchNode* child = NULL;
-            object* pObject = NULL;
-            CCARRAY_FOREACH(pChildrenArray, pObject)
-            {
-                child = (CCSpriteBatchNode*) pObject;
-
-                if (!child)
-                    break;
-
-                child.Texture.setAntiAliasTexParameters();
-            }
-            */
-
-            map.AnchorPoint = (new CCPoint(0, 0));
+            map.AnchorPoint = CCPoint.AnchorLowerLeft;
 
             CCTMXLayer layer = map.LayerNamed("Layer 0");
             CCSize s = layer.LayerSize;
 
             CCSprite sprite;
-            sprite = layer.TileAt(new CCPoint(0, 0));
-            sprite.Scale = (2);
-            sprite = layer.TileAt(new CCPoint(s.Width - 1, 0));
-            sprite.Scale = (2);
-            sprite = layer.TileAt(new CCPoint(0, s.Height - 1));
-            sprite.Scale = (2);
-            sprite = layer.TileAt(new CCPoint(s.Width - 1, s.Height - 1));
-            sprite.Scale = (2);
+            sprite = layer.TileAt(0, 0);
+            sprite.Scale = 2;
+            sprite = layer.TileAt(s.Width - 1, 0);
+            sprite.Scale = 2;
+            sprite = layer.TileAt(0, s.Height - 1);
+            sprite.Scale = 2;
+            sprite = layer.TileAt(s.Width - 1, s.Height - 1);
+            sprite.Scale = 2;
 
             Schedule(removeSprite, 2);
         }
@@ -303,12 +288,17 @@ namespace tests
         {
             Unschedule(removeSprite);
 
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            CCTMXLayer layer = map.LayerNamed("Layer 0");
-            CCSize s = layer.LayerSize;
+            var map = (CCTMXTiledMap) this[kTagTileMap];
+            var layer = map.LayerNamed("Layer 0");
+            var s = layer.LayerSize;
 
-            CCSprite sprite = layer.TileAt(new CCPoint(s.Width - 1, 0));
+            var sprite = layer.TileAt(s.Width - 1, 0);
+            var sprite2 = layer.TileAt(s.Width - 1, s.Height - 1);
             layer.RemoveChild(sprite, true);
+
+            var sprite3 = layer.TileAt(2, s.Height-1);
+            layer.RemoveChild(sprite3, true);
+            layer.RemoveChild(sprite2, true);
         }
 
 		public override string Title

@@ -564,29 +564,29 @@ namespace CocosSharp
             // Cleanup sprite. It might be reused (issue #569)
             sprite.BatchNode = null;
 
-            int uIndex = Descendants.IndexOf(sprite);
+            var uIndex = Descendants.IndexOf(sprite);
 
             if (uIndex >= 0)
             {
-                Descendants.RemoveAt(uIndex);
-
                 // update all sprites beyond this one
-                int count = Descendants.Count;
-                CCSprite[] elements = Descendants.Elements;
+                var count = Descendants.Count;
+                var elements = Descendants.Elements;
 
-                for (; uIndex < count; ++uIndex)
+                for (var index = uIndex; index < count; ++index)
                 {
-                    elements[uIndex].AtlasIndex--;
+                    elements[index].AtlasIndex--;
                 }
+
+                Descendants.RemoveAt(uIndex);
             }
 
             // remove children recursively
-            CCRawList<CCNode> pChildren = sprite.Children;
+            var spriteChildren = sprite.Children;
 
-            if (pChildren != null && pChildren.Count > 0)
+            if (spriteChildren != null && spriteChildren.Count > 0)
             {
-                CCNode[] elements = pChildren.Elements;
-                for (int i = 0, count = pChildren.Count; i < count; i++)
+                var elements = spriteChildren.Elements;
+                for (int i = 0, count = spriteChildren.Count; i < count; i++)
                 {
                     RemoveSpriteFromAtlas((CCSprite) elements[i]);
                 }
@@ -657,7 +657,7 @@ namespace CocosSharp
                 CCSprite[] elements = Descendants.Elements;
                 for (int j = 0, count = Descendants.Count; j < count; j++)
                 {
-                    if (elements[i].AtlasIndex >= z)
+                    if (elements[i].AtlasIndex <= z)
                     {
                         ++i;
                     }
