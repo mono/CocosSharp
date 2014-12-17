@@ -664,53 +664,27 @@ namespace tests
 
             CCSize s = map.ContentSize;
 
-            /*
-            ////----UXLOG("---. Iterating over all the group objets");
-            CCTMXObjectGroup group = map.objectGroupNamed("Object Group 1");
-            CCArray objects = group.getObjects();
+            CCLog.Log("ContentSize: {0}, {1}", s.Width,s.Height);
 
-            CCDictionary* dict = NULL;
-            object* pObj = NULL;
-            CCARRAY_FOREACH(objects, pObj)
-            {
-                dict = (CCDictionary*) pObj; //dynamic_cast<CCStringToStringDictionary*>(*it);
+            var objectGroup = map.ObjectGroupNamed("Object Group 1");
+            var objects = objectGroup.Objects;
 
-                if (!dict)
-                    break;
+            var drawNode = new CCDrawNode();
 
-                ////----UXLOG("object: %x", dict);
-            }
-            */
-
-            ////----UXLOG("---. Fetching 1 object by name");
-            // CCStringToStringDictionary* platform = group.objectNamed("platform");
-            ////----UXLOG("platform: %x", platform);
-        }
-
-        protected override void Draw()
-        {
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            CCTMXObjectGroup group = map.ObjectGroupNamed("Object Group 1");
-            
-            List<Dictionary<string, string>> objects = group.Objects;
             foreach (var dict in objects)
             {
+
                 float x = float.Parse(dict["x"]);
                 float y = float.Parse(dict["y"]);
                 float width = (dict.ContainsKey("width") ? float.Parse(dict["width"]) : 0f);
                 float height = (dict.ContainsKey("height") ? float.Parse(dict["height"]) : 0f);
 
-                var color = new CCColor4B(255, 255, 0, 255);
+                var color = new CCColor4B(255, 255, 255, 255);
 
-                CCDrawingPrimitives.Begin();
-                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint(x, y)), this.AffineWorldTransform.Transform(new CCPoint((x + width), y)), color);
-                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint((x + width), y)), this.AffineWorldTransform.Transform(new CCPoint((x + width), (y + height))), color);
-                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint((x + width), (y + height))), this.AffineWorldTransform.Transform(new CCPoint(x, (y + height))), color);
-                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint(x, (y + height))), this.AffineWorldTransform.Transform(new CCPoint(x, y)), color);
-                CCDrawingPrimitives.End();
-
-                //glLineWidth(1);
+                drawNode.DrawRect(new CCRect(x, y, width, height), CCColor4B.Transparent, 1, color);
             }
+            map.AddChild(drawNode);
+             
         }
 
 		public override string Title
