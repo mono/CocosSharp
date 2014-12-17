@@ -718,52 +718,26 @@ namespace tests
 
             CCSize s = map.ContentSize;
 
-            /*
-            CCTMXObjectGroup group = map.objectGroupNamed("Object Group 1");
+            CCLog.Log("ContentSize: {0}, {1}", s.Width,s.Height);
 
-            //UxMutableArray* objects = group.objects();
-            CCArray* objects = group.getObjects();
-            //UxMutableDictionary<string>* dict;
-            CCDictionary* dict;
-            object* pObj = NULL;
-            CCARRAY_FOREACH(objects, pObj)
-            {
-                dict = (CCDictionary*) pObj;
+            var objectGroup = map.ObjectGroupNamed("Object Group 1");
+            var objects = objectGroup.Objects;
 
-                if (!dict)
-                    break;
+            var drawNode = new CCDrawNode();
 
-                ////----UXLOG("object: %x", dict);
-            }
-            */
-        }
-
-        protected override void Draw()
-        {
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            CCTMXObjectGroup group = map.ObjectGroupNamed("Object Group 1");
-
-            List<Dictionary<string, string>> objects = group.Objects;
             foreach (var dict in objects)
             {
-                int x = int.Parse(dict["x"]);
-                int y = int.Parse(dict["y"]);
-                int width = dict.ContainsKey("width") ? int.Parse(dict["width"]) : 0;
-                int height = dict.ContainsKey("height") ? int.Parse(dict["height"]) : 0;
 
-                //glLineWidth(3);
+                float x = float.Parse(dict["x"]);
+                float y = float.Parse(dict["y"]);
+                float width = (dict.ContainsKey("width") ? float.Parse(dict["width"]) : 0f);
+                float height = (dict.ContainsKey("height") ? float.Parse(dict["height"]) : 0f);
 
-                var color = new CCColor4B(255, 255, 0, 255);
+                var color = new CCColor4B(255, 255, 255, 255);
 
-                CCDrawingPrimitives.Begin();
-                CCDrawingPrimitives.DrawLine(new CCPoint(x, y), new CCPoint(x + width, y), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x + width, y), new CCPoint(x + width, y + height), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x + width, y + height), new CCPoint(x, y + height), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x, y + height), new CCPoint(x, y), color);
-                CCDrawingPrimitives.End();
-
-                //glLineWidth(1);
+                drawNode.DrawRect(new CCRect(x, y, width, height), CCColor4B.Transparent, 1, color);
             }
+            map.AddChild(drawNode, 10);
         }
 
 		public override string Title
