@@ -194,7 +194,7 @@ namespace CocosSharp
 
             if(Camera == null)
             {
-                Camera = new CCCamera (initCameraProjection, this.Window.DesignResolutionSize);
+                Camera = new CCCamera (initCameraProjection, Scene.DesignResolutionSize);
             }
         }
 

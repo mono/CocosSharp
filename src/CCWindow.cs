@@ -33,7 +33,6 @@ namespace CocosSharp
         internal CCDrawManager DrawManager { get { return CCDrawManager.SharedDrawManager; } }
         internal GameWindow XnaWindow { get; private set; }
         internal GraphicsDeviceManager DeviceManager { get; private set; }
-        internal CCSize designResolutionSize = CCSize.Zero;
         private CCDirector defaultDirector;
 
         protected CCStats Stats { get; private set; }
@@ -148,8 +147,6 @@ namespace CocosSharp
 
             Application = application;
 
-            designResolutionSize = WindowSizeInPixels;
-            DesignResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
             Stats.Initialize();
         }
 
@@ -365,26 +362,10 @@ namespace CocosSharp
 
         #endregion Drawing and updating
 
-        public CCSceneResolutionPolicy DesignResolutionPolicy { get; private set; }
-
-
-        public CCSize DesignResolutionSize 
-        {
-            get 
-            {
-                return designResolutionSize;
-            }
-            private set 
-            {
-                designResolutionSize = value;
-            }
-        }
-
+        [Obsolete("Use CCScene.SetDefaultDesignResolution instead")]
         public void SetDesignResolutionSize(float width, float height, CCSceneResolutionPolicy resolutionPolicy)
         {
-            designResolutionSize = new CCSize(width, height);
-            DesignResolutionPolicy = resolutionPolicy;
+            CCScene.SetDefaultDesignResolution (width, height, resolutionPolicy);
         }
-
     }
 }

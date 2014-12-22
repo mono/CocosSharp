@@ -45,6 +45,8 @@ namespace CocosSharp
     {
         static readonly CCRect exactFitRatio = new CCRect(0,0,1,1);
 
+        CCSize designResolutionSize;
+        CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         CCViewport viewport;
         CCWindow window;
 
@@ -52,11 +54,16 @@ namespace CocosSharp
         internal delegate void SceneViewportChangedEventHandler(object sender, EventArgs e);
         internal event SceneViewportChangedEventHandler SceneViewportChanged;
 
-        CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
-
-        CCSize contentSize = CCSize.Zero;
 
         #region Properties
+
+        // Static properties
+
+        public static CCSceneResolutionPolicy DefaultDesignResolutionPolicy { get; set; }
+        public static CCSize DefaultDesignResolutionSize { get; set; }
+
+
+        // Instance properties
 
         public CCSceneResolutionPolicy SceneResolutionPolicy 
         { 
@@ -86,6 +93,14 @@ namespace CocosSharp
 			set { _physicsWorld = value; }
 		}
 #endif
+
+        public CCSize DesignResolutionSize { get; private set; }
+
+        public override CCSize ContentSize
+        {
+            get { return DesignResolutionSize; }
+            set {}
+        }
 
         public CCRect VisibleBoundsScreenspace
         {
@@ -178,15 +193,6 @@ namespace CocosSharp
             get { return Window != null ? Window.EventDispatcher : null; }
         }
 
-        public override CCSize ContentSize
-        {
-            get 
-            { 
-                return contentSize; 
-            }
-            set {}
-        }
-
         public override CCAffineTransform AffineLocalTransform
         {
             get
@@ -199,6 +205,11 @@ namespace CocosSharp
 
 
         #region Constructors
+
+        static CCScene()
+        {
+            DefaultDesignResolutionPolicy = CCSceneResolutionPolicy.ShowAll;
+        }
 
 #if USE_PHYSICS
 		public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null, bool physics = false)
@@ -218,8 +229,8 @@ namespace CocosSharp
 #if USE_PHYSICS
 			_physicsWorld = physics ? new CCPhysicsWorld(this) : null;
 #endif
-
-            SceneResolutionPolicy = window.DesignResolutionPolicy;
+            resolutionPolicy = DefaultDesignResolutionPolicy;
+            DesignResolutionSize = DefaultDesignResolutionSize;
 
             UpdateResolutionRatios();
         }
@@ -275,17 +286,22 @@ namespace CocosSharp
 
         #endregion Viewport handling
 
+
         #region Resolution Policy
+
+        public static void SetDefaultDesignResolution(float width, float height, CCSceneResolutionPolicy resPolicy)
+        {
+            CCScene.DefaultDesignResolutionSize = new CCSize (width, height);
+            CCScene.DefaultDesignResolutionPolicy = resPolicy;
+        }
 
         void UpdateResolutionRatios()
         {
             if (Window != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
             {
                 bool dirtyViewport = false;
-                CCSize designSize = window.DesignResolutionSize;
+                CCSize designSize = DesignResolutionSize;
                 CCRect designBounds = new CCRect(0.0f, 0.0f, designSize.Width, designSize.Height);
-
-                contentSize = designSize;
 
                 if (designBounds != CCRect.Zero)
                 {
@@ -318,9 +334,6 @@ namespace CocosSharp
                 return exactFitRatio;
             }
 
-            var x = resolutionRect.Origin.X;
-            var y = resolutionRect.Origin.Y;
-
             var designResolutionSize = resolutionRect.Size;
             var viewPortRect = CCRect.Zero;
             float resolutionScaleX, resolutionScaleY;
@@ -335,19 +348,18 @@ namespace CocosSharp
                 resolutionScaleX = resolutionScaleY = Math.Max(resolutionScaleX, resolutionScaleY);
             }
 
-            if (resolutionPolicy == CCSceneResolutionPolicy.ShowAll)
+            else if (resolutionPolicy == CCSceneResolutionPolicy.ShowAll)
             {
                 resolutionScaleX = resolutionScaleY = Math.Min(resolutionScaleX, resolutionScaleY);
             }
 
-
-            if (resolutionPolicy == CCSceneResolutionPolicy.FixedHeight)
+            else if (resolutionPolicy == CCSceneResolutionPolicy.FixedHeight)
             {
                 resolutionScaleX = resolutionScaleY;
                 designResolutionSize.Width = (float)Math.Ceiling(screenSize.Width / resolutionScaleX);
             }
 
-            if (resolutionPolicy == CCSceneResolutionPolicy.FixedWidth)
+            else if (resolutionPolicy == CCSceneResolutionPolicy.FixedWidth)
             {
                 resolutionScaleY = resolutionScaleX;
                 designResolutionSize.Height = (float)Math.Ceiling(screenSize.Height / resolutionScaleY);
@@ -366,6 +378,8 @@ namespace CocosSharp
                 ((viewPortRect.Size.Width) / screenSize.Width),
                 ((viewPortRect.Size.Height) / screenSize.Height)
             );
+
+            DesignResolutionSize = designResolutionSize;
 
             return viewportRatio;
 
