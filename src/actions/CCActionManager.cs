@@ -22,7 +22,7 @@ namespace CocosSharp
 
         bool currentTargetSalvaged;
         HashElement currentTarget;
-
+        bool targetsAvailable = false;
 
         #region Cleaning up
 
@@ -128,7 +128,11 @@ namespace CocosSharp
 
         public void Update(float dt)
         {
-            int count = targets.Keys.Count;
+            if (!targetsAvailable)
+                return;
+
+            int count = targets.Count;
+
             while (tmpKeysArray.Length < count)
             {
                 tmpKeysArray = new CCNode[tmpKeysArray.Length * 2];
@@ -202,6 +206,7 @@ namespace CocosSharp
             element.ActionStates.Clear();
             targets.Remove(element.Target);
             element.Target = null;
+            targetsAvailable = targets.Count > 0;
         }
 
         internal void ActionAllocWithHashElement(HashElement element)
@@ -274,6 +279,7 @@ namespace CocosSharp
                 element.Paused = paused;
                 element.Target = target;
                 targets.Add(target, element);
+                targetsAvailable = true;
             }
 
             ActionAllocWithHashElement(element);
@@ -295,7 +301,10 @@ namespace CocosSharp
 
         public void RemoveAllActions()
         {
-            int count = targets.Keys.Count;
+            if (!targetsAvailable)
+                return;
+
+            int count = targets.Count;
             if (tmpKeysArray.Length < count)
             {
                 tmpKeysArray = new CCNode[tmpKeysArray.Length * 2];
