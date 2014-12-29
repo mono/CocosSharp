@@ -264,45 +264,48 @@ namespace CocosSharp
                 }
 
                 // Iterate over all the custom selectors
-                var count = hashForTimers.Keys.Count;
-                if (tmpSelectorArray.Length < count)
+                var count = hashForTimers.Count;
+                if (count > 0)
                 {
-                    tmpSelectorArray = new ICCUpdatable[tmpSelectorArray.Length * 2];
-                }
-                hashForTimers.Keys.CopyTo(tmpSelectorArray, 0);
-
-                for (int i = 0; i < count; i++)
-                {
-                    ICCUpdatable key = tmpSelectorArray[i];
-                    if (!hashForTimers.ContainsKey(key))
+                    if (tmpSelectorArray.Length < count)
                     {
-                        continue;
+                        tmpSelectorArray = new ICCUpdatable[tmpSelectorArray.Length * 2];
                     }
-                    HashTimeEntry elt = hashForTimers[key];
+                    hashForTimers.Keys.CopyTo(tmpSelectorArray, 0);
 
-                    currentTarget = elt;
-                    isCurrentTargetSalvaged = false;
-
-                    if (!currentTarget.Paused)
+                    for (int i = 0; i < count; i++)
                     {
-                        // The 'timers' array may change while inside this loop
-                        for (elt.TimerIndex = 0; elt.TimerIndex < elt.Timers.Count; ++elt.TimerIndex)
+                        ICCUpdatable key = tmpSelectorArray[i];
+                        if (!hashForTimers.ContainsKey(key))
                         {
-                            elt.CurrentTimer = elt.Timers[elt.TimerIndex];
-							if(elt.CurrentTimer != null) {
-	                            elt.CurrentTimerSalvaged = false;
-
-	                            elt.CurrentTimer.Update(dt);
-
-	                            elt.CurrentTimer = null;
-							}
+                            continue;
                         }
-                    }
+                        HashTimeEntry elt = hashForTimers[key];
 
-                    // only delete currentTarget if no actions were scheduled during the cycle (issue #481)
-                    if (isCurrentTargetSalvaged && currentTarget.Timers.Count == 0)
-                    {
-                        RemoveHashElement(currentTarget);
+                        currentTarget = elt;
+                        isCurrentTargetSalvaged = false;
+
+                        if (!currentTarget.Paused)
+                        {
+                            // The 'timers' array may change while inside this loop
+                            for (elt.TimerIndex = 0; elt.TimerIndex < elt.Timers.Count; ++elt.TimerIndex)
+                            {
+                                elt.CurrentTimer = elt.Timers[elt.TimerIndex];
+    							if(elt.CurrentTimer != null) {
+    	                            elt.CurrentTimerSalvaged = false;
+
+    	                            elt.CurrentTimer.Update(dt);
+
+    	                            elt.CurrentTimer = null;
+    							}
+                            }
+                        }
+
+                        // only delete currentTarget if no actions were scheduled during the cycle (issue #481)
+                        if (isCurrentTargetSalvaged && currentTarget.Timers.Count == 0)
+                        {
+                            RemoveHashElement(currentTarget);
+                        }
                     }
                 }
 
