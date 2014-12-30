@@ -85,7 +85,10 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
+
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             label.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.25f);
             label2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.5f);
@@ -126,7 +129,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             foreach (CCTouch touch in touches)
             {
-                CCPoint location = touch.LocationOnScreen;
+                CCPoint location = touch.Location;
 
                 sp1.Position = location;
                 sp2.Position = location;
@@ -144,7 +147,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             foreach (CCTouch touch in touches)
             {
-                CCPoint location = touch.LocationOnScreen;
+                CCPoint location = touch.Location;
 
                 sp1.Position = location;
                 sp2.Position = location;
