@@ -1532,7 +1532,9 @@ namespace CocosSharp
                 i4 += 4;
             }
 
-            vertexBuffer.SetData(vertices, startIndex * 4, elementCount * 4);
+            int vertexByteSize = vertexBuffer.VertexDeclaration.VertexStride;
+
+            vertexBuffer.SetData(vertexByteSize * startIndex * 4, vertices, 0, elementCount * 4, vertexByteSize);
         }
 
         public override void ReinitResource()
