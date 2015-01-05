@@ -140,7 +140,8 @@ namespace CocosSharp
             this.XnaWindow = xnaWindow;
             xnaWindow.OrientationChanged += OnOrientationChanged;
             xnaWindow.ClientSizeChanged += OnWindowSizeChanged;
-
+            
+            DeviceManager = deviceManager;
             // Trying to set user resize when game is full-screen will cause app to crash 
             if(!deviceManager.IsFullScreen)
                 xnaWindow.AllowUserResizing = true;
