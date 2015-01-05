@@ -119,6 +119,12 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            UpdateVerticesPosition();
+        }
 
         protected override void VisibleBoundsChanged()
         {
@@ -140,14 +146,16 @@ namespace CocosSharp
             {
                 var drawManager = Window.DrawManager;
 
+                bool depthTest = drawManager.DepthTest;
+
+                // We're drawing a quad at z=0
+                // We need to ensure depth testing is off so that the layer color doesn't obscure anything
+                drawManager.DepthTest = false;
                 drawManager.TextureEnabled = false;
                 drawManager.BlendFunc(BlendFunc);
                 drawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
-
-                drawManager.ViewMatrix = Camera.ViewMatrix;
-                drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+                drawManager.DepthTest = depthTest;
             }
-
         }
 
         public override void UpdateColor()
@@ -162,7 +170,6 @@ namespace CocosSharp
 
         void UpdateVerticesPosition()
         {
-            CCSize contentSize = ContentSize;
             CCRect visibleBounds = VisibleBoundsWorldspace;
 
             //1, 2, 3, 3
