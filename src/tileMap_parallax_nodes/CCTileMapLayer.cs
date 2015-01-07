@@ -328,10 +328,7 @@ namespace CocosSharp
         {
             bool isValid = xCoord < LayerSize.Column && yCoord < LayerSize.Row && xCoord >= 0 && yCoord >= 0;
 
-            if (!isValid)
-            {
-                Debug.Fail(String.Format("CCTileMapLayer: Invalid tile coordinates x: %n y: %n", xCoord, yCoord));
-            }
+            Debug.Assert(isValid, String.Format("CCTileMapLayer: Invalid tile coordinates x: %n y: %n", xCoord, yCoord));
 
             return isValid;
         }
@@ -491,10 +488,10 @@ namespace CocosSharp
                         vertexZ = -(LayerSize.Row - row);
                         break;
                     case CCTileMapType.Hex:
-                        Debug.Fail("CCTMXLayer:TileVertexZ: Automatic z-ordering for Hex tiles not supported");
+                        Debug.Assert(false,"CCTMXLayer:TileVertexZ: Automatic z-ordering for Hex tiles not supported");
                         break;
                     default:
-                        Debug.Fail("CCTMXLayer:TileVertexZ: Unsupported layer orientation");
+                        Debug.Assert(false, "CCTMXLayer:TileVertexZ: Unsupported layer orientation");
                         break;
                 }
             }
@@ -575,13 +572,13 @@ namespace CocosSharp
         {
             if (gidAndFlags.Gid == 0 || gidAndFlags.Gid < TileSetInfo.FirstGid)
             {
-                Debug.Fail(String.Format("CCTileMapLayer: SetTileGID: Invalid GID %n", gidAndFlags.Gid));
+                Debug.Assert (false, String.Format("CCTileMapLayer: SetTileGID: Invalid GID %n", gidAndFlags.Gid));
                 return;
             }
 
             if (AreValidTileCoordinates(tileCoords) == false)
             {
-                Debug.Fail(String.Format("CCTileMapLayer: Invalid tile coordinates row: %n column: %n", 
+                Debug.Assert (false, String.Format("CCTileMapLayer: Invalid tile coordinates row: %n column: %n", 
                     tileCoords.Row, tileCoords.Column));
                 return;
             }
