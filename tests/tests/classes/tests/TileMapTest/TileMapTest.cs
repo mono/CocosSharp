@@ -384,7 +384,7 @@ namespace tests
                 drawNode.DrawRect(new CCRect(x, y, width, height), CCColor4B.Transparent, 1, color);
             }
 
-            tileMap.AddChild(drawNode, 10);
+            tileLayersContainer.AddChild(drawNode, 10);
         }
 
 		public override string Title
