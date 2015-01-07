@@ -72,6 +72,12 @@ namespace CocosSharp
             }
         }
 
+        public CCSize TileContentSize
+        {
+            get { return TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios; }
+        }
+
+
         /*
         protected internal override Matrix XnaLocalMatrix 
         { 
@@ -436,9 +442,12 @@ namespace CocosSharp
 
         public CCTileMapCoordinates ClosestTileCoordAtNodePosition(CCPoint nodePos)
         {
-            CCPoint transformedPoint = nodeToTileCoordsTransform.Transform(nodePos).RoundToInteger();
-            transformedPoint.X = Math.Max(Math.Min(transformedPoint.X, LayerSize.Column), 0);
-            transformedPoint.Y = Math.Max(Math.Min(transformedPoint.Y, LayerSize.Row), 0);
+            // Tile positions are relative to bottom-left corner of quad
+            // However the tile hit test should be relative to tile center
+            // Therefore adjust node position
+            CCSize offsetSize = (TileContentSize) * 0.5f;
+            CCPoint offsetPt = new CCPoint(offsetSize.Width, offsetSize.Height);
+            CCPoint transformedPoint = nodeToTileCoordsTransform.Transform(nodePos - offsetPt).RoundToInteger();
 
             return new CCTileMapCoordinates((int)transformedPoint.X, (int)transformedPoint.Y);
         }
