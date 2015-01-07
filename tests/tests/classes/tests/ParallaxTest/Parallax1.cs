@@ -18,15 +18,15 @@ namespace tests
             cocosImage.AnchorPoint = new CCPoint(0, 0);
 
 
-            // Middle layer: a Tile map atlas
-            CCTileMapAtlas tilemap = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
-            tilemap.ReleaseMap();
-
-            // change the transform anchor to 0,0 (optional)
-            tilemap.AnchorPoint = new CCPoint(0, 0);
-
-            // Anti Aliased images
-			tilemap.IsAntialiased = true;
+//            // Middle layer: a Tile map atlas
+//            CCTileMapAtlas tilemap = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
+//            tilemap.ReleaseMap();
+//
+//            // change the transform anchor to 0,0 (optional)
+//            tilemap.AnchorPoint = new CCPoint(0, 0);
+//
+//            // Anti Aliased images
+//			tilemap.IsAntialiased = true;
 
 
             // background layer: another image
@@ -46,7 +46,7 @@ namespace tests
             voidNode.AddChild(background, -1, new CCPoint(0.4f, 0.5f), new CCPoint(0, 0));
 
             // tiles are moved at a ratio of 2.2x, 1.0y
-            voidNode.AddChild(tilemap, 1, new CCPoint(2.2f, 1.0f), new CCPoint(0, -200));
+//            voidNode.AddChild(tilemap, 1, new CCPoint(2.2f, 1.0f), new CCPoint(0, -200));
 
             // top image is moved at a ratio of 3.0x, 2.5y
             voidNode.AddChild(cocosImage, 2, new CCPoint(3.0f, 2.5f), new CCPoint(200, 800));

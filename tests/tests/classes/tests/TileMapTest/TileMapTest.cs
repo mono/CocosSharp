@@ -5,338 +5,111 @@ using CocosSharp;
 
 namespace tests
 {
-//------------------------------------------------------------------
-//
-// TileMapTest
-//
-//------------------------------------------------------------------
-    public class TileMapTest : TileDemo
-    {
-        public TileMapTest()
-        {
-            CCTileMapAtlas map = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
-            // Convert it to "alias" (GL_LINEAR filtering)
-			map.IsAntialiased = true;
-
-            CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
-
-            // If you are not going to use the Map, you can free it now
-            // NEW since v0.7
-            map.ReleaseMap();
-
-            AddChild(map, 0, kTagTileMap);
-
-			map.AnchorPoint = CCPoint.AnchorMiddleLeft;
-
-            CCScaleBy scale = new CCScaleBy(4, 0.8f);
-            CCFiniteTimeAction scaleBack = scale.Reverse();
-
-            var seq = new CCSequence(scale, scaleBack);
-
-            map.RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq));
-        }
-
-		public override string Title
-		{
-			get
-			{
-				return "TileMapAtlas";
-			}
-		}
-    }
-
-//------------------------------------------------------------------
-//
-// TileMapEditTest
-//
-//------------------------------------------------------------------
-    public class TileMapEditTest : TileDemo
-    {
-        public TileMapEditTest()
-        {
-            CCTileMapAtlas map = new CCTileMapAtlas(s_TilesPng, s_LevelMapTga, 16, 16);
-            // Create an Aliased Atlas
-			map.IsAntialiased = false;
-
-            CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
-
-            // If you are not going to use the Map, you can free it now
-            // [tilemap releaseMap);
-            // And if you are going to use, it you can access the data with:
-            Schedule(updateMap, 0.2f);
-
-            AddChild(map, 0, kTagTileMap);
-            map.AnchorPoint = (new CCPoint(0, 0));
-        }
-
-        protected override void AddedToScene()
-        {
-            base.AddedToScene();
-
-			var map = (CCTileMapAtlas) this[kTagTileMap];
-			map.Position = new CCPoint(-20, -200);
-		}
-
-        private void updateMap(float dt)
-        {
-            // IMPORTANT
-            //   The only limitation is that you cannot change an empty, or assign an empty tile to a tile
-            //   The value 0 not rendered so don't assign or change a tile with value 0
-
-			var tilemap = (CCTileMapAtlas) this[kTagTileMap];
-
-            //
-            // For example you can iterate over all the tiles
-            // using this code, but try to avoid the iteration
-            // over all your tiles in every frame. It's very expensive
-            //    for(int x=0; x < tilemap.tgaInfo.width; x++) {
-            //        for(int y=0; y < tilemap.tgaInfo.height; y++) {
-            //            ccColor3B c =[tilemap tileAt:new ccGridSize(x,y));
-            //            if( c.r != 0 ) {
-            //                ////----UXLOG("%d,%d = %d", x,y,c.r);
-            //            }
-            //        }
-            //    }
-
-            // NEW since v0.7
-			var c = tilemap.TileAt(new CCGridSize(13, 21));
-            c.R++;
-            c.R %= 50;
-            if (c.R == 0)
-                c.R = 1;
-
-            // NEW since v0.7
-            tilemap.SetTile(c, new CCGridSize(13, 21));
-        }
-
-		public override string Title
-		{
-			get
-			{
-				return "Editable TileMapAtlas";
-			}
-		}
-    }
-
-//------------------------------------------------------------------
-//
-// TMXOrthoTest
-//
-//------------------------------------------------------------------
     public class TMXOrthoTest : TileDemo
     {
-        public TMXOrthoTest()
+        public TMXOrthoTest() : base("TileMaps/orthogonal-test2")
         {
-            //
-            // Test orthogonal with 3d camera and anti-alias textures
-            //
             // it should not flicker. No artifacts should appear
-            //
-            //CCLayerColor* color = new CCLayerColor( ccc4(64,64,64,255) );
-            //addChild(color, -1);
-
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test2");
-            AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
 
             var scale = new CCScaleBy(10, 0.1f);
             var back = scale.Reverse();
-            map.RepeatForever(scale, back);
-
-
-            //float x, y, z;
-            //map.Camera.GetEyeXyz(out x, out y, out z);
-            //map.Camera.SetEyeXyz(x - 200, y, z + 300);
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            //Scene.Director.Projection = CCDirectorProjection.Projection3D;
-        }
-
-        public override void OnExit()
-        {
-            //Scene.Director.Projection = CCDirectorProjection.Projection2D;
-            base.OnExit();
+            tileLayersContainer.RepeatForever(scale, back);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Orthogonal test";
-			}
+			get { return "TMX Orthogonal test"; }
 		}
     }
-
-//------------------------------------------------------------------
-//
-// TMXOrthoTest2
-//
-//------------------------------------------------------------------
 
     public class TMXOrthoTest2 : TileDemo
     {
-        public TMXOrthoTest2()
+        public TMXOrthoTest2() : base("TileMaps/orthogonal-test1")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test1");
-            AddChild(map, 0, kTagTileMap);
-
-            /*
-            CCArray* pChildrenArray = map.getChildren();
-            CCSpriteBatchNode* child = NULL;
-            object* pObject = NULL;
-            CCARRAY_FOREACH(pChildrenArray, pObject)
-            {
-                child = (CCSpriteBatchNode*) pObject;
-
-                if (!child)
-                    break;
-
-                child.Texture.setAntiAliasTexParameters();
-            }
-            */
-
-			map.RunAction(SCALE_2X_Half );
+            tileLayersContainer.RunAction(SCALE_2X_Half );
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Ortho test2";
-			}
+			get { return "TMX Ortho test2"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoTest3
-//
-//------------------------------------------------------------------
     public class TMXOrthoTest3 : TileDemo
     {
-        public TMXOrthoTest3()
+        public TMXOrthoTest3() : base("TileMaps/orthogonal-test3")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test3");
-            AddChild(map, 0, kTagTileMap);
-
-            /*
-            CCArray* pChildrenArray = map.getChildren();
-            CCSpriteBatchNode* child = NULL;
-            object* pObject = NULL;
-            CCARRAY_FOREACH(pChildrenArray, pObject)
-            {
-                child = (CCSpriteBatchNode*) pObject;
-
-                if (!child)
-                    break;
-
-                child.Texture.setAntiAliasTexParameters();
-            }
-            */
-
-            map.Scale = 0.2f;
-            map.AnchorPoint = (new CCPoint(0.5f, 0.5f));
+            tileLayersContainer.Scale = 0.2f;
+            tileLayersContainer.AnchorPoint = CCPoint.AnchorMiddle;
         }
+
 		public override string Title
 		{
 			get
-			{
-				return "TMX anchorPoint test";
-			}
+			{ return "TMX anchorPoint test"; }
 		}
     }
-
-//------------------------------------------------------------------
-//
-// TMXOrthoTest4
-//
-//------------------------------------------------------------------
 
     public class TMXOrthoTest4 : TileDemo
     {
-        public TMXOrthoTest4()
+        public TMXOrthoTest4() : base("TileMaps/orthogonal-test4")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test4");
-            AddChild(map, 0, kTagTileMap);
-
-            map.AnchorPoint = CCPoint.AnchorLowerLeft;
-
-            CCTMXLayer layer = map.LayerNamed("Layer 0");
-            CCSize s = layer.LayerSize;
+            CCTileMapLayer layer = tileMap.LayerNamed("Layer 0");
+            CCTileMapCoordinates s = layer.LayerSize;
 
             CCSprite sprite;
-            sprite = layer.TileAt(0, 0);
+            sprite = layer.ExtractTile(0, 0);
             sprite.Scale = 2;
-            sprite = layer.TileAt(s.Width - 1, 0);
+            sprite = layer.ExtractTile(s.Column - 1, 0);
             sprite.Scale = 2;
-            sprite = layer.TileAt(0, s.Height - 1);
+            sprite = layer.ExtractTile(0, s.Row - 1);
             sprite.Scale = 2;
-            sprite = layer.TileAt(s.Width - 1, s.Height - 1);
+            sprite = layer.ExtractTile(s.Column - 1, s.Row - 1);
             sprite.Scale = 2;
 
             Schedule(removeSprite, 2);
         }
 
-        private void removeSprite(float dt)
+        void removeSprite(float dt)
         {
             Unschedule(removeSprite);
 
-            var map = (CCTMXTiledMap) this[kTagTileMap];
-            var layer = map.LayerNamed("Layer 0");
+            var layer = tileMap.LayerNamed("Layer 0");
             var s = layer.LayerSize;
 
-            var sprite = layer.TileAt(s.Width - 1, 0);
-            var sprite2 = layer.TileAt(s.Width - 1, s.Height - 1);
+            var sprite = layer.ExtractTile(s.Column - 1, 0);
+            var sprite2 = layer.ExtractTile(s.Column - 1, s.Row - 1);
             layer.RemoveChild(sprite, true);
 
-            var sprite3 = layer.TileAt(2, s.Height-1);
+            var sprite3 = layer.ExtractTile(2, s.Row -1);
             layer.RemoveChild(sprite3, true);
             layer.RemoveChild(sprite2, true);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX width/height test";
-			}
+			get { return "TMX width/height test"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXReadWriteTest
-//
-//------------------------------------------------------------------
-
     public class TMXReadWriteTest : TileDemo
     {
-        private uint m_gid;
-        private uint m_gid2;
+        CCTileGidAndFlags m_gid;
+        CCTileGidAndFlags m_gid2;
 
-        public TMXReadWriteTest()
+        public TMXReadWriteTest() : base("TileMaps/orthogonal-test2")
         {
-            m_gid = 0;
+            m_gid = CCTileGidAndFlags.EmptyTile;
 
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test2");
-            AddChild(map, 0, kTagTileMap);
+            CCTileMapLayer layer = tileMap.LayerNamed("Layer 0");
+            layer.Antialiased = true;
 
-            CCTMXLayer layer = map.LayerNamed("Layer 0");
-			layer.IsAntialiased = true;
+            tileMap.Scale = (1);
 
-            map.Scale = (1);
-
-            CCSprite tile0 = layer.TileAt(new CCPoint(1, 63));
-            CCSprite tile1 = layer.TileAt(new CCPoint(2, 63));
-            CCSprite tile2 = layer.TileAt(new CCPoint(3, 62)); //new CCPoint(1,62));
-            CCSprite tile3 = layer.TileAt(new CCPoint(2, 62));
+            CCSprite tile0 = layer.ExtractTile(1, 63);
+            CCSprite tile1 = layer.ExtractTile(2, 63);
+            CCSprite tile2 = layer.ExtractTile(3, 62); //new CCPoint(1,62));
+            CCSprite tile3 = layer.ExtractTile(2, 62);
             tile0.AnchorPoint = (new CCPoint(0.5f, 0.5f));
             tile1.AnchorPoint = (new CCPoint(0.5f, 0.5f));
             tile2.AnchorPoint = (new CCPoint(0.5f, 0.5f));
@@ -357,90 +130,76 @@ namespace tests
 			tile3.RunAction(sequence);
 
 
-            m_gid = layer.TileGIDAt(new CCPoint(0, 63));
-            ////----UXLOG("Tile GID at:(0,63) is: %d", m_gid);
+            m_gid = layer.TileGIDAndFlags(0, 63);
 
             Schedule(updateCol, 2.0f);
             Schedule(repaintWithGID, 2.0f);
             Schedule(removeTiles, 1.0f);
 
-            ////----UXLOG("++++atlas quantity: %d", layer.textureAtlas().getTotalQuads());
-            ////----UXLOG("++++children: %d", layer.getChildren().count() );
 
-            m_gid2 = 0;
+            m_gid2 = CCTileGidAndFlags.EmptyTile;
         }
 
-        private void removeSprite(CCNode sender)
+        void removeSprite(CCNode sender)
         {
-            ////----UXLOG("removing tile: %x", sender);
             CCNode p = sender.Parent;
 
             if (p != null)
             {
                 p.RemoveChild(sender, true);
             }
-
-            //////----UXLOG("atlas quantity: %d", p.textureAtlas().totalQuads());
         }
 
-        private void updateCol(float dt)
+        void updateCol(float dt)
         {
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            var layer = (CCTMXLayer) map.GetChildByTag(0);
-
-            ////----UXLOG("++++atlas quantity: %d", layer.textureAtlas().getTotalQuads());
-            ////----UXLOG("++++children: %d", layer.getChildren().count() );
+            var layer = (CCTileMapLayer) tileLayersContainer.GetChildByTag(0);
 
 
-            CCSize s = layer.LayerSize;
+            var s = layer.LayerSize;
 
-            for (int y = 0; y < s.Height; y++)
+            for (int y = 0; y < s.Row; y++)
             {
-                layer.SetTileGID(m_gid2, new CCPoint(3, y));
+                layer.SetTileGID(m_gid2, new CCTileMapCoordinates(3, y));
             }
 
-            m_gid2 = (m_gid2 + 1) % 80;
+            m_gid2.Gid = (short)((m_gid2.Gid + 1) % 80);
         }
 
-        private void repaintWithGID(float dt)
+        void repaintWithGID(float dt)
         {
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            var layer = (CCTMXLayer) map.GetChildByTag(0);
+            var layer = (CCTileMapLayer) tileLayersContainer.GetChildByTag(0);
 
-            CCSize s = layer.LayerSize;
-            for (int x = 0; x < s.Width; x++)
+            var s = layer.LayerSize;
+            for (int x = 0; x < s.Column; x++)
             {
-                int y = (int) s.Height - 1;
-                uint tmpgid = layer.TileGIDAt(new CCPoint(x, y));
-                layer.SetTileGID(tmpgid + 1, new CCPoint(x, y));
+                int y = s.Row - 1;
+                var tmpgid = layer.TileGIDAndFlags(x, y);
+                tmpgid.Gid += 1;
+                layer.SetTileGID(tmpgid, new CCTileMapCoordinates(x, y));
             }
         }
 
-        private void removeTiles(float dt)
+        void removeTiles(float dt)
         {
             Unschedule(removeTiles);
 
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            var layer = (CCTMXLayer) map.GetChildByTag(0);
-            CCSize s = layer.LayerSize;
+            var layer = (CCTileMapLayer) tileLayersContainer.GetChildByTag(0);
+            var s = layer.LayerSize;
 
-            for (int y = 0; y < s.Height; y++)
+            for (int y = 0; y < s.Row; y++)
             {
-                layer.RemoveTileAt(new CCPoint(5.0f, y));
+                layer.RemoveTile(5, y);
             }
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Read/Write test";
-			}
+			get { return "TMX Read/Write test"; }
 		}
 
         #region Nested type: SID
 
-        private enum SID
+        enum SID
         {
             SID_UPDATECOL = 100,
             SID_REPAINTWITHGID,
@@ -450,121 +209,73 @@ namespace tests
         #endregion
     }
 
-//------------------------------------------------------------------
-//
-// TMXHexTest
-//
-//------------------------------------------------------------------
     public class TMXHexTest : TileDemo
     {
-        public TMXHexTest()
+        public TMXHexTest() : base("TileMaps/hexa-test1")
         {
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
-
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/hexa-test1");
-            AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
         }
 
 		public override string Title
 		{
 			get
-			{
-				return "TMX Hex tes";
-			}
+			{ return "TMX Hex tes"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXIsoTest
-//
-//------------------------------------------------------------------
     public class TMXIsoTest : TileDemo
     {
-        public TMXIsoTest()
+        public TMXIsoTest() : base("TileMaps/iso-test01")
         {
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test01");
-            AddChild(map, 0, kTagTileMap);
-
             // move map to the center of the screen
-            CCSize ms = map.MapSize;
-            CCSize ts = map.TileSize;
-            map.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
+            var ms = tileMap.MapDimensions;
+            var ts = tileMap.TileTexelSize;
+            tileLayersContainer.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Column * ts.Width / 2, -ms.Row * ts.Height / 2)));
         }
 
 		public override string Title
 		{
 			get
-			{
-				return "TMX Isometric test 0";
-			}
+			{ return "TMX Isometric test 0"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXIsoTest1
-//
-//------------------------------------------------------------------
     public class TMXIsoTest1 : TileDemo
     {
-        public TMXIsoTest1()
+        public TMXIsoTest1() : base("TileMaps/iso-test11")
         {
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test11");
-            AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-
-            map.AnchorPoint = (new CCPoint(0.5f, 0.5f));
+            tileMap.AnchorPoint = CCPoint.AnchorMiddle;
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Isometric test + anchorPoint";
-			}
+			get { return "TMX Isometric test + anchorPoint"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXIsoTest2
-//
-//------------------------------------------------------------------
     public class TMXIsoTest2 : TileDemo
     {
-        public TMXIsoTest2()
+        public TMXIsoTest2() : base("TileMaps/iso-test22")
         {
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test22");
-            AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-
             // move map to the center of the screen
-            CCSize ms = map.MapSize;
-            CCSize ts = map.TileSize;
-            map.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
+            var ms = tileMap.MapDimensions;
+            var ts = tileMap.TileTexelSize;
+            tileLayersContainer.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Column * ts.Width / 2, -ms.Row * ts.Height / 2)));
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Isometric test 2";
-			}
+			get { return "TMX Isometric test 2"; }
 		}
     }
 
@@ -575,98 +286,50 @@ namespace tests
 //------------------------------------------------------------------
     public class TMXUncompressedTest : TileDemo
     {
-        public TMXUncompressedTest()
+        public TMXUncompressedTest() : base("TileMaps/iso-test2-uncompressed")
         {
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
 
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test2-uncompressed");
-            AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-
             // move map to the center of the screen
-            CCSize ms = map.MapSize;
-            CCSize ts = map.TileSize;
-            map.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Width * ts.Width / 2, -ms.Height * ts.Height / 2)));
-
-            /*
-            // testing release map
-            CCArray* pChildrenArray = map.getChildren();
-            CCTMXLayer layer;
-            object* pObject = NULL;
-            CCARRAY_FOREACH(pChildrenArray, pObject)
-            {
-                layer = (CCTMXLayer) pObject;
-
-                if (!layer)
-                    break;
-
-                layer.releaseMap();
-            }
-            */
+            var ms = tileMap.MapDimensions;
+            var ts = tileMap.TileTexelSize;
+            tileMap.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Column * ts.Width / 2, -ms.Row * ts.Height / 2)));
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Uncompressed test";
-			}
+			get { return "TMX Uncompressed test"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXTilesetTest
-//
-//------------------------------------------------------------------
     public class TMXTilesetTest : TileDemo
     {
-        public TMXTilesetTest()
+        public TMXTilesetTest() : base("TileMaps/orthogonal-test5")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test5");
-            AddChild(map, 0, kTagTileMap);
 
-            CCSize s = map.ContentSize;
+            CCTileMapLayer layer;
+            layer = tileMap.LayerNamed("Layer 0");
+            layer.Antialiased = true;
 
-            CCTMXLayer layer;
-            layer = map.LayerNamed("Layer 0");
-			layer.IsAntialiased = true;
+            layer = tileMap.LayerNamed("Layer 1");
+            layer.Antialiased = true;
 
-            layer = map.LayerNamed("Layer 1");
-			layer.IsAntialiased = true;
-
-            layer = map.LayerNamed("Layer 2");
-			layer.IsAntialiased = true;
+            layer = tileMap.LayerNamed("Layer 2");
+            layer.Antialiased = true;
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Tileset test";
-			}
+			get { return "TMX Tileset test"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoObjectsTest
-//
-//------------------------------------------------------------------
     public class TMXOrthoObjectsTest : TileDemo
     {
-        public TMXOrthoObjectsTest()
+        public TMXOrthoObjectsTest() : base("TileMaps/ortho-objects")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-objects");
-            AddChild(map, -1, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-
-            CCLog.Log("ContentSize: {0}, {1}", s.Width,s.Height);
-
-            var objectGroup = map.ObjectGroupNamed("Object Group 1");
+            var objectGroup = tileMap.ObjectGroupNamed("Object Group 1");
             var objects = objectGroup.Objects;
 
             var drawNode = new CCDrawNode();
@@ -683,44 +346,26 @@ namespace tests
 
                 drawNode.DrawRect(new CCRect(x, y, width, height), CCColor4B.Transparent, 1, color);
             }
-            map.AddChild(drawNode);
-             
+
+            tileLayersContainer.AddChild(drawNode);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Ortho object test";
-			}
+			get { return "TMX Ortho object test"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "You should see a white box around the 3 platforms";
-			}
+			get { return "You should see a white box around the 3 platforms"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXIsoObjectsTest
-//
-//------------------------------------------------------------------
     public class TMXIsoObjectsTest : TileDemo
     {
-        public TMXIsoObjectsTest()
+        public TMXIsoObjectsTest() : base("TileMaps/iso-test-objectgroup")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-objectgroup");
-            AddChild(map, -1, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-
-            CCLog.Log("ContentSize: {0}, {1}", s.Width,s.Height);
-
-            var objectGroup = map.ObjectGroupNamed("Object Group 1");
+            var objectGroup = tileMap.ObjectGroupNamed("Object Group 1");
             var objects = objectGroup.Objects;
 
             var drawNode = new CCDrawNode();
@@ -737,96 +382,62 @@ namespace tests
 
                 drawNode.DrawRect(new CCRect(x, y, width, height), CCColor4B.Transparent, 1, color);
             }
-            map.AddChild(drawNode, 10);
+
+            tileMap.AddChild(drawNode, 10);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Iso object test";
-			}
+			get { return "TMX Iso object test"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "You need to parse them manually. See bug #810";
-			}
+			get { return "You need to parse them manually. See bug #810"; }
 		}
     }
 
-
-//------------------------------------------------------------------
-//
-// TMXResizeTest
-//
-//------------------------------------------------------------------
     public class TMXResizeTest : TileDemo
     {
-        public TMXResizeTest()
+        public TMXResizeTest() : base("TileMaps/orthogonal-test5")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test5");
-            AddChild(map, 0, kTagTileMap);
+            CCTileMapLayer layer = tileMap.LayerNamed("Layer 0");
 
-            CCSize s = map.ContentSize;
-
-            CCTMXLayer layer;
-            layer = map.LayerNamed("Layer 0");
-
-            CCSize ls = layer.LayerSize;
-            for (uint y = 0; y < ls.Height; y++)
+            var ls = layer.LayerSize;
+            for (int y = 0; y < ls.Row; y++)
             {
-                for (uint x = 0; x < ls.Width; x++)
+                for (int x = 0; x < ls.Column; x++)
                 {
-                    layer.SetTileGID(1, new CCPoint(x, y));
+                    layer.SetTileGID(new CCTileGidAndFlags(1), new CCTileMapCoordinates(x, y));
                 }
             }
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX resize test";
-			}
+			get { return "TMX resize test"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Should not crash. Testing issue #740";
-
-			}
+			get { return "Should not crash. Testing issue #740"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXIsoZorder
-//
-//------------------------------------------------------------------
     public class TMXIsoZorder : TileDemo
     {
-        private readonly CCSprite m_tamara;
+        readonly CCSprite m_tamara;
 
-		static CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
-		static CCFiniteTimeAction back = move.Reverse();
+		static readonly CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
+		static readonly CCFiniteTimeAction back = move.Reverse();
 
-        public TMXIsoZorder()
+        public TMXIsoZorder() : base("TileMaps/iso-test-zorder")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-zorder");
-            AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-            CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
-
             m_tamara = new CCSprite(pathSister1);
-            map.AddChild(m_tamara, map.Children.Count);
+            tileLayersContainer.AddChild(m_tamara, tileMap.Children.Count);
+            tileLayersContainer.Position = new CCPoint(-50.0f, -50.0f);
 
-            m_tamara.AnchorPoint = CCPoint.AnchorMiddleBottom;
+            m_tamara.AnchorPoint = CCPoint.Zero;
 
 			m_tamara.RepeatForever(move, back);
 
@@ -837,13 +448,7 @@ namespace tests
         {
             base.AddedToScene();
 
-			var map = (CCTMXTiledMap)this[kTagTileMap];
-			CCSize s = map.ContentSize;
-			CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
-			map.Position = new CCPoint(-s.Width / 2, 0);
-
-			float mapWidth = map.MapSize.Width * map.TileSize.Width;
-            m_tamara.Position = map.WorldToParentspace(new CCPoint (mapWidth / 2, 0));
+            m_tamara.Position = tileMap.LayerNamed("grass").TilePosition(29, 29);
 		}
 
 
@@ -855,8 +460,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = m_tamara.Position;//         Layer.WorldToScreenspace(m_tamara.Position);
-            CCNode map = this[kTagTileMap];
+            CCPoint p = m_tamara.Position;
 
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -867,49 +471,31 @@ namespace tests
             int newZ = (int)(4 - (p.Y / 48));
             newZ = Math.Max(newZ, 0);
 
-            //if (m_tamara.LocalZOrder != newZ)
-            //{
-                map.ReorderChild(m_tamara, newZ);
-            //}
+            tileLayersContainer.ReorderChild(m_tamara, newZ);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Iso Zorder";
-			}
+			get { return "TMX Iso Zorder"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Sprite should hide behind the trees";
-
-			}
+			get { return "Sprite should hide behind the trees"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoZorder
-//
-//------------------------------------------------------------------
     public class TMXOrthoZorder : TileDemo
     {
-        private readonly CCSprite m_tamara;
+        readonly CCSprite m_tamara;
 
 		static CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450));
 		static CCFiniteTimeAction back = move.Reverse();
 
-		public TMXOrthoZorder()
+        public TMXOrthoZorder() : base("TileMaps/orthogonal-test-zorder")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-zorder");
-            AddChild(map, 0, kTagTileMap);
-
             m_tamara = new CCSprite(pathSister1);
-            map.AddChild(m_tamara, map.Children.Count);
+            tileLayersContainer.AddChild(m_tamara, tileMap.Children.Count);
 			m_tamara.AnchorPoint = CCPoint.AnchorMiddleBottom;
 
 			m_tamara.RepeatForever(move, back);
@@ -920,7 +506,6 @@ namespace tests
         private void repositionSprite(float dt)
         {
             CCPoint p = m_tamara.Position;
-			CCNode map = this[kTagTileMap];
 
             // there are only 4 layers. (grass and 3 trees layers)
             // if tamara < 81, z=4
@@ -931,47 +516,29 @@ namespace tests
             int newZ = (int)(4 - ((p.Y - 10) / 81));
             newZ = Math.Max(newZ, 0);
 
-            map.ReorderChild(m_tamara, newZ);
+            tileLayersContainer.ReorderChild(m_tamara, newZ);
         }
 
 		public override string Title
 		{
 			get
-			{
-				return "TMX Ortho Zorder";
-			}
+			{ return "TMX Ortho Zorder"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Sprite should hide behind the trees";
-			}
+			get { return "Sprite should hide behind the trees"; }
 		}
     }
 
-
-//------------------------------------------------------------------
-//
-// TMXIsoVertexZ
-//
-//------------------------------------------------------------------
     public class TMXIsoVertexZ : TileDemo
     {
         readonly CCSprite m_tamara;
-        CCTMXTiledMap map;
 
-
-        public TMXIsoVertexZ()
+        public TMXIsoVertexZ() : base("TileMaps/iso-test-vertexz")
         {
-            map = new CCTMXTiledMap("TileMaps/iso-test-vertexz");
-            AddChild(map, 0, kTagTileMap);
-
-            // because I'm lazy, I'm reusing a tile as an sprite, but since this method uses vertexZ, you
-            // can use any CCSprite and it will work OK.
-            CCTMXLayer layer = map.LayerNamed("Trees");
-            m_tamara = layer.TileAt(29, 29);
+            CCTileMapLayer layer = tileMap.LayerNamed("Trees");
+            m_tamara = layer.ExtractTile(29, 29);
         }
 
         #region Setup content
@@ -979,10 +546,9 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
-            CCSize s = map.ContentSize;
-            map.Position = new CCPoint(-s.Width / 2, 0);
+            CCSize s = tileLayersContainer.ContentSize;
+            tileLayersContainer.Position = new CCPoint(-s.Width / 2, 0);
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
@@ -990,6 +556,17 @@ namespace tests
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
+
+            tileMap.Camera.NearAndFarOrthographicZClipping 
+                = new CCNearAndFarClipping(-2000f, 2000f);
+
+            Window.IsUseDepthTesting = true;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            Window.IsUseDepthTesting = false;
         }
 
         #endregion Setup content
@@ -1006,40 +583,24 @@ namespace tests
 		public override string Title
 		{
 			get
-			{
-				return "TMX Iso VertexZ";
-			}
+			{ return "TMX Iso VertexZ"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Sprite should hide behind the trees";
-
-			}
+			get { return "Sprite should hide behind the trees"; }
 		}
     }
 
-
-//------------------------------------------------------------------
-//
-// TMXOrthoVertexZ
-//
-//------------------------------------------------------------------
     public class TMXOrthoVertexZ : TileDemo
     {
         readonly CCSprite m_tamara;
 
-        public TMXOrthoVertexZ()
+        public TMXOrthoVertexZ() : base("TileMaps/orthogonal-test-vertexz")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-vertexz");
-            AddChild(map, 0, kTagTileMap);
+            CCTileMapLayer layer = tileMap.LayerNamed("trees");
+            m_tamara = layer.ExtractTile(0, 11);
 
-            // because I'm lazy, I'm reusing a tile as an sprite, but since this method uses vertexZ, you
-            // can use any CCSprite and it will work OK.
-            CCTMXLayer layer = map.LayerNamed("trees");
-            m_tamara = layer.TileAt(0, 11);
             CCLog.Log("tamara vertexZ: {0}", m_tamara.VertexZ);
         }
 
@@ -1047,18 +608,29 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter();
 
-            var move = new CCMoveBy (10, Layer.ScreenToWorldspace(new CCPoint(400, 450)));
+            var move = new CCMoveBy (10, new CCPoint(400, 450));
             var back = move.Reverse();
 			m_tamara.RepeatForever(move, back);
 
             Schedule(repositionSprite);
+
+            tileMap.Camera.NearAndFarOrthographicZClipping 
+            = new CCNearAndFarClipping(-2000f, 2000f);
+
+            Window.IsUseDepthTesting = true;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            Window.IsUseDepthTesting = false;
         }
 
         #endregion Setup content
 
-        private void repositionSprite(float dt)
+        void repositionSprite(float dt)
         {
             // tile height is 101x81
             // map size: 12x12
@@ -1068,284 +640,176 @@ namespace tests
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Ortho vertexZ";
-			}
+			get { return "TMX Ortho vertexZ"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Sprite should hide behind the trees";
-			}
+			get { return "Sprite should hide behind the trees"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXIsoMoveLayer
-//
-//------------------------------------------------------------------
     public class TMXIsoMoveLayer : TileDemo
     {
-        public TMXIsoMoveLayer()
+        public TMXIsoMoveLayer() : base("TileMaps/iso-test-movelayer")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-movelayer");
-            AddChild(map, 0, kTagTileMap);
-
-            map.Position = new CCPoint(-700, -50);
+            tileLayersContainer.Position = new CCPoint(-700, -50);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Iso Move Layer";
-			}
+			get { return "TMX Iso Move Layer"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Trees should be horizontally aligned";
-			}
+			get { return "Trees should be horizontally aligned"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoMoveLayer
-//
-//------------------------------------------------------------------
     public class TMXOrthoMoveLayer : TileDemo
     {
-        public TMXOrthoMoveLayer()
+        public TMXOrthoMoveLayer() : base("TileMaps/orthogonal-test-movelayer")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-movelayer");
-            AddChild(map, 0, kTagTileMap);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Ortho Move Layer";
-			}
+			get { return "TMX Ortho Move Layer"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "Trees should be horizontally aligned";
-			}
+			get { return "Trees should be horizontally aligned"; }
 		}
     }
-
-//------------------------------------------------------------------
-//
-// TMXTilePropertyTest
-//
-//------------------------------------------------------------------
 
     public class TMXTilePropertyTest : TileDemo
     {
-        public TMXTilePropertyTest()
+        public TMXTilePropertyTest() : base("TileMaps/ortho-tile-property")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-tile-property");
-            AddChild(map, 0, kTagTileMap);
-
-            for (uint i = 1; i <= 20; i++)
+            for (short i = 1; i <= 20; i++)
             {
-				CCLog.Log("GID:{0}, Properties:{1}", i, map.PropertiesForGID(i));
+                CCLog.Log("GID:{0}, Properties:{1}", i, tileMap.TilePropertiesForGID(i));
             }
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Tile Property Test";
-			}
+			get { return "TMX Tile Property Test"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "In the console you should see tile properties";
-
-			}
+			get { return "In the console you should see tile properties"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoFlipTest
-//
-//------------------------------------------------------------------
     public class TMXOrthoFlipTest : TileDemo
     {
-        public TMXOrthoFlipTest()
+        public TMXOrthoFlipTest() : base("TileMaps/ortho-rotation-test")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-rotation-test");
-            AddChild(map, 0, kTagTileMap);
-
-			foreach (var mapChild in map.Children)
-			{
-				var child = (CCSpriteBatchNode)mapChild;
-				child.Texture.IsAntialiased = true;
-			}
+            tileMap.Antialiased = true;
 				
-			map.RunAction(SCALE_2X_Half );
+            tileLayersContainer.RunAction(SCALE_2X_Half );
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX tile flip test";
-			}
+			get { return "TMX tile flip test"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoFlipRunTimeTest
-//
-//------------------------------------------------------------------
     public class TMXOrthoFlipRunTimeTest : TileDemo
     {
-        public TMXOrthoFlipRunTimeTest()
+        public TMXOrthoFlipRunTimeTest() : base("TileMaps/ortho-rotation-test")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/ortho-rotation-test");
-            AddChild(map, 0, kTagTileMap);
-
-			foreach (var mapChild in map.Children)
-			{
-				var child = (CCSpriteBatchNode)mapChild;
-				child.Texture.IsAntialiased = true;
-			}
+            tileMap.Antialiased = true;
 				
-			map.RunAction(SCALE_2X_Half );
+            tileLayersContainer.RunAction(SCALE_2X_Half );
 
             Schedule(flipIt, 1.0f);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX tile flip run time test";
-			}
+			get { return "TMX tile flip run time test"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "in 2 sec bottom left tiles will flip";
-			}
+			get { return "in 2 sec bottom left tiles will flip"; }
 		}
 
-        private void flipIt(float dt)
+        void flipIt(float dt)
         {
-            var map = (CCTMXTiledMap) this[kTagTileMap];
-            CCTMXLayer layer = map.LayerNamed("Layer 0");
+            CCTileMapLayer layer = tileMap.LayerNamed("Layer 0");
 
             //blue diamond 
-            var tileCoord = new CCPoint(1, 10);
-            uint flags;
-            uint GID = layer.TileGIDAt(tileCoord, out flags);
+            var tileCoord = new CCTileMapCoordinates(1, 10);
+
+            CCTileGidAndFlags gidAndFlags = layer.TileGIDAndFlags(tileCoord);
+            CCTileFlags flags = gidAndFlags.Flags;
+            short GID = gidAndFlags.Gid;
+
             // Vertical
-            if ((flags & CCTMXTileFlags.Vertical) != 0)
-                flags &= ~CCTMXTileFlags.Vertical;
+            if ((flags & CCTileFlags.Vertical) != 0)
+                flags &= ~CCTileFlags.Vertical;
             else
-                flags |= CCTMXTileFlags.Vertical;
-            layer.SetTileGID(GID, tileCoord, flags);
+                flags |= CCTileFlags.Vertical;
 
 
-            tileCoord = new CCPoint(1, 8);
-            GID = layer.TileGIDAt(tileCoord, out flags);
+            layer.SetTileGID(new CCTileGidAndFlags(GID, flags), tileCoord);
+
+
+            tileCoord = new CCTileMapCoordinates(1, 8);
+            gidAndFlags = layer.TileGIDAndFlags(tileCoord);
+            GID = gidAndFlags.Gid;
+            flags = gidAndFlags.Flags;
+
             // Vertical
-            if ((flags & CCTMXTileFlags.Vertical) != 0)
-                flags &= ~CCTMXTileFlags.Vertical;
+            if ((flags & CCTileFlags.Vertical) != 0)
+                flags &= ~CCTileFlags.Vertical;
             else
-                flags |= CCTMXTileFlags.Vertical;
-            layer.SetTileGID(GID, tileCoord, flags);
+                flags |= CCTileFlags.Vertical;
 
+            layer.SetTileGID(new CCTileGidAndFlags(GID, flags), tileCoord);
 
-            tileCoord = new CCPoint(2, 8);
-            GID = layer.TileGIDAt(tileCoord, out flags);
+            tileCoord = new CCTileMapCoordinates(2, 8);
+            gidAndFlags = layer.TileGIDAndFlags(tileCoord);
+            GID = gidAndFlags.Gid;
+            flags = gidAndFlags.Flags;
+
             // Horizontal
-            if ((flags & CCTMXTileFlags.Horizontal) != 0)
-                flags &= ~CCTMXTileFlags.Horizontal;
+            if ((flags & CCTileFlags.Horizontal) != 0)
+                flags &= ~CCTileFlags.Horizontal;
             else
-                flags |= CCTMXTileFlags.Horizontal;
-            layer.SetTileGID(GID, tileCoord, flags);
+                flags |= CCTileFlags.Horizontal;
+
+            layer.SetTileGID(new CCTileGidAndFlags(GID, flags), tileCoord);
         }
     }
 
-//------------------------------------------------------------------
-//
-// TMXOrthoFromXMLTest
-//
-//------------------------------------------------------------------
     public class TMXOrthoFromXMLTest : TileDemo
     {
-        public TMXOrthoFromXMLTest()
+        public TMXOrthoFromXMLTest() : base("TileMaps/orthogonal-test1")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test1");
-            AddChild(map, 0, kTagTileMap);
-
-			foreach (var mapChild in map.Children)
-			{
-				var child = (CCSpriteBatchNode)mapChild;
-				child.Texture.IsAntialiased = true;
-			}
-				
-			map.RunAction(SCALE_2X_Half );
+            tileMap.Antialiased = true;	
+            tileLayersContainer.RunAction(SCALE_2X_Half);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX created from XML test";
-			}
+			get { return "TMX created from XML test"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXBug987
-//
-//------------------------------------------------------------------
     public class TMXBug987 : TileDemo
     {
-        public TMXBug987()
+        public TMXBug987() : base("TileMaps/orthogonal-test6")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test6");
-            AddChild(map, 0, kTagTileMap);
-
-            /*
-            CCArray* childs = map.getChildren();
-            CCTMXLayer* node;
-            object* pObject = NULL;
-            CCARRAY_FOREACH(childs, pObject)
-            {
-                node = (CCTMXLayer*) pObject;
-                CC_BREAK_IF(!node);
-                node.Texture.setAntiAliasTexParameters();
-            }
-            */
-
-			map.AnchorPoint = CCPoint.AnchorLowerLeft;
-            CCTMXLayer layer = map.LayerNamed("Tile Layer 1");
-			layer.SetTileGID(3, new CCPoint(2, 2));
+            CCTileMapLayer layer = tileMap.LayerNamed("Tile Layer 1");
+            layer.SetTileGID(new CCTileGidAndFlags(3), new CCTileMapCoordinates(2, 2));
 
         }
 
@@ -1353,78 +817,57 @@ namespace tests
         {
             base.AddedToScene();
 
-			var map = (CCTMXTiledMap)this[kTagTileMap];
-			//map.Position = new CCPoint(100, 100);
+            tileLayersContainer.Position = new CCPoint(100, 100);
 		}
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Bug 987";
-
-			}
+			get { return "TMX Bug 987"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "You should see an square";
-
-			}
+			get { return "You should see an square"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TMXBug787
-//
-//------------------------------------------------------------------
     public class TMXBug787 : TileDemo
     {
-        public TMXBug787()
+        public TMXBug787() : base("TileMaps/iso-test-bug787")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-bug787");
-            AddChild(map, 0, kTagTileMap);
-
-            map.Scale = (0.25f);
+            tileMap.Scale = (0.25f);
         }
 
 		public override string Title
 		{
-			get
-			{
-				return "TMX Bug 787";
-			}
+			get { return "TMX Bug 787"; }
 		}
 
 		public override string Subtitle
 		{
-			get
-			{
-				return "You should see a map";
-			}
+			get { return "You should see a map"; }
 		}
     }
 
-//------------------------------------------------------------------
-//
-// TileDemo
-//
-//------------------------------------------------------------------
     public class TileDemo : TestNavigationLayer
     {
         protected const string s_TilesPng = "TileMaps/tiles";
         protected const string s_LevelMapTga = "TileMaps/levelmap";
 		protected const string pathSister1 = TestResource.s_pPathSister1;
-        public const int kTagTileMap = 1;
+
+        protected CCTileMap tileMap;
+        protected CCNode tileLayersContainer;
 
 		protected CCScaleBy SCALE_2X_Half = new CCScaleBy(2, 0.5f);
 
-        public TileDemo()
+        public TileDemo(string tilemapName)
         {
-			// Register Touch Event
+            tileMap = new CCTileMap(tilemapName);
+            tileLayersContainer = tileMap.TileLayersContainer;
+
+            AddChild(tileMap);
+
+            // Register Touch Event
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesMoved = onTouchesMoved;
 
@@ -1473,21 +916,16 @@ namespace tests
         {
 			var touch = touches [0];
             CCPoint diff = touch.Delta;
-            CCNode node = this[kTagTileMap];
-            node.Position += diff;
+            tileLayersContainer.Position += diff;
         }
     }
 
     public class TileMapTestScene : TestScene
     {
-        private static int sceneIdx = -1;
-#if XBOX || OUYA
-        private static int MAX_LAYER = 28;
-#else
-        private static int MAX_LAYER = 28;
-#endif
+        static int sceneIdx = -1;
+        static int MAX_LAYER = 26;
 
-        private static CCLayer createTileMapLayer(int nIndex)
+        static CCLayer createTileMapLayer(int nIndex)
         {
             switch (nIndex)
             {
@@ -1600,14 +1038,10 @@ namespace tests
                 case 22:
                     return new TMXOrthoFromXMLTest();
                 case 23:
-                    return new TileMapTest();
-                case 24:
-                    return new TileMapEditTest();
-                case 25:
                     return new TMXBug987();
-                case 26:
+                case 24:
                     return new TMXBug787();
-                case 27:
+                case 25:
                     return new TMXGIDObjectsTest();
 #endif
             }
@@ -1685,16 +1119,13 @@ namespace tests
 
     public class TMXGIDObjectsTest : TileDemo
     {
-        public TMXGIDObjectsTest()
+        public TMXGIDObjectsTest() : base("TileMaps/test-object-layer")
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/test-object-layer");
-            AddChild(map, -1, kTagTileMap);
         }
 
         protected override void Draw()
         {
-            var map = (CCTMXTiledMap) GetChildByTag(kTagTileMap);
-            CCTMXObjectGroup group = map.ObjectGroupNamed("Object Layer 1");
+            CCTileMapObjectGroup group = tileMap.ObjectGroupNamed("Object Layer 1");
 
             foreach (var dict in group.Objects)
             {
