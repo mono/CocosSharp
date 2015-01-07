@@ -34,6 +34,7 @@
     <call target="buildandroid"/>
     <call target="buildwindows8"/>
     <call target="buildnugets"/>
+    <call target="buildXStemplates" />
 
     <!--call target="buildtemplates"/-->
   </target>
@@ -223,5 +224,22 @@
        <nant buildfile="ProjectTemplates/Templates/StarterTemplates/default.build" target="build" />
     </if>
   </target>
+
+    <target name="buildXStemplates" description="Build CocosSharp XS project templates" depends="checkos">
+
+    <if test="${os == 'MacOS'}">
+        <copy todir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/Packages" >
+        <fileset basedir="${project::get-base-directory()}/ProjectTemplates/NuGet/bin">
+            <include name="CocosSharp.iOS.*.nupkg" />
+            <include name="CocosSharp.Android.*.nupkg" />
+            <include name="CocosSharp.MacOS.*.nupkg" />
+            <include name="CocosSharp.PCL.Shared.*.nupkg" />
+        </fileset>
+        </copy>
+        <exec program="mdtool" basedir="${mdtooldir}" workingdir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/" commandline="setup pack MonoDevelop.CocosSharp.addin.xml" />
+    </if>
+    </target>
+
+
 
 </project>
