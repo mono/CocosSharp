@@ -21,7 +21,7 @@ namespace ${SolutionName}
             
             // This will set the world bounds to be (0,0, w, h)
             // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
-            mainWindow.SetDesignResolutionSize(desiredWidth, desiredHeight, CCSceneResolutionPolicy.ShowAll);
+            CCScene.SetDefaultDesignResolution(desiredWidth, desiredHeight, CCSceneResolutionPolicy.ShowAll);
             
             // Determine whether to use the high or low def versions of our images
             // Make sure the default texel to content size ratio is set correctly
