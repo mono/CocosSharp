@@ -52,20 +52,24 @@ namespace tests
 
     public class TMXOrthoTest4 : TileDemo
     {
+        CCSprite sprite, sprite2, sprite3, sprite4;
+
         public TMXOrthoTest4() : base("TileMaps/orthogonal-test4")
         {
             CCTileMapLayer layer = tileMap.LayerNamed("Layer 0");
             CCTileMapCoordinates s = layer.LayerSize;
 
-            CCSprite sprite;
             sprite = layer.ExtractTile(0, 0);
             sprite.Scale = 2;
-            sprite = layer.ExtractTile(s.Column - 1, 0);
-            sprite.Scale = 2;
-            sprite = layer.ExtractTile(0, s.Row - 1);
-            sprite.Scale = 2;
-            sprite = layer.ExtractTile(s.Column - 1, s.Row - 1);
-            sprite.Scale = 2;
+
+            sprite2 = layer.ExtractTile(s.Column - 1, 0);
+            sprite2.Scale = 2;
+
+            sprite3 = layer.ExtractTile(0, s.Row - 1);
+            sprite3.Scale = 2;
+
+            sprite4 = layer.ExtractTile(s.Column - 1, s.Row - 1);
+            sprite4.Scale = 2;
 
             Schedule(removeSprite, 2);
         }
@@ -77,13 +81,10 @@ namespace tests
             var layer = tileMap.LayerNamed("Layer 0");
             var s = layer.LayerSize;
 
-            var sprite = layer.ExtractTile(s.Column - 1, 0);
-            var sprite2 = layer.ExtractTile(s.Column - 1, s.Row - 1);
             layer.RemoveChild(sprite, true);
-
-            var sprite3 = layer.ExtractTile(2, s.Row -1);
             layer.RemoveChild(sprite3, true);
             layer.RemoveChild(sprite2, true);
+            layer.RemoveChild(sprite4, true);
         }
 
 		public override string Title
