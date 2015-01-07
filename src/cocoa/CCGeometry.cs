@@ -1268,6 +1268,12 @@ namespace CocosSharp
 			this.Y = value;
 		}
 
+        public CCVector2(CCVector2 value)
+        {
+            this.X = value.X;
+            this.Y = value.Y;
+        }
+
 		#endregion Constructors
 
 
@@ -1285,6 +1291,16 @@ namespace CocosSharp
 			result.X = value1.X + value2.X;
 			result.Y = value1.Y + value2.Y;
 		}
+
+        public float Angle
+        {
+            get { return (float) Math.Atan2(Y,X); }
+        }
+
+        public static float AngleOf(CCVector2 value1)
+        {
+            return (float) Math.Atan2(value1.Y,value1.X);
+        }
 
 		public static CCVector2 Barycentric(CCVector2 value1, CCVector2 value2, CCVector2 value3, float amount1, float amount2)
 		{
@@ -1548,6 +1564,48 @@ namespace CocosSharp
 			result.Y = value.Y * val;
 		}
 
+        /// <summary>
+        /// Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpendicularCCW(v)) >= 0
+        /// </summary>
+        /// <returns>A perpendicular vector to source vector</returns>
+        /// <param name="p">Source point.</param>
+        public static CCVector2 PerpendicularCCW(CCVector2 v)
+        {
+            CCVector2 vector;
+            vector.X = -v.Y;
+            vector.Y = v.X;
+            return vector;
+        }
+
+        /// <summary>
+        /// Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, PerpendicularCW(v)) <= 0
+        /// </summary>
+        /// <returns>A perpendicular vector to source vector</returns>
+        /// <param name="p">Source vector.</param>
+        public static CCVector2 PerpendicularCW(CCVector2 v)
+        {
+            CCVector2 vector;
+            vector.X = v.Y;
+            vector.Y = -v.X;
+            return vector;
+        }
+
+        public const int Clockwise = 1;
+        public const int AntiClockwise = -1;
+
+        /**
+    /* returns positive if v2 is clockwise of this vector,
+    /* negative if anticlockwise (assuming the Y axis is pointing down,
+    /* X axis to right like a Window app)
+     */
+        public int Sign(CCVector2 v2) {
+            if (Y * v2.X > X * v2.Y) {
+                return AntiClockwise;
+            } else {
+                return Clockwise;
+            }
+        }
+
 		public static CCVector2 SmoothStep(CCVector2 value1, CCVector2 value2, float amount)
 		{
 			return new CCVector2(
@@ -1624,6 +1682,20 @@ namespace CocosSharp
 			return string.Format(currentCulture, "{{X:{0} Y:{1}}}", new object[] { 
 				this.X.ToString(currentCulture), this.Y.ToString(currentCulture) });
 		}
+
+        /**
+     * adjusts x and y so that the length of the vector does not exceed max
+     * truncates a vector so that its length does not exceed max
+     * @param max 
+     */
+        public void Truncate(float max) {
+            if (this.Length() > max) {
+                this.Normalize();
+                this.X *= max;
+                this.Y *= max;
+            }
+        }
+
 
 		#endregion Public Methods
 

@@ -54,6 +54,22 @@ namespace CocosSharp
             return (int) (value1 + ((value2 - value1) * amount));
         }
 
+        /// <summary>
+        /// Linearly interpolates between two values.
+        /// </summary>
+        /// <param name="value1">Source value.</param>
+        /// <param name="value2">Source value.</param>
+        /// <param name="amount">Value between 0 and 1 indicating the weight of value2.</param>
+        /// <returns>Interpolated value.</returns> 
+        /// <remarks>This method performs the linear interpolation based on the following formula.
+        /// <c>value1 + (value2 - value1) * amount</c>
+        /// Passing amount a value of 0 will cause value1 to be returned, a value of 1 will cause value2 to be returned.
+        /// </remarks>
+        public static float Lerp(float value1, float value2, float amount)
+        {
+            return value1 + (value2 - value1) * amount;
+        }
+
 		public static float Clamp(float value, float min, float max)
 		{
 			value = (value > max) ? max : value;
