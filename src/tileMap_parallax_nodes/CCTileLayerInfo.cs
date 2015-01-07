@@ -1,12 +1,14 @@
+﻿using System;
 using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCTMXLayerInfo 
+    public class CCTileLayerInfo 
     {
+        const uint DefaultMinGID = 100000;
+
         #region Properties
 
-        public bool OwnTiles { get; set; }
         public bool Visible { get; set; }
         public byte Opacity { get; set; }
         public string Name { get; set; }
@@ -14,10 +16,10 @@ namespace CocosSharp
         public uint MaxGID { get; set; }
         public uint MinGID { get; set; }
 
-        public CCSize LayerSize { get; set; }
-        public CCPoint Offset { get; set; }
+        public CCTileMapCoordinates LayerDimensions { get; set; }
+        public CCPoint TileCoordOffset { get; set; }
 
-        public uint[] Tiles { get; set; }
+        public CCTileGidAndFlags[] TileGIDAndFlags { get; set; }
 
         public Dictionary<string, string> Properties { get; set; }
 
@@ -26,13 +28,14 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTMXLayerInfo()
+        public CCTileLayerInfo(uint minGid = DefaultMinGID)
         {
             Properties = new Dictionary<string, string>(); 
-            Name = "";
-            MinGID = 100000;
+            Name = String.Empty;
+            MinGID = minGid;
         }
 
         #endregion Constructors
     }
 }
+

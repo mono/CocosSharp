@@ -328,14 +328,6 @@
     <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTileMapAtlas.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXLayer.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXLayerInfo.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXMapInfo.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXObjectGroup.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXTiledMap.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
     <Compile Include="Platform\CCTask.cs" />
     <Compile Include="Platform\ICCFocusable.cs" />
@@ -353,7 +345,6 @@
     <Compile Include="support\CCUserDefault.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="Platform\CCDrawManager.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCRandom.cs" />
@@ -402,6 +393,13 @@
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
     <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMap.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapLayer.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapObjectGroup.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

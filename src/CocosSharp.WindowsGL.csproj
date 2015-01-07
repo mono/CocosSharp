@@ -373,15 +373,13 @@
     <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTileMapAtlas.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXLayer.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXLayerInfo.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXMapInfo.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXObjectGroup.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXTiledMap.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
-    <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMap.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapLayer.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapObjectGroup.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>

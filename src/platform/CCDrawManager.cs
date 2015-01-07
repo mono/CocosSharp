@@ -403,6 +403,8 @@ namespace CocosSharp
             graphicsDevice.DeviceResetting += GraphicsDeviceDeviceResetting;
             graphicsDevice.ResourceCreated += GraphicsDeviceResourceCreated;
             graphicsDevice.ResourceDestroyed += GraphicsDeviceResourceDestroyed;
+
+            DepthTest = false;
         }
 
         #endregion Constructors
@@ -584,7 +586,7 @@ namespace CocosSharp
         {
             if (graphicsDevice == null || graphicsDevice.IsDisposed)
             {
-                // We are existing the game
+                // We are exiting the game
                 return;
             }
 
@@ -1183,7 +1185,7 @@ namespace CocosSharp
 
             // draw a fullscreen solid rectangle to clear the stencil buffer
 
-            XnaGraphicsDevice.Clear (ClearOptions.Target | ClearOptions.Stencil, Color.Transparent, 0, 0);
+            XnaGraphicsDevice.Clear (ClearOptions.Target | ClearOptions.Stencil, Color.Transparent, 1, 0);
 
             ///////////////////////////////////
             // PREPARE TO DRAW MASK

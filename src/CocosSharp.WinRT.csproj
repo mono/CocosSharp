@@ -936,32 +936,26 @@
     <Compile Include=".\tileMap_parallax_nodes\CCPointObject.cs">
       <LogicalName>tileMap_parallax_nodes\CCPointObject</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileMapAtlas.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileMapAtlas</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileLayerInfo.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileLayerInfo</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXLayer.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXLayer</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileMap.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileMap</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXLayerInfo.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXLayerInfo</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileMapInfo.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileMapInfo</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXMapInfo.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXMapInfo</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileMapLayer.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileMapLayer</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXObjectGroup.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXObjectGroup</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileMapObjectGroup.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileMapObjectGroup</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXTiledMap.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXTiledMap</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileMapStructs.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileMapStructs</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXTileFlags.cs">
-      <LogicalName>tileMap_parallax_nodes\ccTMXTileFlags_</LogicalName>
-    </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXTilesetInfo.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXTilesetInfo</LogicalName>
-    </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTMXXMLParser</LogicalName>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileSetInfo.cs">
+        <LogicalName>tileMap_parallax_nodes\CCTileSetInfo</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">
       <LogicalName>Win8IOExtensions</LogicalName>

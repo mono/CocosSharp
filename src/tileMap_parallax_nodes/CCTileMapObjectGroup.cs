@@ -1,15 +1,17 @@
+﻿using System;
 using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCTMXObjectGroup 
+    public class CCTileMapObjectGroup 
     {
+        const string ObjectNameKey = "name";
+
+
         #region Properties
 
         public string GroupName { get; set; }
-
-        public CCPoint PositionOffset { get; set; }             // offset position of child objects
-
+        public CCPoint PositionOffset { get; set; }
         public Dictionary<string, string> Properties { get; set; }
         public List<Dictionary<string, string>> Objects { get; set; }
 
@@ -18,7 +20,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTMXObjectGroup()
+        public CCTileMapObjectGroup()
         {
             Objects = new List<Dictionary<string, string>>();
             Properties = new Dictionary<string, string>();
@@ -27,6 +29,8 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Fetching object group data
+
         public string PropertyNamed(string propertyName)
         {
             return Properties[propertyName];
@@ -34,11 +38,11 @@ namespace CocosSharp
 
         public Dictionary<string, string> ObjectNamed(string objectName)
         {
-            if (Objects != null && Objects.Count > 0)
+            if (Objects != null)
             {
                 foreach (Dictionary<string, string> tmxObjDict in Objects)
                 {
-                    string name = tmxObjDict["name"];
+                    string name = tmxObjDict[ObjectNameKey];
                     if (name == objectName)
                     {
                         return tmxObjDict;
@@ -48,5 +52,8 @@ namespace CocosSharp
 
             return null;
         }
+
+        #endregion Fetching object group data
     }
 }
+
