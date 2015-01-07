@@ -195,6 +195,16 @@ namespace CocosSharp
 			return pt;
 		}
 
+        public CCPoint RoundToInteger()
+        {
+            CCPoint pt;
+            pt.X = (float)Math.Round(X);
+            pt.Y = (float)Math.Round(Y);
+
+            return pt;
+        }
+
+
         #region Static Methods
 
         /** Run a math operation function on each point component
@@ -664,6 +674,11 @@ namespace CocosSharp
         public static CCPoint operator /(CCPoint p, CCSize size)
         {
             return new CCPoint(p.X / size.Width, p.Y / size.Height);
+        }
+
+        public static CCPoint operator *(CCPoint point, CCSize size)
+        {
+            return new CCPoint(point.X * size.Width, point.Y * size.Height);
         }
 
         #endregion
