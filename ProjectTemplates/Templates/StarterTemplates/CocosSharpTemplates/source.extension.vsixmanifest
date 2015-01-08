@@ -4,7 +4,6 @@
     <Identity Id="CocosSharpTemplates..eb812469-1cb6-4953-990a-e6474c0409ce" Version="1.2.1" Language="en-US" Publisher="Xamarin Inc" />
     <DisplayName>CocosSharpTemplates</DisplayName>
     <Description xml:space="preserve">Collection of CocosSharp Project Templates that allows for the creation of a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.</Description>
-    <License>https://github.com/mono/CocosSharp/blob/master/LicenseAndCredit.txt</License>
     <GettingStartedGuide>http://developer.xamarin.com/guides/cross-platform/game_development/cocossharp/</GettingStartedGuide>
     <ReleaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.2.0.0.md</ReleaseNotes>
     <Icon>powered.ico</Icon>
