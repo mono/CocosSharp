@@ -38,7 +38,7 @@
 	</WizardExtension>
 	<WizardData>
 		<packages repository="extension"
-			  repositoryId="EmptyProject.F4B9EE66-6302-4B20-B798-2CEE8BCA936D">
+			  repositoryId="CocosSharpTemplates..eb812469-1cb6-4953-990a-e6474c0409ce">
 			<package id="CocosSharp.iOS" version="1.2.1.0" />
 		</packages>
 	</WizardData>

@@ -51,7 +51,7 @@
 	</WizardExtension>
 	<WizardData>
 		<packages repository="extension"
-			  repositoryId="EmptyProject.548623EE-B1A5-49B8-9C03-6C6C4762A734">
+			  repositoryId="CocosSharpTemplates..eb812469-1cb6-4953-990a-e6474c0409ce">
 			<package id="CocosSharp.Android" version="1.2.1.0" />
 		</packages>
 	</WizardData>

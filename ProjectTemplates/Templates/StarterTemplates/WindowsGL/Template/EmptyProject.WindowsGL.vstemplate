@@ -37,7 +37,7 @@
 	</WizardExtension>
 	<WizardData>
 		<packages repository="extension"
-			  repositoryId="EmptyProject.BB5F2984-379C-47BD-B38B-30506373B8B3">
+			  repositoryId="CocosSharpTemplates..eb812469-1cb6-4953-990a-e6474c0409ce">
 			<package id="CocosSharp.WindowsGL" version="1.2.1.0" />
 		</packages>
 	</WizardData>

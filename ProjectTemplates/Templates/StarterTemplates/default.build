@@ -6,7 +6,6 @@
 	<target name="build" description="Build CocosSharp Visual Studio Templates">
 		<call target="ziptemplates"/>
 		<call target="buildvsix"/>
-		<call target="zipdistribution"/>
 	</target>
 
 	<target name="clean">
@@ -45,42 +44,11 @@
 
 	<target name="buildvsix">
 		<!-- Build all vsix projects -->
-		<foreach item="Folder" property="folder" in="./">
-			<fileset id="solution">
-			  <include name="${folder}/VSIX/**/*.sln" />
-			</fileset>
-			<foreach item="File" property="filename">
-				<in>
-					<items refid="solution" />
-				</in>
-				<do>
-					<!--property name="basefilename" value="${path::get-file-name-without-extension(filename)}" />
-					<echo message="Building solution file: ${basefilename}" /-->
-					<echo message="${filename}" /> 
-					<exec program="msbuild " commandline='"${filename}" /t:Clean /p:Configuration=Release' />
-					<exec program="msbuild " commandline='"${filename}" /t:Build /p:Configuration=Release' />
-				</do>
-			</foreach>
-		</foreach>
-
-	</target>
-	
-	<target name="zipdistribution">
-		<!-- Zip up all the templates in the Templates folders -->
-		<delete dir="./bin"/>
-		<!--copy todir="./bin" flatten="true">
-			<fileset >
-				<include name="**/Release/*.vsix" />
-			</fileset>
-		</copy-->
-		<zip zipfile="./bin/CocosSharpTemplates.zip" flatten="true">
-		  <fileset basedir="./">			    
-		     <!--include name="./bin/*.vsix" /-->
-			<include name="**/Release/*.vsix" />
-		  </fileset>
-		</zip>
-
-
+		<property name="basefilename" value="CocosSharpTemplates/CocosSharpTemplates.sln" />
+		<echo message="Building VSIX solution file: ${basefilename}" />
+		<echo message="${basefilename}" /> 
+		<exec program="msbuild " commandline='"${basefilename}" /t:Clean /p:Configuration=Release' />
+		<exec program="msbuild " commandline='"${basefilename}" /t:Build /p:Configuration=Release' />
 	</target>
 	
 </project>
