@@ -38,8 +38,8 @@ sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../..
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
 sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
- Update CocosSharpTemplates version to be included in built Template
-sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/source.extension.vsixmanifest
+# Update CocosSharpTemplates version to be included in built Template
+#sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/source.extension.vsixmanifest
 
 # Update XS project template
 sed -i '' "1,/version.*=\".*\".*>/s/version.*=\".*\".*>/version         =\"$1\">/" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
