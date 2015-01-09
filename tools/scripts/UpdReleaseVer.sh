@@ -44,3 +44,18 @@ sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplat
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
 sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/VSIX/EmptyProject.WindowsGL/EmptyProject.WindowsGL/EmptyProject.WindowsGL.csproj
 sed -i '' "s#<Version>.*</Version>#<Version>$1</Version>#g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/VSIX/EmptyProject.WindowsGL/EmptyProject.WindowsGL/source.extension.vsixmanifest
+
+# Update XS project template
+sed -i '' "1,/version.*=\".*\".*>/s/version.*=\".*\".*>/version         =\"$1\">/" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
+sed -i '' "s/CocosSharp\.Android\..*.nupkg/CocosSharp\.Android\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
+sed -i '' "s/CocosSharp\.iOS\..*.nupkg/CocosSharp\.iOS\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
+sed -i '' "s/CocosSharp\.MacOS\..*.nupkg/CocosSharp\.MacOS\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
+sed -i '' "s/CocosSharp\.PCL.Shared\..*.nupkg/CocosSharp\.PCL\.Shared\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
+
+# Update CocosSharp core library assembly version
+sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../src/Properties/AssemblyInfo.cs
+sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../src/Properties/AssemblyInfo.cs
+
+# Update CocosSharp PCL assembly version
+sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../PCL/CocosSharpPCLShared/Properties/AssemblyInfo.cs
+sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../PCL/CocosSharpPCLShared/Properties/AssemblyInfo.cs
