@@ -56,7 +56,7 @@
   </WizardExtension>
   <WizardData>
     <packages repository="extension"
-          repositoryId="CocosSharpTemplates..eb812469-1cb6-4953-990a-e6474c0409ce">
+          repositoryId="Xamarin.CocosSharpTemplates">
       <package id="CocosSharp.WindowsPhone8" version="1.3.0.0" />
     </packages>
   </WizardData>
