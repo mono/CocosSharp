@@ -27,14 +27,43 @@ namespace CocosSharp
 {
     public class CCLog
     { 
+
+        private static ICCLog customLogger;
+        private static bool hasCustomLog = false;
+
         public static void Log(string message)
         {
+            if (hasCustomLog)
+                customLogger.Log(message);
+
             Debug.WriteLine(message);
         }
 
         public static void Log(string format, params object[] args)
         {
+            if (hasCustomLog)
+                customLogger.Log(format, args);
+
             Debug.WriteLine(format, args);
         }
+
+        public static ICCLog CustomCCLog
+        {
+            set 
+            {
+                customLogger = value;
+                hasCustomLog = (customLogger == null) ? false : true;
+            }
+        }
     }
+}
+
+namespace CocosSharp
+{
+    public interface ICCLog
+    {
+        void Log(string message);
+        void Log(string format, params object[] args);
+    }
+
 }
