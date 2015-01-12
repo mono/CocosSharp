@@ -25,7 +25,7 @@ namespace tests
             sharedWindow = mainWindow;
 
             CCSize winSize = mainWindow.WindowSizeInPixels;
-            mainWindow.SetDesignResolutionSize(winSize.Width, winSize.Height, CCSceneResolutionPolicy.ShowAll);
+            CCScene.SetDefaultDesignResolution(winSize.Width, winSize.Height, CCSceneResolutionPolicy.ShowAll);
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
 			//application.PreferredBackBufferWidth = 1024;

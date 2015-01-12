@@ -45,7 +45,6 @@ namespace CocosSharp
     {
         static readonly CCRect exactFitRatio = new CCRect(0,0,1,1);
 
-        CCSize designResolutionSize;
         CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         CCViewport viewport;
         CCWindow window;

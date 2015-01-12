@@ -148,6 +148,12 @@ namespace CocosSharp
 
             Application = application;
 
+            if (CCScene.DefaultDesignResolutionSize == CCSize.Zero)
+            {
+                CCScene.DefaultDesignResolutionSize = screenSizeInPixels;
+                CCScene.DefaultDesignResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
+            }
+
             Stats.Initialize();
         }
 
