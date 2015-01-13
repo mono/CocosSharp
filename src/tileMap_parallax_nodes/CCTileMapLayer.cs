@@ -334,7 +334,7 @@ namespace CocosSharp
         {
             bool isValid = xCoord < LayerSize.Column && yCoord < LayerSize.Row && xCoord >= 0 && yCoord >= 0;
 
-            Debug.Assert(isValid, String.Format("CCTileMapLayer: Invalid tile coordinates x: %n y: %n", xCoord, yCoord));
+            Debug.Assert(isValid, String.Format("CCTileMapLayer: Invalid tile coordinates x: {0} y: {1}", xCoord, yCoord));
 
             return isValid;
         }

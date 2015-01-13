@@ -921,10 +921,88 @@ namespace tests
         }
     }
 
+    public class IsoNodePosition : TileDemo
+    {
+        CCDrawNode drawNode;
+
+        public IsoNodePosition() : base("TileMaps/iso-test-zorder")
+        {
+
+            drawNode = new CCDrawNode();
+            tileLayersContainer.AddChild(drawNode);
+
+            var touchListener = new CCEventListenerTouchOneByOne();
+            touchListener.OnTouchBegan = OnTouchBegan;
+
+            AddEventListener(touchListener);
+
+        }
+
+        bool OnTouchBegan (CCTouch touch, CCEvent touchEvent)
+        {
+
+            var layer = tileMap.LayerNamed("grass");
+
+            var location = layer.WorldToParentspace(touch.Location);
+            var tileCoordinates = layer.ClosestTileCoordAtNodePosition(location);
+            var gid = layer.TileGIDAndFlags(tileCoordinates);
+
+            if (gid.Gid != 1)  // we only want the green grass
+                return false;
+
+            // Convert the tile coordinates position to world coordinates for
+            // our outline drawing
+            var world = layer.TilePosition(tileCoordinates);
+
+
+            // Calculate our width and height of the tile
+            CCSize texToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
+            float width = layer.TileTexelSize.Width * texToContentScaling.Width;
+            float height = layer.TileTexelSize.Height * texToContentScaling.Height;
+
+            var rect = new CCRect(world.X, world.Y, width, height);
+
+            drawNode.Clear();
+
+            drawNode.Color = CCColor3B.Magenta;
+            drawNode.Opacity = 255;
+
+            var center = rect.Center;
+
+            var right = center;
+            right.X += width / 2;
+
+            var top = center;
+            top.Y += height / 2;
+
+            var left = right;
+            left.X -= width;
+
+            var bottom = center;
+            bottom.Y -= height / 2;
+
+            // Hightlight our iso tile
+            drawNode.DrawPolygon (new CCPoint[] {right, top, left, bottom}, 4, CCColor4B.Transparent, 1, new CCColor4F(CCColor4B.Magenta));
+
+            return true;
+        }
+
+        public override string Title
+        {
+            get { return "Iso Node Position"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Click on the grass to hightlight tile"; }
+        }
+    }
+
+
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 26;
+        static int MAX_LAYER = 27;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1044,6 +1122,8 @@ namespace tests
                     return new TMXBug787();
                 case 25:
                     return new TMXGIDObjectsTest();
+                case 26:
+                    return new IsoNodePosition();
 #endif
             }
 
