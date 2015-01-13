@@ -11,7 +11,7 @@ namespace CocosSharp
 {
 
 #if IOS
-    [MonoTouch.Foundation.Preserve (AllMembers = true)]
+    [Foundation.Preserve (AllMembers = true)]
 #endif
     internal sealed class CCBMFontConfiguration
     {

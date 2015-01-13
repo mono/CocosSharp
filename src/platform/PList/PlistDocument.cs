@@ -39,7 +39,7 @@ using System.Text;
 namespace CocosSharp
 {
 #if IOS
-    [MonoTouch.Foundation.Preserve (AllMembers = true)]
+    [Foundation.Preserve (AllMembers = true)]
 #endif
 	public class PlistDocument : PlistObjectBase
     {

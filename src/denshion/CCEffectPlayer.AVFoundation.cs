@@ -7,8 +7,8 @@ using CocosSharp;
 using MonoMac.AVFoundation;
 using MonoMac.Foundation;
 #elif IOS
-using MonoTouch.AVFoundation;
-using MonoTouch.Foundation;
+using AVFoundation;
+using Foundation;
 #endif
 
 namespace CocosDenshion

@@ -89,12 +89,12 @@ namespace CocosSharp
 
         public static void CheckGLError()
         {
-        #if GLES && !ANGLE
+        #if GLES && (!ANGLE && !IOS)
             All error = GL.GetError();
             if (error != All.False)
                 throw new Exception("GL.GetError() returned " + error.ToString());
         #elif OPENGL
-            ErrorCode error = GL.GetError();
+            var error = GL.GetError();
             if (error != ErrorCode.NoError)
                 throw new Exception("GL.GetError() returned " + error.ToString());
         #endif

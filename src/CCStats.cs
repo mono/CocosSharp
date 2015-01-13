@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Diagnostics;
 #if IOS
-using MonoTouch.ObjCRuntime;
+using ObjCRuntime;
 #endif
 
 namespace CocosSharp

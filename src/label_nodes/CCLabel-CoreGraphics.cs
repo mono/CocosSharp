@@ -12,11 +12,11 @@ using MonoMac.CoreText;
 using MonoMac.ImageIO;
 
 #else
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using MonoTouch.CoreText;
-using MonoTouch.ImageIO;
+using CoreGraphics;
+using UIKit;
+using Foundation;
+using CoreText;
+using ImageIO;
 #endif
 
 namespace CocosSharp
@@ -90,7 +90,7 @@ namespace CocosSharp
 			CCLabelUtilities.NativeDrawString(_bitmap, s, _font, _brush, new RectangleF(0,0,w,h));
 			_bitmapData = _bitmap.Data;
 
-			stride = _bitmap.BytesPerRow;
+			stride = (int)_bitmap.BytesPerRow;
 
 			return (byte*)_bitmapData;
 		}

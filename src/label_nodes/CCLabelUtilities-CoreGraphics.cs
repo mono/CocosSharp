@@ -1,10 +1,11 @@
 using System;
 using System.Runtime.Serialization;
 using System.Runtime.InteropServices;
-using System.Drawing;
+
 using System.IO;
 
 #if MACOS
+using System.Drawing;
 using MonoMac.CoreGraphics;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
@@ -12,11 +13,11 @@ using MonoMac.CoreText;
 using MonoMac.ImageIO;
 
 #else
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using MonoTouch.CoreText;
-using MonoTouch.ImageIO;
+using CoreGraphics;
+using UIKit;
+using Foundation;
+using CoreText;
+using ImageIO;
 #endif
 
 namespace CocosSharp
@@ -47,7 +48,11 @@ namespace CocosSharp
 			NSUrl url = NSUrl.FromFilename (fileName);
 
 			// Create an image destination that saves into the imgData 
+            #if IOS
+            CGImageDestination dest = CGImageDestination.Create (url, typeIdentifier, 1);
+            #else
 			CGImageDestination dest = CGImageDestination.FromUrl (url, typeIdentifier, 1);
+            #endif
 
 			// Add an image to the destination
             dest.AddImage(bitmap.GetImage(),(NSDictionary) null);
@@ -95,7 +100,11 @@ namespace CocosSharp
 			                                     bitmapInfo);
 
 			// This works for now but we need to look into initializing the memory area itself
-			bitmapContext.ClearRect (new RectangleF (0,0,width,height));
+            #if IOS
+            bitmapContext.ClearRect (new CGRect (0,0,width,height));
+            #else
+            bitmapContext.ClearRect (new RectangleF (0,0,width,height));
+            #endif
 
 			return bitmapContext;
 
@@ -103,13 +112,13 @@ namespace CocosSharp
 
 		internal static CGImage GetImage (this CGBitmapContext bitmapContext)
 		{
-			var provider = new CGDataProvider (bitmapContext.Data, bitmapContext.BytesPerRow * bitmapContext.Height, true);
+			var provider = new CGDataProvider (bitmapContext.Data, (int)bitmapContext.BytesPerRow * (int)bitmapContext.Height, true);
 
-			var NativeCGImage = new CGImage (bitmapContext.Width, 
-			                                 bitmapContext.Height, 
-			                                 bitmapContext.BitsPerComponent, 
-			                                 bitmapContext.BitsPerPixel, 
-			                                 bitmapContext.BytesPerRow, 
+			var NativeCGImage = new CGImage ((int)bitmapContext.Width, 
+			                                 (int)bitmapContext.Height, 
+			                                 (int)bitmapContext.BitsPerComponent, 
+			                                 (int)bitmapContext.BitsPerPixel, 
+			                                 (int)bitmapContext.BytesPerRow, 
 			                                 bitmapContext.ColorSpace,  
 			                                 (CGBitmapFlags)bitmapContext.BitmapInfo,
 			                                 provider, 
@@ -119,6 +128,122 @@ namespace CocosSharp
 			return NativeCGImage;
 		}
 
+        #if IOS
+        internal static void NativeDrawString (CGBitmapContext bitmapContext, string s, CTFont font, CCColor4B brush, CGRect layoutRectangle)
+        {
+            if (font == null)
+                throw new ArgumentNullException ("font");
+
+            if (s == null || s.Length == 0)
+                return;
+
+            bitmapContext.ConcatCTM (bitmapContext.GetCTM().Invert());
+
+            // This is not needed here since the color is set in the attributed string.
+            //bitmapContext.SetFillColor(brush.R/255f, brush.G/255f, brush.B/255f, brush.A/255f);
+
+            // I think we only Fill the text with no Stroke surrounding
+            //bitmapContext.SetTextDrawingMode(CGTextDrawingMode.Fill);
+
+            var attributedString = buildAttributedString(s, font, brush);
+
+            // Work out the geometry
+            var insetBounds = layoutRectangle;
+
+            var textPosition = new CGPoint(insetBounds.X,
+                insetBounds.Y);
+
+            var boundsWidth = insetBounds.Width;
+
+            // Calculate the lines
+            var start = 0;
+            var length = attributedString.Length;
+
+            var typesetter = new CTTypesetter(attributedString);
+
+            float baselineOffset = 0;
+
+            // First we need to calculate the offset for Vertical Alignment if we 
+            // are using anything but Top
+            if (vertical != CCVerticalTextAlignment.Top) {
+                while (start < length) {
+                    var count = typesetter.SuggestLineBreak (start, boundsWidth);
+                    var line = typesetter.GetLine (new NSRange(start, count));
+
+                    // Create and initialize some values from the bounds.
+        #if IOS
+                    nfloat ascent = 0.0f;
+                    nfloat descent = 0.0f;
+                    nfloat leading = 0.0f;
+        #else
+                    var ascent = 0.0f;
+                    var descent = 0.0f;
+                    var leading = 0.0f;
+        #endif
+                    line.GetTypographicBounds (out ascent, out descent, out leading);
+                    baselineOffset += (float)Math.Ceiling (ascent + descent + leading + 1); // +1 matches best to CTFramesetter's behavior  
+                    line.Dispose ();
+                    start += (int)count;
+                }
+            }
+
+            start = 0;
+
+            while (start < length && textPosition.Y < insetBounds.Bottom)
+            {
+
+                // Now we ask the typesetter to break off a line for us.
+                // This also will take into account line feeds embedded in the text.
+                //  Example: "This is text \n with a line feed embedded inside it"
+                var count = typesetter.SuggestLineBreak(start, boundsWidth);
+                var line = typesetter.GetLine(new NSRange(start, count));
+
+                // Create and initialize some values from the bounds.
+        #if IOS
+                nfloat ascent = 0.0f;
+                nfloat descent = 0.0f;
+                nfloat leading = 0.0f;
+        #else
+                var ascent = 0.0f;
+                var descent = 0.0f;
+                var leading = 0.0f;
+        #endif
+
+                line.GetTypographicBounds(out ascent, out descent, out leading);
+
+                // Calculate the string format if need be
+                var penFlushness = 0.0f;
+
+                if (horizontal == CCTextAlignment.Right)
+                    penFlushness = (float)line.GetPenOffsetForFlush(1.0f, boundsWidth);
+                else if (horizontal == CCTextAlignment.Center)
+                    penFlushness = (float)line.GetPenOffsetForFlush(0.5f, boundsWidth);
+
+                // initialize our Text Matrix or we could get trash in here
+                var textMatrix = CGAffineTransform.MakeIdentity();
+
+                if (vertical == CCVerticalTextAlignment.Top)
+                    textMatrix.Translate(penFlushness, insetBounds.Height - textPosition.Y -(float)Math.Floor(ascent - 1));
+                if (vertical == CCVerticalTextAlignment.Center)
+                    textMatrix.Translate(penFlushness, ((insetBounds.Height / 2) + (baselineOffset / 2)) - textPosition.Y -(float)Math.Floor(ascent - 1));
+                if (vertical == CCVerticalTextAlignment.Bottom)
+                    textMatrix.Translate(penFlushness, baselineOffset - textPosition.Y -(float)Math.Floor(ascent - 1));
+
+                // Set our matrix
+                bitmapContext.TextMatrix = textMatrix;
+
+                // and draw the line
+                line.Draw(bitmapContext);
+
+                // Move the index beyond the line break.
+                start += (int)count;
+                textPosition.Y += (float)Math.Ceiling(ascent + descent + leading + 1); // +1 matches best to CTFramesetter's behavior  
+                line.Dispose();
+
+            }
+
+        }   
+        #else
 		internal static void NativeDrawString (CGBitmapContext bitmapContext, string s, CTFont font, CCColor4B brush, RectangleF layoutRectangle)
 		{
 			if (font == null)
@@ -220,6 +345,7 @@ namespace CocosSharp
 			}
 
 		}	
+        #endif
 
 		[StructLayout(LayoutKind.Sequential)]
 		internal struct ABCFloat
@@ -244,12 +370,18 @@ namespace CocosSharp
 			// for now just a line not sure if this is going to work
 			CTLine line = new CTLine(atts);
 
-			float ascent;
-			float descent;
-			float leading;
+            #if IOS
+            nfloat ascent = 0.0f;
+            nfloat descent = 0.0f;
+            nfloat leading = 0.0f;
+            #else
+            var ascent = 0.0f;
+            var descent = 0.0f;
+            var leading = 0.0f;
+            #endif
 			abc = new ABCFloat[1];
 			abc[0].abcfB = (float)line.GetTypographicBounds(out ascent, out descent, out leading);
-			abc [0].abcfB += leading;
+			abc [0].abcfB += (float)leading;
 		}
 
 		internal static CCSize MeasureString (string textg, CTFont font, CCRect rect)
@@ -261,12 +393,19 @@ namespace CocosSharp
 			CTLine line = new CTLine(atts);
 
 			// Create and initialize some values from the bounds.
-			float ascent;
-			float descent;
-			float leading;
+            #if IOS
+            nfloat ascent = 0.0f;
+            nfloat descent = 0.0f;
+            nfloat leading = 0.0f;
+            #else
+            var ascent = 0.0f;
+            var descent = 0.0f;
+            var leading = 0.0f;
+            #endif
+
 			double lineWidth = line.GetTypographicBounds(out ascent, out descent, out leading);
 
-			var measure = new CCSize((float)lineWidth + leading, ascent + descent);
+			var measure = new CCSize((float)lineWidth + (float)leading, (float)ascent + (float)descent);
 
 			return measure;
 		}
@@ -451,7 +590,12 @@ namespace CocosSharp
 
 		internal static float GetHeight(this CTFont font)
 		{
-			float lineHeight = 0;
+            #if IOS
+            nfloat lineHeight = 0;
+            #else
+            float lineHeight = 0;
+            #endif
+
 
 			if (font == null)
 				return 0;
@@ -465,7 +609,7 @@ namespace CocosSharp
 			// Get the leading from the font, already scaled for the font's size
 			//lineHeight += font.LeadingMetric;
 
-			return lineHeight;
+			return (float)lineHeight;
 		}
 	}
 
