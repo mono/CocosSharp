@@ -17,8 +17,8 @@ using MonoMac.AppKit;
 using MonoMac;
 #endif
 #if IPHONE || IOS
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 #endif
 using CocosSharp;
 using Microsoft.Xna.Framework.Content;
