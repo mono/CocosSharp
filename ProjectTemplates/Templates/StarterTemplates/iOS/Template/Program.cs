@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
 
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 using CocosSharp;
 
