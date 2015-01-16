@@ -7,7 +7,7 @@
 		<call target="buildpipeline"/>
 	</target>
 
-  <target name="buildpipeline" description="Build Windows" depends="clean">
+  <target name="buildpipeline" description="Build Windows">
     <if test="${os == 'Win32NT'}">
       <exec program="msbuild " commandline="CocosSharp.Content.Pipeline.Importers.Windows.sln /t:Clean /p:Configuration=${configuration}" />
       <exec program="msbuild " commandline="CocosSharp.Content.Pipeline.Importers.Windows.sln /t:Build /p:Configuration=${configuration}" />
