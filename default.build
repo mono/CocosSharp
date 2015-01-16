@@ -28,6 +28,7 @@
     <call target="buildphysics"/>
     <call target="buildPCL"/>
     <call target="buildwindows"/>
+	<call target="buildpipeline"/>
     <call target="buildwindowsphone8"/>
     <call target="buildios"/>
     <call target="buildmac"/>
@@ -74,6 +75,14 @@
       <exec program="xbuild" commandline="/t:Build /p:Configuration=${configuration} CocosSharp.Windows.sln" />
       <exec program="xbuild" commandline="/t:Clean /p:Configuration=${configuration} CocosSharp.WindowsGL.sln" />
       <exec program="xbuild" commandline="/t:Build /p:Configuration=${configuration} CocosSharp.WindowsGL.sln" />
+    </if>
+  </target>
+
+  <target name="buildpipeline" description="Build Windows" depends="clean">
+    <if test="${os == 'Win32NT'}">
+       <nant buildfile="CocosSharp.Content.Pipeline.Importers/default.build" target="build" />
+    </if>
+    <if test="${os == 'MacOS'}">
     </if>
   </target>
 
