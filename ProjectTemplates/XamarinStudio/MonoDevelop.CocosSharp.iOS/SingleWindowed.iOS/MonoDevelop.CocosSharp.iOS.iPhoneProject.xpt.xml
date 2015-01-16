@@ -2,7 +2,7 @@
 <Template>
     <TemplateConfiguration>
         <_Name>CocosSharp showcase</_Name>
-        <_Category>C#/iOS/Classic API/iPhone</_Category>
+        <_Category>C#/iOS/Unified API/iPhone</_Category>
         <Icon>md-project-iphone</Icon>
         <LanguageName>C#</LanguageName>
         <_Description>A CocosSharp showcase for iPhone.</_Description>
@@ -17,12 +17,13 @@
             <StartupProject>${ProjectName}</StartupProject>
         </Options>
         
-        <Project name = "${ProjectName}" directory = "." type = "MonoTouch">
+        <Project name = "${ProjectName}" directory = "." type = "XamarinIOS">
+            <Options TargetFrameworkVersion = "Xamarin.iOS,Version=v1.0" />
             <References>
                 <Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
                 <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
                 <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
-                <Reference type="Gac" refto="monotouch" />
+                <Reference type="Gac" refto="Xamarin.iOS" />
             </References>
             <Files>
                 <Directory name="Resources" />
@@ -43,7 +44,7 @@
             </Files>
 
             <Packages>
-                <Package id="CocosSharp.iOS" version="1.1.0.0" />
+                <Package id="CocosSharp.iOS" />
             </Packages>
         </Project>
     </Combine>
