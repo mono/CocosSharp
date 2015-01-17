@@ -296,7 +296,7 @@ namespace CocosSharp
             index2 = line.IndexOf('"', index);
             value = line.Substring(index, index2 - index);
 
-            AtlasName = CocosSharp.CCFileUtils.FullPathFromRelativeFile(value, fntFile);
+            AtlasName = value;
         }
 
         private void parseKerningEntry(string line)
