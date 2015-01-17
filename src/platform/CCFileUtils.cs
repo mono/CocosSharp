@@ -127,6 +127,17 @@ namespace CocosSharp
         }
 
         /// <summary>
+        /// Whether the file passed specifies a directory name or not
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="directory">Returns the directory if one was specified</param>
+        /// <returns>true a directory was specified; false if no directory was specified.</returns>
+        public static bool GetDirectoryName (string fileName, out string directory)
+        {
+            directory = Path.GetDirectoryName(fileName);
+            return (!string.IsNullOrEmpty(directory));
+        }
+        /// <summary>
         /// @brief   Generate the absolute path of the file.
         /// @param   pszRelativePath     The relative path of the file.
         /// @return  The absolute path of the file.

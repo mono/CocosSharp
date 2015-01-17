@@ -375,7 +375,11 @@ namespace CocosSharp
             CCTileSetInfo tileset = tilesetCount > 0 ? tilesets[tilesetCount - 1] : null;
 
             string imagename = currentAttributeDict[ImageElementTilesheetName];
-            tileset.TilesheetFilename = CCFileUtils.FullPathFromRelativeFile(imagename, TileMapFileName);
+            tileset.TilesheetFilename = imagename;
+
+            var directory = string.Empty;
+            if (!CCFileUtils.GetDirectoryName(imagename, out directory))
+                tileset.TilesheetFilename = CCFileUtils.FullPathFromRelativeFile(imagename, TileMapFileName);
         }
 
         void ParseDataElement()
