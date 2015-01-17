@@ -5,7 +5,7 @@ using TImport = System.String;
 
 namespace CocosSharp.Content.Pipeline.Importers
 {
-    [ContentImporter(".*", DisplayName = "Text Importer", DefaultProcessor = "TextImporter")]
+    [ContentImporter(".*", DisplayName = "Text Importer - CocosSharp", DefaultProcessor = "TextImporter")]
     public class TextImporter : ContentImporter<TImport>
     {
         public override TImport Import(string filename, ContentImporterContext context)

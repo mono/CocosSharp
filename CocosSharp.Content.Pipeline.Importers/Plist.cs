@@ -7,7 +7,7 @@ using CocosSharp;
 
 namespace CocosSharp.Content.Pipeline.Importers
 {
-    [ContentImporter(".plist", DisplayName = "CocosSharp - Plist", DefaultProcessor = "CocosPListProcessor")]
+    [ContentImporter(".plist",".PLIST", DisplayName = "Plist Importer - CocosSharp", DefaultProcessor = "CocosPListProcessor")]
     public class CocosPListImporter : ContentImporter<String>
     {
         public override String Import(string filename, ContentImporterContext context)
@@ -16,7 +16,7 @@ namespace CocosSharp.Content.Pipeline.Importers
         }
     }
 
-    [ContentProcessor(DisplayName = "CocosSharp - Plist")]
+    [ContentProcessor(DisplayName = "Plist - CocosSharp")]
     public class CocosPListProcessor : ContentProcessor<string, PlistDocument>
     {
         public override PlistDocument Process(string fileName, ContentProcessorContext context)

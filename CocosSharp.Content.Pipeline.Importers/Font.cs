@@ -5,7 +5,7 @@ using CocosSharp;
 
 namespace CocosSharp.Content.Pipeline.Importers
 {
-    [ContentImporter(".fnt", DisplayName = "CocosSharp - Font", DefaultProcessor = "CocosFontProcessor")]
+    [ContentImporter(".fnt",".FNT", DisplayName = "Bitmap Font Importer - CococsSharp", DefaultProcessor = "CocosFontProcessor")]
     public class CocosFontImporter : ContentImporter<String>
     {
         public override String Import(string filename, ContentImporterContext context)
@@ -14,7 +14,7 @@ namespace CocosSharp.Content.Pipeline.Importers
         }
     }
 
-    [ContentProcessor(DisplayName = "CocosSharp - Font")]
+    [ContentProcessor(DisplayName = "Bitmap Font - CocosSharp")]
     internal class CocosFontProcessor : ContentProcessor<string, CCBMFontConfiguration>
     {
         public override CCBMFontConfiguration Process(string fileName, ContentProcessorContext context)

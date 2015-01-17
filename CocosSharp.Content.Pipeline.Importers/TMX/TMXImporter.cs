@@ -5,7 +5,7 @@ using TImport = System.String;
 
 namespace CocosSharp.Content.Pipeline.Importers.TMX
 {
-    [ContentImporter(".TMX", DisplayName = "TMX Importer", DefaultProcessor = "TMXProcessor")]
+    [ContentImporter(".tmx",".TMX", DisplayName = "Tilemap Importer - CocosSharp", DefaultProcessor = "TMXProcessor")]
     public class TMXImporter : ContentImporter<TImport>
     {
         public override TImport Import(string filename, ContentImporterContext context)
