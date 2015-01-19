@@ -126,6 +126,12 @@ namespace CocosSharp
         CCTileMapLayer(CCTileSetInfo tileSetInfo, CCTileLayerInfo layerInfo, CCTileMapInfo mapInfo, CCTileMapCoordinates layerSize, 
             int totalNumberOfTiles, int tileCapacity, CCTexture2D texture)
         {
+
+            //Debug.Assert(texture.ContentSizeInPixels != CCSize.Zero, string.Format("Tilemap Texture {0} not loaded for layer {1}", tileSetInfo.TilesheetFilename, layerInfo.Name));
+
+            if (texture.ContentSizeInPixels == CCSize.Zero)
+                CCLog.Log("Tilemap Layer Texture {0} not loaded for layer {1}", tileSetInfo.TilesheetFilename, layerInfo.Name);
+
             LayerName = layerInfo.Name;
             LayerSize = layerSize;
             Opacity = layerInfo.Opacity;
@@ -174,11 +180,14 @@ namespace CocosSharp
 
             quadsVertexBuffer = new CCQuadVertexBuffer(numOfQuads, CCBufferUsage.WriteOnly);
 
-            for(int y = 0; y < LayerSize.Row; y++)
+            if (tileSetTexture.ContentSizeInPixels != CCSize.Zero)
             {
-                for(int x = 0; x < LayerSize.Column; x++)
+                for (int y = 0; y < LayerSize.Row; y++)
                 {
-                    UpdateQuadAt(x, y, false);
+                    for (int x = 0; x < LayerSize.Column; x++)
+                    {
+                        UpdateQuadAt(x, y, false);
+                    }
                 }
             }
 
