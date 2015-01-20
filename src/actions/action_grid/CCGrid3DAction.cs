@@ -44,16 +44,10 @@ namespace CocosSharp
         {
             get 
             {
-                if (Target != null && Target.Scene.VisibleBoundsScreenspace.Size != CCSize.Zero)
+                if (Target != null && Target.Scene.DesignResolutionSize != CCSize.Zero)
                 {
                     var texelToContentSizeRatios = CCSize.One;
-                    if (Target is CCSprite)
-                    {
-                        texelToContentSizeRatios = CCSprite.DefaultTexelToContentSizeRatios;
-                    }
-                    gridTextureSizeInPixels = Target.Scene.VisibleBoundsScreenspace.Size;
-                    gridTextureSizeInPixels.Width /= texelToContentSizeRatios.Width;
-                    gridTextureSizeInPixels.Height /= texelToContentSizeRatios.Height;
+                    gridTextureSizeInPixels = Target.Scene.DesignResolutionSize;
                 }
                 else
                 {
