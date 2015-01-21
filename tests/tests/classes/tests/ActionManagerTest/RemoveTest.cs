@@ -17,9 +17,20 @@ namespace tests
         int kTagGrossini = 1;
         string s_pPathGrossini = "Images/grossini";
 
-        public override string title() 
+        public override string Title
         {
-            return "Remove Test";
+            get
+            {
+                return "Remove Test";
+            }
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Should not crash";
+            }
         }
 
         public override void OnEnter()
@@ -27,10 +38,6 @@ namespace tests
             base.OnEnter();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCLabelTtf l = new CCLabelTtf("Should not crash", "arial", 16);
-            AddChild(l);
-            l.Position = (new CCPoint(s.Width / 2, 245));
 
             CCMoveBy pMove = new CCMoveBy (2, new CCPoint(200, 0));
             CCCallFunc pCallback = new CCCallFunc(stopAction);

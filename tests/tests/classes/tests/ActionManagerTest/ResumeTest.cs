@@ -9,21 +9,27 @@ namespace tests
     public class ResumeTest : ActionManagerTest
     {
         string s_pPathGrossini = "Images/grossini";
-        
-        public override string title() 
+
+        public override string Title
         {
-            return "Resume Test";    
+            get
+            {
+                return "Resume Test";    
+            }
         }
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "Grossini only rotate/scale in 3 seconds";
+            }
+        }
         public override void OnEnter()
         {
             base.OnEnter();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCLabelTtf l = new CCLabelTtf("Grossini only rotate/scale in 3 seconds", "arial", 16);
-            AddChild(l);
-            l.Position = (new CCPoint(s.Width / 2, 245));
 
             CCSprite pGrossini = new CCSprite(s_pPathGrossini);
             AddChild(pGrossini, 0, (int)KTag.kTagGrossini);

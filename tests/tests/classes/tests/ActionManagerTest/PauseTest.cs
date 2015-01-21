@@ -11,11 +11,21 @@ namespace tests
         string s_pPathGrossini = "Images/grossini";
         int kTagGrossini = 1;
 
-        public override string title()
+        public override string Title
         {
-            return "Pause Test";
+            get
+            {
+                return "Pause Test";
+            }
         }
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "After 5 seconds grossini should move";
+            }
+        }
         public override void OnEnter()
         {
             //
@@ -25,11 +35,6 @@ namespace tests
             base.OnEnter();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCLabelTtf l = new CCLabelTtf("After 5 seconds grossini should move", "arial", 16);
-            AddChild(l);
-            l.Position = (new CCPoint(s.Width / 2, 245));
-
 
             //
             // Also, this test MUST be done, after [super onEnter]

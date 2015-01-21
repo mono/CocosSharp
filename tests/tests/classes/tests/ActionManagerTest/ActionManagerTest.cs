@@ -6,14 +6,10 @@ using CocosSharp;
 
 namespace tests
 {
-    public class ActionManagerTest : CCLayer
+    public class ActionManagerTest : TestNavigationLayer
     {
-        string s_pPathB1 = "Images/b1";
-        string s_pPathB2 = "Images/b2";
-        string s_pPathR1 = "Images/r1";
-        string s_pPathR2 = "Images/r2";
-        string s_pPathF1 = "Images/f1";
-        string s_pPathF2 = "Images/f2";
+
+        private CCDirector director;
 
         protected CCTextureAtlas m_atlas;
 
@@ -21,62 +17,54 @@ namespace tests
 
         public ActionManagerTest() { }
 
-        public virtual string title()
+        public override string Title
         {
-            return "No title";
+            get
+            {
+                return base.Title;
+            }
         }
 
-        public override void OnEnter()
+        protected override void AddedToScene()
         {
-            base.OnEnter();
+            base.AddedToScene();
 
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 40);
-            label.AnchorPoint = new CCPoint (0.5f, 0.5f);
-            AddChild(label, 1);
-            label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
-
-            CCMenuItemImage item1 = new CCMenuItemImage(s_pPathB1, s_pPathB2, backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage(s_pPathR1, s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage(s_pPathF1, s_pPathF2, nextCallback);
-
-            CCMenu menu = new CCMenu(item1, item2, item3);
-
-            float padding = 10.0f;
-            float halfRestartWidth = item2.ContentSize.Width / 2.0f;
-
-            menu.Position = (new CCPoint(0, 0));
-
-            // Anchor point of menu items is 0.5, 0.5 by default
-            item1.Position = (new CCPoint(s.Width / 2 - item1.ContentSize.Width / 2.0f - halfRestartWidth - padding, item2.ContentSize.Height + padding));
-            item2.Position = (new CCPoint(s.Width / 2, item2.ContentSize.Height + padding));
-            item3.Position = (new CCPoint(s.Width / 2 + item3.ContentSize.Width / 2.0f + halfRestartWidth + padding, item2.ContentSize.Height + padding));
-
-            AddChild(menu, TestScene.MENU_LEVEL);
+            // We no longer have a static director so when we remove
+            // this in the Crash test 1 we do not have the director anymore
+            // we will save this off so that we can issue commands to the
+            // directory.
+            director = Director;
         }
 
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
+            base.RestartCallback(sender);
+
             CCScene s = new ActionManagerTestScene();
             s.AddChild(restartActionManagerAction());
 
-            Director.ReplaceScene(s);
+            director.ReplaceScene(s);
+
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
+            base.NextCallback(sender);
+
             CCScene s = new ActionManagerTestScene();
 
             s.AddChild(nextActionManagerAction());
-            Director.ReplaceScene(s);
+
+            director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
+            base.BackCallback(sender);
+
             CCScene s = new ActionManagerTestScene();
             s.AddChild(backActionManagerAction());
-            Director.ReplaceScene(s);
+            director.ReplaceScene(s);
         }
 
         public static int sceneIdx = -1;

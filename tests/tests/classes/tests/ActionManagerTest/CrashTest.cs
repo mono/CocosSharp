@@ -11,9 +11,12 @@ namespace tests
     {
         string s_pPathGrossini = "Images/grossini";
 
-        public override string title()
+        public override string Title
         {
-            return "Test 1. Should not crash";
+            get
+            {
+                return "Test 1. Should not crash";
+            }
         }
 
         public override void OnEnter()
@@ -36,7 +39,7 @@ namespace tests
         {
             Parent.RemoveChild(this, true);
 
-			nextCallback(this);
+			NextCallback(this);
         }
     }
 }

@@ -10,9 +10,12 @@ namespace tests
     {
         string s_pPathGrossini = "Images/grossini";
 
-        public override string title()
+        public override string Title
         {
-            return "Logic test";
+            get
+            {
+                return "Logic test";
+            }
         }
 
         public override void OnEnter()
