@@ -35,7 +35,7 @@ namespace CocosSharp
         internal GraphicsDeviceManager DeviceManager { get; private set; }
         private CCDirector defaultDirector;
 
-        protected CCStats Stats { get; private set; }
+        public CCStats Stats { get; private set; }
 
         public bool IsUseAlphaBlending
         {
