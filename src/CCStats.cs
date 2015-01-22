@@ -1,7 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.ComponentModel;
-using ICSharpCode.SharpZipLib.Core;
 
 #if IOS
 using ObjCRuntime;
