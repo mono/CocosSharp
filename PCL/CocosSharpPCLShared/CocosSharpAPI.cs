@@ -1924,6 +1924,7 @@ namespace CocosSharp {
     }
     public partial class CCLog {
         public CCLog() { }
+        public static CocosSharp.ICCLog CustomCCLog { set { } }
         public static void Log(string message) { }
         public static void Log(string format, params System.Object[] args) { }
     }
@@ -4376,6 +4377,10 @@ namespace CocosSharp {
         void KeyboardDidShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
         void KeyboardWillHide(CocosSharp.CCIMEKeyboardNotificationInfo info);
         void KeyboardWillShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
+    }
+    public partial interface ICCLog {
+        void Log(string message);
+        void Log(string format, params System.Object[] args);
     }
     public partial class ICCScriptingEngine {
         public ICCScriptingEngine() { }

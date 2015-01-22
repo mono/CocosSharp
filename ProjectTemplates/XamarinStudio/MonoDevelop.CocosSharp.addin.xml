@@ -7,7 +7,7 @@
         url             ="https://github.com/mono/CocosSharp" 
         description     ="Setup CocosSharp projects for either mobile (iOS/Android) or Mac targets"
         category        ="CocosSharp"
-        version         ="1.3.0.0">
+        version         ="1.3.1.0">
 
     <Runtime>
         <!---iOS files -->
@@ -55,10 +55,10 @@
         <Import file    ="Common/GameLayer.cs" />
 
         <!-- NuGet packages -->
-        <Import file    ="Packages/CocosSharp.Android.1.3.0.0.nupkg" />
-        <Import file    ="Packages/CocosSharp.iOS.1.3.0.0.nupkg" />
-        <Import file    ="Packages/CocosSharp.MacOS.1.3.0.0.nupkg" />
-        <Import file    ="Packages/CocosSharp.PCL.Shared.1.3.0.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.Android.1.3.1.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.iOS.1.3.1.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.MacOS.1.3.1.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.PCL.Shared.1.3.1.0.nupkg" />
     </Runtime>
 
     <!--- Common dependencies -->
