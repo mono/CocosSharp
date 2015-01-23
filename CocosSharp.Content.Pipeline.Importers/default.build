@@ -1,9 +1,23 @@
 <?xml version="1.0"?>
 <project name="CocosSharp Custom Content Importers Build Script" default="build" basedir=".">
-	<description>Default CocosSharp Template Automated Build script</description>
+	<description>Default CocosSharp Custom Content Importers Automated Build script</description>
 	<property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
+	<property name="mdtooldir" value="/Applications/Xamarin\ Studio.app/Contents/MacOS"/>
 
-	<target name="build" description="Build CocosSharp Custom Content Importers">
+	  <target name="checkos" description="check the operating system">
+	    <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}"/>
+	    <if test="${os == 'Unix'}">
+	      <if test="${directory::exists('/Applications') and directory::exists('/Library')}">
+	        <property name="os" value="MacOS"/>
+	        <if test="${not directory::exists(mdtooldir)}">
+	          <property name="mdtooldir" value="${path::get-full-path('/Applications/Xamarin Studio.app/Contents/MacOS')}"/>
+	        </if>
+	      </if>
+	    </if>
+	    <echo message="Detected : ${os}"/>
+	  </target>
+
+	<target name="build" description="Build CocosSharp Custom Content Importers" depends="checkos">
 		<call target="buildpipeline"/>
 	</target>
 
@@ -13,6 +27,8 @@
       <exec program="msbuild " commandline="CocosSharp.Content.Pipeline.Importers.Windows.sln /t:Build /p:Configuration=Release" />
     </if>
     <if test="${os == 'MacOS'}">
+		<exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release CocosSharp.Content.Pipeline.Importers.Mac.sln" />
+		<exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release CocosSharp.Content.Pipeline.Importers.Mac.sln" />
     </if>
   </target>
 

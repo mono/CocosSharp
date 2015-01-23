@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CocosSharp.ContentBuild.Mac</id>
+    <version>1.3.1.0</version>
+    <title>CocosSharp Content Build for Mac</title>
+    <authors>Xamarin</authors>
+    <owners>Xamarin</owners>
+    <licenseUrl>https://github.com/mono/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
+    <projectUrl>http://github.com/mono/CocosSharp</projectUrl>
+    <iconUrl>http://github.com/mono/CocosSharp</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CocosSharp's Custome Content Importers for Mac.</description>
+ 	  <releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.3.1.0.md</releaseNotes>
+    <copyright>Xamarin Inc</copyright>
+    <tags>cocos2d cocossharp xna 2D games visualization engine monogame</tags>
+
+  </metadata>
+
+  <files>
+    <file src="CocosSharp.Content.Pipeline.Importers/bin/Release/Any CPU/CocosSharp.Content.Pipeline.Importers.dll" target="tools/CocosSharp.Importers" />
+    <file src="CocosSharp.Content.Pipeline.Importers/bin/Release/Any CPU/CocosSharp.dll" target="tools/CocosSharp.Importers" />
+  </files>
+
+</package>
