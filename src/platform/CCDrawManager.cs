@@ -1394,7 +1394,6 @@ namespace CocosSharp
         {
             if (disposing)
             {
-                ReinitResource();
                 isDisposed = true;
             }
         }

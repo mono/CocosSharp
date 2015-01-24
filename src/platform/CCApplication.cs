@@ -706,6 +706,10 @@ namespace CocosSharp
 
         void GameExiting(object sender, EventArgs e)
         {
+            // Explicitly dispose of graphics device which will in turn dispose of all graphics resources
+            // This allows us to delete things in a deterministic manner without relying on finalizers
+            xnaGame.GraphicsDevice.Dispose();
+
             foreach (CCWindow window in gameWindows)
             {
                 window.EndAllSceneDirectors();
