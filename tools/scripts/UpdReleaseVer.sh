@@ -38,6 +38,16 @@ sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../..
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
 sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
+# Update CocosSharpTemplates PCL NuGet version to be included in built Template
+sed -i '' "s/CocosSharp.PCL.Shared.[0-9]*.[0-9]*.[0-9]*.[0-9]*.nupkg/CocosSharp.PCL.Shared.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+sed -i '' "s/CocosSharp.PCL.Shared.DX.*.nupkg/CocosSharp.PCL.Shared.DX.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+sed -i '' "s/CocosSharp.PCL.Shared.GL.*.nupkg/CocosSharp.PCL.Shared.GL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+sed -i '' "s/CocosSharp.PCL.Shared.XNA.*.nupkg/CocosSharp.PCL.Shared.XNA.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+sed -i '' "s/CocosSharp.Windows.[0-9]*.[0-9]*.[0-9]*.[0-9]*.nupkg/CocosSharp.Windows.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
+# Update CocosSharpTemplates release notes reference
+sed -i '' "s/ReleaseNotes_v.*.md/ReleaseNotes_v$1.md/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/source.extension.vsixmanifest
+      
 # Update CocosSharpTemplates version to be included in built Template
 sed -i '' "s/CocosSharpTemplates\" Version=\"[0-9]*.[0-9]*.[0-9]*.[0-9]*\"/CocosSharpTemplates\" Version=\"$1\"/" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/source.extension.vsixmanifest
 
