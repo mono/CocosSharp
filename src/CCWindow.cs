@@ -35,7 +35,7 @@ namespace CocosSharp
         internal GraphicsDeviceManager DeviceManager { get; private set; }
         private CCDirector defaultDirector;
 
-        public CCStats Stats { get; private set; }
+        protected CCStats Stats { get; private set; }
 
         public bool IsUseAlphaBlending
         {
@@ -58,11 +58,17 @@ namespace CocosSharp
             set { DrawManager.DepthTest = value; }
         }
 
-        public bool DisplayStats 
-        {
-            get { return Stats.IsEnabled; }
-            set { Stats.IsEnabled = value; }
-        }
+		public bool DisplayStats 
+		{
+			get { return Stats.IsEnabled; }
+			set { Stats.IsEnabled = value; }
+		}
+
+		public int StatsScale
+		{
+			get { return Stats.Scale; }
+			set { Stats.Scale = value; }
+		}
 
         public bool AllowUserResizing
         {
