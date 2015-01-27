@@ -58,11 +58,17 @@ namespace CocosSharp
             set { DrawManager.DepthTest = value; }
         }
 
-        public bool DisplayStats 
-        {
-            get { return Stats.IsEnabled; }
-            set { Stats.IsEnabled = value; }
-        }
+		public bool DisplayStats 
+		{
+			get { return Stats.IsEnabled; }
+			set { Stats.IsEnabled = value; }
+		}
+
+		public int StatsScale
+		{
+			get { return Stats.Scale; }
+			set { Stats.Scale = value; }
+		}
 
         public bool AllowUserResizing
         {
