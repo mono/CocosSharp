@@ -15,8 +15,9 @@ namespace CocosSharp
 
         // the device that we will issue draw calls to.
         readonly GraphicsDevice device;
-        readonly VertexPositionColor[] lineVertices;
-        readonly VertexPositionColor[] triangleVertices;
+
+        readonly CCV3F_C4B[] lineVertices;
+        readonly CCV3F_C4B[] triangleVertices;
 
         // hasBegun is flipped to true once Begin is called, and is used to make
         // sure users don't call End before Begin is called.
@@ -45,8 +46,8 @@ namespace CocosSharp
             }
             device = drawManager.XnaGraphicsDevice;
 
-            triangleVertices = new VertexPositionColor[bufferSize - bufferSize % 3];
-            lineVertices = new VertexPositionColor[bufferSize - bufferSize % 2];
+            triangleVertices = new CCV3F_C4B[bufferSize - bufferSize % 3];
+            lineVertices = new CCV3F_C4B[bufferSize - bufferSize % 2];
 
             // set up a new basic effect, and enable vertex colors.
             basicEffect = new BasicEffect(drawManager.XnaGraphicsDevice);
@@ -140,8 +141,8 @@ namespace CocosSharp
                 {
                     FlushTriangles();
                 }
-				triangleVertices[triangleVertsCount].Position = new Vector3(vertex.ToVector2(), -0.1f);
-				triangleVertices[triangleVertsCount].Color = color.ToColor();
+                triangleVertices[triangleVertsCount].Vertices = new CCVertex3F(vertex.X, vertex.Y, -0.1f);
+				triangleVertices[triangleVertsCount].Colors = color;
                 triangleVertsCount++;
             }
 
@@ -151,12 +152,16 @@ namespace CocosSharp
                 {
                     FlushLines();
                 }
-				lineVertices[lineVertsCount].Position = new Vector3(vertex.ToVector2(), 0f);
-				lineVertices[lineVertsCount].Color = color.ToColor();
+                lineVertices[lineVertsCount].Vertices = new CCVertex3F(vertex.X, vertex.Y, 0.0f);
+				lineVertices[lineVertsCount].Colors = color;
                 lineVertsCount++;
             }
         }
 
+        public void AddVertex(CCVertex3F vertex, CCColor4B color, PrimitiveType primitiveType)
+        {
+            AddVertex(new CCVector2(vertex.X, vertex.Y), color, primitiveType);
+        }
 
         // End is called once all the primitives have been drawn using AddVertex.
         // it will call Flush to actually submit the draw call to the graphics card, and

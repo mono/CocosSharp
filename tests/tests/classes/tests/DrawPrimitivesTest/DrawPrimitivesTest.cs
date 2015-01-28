@@ -318,4 +318,108 @@ namespace tests
 
         #endregion Setup content
     }
+
+
+    public class DrawNodeTest1 : BaseDrawNodeTest
+    {
+        #region Setup content
+        CCDrawNode draw;
+
+        public DrawNodeTest1()
+        {
+            draw = new CCDrawNode();
+            draw.BlendFunc = CCBlendFunc.NonPremultiplied;
+
+            AddChild(draw, 10);
+
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Using DrawTriangleList user defined geometry";
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            CCDrawNode draw = new CCDrawNode();
+            AddChild(draw, 10);
+
+            var s = windowSize;
+
+            // Draw 10 circles
+            for (int i = 0; i < 10; i++)
+            {
+                draw.DrawDot(s.Center, 10 * (10 - i),
+                    new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
+            }
+
+            // Draw polygons
+            CCV3F_C4B[] points = new CCV3F_C4B[3];
+
+            points[0].Colors = CCColor4B.Red;
+            points[0].Colors.A = 127;
+
+            points[1].Colors = CCColor4B.Green;
+            points[1].Colors.A = 127;
+
+            points[2].Colors = CCColor4B.Blue;
+            points[2].Colors.A = 127;
+
+            points[0].Vertices.X = windowSize.Height / 4;
+            points[0].Vertices.Y = 0;
+
+            points[1].Vertices.X = windowSize.Width;
+            points[1].Vertices.Y = windowSize.Height / 5;
+
+            points[2].Vertices.X = windowSize.Width / 3 * 2;
+            points[2].Vertices.Y = windowSize.Height;
+
+            draw.DrawTriangleList(points);
+
+            // star poly (triggers buggs)
+            {
+                const float o = 80;
+                const float w = 20;
+                const float h = 50;
+                CCPoint[] star = new CCPoint[]
+                    {
+                        new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o),                           // lower spike
+                        new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2),           // right spike
+                    };
+
+                draw.DrawPolygon(star, star.Length, new CCColor4F(1, 0, 0, 0.5f), 1, new CCColor4F(0, 0, 1, 1));
+            }
+
+            // star poly (doesn't trigger bug... order is important un tesselation is supported.
+            {
+                const float o = 180;
+                const float w = 20;
+                const float h = 50;
+                var star = new CCPoint[]
+                    {
+                        new CCPoint(o, o), new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o),        // lower spike
+                        new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2),           // right spike
+                        new CCPoint(o + w, o + w * 2 + h), new CCPoint(o, o + w * 2),                   // top spike
+                        new CCPoint(o - h, o + w), // left spike
+                    };
+
+                draw.DrawPolygon(star, star.Length, new CCColor4F(1, 0, 0, 0.5f), 1, new CCColor4F(0, 0, 1, 1));
+            }
+
+
+            // Draw segment
+            draw.DrawSegment(new CCPoint(20, windowSize.Height), new CCPoint(20, windowSize.Height / 2), 10, new CCColor4F(0, 1, 0, 1));
+
+            draw.DrawSegment(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
+                new CCColor4F(1, 0, 1, 0.5f));
+        }
+
+        #endregion Setup content
+    }
+
 }

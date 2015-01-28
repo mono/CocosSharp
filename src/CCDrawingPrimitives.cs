@@ -501,5 +501,24 @@ namespace CocosSharp
 
 			DrawPoly(vertices, DrawColor);
         }
+
+        public void DrawTriangleList (CCV3F_C4B[] verts)
+        {
+
+            for (int x = 0; x < verts.Length; x++)
+            {
+                batch.AddVertex(verts[x].Vertices, verts[x].Colors, PrimitiveType.TriangleList);
+            }
+        }
+
+        public void DrawLineList (CCV3F_C4B[] verts)
+        {
+
+            for (int x = 0; x < verts.Length; x++)
+            {
+                batch.AddVertex(verts[x].Vertices, verts[x].Colors, PrimitiveType.LineList);
+
+            }
+        }
     }
 }

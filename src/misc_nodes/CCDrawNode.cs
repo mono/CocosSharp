@@ -10,8 +10,8 @@ namespace CocosSharp
     {
 
         const int DefaultBufferSize = 512;
-        CCRawList<VertexPositionColor> triangleVertices;
-        CCRawList<VertexPositionColor> lineVertices;
+        CCRawList<CCV3F_C4B> triangleVertices;
+        CCRawList<CCV3F_C4B> lineVertices;
         SpriteFont spriteFont;
         List<StringData> stringData;
         StringBuilder stringBuilder;
@@ -55,8 +55,8 @@ namespace CocosSharp
         public CCDrawNode()
         {
             BlendFunc = CCBlendFunc.AlphaBlend;
-            triangleVertices = new CCRawList<VertexPositionColor>(DefaultBufferSize);
-            lineVertices = new CCRawList<VertexPositionColor>(DefaultBufferSize);
+            triangleVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
+            lineVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
         }
 
         #endregion Constructors
@@ -99,7 +99,7 @@ namespace CocosSharp
 		// add and subtract where possible to calculate the values.
 		public void DrawDot(CCPoint pos, float radius, CCColor4F color)
 		{
-			var cl = color.ToColor();
+			var cl = color;
 
 			var segments = 10 * (float)Math.Sqrt(radius);  //<- Let's try to guess at # segments for a reasonable smoothness
 
@@ -111,16 +111,16 @@ namespace CocosSharp
 			float x = radius;  //we start at angle = 0 
 			float y = 0; 
 
-			var verticeCenter = new VertexPositionColor(new Vector3(pos.X, pos.Y, 0), cl);
-			var vert1 = new VertexPositionColor(Vector3.Zero, cl);
+            var verticeCenter = new CCV3F_C4B(pos, cl);
+            var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
 			float tx = 0; 
 			float ty = 0; 
 
 			for (int i = 0; i < segments; i++)
 			{
 			
-				vert1.Position.X = x + pos.X;
-				vert1.Position.Y = y + pos.Y;
+				vert1.Vertices.X = x + pos.X;
+				vert1.Vertices.Y = y + pos.Y;
 				triangleVertices.Add(vert1); // output vertex
 
 				//calculate the tangential vector 
@@ -137,8 +137,8 @@ namespace CocosSharp
 				x *= radial_factor; 
 				y *= radial_factor; 
 
-				vert1.Position.X = x + pos.X;
-				vert1.Position.Y = y + pos.Y;
+				vert1.Vertices.X = x + pos.X;
+				vert1.Vertices.Y = y + pos.Y;
 				triangleVertices.Add(vert1); // output vertex
 
 				triangleVertices.Add(verticeCenter);
@@ -153,7 +153,7 @@ namespace CocosSharp
         // add and subtract where possible to calculate the values.
         public void DrawCircle(CCPoint pos, float radius, CCColor4B color)
         {
-            var cl = color.ToColor();
+            var cl = color;
 
             int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
@@ -165,16 +165,16 @@ namespace CocosSharp
             float x = radius;  //we start at angle = 0 
             float y = 0;
 
-            var verticeCenter = new VertexPositionColor(new Vector3(pos.X, pos.Y, 0), cl);
-            var vert1 = new VertexPositionColor(Vector3.Zero, cl);
+            var verticeCenter = new CCV3F_C4B(pos, cl);
+            var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
             float tx = 0;
             float ty = 0;
 
             for (int i = 0; i < segments; i++)
             {
 
-                vert1.Position.X = x + pos.X;
-                vert1.Position.Y = y + pos.Y;
+                vert1.Vertices.X = x + pos.X;
+                vert1.Vertices.Y = y + pos.Y;
                 lineVertices.Add(vert1); // output vertex
 
                 //calculate the tangential vector 
@@ -191,8 +191,8 @@ namespace CocosSharp
                 x *= radial_factor;
                 y *= radial_factor;
 
-                vert1.Position.X = x + pos.X;
-                vert1.Position.Y = y + pos.Y;
+                vert1.Vertices.X = x + pos.X;
+                vert1.Vertices.Y = y + pos.Y;
                 lineVertices.Add(vert1); // output vertex
 
             }
@@ -206,7 +206,7 @@ namespace CocosSharp
         // add and subtract where possible to calculate the values.
         public void DrawSolidCircle(CCPoint pos, float radius, CCColor4B color)
         {
-            var cl = color.ToColor();
+            var cl = color;
 
             int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
@@ -218,8 +218,8 @@ namespace CocosSharp
             float x = radius;  //we start at angle = 0 
             float y = 0;
 
-            var verticeCenter = new VertexPositionColor(new Vector3(pos.X, pos.Y, 0), cl);
-            var vert1 = new VertexPositionColor(Vector3.Zero, cl);
+            var verticeCenter = new CCV3F_C4B(pos, cl);
+            var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
             float tx = 0;
             float ty = 0;
 
@@ -227,8 +227,8 @@ namespace CocosSharp
             {
                 triangleVertices.Add(verticeCenter);
 
-                vert1.Position.X = x + pos.X;
-                vert1.Position.Y = y + pos.Y;
+                vert1.Vertices.X = x + pos.X;
+                vert1.Vertices.Y = y + pos.Y;
                 triangleVertices.Add(vert1); // output vertex
 
                 //calculate the tangential vector 
@@ -245,8 +245,8 @@ namespace CocosSharp
                 x *= radial_factor;
                 y *= radial_factor;
 
-                vert1.Position.X = x + pos.X;
-                vert1.Position.Y = y + pos.Y;
+                vert1.Vertices.X = x + pos.X;
+                vert1.Vertices.Y = y + pos.Y;
                 triangleVertices.Add(vert1); // output vertex
             }
 
@@ -257,7 +257,7 @@ namespace CocosSharp
         // Used for drawing line caps
         public void DrawSolidArc(CCPoint pos, float radius, float startAngle, float sweepAngle, CCColor4B color)
         {
-            var cl = color.ToColor();
+            var cl = color;
 
             int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
@@ -269,8 +269,8 @@ namespace CocosSharp
             float x = radius * (float)Math.Cos(startAngle);   //we now start at the start angle
             float y = radius * (float)Math.Sin(startAngle); 
 
-            var verticeCenter = new VertexPositionColor(new Vector3(pos.X, pos.Y, 0), cl);
-            var vert1 = new VertexPositionColor(Vector3.Zero, cl);
+            var verticeCenter = new CCV3F_C4B(pos, cl);
+            var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
             float tx = 0;
             float ty = 0;
 
@@ -278,8 +278,8 @@ namespace CocosSharp
             {
                 triangleVertices.Add(verticeCenter);
 
-                vert1.Position.X = x + pos.X;
-                vert1.Position.Y = y + pos.Y;
+                vert1.Vertices.X = x + pos.X;
+                vert1.Vertices.Y = y + pos.Y;
                 triangleVertices.Add(vert1); // output vertex
 
                 //calculate the tangential vector 
@@ -296,8 +296,8 @@ namespace CocosSharp
                 x *= radial_factor;
                 y *= radial_factor;
 
-                vert1.Position.X = x + pos.X;
-                vert1.Position.Y = y + pos.Y;
+                vert1.Vertices.X = x + pos.X;
+                vert1.Vertices.Y = y + pos.Y;
                 triangleVertices.Add(vert1); // output vertex
             }
 
@@ -306,7 +306,7 @@ namespace CocosSharp
 
         public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
         {
-			var cl = color.ToColor();
+			var cl = color;
 
 			var a = from;
 			var b = to;
@@ -321,13 +321,13 @@ namespace CocosSharp
 			var v3 = a + nw;
 
 			// Triangles from beginning to end
-            triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
-            triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
-            triangleVertices.Add(new VertexPositionColor(v0.ToVector3(), cl));
+            triangleVertices.Add(new CCV3F_C4B(v1, cl));
+            triangleVertices.Add(new CCV3F_C4B(v2, cl));
+            triangleVertices.Add(new CCV3F_C4B(v0, cl));
 
-            triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
-            triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
-            triangleVertices.Add(new VertexPositionColor(v3.ToVector3(), cl));
+            triangleVertices.Add(new CCV3F_C4B(v1, cl));
+            triangleVertices.Add(new CCV3F_C4B(v2, cl));
+            triangleVertices.Add(new CCV3F_C4B(v3, cl));
 
             var mb = (float)Math.Atan2(v1.Y - b.Y, v1.X - b.X);
             var ma = (float)Math.Atan2(v2.Y - a.Y, v2.X - a.X);
@@ -389,6 +389,25 @@ namespace CocosSharp
             DrawPolygon(verts, count, new CCColor4F(fillColor), borderWidth, new CCColor4F(borderColor));
         }
 
+        public void DrawTriangleList (CCV3F_C4B[] verts)
+        {
+           
+            for (int x = 0; x < verts.Length; x++)
+            {
+                triangleVertices.Add(verts[x]);
+            }
+        }
+
+        public void DrawLineList (CCV3F_C4B[] verts)
+        {
+
+            for (int x = 0; x < verts.Length; x++)
+            {
+                lineVertices.Add(verts[x]);
+
+            }
+        }
+
         public void DrawPolygon(CCPoint[] verts, int count, CCColor4F fillColor, float borderWidth,
                                 CCColor4F borderColor)
         {
@@ -409,8 +428,8 @@ namespace CocosSharp
 
             bool outline = (borderColor.A > 0.0f && borderWidth > 0.0f);
 
-            var colorFill = fillColor.ToColor();
-            var borderFill = borderColor.ToColor();
+            var colorFill = new CCColor4B(fillColor);
+            var borderFill = new CCColor4B(borderColor);
             
             float inset = (!outline ? 0.5f : 0.0f);
             
@@ -420,9 +439,9 @@ namespace CocosSharp
                 var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
                 var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
 
-                triangleVertices.Add(new VertexPositionColor(v0.ToVector3(), colorFill)); //__t(v2fzero)
-                triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), colorFill)); //__t(v2fzero)
-                triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), colorFill)); //__t(v2fzero)
+                triangleVertices.Add(new CCV3F_C4B(v0, colorFill)); //__t(v2fzero)
+                triangleVertices.Add(new CCV3F_C4B(v1, colorFill)); //__t(v2fzero)
+                triangleVertices.Add(new CCV3F_C4B(v2, colorFill)); //__t(v2fzero)
             }
 
             for (int i = 0; i < count; i++)
@@ -443,13 +462,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * borderWidth));
                     var outer1 = (v1 + (offset1 * borderWidth));
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), borderFill)); //__t(v2fneg(n0))
-                    triangleVertices.Add(new VertexPositionColor(inner1.ToVector3(), borderFill)); //__t(v2fneg(n0))
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), borderFill)); //__t(n0)
+                    triangleVertices.Add(new CCV3F_C4B(inner0, borderFill)); //__t(v2fneg(n0))
+                    triangleVertices.Add(new CCV3F_C4B(inner1, borderFill)); //__t(v2fneg(n0))
+                    triangleVertices.Add(new CCV3F_C4B(outer1, borderFill)); //__t(n0)
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), borderFill)); //__t(v2fneg(n0))
-                    triangleVertices.Add(new VertexPositionColor(outer0.ToVector3(), borderFill)); //__t(n0)
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), borderFill)); //__t(n0)
+                    triangleVertices.Add(new CCV3F_C4B(inner0, borderFill)); //__t(v2fneg(n0))
+                    triangleVertices.Add(new CCV3F_C4B(outer0, borderFill)); //__t(n0)
+                    triangleVertices.Add(new CCV3F_C4B(outer1, borderFill)); //__t(n0)
                 }
                 else
                 {
@@ -458,13 +477,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * 0.5f));
                     var outer1 = (v1 + (offset1 * 0.5f));
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), colorFill)); //__t(v2fzero)
-                    triangleVertices.Add(new VertexPositionColor(inner1.ToVector3(), colorFill)); //__t(v2fzero)
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), colorFill)); //__t(n0)
+                    triangleVertices.Add(new CCV3F_C4B(inner0, colorFill)); //__t(v2fzero)
+                    triangleVertices.Add(new CCV3F_C4B(inner1, colorFill)); //__t(v2fzero)
+                    triangleVertices.Add(new CCV3F_C4B(outer1, colorFill)); //__t(n0)
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), colorFill)); //__t(v2fzero)
-                    triangleVertices.Add(new VertexPositionColor(outer0.ToVector3(), colorFill)); //__t(n0)
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), colorFill)); //__t(n0)
+                    triangleVertices.Add(new CCV3F_C4B(inner0, colorFill)); //__t(v2fzero)
+                    triangleVertices.Add(new CCV3F_C4B(outer0, colorFill)); //__t(n0)
+                    triangleVertices.Add(new CCV3F_C4B(outer1, colorFill)); //__t(n0)
                 }
             }
 
