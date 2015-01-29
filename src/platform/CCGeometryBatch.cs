@@ -93,6 +93,9 @@ namespace CocosSharp
                 if (basicEffect != null)
                     basicEffect.Dispose();
 
+                batchItemList.Clear();
+                freeBatchItemQueue.Clear();
+
                 isDisposed = true;
             }
         }
@@ -141,7 +144,7 @@ namespace CocosSharp
 
         public bool IsReady()
         {
-            return hasBegun;
+            return hasBegun; 
         }
 
         /// <summary>
