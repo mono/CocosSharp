@@ -238,6 +238,197 @@ namespace tests
 		}
     }
 
+    public class GeometryBatchTest1 : BaseDrawNodeTest
+    {
+
+        CCTexture2D texture;
+
+        public GeometryBatchTest1 () : base()
+        {
+            texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
+            //texture = CCTextureCache.SharedTextureCache.AddImage("Images/BackGround.png");
+
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+        }
+
+        protected override void Draw()
+        {
+            base.Draw();
+
+            var visibleRect = VisibleBoundsWorldspace;
+
+            var geoBatch = new CCGeometryBatch();
+
+            geoBatch.Begin();
+
+            var item = geoBatch.CreateGeometryInstance(3, 3);
+
+            var vertices = item.GeometryPacket.Vertices;
+
+            var windowSize = VisibleBoundsWorldspace.Size;
+            var packet = item.GeometryPacket;
+
+            packet.Texture = texture;
+            item.GeometryPacket = packet;
+            // Draw polygons
+
+            vertices[0].Colors = CCColor4B.White;
+            vertices[1].Colors = CCColor4B.White;
+            vertices[2].Colors = CCColor4B.White;
+
+            // Texture coordinates use a normalzed value 0 to 1
+            vertices[0].TexCoords.U = 0;
+            vertices[0].TexCoords.V = 0;
+
+            vertices[1].TexCoords.U = 1;
+            vertices[1].TexCoords.V = 0;
+
+            vertices[2].TexCoords.U = 1;
+            vertices[2].TexCoords.V = 1;
+
+            vertices[0].Vertices.X = 0;
+            vertices[0].Vertices.Y = 0;
+
+            vertices[1].Vertices.X = texture.PixelsWide;
+            vertices[1].Vertices.Y = 0;
+
+            vertices[2].Vertices.X = texture.PixelsWide;
+            vertices[2].Vertices.Y = texture.PixelsHigh;
+
+            item.GeometryPacket.Indicies = new int[] { 2, 1, 0 };
+
+            var rotation = CCAffineTransform.Identity;
+            rotation.Rotation = (float)Math.PI / 4.0f;
+            rotation.Tx = windowSize.Center.X - texture.PixelsWide / 2;
+            rotation.Ty = windowSize.Center.Y - texture.PixelsHigh / 2;
+
+            item.InstanceAttributes.AdditionalTransform = rotation;
+
+            geoBatch.End();
+        }
+
+        public override string Title
+        {
+            get
+            {
+                return "Geometry Batch";
+            }
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Auto Clear of instances and transform";
+            }
+        }
+    }
+
+    public class GeometryBatchTest2 : BaseDrawNodeTest
+    {
+
+        CCTexture2D texture;
+        CCGeometryBatch geoBatch = new CCGeometryBatch();
+
+        public GeometryBatchTest2 () : base()
+        {
+            texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
+            //texture = CCTextureCache.SharedTextureCache.AddImage("Images/BackGround.png");
+
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            var visibleRect = VisibleBoundsWorldspace;
+
+            // We will not clear the primitives after creating them
+            // This will allow us to keep drawing the same over and over.
+            geoBatch.AutoClearInstances = false;
+
+            geoBatch.Begin();
+
+            var item = geoBatch.CreateGeometryInstance(3, 3);
+
+            var vertices = item.GeometryPacket.Vertices;
+
+            var windowSize = VisibleBoundsWorldspace.Size;
+            var packet = item.GeometryPacket;
+
+            packet.Texture = texture;
+            item.GeometryPacket = packet;
+            // Draw polygons
+
+            vertices[0].Colors = CCColor4B.White;
+            vertices[1].Colors = CCColor4B.White;
+            vertices[2].Colors = CCColor4B.White;
+
+            // Texture coordinates use a normalzed value 0 to 1
+            vertices[0].TexCoords.U = 0;
+            vertices[0].TexCoords.V = 0;
+
+            vertices[1].TexCoords.U = 1;
+            vertices[1].TexCoords.V = 0;
+
+            vertices[2].TexCoords.U = 1;
+            vertices[2].TexCoords.V = 1;
+
+            vertices[0].Vertices.X = 0;
+            vertices[0].Vertices.Y = 0;
+
+            vertices[1].Vertices.X = texture.PixelsWide;
+            vertices[1].Vertices.Y = 0;
+
+            vertices[2].Vertices.X = texture.PixelsWide;
+            vertices[2].Vertices.Y = texture.PixelsHigh;
+
+            item.GeometryPacket.Indicies = new int[] { 2, 1, 0 };
+
+            var rotation = CCAffineTransform.Identity;
+            rotation.Rotation = (float)Math.PI / 4.0f;
+            rotation.Tx = windowSize.Center.X - texture.PixelsWide / 2;
+            rotation.Ty = windowSize.Center.Y - texture.PixelsHigh / 2;
+
+            item.InstanceAttributes.AdditionalTransform = rotation;
+
+            geoBatch.End();
+        }
+
+        public override void OnExit()
+        {
+            // We will clean the batch up here.
+            geoBatch.ClearInstances();
+        }
+
+        protected override void Draw()
+        {
+            base.Draw();
+
+            geoBatch.Draw();
+        }
+
+        public override string Title
+        {
+            get
+            {
+                return "Geometry Batch";
+            }
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "No Auto Clear of instances";
+            }
+        }
+    }
+
     public class DrawNodeTest : BaseDrawNodeTest
     {
         #region Setup content

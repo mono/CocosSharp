@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</ProjectGuid>
@@ -364,6 +364,7 @@
     <Compile Include="tileMap_parallax_nodes\CCTileMapObjectGroup.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
+    <Compile Include="Platform\CCGeometryBatch.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

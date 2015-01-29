@@ -17,7 +17,7 @@ namespace tests
 
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
-            //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
+
             //application.AllowUserResizing = true;
             application.PreferMultiSampling = false;
             application.ContentRootDirectory = "Content";
@@ -51,7 +51,7 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
             mainWindow.DisplayStats = true;
-
+            mainWindow.StatsScale = 2;
             
 //            if (mainWindow.WindowSizeInPixels.Height > 320)
 //            {
