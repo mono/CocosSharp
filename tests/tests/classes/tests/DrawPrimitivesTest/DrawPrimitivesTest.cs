@@ -73,10 +73,7 @@ namespace tests
             var windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
-            AddChild(text, 24);
 
-            CCDrawNode draw = new CCDrawNode();
-            text.AddChild(draw, 10);
             text.Begin();
             // Draw polygons
             CCPoint[] points = new CCPoint[]
@@ -85,9 +82,15 @@ namespace tests
                 new CCPoint(windowSize.Width, windowSize.Height / 5),
                 new CCPoint(windowSize.Width / 3 * 2, windowSize.Height)
             };
-            draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
+
+            CCDrawingPrimitives.Begin();
+            CCDrawingPrimitives.DrawPoly (points, points.Length, true, true, new CCColor4F (1, 0, 0, 0.5f));
+            CCDrawingPrimitives.End ();
             text.End();
 
+            CCSprite polySprite = new CCSprite(text.Texture);
+            polySprite.Position = windowSize.Center;
+            AddChild (polySprite);
         }
 
         #endregion Setup content
