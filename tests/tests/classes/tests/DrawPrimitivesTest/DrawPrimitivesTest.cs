@@ -66,35 +66,157 @@ namespace tests
     {
         #region Setup content
 
+        public override string Subtitle
+        {
+            get
+            {
+                return "RenderTarget CCDrawNode Visit";
+            }
+        }
+
         public override void OnEnter()
         {
+            base.OnEnter(); 
+
             base.OnEnter(); 
 
             var windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
+            AddChild(text, 24);
 
-            text.Begin();
+            CCDrawNode draw = new CCDrawNode();
+
             // Draw polygons
             CCPoint[] points = new CCPoint[]
-            {
-                new CCPoint(windowSize.Height / 4, 0),
-                new CCPoint(windowSize.Width, windowSize.Height / 5),
-                new CCPoint(windowSize.Width / 3 * 2, windowSize.Height)
-            };
+                {
+                    new CCPoint(windowSize.Height / 4, 0),
+                    new CCPoint(windowSize.Width, windowSize.Height / 5),
+                    new CCPoint(windowSize.Width / 3 * 2, windowSize.Height)
+                };
+            draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
+            draw.AnchorPoint = CCPoint.AnchorLowerLeft;
 
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawPoly (points, points.Length, true, true, new CCColor4F (1, 0, 0, 0.5f));
-            CCDrawingPrimitives.End ();
-            text.End();
-
-            CCSprite polySprite = new CCSprite(text.Texture);
-            polySprite.Position = windowSize.Center;
-            AddChild (polySprite);
+            text.Begin();
+            draw.Visit();
+            text.End();        
         }
 
         #endregion Setup content
     }
+
+    public class DrawPrimitivesWithRenderTextureTest1 : BaseDrawNodeTest
+    {
+        #region Setup content
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Test RenderTarget Clipping with CCDrawNode as Child";
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+
+
+           
+            CCDrawNode circle = new CCDrawNode();
+            circle.DrawSolidCircle(new CCPoint(150.0f, 150.0f), 75.0f, new CCColor4B(255, 255, 255, 255));
+
+            CCRenderTexture rtm = new CCRenderTexture(new CCSize(200.0f, 200.0f), new CCSize(200.0f, 200.0f), CCSurfaceFormat.Color, CCDepthFormat.Depth24Stencil8);
+
+            rtm.AddChild(circle);
+
+            rtm.BeginWithClear(CCColor4B.Orange);
+            rtm.End();
+
+            // Make sure our children nodes get visited
+            rtm.AutoDraw = true;
+
+            rtm.Position = VisibleBoundsWorldspace.Center;
+            rtm.AnchorPoint = CCPoint.AnchorMiddle;
+
+
+            AddChild(rtm);
+        }
+
+        #endregion Setup content
+    }
+
+    public class DrawPrimitivesWithRenderTextureTest2 : BaseDrawNodeTest
+    {
+        #region Setup content
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Test RenderTarget Clipping with CCDrawNode Visit";
+            }
+        }
+
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+
+            CCDrawNode circle = new CCDrawNode();
+            circle.DrawSolidCircle(new CCPoint(150.0f, 150.0f), 75.0f, new CCColor4B(255, 255, 255, 255));
+
+            CCRenderTexture rtm = new CCRenderTexture(new CCSize(200.0f, 200.0f), new CCSize(200.0f, 200.0f), CCSurfaceFormat.Color, CCDepthFormat.Depth24Stencil8);
+            rtm.BeginWithClear(CCColor4B.Orange);
+            circle.Visit(); // Draw to rendertarget
+            rtm.End();
+
+            rtm.Position = VisibleBoundsWorldspace.Center;
+            rtm.AnchorPoint = CCPoint.AnchorMiddle;
+
+            AddChild(rtm);
+        }
+
+        #endregion Setup content
+    }
+
+
+    public class DrawPrimitivesWithRenderTextureTest3 : BaseDrawNodeTest
+    {
+        #region Setup content
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Test RenderTarget Clipping with CCDrawNode Visit to Sprite";
+            }
+        }
+
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+
+            CCDrawNode circle = new CCDrawNode();
+            circle.DrawSolidCircle(new CCPoint(150.0f, 150.0f), 75.0f, new CCColor4B(255, 255, 255, 255));
+
+            CCRenderTexture rtm = new CCRenderTexture(new CCSize(200.0f, 200.0f), new CCSize(200.0f, 200.0f), CCSurfaceFormat.Color, CCDepthFormat.Depth24Stencil8);
+            rtm.BeginWithClear(CCColor4B.Orange);
+            circle.Visit(); // Draw to rendertarget
+            rtm.End();
+
+            // Create a new sprite from the render target texture
+            var sprite = new CCSprite(rtm.Texture);
+            sprite.Position = VisibleBoundsWorldspace.Center;
+
+
+            AddChild(sprite);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class DrawPrimitivesTest : BaseDrawNodeTest
     {

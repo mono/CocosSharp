@@ -841,10 +841,10 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
-        protected internal virtual Matrix XnaLocalMatrix 
+        internal virtual Matrix XnaLocalMatrix 
         { 
             get { return xnaLocalMatrix; }
-            protected set 
+            set 
             {
                 xnaLocalMatrix = value;
             }
@@ -2018,32 +2018,44 @@ namespace CocosSharp
         {
         }
 
+        internal virtual CCDrawManager DrawManager 
+        {
+            get 
+            {
+                return CCDrawManager.SharedDrawManager.CurrentRenderTarget == null ? Window.DrawManager : CCDrawManager.SharedDrawManager;
+            }
+        }
+
         // This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
         public virtual void Visit()
         {
-            if (!Visible || Scene == null)
+            bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
+            
+            if ((!Visible || Scene == null) && !renderTarget)
             {
                 return;
             }
 
+            var drawManager = DrawManager;
+
             // Set camera view/proj matrix even if ChildClippingMode is None
-            if(Camera != null)
+            if(Camera != null && !renderTarget)
             {
-                Window.DrawManager.ViewMatrix = Camera.ViewMatrix;
-                Window.DrawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+                drawManager.ViewMatrix = Camera.ViewMatrix;
+                drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
             }
 
 
-            Window.DrawManager.PushMatrix();
+            drawManager.PushMatrix();
 
             if (Grid != null && Grid.Active)
             {
                 Grid.BeforeDraw();
-                Transform ();
+                Transform (drawManager);
             }
             else
             {
-                Transform();
+                Transform(drawManager);
             }
 
             int i = 0;
@@ -2093,16 +2105,21 @@ namespace CocosSharp
             if (Grid != null && Grid.Active)
             {
                 Grid.AfterDraw(this);
-                Window.DrawManager.SetIdentityMatrix();
+                drawManager.SetIdentityMatrix();
                 Grid.Blit();
             }
 
-            Window.DrawManager.PopMatrix();
+            drawManager.PopMatrix();
+        }
+
+        internal void Transform(CCDrawManager drawManager)
+        {
+            drawManager.MultMatrix(ref xnaLocalMatrix);
         }
 
         public void Transform()
         {
-            Window.DrawManager.MultMatrix(ref xnaLocalMatrix);
+            Transform(Window.DrawManager);
         }
 
         public void TransformAncestors()

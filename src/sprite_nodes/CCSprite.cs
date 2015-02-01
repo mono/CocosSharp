@@ -502,7 +502,7 @@ namespace CocosSharp
 
             Debug.Assert(batchNode == null);
 
-            CCDrawManager drawManager = Window.DrawManager;
+            CCDrawManager drawManager = DrawManager;
 
             drawManager.BlendFunc(BlendFunc);
             drawManager.BindTexture(Texture);
