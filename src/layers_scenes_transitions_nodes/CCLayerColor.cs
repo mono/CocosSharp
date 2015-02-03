@@ -82,37 +82,38 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerColor(CCColor4B color = default(CCColor4B)) 
+        public CCLayerColor(CCColor4B? color = null) 
             : this(CCLayer.DefaultCameraProjection, color)
         {
         }
 
-        public CCLayerColor(CCSize visibleBoundsDimensions, CCColor4B color = default(CCColor4B)) 
+        public CCLayerColor(CCSize visibleBoundsDimensions, CCColor4B? color = null) 
             : this(visibleBoundsDimensions, CCLayer.DefaultCameraProjection, color)
         {
         }
 
-        public CCLayerColor(CCSize visibleBoundsDimensions, CCCameraProjection projection, CCColor4B color = default(CCColor4B))
+        public CCLayerColor(CCSize visibleBoundsDimensions, CCCameraProjection projection, CCColor4B? color = null)
             : this(new CCCamera(projection, visibleBoundsDimensions), color)
         {
         }
 
-        public CCLayerColor(CCCamera camera, CCColor4B color = default(CCColor4B)) 
+        public CCLayerColor(CCCamera camera, CCColor4B? color = null) 
             : base(camera)
         {
             SetupCCLayerColor(color);
         }
 
-        public CCLayerColor(CCCameraProjection cameraProjection, CCColor4B color = default(CCColor4B)) 
+        public CCLayerColor(CCCameraProjection cameraProjection, CCColor4B? color = null) 
             : base(cameraProjection)
         {
             SetupCCLayerColor(color);
         }
 
-        void SetupCCLayerColor(CCColor4B color)
+        void SetupCCLayerColor(CCColor4B? color = null)
         {
-            DisplayedColor = RealColor = new CCColor3B(color.R, color.G, color.B);
-            DisplayedOpacity = RealOpacity = color.A;
+            var setupColor = (color.HasValue) ? color.Value : CCColor4B.Transparent;
+            DisplayedColor = RealColor = new CCColor3B(setupColor.R, setupColor.G, setupColor.B);
+            DisplayedOpacity = RealOpacity = setupColor.A;
             BlendFunc = CCBlendFunc.NonPremultiplied;
             UpdateColor();
         }
