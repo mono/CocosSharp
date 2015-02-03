@@ -344,6 +344,7 @@ namespace CocosSharp
         {
             SpriteBatch = new SpriteBatch(graphicsDevice);
             defaultEffect = new BasicEffect(graphicsDevice);
+            currentEffect = defaultEffect;
             AlphaTestEffect = new AlphaTestEffect(graphicsDevice);
 
             PrimitiveEffect = new BasicEffect(graphicsDevice)
