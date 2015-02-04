@@ -77,6 +77,8 @@ namespace tests
 
             target.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
 
+            target.AnchorPoint = CCPoint.AnchorMiddle;
+
             // It's possible to modify the RenderTexture blending function by
             //CCBlendFunc tbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
             //target.Sprite.BlendFunc = tbf;
