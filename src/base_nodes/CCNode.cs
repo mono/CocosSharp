@@ -2022,7 +2022,7 @@ namespace CocosSharp
         {
             get 
             {
-                return CCDrawManager.SharedDrawManager.CurrentRenderTarget == null ? Window.DrawManager : CCDrawManager.SharedDrawManager;
+                return Window != null ? Window.DrawManager : CCDrawManager.SharedDrawManager;
             }
         }
 

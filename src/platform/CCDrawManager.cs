@@ -344,7 +344,7 @@ namespace CocosSharp
         {
             SpriteBatch = new SpriteBatch(graphicsDevice);
             defaultEffect = new BasicEffect(graphicsDevice);
-            currentEffect = defaultEffect;
+
             AlphaTestEffect = new AlphaTestEffect(graphicsDevice);
 
             PrimitiveEffect = new BasicEffect(graphicsDevice)
@@ -523,7 +523,7 @@ namespace CocosSharp
             TmpVertices.Clear();
         }
 
-        void ResetDevice()
+        internal void ResetDevice()
         {
             vertexColorEnabled = true;
             worldMatrixChanged = false;
