@@ -111,7 +111,12 @@ namespace CocosSharp
         public CCTileMapInfo(StreamReader stream) : this()
         {
             string data = stream.ReadToEnd();
-            new CCSAXParser().ParseContent(data);
+
+            var parser = new CCSAXParser();
+
+            parser.SetDelegator(this);
+
+            parser.ParseContent(data);
         }
 
         CCTileMapInfo()
@@ -378,8 +383,13 @@ namespace CocosSharp
             tileset.TilesheetFilename = imagename;
 
             var directory = string.Empty;
-            if (!CCFileUtils.GetDirectoryName(imagename, out directory))
-                tileset.TilesheetFilename = CCFileUtils.FullPathFromRelativeFile(imagename, TileMapFileName);
+            if (string.IsNullOrEmpty (TileMapFileName))
+                tileset.TilesheetFilename = imagename;
+            else 
+            {
+                if (!CCFileUtils.GetDirectoryName (imagename, out directory))
+                    tileset.TilesheetFilename = CCFileUtils.FullPathFromRelativeFile (imagename, TileMapFileName);
+            }
         }
 
         void ParseDataElement()
