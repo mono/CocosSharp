@@ -93,8 +93,9 @@ namespace CocosSharp
             get {
                 if (hasInfiniteAction && actionSequences [last] is CCRepeatForever)
                 {
-                    return (false);
+                    return false;
                 }
+
                 return base.IsDone;
             }
         }
@@ -111,7 +112,7 @@ namespace CocosSharp
 
         protected internal override void Step (float dt)
         {
-            if (last > -1 && (actionSequences [last] is CCRepeat || actionSequences [last] is CCRepeatForever))
+            if (last > -1 && (actionSequences [last] is CCRepeatForever))
             {
                 actionStates [last].Step (dt);
             }
