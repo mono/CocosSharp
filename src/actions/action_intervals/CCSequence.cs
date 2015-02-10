@@ -124,7 +124,6 @@ namespace CocosSharp
 
         public override void Update (float time)
         {
-            bool bRestart = false;
             int found;
             float new_t;
 
@@ -181,7 +180,7 @@ namespace CocosSharp
 
 
             // Last action found and it is done
-            if (found != last || bRestart)
+            if (found != last)
             {
                 actionStates [found] = (CCFiniteTimeActionState)actionSequences [found].StartAction (Target);
             }
