@@ -91,7 +91,7 @@ namespace CocosSharp
 
                     InnerActionState.Stop ();
                     InnerActionState = (CCFiniteTimeActionState)InnerAction.StartAction (Target);
-                    NextDt += InnerAction.Duration / Duration;
+                    NextDt = InnerAction.Duration / Duration * (Total+1f);
                 }
 
                 // fix for issue #1288, incorrect end value of repeat
