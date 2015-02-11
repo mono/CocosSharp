@@ -71,18 +71,6 @@ namespace CocosSharp
             }
         }
 
-        public override void OnExit()
-        {
-            base.OnExit();
-            outSceneNodeContainer.InnerScene.OnExit();
-        }
-
-        public override void OnExitTransitionDidStart()
-        {
-            base.OnExitTransitionDidStart();
-            outSceneNodeContainer.InnerScene.OnExitTransitionDidStart();
-        }
- 
     }
 
     public class CCTransitionScene : CCScene
@@ -186,13 +174,12 @@ namespace CocosSharp
             // Disable events while transitioning
             EventDispatcherIsEnabled = false;
 
+            // OutScene should not receive the OnEnter callback
+            // only the OnExitTransitionDidStart
+            OutScene.OnExitTransitionDidStart();
             InScene.OnEnter();
 
             InitialiseScenes();
-
-            OutSceneNodeContainer.OnEnter();
-            InSceneNodeContainer.OnEnter();
-
 
             if(InSceneAction != null)
                 InSceneNodeContainer.RunAction(InSceneAction);
@@ -209,6 +196,12 @@ namespace CocosSharp
 
             // Enable event after transitioning
             EventDispatcherIsEnabled = true;
+
+            OutScene.OnExit();
+
+            // InScene should not receive the OnEnter callback
+            // only the OnEnterTransitionDidFinish
+            InScene.OnEnterTransitionDidFinish();
         }
 
         public virtual void Reset(float t, CCScene scene)
