@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Threading.Tasks;
 #if USE_PHYSICS
 using ChipmunkSharp;
 #endif
@@ -2356,6 +2357,25 @@ namespace CocosSharp
             return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
         }
 
+        /// <summary>
+        /// Runs an Action so that it can be awaited.
+        /// </summary>
+        /// <param name="action">An instance of a CCFiniteTimeAction object.</param>
+        public Task<CCActionState> RunActionAsync(CCFiniteTimeAction action)
+        {
+
+            Debug.Assert(action != null, "Argument must be non-nil");
+
+            var tcs = new TaskCompletionSource<CCActionState> ();
+
+            CCActionState state = null;
+            var asyncAction = new CCSequence (action, new CCCallFunc (() => tcs.TrySetResult (state)));
+
+            state = ActionManager != null ? ActionManager.AddAction (asyncAction, this, !IsRunning) : AddLazyAction(asyncAction, this, !IsRunning);
+
+            return tcs.Task;
+        }
+
         public CCActionState RunActions(params CCFiniteTimeAction[] actions)
         {
             Debug.Assert(actions != null, "Argument must be non-nil");
@@ -2363,6 +2383,31 @@ namespace CocosSharp
 			var action = actions.Length > 1 ? new CCSequence(actions) : actions[0];
 
             return ActionManager != null ? ActionManager.AddAction (action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
+        }
+
+        /// <summary>
+        /// Runs a sequence of Actions so that it can be awaited.
+        /// </summary>
+        /// <param name="actions">An array of CCFiniteTimeAction objects.</param>
+        public Task<CCActionState> RunActionsAsync(params CCFiniteTimeAction[] actions)
+        {
+            Debug.Assert(actions != null, "Argument must be non-nil");
+            Debug.Assert(actions.Length > 0, "Paremeter: actions has length of zero. At least one action must be set to run.");
+
+            var tcs = new TaskCompletionSource<CCActionState> ();
+
+            var numActions = actions.Length;
+            var asyncActions = new CCFiniteTimeAction[actions.Length + 1];
+            Array.Copy (actions, asyncActions, numActions);
+
+            CCActionState state = null;
+            asyncActions [numActions] = new CCCallFunc (() => tcs.TrySetResult (state));
+
+            var asyncAction = asyncActions.Length > 1 ? new CCSequence(asyncActions) : asyncActions[0];
+
+            state = ActionManager != null ? ActionManager.AddAction (asyncAction, this, !IsRunning) : AddLazyAction(asyncAction, this, !IsRunning);
+               
+            return tcs.Task;
         }
 
         public void StopAllActions()
