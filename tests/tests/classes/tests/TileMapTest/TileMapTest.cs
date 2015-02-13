@@ -486,6 +486,68 @@ namespace tests
 		}
     }
 
+    public class TMXIsoZorderFromStream : TileDemo
+    {
+        readonly CCSprite m_tamara;
+
+        static readonly CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
+        static readonly CCFiniteTimeAction back = move.Reverse();
+
+        public TMXIsoZorderFromStream() : base(new System.IO.StreamReader(CCFileUtils.GetFileStream("TileMaps/iso-test-zorder1.tmx")))
+        {
+            m_tamara = new CCSprite(pathSister1);
+            tileLayersContainer.AddChild(m_tamara, tileMap.Children.Count);
+            tileLayersContainer.Position = new CCPoint(-50.0f, -50.0f);
+
+            m_tamara.AnchorPoint = CCPoint.Zero;
+
+            m_tamara.RepeatForever(move, back);
+
+            Schedule(repositionSprite);
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            m_tamara.Position = tileMap.LayerNamed("grass").TilePosition(29, 29);
+        }
+
+
+        public override void OnExit()
+        {
+            Unschedule(repositionSprite);
+            base.OnExit();
+        }
+
+        private void repositionSprite(float dt)
+        {
+            CCPoint p = m_tamara.Position;
+
+
+            // there are only 4 layers. (grass and 3 trees layers)
+            // if tamara < 48, z=4
+            // if tamara < 96, z=3
+            // if tamara < 144,z=2
+
+            int newZ = (int)(4 - (p.Y / 48));
+            newZ = Math.Max(newZ, 0);
+
+            tileLayersContainer.ReorderChild(m_tamara, newZ);
+        }
+
+        public override string Title
+        {
+            get { return "TMX Iso Zorder using StreamReader"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Sprite should hide behind the trees"; }
+        }
+    }
+
+
     public class TMXOrthoZorder : TileDemo
     {
         readonly CCSprite m_tamara;
@@ -861,6 +923,20 @@ namespace tests
 
 		protected CCScaleBy SCALE_2X_Half = new CCScaleBy(2, 0.5f);
 
+        public TileDemo (System.IO.StreamReader tilemapReader )
+        {
+            tileMap = new CCTileMap(tilemapReader);
+            tileLayersContainer = tileMap.TileLayersContainer;
+
+            AddChild(tileMap);
+
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesMoved = onTouchesMoved;
+
+            AddEventListener(touchListener);
+        }
+
         public TileDemo(string tilemapName)
         {
             tileMap = new CCTileMap(tilemapName);
@@ -1002,7 +1078,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 27;
+        static int MAX_LAYER = 28;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1124,6 +1200,9 @@ namespace tests
                     return new TMXGIDObjectsTest();
                 case 26:
                     return new IsoNodePosition();
+                case 27:
+                    return new TMXIsoZorderFromStream();
+
 #endif
             }
 

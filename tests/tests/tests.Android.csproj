@@ -2042,6 +2042,9 @@
     <AndroidAsset Include="Assets\Content\hd\Images\CyanSquare.xnb" />
     <AndroidAsset Include="Assets\Content\hd\Images\MagentaSquare.xnb" />
     <AndroidAsset Include="Assets\Content\hd\Images\YellowSquare.xnb" />
+    <AndroidAsset Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Assets\Content\TileMaps\iso-test-zorder1.tmx</Link>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />

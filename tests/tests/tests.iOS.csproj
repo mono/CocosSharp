@@ -1226,6 +1226,9 @@
     <Content Include="..\testsContent\Sounds\effect1.wav">
       <Link>Content\Sounds\effect1.wav</Link>
     </Content>
+    <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />
