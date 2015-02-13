@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CocosSharp;
+using System.Threading.Tasks;
 
 namespace tests
 {
@@ -52,6 +53,8 @@ namespace tests
         ACTION_ActionCatmullRomStacked,
         ACTION_ActionCardinalSplineStacked,
         ACTION_PARALLEL,
+        ACTION_SEQUENCE_ASYNC,
+        ACTION_SEQUENCE2_ASYNC,
         ACTION_LAYER_COUNT
     };
 
@@ -206,6 +209,12 @@ namespace tests
                     break;
                 case (int)ActionTest.ACTION_PARALLEL:
                     layer = new ActionParallel();
+                    break;
+                case (int) ActionTest.ACTION_SEQUENCE_ASYNC:
+                    layer = new ActionSequenceAsync();
+                    break;
+                case (int) ActionTest.ACTION_SEQUENCE2_ASYNC:
+                    layer = new ActionSequenceAsync2();
                     break;
                 default:
                     break;
@@ -1285,6 +1294,161 @@ namespace tests
         #endregion Callbacks
     }
 
+    public class ActionSequenceAsync : ActionsDemo
+    {
+        CCSequence action;
+
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Sequence Await: Move + Rotate"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionSequenceAsync()
+        {
+            action = new CCSequence(new CCMoveBy (2, new CCPoint(240, 0)), new CCRotateBy (2, 540));
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        public override void OnEnter()
+        {
+
+            base.OnEnter(); 
+
+            AlignSpritesLeft(1);
+
+            RunAsyncAction ();
+        }
+
+        public async Task RunAsyncAction()
+        {
+            var task = Grossini.RunActionsAsync(action);
+
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var labelStart = new CCLabelTtf("Start Async await Id = " + task.Id, "arial", 20);
+            labelStart.Position = new CCPoint(s.Width / 4 * 1, s.Height - (s.Height / 3));
+
+            AddChild(labelStart);
+
+            await task;
+
+            labelStart.Text = "End Async await Id = " + task.Id;
+        }
+
+
+        #endregion Setup content
+    }
+
+
+    public class ActionSequenceAsync2 : ActionsDemo
+    {
+        CCSequence action;
+
+
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Sequence of InstantActions Async"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionSequenceAsync2()
+        {
+            action = new CCSequence(
+                new CCPlace(new CCPoint(200, 200)),
+                new CCShow(),
+                new CCMoveBy (1, new CCPoint(100, 0)),
+                new CCDelayTime(1),
+                new CCCallFunc(Callback1),
+                new CCDelayTime(2),
+                new CCCallFuncN(Callback2),
+                new CCDelayTime(3),
+                new CCCallFuncND(Callback3, 0xbebabeba)
+
+            );
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        public override void OnEnter()
+        {
+
+            base.OnEnter(); 
+
+            AlignSpritesLeft(1);
+
+            Grossini.Visible = false;
+
+            RunAsyncAction ();
+        }
+
+        public async Task RunAsyncAction()
+        {
+            var task = Grossini.RunActionsAsync(action);
+
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var labelStart = new CCLabelTtf("Start Async await Id = " + task.Id, "arial", 20);
+            labelStart.Position = new CCPoint(s.Width / 4 * 1, s.Height - (s.Height / 3));
+
+            AddChild(labelStart);
+
+            await task;
+
+            labelStart.Text = "End Async await Id = " + task.Id;
+        }
+
+        #endregion Setup content
+
+
+        #region Callbacks
+
+        void Callback1()
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabelTtf("callback 1 called", "arial", 16);
+            label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
+
+            AddChild(label);
+        }
+
+        void Callback2(CCNode sender)
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabelTtf("callback 2 called", "arial", 16);
+            label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
+
+            AddChild(label);
+        }
+
+        void Callback3(CCNode sender, object data)
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabelTtf("callback 3 called", "arial", 16);
+            label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
+
+            AddChild(label);
+        }
+
+        #endregion Callbacks
+    }
 
     public class ActionCallFunc : ActionsDemo
     {
