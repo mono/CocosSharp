@@ -957,7 +957,7 @@
     <Compile Include=".\tileMap_parallax_nodes\CCTileSetInfo.cs">
         <LogicalName>tileMap_parallax_nodes\CCTileSetInfo</LogicalName>
     </Compile>
-    <Compile Include=“.\Platform\CCGeometryBatch.cs" />
+        <Compile Include=".\Platform\CCGeometryBatch.cs">
         <LogicalName>Platform\CCGeometryBatch</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">
