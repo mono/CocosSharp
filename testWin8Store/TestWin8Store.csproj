@@ -1234,6 +1234,10 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="..\tests\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="TestWin8Store_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

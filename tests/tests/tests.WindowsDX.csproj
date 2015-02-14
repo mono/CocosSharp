@@ -11,7 +11,7 @@
     <RootNamespace>tests</RootNamespace>
     <AssemblyName>CocosSharpTests</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -47,6 +47,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="classes\AppDelegate.cs" />
@@ -470,6 +471,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
     <EmbeddedResource Include="Assets\Content\fonts\A Damn Mess.ttf" />
     <EmbeddedResource Include="Assets\Content\fonts\Abberancy.ttf" />
@@ -499,7 +504,6 @@
     <Folder Include="Content\Images\sprites_test\" />
     <Folder Include="Content\Particles\" />
     <Folder Include="Content\Sounds\" />
-    <Folder Include="Content\TileMaps\" />
     <Folder Include="Content\zwoptex\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

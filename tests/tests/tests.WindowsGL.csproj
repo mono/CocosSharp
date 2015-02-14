@@ -11,7 +11,7 @@
     <RootNamespace>tests</RootNamespace>
     <AssemblyName>CocosSharpTests</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -447,6 +447,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
@@ -465,7 +469,6 @@
     <Folder Include="Content\Images\sprites_test\" />
     <Folder Include="Content\Particles\" />
     <Folder Include="Content\Sounds\" />
-    <Folder Include="Content\TileMaps\" />
     <Folder Include="Content\zwoptex\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
