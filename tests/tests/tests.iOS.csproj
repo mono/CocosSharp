@@ -44,7 +44,7 @@
     <MtouchProfiling>True</MtouchProfiling>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchExtraArgs>--linkskip=MonoGame.Framework</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -73,7 +73,7 @@
     </IpaPackageName>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>ARMv7</MtouchArch>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CrashReportingApiKey>
     </CrashReportingApiKey>
     <MtouchLink>None</MtouchLink>
