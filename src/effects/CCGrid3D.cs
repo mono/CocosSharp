@@ -1,15 +1,20 @@
 using Microsoft.Xna.Framework.Graphics;
+using System.Runtime.InteropServices;
 
 namespace CocosSharp
 {
     #region Structs
 
+#if IOS
+    [StructLayout(LayoutKind.Sequential, Pack=1)]
+#endif
     internal struct CCV3F_T2F : IVertexType
     {
-        internal static readonly VertexDeclaration VertexDeclaration;
 
         internal CCVertex3F Vertices; // 12 bytes
         internal CCTex2F TexCoords; // 8 byts
+
+        internal static readonly VertexDeclaration VertexDeclaration;
 
         VertexDeclaration IVertexType.VertexDeclaration
         {
