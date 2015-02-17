@@ -90,7 +90,7 @@
     <MtouchUseLlvm>True</MtouchUseLlvm>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchArch>ARMv7, ARMv7s</MtouchArch>
+    <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
