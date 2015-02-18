@@ -22,10 +22,12 @@ THE SOFTWARE.
 ****************************************************************************/
 
 using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct CCAffineTransform
     {
         public static readonly CCAffineTransform Identity = new CCAffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
@@ -204,7 +206,7 @@ namespace CocosSharp
 
 		public void Transform(ref float x, ref float y)
 		{
-			var tmpX = A * x + C * y + Tx;
+			float tmpX = A * x + C * y + Tx;
 			y = B * x + D * y + Ty;
 			x = tmpX;
 		}
@@ -286,6 +288,29 @@ namespace CocosSharp
             Transform(ref quad.BottomRight);
 
             return quad;
+        }
+
+        internal string DebugDisplayString
+        {
+            get
+            {
+                if (this == Identity)
+                {
+                    return "Identity";
+                }
+
+                return string.Concat(
+                    "( ", this.A.ToString(), "  ", this.B.ToString(), " )  \r\n",
+                    "( ", this.C.ToString(), "  ", this.D.ToString(), " )  \r\n",
+                    "( ", this.Tx.ToString(), "  ", this.Ty.ToString(), " )");
+            }
+        }
+
+        public override string ToString()
+        {
+            return "{A:" + A + " B:" + B + "}"
+                + " {C:" + C + " D:" + D + "}"
+                + " {Tx:" + Tx + " Ty:" + Ty + "}";
         }
 
 		#region Equality
