@@ -246,7 +246,8 @@ namespace CocosSharp
                 if(textureRectInPixels != value) 
                 {
                     textureRectInPixels = value;
-                    ContentSize = textureRectInPixels.Size / DefaultTexelToContentSizeRatios;
+                    if(ContentSize == CCSize.Zero)
+                        ContentSize = textureRectInPixels.Size / DefaultTexelToContentSizeRatios;
 
                     UpdateSpriteTextureQuads();
                 }
