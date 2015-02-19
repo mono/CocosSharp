@@ -639,6 +639,15 @@ namespace CocosSharp
         {
             CCLabelBMFont.PurgeCachedData();
         }
+        
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                CCDrawManager.SharedDrawManager = null;
+            }
+            base.Dispose(disposing);
+        }
 
         #endregion Cleaning up
 
