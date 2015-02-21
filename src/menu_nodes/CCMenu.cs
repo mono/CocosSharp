@@ -267,7 +267,7 @@ namespace CocosSharp
         protected virtual CCMenuItem ItemForTouch(CCTouch touch)
         {
             CCMenuItem touchedMenuItem = null;
-            CCPoint touchLocation = Layer.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint touchLocation = touch.Location;
 
             if (menuItems != null && menuItems.Count > 0)
             {
