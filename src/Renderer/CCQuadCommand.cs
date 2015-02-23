@@ -36,11 +36,26 @@ namespace CocosSharp
         }
 
         public CCQuadCommand(float globalZOrder, CCTexture2D texture, CCBlendFunc blendType, 
+            CCV3F_C4B_T2F_Quad[] quads, int quadCount) 
+            : this(globalZOrder, texture, blendType, quads, quadCount, CCAffineTransform.Identity, 0)
+        {}
+
+        public CCQuadCommand(float globalZOrder, CCTexture2D texture, CCBlendFunc blendType, 
+            CCV3F_C4B_T2F_Quad[] quads) 
+            : this(globalZOrder, texture, blendType, quads, quads.Length, CCAffineTransform.Identity, 0)
+        {}
+
+        public CCQuadCommand(float globalZOrder, CCTexture2D texture, CCBlendFunc blendType, 
             CCV3F_C4B_T2F_Quad quad, CCAffineTransform modelViewTransform, int flags = 0) 
             : this(globalZOrder, texture, blendType, new CCV3F_C4B_T2F_Quad[] { quad }, 1,
                 modelViewTransform, flags)
         { }
 
+        public CCQuadCommand(float globalZOrder, CCTexture2D texture, CCBlendFunc blendType, 
+            CCV3F_C4B_T2F_Quad quad) 
+            : this(globalZOrder, texture, blendType, new CCV3F_C4B_T2F_Quad[] { quad }, 1,
+                CCAffineTransform.Identity, 0)
+        { }
 
         internal void UseMaterial (CCDrawManager drawManager)
         {
