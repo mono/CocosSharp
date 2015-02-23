@@ -173,9 +173,9 @@ namespace CocosSharp
 
                 batchQuadCommands.Add(quadCommand);
 
-                foreach (var quad in quadCommand.Quads)
+                for (int b = 0; b < quadCommand.QuadCount; b++)
                 {
-                    quads.Add(mv.Transform(quad));
+                    quads.Add(mv.Transform(quadCommand.Quads[b]));
                 }
                 numberQuads += quadCommand.QuadCount;
 
