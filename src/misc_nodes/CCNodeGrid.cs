@@ -2,6 +2,9 @@
 
 namespace CocosSharp
 {
+    /// <summary>
+    /// CCNodeGrid allows the hosting of a target node that will have a CCGridAction effect applied to it.
+    /// </summary>
     public class CCNodeGrid : CCNode
     {
 
@@ -58,10 +61,13 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                OnGridBeginDraw ();
+                OnGridBeginDraw();
+                Transform(drawManager);
             }
-
-            Transform (drawManager);
+            else
+            {
+                Transform(drawManager);
+            }
 
             if (Target != null)
                 Target.Visit ();
