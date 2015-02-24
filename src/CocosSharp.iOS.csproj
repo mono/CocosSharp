@@ -401,6 +401,7 @@
     <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
     <Compile Include="Platform\CCGeometryBatch.cs" />
+    <Compile Include="misc_nodes\CCNodeGrid.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

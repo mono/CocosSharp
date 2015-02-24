@@ -422,6 +422,7 @@
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />
     <Compile Include="Platform\CCGeometryBatch.cs" />
+    <Compile Include="misc_nodes\CCNodeGrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
