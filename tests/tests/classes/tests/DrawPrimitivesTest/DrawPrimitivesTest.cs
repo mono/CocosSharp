@@ -78,8 +78,6 @@ namespace tests
         {
             base.OnEnter(); 
 
-            base.OnEnter(); 
-
             var windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
@@ -121,8 +119,6 @@ namespace tests
         {
             base.OnEnter(); 
 
-
-           
             CCDrawNode circle = new CCDrawNode();
             circle.DrawSolidCircle(new CCPoint(150.0f, 150.0f), 75.0f, new CCColor4B(255, 255, 255, 255));
 
