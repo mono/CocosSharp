@@ -54,15 +54,28 @@ namespace CocosSharp
 
     public class CCSplitRowsState : CCTiledGrid3DActionState
     {
-        protected CCRect VisibleBounds { get; private set; }
+        protected CCSize VisibleSize { get; private set; }
+
+        // We only need the width
+        private float width = 0;
 
         public CCSplitRowsState (CCSplitRows action, CCNode target) : base (action, target)
         {
-            VisibleBounds = Target.Layer.VisibleBoundsWorldspace;
+            VisibleSize = Target.VisibleBoundsWorldspace.Size;
+            width = VisibleSize.Width;
         }
 
         public override void Update (float time)
         {
+
+            // We may have started the action before the Visible Size was able
+            // to be set from the Target so we will try it again
+            if (width == 0)
+            {
+                VisibleSize = Target.VisibleBoundsWorldspace.Size;
+                width = VisibleSize.Width;
+            }
+
             int j;
 
             for (j = 0; j < GridSize.Y; ++j) {
@@ -73,10 +86,10 @@ namespace CocosSharp
                     direction = -1;
                 }
 
-                coords.BottomLeft.X += direction * VisibleBounds.Size.Width * time;
-                coords.BottomRight.X += direction * VisibleBounds.Size.Width * time;
-                coords.TopLeft.X += direction * VisibleBounds.Size.Width * time;
-                coords.TopRight.X += direction * VisibleBounds.Size.Width * time;
+                coords.BottomLeft.X += direction * width * time;
+                coords.BottomRight.X += direction * width * time;
+                coords.TopLeft.X += direction * width * time;
+                coords.TopRight.X += direction * width * time;
 
                 SetTile (0, j, ref coords);
             }
