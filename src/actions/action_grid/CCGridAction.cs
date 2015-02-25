@@ -51,7 +51,15 @@ namespace CocosSharp
 		public CCGridActionState (CCGridAction action, CCNode target) : base (action, target)
 		{
 			GridSize = action.GridSize;
-			CCGridBase targetGrid = Target.Grid;
+
+            var gridNodeTarget = Target as CCNodeGrid;
+
+            CCGridBase targetGrid;
+
+            if (gridNodeTarget != null)
+                targetGrid = gridNodeTarget.Grid;
+            else
+			    targetGrid = Target.Grid;
 
 			if (targetGrid != null && targetGrid.ReuseGrid > 0)
 			{
@@ -74,9 +82,16 @@ namespace CocosSharp
 				}
 
 				CCGridBase newgrid = Grid;
-
-				Target.Grid = newgrid;
-				Target.Grid.Active = true;
+                if (gridNodeTarget != null)
+                {
+                    gridNodeTarget.Grid = newgrid;
+                    gridNodeTarget.Grid.Active = true;
+                }
+                else
+                {
+                    Target.Grid = newgrid;
+                    Target.Grid.Active = true;
+                }
 			}
 		}
 	}

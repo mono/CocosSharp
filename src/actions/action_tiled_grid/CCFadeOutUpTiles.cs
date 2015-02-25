@@ -73,7 +73,8 @@ namespace CocosSharp
         public override void TransformTile (CCGridSize pos, float distance)
         {
             CCQuad3 coords = OriginalTile (pos);
-            CCPoint step = Target.Grid.Step;
+
+            var step = (Target is CCNodeGrid) ?  ((CCNodeGrid)Target).Grid.Step : Target.Grid.Step;
 
             float dy = (step.Y / 2) * (1.0f - distance);
 

@@ -160,7 +160,8 @@ namespace CocosSharp
         {
             CCQuad3 coords = OriginalTile (pos);
 
-            CCPoint step = Target.Grid.Step;
+            var step = (Target is CCNodeGrid) ?  ((CCNodeGrid)Target).Grid.Step : Target.Grid.Step;
+
             coords.BottomLeft.X += (int)(tile.Position.X * step.X);
             coords.BottomLeft.Y += (int)(tile.Position.Y * step.Y);
 
@@ -180,7 +181,8 @@ namespace CocosSharp
         {
             CCQuad3 coords = OriginalTile (x, y);
 
-            CCPoint step = Target.Grid.Step;
+            var step = (Target is CCNodeGrid) ?  ((CCNodeGrid)Target).Grid.Step : Target.Grid.Step;
+
             coords.BottomLeft.X += (int)(tile.Position.X * step.X);
             coords.BottomLeft.Y += (int)(tile.Position.Y * step.Y);
 
