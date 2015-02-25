@@ -8,7 +8,7 @@ namespace tests
 {
     public class Ripple3DDemo : CCRipple3D
     {
-        static readonly CCSize contentSize = TextLayer.BaseNode.ContentSize;
+        static readonly CCSize contentSize = TextLayer.VisibleBounds.Size;
 
         public Ripple3DDemo(float t) 
             : base (t, new CCGridSize(32, 24), contentSize.Center, contentSize.Width, 4, 160)
