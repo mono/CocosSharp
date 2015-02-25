@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 
 namespace CocosSharp
@@ -48,11 +49,18 @@ namespace CocosSharp
 			protected set { } 
 		}
 
+        public CCGridActionState (CCGridAction action, CCNodeGrid target) : this (action, (CCNode)target)
+        {
+        }
+
+        [Obsolete("Grid Actions should only target CCNodeGrids.")]
 		public CCGridActionState (CCGridAction action, CCNode target) : base (action, target)
 		{
 			GridSize = action.GridSize;
 
             var gridNodeTarget = Target as CCNodeGrid;
+            if (gridNodeTarget == null)
+                CCLog.Log("Obsolete -- Grid Actions should only target CCNodeGrids.");
 
             CCGridBase targetGrid;
 
