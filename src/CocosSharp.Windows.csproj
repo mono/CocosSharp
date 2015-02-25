@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</ProjectGuid>
@@ -198,6 +198,7 @@
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />
+    <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\CCTask.cs" />

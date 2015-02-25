@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -135,6 +135,7 @@
     <Compile Include="label_nodes\CCLabel-FontUtilities.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include=".\actions\action\CCAction.cs">
@@ -937,28 +938,28 @@
       <LogicalName>tileMap_parallax_nodes\CCPointObject</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileLayerInfo.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileLayerInfo</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileLayerInfo</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileMap.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileMap</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileMap</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileMapInfo.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileMapInfo</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileMapInfo</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileMapLayer.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileMapLayer</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileMapLayer</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileMapObjectGroup.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileMapObjectGroup</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileMapObjectGroup</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileMapStructs.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileMapStructs</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileMapStructs</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileSetInfo.cs">
-        <LogicalName>tileMap_parallax_nodes\CCTileSetInfo</LogicalName>
+      <LogicalName>tileMap_parallax_nodes\CCTileSetInfo</LogicalName>
     </Compile>
-        <Compile Include=".\Platform\CCGeometryBatch.cs">
-        <LogicalName>Platform\CCGeometryBatch</LogicalName>
+    <Compile Include=".\Platform\CCGeometryBatch.cs">
+      <LogicalName>Platform\CCGeometryBatch</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">
       <LogicalName>Win8IOExtensions</LogicalName>
