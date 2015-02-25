@@ -18,18 +18,18 @@ namespace tests
             //     Lens3D is Grid3D and it's size is (15,10)
             //     Waves3D is Grid3D and it's size is (15,10)
 
-            var lens = new CCLens3D(3.0f, new CCGridSize(15, 10), bgNode.ContentSize.Center, 200);
+            var lens = new CCLens3D(0.0f, new CCGridSize(15, 10), visibleBounds.Center, 200);
 			var waves = new CCWaves3D(10, new CCGridSize(15, 10), 18, 30);
 
 
 			var reuse = new CCReuseGrid(1);
 			var delay = new CCDelayTime (8);
 
-            bgNode.AnchorPoint = CCPoint.AnchorMiddle;
-            var orbit = new CCOrbitCamera(5, 30.0f, 2, 20, 180, 0, -90);
+            //bgNode.AnchorPoint = CCPoint.AnchorMiddle;
+            var orbit = new CCOrbitCamera(5, 1.0f, 2, 0, 180, 0, -90);
 			var orbit_back = orbit.Reverse();
 
-			bgNode.RepeatForever(orbit, orbit_back);
+			//bgNode.RepeatForever(orbit, orbit_back);
 			bgNode.RunActions(lens, delay, reuse, waves);
         }
 

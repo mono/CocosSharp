@@ -11,9 +11,9 @@ namespace tests
 
             CCRect visibleBounds = VisibleBoundsWorldspace;
 
-			var lens = new CCLens3D(10, new CCGridSize(64, 48), new CCPoint(100, 180), 80);
-			var move = new CCJumpBy (5, new CCPoint(600, 0), 100, 5);
-            var move_back = move.Reverse();
+            var radius = 150;
+            var lens = new CCLens3D(10, new CCGridSize(64, 48), new CCPoint(100, visibleBounds.Center.Y - radius / 2), radius);
+            var jumpBy = new CCJumpBy (5, new CCPoint(600, 0), 100, 5);
 
             CCLens3DState lensState = bgNode.RunAction(lens) as CCLens3DState;
 
@@ -22,7 +22,7 @@ namespace tests
             // Please make sure the target has been added to its parent.
             AddChild(target);
 
-            target.AddActions(false, move, move_back);
+            target.AddActions(false, jumpBy, jumpBy.Reverse());
         }
 
         public override void OnExit()
