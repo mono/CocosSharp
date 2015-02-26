@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 
 namespace CocosSharp
@@ -53,6 +54,11 @@ namespace CocosSharp
             }
         }
 
+        public CCTiledGrid3DActionState (CCTiledGrid3DAction action, CCNodeGrid target) : base (action, target)
+        {
+        }
+
+        [Obsolete("Grid Actions should only target CCNodeGrids.")]
         public CCTiledGrid3DActionState (CCTiledGrid3DAction action, CCNode target) : base (action, target)
         {
         }
