@@ -412,13 +412,15 @@ namespace CocosSharp
                 {
                     tileDataCompressionType = tileDataCompressionType | CCTileDataCompressionType.Zlib;
                 }
-
-                Debug.Assert(compression == String.Empty || compression == DataElementGzip || compression == DataElementZlib, 
-                    String.Format("CCTileMapInfo: ParseDataElement: Unsupported compression method {0}", compression));
+                else if (compression != String.Empty)
+                {
+                    throw new NotImplementedException(
+                        String.Format("CCTileMapInfo: ParseDataElement: Unsupported compression method {0}", compression));
+                }
             }
 
-            Debug.Assert(tileDataCompressionType != CCTileDataCompressionType.None,
-                "CTileMapInfo: ParseDataElement: Only base64 and/or gzip/zlib maps are supported");
+            else
+                throw new NotImplementedException("CTileMapInfo: ParseDataElement: Only base64 encoded maps are supported");
         }
 
         void ParseObjectElement()
