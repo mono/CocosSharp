@@ -23,6 +23,11 @@ namespace CocosSharp
 
         public Dictionary<string, string> Properties { get; set; }
 
+        public uint NumberOfTiles
+        {
+            get { return (uint)(LayerDimensions.Column * LayerDimensions.Row); }
+        }
+
         #endregion Properties
 
 
