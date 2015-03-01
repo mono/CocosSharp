@@ -434,7 +434,7 @@ namespace CocosSharp
                 }
             }
 
-            else
+            else if(encoding != String.Empty)
                 throw new NotImplementedException("CTileMapInfo: ParseDataElement: Only base64 encoded maps are supported");
         }
 
