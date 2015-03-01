@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace CocosSharp
 {
@@ -532,7 +533,7 @@ namespace CocosSharp
             if (!String.IsNullOrEmpty(value))
             {
                 var pointsArray = new List<CCPoint>();
-                var pointPairs = value.Split(' ');
+                string[] pointPairs = value.Split(' ');
 
                 foreach (var pontPair in pointPairs)
                 {
@@ -550,8 +551,8 @@ namespace CocosSharp
 
         void ParsePolylineElement()
         {
-            // find parent object's dict and add polyline-points to it
-			// If at any point we don't find the objects we are expecting based on the state of the parser, 
+            // Find parent object's dict and add polyline-points to it. If at any point 
+			// we don't find the objects we are expecting based on the state of the parser, 
 			// just return without doing anything instead of crashing.
  	        if (ObjectGroups == null || ObjectGroups.Count == 0)
 		        return;
@@ -564,11 +565,44 @@ namespace CocosSharp
 	        if (!currentAttributeDict.ContainsKey(PolylineElementPoints))
 		        return;
 
-            dict.Add(ObjectElementPolylinePoints, currentAttributeDict[PolylineElementPoints]);
+            string value = currentAttributeDict[PolylineElementPoints];
+	        if (String.IsNullOrWhiteSpace(value))
+		        return;
+
+		    float objectXOffset = float.Parse(dict[ObjectElementXPosition]);
+		    float objectYOffset = float.Parse(dict[ObjectElementYPosition]);
+
+	        string pointsString = AdjustPointPairsY( value, objectXOffset, objectYOffset );
+            dict.Add(ObjectElementPolylinePoints, pointsString);
         }
 
-        #endregion Parse begin element methods
+	    private string AdjustPointPairsY(string pointPairsString, float objectXOffset, float objectYOffset)
+	    {
+	        string[] pointPairs = pointPairsString.Split(' ');
+	        var points = new CCPoint[pointPairs.Length];
 
+	        var sb = new StringBuilder();
+	        for (int i = 0; i < pointPairs.Length; i++)
+	        {
+		        string pointPair = pointPairs[i];
+		        string[] pointCoords = pointPair.Split(',');
+		        if (pointCoords.Length != 2)
+			        return null;
+
+				// Adjust the offsets relative to the parent object. When adjusting the coordinates,
+				// correct y position. Tiled uses inverted y-coordinate system where top is y=0.
+				// We have to invert the y coordinate to make it move in the correct direction relative to the parent.
+		        points[i].X = float.Parse(pointCoords[0]) + objectXOffset;
+		        points[i].Y = float.Parse(pointCoords[1]) * -1 + objectYOffset;
+
+				sb.AppendFormat("{0:0.0},{1:0.0} ", points[i].X, points[i].Y);
+	        }
+
+			// Strip the trailing space
+	        return sb.Length > 0 ? sb.ToString( 0, sb.Length - 1 ) : null;
+	    }
+
+        #endregion Parse begin element methods
 
         #region Parse end element methods
 
