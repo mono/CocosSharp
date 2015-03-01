@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -52,12 +51,15 @@ namespace CocosSharp
         const string ObjectElementGid = "gid";
         const string ObjectElementXPosition = "x";
         const string ObjectElementYPosition = "y";
-	    const string ObjectElementPolylinePoints = "polylinePoints";
+	    const string ObjectElementPoints = "points";
+	    const string ObjectElementShape = "shape";
+	    const string ObjectElementShapeEllipse = "ellipse";
+	    const string ObjectElementShapePolygon = "polygon";
+	    const string ObjectElementShapePolyline = "polyline";
+
 
         const string PropertyElementName = "name";
         const string PropertyElementValue = "value";
-
-	    const string PolylineElementPoints = "points";
 
         static readonly Dictionary<string, CCTileMapType> mapTypeKeys;
 
@@ -147,7 +149,8 @@ namespace CocosSharp
                 { "object", Tuple.Create<Action,Action>(ParseObjectElement, ParseObjectEndElement) },
                 { "property", Tuple.Create<Action,Action>(ParsePropertyElement, ParsePropertyEndElement) },
                 { "polygon", Tuple.Create<Action,Action>(ParsePolygonElement, ParsePolygonEndElement) },
-                { "polyline", Tuple.Create<Action,Action>(ParsePolylineElement, ParsePolylineEndElement) }
+                { "polyline", Tuple.Create<Action,Action>(ParsePolylineElement, ParsePolylineEndElement) },
+                { "ellipse", Tuple.Create<Action,Action>(ParseEllipseElement, ParseEllipseEndElement) },
             };
         }
 
@@ -520,40 +523,18 @@ namespace CocosSharp
 
         void ParsePolygonElement()
         {
-            // find parent object's dict and add polygon-points to it
-            int objGroupsCount = ObjectGroups != null ? ObjectGroups.Count : 0;
-            CCTileMapObjectGroup objectGroup = objGroupsCount > 0 ? ObjectGroups[objGroupsCount - 1] : null;
-
-            List<Dictionary<string, string>> objects = objectGroup.Objects;
-            int objCount = objects != null ? objects.Count : 0;
-            Dictionary<string, string> dict = objCount > 0 ? objects[objCount -1] : null;
-
-            // get points value string
-            var value = currentAttributeDict["points"];
-            if (!String.IsNullOrEmpty(value))
-            {
-                var pointsArray = new List<CCPoint>();
-                string[] pointPairs = value.Split(' ');
-
-                foreach (var pontPair in pointPairs)
-                {
-                    //TODO: Parse points
-                    //CCPoint point;
-                    //point.X = x + objectGroup.PositionOffset.X;
-                    //point.Y = y + objectGroup.PositionOffset.Y;
-
-                    //pPointsArray.Add(point);
-                }
-
-                //dict.Add("points", pPointsArray);
-            }
+			ParseMultilineShape(ObjectElementShapePolygon);
         }
 
         void ParsePolylineElement()
         {
-            // Find parent object's dict and add polyline-points to it. If at any point 
-			// we don't find the objects we are expecting based on the state of the parser, 
-			// just return without doing anything instead of crashing.
+			ParseMultilineShape(ObjectElementShapePolyline);
+        }
+
+	    void ParseMultilineShape(string shapeName)
+	    {
+            // Find parent object's dict and add points to it. If at any time we don't find the objects we are expecting 
+			// based on the state of the parser, just return without doing anything instead of crashing.
  	        if (ObjectGroups == null || ObjectGroups.Count == 0)
 		        return;
 
@@ -562,23 +543,20 @@ namespace CocosSharp
 		        return;
 
 	        var dict = objectGroup.Objects[objectGroup.Objects.Count - 1];
-	        if (!currentAttributeDict.ContainsKey(PolylineElementPoints))
+	        if (!currentAttributeDict.ContainsKey(ObjectElementPoints))
 		        return;
 
-            string value = currentAttributeDict[PolylineElementPoints];
+            string value = currentAttributeDict[ObjectElementPoints];
 	        if (String.IsNullOrWhiteSpace(value))
 		        return;
+
+		    if (!dict.ContainsKey(ObjectElementXPosition) || !dict.ContainsKey(ObjectElementYPosition))
+			    return;
 
 		    float objectXOffset = float.Parse(dict[ObjectElementXPosition]);
 		    float objectYOffset = float.Parse(dict[ObjectElementYPosition]);
 
-	        string pointsString = AdjustPointPairsY( value, objectXOffset, objectYOffset );
-            dict.Add(ObjectElementPolylinePoints, pointsString);
-        }
-
-	    private string AdjustPointPairsY(string pointPairsString, float objectXOffset, float objectYOffset)
-	    {
-	        string[] pointPairs = pointPairsString.Split(' ');
+	        string[] pointPairs = value.Split(' ');
 	        var points = new CCPoint[pointPairs.Length];
 
 	        var sb = new StringBuilder();
@@ -587,7 +565,7 @@ namespace CocosSharp
 		        string pointPair = pointPairs[i];
 		        string[] pointCoords = pointPair.Split(',');
 		        if (pointCoords.Length != 2)
-			        return null;
+			        return;
 
 				// Adjust the offsets relative to the parent object. When adjusting the coordinates,
 				// correct y position. Tiled uses inverted y-coordinate system where top is y=0.
@@ -599,7 +577,23 @@ namespace CocosSharp
 	        }
 
 			// Strip the trailing space
-	        return sb.Length > 0 ? sb.ToString( 0, sb.Length - 1 ) : null;
+			string pointsString = sb.Length > 0 ? sb.ToString( 0, sb.Length - 1 ) : null;
+            dict.Add(ObjectElementPoints, pointsString);
+
+			dict[ObjectElementShape] = shapeName;
+	    }
+
+	    void ParseEllipseElement()
+	    {
+ 	        if (ObjectGroups == null || ObjectGroups.Count == 0)
+		        return;
+
+            CCTileMapObjectGroup objectGroup = ObjectGroups[ObjectGroups.Count - 1];
+	        if (objectGroup == null || objectGroup.Objects.Count == 0)
+		        return;
+
+	        var dict = objectGroup.Objects[objectGroup.Objects.Count - 1];
+			dict[ObjectElementShape] = ObjectElementShapeEllipse;
 	    }
 
         #endregion Parse begin element methods
@@ -702,6 +696,11 @@ namespace CocosSharp
         {
         }
 
+	    void ParseEllipseEndElement()
+	    {
+	    }
+
         #endregion Parse end element methods
     }
 }
+
