@@ -1229,6 +1229,7 @@
     <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
     </Content>
+    <Content Include="Content\TileMaps\tilemap_no_encoding.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

@@ -2045,6 +2045,7 @@
     <AndroidAsset Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
       <Link>Assets\Content\TileMaps\iso-test-zorder1.tmx</Link>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\tilemap_no_encoding.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
