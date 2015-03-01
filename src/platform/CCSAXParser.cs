@@ -122,6 +122,12 @@ namespace CocosSharp
                                 buffer = Encoding.UTF8.GetBytes (value);
                             }
                         }
+                        // Pure XML TileMap
+                        else 
+                        {
+                            int dataSize = (Width * Height * 4) + 1024;
+                            buffer = new byte[dataSize];
+                        }
 
                         TextHandler(this, buffer, buffer.Length);
                         EndElement(this, name);
