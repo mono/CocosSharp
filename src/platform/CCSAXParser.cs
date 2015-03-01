@@ -29,21 +29,21 @@ using Microsoft.Xna.Framework.Content;
 
 namespace CocosSharp
 {
-	internal class CCSAXParser
+    internal class CCSAXParser
     {
-		ICCSAXDelegator delegator;
-		string ParseEncoding { get; set; }
+        ICCSAXDelegator delegator;
+        string ParseEncoding { get; set; }
 
-		public CCSAXParser() 
-			: this("UTF-8")
-		{
+        public CCSAXParser() 
+            : this("UTF-8")
+        {
 
-		}
+        }
 
-		public CCSAXParser(string encoding)
-		{
-			ParseEncoding = encoding;
-		}
+        public CCSAXParser(string encoding)
+        {
+            ParseEncoding = encoding;
+        }
 
         public bool ParseContent(string str)
         {
@@ -54,10 +54,10 @@ namespace CocosSharp
         public bool ParseContent(TextReader sr)
         {
             var setting = new XmlReaderSettings();
-            
-			setting.DtdProcessing = DtdProcessing.Ignore;
 
-			XmlReader xmlReader = XmlReader.Create(sr, setting);
+            setting.DtdProcessing = DtdProcessing.Ignore;
+
+            XmlReader xmlReader = XmlReader.Create(sr, setting);
             int dataindex = 0;
 
             int Width = 0;
@@ -69,89 +69,83 @@ namespace CocosSharp
 
                 switch (xmlReader.NodeType)
                 {
-                    case XmlNodeType.Element:
+                case XmlNodeType.Element:
 
-                        string[] attrs = null;
+                    string[] attrs = null;
 
-                        if (name == "map")
+                    if (name == "map")
+                    {
+                        Width = CCUtils.CCParseInt(xmlReader.GetAttribute("width"));
+                        Height = CCUtils.CCParseInt(xmlReader.GetAttribute("height"));
+                    }
+
+                    if (xmlReader.HasAttributes)
+                    {
+                        attrs = new string[xmlReader.AttributeCount * 2];
+                        xmlReader.MoveToFirstAttribute();
+                        int i = 0;
+                        attrs[0] = xmlReader.Name;
+                        attrs[1] = xmlReader.Value;
+                        i += 2;
+
+                        while (xmlReader.MoveToNextAttribute())
                         {
-                            Width = CCUtils.CCParseInt(xmlReader.GetAttribute("width"));
-                            Height = CCUtils.CCParseInt(xmlReader.GetAttribute("height"));
-                        }
-
-                        if (xmlReader.HasAttributes)
-                        {
-                            attrs = new string[xmlReader.AttributeCount * 2];
-                            xmlReader.MoveToFirstAttribute();
-                            int i = 0;
-                            attrs[0] = xmlReader.Name;
-                            attrs[1] = xmlReader.Value;
+                            attrs[i] = xmlReader.Name;
+                            attrs[i + 1] = xmlReader.Value;
                             i += 2;
-
-                            while (xmlReader.MoveToNextAttribute())
-                            {
-                                attrs[i] = xmlReader.Name;
-                                attrs[i + 1] = xmlReader.Value;
-                                i += 2;
-                            }
-
-                            // Move the reader back to the element node.
-                            xmlReader.MoveToElement();
                         }
-                        StartElement(this, name, attrs);
 
-                        byte[] buffer = null;
+                        // Move the reader back to the element node.
+                        xmlReader.MoveToElement();
+                    }
+                    StartElement(this, name, attrs);
 
-                        //read data content of tmx file
-                        if (name == "data")
-                        {
-                            if (attrs != null)
-                            {
-                                string encoding = "";
-                                for (int i = 0; i < attrs.Length; i++)
-                                {
-                                    if (attrs[i] == "encoding")
-                                    {
-                                        encoding = attrs[i + 1];
-                                    }
-                                }
+                    byte[] buffer = null;
 
-                                if (encoding == "base64")
-                                {
-                                    int dataSize = (Width * Height * 4) + 1024;
-                                    buffer = new byte[dataSize];
-                                    xmlReader.ReadElementContentAsBase64(buffer, 0, dataSize);
-                                }
-                                else
-                                {
-                                    string value = xmlReader.ReadElementContentAsString();
-                                    buffer = Encoding.UTF8.GetBytes(value);
+                    //read data content of tmx file
+                    if (name == "data")
+                    {
+                        if (attrs != null) {
+                            string encoding = "";
+                            for (int i = 0; i < attrs.Length; i++) {
+                                if (attrs [i] == "encoding") {
+                                    encoding = attrs [i + 1];
                                 }
                             }
 
-                            TextHandler(this, buffer, buffer.Length);
-                            EndElement(this, name);
+                            if (encoding == "base64") {
+                                int dataSize = (Width * Height * 4) + 1024;
+                                buffer = new byte[dataSize];
+                                xmlReader.ReadElementContentAsBase64 (buffer, 0, dataSize);
+                            } else {
+                                string value = xmlReader.ReadElementContentAsString ();
+                                buffer = Encoding.UTF8.GetBytes (value);
+                            }
                         }
-                        else if (name == "key" || name == "integer" || name == "real" || name == "string")
-                        {
-                            string value = xmlReader.ReadElementContentAsString();
-                            buffer = Encoding.UTF8.GetBytes(value);
-                            TextHandler(this, buffer, buffer.Length);
-                            EndElement(this, name);
-                        }
-                        else if (xmlReader.IsEmptyElement)
-                        {
-                            EndElement(this, name);
-                        }
-                        break;
 
-                    case XmlNodeType.EndElement:
-                        EndElement(this, xmlReader.Name);
-                        dataindex++;
-                        break;
+                        TextHandler(this, buffer, buffer.Length);
+                        EndElement(this, name);
+                    }
+                    else if (name == "key" || name == "integer" || name == "real" || name == "string")
+                    {
+                        string value = xmlReader.ReadElementContentAsString();
+                        buffer = Encoding.UTF8.GetBytes(value);
+                        TextHandler(this, buffer, buffer.Length);
+                        EndElement(this, name);
+                    }
+                    else if (xmlReader.IsEmptyElement)
+                    {
+                        EndElement(this, name);
+                    }
+                    break;
 
-                    default:
-                        break;
+                case XmlNodeType.EndElement:
+                    EndElement(this, xmlReader.Name);
+                    dataindex++;
+                    break;
+
+                default:
+                    break;
                 }
             }
 
@@ -164,9 +158,9 @@ namespace CocosSharp
             return ParseContent(content);
         }
 
-		public void SetDelegator(ICCSAXDelegator delegator)
+        public void SetDelegator(ICCSAXDelegator delegator)
         {
-			this.delegator = delegator;
+            this.delegator = delegator;
         }
 
         public static void StartElement(object ctx, string name, string[] atts)
