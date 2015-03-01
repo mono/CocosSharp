@@ -51,9 +51,12 @@ namespace CocosSharp
         const string ObjectElementGid = "gid";
         const string ObjectElementXPosition = "x";
         const string ObjectElementYPosition = "y";
+	    const string ObjectElementPolylinePoints = "polylinePoints";
 
         const string PropertyElementName = "name";
         const string PropertyElementValue = "value";
+
+	    const string PolylineElementPoints = "points";
 
         static readonly Dictionary<string, CCTileMapType> mapTypeKeys;
 
@@ -548,9 +551,20 @@ namespace CocosSharp
         void ParsePolylineElement()
         {
             // find parent object's dict and add polyline-points to it
-            // CCTMXObjectGroup* objectGroup = (CCTMXObjectGroup*)ObjectGroups->lastObject();
-            // CCDictionary* dict = (CCDictionary*)objectGroup->getObjects()->lastObject();
-            // TODO: dict->setObject:[currentAttributeDict objectForKey:@"points"] forKey:@"polylinePoints"];
+			// If at any point we don't find the objects we are expecting based on the state of the parser, 
+			// just return without doing anything instead of crashing.
+ 	        if (ObjectGroups == null || ObjectGroups.Count == 0)
+		        return;
+
+            CCTileMapObjectGroup objectGroup = ObjectGroups[ObjectGroups.Count - 1];
+	        if (objectGroup == null || objectGroup.Objects.Count == 0)
+		        return;
+
+	        var dict = objectGroup.Objects[objectGroup.Objects.Count - 1];
+	        if (!currentAttributeDict.ContainsKey(PolylineElementPoints))
+		        return;
+
+            dict.Add(ObjectElementPolylinePoints, currentAttributeDict[PolylineElementPoints]);
         }
 
         #endregion Parse begin element methods
