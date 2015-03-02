@@ -398,6 +398,7 @@ namespace CocosSharp
     /// A vertex composed of 2 floats: x, y
     /// @since v0.8
     /// </summary>
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct CCVertex3F
     {
         public static readonly CCVertex3F Zero = new CCVertex3F();
@@ -423,10 +424,25 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        internal string DebugDisplayString
+        {
+            get
+            {
+                return string.Concat(
+                    this.X.ToString(), "  ",
+                    this.Y.ToString(), "  ",
+                    this.Z.ToString()
+                );
+            }
+        }
 
         public override string ToString()
         {
-            return String.Format("CCVertex3F x:{0}, y:{1}, z:{2}", X, Y, Z);
+            return string.Concat("X:",
+                this.X.ToString(), " Y:",
+                this.Y.ToString(), " Z:",
+                this.Z.ToString()
+            );
         }
 
     }
@@ -875,6 +891,7 @@ namespace CocosSharp
     /// <summary>
     /// 4 ccVertex3FTex2FColor4B
     /// </summary>
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     public struct CCV3F_C4B_T2F_Quad : IVertexType
     {
         public static readonly VertexDeclaration VertexDeclaration;
@@ -898,6 +915,23 @@ namespace CocosSharp
                     new VertexElement(0x10, VertexElementFormat.Vector2, VertexElementUsage.TextureCoordinate, 0)
                 };
             VertexDeclaration = new VertexDeclaration(elements);
+        }
+
+        internal string DebugDisplayString
+        {
+            get
+            {
+                return string.Concat(
+                    "TL: ", TopLeft.Vertices, " TR: ", TopRight.Vertices,"\r\n",
+                    " BL: ", BottomLeft.Vertices, " BR: ", BottomRight.Vertices);
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Concat(
+                "TL: ", TopLeft.Vertices, " TR: ", TopRight.Vertices,"\r\n",
+                " BL: ", BottomLeft.Vertices, " BR: ", BottomRight.Vertices);
         }
     }
 
