@@ -1078,7 +1078,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 28;
+        static int MAX_LAYER = 29;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1202,6 +1202,8 @@ namespace tests
                     return new IsoNodePosition();
                 case 27:
                     return new TMXIsoZorderFromStream();
+                case 28:
+                    return new TMXNoEncodingTest();
 
 #endif
             }
@@ -1324,5 +1326,17 @@ namespace tests
 				return "Tiles are created from an object group";
 			}
 		}
+    }
+
+    public class TMXNoEncodingTest : TileDemo
+    {
+        public TMXNoEncodingTest() : base("TileMaps/tilemap_no_encoding")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "TMX No Encoding"; }
+        }
     }
 }

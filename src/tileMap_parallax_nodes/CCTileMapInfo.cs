@@ -23,6 +23,7 @@ namespace CocosSharp
         const string TilesetElementTexelHeight = "tileheight";
 
         const string TileElementId = "id";
+        const string TileElementGidAndFlags = "gid";
 
         const string LayerElementName = "name";
         const string LayerElementNumOfColumns = "width";
@@ -73,6 +74,7 @@ namespace CocosSharp
 
         CCTileMapProperty currentParentElement;
         short currentFirstGID;
+        uint currentXmlTileIndex;
         byte[] currentString;
         Dictionary<string,string> currentAttributeDict;
 
@@ -309,15 +311,28 @@ namespace CocosSharp
 
         void ParseTileElement()
         {
-            int tilesetCount = Tilesets != null ? Tilesets.Count : 0;
-            CCTileSetInfo info = tilesetCount > 0 ? Tilesets[tilesetCount - 1] : null;
+            if (currentParentElement == CCTileMapProperty.Layer)
+            {
+                int layersCount = Layers != null ? Layers.Count : 0;
+                CCTileLayerInfo layer = layersCount > 0 ? Layers[layersCount - 1] : null;
 
-            var dict = new Dictionary<string, string>();
+                uint gidAndFlags = uint.Parse(currentAttributeDict[TileElementGidAndFlags]);
 
-            ParentGID = (short)(info.FirstGid + short.Parse(currentAttributeDict[TileElementId]));
-            TileProperties.Add(ParentGID, dict);
+                if (currentXmlTileIndex < layer.NumberOfTiles)
+                    layer.TileGIDAndFlags[currentXmlTileIndex++] = CCTileMapFileEncodedTileFlags.DecodeGidAndFlags(gidAndFlags);
+            }
+            else
+            {
+                int tilesetCount = Tilesets != null ? Tilesets.Count : 0;
+                CCTileSetInfo info = tilesetCount > 0 ? Tilesets[tilesetCount - 1] : null;
 
-            currentParentElement = CCTileMapProperty.Tile;
+                var dict = new Dictionary<string, string>();
+
+                ParentGID = (short)(info.FirstGid + short.Parse(currentAttributeDict[TileElementId]));
+                TileProperties.Add(ParentGID, dict);
+                currentParentElement = CCTileMapProperty.Tile;
+            }
+
         }
 
         void ParseLayerElement()
@@ -426,7 +441,7 @@ namespace CocosSharp
                 }
             }
 
-            else
+            else if(encoding != String.Empty)
                 throw new NotImplementedException("CTileMapInfo: ParseDataElement: Only base64 encoded maps are supported");
         }
 
@@ -676,6 +691,10 @@ namespace CocosSharp
                 }
 
                 currentString = null;
+            }
+            else if((tileDataCompressionType & CCTileDataCompressionType.None) != 0)
+            {
+                currentXmlTileIndex = 0;
             }
         }
 

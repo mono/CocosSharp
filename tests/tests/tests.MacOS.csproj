@@ -2508,6 +2508,7 @@
     <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
     </Content>
+    <Content Include="Content\TileMaps\tilemap_no_encoding.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
