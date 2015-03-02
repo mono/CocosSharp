@@ -1078,7 +1078,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 30;
+        static int MAX_LAYER = 31;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1206,7 +1206,8 @@ namespace tests
                     return new TMXNoEncodingTest();
                 case 29:
                     return new TMXPolylineTest();
-
+                case 30:
+                    return new TMXMultiLayerTest();
 #endif
             }
 
@@ -1449,6 +1450,20 @@ namespace tests
 		public override string Title
 		{
 			get { return "TMX Polyline test"; }
+		}
+    }
+
+
+    public class TMXMultiLayerTest : TileDemo
+    {
+        public TMXMultiLayerTest() : base("TileMaps/orthogonal-test-multilayer.tmx")
+        {
+			// Background layer should display red circles
+        }
+
+		public override string Title
+		{
+			get { return "TMX Multilayer test"; }
 		}
     }
 

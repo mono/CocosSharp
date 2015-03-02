@@ -426,6 +426,9 @@
       <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\TileMaps\fixed-ortho-bgtiles.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -454,6 +457,9 @@
     </Content>
     <None Include="app.config" />
     <Content Include="Content\TileMaps\orthogonal-test-polylines.tmx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TileMaps\orthogonal-test-multilayer.tmx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
