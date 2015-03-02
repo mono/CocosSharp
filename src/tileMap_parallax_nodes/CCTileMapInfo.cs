@@ -447,8 +447,10 @@ namespace CocosSharp
 
         void ParseObjectElement()
         {
-            int objectGroupCount = ObjectGroups != null ? ObjectGroups.Count : 0;
-            CCTileMapObjectGroup objectGroup = objectGroupCount > 0 ? ObjectGroups[objectGroupCount - 1] : null;
+	        if (ObjectGroups == null || ObjectGroups.Count == 0)
+		        return;
+
+            CCTileMapObjectGroup objectGroup = ObjectGroups[ObjectGroups.Count - 1];
 
             // The value for "type" was blank or not a valid class name
             // Create an instance of TMXObjectInfo to store the object and its properties
@@ -456,24 +458,23 @@ namespace CocosSharp
 
             var array = new[] { ObjectElementName, ObjectElementType, ObjectElementWidth, ObjectElementHeight, ObjectElementGid};
 
-            for (int i = 0; i < array.Length; i++)
+            foreach (string key in array)
             {
-                string key = array[i];
-                if (currentAttributeDict.ContainsKey(key))
-                {
-                    dict.Add(key, currentAttributeDict[key]);
-                }
+	            if (currentAttributeDict.ContainsKey(key))
+	            {
+		            dict.Add(key, currentAttributeDict[key]);
+	            }
             }
 
-            int x = int.Parse(currentAttributeDict[ObjectElementXPosition]) + (int) objectGroup.PositionOffset.X;
-            dict.Add(ObjectElementXPosition, x.ToString());
-
-            int y = int.Parse(currentAttributeDict[ObjectElementYPosition]) + (int) objectGroup.PositionOffset.Y;
+            float x = float.Parse(currentAttributeDict[ObjectElementXPosition]) + objectGroup.PositionOffset.X;
+            float y = float.Parse(currentAttributeDict[ObjectElementYPosition]) + objectGroup.PositionOffset.Y;
 
             // Correct y position. Tiled uses inverted y-coordinate system where top is y=0
-            y = (int) (MapDimensions.Row * TileTexelSize.Height) - y -
-                (currentAttributeDict.ContainsKey(ObjectElementHeight) ? int.Parse(currentAttributeDict[ObjectElementHeight]) : 0);
-            dict.Add(ObjectElementYPosition, y.ToString());
+            y = (MapDimensions.Row * TileTexelSize.Height) - y -
+                (currentAttributeDict.ContainsKey(ObjectElementHeight) ? float.Parse(currentAttributeDict[ObjectElementHeight]) : 0);
+
+            dict.Add(ObjectElementXPosition, ToFloatString(x));
+            dict.Add(ObjectElementYPosition, ToFloatString(y));
 
             objectGroup.Objects.Add(dict);
 
@@ -588,11 +589,14 @@ namespace CocosSharp
 		        points[i].X = float.Parse(pointCoords[0]) + objectXOffset;
 		        points[i].Y = float.Parse(pointCoords[1]) * -1 + objectYOffset;
 
-				sb.AppendFormat("{0:0.0},{1:0.0} ", points[i].X, points[i].Y);
+		        sb.Append(ToFloatString(points[i].X));
+		        sb.Append(",");
+		        sb.Append(ToFloatString(points[i].Y));
+		        sb.Append(" ");
 	        }
 
 			// Strip the trailing space
-			string pointsString = sb.Length > 0 ? sb.ToString( 0, sb.Length - 1 ) : null;
+			string pointsString = sb.Length > 0 ? sb.ToString(0, sb.Length - 1) : null;
             dict.Add(ObjectElementPoints, pointsString);
 
 			dict[ObjectElementShape] = shapeName;
@@ -609,6 +613,16 @@ namespace CocosSharp
 
 	        var dict = objectGroup.Objects[objectGroup.Objects.Count - 1];
 			dict[ObjectElementShape] = ObjectElementShapeEllipse;
+	    }
+
+	    string ToFloatString(float f)
+	    {
+			// Tiled does not include a decimal point if the fractional value is 0.
+			// Mimic this behavior so that any implementations relying on int values still work
+			// if the maps do not include fractional values in positioning and widths/heights.
+		    string str = f.ToString("0.0");
+		    var arr = str.Split('.');
+		    return arr[1] == "0" ? arr[0] : str;
 	    }
 
         #endregion Parse begin element methods
