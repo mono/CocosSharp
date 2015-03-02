@@ -93,18 +93,20 @@ namespace CocosSharp
 
             if (tilesets != null)
             {
-                foreach(CCTileSetInfo tileset in tilesets)
-                {
-                    for (uint tileIdx = 0; tileIdx < numOfTiles; tileIdx++)
-                    {
-                        CCTileGidAndFlags gidAndFlags = layerInfo.TileGIDAndFlags[tileIdx];
+	            for (int tilesetIdx = 0; tilesetIdx < tilesets.Count; tilesetIdx++)
+	            {
+		            CCTileSetInfo tileset = tilesets[tilesetIdx];
+		            short tilesetLastGid = (short) (tilesetIdx < tilesets.Count - 1 ? tilesets[tilesetIdx + 1].FirstGid - 1 : short.MaxValue);
+		            for ( uint tileIdx = 0; tileIdx < numOfTiles; tileIdx++ )
+		            {
+			            CCTileGidAndFlags gidAndFlags = layerInfo.TileGIDAndFlags[tileIdx];
 
-                        if (gidAndFlags.Gid != 0 && gidAndFlags.Gid >= tileset.FirstGid)
-                        {
-                            return tileset;
-                        }
-                    }
-                }
+			            if (gidAndFlags.Gid != 0 && gidAndFlags.Gid >= tileset.FirstGid && gidAndFlags.Gid <= tilesetLastGid)
+			            {
+				            return tileset;
+			            }
+		            }
+	            }
             }
 
             CCLog.Log("CocosSharp: Warning: CCTileMapLayer: TileMap layer '{0}' has no tiles", layerInfo.Name);
