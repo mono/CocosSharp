@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
+using System.Text;
 
 namespace CocosSharp
 {
@@ -52,6 +52,12 @@ namespace CocosSharp
         const string ObjectElementGid = "gid";
         const string ObjectElementXPosition = "x";
         const string ObjectElementYPosition = "y";
+	    const string ObjectElementPoints = "points";
+	    const string ObjectElementShape = "shape";
+	    const string ObjectElementShapeEllipse = "ellipse";
+	    const string ObjectElementShapePolygon = "polygon";
+	    const string ObjectElementShapePolyline = "polyline";
+
 
         const string PropertyElementName = "name";
         const string PropertyElementValue = "value";
@@ -145,7 +151,8 @@ namespace CocosSharp
                 { "object", Tuple.Create<Action,Action>(ParseObjectElement, ParseObjectEndElement) },
                 { "property", Tuple.Create<Action,Action>(ParsePropertyElement, ParsePropertyEndElement) },
                 { "polygon", Tuple.Create<Action,Action>(ParsePolygonElement, ParsePolygonEndElement) },
-                { "polyline", Tuple.Create<Action,Action>(ParsePolylineElement, ParsePolylineEndElement) }
+                { "polyline", Tuple.Create<Action,Action>(ParsePolylineElement, ParsePolylineEndElement) },
+                { "ellipse", Tuple.Create<Action,Action>(ParseEllipseElement, ParseEllipseEndElement) },
             };
         }
 
@@ -440,8 +447,10 @@ namespace CocosSharp
 
         void ParseObjectElement()
         {
-            int objectGroupCount = ObjectGroups != null ? ObjectGroups.Count : 0;
-            CCTileMapObjectGroup objectGroup = objectGroupCount > 0 ? ObjectGroups[objectGroupCount - 1] : null;
+	        if (ObjectGroups == null || ObjectGroups.Count == 0)
+		        return;
+
+            CCTileMapObjectGroup objectGroup = ObjectGroups[ObjectGroups.Count - 1];
 
             // The value for "type" was blank or not a valid class name
             // Create an instance of TMXObjectInfo to store the object and its properties
@@ -449,24 +458,23 @@ namespace CocosSharp
 
             var array = new[] { ObjectElementName, ObjectElementType, ObjectElementWidth, ObjectElementHeight, ObjectElementGid};
 
-            for (int i = 0; i < array.Length; i++)
+            foreach (string key in array)
             {
-                string key = array[i];
-                if (currentAttributeDict.ContainsKey(key))
-                {
-                    dict.Add(key, currentAttributeDict[key]);
-                }
+	            if (currentAttributeDict.ContainsKey(key))
+	            {
+		            dict.Add(key, currentAttributeDict[key]);
+	            }
             }
 
-            int x = int.Parse(currentAttributeDict[ObjectElementXPosition]) + (int) objectGroup.PositionOffset.X;
-            dict.Add(ObjectElementXPosition, x.ToString());
-
-            int y = int.Parse(currentAttributeDict[ObjectElementYPosition]) + (int) objectGroup.PositionOffset.Y;
+            float x = float.Parse(currentAttributeDict[ObjectElementXPosition]) + objectGroup.PositionOffset.X;
+            float y = float.Parse(currentAttributeDict[ObjectElementYPosition]) + objectGroup.PositionOffset.Y;
 
             // Correct y position. Tiled uses inverted y-coordinate system where top is y=0
-            y = (int) (MapDimensions.Row * TileTexelSize.Height) - y -
-                (currentAttributeDict.ContainsKey(ObjectElementHeight) ? int.Parse(currentAttributeDict[ObjectElementHeight]) : 0);
-            dict.Add(ObjectElementYPosition, y.ToString());
+            y = (MapDimensions.Row * TileTexelSize.Height) - y -
+                (currentAttributeDict.ContainsKey(ObjectElementHeight) ? float.Parse(currentAttributeDict[ObjectElementHeight]) : 0);
+
+            dict.Add(ObjectElementXPosition, ToFloatString(x));
+            dict.Add(ObjectElementYPosition, ToFloatString(y));
 
             objectGroup.Objects.Add(dict);
 
@@ -531,45 +539,93 @@ namespace CocosSharp
 
         void ParsePolygonElement()
         {
-            // find parent object's dict and add polygon-points to it
-            int objGroupsCount = ObjectGroups != null ? ObjectGroups.Count : 0;
-            CCTileMapObjectGroup objectGroup = objGroupsCount > 0 ? ObjectGroups[objGroupsCount - 1] : null;
-
-            List<Dictionary<string, string>> objects = objectGroup.Objects;
-            int objCount = objects != null ? objects.Count : 0;
-            Dictionary<string, string> dict = objCount > 0 ? objects[objCount -1] : null;
-
-            // get points value string
-            var value = currentAttributeDict["points"];
-            if (!String.IsNullOrEmpty(value))
-            {
-                var pointsArray = new List<CCPoint>();
-                var pointPairs = value.Split(' ');
-
-                foreach (var pontPair in pointPairs)
-                {
-                    //TODO: Parse points
-                    //CCPoint point;
-                    //point.X = x + objectGroup.PositionOffset.X;
-                    //point.Y = y + objectGroup.PositionOffset.Y;
-
-                    //pPointsArray.Add(point);
-                }
-
-                //dict.Add("points", pPointsArray);
-            }
+			ParseMultilineShape(ObjectElementShapePolygon);
         }
 
         void ParsePolylineElement()
         {
-            // find parent object's dict and add polyline-points to it
-            // CCTMXObjectGroup* objectGroup = (CCTMXObjectGroup*)ObjectGroups->lastObject();
-            // CCDictionary* dict = (CCDictionary*)objectGroup->getObjects()->lastObject();
-            // TODO: dict->setObject:[currentAttributeDict objectForKey:@"points"] forKey:@"polylinePoints"];
+			ParseMultilineShape(ObjectElementShapePolyline);
         }
 
-        #endregion Parse begin element methods
+	    void ParseMultilineShape(string shapeName)
+	    {
+            // Find parent object's dict and add points to it. If at any time we don't find the objects we are expecting 
+			// based on the state of the parser, just return without doing anything instead of crashing.
+ 	        if (ObjectGroups == null || ObjectGroups.Count == 0)
+		        return;
 
+            CCTileMapObjectGroup objectGroup = ObjectGroups[ObjectGroups.Count - 1];
+	        if (objectGroup == null || objectGroup.Objects.Count == 0)
+		        return;
+
+	        var dict = objectGroup.Objects[objectGroup.Objects.Count - 1];
+	        if (!currentAttributeDict.ContainsKey(ObjectElementPoints))
+		        return;
+
+            string value = currentAttributeDict[ObjectElementPoints];
+	        if (String.IsNullOrWhiteSpace(value))
+		        return;
+
+		    if (!dict.ContainsKey(ObjectElementXPosition) || !dict.ContainsKey(ObjectElementYPosition))
+			    return;
+
+		    float objectXOffset = float.Parse(dict[ObjectElementXPosition]);
+		    float objectYOffset = float.Parse(dict[ObjectElementYPosition]);
+
+	        string[] pointPairs = value.Split(' ');
+	        var points = new CCPoint[pointPairs.Length];
+
+	        var sb = new StringBuilder();
+	        for (int i = 0; i < pointPairs.Length; i++)
+	        {
+		        string pointPair = pointPairs[i];
+		        string[] pointCoords = pointPair.Split(',');
+		        if (pointCoords.Length != 2)
+			        return;
+
+				// Adjust the offsets relative to the parent object. When adjusting the coordinates,
+				// correct y position. Tiled uses inverted y-coordinate system where top is y=0.
+				// We have to invert the y coordinate to make it move in the correct direction relative to the parent.
+		        points[i].X = float.Parse(pointCoords[0]) + objectXOffset;
+		        points[i].Y = float.Parse(pointCoords[1]) * -1 + objectYOffset;
+
+		        sb.Append(ToFloatString(points[i].X));
+		        sb.Append(",");
+		        sb.Append(ToFloatString(points[i].Y));
+		        sb.Append(" ");
+	        }
+
+			// Strip the trailing space
+			string pointsString = sb.Length > 0 ? sb.ToString(0, sb.Length - 1) : null;
+            dict.Add(ObjectElementPoints, pointsString);
+
+			dict[ObjectElementShape] = shapeName;
+	    }
+
+	    void ParseEllipseElement()
+	    {
+ 	        if (ObjectGroups == null || ObjectGroups.Count == 0)
+		        return;
+
+            CCTileMapObjectGroup objectGroup = ObjectGroups[ObjectGroups.Count - 1];
+	        if (objectGroup == null || objectGroup.Objects.Count == 0)
+		        return;
+
+	        var dict = objectGroup.Objects[objectGroup.Objects.Count - 1];
+			dict[ObjectElementShape] = ObjectElementShapeEllipse;
+	    }
+
+	    string ToFloatString(float f)
+	    {
+			// Tiled does not include a decimal point if the fractional value is 0.
+			// Mimic this behavior so that any implementations relying on int values still work
+			// if the maps do not include fractional values in positioning and widths/heights.
+		    string str = f.ToString("0.0");
+		    var arr = str.Split('.');
+		    return arr[1] == "0" ? arr[0] : str;
+	    }
+
+        #endregion Parse begin element methods
 
         #region Parse end element methods
 
@@ -673,6 +729,11 @@ namespace CocosSharp
         {
         }
 
+	    void ParseEllipseEndElement()
+	    {
+	    }
+
         #endregion Parse end element methods
     }
 }
+

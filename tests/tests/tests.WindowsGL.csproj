@@ -383,6 +383,7 @@
     <Compile Include="classes\tests\TextInputTest\TextInputTest.cs" />
     <Compile Include="classes\tests\TextInputTest\TextInputTestScene.cs" />
     <Compile Include="classes\tests\Texture2dTest\Texture2dTest.cs" />
+    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
     <Compile Include="classes\tests\TileMapTest\TileMapTest.cs" />
     <Compile Include="classes\tests\TouchesTest\Ball.cs" />
     <Compile Include="classes\tests\TouchesTest\Paddle.cs" />
@@ -425,6 +426,9 @@
       <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\TileMaps\fixed-ortho-bgtiles.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -452,6 +456,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
+    <Content Include="Content\TileMaps\orthogonal-test-polylines.tmx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\TileMaps\orthogonal-test-multilayer.tmx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\animations\" />

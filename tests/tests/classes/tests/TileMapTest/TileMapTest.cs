@@ -1078,7 +1078,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 29;
+        static int MAX_LAYER = 31;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1204,7 +1204,10 @@ namespace tests
                     return new TMXIsoZorderFromStream();
                 case 28:
                     return new TMXNoEncodingTest();
-
+                case 29:
+                    return new TMXPolylineTest();
+                case 30:
+                    return new TMXMultiLayerTest();
 #endif
             }
 
@@ -1339,4 +1342,129 @@ namespace tests
             get { return "TMX No Encoding"; }
         }
     }
+
+    public class TMXPolylineTest : TileDemo
+    {
+        public TMXPolylineTest() : base("TileMaps/orthogonal-test-polylines.tmx")
+        {
+			// Polylines render purple
+			// Polygons render yellow
+			// Rectangles render green
+			// Ellipses render blue
+
+			var mainLayer = tileMap.LayerNamed( "Layer 0" );
+
+			var boundsObject = tileMap.ObjectGroupNamed( "Object Layer 1" );
+			foreach ( var bound in boundsObject.Objects )
+			{
+				// There is no indication in a TMX file that a given object is a rectangle.
+				// This is just the default way an object is interpreted by Tiled. 
+				// So if the map loader didn't add a "shape" key, interpret it as a rectangle.
+				if ( !bound.ContainsKey( "shape" ) )
+				{
+					mainLayer.AddChild( ParseRectangle(bound) );
+					continue;
+				}
+
+				string shape = bound["shape"];
+				switch ( shape )
+				{
+					case "polyline":
+						TmxMapPolyline polyline = ParsePolyline( bound );
+						if ( polyline != null )
+							mainLayer.AddChild(polyline);
+						break;
+
+					case "polygon":
+						TmxMapPolygon polygon = ParsePolygon( bound );
+						if ( polygon != null )
+							mainLayer.AddChild(polygon);
+						break;
+
+					case "ellipse":
+						mainLayer.AddChild(ParseEllipse(bound));
+						break;
+				}
+			}
+        }
+
+		#region Parsing
+
+		protected TmxMapRectangle ParseRectangle(Dictionary<string, string> dict)
+		{
+			var shape = new TmxMapRectangle { Color = new CCColor3B( 0, 255, 0 ) };
+			float x = float.Parse( dict["x"] );
+			float y = float.Parse( dict["y"] );
+			float width = float.Parse( dict["width"] );
+			float height = float.Parse( dict["height"] );
+			shape.Rect = new CCRect(x, y, width, height);
+			return shape;
+		}
+
+		protected TmxMapEllipse ParseEllipse(Dictionary<string, string> dict)
+		{
+			var shape = new TmxMapEllipse { Color = new CCColor3B( 0, 0, 255 ) };
+			float x = float.Parse( dict["x"] );
+			float y = float.Parse( dict["y"] );
+			float width = float.Parse( dict["width"] );
+			float height = float.Parse( dict["height"] );
+			shape.Rect = new CCRect(x, y, width, height);
+			return shape;
+		}
+
+		protected TmxMapPolygon ParsePolygon(Dictionary<string, string> dict)
+		{
+			var shape = new TmxMapPolygon { Color = new CCColor3B( 255, 255, 0 ) };
+			shape.Points = ParsePoints(dict["points"]);
+			return shape;
+		}
+
+		public TmxMapPolyline ParsePolyline(Dictionary<string, string> dict)
+		{
+			var shape = new TmxMapPolyline { Color = new CCColor3B( 255, 0, 255 ) };
+			shape.Points = ParsePoints(dict["points"]);
+			return shape;
+		}
+
+		protected List<CCPoint> ParsePoints(string pointsString)
+		{
+			var list = new List<CCPoint>();
+			string[] pointPairs = pointsString.Split(' ');
+			foreach (string pointPair in pointPairs)
+			{
+				string[] pointCoords = pointPair.Split(',');
+				if (pointCoords.Length != 2)
+					return null;
+
+				float x = float.Parse(pointCoords[0]);
+				float y = float.Parse(pointCoords[1]);
+
+				list.Add( new CCPoint(x, y) );
+			}
+			return list;
+		}
+
+		#endregion
+
+
+		public override string Title
+		{
+			get { return "TMX Polyline test"; }
+		}
+    }
+
+
+    public class TMXMultiLayerTest : TileDemo
+    {
+        public TMXMultiLayerTest() : base("TileMaps/orthogonal-test-multilayer.tmx")
+        {
+			// Background layer should display red circles
+        }
+
+		public override string Title
+		{
+			get { return "TMX Multilayer test"; }
+		}
+    }
+
 }
