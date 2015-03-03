@@ -560,6 +560,7 @@
     <Compile Include="..\..\Extensions\GUI\CCScrollView\CCTableViewCell.cs">
       <Link>Extensions\GUI\CCScrollView\CCTableViewCell.cs</Link>
     </Compile>
+    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2046,6 +2047,9 @@
       <Link>Assets\Content\TileMaps\iso-test-zorder1.tmx</Link>
     </AndroidAsset>
     <AndroidAsset Include="Assets\Content\TileMaps\tilemap_no_encoding.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\fixed-ortho-bgtiles.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-multilayer.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-polylines.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />

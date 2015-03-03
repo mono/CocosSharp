@@ -1130,6 +1130,7 @@
     <Compile Include="..\..\Extensions\GUI\CCScrollView\CCTableViewCell.cs">
       <Link>Extensions\GUI\CCScrollView\CCTableViewCell.cs</Link>
     </Compile>
+    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1230,6 +1231,9 @@
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
     </Content>
     <Content Include="Content\TileMaps\tilemap_no_encoding.xnb" />
+    <Content Include="Content\TileMaps\fixed-ortho-bgtiles.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-multilayer.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

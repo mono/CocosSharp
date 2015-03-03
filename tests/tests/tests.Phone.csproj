@@ -877,6 +877,10 @@
     <Compile Include="classes\tests\TileMapTest\TileMapTest.cs">
       <SubType>Code</SubType>
     </Compile>
+    </Compile>
+    <Compile Include="classes\tests\TileMapTest\Shape.cs" />
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="classes\tests\TouchesTest\Ball.cs">
       <SubType>Code</SubType>
     </Compile>

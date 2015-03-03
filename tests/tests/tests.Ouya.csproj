@@ -340,6 +340,7 @@
     <Compile Include="Classes\tests\TextInputTest\TextInputTestScene.cs" />
     <Compile Include="Classes\tests\Texture2dTest\Texture2dTest.cs" />
     <Compile Include="Classes\tests\TileMapTest\TileMapTest.cs" />
+    <Compile Include="classes\tests\TileMapTest\Shape.cs" />
     <Compile Include="Classes\tests\TouchesTest\Ball.cs" />
     <Compile Include="Classes\tests\TouchesTest\Paddle.cs" />
     <Compile Include="Classes\tests\TouchesTest\PongLayer.cs" />

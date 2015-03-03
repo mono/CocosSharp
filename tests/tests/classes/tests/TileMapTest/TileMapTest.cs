@@ -1345,7 +1345,7 @@ namespace tests
 
     public class TMXPolylineTest : TileDemo
     {
-        public TMXPolylineTest() : base("TileMaps/orthogonal-test-polylines.tmx")
+        public TMXPolylineTest() : base("TileMaps/orthogonal-test-polylines")
         {
 			// Polylines render purple
 			// Polygons render yellow
@@ -1456,7 +1456,7 @@ namespace tests
 
     public class TMXMultiLayerTest : TileDemo
     {
-        public TMXMultiLayerTest() : base("TileMaps/orthogonal-test-multilayer.tmx")
+        public TMXMultiLayerTest() : base("TileMaps/orthogonal-test-multilayer")
         {
 			// Background layer should display red circles
         }

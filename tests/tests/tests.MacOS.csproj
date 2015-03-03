@@ -1149,6 +1149,7 @@
     </Compile>
     <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\Physics\PhysicsTest.cs" />
+    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2509,6 +2510,9 @@
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
     </Content>
     <Content Include="Content\TileMaps\tilemap_no_encoding.xnb" />
+    <Content Include="Content\TileMaps\fixed-ortho-bgtiles.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-multilayer.xnb" />
+    <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
