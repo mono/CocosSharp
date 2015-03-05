@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Xamarin.CocosSharpTemplates" Version="1.3.1.0" Language="en-US" Publisher="Xamarin Inc" />
+    <Identity Id="Xamarin.CocosSharpTemplates" Version="1.3.2.0" Language="en-US" Publisher="Xamarin Inc" />
     <DisplayName>CocosSharpTemplates</DisplayName>
     <Description xml:space="preserve">CocosSharp is a C# implementation of the Cocos2D APIs that runs on any platform where MonoGame runs.  This will install a collection of CocosSharp Project Templates that allows for the creation of a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.</Description>
     <GettingStartedGuide>http://developer.xamarin.com/guides/cross-platform/game_development/cocossharp/</GettingStartedGuide>
-    <ReleaseNotes>https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.3.1.0.md</ReleaseNotes>
+    <ReleaseNotes>https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.3.2.0.md</ReleaseNotes>
     <Icon>powered.ico</Icon>
     <PreviewImage>powered.png</PreviewImage>
     <Tags>xamarin; CocosSharp; cocos2d; xna; monogame; 2D; games; visualization; engine; android; windows; phone, ios; mac; opengl </Tags>
