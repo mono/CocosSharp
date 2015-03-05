@@ -1353,8 +1353,11 @@ namespace tests
 			// Ellipses render blue
 
 			var mainLayer = tileMap.LayerNamed( "Layer 0" );
-
 			var boundsObject = tileMap.ObjectGroupNamed( "Object Layer 1" );
+
+	        var draw = new CCDrawNode();
+	        mainLayer.AddChild(draw);
+
 			foreach ( var bound in boundsObject.Objects )
 			{
 				// There is no indication in a TMX file that a given object is a rectangle.
@@ -1362,7 +1365,7 @@ namespace tests
 				// So if the map loader didn't add a "shape" key, interpret it as a rectangle.
 				if ( !bound.ContainsKey( "shape" ) )
 				{
-					mainLayer.AddChild( ParseRectangle(bound) );
+					DrawRectangle(bound, draw);
 					continue;
 				}
 
@@ -1370,15 +1373,11 @@ namespace tests
 				switch ( shape )
 				{
 					case "polyline":
-						TmxMapPolyline polyline = ParsePolyline( bound );
-						if ( polyline != null )
-							mainLayer.AddChild(polyline);
+						DrawPolyline( bound, draw );
 						break;
 
 					case "polygon":
-						TmxMapPolygon polygon = ParsePolygon( bound );
-						if ( polygon != null )
-							mainLayer.AddChild(polygon);
+						DrawPolygon( bound, draw );
 						break;
 
 					case "ellipse":
@@ -1390,40 +1389,30 @@ namespace tests
 
 		#region Parsing
 
-		protected TmxMapRectangle ParseRectangle(Dictionary<string, string> dict)
+		protected void DrawRectangle(Dictionary<string, string> dict, CCDrawNode draw)
 		{
-			var shape = new TmxMapRectangle { Color = new CCColor3B( 0, 255, 0 ) };
 			float x = float.Parse( dict["x"] );
 			float y = float.Parse( dict["y"] );
 			float width = float.Parse( dict["width"] );
 			float height = float.Parse( dict["height"] );
-			shape.Rect = new CCRect(x, y, width, height);
-			return shape;
+			draw.DrawRect(new CCRect(x, y, width, height), new CCColor4B(0, 0, 0, 0), 1.0f, new CCColor4B(0, 255, 0));
 		}
 
-		protected TmxMapEllipse ParseEllipse(Dictionary<string, string> dict)
+		protected void DrawPolygon(Dictionary<string, string> dict, CCDrawNode draw)
 		{
-			var shape = new TmxMapEllipse { Color = new CCColor3B( 0, 0, 255 ) };
-			float x = float.Parse( dict["x"] );
-			float y = float.Parse( dict["y"] );
-			float width = float.Parse( dict["width"] );
-			float height = float.Parse( dict["height"] );
-			shape.Rect = new CCRect(x, y, width, height);
-			return shape;
+			List<CCPoint> points = ParsePoints(dict["points"]);
+			draw.DrawPolygon(points.ToArray(), points.Count, new CCColor4B(0, 0, 0, 0), 1.0f, new CCColor4B(255, 255, 0) );
 		}
 
-		protected TmxMapPolygon ParsePolygon(Dictionary<string, string> dict)
+		public void DrawPolyline(Dictionary<string, string> dict, CCDrawNode draw)
 		{
-			var shape = new TmxMapPolygon { Color = new CCColor3B( 255, 255, 0 ) };
-			shape.Points = ParsePoints(dict["points"]);
-			return shape;
-		}
-
-		public TmxMapPolyline ParsePolyline(Dictionary<string, string> dict)
-		{
-			var shape = new TmxMapPolyline { Color = new CCColor3B( 255, 0, 255 ) };
-			shape.Points = ParsePoints(dict["points"]);
-			return shape;
+			List<CCPoint> points = ParsePoints(dict["points"]);
+			var color = new CCColor4B( 255, 0, 255 );
+			for ( int i = 0; i < points.Count-1; i++ )
+			{
+				draw.AddLineVertex(new CCV3F_C4B(points[i], color));
+				draw.AddLineVertex(new CCV3F_C4B(points[i+1], color));
+			}
 		}
 
 		protected List<CCPoint> ParsePoints(string pointsString)
@@ -1442,6 +1431,17 @@ namespace tests
 				list.Add( new CCPoint(x, y) );
 			}
 			return list;
+		}
+
+		protected TmxMapEllipse ParseEllipse(Dictionary<string, string> dict)
+		{
+			var shape = new TmxMapEllipse { Color = new CCColor3B( 0, 0, 255 ) };
+			float x = float.Parse( dict["x"] );
+			float y = float.Parse( dict["y"] );
+			float width = float.Parse( dict["width"] );
+			float height = float.Parse( dict["height"] );
+			shape.Rect = new CCRect(x, y, width, height);
+			return shape;
 		}
 
 		#endregion
