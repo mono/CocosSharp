@@ -104,9 +104,9 @@ def generate_release_notes(version_tag, list_of_issues, output_path):
 		file.write('# CocosSharp ' + version_tag + ' release notes \n')
 		file.write('## Fixes and enhancements \n ---\n')
 		for issue_dict in list_of_issues:
-			title = issue_dict['title']
+			title = issue_dict['title'].encode('utf8')
 			issue_num = str(issue_dict['number'])
-			html_url =  issue_dict['html_url']
+			html_url =  issue_dict['html_url'].encode('utf8')
 			file.write('* ' +  '[' + issue_num + '](' + html_url +') ' + title + '\n')
 	print("Finished writing release notes")
 		
