@@ -81,12 +81,10 @@ namespace CocosSharp
 
 				if (value != isTouchEnabled) 
 				{
-
 					isTouchEnabled = value;
 
 					if (isTouchEnabled) 
 					{
-
 						// Register Touch Event
 						var touchListener = new CCEventListenerTouchOneByOne();
 						touchListener.IsSwallowTouches = true;
@@ -99,17 +97,17 @@ namespace CocosSharp
                         AddEventListener(touchListener);
 
 						TouchListener = touchListener;
-
 					}
+                    else
+                    {
+                        Dragging = false;
+                        IsTouchMoved = false;
+                        touches.Clear();
+                        RemoveEventListener(TouchListener);
+                        TouchListener = null;
+                    }
 				}
-				else
-				{
-					Dragging = false;
-					IsTouchMoved = false;
-					touches.Clear();
-                    RemoveEventListener(TouchListener);
-					TouchListener = null;
-				}
+
 			}
 		}
 
