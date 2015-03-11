@@ -2670,7 +2670,43 @@ namespace CocosSharp
                 fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, 0));
             }
 
-            XnaLocalMatrix = fauxLocalCameraTransform * xnaLocalMatrix;
+            // Work around bug for ARM64
+            var matrix12 = Matrix.Identity;
+            var m11 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M41);
+            var m12 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M42);
+            var m13 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M43);
+            var m14 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M44);
+            var m21 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M41);
+            var m22 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M42);
+            var m23 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M43);
+            var m24 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M44);
+            var m31 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M41);
+            var m32 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M42);
+            var m33 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M43);
+            var m34 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M44);
+            var m41 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M41);
+            var m42 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M42);
+            var m43 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M43);
+            var m44 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M44);
+            matrix12.M11 = m11;
+            matrix12.M12 = m12;
+            matrix12.M13 = m13;
+            matrix12.M14 = m14;
+            matrix12.M21 = m21;
+            matrix12.M22 = m22;
+            matrix12.M23 = m23;
+            matrix12.M24 = m24;
+            matrix12.M31 = m31;
+            matrix12.M32 = m32;
+            matrix12.M33 = m33;
+            matrix12.M34 = m34;
+            matrix12.M41 = m41;
+            matrix12.M42 = m42;
+            matrix12.M43 = m43;
+            matrix12.M44 = m44;
+
+            XnaLocalMatrix = matrix12;
+            //XnaLocalMatrix = fauxLocalCameraTransform * xnaLocalMatrix;
 
             affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
 
