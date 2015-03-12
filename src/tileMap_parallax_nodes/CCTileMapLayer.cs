@@ -29,6 +29,10 @@ namespace CocosSharp
         CCAffineTransform tileCoordsToNodeTransform;
         CCAffineTransform nodeToTileCoordsTransform;
 
+        // Used by hexagonal and staggered isometric
+        CCAffineTransform tileCoordsToNodeTransformOdd;
+        CCAffineTransform nodeToTileCoordsTransformOdd;
+
         CCTexture2D tileSetTexture;
         CCTileGidAndFlags[] tileGIDAndFlagsArray;
 
@@ -268,6 +272,8 @@ namespace CocosSharp
 
             float yOffset = (LayerSize.Row - 1) * height;
 
+            tileCoordsToNodeTransformOdd = CCAffineTransform.Identity;
+
             switch (MapType)
             {
                 case CCTileMapType.Ortho:
@@ -298,6 +304,14 @@ namespace CocosSharp
                 case CCTileMapType.Hex:
                     tileCoordsToNodeTransform = new CCAffineTransform(new Matrix
                         (
+                            height * (float)Math.Sqrt(0.75), 0.0f, 0.0f, 0.0f,
+                            0.0f , -height, 0.0f, 0.0f,
+                            0.0f, 0.0f, 1.0f, 0.0f,
+                            0.0f, yOffset, 0.0f, 1.0f
+                        ));
+                    
+                    tileCoordsToNodeTransformOdd = new CCAffineTransform(new Matrix
+                        (
                             height * (float)Math.Sqrt(0.75), -height/2, 0.0f, 0.0f,
                             0.0f , -height, 0.0f, 0.0f,
                             0.0f, 0.0f, 1.0f, 0.0f,
@@ -310,6 +324,7 @@ namespace CocosSharp
             }
 
             nodeToTileCoordsTransform = tileCoordsToNodeTransform.Inverse;
+            nodeToTileCoordsTransformOdd = tileCoordsToNodeTransformOdd.Inverse;
         }
 
         protected override void Draw()
@@ -456,7 +471,16 @@ namespace CocosSharp
             // Therefore adjust node position
             CCSize offsetSize = (TileContentSize) * 0.5f;
             CCPoint offsetPt = new CCPoint(offsetSize.Width, offsetSize.Height);
-            CCPoint transformedPoint = nodeToTileCoordsTransform.Transform(nodePos - offsetPt).RoundToInteger();
+            CCPoint offsetDiff = nodePos - offsetPt;
+            CCPoint transformedPoint = nodeToTileCoordsTransform.Transform(offsetDiff).RoundToInteger();
+
+            if(MapType == CCTileMapType.Hex) 
+            {
+                CCPoint oddTransformedPoint = nodeToTileCoordsTransformOdd.Transform(offsetDiff).RoundToInteger();
+
+                if((int)oddTransformedPoint.X % 2 == 1)
+                    transformedPoint = oddTransformedPoint;
+            }
 
             return new CCTileMapCoordinates((int)transformedPoint.X, (int)transformedPoint.Y);
         }
@@ -487,6 +511,9 @@ namespace CocosSharp
 
         public CCPoint TilePosition(CCTileMapCoordinates tileCoords)
         {
+            if(MapType == CCTileMapType.Hex && ((tileCoords.Column % 2) == 1))
+                return tileCoordsToNodeTransformOdd.Transform(tileCoords.Point);
+
             return tileCoordsToNodeTransform.Transform(tileCoords.Point);
         }
 
