@@ -733,6 +733,10 @@ namespace CocosSharp
         {
         }
 
+        public override string ToString()
+        {
+            return String.Format("CCPoint3 : (x={0}, y={1}, z={2})", X, Y, Z);
+        }
         #region Operators
 
         public static bool operator ==(CCPoint3 p1, CCPoint3 p2)
