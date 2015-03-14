@@ -1341,33 +1341,29 @@ namespace tests
 
     public class TMXGIDObjectsTest : TileDemo
     {
+        CCDrawNode drawNode;
+
         public TMXGIDObjectsTest() : base("TileMaps/test-object-layer")
         {
+            drawNode = new CCDrawNode();
+            tileLayersContainer.AddChild(drawNode);
         }
 
-        protected override void Draw()
+        protected override void AddedToScene ()
         {
+            base.AddedToScene();
             CCTileMapObjectGroup group = tileMap.ObjectGroupNamed("Object Layer 1");
+
+            drawNode.Color = CCColor3B.Magenta;
+            drawNode.Opacity = 255;
+            drawNode.Clear();
 
             foreach (var dict in group.Objects)
             {
                 int x = int.Parse(dict["x"]);
                 int y = int.Parse(dict["y"]);
-                int width = dict.ContainsKey("width") ? int.Parse(dict["width"]) : 0;
-                int height = dict.ContainsKey("height") ? int.Parse(dict["height"]) : 0;
-
-                //glLineWidth(3);
-
-                var color = new CCColor4B(255, 255, 0, 255);
-
-                CCDrawingPrimitives.Begin();
-                CCDrawingPrimitives.DrawLine(new CCPoint(x, y), new CCPoint(x + width, y), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x + width, y), new CCPoint(x + width, y + height), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x + width, y + height), new CCPoint(x, y + height), color);
-                CCDrawingPrimitives.DrawLine(new CCPoint(x, y + height), new CCPoint(x, y), color);
-                CCDrawingPrimitives.End();
-
-                //glLineWidth(1);
+;
+                drawNode.DrawDot(new CCPoint (x, y), 10.0f, new CCColor4F (CCColor4B.Magenta));
             }
         }
 
