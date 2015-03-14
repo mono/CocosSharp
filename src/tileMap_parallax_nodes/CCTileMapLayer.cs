@@ -645,15 +645,21 @@ namespace CocosSharp
 
         public void SetTileGID(CCTileGidAndFlags gidAndFlags, CCTileMapCoordinates tileCoords)
         {
-            if (gidAndFlags.Gid == 0 || gidAndFlags.Gid < TileSetInfo.FirstGid)
+            if (gidAndFlags.Gid == 0)
             {
-                Debug.Assert (false, String.Format("CCTileMapLayer: SetTileGID: Invalid GID %n", gidAndFlags.Gid));
+                RemoveTile (tileCoords);
+                return;
+            }
+
+            if (gidAndFlags.Gid < TileSetInfo.FirstGid)
+            {
+                Debug.Assert (false, String.Format("CCTileMapLayer: SetTileGID: Invalid GID {0}", gidAndFlags.Gid));
                 return;
             }
 
             if (AreValidTileCoordinates(tileCoords) == false)
             {
-                Debug.Assert (false, String.Format("CCTileMapLayer: Invalid tile coordinates row: %n column: %n", 
+                Debug.Assert (false, String.Format("CCTileMapLayer: Invalid tile coordinates row: {0} column: {1}", 
                     tileCoords.Row, tileCoords.Column));
                 return;
             }
