@@ -2050,6 +2050,7 @@
     <AndroidAsset Include="Assets\Content\TileMaps\fixed-ortho-bgtiles.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-multilayer.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-polylines.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\staggered_test.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />

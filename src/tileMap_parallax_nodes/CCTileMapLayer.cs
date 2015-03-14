@@ -318,6 +318,23 @@ namespace CocosSharp
                             0.0f, yOffset, 0.0f, 1.0f
                         ));
                     break;
+                case CCTileMapType.Staggered:
+                    tileCoordsToNodeTransform = new CCAffineTransform(new Matrix
+                    (
+                        width, 0.0f, 0.0f, 0.0f,
+                        0.0f , -height / 2, 0.0f, 0.0f,
+                        0.0f, 0.0f, 1.0f, 0.0f,
+                        0.0f, yOffset / 2, 0.0f, 1.0f
+                    ));
+
+                    tileCoordsToNodeTransformOdd = new CCAffineTransform(new Matrix
+                    (
+                        width, 0.0f, 0.0f, 0.0f,
+                        0.0f , -height /2, 0.0f, 0.0f,
+                        0.0f, 0.0f, 1.0f, 0.0f,
+                        width / 2, yOffset / 2, 0.0f, 1.0f
+                    ));
+                    break;
                 default:
                     tileCoordsToNodeTransform = CCAffineTransform.Identity;
                     break;
@@ -474,11 +491,12 @@ namespace CocosSharp
             CCPoint offsetDiff = nodePos - offsetPt;
             CCPoint transformedPoint = nodeToTileCoordsTransform.Transform(offsetDiff).RoundToInteger();
 
-            if(MapType == CCTileMapType.Hex) 
+            if (MapType == CCTileMapType.Hex || MapType == CCTileMapType.Staggered) 
             {
-                CCPoint oddTransformedPoint = nodeToTileCoordsTransformOdd.Transform(offsetDiff).RoundToInteger();
+                CCPoint oddTransformedPoint = nodeToTileCoordsTransformOdd.Transform (offsetDiff).RoundToInteger ();
 
-                if((int)oddTransformedPoint.X % 2 == 1)
+                if ((MapType == CCTileMapType.Hex && oddTransformedPoint.X % 2 == 1) ||
+                    (MapType == CCTileMapType.Staggered && oddTransformedPoint.Y % 2 == 1))
                     transformedPoint = oddTransformedPoint;
             }
 
@@ -511,7 +529,8 @@ namespace CocosSharp
 
         public CCPoint TilePosition(CCTileMapCoordinates tileCoords)
         {
-            if(MapType == CCTileMapType.Hex && ((tileCoords.Column % 2) == 1))
+            if((MapType == CCTileMapType.Hex && tileCoords.Column % 2 == 1) ||
+                (MapType == CCTileMapType.Staggered && tileCoords.Row % 2 == 1))
                 return tileCoordsToNodeTransformOdd.Transform(tileCoords.Point);
 
             return tileCoordsToNodeTransform.Transform(tileCoords.Point);
@@ -530,6 +549,9 @@ namespace CocosSharp
                         vertexZ = -(maxVal - (column + row));
                         break;
                     case CCTileMapType.Ortho:
+                        vertexZ = -(LayerSize.Row - row);
+                        break;
+                    case CCTileMapType.Staggered:
                         vertexZ = -(LayerSize.Row - row);
                         break;
                     case CCTileMapType.Hex:
@@ -573,6 +595,14 @@ namespace CocosSharp
                 case CCTileMapType.Iso:
                     offsetInNodespace = new CCPoint((TileTexelSize.Width / 2) * (offsetInTileCoords.X - offsetInTileCoords.Y),
                         (TileTexelSize.Height / 2) * (-offsetInTileCoords.X - offsetInTileCoords.Y));
+                    break;
+                case CCTileMapType.Staggered:
+                    float diffX = 0;
+                    if ((int)offsetInTileCoords.Y % 2 == 1)
+                        diffX = TileTexelSize.Width / 2;
+                
+                    offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width + diffX, 
+                        -offsetInTileCoords.Y * TileTexelSize.Height/2);
                     break;
                 case CCTileMapType.Hex:
                     Debug.Assert(offsetInTileCoords.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");

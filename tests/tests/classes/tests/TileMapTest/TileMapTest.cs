@@ -212,17 +212,72 @@ namespace tests
 
     public class TMXHexTest : TileDemo
     {
+        CCDrawNode drawNode;
+
         public TMXHexTest() : base("TileMaps/hexa-test1")
         {
             CCLayerColor color = new CCLayerColor(new CCColor4B(64, 64, 64, 255));
             AddChild(color, -1);
+
+            drawNode = new CCDrawNode();
+            tileLayersContainer.AddChild(drawNode);
+
+            var touchListener = new CCEventListenerTouchOneByOne();
+            touchListener.OnTouchBegan = OnTouchBegan;
+
+            AddEventListener(touchListener);
         }
 
 		public override string Title
 		{
 			get
-			{ return "TMX Hex tes"; }
+			{ return "TMX Hex test"; }
 		}
+
+        bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+        {
+
+            var layer = tileMap.LayerNamed("Layer 0");
+
+            var location = layer.WorldToParentspace(touch.Location);
+            var tileCoordinates = layer.ClosestTileCoordAtNodePosition(location);
+
+            // Convert the tile coordinates position to world coordinates for
+            // our outline drawing
+            var world = layer.TilePosition(tileCoordinates);
+
+
+            // Calculate our width and height of the tile
+            CCSize texToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
+            float width = layer.TileTexelSize.Width * texToContentScaling.Width;
+            float height = layer.TileTexelSize.Height * texToContentScaling.Height;
+
+            var rect = new CCRect(world.X, world.Y, width, height);
+
+            drawNode.Clear();
+
+            drawNode.Color = CCColor3B.Magenta;
+            drawNode.Opacity = 255;
+
+            var center = rect.Center;
+
+            var right = center;
+            right.X += width / 2;
+
+            var top = center;
+            top.Y += height / 2;
+
+            var left = right;
+            left.X -= width;
+
+            var bottom = center;
+            bottom.Y -= height / 2;
+
+            // Hightlight our iso tile
+            drawNode.DrawPolygon (new CCPoint[] {right, top, left, bottom}, 4, CCColor4B.Transparent, 1, new CCColor4F(CCColor4B.Magenta));
+
+            return true;
+        }
     }
 
     public class TMXIsoTest : TileDemo
@@ -1078,7 +1133,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 31;
+        static int MAX_LAYER = 32;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1208,6 +1263,8 @@ namespace tests
                     return new TMXPolylineTest();
                 case 30:
                     return new TMXMultiLayerTest();
+                case 31:
+                    return new TMXStaggeredMapTest();
 #endif
             }
 
@@ -1340,6 +1397,74 @@ namespace tests
         public override string Title
         {
             get { return "TMX No Encoding"; }
+        }
+    }
+
+    public class TMXStaggeredMapTest : TileDemo
+    {
+        CCDrawNode drawNode;
+
+        public TMXStaggeredMapTest() : base("TileMaps/staggered_test")
+        {
+            drawNode = new CCDrawNode();
+            tileLayersContainer.AddChild(drawNode);
+
+            var touchListener = new CCEventListenerTouchOneByOne();
+            touchListener.OnTouchBegan = OnTouchBegan;
+
+            AddEventListener(touchListener);
+        }
+
+        public override string Title
+        {
+            get { return "Staggered isometric tile map"; }
+        }
+
+        bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+        {
+            var layer = tileMap.LayerNamed("grass");
+
+            var location = layer.WorldToParentspace(touch.Location);
+            var tileCoordinates = layer.ClosestTileCoordAtNodePosition(location);
+
+            if(tileCoordinates.Row < 0 || tileCoordinates.Column < 0)
+                return true;
+
+            // Convert the tile coordinates position to world coordinates for
+            // our outline drawing
+            var world = layer.TilePosition(tileCoordinates);
+
+
+            // Calculate our width and height of the tile
+            CCSize texToContentScaling = CCTileMapLayer.DefaultTexelToContentSizeRatios;
+            float width = layer.TileTexelSize.Width * texToContentScaling.Width;
+            float height = layer.TileTexelSize.Height * texToContentScaling.Height;
+
+            var rect = new CCRect(world.X, world.Y, width, height);
+
+            drawNode.Clear();
+
+            drawNode.Color = CCColor3B.Magenta;
+            drawNode.Opacity = 255;
+
+            var center = rect.Center;
+
+            var right = center;
+            right.X += width / 2;
+
+            var top = center;
+            top.Y += height / 2;
+
+            var left = right;
+            left.X -= width;
+
+            var bottom = center;
+            bottom.Y -= height / 2;
+
+            // Hightlight our iso tile
+            drawNode.DrawPolygon (new CCPoint[] {right, top, left, bottom}, 4, CCColor4B.Transparent, 1, new CCColor4F(CCColor4B.Magenta));
+
+            return true;
         }
     }
 
