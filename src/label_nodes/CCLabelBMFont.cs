@@ -293,11 +293,6 @@ namespace CocosSharp
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
                 "Invalid params for CCLabelBMFont");
 
-            if (!((theString == null && fntFile == null) || (theString != null && fntFile != null)))
-            {
-                Debug.WriteLine("ERROR");
-            }
-
             if (!String.IsNullOrEmpty(fntFile))
             {
                 CCBMFontConfiguration newConf = FNTConfigLoadFile(fntFile);
