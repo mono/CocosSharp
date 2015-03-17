@@ -2514,6 +2514,7 @@
     <Content Include="Content\TileMaps\orthogonal-test-multilayer.xnb" />
     <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
     <Content Include="Content\TileMaps\staggered_test.xnb" />
+    <Content Include="Content\TileMaps\large_map.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

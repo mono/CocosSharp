@@ -13,10 +13,8 @@ namespace CocosSharp
         const int NumOfCornersPerQuad = 4;
         const int NumOfPrimitivesPerQuad = 2;
 
-		// Drawing tile maps as indexed primitives requires an index buffer whose values are stored as unsigned shorts. 
-		// But this means that the max number of vertices we can have is limited to 2^16 - 1 = 65535. Each tile consists of 4 verts, 
-		// so we're restricted to a total number of 65535/ 4 = 16384 tiles per draw call.
-	    const int MaxTilesPerDrawBuffer = 16384;
+        // Index buffer value types are unsigned shorts => (2^16) / 4 = 16384 max tiles
+        const int MaxTilesPerDrawBuffer = (ushort.MaxValue + 1) / 4;
 
         bool useAutomaticVertexZ;
         float defaultTileVertexZ;
@@ -28,7 +26,6 @@ namespace CocosSharp
         */
 
         CCColor4B tileColor;
-	    DrawBufferManager drawBufferManager;
 
         CCAffineTransform tileCoordsToNodeTransform;
         CCAffineTransform nodeToTileCoordsTransform;
@@ -39,7 +36,7 @@ namespace CocosSharp
 
         CCTexture2D tileSetTexture;
         CCTileGidAndFlags[] tileGIDAndFlagsArray;
-
+        CCTileMapDrawBufferManager drawBufferManager;
 
         #region Properties
 
@@ -134,9 +131,6 @@ namespace CocosSharp
         CCTileMapLayer(CCTileSetInfo tileSetInfo, CCTileLayerInfo layerInfo, CCTileMapInfo mapInfo, CCTileMapCoordinates layerSize, 
             int totalNumberOfTiles, int tileCapacity, CCTexture2D texture)
         {
-
-            //Debug.Assert(texture.ContentSizeInPixels != CCSize.Zero, string.Format("Tilemap Texture {0} not loaded for layer {1}", tileSetInfo.TilesheetFilename, layerInfo.Name));
-
             if (texture.ContentSizeInPixels == CCSize.Zero)
                 CCLog.Log("Tilemap Layer Texture {0} not loaded for layer {1}", tileSetInfo.TilesheetFilename, layerInfo.Name);
 
@@ -161,7 +155,7 @@ namespace CocosSharp
 
             ParseInternalProperties();
 
-	        InitialiseDrawBuffers();
+            InitialiseDrawBuffers();
         }
 
         void ParseInternalProperties()
@@ -181,11 +175,11 @@ namespace CocosSharp
             }
         }
 
-	    void InitialiseDrawBuffers()
-	    {
-			drawBufferManager = new DrawBufferManager(LayerSize.Row, LayerSize.Column);
+        void InitialiseDrawBuffers()
+        {
+            drawBufferManager = new CCTileMapDrawBufferManager(LayerSize.Row, LayerSize.Column);
 
-		    // Initialize the QuadsVertexBuffers
+            // Initialize the QuadsVertexBuffers
             if (tileSetTexture.ContentSizeInPixels != CCSize.Zero)
             {
                 for (int y = 0; y < LayerSize.Row; y++)
@@ -197,12 +191,12 @@ namespace CocosSharp
                 }
             }
 
-			// Initialise the IndexBuffers
+            // Initialise the IndexBuffers
             var numOfTiles = (int) NumberOfTiles;
             for (int tileIndex = 0; tileIndex < numOfTiles; tileIndex++)
             {
-	            var buffer = drawBufferManager.GetDrawBufferAtIndex( tileIndex );
-				var indices = buffer.IndexBuffer.Data;
+                var buffer = drawBufferManager.GetDrawBufferAtIndex( tileIndex );
+                var indices = buffer.IndexBuffer.Data;
 
                 int quadVertIndex = (tileIndex - buffer.TileStartIndex) * NumOfCornersPerQuad;
                 int indexBufferOffset = (tileIndex - buffer.TileStartIndex) * NumOfVerticesPerQuad;
@@ -215,10 +209,10 @@ namespace CocosSharp
                 indices[indexBufferOffset + 5] = (short)(quadVertIndex + 1);
             }
 
-		    drawBufferManager.UpdateBuffers();
-	    }
+            drawBufferManager.UpdateBuffers();
+        }
 
-	    #endregion Constructors
+        #endregion Constructors
 
         /*
         protected override void AddedToScene()
@@ -246,12 +240,11 @@ namespace CocosSharp
         protected override void Dispose(bool disposing)
         {
             if (disposing) 
-            {
-				drawBufferManager.Dispose();
-            }
+                drawBufferManager.Dispose();
 
-            base.Dispose (disposing);
+            base.Dispose(disposing);
         }
+
 
         #region Drawing
 
@@ -300,7 +293,7 @@ namespace CocosSharp
                             0.0f, 0.0f, 1.0f, 0.0f,
                             0.0f, yOffset, 0.0f, 1.0f
                         ));
-                    
+
                     tileCoordsToNodeTransformOdd = new CCAffineTransform(new Matrix
                         (
                             height * (float)Math.Sqrt(0.75), -height/2, 0.0f, 0.0f,
@@ -311,20 +304,20 @@ namespace CocosSharp
                     break;
                 case CCTileMapType.Staggered:
                     tileCoordsToNodeTransform = new CCAffineTransform(new Matrix
-                    (
-                        width, 0.0f, 0.0f, 0.0f,
-                        0.0f , -height / 2, 0.0f, 0.0f,
-                        0.0f, 0.0f, 1.0f, 0.0f,
-                        0.0f, yOffset / 2, 0.0f, 1.0f
-                    ));
+                        (
+                            width, 0.0f, 0.0f, 0.0f,
+                            0.0f , -height / 2, 0.0f, 0.0f,
+                            0.0f, 0.0f, 1.0f, 0.0f,
+                            0.0f, yOffset / 2, 0.0f, 1.0f
+                        ));
 
                     tileCoordsToNodeTransformOdd = new CCAffineTransform(new Matrix
-                    (
-                        width, 0.0f, 0.0f, 0.0f,
-                        0.0f , -height /2, 0.0f, 0.0f,
-                        0.0f, 0.0f, 1.0f, 0.0f,
-                        width / 2, yOffset / 2, 0.0f, 1.0f
-                    ));
+                        (
+                            width, 0.0f, 0.0f, 0.0f,
+                            0.0f , -height /2, 0.0f, 0.0f,
+                            0.0f, 0.0f, 1.0f, 0.0f,
+                            width / 2, yOffset / 2, 0.0f, 1.0f
+                        ));
                     break;
                 default:
                     tileCoordsToNodeTransform = CCAffineTransform.Identity;
@@ -353,10 +346,11 @@ namespace CocosSharp
             drawManager.PushEffect(alphaTest);
             drawManager.BindTexture(tileSetTexture);
 
-	        foreach ( var buffer in drawBufferManager.Buffers )
-	        {
-				drawManager.DrawBuffer(buffer.QuadsVertexBuffer, buffer.IndexBuffer, 0, buffer.NumberOfTiles * NumOfPrimitivesPerQuad);
-	        }
+            foreach (var buffer in drawBufferManager.Buffers)
+            {
+                drawManager.DrawBuffer(buffer.QuadsVertexBuffer, buffer.IndexBuffer, 0, 
+                    buffer.NumberOfTiles * NumOfPrimitivesPerQuad);
+            }
 
             drawManager.PopEffect();
         }
@@ -539,22 +533,22 @@ namespace CocosSharp
             {
                 switch (MapType)
                 {
-                    case CCTileMapType.Iso:
-                        float maxVal = LayerSize.Column + LayerSize.Row;
-                        vertexZ = -(maxVal - (column + row));
-                        break;
-                    case CCTileMapType.Ortho:
-                        vertexZ = -(LayerSize.Row - row);
-                        break;
-                    case CCTileMapType.Staggered:
-                        vertexZ = -(LayerSize.Row - row);
-                        break;
-                    case CCTileMapType.Hex:
-                        Debug.Assert(false,"CCTMXLayer:TileVertexZ: Automatic z-ordering for Hex tiles not supported");
-                        break;
-                    default:
-                        Debug.Assert(false, "CCTMXLayer:TileVertexZ: Unsupported layer orientation");
-                        break;
+                case CCTileMapType.Iso:
+                    float maxVal = LayerSize.Column + LayerSize.Row;
+                    vertexZ = -(maxVal - (column + row));
+                    break;
+                case CCTileMapType.Ortho:
+                    vertexZ = -(LayerSize.Row - row);
+                    break;
+                case CCTileMapType.Staggered:
+                    vertexZ = -(LayerSize.Row - row);
+                    break;
+                case CCTileMapType.Hex:
+                    Debug.Assert(false,"CCTMXLayer:TileVertexZ: Automatic z-ordering for Hex tiles not supported");
+                    break;
+                default:
+                    Debug.Assert(false, "CCTMXLayer:TileVertexZ: Unsupported layer orientation");
+                    break;
                 }
             }
             else
@@ -584,24 +578,24 @@ namespace CocosSharp
             CCPoint offsetInNodespace = CCPoint.Zero;
             switch (MapType)
             {
-                case CCTileMapType.Ortho:
-                    offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width, -offsetInTileCoords.Y * TileTexelSize.Height);
-                    break;
-                case CCTileMapType.Iso:
-                    offsetInNodespace = new CCPoint((TileTexelSize.Width / 2) * (offsetInTileCoords.X - offsetInTileCoords.Y),
-                        (TileTexelSize.Height / 2) * (-offsetInTileCoords.X - offsetInTileCoords.Y));
-                    break;
-                case CCTileMapType.Staggered:
-                    float diffX = 0;
-                    if ((int)offsetInTileCoords.Y % 2 == 1)
-                        diffX = TileTexelSize.Width / 2;
-                
-                    offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width + diffX, 
-                        -offsetInTileCoords.Y * TileTexelSize.Height/2);
-                    break;
-                case CCTileMapType.Hex:
-                    Debug.Assert(offsetInTileCoords.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
-                    break;
+            case CCTileMapType.Ortho:
+                offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width, -offsetInTileCoords.Y * TileTexelSize.Height);
+                break;
+            case CCTileMapType.Iso:
+                offsetInNodespace = new CCPoint((TileTexelSize.Width / 2) * (offsetInTileCoords.X - offsetInTileCoords.Y),
+                    (TileTexelSize.Height / 2) * (-offsetInTileCoords.X - offsetInTileCoords.Y));
+                break;
+            case CCTileMapType.Staggered:
+                float diffX = 0;
+                if ((int)offsetInTileCoords.Y % 2 == 1)
+                    diffX = TileTexelSize.Width / 2;
+
+                offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width + diffX, 
+                    -offsetInTileCoords.Y * TileTexelSize.Height/2);
+                break;
+            case CCTileMapType.Hex:
+                Debug.Assert(offsetInTileCoords.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
+                break;
             }
 
             offsetInNodespace *= CCTileMapLayer.DefaultTexelToContentSizeRatios;
@@ -694,8 +688,8 @@ namespace CocosSharp
             int flattenedTileIndex = FlattenedTileIndex(tileCoordX, tileCoordY);
             CCTileGidAndFlags tileGID = tileGIDAndFlagsArray[flattenedTileIndex];
 
-	        VertexAndIndexBuffer drawBuffer = drawBufferManager.GetDrawBufferAtIndex( flattenedTileIndex );
-	        int adjustedTileIndex = flattenedTileIndex - drawBuffer.TileStartIndex;
+            CCTileMapVertAndIndexBuffer drawBuffer = drawBufferManager.GetDrawBufferAtIndex(flattenedTileIndex);
+            int adjustedTileIndex = flattenedTileIndex - drawBuffer.TileStartIndex;
 
             if (tileGID.Gid == 0)
             {
@@ -841,101 +835,116 @@ namespace CocosSharp
 
         #endregion Updating buffers
 
-		#region Classes to manage the multiple CCQuadVertexBuffers and CCIndexBuffers needed for drawing maps with more than 16384 tiles
 
-		private class DrawBufferManager : IDisposable
-	    {
-		    private readonly int mapCols;
-		    private readonly int mapRows;
+        #region Internal draw buffer management
 
-		    public List<VertexAndIndexBuffer> Buffers { get; private set; }
+        class CCTileMapDrawBufferManager : IDisposable
+        {
+            readonly int mapCols;
+            readonly int mapRows;
 
-		    public DrawBufferManager(int mapCols, int mapRows)
-		    {
-			    Buffers = new List<VertexAndIndexBuffer>();
-			    this.mapCols = mapCols;
-			    this.mapRows = mapRows;
+            public List<CCTileMapVertAndIndexBuffer> Buffers { get; private set; }
 
-				// Create the appropriate number of buffers to hold the map.
-			    int numOfTiles = mapCols * mapRows;
-			    int tilesProcessed = 0;
-			    while ( tilesProcessed < numOfTiles )
-			    {
-				    int tilesLeft = numOfTiles - tilesProcessed;
-				    int tilesInThisBuffer = Math.Min( tilesLeft, MaxTilesPerDrawBuffer );
+            public CCTileMapDrawBufferManager(int mapCols, int mapRows)
+            {
+                Buffers = new List<CCTileMapVertAndIndexBuffer>();
+                this.mapCols = mapCols;
+                this.mapRows = mapRows;
 
-				    CreateDrawBuffer( tilesInThisBuffer, tilesProcessed );
+                // Create the appropriate number of buffers to hold the map.
+                int numOfTiles = mapCols * mapRows;
+                int tilesProcessed = 0;
+                while ( tilesProcessed < numOfTiles )
+                {
+                    int tilesLeft = numOfTiles - tilesProcessed;
+                    int tilesInThisBuffer = Math.Min( tilesLeft, MaxTilesPerDrawBuffer );
 
-				    tilesProcessed += tilesInThisBuffer;
-			    }
-		    }
+                    CreateDrawBuffer( tilesInThisBuffer, tilesProcessed );
 
-		    public VertexAndIndexBuffer GetDrawBufferAtIndex(int tileIndex)
-		    {
-			    foreach ( var buffer in Buffers )
-			    {
-				    if ( tileIndex >= buffer.TileStartIndex && tileIndex <= buffer.TileEndIndex )
-					    return buffer;
-			    }
-			    throw new Exception("No DrawBuffer found for specified tile index");
-		    }
+                    tilesProcessed += tilesInThisBuffer;
+                }
+            }
 
-		    public void UpdateBuffers()
-		    {
-			    foreach ( var buffer in Buffers )
-			    {
-				    int numOfQuads = buffer.NumberOfTiles * NumOfCornersPerQuad;
-				    buffer.QuadsVertexBuffer.UpdateBuffer(0, numOfQuads);
-					buffer.IndexBuffer.UpdateBuffer(0, buffer.IndexBuffer.Count);
-			    }
-		    }
+            public CCTileMapVertAndIndexBuffer GetDrawBufferAtIndex(int tileIndex)
+            {
+                foreach (var buffer in Buffers)
+                {
+                    if(tileIndex >= buffer.TileStartIndex && tileIndex <= buffer.TileEndIndex)
+                        return buffer;
+                }
+                throw new Exception(String.Format("No DrawBuffer found for specified tile index: {0}", tileIndex));
+            }
 
-		    public void Dispose()
-		    {
-			    while ( Buffers.Count > 0 )
-			    {
-					VertexAndIndexBuffer buffer = Buffers[0];
-					Buffers.RemoveAt(0);
-					buffer.QuadsVertexBuffer.Dispose();
-					buffer.IndexBuffer.Dispose();
-					buffer.QuadsVertexBuffer = null;
-					buffer.IndexBuffer = null;
-			    }
-			}
+            public void UpdateBuffers()
+            {
+                foreach(var buffer in Buffers)
+                {
+                    int numOfQuads = buffer.NumberOfTiles * NumOfCornersPerQuad;
+                    buffer.QuadsVertexBuffer.UpdateBuffer(0, numOfQuads);
+                    buffer.IndexBuffer.UpdateBuffer(0, buffer.IndexBuffer.Count);
+                }
+            }
 
-		    void CreateDrawBuffer(int tileCount, int firstTileId)
-		    {
-			    int quadsInThisBuffer = tileCount * NumOfCornersPerQuad;
-			    int verticesInThisBuffer = tileCount * NumOfVerticesPerQuad;
+            ~CCTileMapDrawBufferManager() 
+            {
+                Dispose(false);
+            }
 
-			    var buffer = new VertexAndIndexBuffer
-			    {
-				    TileStartIndex    = firstTileId,
-				    TileEndIndex      = firstTileId + tileCount - 1,
-				    QuadsVertexBuffer = new CCQuadVertexBuffer( quadsInThisBuffer, CCBufferUsage.WriteOnly ),
-				    IndexBuffer       = new CCIndexBuffer<short>( verticesInThisBuffer, BufferUsage.WriteOnly )
-			    };
+            public void Dispose()
+            {
+                Dispose(true);
+                GC.SuppressFinalize(this);
+            }
 
-			    buffer.IndexBuffer.Count = verticesInThisBuffer;
+            protected virtual void Dispose(bool disposing)
+            {
+                if (disposing) 
+                {
+                    while (Buffers.Count > 0) 
+                    {
+                        CCTileMapVertAndIndexBuffer buffer = Buffers [0];
+                        Buffers.RemoveAt (0);
+                        buffer.QuadsVertexBuffer.Dispose ();
+                        buffer.IndexBuffer.Dispose ();
+                        buffer.QuadsVertexBuffer = null;
+                        buffer.IndexBuffer = null;
+                    }
+                }
+            }
 
-			    Buffers.Add(buffer);
-		    }
+            void CreateDrawBuffer(int tileCount, int firstTileId)
+            {
+                int quadsInThisBuffer = tileCount * NumOfCornersPerQuad;
+                int verticesInThisBuffer = tileCount * NumOfVerticesPerQuad;
 
-	    }
+                var buffer = new CCTileMapVertAndIndexBuffer
+                {
+                    TileStartIndex    = firstTileId,
+                    TileEndIndex      = firstTileId + tileCount - 1,
+                    QuadsVertexBuffer = new CCQuadVertexBuffer( quadsInThisBuffer, CCBufferUsage.WriteOnly ),
+                    IndexBuffer       = new CCIndexBuffer<short>( verticesInThisBuffer, BufferUsage.WriteOnly )
+                };
 
-	    private class VertexAndIndexBuffer
-	    {
-			public int TileStartIndex { get; set; }
-			public int TileEndIndex { get; set; }
-			public CCQuadVertexBuffer QuadsVertexBuffer { get; set; }
-			public CCIndexBuffer<short> IndexBuffer { get; set; }
+                buffer.IndexBuffer.Count = verticesInThisBuffer;
 
-			public int NumberOfTiles
-			{
-				get { return TileEndIndex - TileStartIndex; }
-			}
-		}
+                Buffers.Add(buffer);
+            }
 
-		#endregion
-	}
+        }
+
+        class CCTileMapVertAndIndexBuffer
+        {
+            public int TileStartIndex { get; set; }
+            public int TileEndIndex { get; set; }
+            public CCQuadVertexBuffer QuadsVertexBuffer { get; set; }
+            public CCIndexBuffer<short> IndexBuffer { get; set; }
+
+            public int NumberOfTiles
+            {
+                get { return TileEndIndex - TileStartIndex + 1; }
+            }
+        }
+
+        #endregion Internal draw buffer management
+    }
 }

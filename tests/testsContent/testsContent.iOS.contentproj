@@ -862,6 +862,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TileMaps\large_map.tmx">
+      <Name>staggered_test</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="TileMaps\tilemap_no_encoding.tmx">
       <Name>tilemap_no_encoding</Name>
       <Importer>TMXImporter</Importer>

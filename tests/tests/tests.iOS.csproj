@@ -1235,6 +1235,7 @@
     <Content Include="Content\TileMaps\orthogonal-test-multilayer.xnb" />
     <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
     <Content Include="Content\TileMaps\staggered_test.xnb" />
+    <Content Include="Content\TileMaps\large_map.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

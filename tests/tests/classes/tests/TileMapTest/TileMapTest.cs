@@ -1133,7 +1133,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 32;
+        static int MAX_LAYER = 33;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1265,6 +1265,8 @@ namespace tests
                     return new TMXMultiLayerTest();
                 case 31:
                     return new TMXStaggeredMapTest();
+                case 32:
+                    return new TMXLargeMapTest();
 #endif
             }
 
@@ -1393,6 +1395,18 @@ namespace tests
         public override string Title
         {
             get { return "TMX No Encoding"; }
+        }
+    }
+
+    public class TMXLargeMapTest : TileDemo
+    {
+        public TMXLargeMapTest() : base("TileMaps/large_map")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "TMX Large map"; }
         }
     }
 
