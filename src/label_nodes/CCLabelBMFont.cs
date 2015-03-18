@@ -21,6 +21,7 @@ namespace CocosSharp
         protected CCPoint ImageOffset { get; set; }
         protected CCSize labelDimensions;
         protected bool IsDirty { get; set; }
+        protected bool RecreateSprites { get; set; }
 
         protected bool isColorModifiedByOpacity = false;
 
@@ -37,7 +38,9 @@ namespace CocosSharp
 
         // Instance properties
 
-        protected int LineHeight { get; set; }
+        // 2015-03-06 Expose calculated values
+        public float LineHeight { get; internal set; }
+        public int LineCount { get; internal set; }
 
         public override CCPoint AnchorPoint
         {
@@ -56,7 +59,7 @@ namespace CocosSharp
         {
             set
             {
-                if (!value.Equals(base.ScaleX) || !value.Equals(base.ScaleY)) 
+                if (!value.Equals(base.ScaleX) || !value.Equals(base.ScaleY))
                 {
                     base.Scale = value;
                     IsDirty = true;
@@ -69,7 +72,7 @@ namespace CocosSharp
             get { return base.ScaleX; }
             set
             {
-                if (!value.Equals(base.ScaleX)) 
+                if (!value.Equals(base.ScaleX))
                 {
                     base.ScaleX = value;
                     IsDirty = true;
@@ -82,7 +85,7 @@ namespace CocosSharp
             get { return base.ScaleY; }
             set
             {
-                if (!value.Equals(base.ScaleY)) 
+                if (!value.Equals(base.ScaleY))
                 {
                     base.ScaleY = value;
                     IsDirty = true;
@@ -158,13 +161,12 @@ namespace CocosSharp
         public override CCSize ContentSize
         {
             get { return base.ContentSize; }
+
+            //[Obsolete("ContentSize is now read-only, use Dimensions instead.", true)]
             set
             {
-                if (ContentSize != value)
-                {
-                    base.ContentSize = value;
-                    IsDirty = true;
-                }
+                //Debug.Assert(false, "ContentSize is now read-only, use Dimensions instead.");
+                base.ContentSize = value;
             }
         }
 
@@ -215,13 +217,14 @@ namespace CocosSharp
 
         public virtual string Text
         {
-            get { return labelInitialText; }
+            get { return labelText; }
             set
             {
-                if (labelInitialText != value)
+                if (labelText != value)
                 {
-                    labelInitialText = value;
+                    labelText = value;
                     IsDirty = true;
+                    RecreateSprites = true;
                 }
             }
         }
@@ -261,7 +264,7 @@ namespace CocosSharp
         {
         }
 
-        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset) 
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset)
             : this(str, fntFile, width, alignment, imageOffset, null)
         {
         }
@@ -271,19 +274,19 @@ namespace CocosSharp
         {
         }
 
-        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+        public CCLabelBMFont(string str, string fntFile, float width, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
             CCPoint imageOffset, CCTexture2D texture)
             : this(str, fntFile, new CCSize(width, 0), hAlignment, vAlignment, imageOffset, texture)
         {
         }
 
-        public CCLabelBMFont(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+        public CCLabelBMFont(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
             CCPoint imageOffset, CCTexture2D texture)
         {
             InitCCLabelBMFont(str, fntFile, dimensions, hAlignment, vAlignment, imageOffset, texture);
         }
 
-        protected void InitCCLabelBMFont(string theString, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+        protected void InitCCLabelBMFont(string theString, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment,
             CCPoint imageOffset, CCTexture2D texture)
         {
             Debug.Assert(FontConfiguration == null, "re-init is no longer supported");
@@ -349,14 +352,15 @@ namespace CocosSharp
 
             IsOpacityCascaded = true;
 
-            ContentSize = CCSize.Zero;
+            // Set the value in the base -- this is now read-only for CCLabelBMFont
+            base.ContentSize = CCSize.Zero;
 
             IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = CCPoint.AnchorMiddle;
 
             ImageOffset = imageOffset;
 
-            SetString(theString, true);
+            labelText = theString;      // At this point IsDirty RecreateSprites will be true so that the next call of Draw() will call CreateFontChars()
         }
 
         #endregion Constructors
@@ -427,485 +431,417 @@ namespace CocosSharp
             return ret;
         }
 
+        /// <summary>
+        /// This function creates the label by creating a sprite for each character.
+        /// 
+        /// NOTE: rewritten 3/15/2015 (TOP 10)
+        ///     - #1 optomized so that there aren't 4+ interations through the string
+        ///     - #2 optomized to remove O(n) lookups for every character (4+ times) - e.g. CCBMFontConfiguration.CharacterSet (List<>)
+        ///     - #3 bug fix to remove crashing bugs because of trying to use this[i] == null
+        ///     - #4 bug fix to properly align horizontally -- wasn't calculating real character position
+        ///     - #5 rewrote in a more readable way, forever removed skip, previousSkip, etc.
+        ///     - #6 bug fix to properly handle whitespace at beginning and end of lines when doing horizontal alignment
+        ///     - #7 returning the correct ContentSize once calculated
+        ///     - #8 removed the second copy of labelText so there is now only 1
+        ///     - #9 now work with (and support) AnchorPoint
+        ///     - #10 now exposing ContentSize and LineHeight as return values after everything is calculated
+        ///     
+        ///     - and many more things which I have forgotten
+        /// 
+        /// NOTE2: n-spaces at the end of the line are basically ignored/removed if they take offset past the end of a line that needs to be split
+        /// 
+        /// NOTE3: There are some special cases which aren't handled consistently like what happens if the string starts with a bunch of blank spaces?
+        ///        It will different than if there are a string of blank spaces at the end of a line that is automatically broken.  Maybe this is as expected?
+        /// 
+        /// QUESTION: Would it make sense to Trim() the label before using or do you want to be able to add blank lines at the end?
+        ///           For now you can add blank lines anywhere.
+        /// </summary>
         public void CreateFontChars()
         {
-
-            int nextFontPositionX = 0;
-            int nextFontPositionY = 0;
-            char prev = (char) 255;
-            int kerningAmount = 0;
-
-            CCSize tmpSize = CCSize.Zero;
-
-            int longestLine = 0;
-            int totalHeight = 0;
-
-            int quantityOfLines = 1;
-
-            if (String.IsNullOrEmpty(labelText))
+            // Clear out all the sprites if (for example) we are changing the string
+            if (RecreateSprites)
             {
-                return; 
+                RemoveAllChildren(true);
+                RecreateSprites = false;
             }
 
-            int stringLen = labelText.Length;
+            // Values that we will calculate
+            base.ContentSize = CCSize.Zero;
 
-            var charSet = FontConfiguration.CharacterSet;
-            if (charSet.Count == 0)
-            {
-                throw (new InvalidOperationException(
-                    "Can not compute the size of the font because the character set is empty."));
-            }
-
-            for (int i = 0; i < stringLen - 1; ++i)
-            {
-                if (labelText[i] == '\n')
-                {
-                    quantityOfLines++;
-                }
-            }
-
-            LineHeight = FontConfiguration.CommonHeight;
-
-            totalHeight = LineHeight * quantityOfLines;
-            nextFontPositionY = 0 -
-                (LineHeight - LineHeight * quantityOfLines);
-
-            CCBMFontConfiguration.CCBMGlyphDef fontDef = null;
-            CCRect fontCharTextureRect;
-            CCSize fontCharContentSize;
-
-            for (int i = 0; i < stringLen; i++)
-            {
-                char c = labelText[i];
-
-                if (c == '\n')
-                {
-                    nextFontPositionX = 0;
-                    nextFontPositionY -= LineHeight;
-                    continue;
-                }
-
-                if (charSet.IndexOf(c) == -1)
-                {
-                    CCLog.Log("CocosSharp: CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
-                        (int) c);
-                    continue;
-                }
-
-                kerningAmount = this.KerningAmountForFirst(prev, c);
-
-                // unichar is a short, and an int is needed on HASH_FIND_INT
-                if (!FontConfiguration.Glyphs.TryGetValue(c, out fontDef))
-                {
-                    CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int) c);
-                    continue;
-                }
-
-                fontCharTextureRect = fontDef.Subrect;
-                fontCharTextureRect.Origin.X += ImageOffset.X;
-                fontCharTextureRect.Origin.Y += ImageOffset.Y;
-
-                fontCharContentSize = fontCharTextureRect.Size / DefaultTexelToContentSizeRatios;
-
-                CCSprite fontChar;
-
-                //bool hasSprite = true;
-                fontChar = (CCSprite) (this[i]);
-                if (fontChar != null)
-                {
-                    // Reusing previous Sprite
-                    fontChar.Visible = true;
-
-                    // updating previous sprite
-                    fontChar.IsTextureRectRotated = false;
-                    fontChar.ContentSize = fontCharContentSize;
-                    fontChar.TextureRectInPixels = fontCharTextureRect;
-
-                }
-                else
-                {
-                    // New Sprite ? Set correct color, opacity, etc...
-                    //if( false )
-                    //{
-                    //    /* WIP: Doesn't support many features yet.
-                    //     But this code is super fast. It doesn't create any sprite.
-                    //     Ideal for big labels.
-                    //     */
-                    //    fontChar = m_pReusedChar;
-                    //    fontChar.BatchNode = null;
-                    //    hasSprite = false;
-                    //}
-                    //else
-                    {
-                        fontChar = new CCSprite(TextureAtlas.Texture, fontCharTextureRect);
-                        fontChar.ContentSize = fontCharContentSize;
-                        AddChild(fontChar, i, i);
-                    }
-
-                    // Apply label properties
-                    fontChar.IsColorModifiedByOpacity = IsColorModifiedByOpacity;
-
-                    // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
-                    fontChar.UpdateDisplayedColor(DisplayedColor);
-                    fontChar.UpdateDisplayedOpacity(DisplayedOpacity);
-                }
-
-                // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
-                int yOffset = FontConfiguration.CommonHeight - fontDef.YOffset;
-
-                var fontPos =
-                    new CCPoint(
-                        (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
-                        (float) nextFontPositionY + yOffset - fontCharTextureRect.Size.Height * 0.5f);
-
-                fontChar.Position = fontPos;
-
-                // update kerning
-                nextFontPositionX += fontDef.XAdvance + kerningAmount;
-                prev = c;
-
-                if (longestLine < nextFontPositionX)
-                {
-                    longestLine = nextFontPositionX;
-                }
-            }
-
-            // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
-            // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
-            // box
-            if (fontDef.XAdvance < fontDef.Subrect.Size.Width)
-            {
-                tmpSize.Width = longestLine + fontDef.Subrect.Size.Width - fontDef.XAdvance;
-            }
-            else
-            {
-                tmpSize.Width = longestLine;
-            }
-
-            tmpSize.Height = totalHeight;
-            var tmpDimensions = labelDimensions;
-
-            labelDimensions = new CCSize(
-                labelDimensions.Width > 0 ? labelDimensions.Width : tmpSize.Width,
-                labelDimensions.Height > 0 ? labelDimensions.Height : tmpSize.Height
-            );
-
-            ContentSize = labelDimensions;
-            labelDimensions = tmpDimensions;
-        }
-
-        public virtual void SetString(string newString, bool needUpdateLabel)
-        {
-            if (!needUpdateLabel)
-            {
-                labelText = newString;
-            }
-            else
-            {
-                labelInitialText = newString;
-            }
-
-            UpdateString(needUpdateLabel);
-        }
-
-        private void UpdateString(bool needUpdateLabel)
-        {
-            if (Children != null && Children.Count != 0)
-            {
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    elements[i].Visible = false;
-                }
-            }
-
-            CreateFontChars();
-
-            if (needUpdateLabel)
-            {
-                UpdateLabel();
-            }
-        }
-
-        protected void UpdateLabel()
-        {
-            SetString(labelInitialText, false);
-
+            // Quit if there's nothing to build
             if (string.IsNullOrEmpty(labelText))
             {
+                LineHeight = LineCount = 0;
                 return;
             }
 
-            if (labelDimensions.Width > 0)
+            // Quit if no characters have been created
+            if (FontConfiguration.Glyphs.Count <= 0)
             {
-                // Step 1: Make multiline
-                string str_whole = labelText;
-                int stringLength = str_whole.Length;
-                var multiline_string = new StringBuilder(stringLength);
-                var last_word = new StringBuilder(stringLength);
+                throw (new InvalidOperationException("Can not compute the size of the font because the character set is empty."));
+            }
 
-                int line = 1, i = 0;
-                bool start_line = false, start_word = false;
-                float startOfLine = -1, startOfWord = -1;
-                int skip = 0;
+            // General calculations
+            LineHeight = FontConfiguration.CommonHeight;
+            LineCount = 1;
+            float fLongestLine = 0;
+            float fMaxWidth = Dimensions.Width > 0 ? Dimensions.Width : float.MaxValue;
+            Dictionary<int, int> phashLastIndex = new Dictionary<int, int>();
 
-                CCRawList<CCNode> children = Children;
-                for (int j = 0; j < children.Count; j++)
+            // PASS#1 - go through each character of the label and create sprites for each character, splitting the line if necessary
+            {
+                CCPoint ptCurrent = CCPoint.Zero;
+                char chPrev = (char)255;
+                int nFirstIndexOfCurrentWord = -1;        // The index of first printable character of the current word (this is where we might possibly break and move to next line)
+                int nLastIndexOfLastWord = -1;            // The index of the last printable (non-whitespace) character of the previous word (this might become the end of the line)
+                int nLastIndexOfCurrentWord = -1;         // The last index of a printable character -- this is not simply i-1 because of NULLs in strings with characters that can't be displayed
+                CCSprite pSpriteForChar = null;
+                CCBMFontConfiguration.CCBMGlyphDef pCurrentGlyphDef = null;
+
+                for (int i = 0; i <= labelText.Length; i++)  // NOTE: string.Length is O(1) so there's no need to cache the value - see http://stackoverflow.com/questions/2836223/what-order-of-time-does-the-net-system-string-length-property-take
                 {
-                    CCSprite characterSprite;
-                    int justSkipped = 0;
-
-                    while ((characterSprite = (CCSprite) this[(j + skip + justSkipped)]) == null)
+                    // Special case when we're done -- put here because we don't have access to 'i' outside the loop // and don't want to count blanks at the end of the line
+                    if (i == labelText.Length)
                     {
-                        justSkipped++;
-                    }
+                        // EOL#1 - used up all the characters
+                        if (nLastIndexOfCurrentWord >= 0)
+                        {
+                            // Figure out the last non-whitespace character considering that we might have ended with a bunch of spaces
+                            int nIndexTmp = Math.Max(nLastIndexOfCurrentWord, nLastIndexOfLastWord);
 
-                    skip += justSkipped;
+                            phashLastIndex[LineCount - 1] = nIndexTmp;
 
-                    if (!characterSprite.Visible)
-                    {
-                        continue;
-                    }
-
-                    if (i >= stringLength)
-                    {
+                            // Possibly bump up the longest line [EOL#1]
+                            if (nIndexTmp >= 0 && this[nIndexTmp] != null && this[nIndexTmp].BoundingBox.MaxX > fLongestLine)
+                                fLongestLine = this[nIndexTmp].BoundingBox.MaxX;
+                        }
                         break;
                     }
 
-                    char character = str_whole[i];
+                    char chCurrent = labelText[i];
 
-                    if (!start_word)
+                    // Skip to the next line?     [EOL#2 - hard carriage return]
+                    if (chCurrent == '\n')
                     {
-                        startOfWord = GetLetterPosXLeft(characterSprite);
-                        start_word = true;
-                    }
-                    if (!start_line)
-                    {
-                        startOfLine = startOfWord;
-                        start_line = true;
-                    }
+                        // Figure out the last non-whitespace character considering that we might have ended with a bunch of spaces
+                        int nIndexTmp = Math.Max(nLastIndexOfCurrentWord, nLastIndexOfLastWord);
 
-                    // Newline.
-                    if (character == '\n')
-                    {
-                        int len = last_word.Length;
-                        while (len > 0 && Char.IsWhiteSpace(last_word[len - 1]))
+                        // Store line length
+                        phashLastIndex[LineCount - 1] = nIndexTmp;    // NOTE: might be -1 for a line of all whitespace
+
+                        // Possibly bump up the longest line [EOL#2]
+                        if (nIndexTmp >= 0 && this[nIndexTmp] != null && this[nIndexTmp].BoundingBox.MaxX > fLongestLine)
+                            fLongestLine = this[nIndexTmp].BoundingBox.MaxX;
+
+                        // If this isn't the end of the entire string then add to the line count
+                        if (i < labelText.Length - 1)
                         {
-                            len--;
-                            last_word.Remove(len, 1);
+                            LineCount++;
+
+                            // Move the pointers on to the next line and reset x/prev
+                            ptCurrent.Y -= LineHeight;
+                            ptCurrent.X = 0;
+                            chPrev = (char)255;
+                            nFirstIndexOfCurrentWord = nLastIndexOfCurrentWord = -1;  // Haven't found the beginning or end of the next word yet
                         }
-
-                        multiline_string.Append(last_word);
-                        multiline_string.Append('\n');
-
-                        last_word.Clear();
-
-                        start_word = false;
-                        start_line = false;
-                        startOfWord = -1;
-                        startOfLine = -1;
-                        i += justSkipped;
-                        line++;
-
-                        if (i >= stringLength)
+                        // No need to loop through again we know that we're done
+                        else
                             break;
 
-                        character = str_whole[i];
-
-                        if (startOfWord == 0)
-                        {
-                            startOfWord = GetLetterPosXLeft(characterSprite);
-                            start_word = true;
-                        }
-                        if (startOfLine == 0)
-                        {
-                            startOfLine = startOfWord;
-                            start_line = true;
-                        }
-                    }
-
-                    // Whitespace.
-                    if (Char.IsWhiteSpace(character))
-                    {
-                        last_word.Append(character);
-                        multiline_string.Append(last_word);
-                        last_word.Clear();
-                        start_word = false;
-                        startOfWord = -1;
-                        i++;
                         continue;
                     }
 
-                    // Out of bounds.
-                    if (GetLetterPosXRight(characterSprite) - startOfLine > labelDimensions.Width)
+                    // Skip if we don't have a way of drawing this character
+                    if (!FontConfiguration.Glyphs.TryGetValue(chCurrent, out pCurrentGlyphDef))
                     {
-                        if (!lineBreakWithoutSpaces)
-                        {
-                            last_word.Append(character);
-
-                            int len = multiline_string.Length;
-                            while (len > 0 && Char.IsWhiteSpace(multiline_string[len - 1]))
-                            {
-                                len--;
-                                multiline_string.Remove(len, 1);
-                            }
-
-                            if (multiline_string.Length > 0)
-                            {
-                                multiline_string.Append('\n');
-                            }
-
-                            line++;
-                            start_line = false;
-                            startOfLine = -1;
-                            i++;
-                        }
-                        else
-                        {
-                            int len = last_word.Length;
-                            while (len > 0 && Char.IsWhiteSpace(last_word[len - 1]))
-                            {
-                                len--;
-                                last_word.Remove(len, 1);
-                            }
-
-                            multiline_string.Append(last_word);
-                            multiline_string.Append('\n');
-
-                            last_word.Clear();
-
-                            start_word = false;
-                            start_line = false;
-                            startOfWord = -1;
-                            startOfLine = -1;
-                            line++;
-
-                            if (i >= stringLength)
-                                break;
-
-                            if (startOfWord == 0)
-                            {
-                                startOfWord = GetLetterPosXLeft(characterSprite);
-                                start_word = true;
-                            }
-                            if (startOfLine == 0)
-                            {
-                                startOfLine = startOfWord;
-                                start_line = true;
-                            }
-
-                            j--;
-                        }
-
+                        CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int)chCurrent);
                         continue;
                     }
+
+                    // Make some calculations for this character to be
+                    int nKerningAmount = this.KerningAmountForFirst(chPrev, chCurrent);
+                    CCRect rectCharInTexture = pCurrentGlyphDef.Subrect;   // << the bitmap rect for this chacter from the sprite sheet
+                    rectCharInTexture.Origin.X += ImageOffset.X;
+                    rectCharInTexture.Origin.Y += ImageOffset.Y;
+                    CCSize rectSpriteContentSize = rectCharInTexture.Size / DefaultTexelToContentSizeRatios;
+
+                    // End the previous word if this is a whitespace character
+                    if (char.IsWhiteSpace(chCurrent))
+                    {
+                        // If a word was previously started then we've found the end
+                        if (nLastIndexOfCurrentWord >= 0)
+                            nLastIndexOfLastWord = nLastIndexOfCurrentWord;
+
+                        // Either way -- this character does not begin (or end) a word -- i.e. no current word
+                        nFirstIndexOfCurrentWord = nLastIndexOfCurrentWord = -1;
+                    }
+                    // OTHERWISE move on to add some non-whitespace character
                     else
                     {
-                        // Character is normal.
-                        last_word.Append(character);
-                        i++;
-                        continue;
-                    }
-                }
+                        nLastIndexOfCurrentWord = i;
 
-                multiline_string.Append(last_word);
+                        // Is this is the beginning of the next word (if not set yet)
+                        if (nFirstIndexOfCurrentWord < 0)
+                            nFirstIndexOfCurrentWord = i;
 
-                SetString(multiline_string.ToString(), false);
-            }
-
-            // Step 2: Make alignment
-            if (horzAlignment != CCTextAlignment.Left)
-            {
-                int i = 0;
-
-                int lineNumber = 0;
-                int str_len = labelText.Length;
-                var last_line = new CCRawList<char>();
-                // If label dim is 0, then we need to use the content size width instead
-                float maxLabelWidth = labelDimensions.Width > 0 ? labelDimensions.Width : ContentSize.Width;
-                for (int ctr = 0; ctr <= str_len; ++ctr)
-                {
-                    if (ctr == str_len || labelText[ctr] == '\n')
-                    {
-                        float lineWidth = 0.0f;
-                        int line_length = last_line.Count;
-                        // if last line is empty we must just increase lineNumber and work with next line
-                        if (line_length == 0)
+                        // Have we already created this sprite -- if so, update size and position
+                        pSpriteForChar = (CCSprite)(this[i]);
+                        if (pSpriteForChar != null)
                         {
-                            lineNumber++;
-                            continue;
+                            // Reusing previous Sprite
+                            pSpriteForChar.Visible = true;
+
+                            // updating previous sprite
+                            pSpriteForChar.IsTextureRectRotated = false;
+                            pSpriteForChar.ContentSize = rectSpriteContentSize;
+                            pSpriteForChar.TextureRectInPixels = rectCharInTexture;
                         }
-                        int index = i + line_length - 1 + lineNumber;
-                        if (index < 0) continue;
-
-                        var lastChar = (CCSprite) this[index];
-                        if (lastChar == null)
-                            continue;
-
-                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width;
-
-                        var shift = maxLabelWidth - lineWidth;
-                        if (horzAlignment == CCTextAlignment.Center)
-                                shift /= 2;
-
-                        for (int j = 0; j < line_length; j++)
+                        // Otherwise create a new one
+                        else
                         {
-                            index = i + j + lineNumber;
-                            if (index < 0) continue;
+                            pSpriteForChar = new CCSprite(TextureAtlas.Texture, rectCharInTexture); // NOTE: implies AnchorPoint = CCPoint.AnchorMiddle because of CCSprint.InitWithTexture()
+                            pSpriteForChar.ContentSize = rectSpriteContentSize;
+                            AddChild(pSpriteForChar, ZOrder, i);
 
-                            var characterSprite = this[index];
-                            characterSprite.PositionX += shift;
+                            // Apply label properties
+                            pSpriteForChar.IsColorModifiedByOpacity = IsColorModifiedByOpacity;
+
+                            // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
+                            pSpriteForChar.UpdateDisplayedColor(DisplayedColor);
+                            pSpriteForChar.UpdateDisplayedOpacity(DisplayedOpacity);
                         }
 
-                        i += line_length;
-                        lineNumber++;
+                        // Don't go past the end of the line [EOL#3 - break the line in order to fit Dimension.Width]
+                        if (ptCurrent.X + pCurrentGlyphDef.XOffset + pCurrentGlyphDef.Subrect.Size.Width + nKerningAmount > fMaxWidth)
+                        {
+                            // Move onto the next line
+                            ptCurrent.Y -= LineHeight;
 
-                        last_line.Clear();
-                        continue;
+                            // If breaking in the middle of a word OR if this is the only word on the line
+                            if (LineBreakWithoutSpace || nLastIndexOfLastWord < 0)
+                            {
+                                // We're now starting at the beginning of the line
+                                ptCurrent.X = 0;
+
+                                // Nothing previous to use for calculating kerning
+                                nKerningAmount = this.KerningAmountForFirst(255, chCurrent);
+
+                                // Special case of calculating the last index when the character that will bump us past the length is proceeded by whitespace.
+                                int nIndexTmp = i - 1;
+                                if (this[nIndexTmp] == null)
+                                    nIndexTmp = nLastIndexOfLastWord;
+
+                                // Store the index where the previous line ended -- it will break just before this character because we break in the middle of the word
+                                //      NOTE: this[i-1] could possibly represent whitespace
+                                phashLastIndex[LineCount - 1] = nIndexTmp;
+
+                                // Possibly bump up the longest line [EOL#3a]
+                                if (nIndexTmp >= 0 && this[nIndexTmp] != null && this[nIndexTmp].BoundingBox.MaxX > fLongestLine)
+                                    fLongestLine = this[nIndexTmp].BoundingBox.MaxX;
+
+                                // nLastIndexOfCurrentWord stays the same but this is now the start of a the current word as well
+                                nFirstIndexOfCurrentWord = i;
+                            }
+                            // Otherwise we will need to move the remains of the current word down (if breaking whole words)
+                            else
+                            {
+                                // Save the kerning amount that was applied to the last character which we're moving down
+                                // so that this new character which is added to the end of the old word still spaces correctly with
+                                // the other characters in the word -- i.e. no micro-gaps
+                                float fLastOverlapTmp = 0f;
+                                if (this[i - 1] != null)
+                                    fLastOverlapTmp = ptCurrent.X - this[i - 1].BoundingBox.MaxX;
+
+                                // We're now starting at the beginning of the line
+                                ptCurrent.X = 0;
+
+                                // Move the currently started word down
+                                RepositionSprites(nFirstIndexOfCurrentWord, i - nFirstIndexOfCurrentWord, ref ptCurrent);
+
+                                ptCurrent.X += fLastOverlapTmp;
+
+                                // This line ended with the beginning of the last word
+                                //    NOTE: that there must be a last word or we would have previously split the full word
+                                phashLastIndex[LineCount - 1] = nLastIndexOfLastWord;
+
+                                // Possibly bump up the longest line [EOL#3b]
+                                if (nLastIndexOfLastWord >= 0 && this[nLastIndexOfLastWord] != null && this[nLastIndexOfLastWord].BoundingBox.MaxX > fLongestLine)
+                                    fLongestLine = this[nLastIndexOfLastWord].BoundingBox.MaxX;
+                            }
+
+                            // As of now there is no last word because we're on a new line
+                            nLastIndexOfLastWord = -1;
+                            LineCount++;
+                        }
+
+                        pSpriteForChar.Position =
+                            new CCPoint(
+                                (float)ptCurrent.X + pCurrentGlyphDef.XOffset + (pCurrentGlyphDef.Subrect.Size.Width * 0.5f) + nKerningAmount,
+                                (float)ptCurrent.Y + pCurrentGlyphDef.YOffset);
                     }
 
-                    last_line.Add(labelText[ctr]);
+                    // Advance the current position, applying kerning
+                    ptCurrent.X += pCurrentGlyphDef.XAdvance + nKerningAmount;
+                    chPrev = chCurrent;
                 }
+
+                // NOTE: This causes all the children to be touched and called with ParentUpdatedTransform() from UpdateTransform().
+                //       If this is not necessary then there should be a direct method to change the contentSize
+                base.ContentSize = new CCSize(fLongestLine, LineCount * LineHeight);
             }
 
-            if (vertAlignment != CCVerticalTextAlignment.Bottom && labelDimensions.Height > 0)
+            // PASS #2 - now go through all the characters and align (horizontally and vertically)
             {
-                int lineNumber = 1;
-                int str_len = labelText.Length;
-                for (int ctr = 0; ctr < str_len; ++ctr)
+                // Anchor shift plus vertical alignment shift
+                CCPoint ptShiftAnchorPlusVertical = AnchorPoint * new CCPoint(ContentSize.Width - Dimensions.Width, ContentSize.Height - Dimensions.Height);
+                
+                // Always move down a half line to make up for characters being center anchored -- this normalizes everything to ZERO
+                ptShiftAnchorPlusVertical.Y -= (LineHeight / 2);
+
+                // Vertical shift calculation
+                if (vertAlignment == CCVerticalTextAlignment.Top)
                 {
-                    if (labelText[ctr] == '\n')
+                    // Move to the top of the rectangle and subtract one half line because we want the line inside
+                    ptShiftAnchorPlusVertical.Y += Dimensions.Height;
+                }
+                else if (vertAlignment == CCVerticalTextAlignment.Center)
+                {
+                    // Center
+                    ptShiftAnchorPlusVertical.Y += (Dimensions.Height + ContentSize.Height) / 2f;
+                }
+                else // if (vertAlignment == CCVerticalTextAlignment.Bottom)
+                {
+                    // Push the text up into the box
+                    ptShiftAnchorPlusVertical.Y += ContentSize.Height;
+                }
+
+                int nFirstIndexOfLine = 0;
+
+                // Go through each line
+                for (int i = 0; i < LineCount; i++)
+                {
+                    int nLastIndexOfLine = phashLastIndex[i];
+
+                    // Skip empty lines
+                    if (nLastIndexOfLine < 0)
+                        continue;
+
+                    // Calculate the width of this line and the amount to shift (if necessary)
+                    // by using the bounding box of the last valid (non-blank) character on the line
+                    CCSprite pSpriteTmp;
+                    for (int j = nLastIndexOfLine; (pSpriteTmp = this[j] as CCSprite) == null && j >= nFirstIndexOfLine; j--) ;
+                    
+                    // Move along if this line contains no characters
+                    if (pSpriteTmp == null)
+                        continue;
+
+                    float fLineWidth = pSpriteTmp.BoundingBox.MaxX;
+
+                    CCPoint ptShift = ptShiftAnchorPlusVertical;
+
+                    // Horizontal shift calculation for this line
+                    if (horzAlignment == CCTextAlignment.Right)
+                        ptShift.X += Dimensions.Width - fLineWidth;
+                    else if (horzAlignment == CCTextAlignment.Center)
+                        ptShift.X += (Dimensions.Width - fLineWidth) / 2f;
+
+                    // Finally go through each character in this line and shift things as appropriate
+                    for (int j = nFirstIndexOfLine; j <= nLastIndexOfLine; j++)
                     {
-                        lineNumber++;
+                        pSpriteTmp = this[j] as CCSprite;
+                        if (pSpriteTmp != null)
+                            pSpriteTmp.Position += ptShift;
                     }
-                }
 
-                float yOffset = labelDimensions.Height - FontConfiguration.CommonHeight * lineNumber;
-
-                if (vertAlignment == CCVerticalTextAlignment.Center)
-                {
-                    yOffset /= 2f;
-                }
-
-                for (int i = 0; i < str_len; i++)
-                {
-                    var characterSprite = this[i] as CCSprite;
-                    if (characterSprite != null && characterSprite.Visible)
-                        characterSprite.PositionY += yOffset;
+                    nFirstIndexOfLine = nLastIndexOfLine + 1;
                 }
             }
         }
 
-        private float GetLetterPosXLeft(CCSprite sp)
+        /// <summary>
+        /// Helper function of CreateFontChars -- moves sprites around like to the next line.
+        /// </summary>
+        /// <param name="nStartIndex"></param>
+        /// <param name="nCount"></param>
+        /// <param name="ptCurrent"></param>
+        private void RepositionSprites(int nStartIndex, int nCount, ref CCPoint ptCurrent)
         {
-            return sp.Position.X * ScaleX;
+            float fNextOverlapX = 0f;
+            for (int i = nStartIndex; i < nStartIndex + nCount; i++)
+            {
+                CCSprite pSpriteTmp = (CCSprite)(this[i]);
+                if (pSpriteTmp != null)
+                {
+                    // Calculate and store any sprite position overlap so that we don't lose it when moving the letters
+                    if (i < nStartIndex + nCount - 1 && this[i + 1] != null)
+                    {
+                        CCSprite pSpriteTmpNext = (CCSprite)(this[i + 1]);
+                        fNextOverlapX = pSpriteTmpNext.BoundingBox.MinX - pSpriteTmp.BoundingBox.MaxX;
+                    }
+                    // NOTE that we leave it 0 on the last character because this is added in the main loop of CreateFontChars()
+                    else
+                        fNextOverlapX = 0f;
+
+                    pSpriteTmp.PositionX = ptCurrent.X + (pSpriteTmp.ContentSize.Width / 2f);
+                    pSpriteTmp.PositionY = ptCurrent.Y;
+
+                    ptCurrent.X += pSpriteTmp.ContentSize.Width + fNextOverlapX;
+                }
+            }
         }
 
-        private float GetLetterPosXRight(CCSprite sp)
+        public virtual void SetString(string newString, bool updateLabel)
         {
-            return (sp.Position.X + sp.ContentSize.Width) * ScaleX;
+            this.Text = newString;
+
+            // Force a redraw now?
+            if (updateLabel)
+                this.Draw();
         }
 
+        /// <summary>
+        /// UpdateLabel() runs after CreateFontChars() has created all the child sprites that represent
+        /// each character.  [CreateFontChars() is PASS #1]
+        /// 
+        /// [PASS #2] UpdateLable() splits lines when they are too long for the supplied Dimension.
+        ///              *** NOTE: this pass could have been done when the characters were created in CreateFontChars()
+        ///                 
+        /// [PASS #3] UpdateLabel() then optionally nudges the characters along to preform a left or right horizontal alignment.
+        /// 
+        /// [PASS #4] UpdateLabel() then optionally nudges the lines up and/or down to preform a top or bottom vertical alignment.
+        /// 
+        /// 2015-03-15 Ultimately I just threw this function out.
+        /// </summary>
+        //protected void UpdateLabel()
+        //{
+        //    // NOTE: SetString() was likely called by the thread that got us here but with a true value
+        //    //       SetString(true) -> UpdateString(true) -> CreateFontChars() -> UpdateLabel()
+        //    SetString(labelInitialText, false);
+
+        //    return;
+        //}
+
+        // These functions didn't work in every case, I tried to fix for the cases that I was seeing but it's best not to use.
+
+        //// 2015-03-15 BUG FIX: this function doesn't give the correct value when AnchorPoint is {0.5, 0.5} because sp.Position.X is in the middle of the sprite
+        //private float GetLetterPosXLeft(CCSprite sp)
+        //{
+        //    // 2015-03-12 removed because it doesn't properly use the anchor which always seems to be set at AnchorPointMiddle (0.5, 0.5)
+        //    //return sp.Position.X * ScaleX;
+
+        //    Debug.Assert(sp.AnchorPoint == CCPoint.AnchorMiddle, "ERROR - expected anchor point to always be int the middle");
+        //    return (sp.Position.X - (sp.ContentSize.Width / 2f)) * ScaleX;
+        //}
+
+        //// 2015-03-15 BUG FIX: this function doesn't give the correct value when AnchorPoint is {0.5, 0.5} because sp.Position.X is in the middle of the sprite
+        //private float GetLetterPosXRight(CCSprite sp)
+        //{
+        //    // 2015-03-12 removed because it doesn't properly use the anchor which always seems to be set at AnchorPointMiddle (0.5, 0.5)
+        //    //return (sp.Position.X + sp.ContentSize.Width) * ScaleX;
+
+        //    Debug.Assert(sp.AnchorPoint == CCPoint.AnchorMiddle, "ERROR - expected anchor point to always be int the middle");
+        //    return (sp.Position.X + (sp.ContentSize.Width / 2f)) * ScaleX;
+        //}
 
         private static CCBMFontConfiguration FNTConfigLoadFile(string file)
         {
@@ -922,9 +858,9 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            if (IsDirty)
+            if (IsDirty || RecreateSprites)
             {
-                UpdateLabel();
+                CreateFontChars();
                 IsDirty = false;
             }
             base.Draw();
