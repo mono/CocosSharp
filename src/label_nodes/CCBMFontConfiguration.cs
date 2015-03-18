@@ -35,7 +35,9 @@ namespace CocosSharp
 
         // Changed from List to Dictionary (i.e. hash table) which uses twice as much space but it MUCH faster -- O(1) vs. O(n)
         // then removed completely because Glyphs is exactly that and CharacterSet is actually redundant.
-        //public Dictionary<int,char> CharacterSet { get; set; }
+        // We need to keep this here so loading .xnb files will work correctly
+        [ContentSerializer]
+        internal List<int> CharacterSet { get; set; }
 
         #region Constructors
 
