@@ -364,9 +364,6 @@
     <Compile Include="classes\tests\LabelTest\Atlas1.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas3.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="classes\tests\LabelTest\Atlas4.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1150,6 +1147,33 @@
     <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\Physics\PhysicsTest.cs" />
     <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
+    <Compile Include="classes\tests\LabelTest\Atlas3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\AtlasTestSceneNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTPadding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOffset.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2574,5 +2598,6 @@
     <Folder Include="classes\tests\EventDispatcherTest\" />
     <Folder Include="Extensions\" />
     <Folder Include="classes\tests\Physics\" />
+    <Folder Include="classes\tests\LabelTestNew\" />
   </ItemGroup>
 </Project>

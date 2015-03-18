@@ -6,14 +6,14 @@ using CocosSharp;
 
 namespace tests
 {
-    public class Atlas4New : AtlasDemoNew
+    public class LabelFNTSpriteActions : AtlasDemoNew
     {
         //ccTime m_time;
         float m_time;
 
 		CCLabel label, label2;
 
-        public Atlas4New()
+        public LabelFNTSpriteActions()
         {
             m_time = 0;
 
@@ -94,12 +94,12 @@ namespace tests
 
         public override string title()
         {
-            return "CCLabelBMFont";
+            return "New Label + .FNT file";
         }
 
         public override string subtitle()
         {
-            return "Using fonts as CCSprite objects. Some characters should rotate.";
+            return "Using fonts as Sprite objects. Some characters should rotate.";
         }
     }
 }

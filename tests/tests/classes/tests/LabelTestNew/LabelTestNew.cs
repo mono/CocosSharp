@@ -8,30 +8,12 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public enum TagSprite
-    {
-        kTagTileMap = 1,
-        kTagSpriteManager = 1,
-        kTagAnimation1 = 1,
-        kTagBitmapAtlas1 = 1,
-        kTagBitmapAtlas2 = 2,
-        kTagBitmapAtlas3 = 3,
 
-        kTagSprite1,
-        kTagSprite2,
-        kTagSprite3,
-        kTagSprite4,
-        kTagSprite5,
-        kTagSprite6,
-        kTagSprite7,
-        kTagSprite8
-    }
-
-    public class AtlasDemo : TestNavigationLayer
+    public class AtlasDemoNew : TestNavigationLayer
     {
         //protected:
 
-        public AtlasDemo()
+        public AtlasDemoNew()
         {
 
         }
@@ -73,8 +55,8 @@ namespace CocosSharp
 		public override void RestartCallback(object sender)
 		{
 			base.RestartCallback(sender);
-            CCScene s = new AtlasTestScene();
-            s.AddChild(AtlasTestScene.restartAtlasAction());
+            CCScene s = new AtlasTestSceneNew();
+            s.AddChild(AtlasTestSceneNew.restartAtlasAction());
 
             Director.ReplaceScene(s);
         }
@@ -83,9 +65,9 @@ namespace CocosSharp
 		{
 			base.NextCallback(sender);
 
-            CCScene s = new AtlasTestScene();
+            CCScene s = new AtlasTestSceneNew();
 
-            s.AddChild(AtlasTestScene.nextAtlasAction());
+            s.AddChild(AtlasTestSceneNew.nextAtlasAction());
 
             Director.ReplaceScene(s);
         }
@@ -94,9 +76,9 @@ namespace CocosSharp
 		{
 			base.BackCallback(sender);
 
-            CCScene s = new AtlasTestScene();
+            CCScene s = new AtlasTestSceneNew();
 
-            s.AddChild(AtlasTestScene.backAtlasAction());
+            s.AddChild(AtlasTestSceneNew.backAtlasAction());
 
             Director.ReplaceScene(s);
         }

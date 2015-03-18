@@ -6,11 +6,11 @@ using CocosSharp;
 
 namespace tests
 {
-    public class Atlas5New : AtlasDemoNew
+    public class LabelFNTPadding : AtlasDemoNew
     {
 		CCLabel label;
 
-        public Atlas5New()
+        public LabelFNTPadding()
         {
 			label = new CCLabel("abcdefg", "fonts/bitmapFontTest4.fnt");
             AddChild(label);
@@ -28,7 +28,7 @@ namespace tests
 
         public override string title()
 		{
-            return "CCLabel BMFont";
+            return "New Label + .FNT file";
         }
 
         public override string subtitle()

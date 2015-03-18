@@ -4,7 +4,7 @@ using CocosSharp;
 
 namespace tests
 {
-    public class BitmapFontMultiLineAlignmentNew : AtlasDemoNew
+    public class LabelFNTMultiLineAlignment : AtlasDemoNew
     {
         private const string LongSentencesExample =
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
@@ -33,7 +33,7 @@ namespace tests
         private CCMenuItemFont lastAlignmentItem;
 		private CCMenuItemFont lastSentenceItem;
 
-        public BitmapFontMultiLineAlignmentNew()
+        public LabelFNTMultiLineAlignment()
         {
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchAllAtOnce();

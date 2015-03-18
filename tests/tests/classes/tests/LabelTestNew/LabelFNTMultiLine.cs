@@ -7,12 +7,12 @@ using System.Diagnostics;
 
 namespace tests
 {
-    public class BitmapFontMultiLineNew : AtlasDemoNew
+    public class LabelFNTMultiLine : AtlasDemoNew
     {
 
 		CCLabel label1, label2, label3;
 
-        public BitmapFontMultiLineNew()
+        public LabelFNTMultiLine()
         {
             CCSize s;
 
@@ -59,7 +59,7 @@ namespace tests
 
         public override string title()
         {
-            return "CCLabelBMFont";
+            return "New Label + .FNT file";
         }
 
         public override string subtitle()

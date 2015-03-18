@@ -5,12 +5,12 @@ using System.Text;
 using CocosSharp;
 namespace tests
 {
-    public class Atlas6New : AtlasDemoNew
+    public class LabelFNTOffset : AtlasDemoNew
     {
 
 		CCLabel label1, label2, label3;
 
-        public Atlas6New()
+        public LabelFNTOffset()
         {
             label1 = new CCLabel("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
             AddChild(label1);
@@ -39,7 +39,7 @@ namespace tests
 
         public override string title()
         {
-            return "CCLabelBMFont";
+            return "New Label + .FNT file";
         }
 
         public override string subtitle()
