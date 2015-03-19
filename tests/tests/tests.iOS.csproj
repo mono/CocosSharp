@@ -1131,6 +1131,14 @@
       <Link>Extensions\GUI\CCScrollView\CCTableViewCell.cs</Link>
     </Compile>
     <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
+    <Compile Include="classes\tests\LabelTestNew\AtlasTestSceneNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLine.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOffset.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTPadding.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1729,5 +1737,6 @@
     <Folder Include="Content\hd\" />
     <Folder Include="classes\tests\EventDispatcherTest\" />
     <Folder Include="Extensions\" />
+    <Folder Include="classes\tests\LabelTestNew\" />
   </ItemGroup>
 </Project>

@@ -175,7 +175,7 @@ namespace CocosSharp
             return fileName;
         }
 
-
+        #if MACOS
         internal CCTexture2D CreateTextSprite(string text, CCFontDefinition textDefinition)
         {
             if (string.IsNullOrEmpty(text))
@@ -299,19 +299,19 @@ namespace CocosSharp
             // Alignment
             var xOffset = 0.0f;
             switch (textAlign) {
-                case NSTextAlignment.Left:
-                    xOffset = 0; 
-                    break;
-                case NSTextAlignment.Center: 
-                    xOffset = (dimensions.Width-boundingRect.Width)/2.0f; 
-                    break;
-                case NSTextAlignment.Right: xOffset = dimensions.Width-boundingRect.Width; break;
-                default: break;
+            case NSTextAlignment.Left:
+                xOffset = 0; 
+                break;
+            case NSTextAlignment.Center: 
+                xOffset = (dimensions.Width-boundingRect.Width)/2.0f; 
+                break;
+            case NSTextAlignment.Right: xOffset = dimensions.Width-boundingRect.Width; break;
+            default: break;
             }
 
             // Line alignment
             var yOffset = (CCVerticalTextAlignment.Top == verticleAlignement 
-                    || boundingRect.Height >= dimensions.Height) ? (dimensions.Height - boundingRect.Height)  // align to top
+                || boundingRect.Height >= dimensions.Height) ? (dimensions.Height - boundingRect.Height)  // align to top
                 : (CCVerticalTextAlignment.Bottom == verticleAlignement) ? 0                    // align to bottom
                 : (imageHeight - boundingRect.Height) / 2.0f;                                   // align to center
 
@@ -340,6 +340,181 @@ namespace CocosSharp
             var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
 
             // Debugging purposes
+            //            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //            var fileName = Path.Combine(path, "Label3.png");
+            //            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+            //            {
+            //                tex.SaveAsPng(stream, imageWidth, imageHeight);
+            //            }
+
+            // Create our texture of the label string.
+            var texture = new CCTexture2D(tex);
+
+            return texture;
+
+        }
+        #else
+        internal CCTexture2D CreateTextSprite(string text, CCFontDefinition textDefinition)
+        {
+            if (string.IsNullOrEmpty(text))
+                return new CCTexture2D();
+
+            int imageWidth;
+            int imageHeight;
+            var textDef = textDefinition;
+            var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
+            var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
+            textDef.FontSize *= (int)contentScaleFactorWidth;
+            textDef.Dimensions.Width *= contentScaleFactorWidth;
+            textDef.Dimensions.Height *= contentScaleFactorHeight;
+
+            bool hasPremultipliedAlpha;
+
+            // font
+            UIFont font = null;
+
+            var ext = System.IO.Path.GetExtension(textDef.FontName);
+            if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
+            {
+                try 
+                {
+                    textDef.FontName = LoadFontFile(textDef.FontName);
+                    font = UIFont.FromName(textDef.FontName, textDef.FontSize);
+                }
+                catch (Exception exc)
+                {
+                    CCLog.Log(".ttf {0} file not found or can not be loaded.", textDef.FontName);
+                }
+            }
+            else
+            {
+                // font
+                font = UIFont.FromName (textDef.FontName, textDef.FontSize);
+                    //NSFontManager.SharedFontManager.FontWithFamily(textDef.FontName, NSFontTraitMask.Unbold | NSFontTraitMask.Unitalic, 0, textDef.FontSize);
+            }
+
+            if (font == null) 
+            {
+                font = UIFont.FromName (textDef.FontName, textDef.FontSize);
+                CCLog.Log("{0} not found.  Defaulting to Arial.", textDef.FontName);
+            }
+
+            // color
+            var fontColor = textDef.FontFillColor;
+            var fontAlpha = textDef.FontAlpha;
+            var foregroundColor = UIColor.FromRGBA (fontColor.R / 255.0f,
+                fontColor.G / 255.0f,
+                fontColor.B / 255.0f,
+                fontAlpha / 255.0f);
+
+            // alignment
+            var horizontalAlignment = textDef.Alignment;
+            var verticleAlignement = textDef.LineAlignment;
+
+            var textAlign = (CCTextAlignment.Right == horizontalAlignment) ? UITextAlignment.Right
+                : (CCTextAlignment.Center == horizontalAlignment) ? UITextAlignment.Center
+                : UITextAlignment.Left;
+
+            // LineBreak
+            var lineBreak = (CCLabelLineBreak.Character == textDef.LineBreak) ? UILineBreakMode.CharacterWrap
+                : (CCLabelLineBreak.Word == textDef.LineBreak) ? UILineBreakMode.WordWrap
+                : UILineBreakMode.Clip;
+
+            var nsparagraphStyle = (NSMutableParagraphStyle)NSParagraphStyle.Default.MutableCopy();
+            nsparagraphStyle.LineBreakMode = lineBreak;
+            nsparagraphStyle.Alignment = textAlign;
+
+            // Create a new attributed string definition
+            var nsAttributes = new UIStringAttributes ();
+
+            // Font attribute
+            nsAttributes.Font = font;
+            nsAttributes.ForegroundColor = foregroundColor;
+            nsAttributes.ParagraphStyle = nsparagraphStyle;
+
+            var stringWithAttributes = new NSAttributedString(text, nsAttributes);
+
+            var realDimensions = stringWithAttributes.Size;
+
+            // Mac crashes if the width or height is 0
+            if (realDimensions == SizeF.Empty)
+                throw new ArgumentOutOfRangeException("Native string:", "Dimensions of native NSAttributedString can not be 0,0");
+
+            var dimensions = new CGSize(textDef.Dimensions.Width, textDef.Dimensions.Height);
+
+            var layoutAvailable = true;
+            if (dimensions.Width <= 0)
+            {
+                dimensions.Width = 8388608;
+                layoutAvailable = false;
+                textAlign = UITextAlignment.Left;
+            }
+
+            if (dimensions.Height <= 0)
+            {
+                dimensions.Height = 8388608;
+                layoutAvailable = false;
+            }
+
+
+            var boundingRect = stringWithAttributes.GetBoundingRect(new CGSize((int)dimensions.Width, (int)dimensions.Height), 
+                NSStringDrawingOptions.UsesLineFragmentOrigin, null);
+            
+            if (!layoutAvailable)
+            {
+                if (dimensions.Width == 8388608)
+                {
+                    dimensions.Width = boundingRect.Width;
+                }
+                if (dimensions.Height == 8388608)
+                {
+                    dimensions.Height = boundingRect.Height;
+                }
+            }
+
+            imageWidth = (int)dimensions.Width;
+            imageHeight = (int)dimensions.Height;
+
+            // Alignment
+            var xOffset = (nfloat)0.0f;
+            switch (textAlign) {
+                case UITextAlignment.Left:
+                    xOffset = 0; 
+                    break;
+                case UITextAlignment.Center: 
+                    xOffset = (dimensions.Width-boundingRect.Width)/2.0f; 
+                    break;
+                case UITextAlignment.Right: xOffset = dimensions.Width-boundingRect.Width; break;
+                default: break;
+            }
+
+            // Line alignment
+            var yOffset = (CCVerticalTextAlignment.Bottom == verticleAlignement 
+                    || boundingRect.Height >= dimensions.Height) ? (dimensions.Height - boundingRect.Height)  // align to bottom
+                : (CCVerticalTextAlignment.Top == verticleAlignement) ? 0                    // align to top
+                : (imageHeight - boundingRect.Height) / 2.0f;                                   // align to center
+
+            //Find the rect that the string will draw into inside the dimensions 
+            var drawRect = new CGRect(xOffset
+                , yOffset
+                , boundingRect.Width 
+                , boundingRect.Height);
+
+
+            UIGraphics.BeginImageContext (new CGSize(imageWidth,imageHeight));
+            var context = UIGraphics.GetCurrentContext ();
+
+            //Disable antialias
+            context.SetShouldAntialias(false);
+
+            stringWithAttributes.DrawString(drawRect);
+
+            var image = UIGraphics.GetImageFromCurrentImageContext ();
+
+            // We will use Texture2D from stream here instead of CCTexture2D stream.
+            var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
+
+            // Debugging purposes
 //            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 //            var fileName = Path.Combine(path, "Label3.png");
 //            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
@@ -353,5 +528,6 @@ namespace CocosSharp
             return texture;
 
         }
+        #endif
 	}
 }
