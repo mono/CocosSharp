@@ -444,7 +444,6 @@ namespace CocosSharp
         ///     - #7 returning the correct ContentSize once calculated
         ///     - #8 removed the second copy of labelText so there is now only 1
         ///     - #9 now work with (and support) AnchorPoint
-        ///     - #10 now exposing ContentSize and LineHeight as return values after everything is calculated
         ///     
         ///     - and many more things which I have forgotten
         /// 
@@ -615,14 +614,12 @@ namespace CocosSharp
                         if (ptCurrent.X + pCurrentGlyphDef.XOffset + pCurrentGlyphDef.Subrect.Size.Width + nKerningAmount > fMaxWidth)
                         {
                             // Move onto the next line
+                            ptCurrent.X = 0;
                             ptCurrent.Y -= LineHeight;
 
                             // If breaking in the middle of a word OR if this is the only word on the line
                             if (LineBreakWithoutSpace || nLastIndexOfLastWord < 0)
                             {
-                                // We're now starting at the beginning of the line
-                                ptCurrent.X = 0;
-
                                 // Nothing previous to use for calculating kerning
                                 nKerningAmount = this.KerningAmountForFirst(255, chCurrent);
 
@@ -642,23 +639,11 @@ namespace CocosSharp
                                 // nLastIndexOfCurrentWord stays the same but this is now the start of a the current word as well
                                 nFirstIndexOfCurrentWord = i;
                             }
-                            // Otherwise we will need to move the remains of the current word down (if breaking whole words)
+                            // Otherwise we will need to move the remains of the current word down (if breaking at spaces)
                             else
                             {
-                                // Save the kerning amount that was applied to the last character which we're moving down
-                                // so that this new character which is added to the end of the old word still spaces correctly with
-                                // the other characters in the word -- i.e. no micro-gaps
-                                float fLastOverlapTmp = 0f;
-                                if (this[i - 1] != null)
-                                    fLastOverlapTmp = ptCurrent.X - this[i - 1].BoundingBox.MaxX;
-
-                                // We're now starting at the beginning of the line
-                                ptCurrent.X = 0;
-
                                 // Move the currently started word down
                                 RepositionSprites(nFirstIndexOfCurrentWord, i - nFirstIndexOfCurrentWord, ref ptCurrent);
-
-                                ptCurrent.X += fLastOverlapTmp;
 
                                 // This line ended with the beginning of the last word
                                 //    NOTE: that there must be a last word or we would have previously split the full word
@@ -694,6 +679,7 @@ namespace CocosSharp
             {
                 // Anchor shift plus vertical alignment shift
                 CCPoint ptShiftAnchorPlusVertical = AnchorPoint * new CCPoint(ContentSize.Width - Dimensions.Width, ContentSize.Height - Dimensions.Height);
+                //ptShiftAnchorPlusVertical += new CCPoint(ContentSize.Width / 2f, ContentSize.Height / 2f);
                 
                 // Always move down a half line to make up for characters being center anchored -- this normalizes everything to ZERO
                 ptShiftAnchorPlusVertical.Y -= (LineHeight / 2);
@@ -766,26 +752,15 @@ namespace CocosSharp
         /// <param name="ptCurrent"></param>
         private void RepositionSprites(int nStartIndex, int nCount, ref CCPoint ptCurrent)
         {
-            float fNextOverlapX = 0f;
             for (int i = nStartIndex; i < nStartIndex + nCount; i++)
             {
                 CCSprite pSpriteTmp = (CCSprite)(this[i]);
                 if (pSpriteTmp != null)
                 {
-                    // Calculate and store any sprite position overlap so that we don't lose it when moving the letters
-                    if (i < nStartIndex + nCount - 1 && this[i + 1] != null)
-                    {
-                        CCSprite pSpriteTmpNext = (CCSprite)(this[i + 1]);
-                        fNextOverlapX = pSpriteTmpNext.BoundingBox.MinX - pSpriteTmp.BoundingBox.MaxX;
-                    }
-                    // NOTE that we leave it 0 on the last character because this is added in the main loop of CreateFontChars()
-                    else
-                        fNextOverlapX = 0f;
+                    pSpriteTmp.PositionY = ptCurrent.Y + pSpriteTmp.ContentSize.Height / 2f;
+                    pSpriteTmp.PositionX = ptCurrent.X + pSpriteTmp.ContentSize.Width / 2f;
 
-                    pSpriteTmp.PositionX = ptCurrent.X + (pSpriteTmp.ContentSize.Width / 2f);
-                    pSpriteTmp.PositionY = ptCurrent.Y;
-
-                    ptCurrent.X += pSpriteTmp.ContentSize.Width + fNextOverlapX;
+                    ptCurrent.X += pSpriteTmp.ContentSize.Width;
                 }
             }
         }
