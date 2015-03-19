@@ -33,9 +33,7 @@ namespace CocosSharp
         [ContentSerializer]
         internal CCBMGlyphPadding Padding;
 
-        // Changed from List to Dictionary (i.e. hash table) which uses twice as much space but it MUCH faster -- O(1) vs. O(n)
-        // then removed completely because Glyphs is exactly that and CharacterSet is actually redundant.
-        //public Dictionary<int,char> CharacterSet { get; set; }
+        public List<int> CharacterSet { get; set; }
 
         #region Constructors
 
@@ -54,8 +52,7 @@ namespace CocosSharp
         internal CCBMFontConfiguration()
         {
             Glyphs = new Dictionary<int, CCBMGlyphDef>();
-            // Removed because Glyphs (above) has the same data
-            //CharacterSet = new Dictionary<int, char>();
+            CharacterSet = new List<int>();
             GlyphKernings = new Dictionary<int, CCKerningHashElement>();
         }
 
@@ -68,27 +65,19 @@ namespace CocosSharp
         internal CCBMFontConfiguration(string data, string fntFile) : base()
         {
             Glyphs = new Dictionary<int, CCBMGlyphDef>();
-            // Removed because Glyphs (above) has the same data
-            //CharacterSet = new Dictionary<int, char>();
+            CharacterSet = new List<int>();
             GlyphKernings = new Dictionary<int, CCKerningHashElement>();
 
             GlyphKernings.Clear();
             Glyphs.Clear();
 
-            // Removed because Glyphs (above) has the same data
-            //CharacterSet = ParseConfigFile(data, fntFile);
-
-            // Build Glyphs
-            ParseConfigFile(data, fntFile);
+            CharacterSet = ParseConfigFile(data, fntFile);
         }
 
         #endregion Constructors
 
 
-        // Unnecessary to return this (waste of memory)
-        // Now unused
-        //private Dictionary<int, char> ParseConfigFile(string pBuffer, string fntFile)
-        private bool ParseConfigFile(string pBuffer, string fntFile)
+        private List<int> ParseConfigFile(string pBuffer, string fntFile)
         {
             long nBufSize = pBuffer.Length;
 
@@ -96,8 +85,10 @@ namespace CocosSharp
 
             if (string.IsNullOrEmpty(pBuffer))
             {
-                return false;
+                return null;
             }
+
+            var validCharsString = new List<int>();
 
             // parse spacing / padding
             string line;
@@ -150,8 +141,7 @@ namespace CocosSharp
 
                     Glyphs.Add(characterDefinition.Character, characterDefinition);
 
-                    // Glyphs (above) has the same information
-                    //validCharsString.Add(characterDefinition.Character, characterDefinition.Character);
+                    validCharsString.Add(characterDefinition.Character);
                 }
                 //else if (line.StartsWith("kernings count"))
                 //{
@@ -163,7 +153,7 @@ namespace CocosSharp
                 }
             }
 
-            return true; // validCharsString;
+            return validCharsString;
         }
 
         private void parseCharacterDefinition(string line, CCBMGlyphDef characterDefinition)

@@ -261,6 +261,7 @@ namespace CocosSharp
                             XAdvance = (int)Math.Ceiling(info.A + info.B + info.C)
                         };
 
+                        fontConfig.CharacterSet.Add(chars[i]);
                         fontConfig.Glyphs.Add(chars[i], fontDef);
                     }
                     else
