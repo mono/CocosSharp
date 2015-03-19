@@ -59,10 +59,11 @@ namespace CocosSharp
         internal CCBMFontConfiguration(string fntFile)
             : this(CCContentManager.SharedContentManager.Load<string>(fntFile), fntFile)
         { }
-        
+
 
         // Content pipeline makes use of this constructor
-        internal CCBMFontConfiguration(string data, string fntFile) : base()
+        internal CCBMFontConfiguration(string data, string fntFile)
+            : base()
         {
             Glyphs = new Dictionary<int, CCBMGlyphDef>();
             CharacterSet = new List<int>();

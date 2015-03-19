@@ -21,7 +21,7 @@ namespace CocosSharp
             public float C;
         }
 
-		private static CCTexture2D labelTexture;
+        private static CCTexture2D labelTexture;
         static bool isTextureDirty = true;
 
         string fontName;
@@ -54,14 +54,17 @@ namespace CocosSharp
             }
         }
 
-        public override string Text {
-            get {
+        public override string Text
+        {
+            get
+            {
                 return base.Text;
             }
-            set {
+            set
+            {
                 if (labelText != value)
                 {
-                    InitializeFont (FontName, FontSize, value);
+                    InitializeFont(FontName, FontSize, value);
                     base.Text = value;
                 }
             }
@@ -115,7 +118,7 @@ namespace CocosSharp
         {
         }
 
-        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) 
+        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
             // Can't call base(text, ...), becasue we have to initialize font first
             InitializeFont(fontName, fontSize, text);
@@ -286,7 +289,7 @@ namespace CocosSharp
 
             if (isTextureDirty)
             {
-				labelTexture.InitWithRawData(m_pData, CCSurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
+                labelTexture.InitWithRawData(m_pData, CCSurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
                 isTextureDirty = false;
             }
 
