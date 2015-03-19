@@ -293,12 +293,6 @@ namespace CocosSharp
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
                 "Invalid params for CCLabelBMFont");
 
-            // 2015-03-18 Quit if there's not going to be anything to display -- no font & no string
-            //      NOTE: this happens because this function is called by CCLabel's parent with all blanks -- it's called again by
-            //            CCLabel after the font is created.
-            if (string.IsNullOrEmpty(theString) && string.IsNullOrEmpty(fntFile))
-                return;
-
             if (!String.IsNullOrEmpty(fntFile))
             {
                 CCBMFontConfiguration newConf = FNTConfigLoadFile(fntFile);
@@ -367,13 +361,6 @@ namespace CocosSharp
             ImageOffset = imageOffset;
 
             labelText = theString;      // At this point IsDirty RecreateSprites will be true so that the next call of Draw() will call CreateFontChars()
-
-            // Explicitly call CreateFontChars() so that calculations are available after the constructor
-            //    NOTE:  CreateFontChars() is also called by the AddedToScene() and Draw() callbacks
-            //    NOTE2: theString (i.e. labelText) will be empty if this was created by CCLabel -- see comment in the CCLabel
-            //           constructor which says "Can't call base(text, ...), because we have to initialize font first
-            if (FontConfiguration != null && !string.IsNullOrEmpty(labelText))
-                CreateFontChars();
         }
 
         #endregion Constructors
@@ -471,10 +458,6 @@ namespace CocosSharp
         /// </summary>
         public void CreateFontChars()
         {
-            // Quit if this was already done.
-            if (!RecreateSprites && !IsDirty)
-                return;
-
             // Clear out all the sprites if (for example) we are changing the string
             if (RecreateSprites)
             {
@@ -503,7 +486,7 @@ namespace CocosSharp
             LineCount = 1;
             float fLongestLine = 0;
             float fMaxWidth = Dimensions.Width > 0 ? Dimensions.Width : float.MaxValue;
-            Dictionary<int, int> phashLastIndexOfLine = new Dictionary<int, int>();
+            Dictionary<int, int> phashLastIndex = new Dictionary<int, int>();
 
             // PASS#1 - go through each character of the label and create sprites for each character, splitting the line if necessary
             {
@@ -526,7 +509,7 @@ namespace CocosSharp
                             // Figure out the last non-whitespace character considering that we might have ended with a bunch of spaces
                             int nIndexTmp = Math.Max(nLastIndexOfCurrentWord, nLastIndexOfLastWord);
 
-                            phashLastIndexOfLine[LineCount - 1] = nIndexTmp;
+                            phashLastIndex[LineCount - 1] = nIndexTmp;
 
                             // Possibly bump up the longest line [EOL#1]
                             if (nIndexTmp >= 0 && this[nIndexTmp] != null && this[nIndexTmp].BoundingBox.MaxX > fLongestLine)
@@ -544,7 +527,7 @@ namespace CocosSharp
                         int nIndexTmp = Math.Max(nLastIndexOfCurrentWord, nLastIndexOfLastWord);
 
                         // Store line length
-                        phashLastIndexOfLine[LineCount - 1] = nIndexTmp;    // NOTE: might be -1 for a line of all whitespace
+                        phashLastIndex[LineCount - 1] = nIndexTmp;    // NOTE: might be -1 for a line of all whitespace
 
                         // Possibly bump up the longest line [EOL#2]
                         if (nIndexTmp >= 0 && this[nIndexTmp] != null && this[nIndexTmp].BoundingBox.MaxX > fLongestLine)
@@ -650,7 +633,7 @@ namespace CocosSharp
 
                                 // Store the index where the previous line ended -- it will break just before this character because we break in the middle of the word
                                 //      NOTE: this[i-1] could possibly represent whitespace
-                                phashLastIndexOfLine[LineCount - 1] = nIndexTmp;
+                                phashLastIndex[LineCount - 1] = nIndexTmp;
 
                                 // Possibly bump up the longest line [EOL#3a]
                                 if (nIndexTmp >= 0 && this[nIndexTmp] != null && this[nIndexTmp].BoundingBox.MaxX > fLongestLine)
@@ -679,7 +662,7 @@ namespace CocosSharp
 
                                 // This line ended with the beginning of the last word
                                 //    NOTE: that there must be a last word or we would have previously split the full word
-                                phashLastIndexOfLine[LineCount - 1] = nLastIndexOfLastWord;
+                                phashLastIndex[LineCount - 1] = nLastIndexOfLastWord;
 
                                 // Possibly bump up the longest line [EOL#3b]
                                 if (nLastIndexOfLastWord >= 0 && this[nLastIndexOfLastWord] != null && this[nLastIndexOfLastWord].BoundingBox.MaxX > fLongestLine)
@@ -693,9 +676,8 @@ namespace CocosSharp
 
                         pSpriteForChar.Position =
                             new CCPoint(
-                                ptCurrent.X + pCurrentGlyphDef.XOffset + (pCurrentGlyphDef.Subrect.Size.Width * 0.5f) + nKerningAmount,
-                                //ptCurrent.Y + - pCurrentGlyphDef.YOffset - pCurrentGlyphDef.Subrect.Size.Height * 0.5f);
-                                ptCurrent.Y - pCurrentGlyphDef.YOffset + ((LineHeight - pCurrentGlyphDef.Subrect.Size.Height) * 0.5f));
+                                (float)ptCurrent.X + pCurrentGlyphDef.XOffset + (pCurrentGlyphDef.Subrect.Size.Width * 0.5f) + nKerningAmount,
+                                (float)ptCurrent.Y + pCurrentGlyphDef.YOffset);
                     }
 
                     // Advance the current position, applying kerning
@@ -738,7 +720,7 @@ namespace CocosSharp
                 // Go through each line
                 for (int i = 0; i < LineCount; i++)
                 {
-                    int nLastIndexOfLine = phashLastIndexOfLine[i];
+                    int nLastIndexOfLine = phashLastIndex[i];
 
                     // Skip empty lines
                     if (nLastIndexOfLine < 0)
@@ -774,9 +756,6 @@ namespace CocosSharp
                     nFirstIndexOfLine = nLastIndexOfLine + 1;
                 }
             }
-
-            // No longer dirty until something changes -- position, anchor, label text, etc.
-            IsDirty = false;
         }
 
         /// <summary>
@@ -804,9 +783,7 @@ namespace CocosSharp
                         fNextOverlapX = 0f;
 
                     pSpriteTmp.PositionX = ptCurrent.X + (pSpriteTmp.ContentSize.Width / 2f);
-
-                    // Simple logic for Y position, just adding a line
-                    pSpriteTmp.PositionY -= LineHeight;
+                    pSpriteTmp.PositionY = ptCurrent.Y;
 
                     ptCurrent.X += pSpriteTmp.ContentSize.Width + fNextOverlapX;
                 }
@@ -821,6 +798,50 @@ namespace CocosSharp
             if (updateLabel)
                 this.Draw();
         }
+
+        /// <summary>
+        /// UpdateLabel() runs after CreateFontChars() has created all the child sprites that represent
+        /// each character.  [CreateFontChars() is PASS #1]
+        /// 
+        /// [PASS #2] UpdateLable() splits lines when they are too long for the supplied Dimension.
+        ///              *** NOTE: this pass could have been done when the characters were created in CreateFontChars()
+        ///                 
+        /// [PASS #3] UpdateLabel() then optionally nudges the characters along to preform a left or right horizontal alignment.
+        /// 
+        /// [PASS #4] UpdateLabel() then optionally nudges the lines up and/or down to preform a top or bottom vertical alignment.
+        /// 
+        /// 2015-03-15 Ultimately I just threw this function out.
+        /// </summary>
+        //protected void UpdateLabel()
+        //{
+        //    // NOTE: SetString() was likely called by the thread that got us here but with a true value
+        //    //       SetString(true) -> UpdateString(true) -> CreateFontChars() -> UpdateLabel()
+        //    SetString(labelInitialText, false);
+
+        //    return;
+        //}
+
+        // These functions didn't work in every case, I tried to fix for the cases that I was seeing but it's best not to use.
+
+        //// 2015-03-15 BUG FIX: this function doesn't give the correct value when AnchorPoint is {0.5, 0.5} because sp.Position.X is in the middle of the sprite
+        //private float GetLetterPosXLeft(CCSprite sp)
+        //{
+        //    // 2015-03-12 removed because it doesn't properly use the anchor which always seems to be set at AnchorPointMiddle (0.5, 0.5)
+        //    //return sp.Position.X * ScaleX;
+
+        //    Debug.Assert(sp.AnchorPoint == CCPoint.AnchorMiddle, "ERROR - expected anchor point to always be int the middle");
+        //    return (sp.Position.X - (sp.ContentSize.Width / 2f)) * ScaleX;
+        //}
+
+        //// 2015-03-15 BUG FIX: this function doesn't give the correct value when AnchorPoint is {0.5, 0.5} because sp.Position.X is in the middle of the sprite
+        //private float GetLetterPosXRight(CCSprite sp)
+        //{
+        //    // 2015-03-12 removed because it doesn't properly use the anchor which always seems to be set at AnchorPointMiddle (0.5, 0.5)
+        //    //return (sp.Position.X + sp.ContentSize.Width) * ScaleX;
+
+        //    Debug.Assert(sp.AnchorPoint == CCPoint.AnchorMiddle, "ERROR - expected anchor point to always be int the middle");
+        //    return (sp.Position.X + (sp.ContentSize.Width / 2f)) * ScaleX;
+        //}
 
         private static CCBMFontConfiguration FNTConfigLoadFile(string file)
         {
