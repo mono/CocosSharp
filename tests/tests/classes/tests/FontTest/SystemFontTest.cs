@@ -9,7 +9,6 @@ namespace tests.FontTest
 		private static readonly string[] fontList =
 		{
 #if IOS || IPHONE || MACOS
-			"Chalkboard SE",
 			"Chalkduster",
 			"Noteworthy",
 			"Marker Felt",
@@ -208,19 +207,20 @@ namespace tests.FontTest
 			RemoveChildByTag(kTagLabel3, true);
 			RemoveChildByTag(kTagLabel4, true);
 
-            var top = new CCLabel(pFont,"Helvetica", 32);
+            var top = new CCLabel(pFont,"Helvetica", 32, CCLabelFormat.SystemFont);
 
             var center = new CCLabel("alignment center", pFont, fontSize,
-				blockSize, CCTextAlignment.Center,
-				SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]);
+                blockSize, new CCLabelFormat( CCLabelFormatFlags.SystemFont ) { Alignment = CCTextAlignment.Center,
+                LineAlignment = SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]}
+                );
 
             var left = new CCLabel("alignment left", pFont, fontSize,
-                blockSize, CCTextAlignment.Left,
-                SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]);
+                blockSize, new CCLabelFormat( CCLabelFormatFlags.SystemFont ) { Alignment = CCTextAlignment.Left,
+                LineAlignment = SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]});
 
 			var right = new CCLabel("alignment right", pFont, fontSize,
-				blockSize, CCTextAlignment.Right,
-				SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]);
+                blockSize, new CCLabelFormat( CCLabelFormatFlags.SystemFont ) { Alignment = CCTextAlignment.Right,
+                LineAlignment = SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]});
 
             top.AnchorPoint = CCPoint.AnchorMiddleTop;
             left.AnchorPoint = CCPoint.AnchorMiddleLeft;
