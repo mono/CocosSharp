@@ -117,12 +117,10 @@ namespace CocosSharp
 
         public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) 
         {
-            // Can't call base(text, ...), because we have to initialize font first
+            // Can't call base(text, ...), becasue we have to initialize font first
             InitializeFont(fontName, fontSize, text);
             this.fontName = fontName;
             this.fontSize = fontSize;
-
-            // This is ugly because InitCCLabelBMFont() is now called twice!
             base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, labelTexture);
         }
 
