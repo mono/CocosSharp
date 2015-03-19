@@ -359,6 +359,11 @@
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
     <Compile Include="Platform\CCGeometryBatch.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
+    <Compile Include="label_nodes\CCFont.cs" />
+    <Compile Include="label_nodes\CCFontAtlas.cs" />
+    <Compile Include="label_nodes\CCFontAtlasCache.cs" />
+    <Compile Include="label_nodes\CCFontFNT.cs" />
+    <Compile Include="label_nodes\CCTextLayout.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
