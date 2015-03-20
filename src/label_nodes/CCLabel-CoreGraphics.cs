@@ -278,8 +278,6 @@ namespace CocosSharp
                 layoutAvailable = false;
             }
 
-            dimensions = dimensions;
-
             var boundingRect = stringWithAttributes.BoundingRectWithSize(new SizeF((int)dimensions.Width, (int)dimensions.Height), NSStringDrawingOptions.UsesLineFragmentOrigin);
             if (!layoutAvailable)
             {

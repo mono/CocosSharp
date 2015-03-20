@@ -730,28 +730,28 @@ namespace CocosSharp
                 fontDefinition.FontAlpha = DisplayedOpacity;
                 fontDefinition.LineBreak = labelFormat.LineBreaking;
 
-                createSpriteWithFontDefinition(fontDefinition);
+                CreateSpriteWithFontDefinition(fontDefinition);
             }
 
             IsDirty = false;
         }
 
-        CCSprite _textSprite = null;
-        void createSpriteWithFontDefinition(CCFontDefinition fontDefinition)
+        CCSprite textSprite = null;
+        void CreateSpriteWithFontDefinition(CCFontDefinition fontDefinition)
         {
             currentLabelType =  CCLabelType.SystemFont;
 
             var texture = CreateTextSprite(Text, fontDefinition);
 
-            _textSprite = new CCSprite(texture);
+            textSprite = new CCSprite(texture);
 
-            _textSprite.AnchorPoint = CCPoint.AnchorLowerLeft;
-            ContentSize = _textSprite.ContentSize;
+            textSprite.AnchorPoint = CCPoint.AnchorLowerLeft;
+            ContentSize = textSprite.ContentSize;
 
-            base.AddChild(_textSprite,0,TagInvalid);
+            base.AddChild(textSprite,0,TagInvalid);
 
-            _textSprite.UpdateDisplayedColor(DisplayedColor);
-            _textSprite.UpdateDisplayedOpacity(DisplayedOpacity);
+            textSprite.UpdateDisplayedColor(DisplayedColor);
+            textSprite.UpdateDisplayedOpacity(DisplayedOpacity);
         }
 
         protected void UpdateFont()
@@ -1115,7 +1115,7 @@ namespace CocosSharp
 
             Transform();
 
-            if (_textSprite != null)
+            if (textSprite != null)
                 DrawTextSprite();
             else
                 Draw();
@@ -1151,7 +1151,7 @@ namespace CocosSharp
             //            {
             //                _shadowNode->visit(renderer, _modelViewTransform, parentFlags);
             //            }
-            _textSprite.Visit();
+            textSprite.Visit();
         }
 
 
