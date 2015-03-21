@@ -9,7 +9,7 @@ namespace tests
     public class AtlasTestSceneNew : TestScene
     {
         static int sceneIdx = -1;
-        static readonly int MAX_LAYER = 7;
+        static readonly int MAX_LAYER = 8;
 
         protected override void NextTestCase()
         {
@@ -83,6 +83,8 @@ namespace tests
                     //          // Not a label test. Should be moved to Atlas test
                     //          case 25: return new Atlas1();
                 case 6:
+                    return new LabelFNTBounds();
+                case 7:
                     return new LabelSFLongLineWrapping();
                 default:
                     break;

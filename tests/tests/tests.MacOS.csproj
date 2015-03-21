@@ -1177,6 +1177,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTBounds.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2542,6 +2545,12 @@
     <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
     <Content Include="Content\TileMaps\staggered_test.xnb" />
     <Content Include="Content\TileMaps\large_map.xnb" />
+    <Content Include="..\testsContent\fonts\boundsTestFont.fnt">
+      <Link>Content\fonts\boundsTestFont.fnt</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\boundsTestFont.png">
+      <Link>Content\fonts\boundsTestFont.png</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
