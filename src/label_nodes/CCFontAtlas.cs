@@ -6,7 +6,7 @@ namespace CocosSharp
 
     internal struct CCFontLetterDefinition
     {
-        public char  LetterChar;
+        public char LetterChar;
         private float u;
         private float v;
         private float width;
@@ -17,6 +17,7 @@ namespace CocosSharp
         public int TextureID;
         public bool IsValidDefinition;
         public int XAdvance;
+        public CCRect Cropping;
 
         public CCRect Subrect
         {
@@ -84,6 +85,7 @@ namespace CocosSharp
         Dictionary<int, CCTexture2D> AtlasTextures;
 
         public float CommonHeight { get; internal set;}
+        public char? DefaultCharacter { get; set; }
 
         public CCFontAtlas (CCFont font)
         { 

@@ -1174,6 +1174,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />

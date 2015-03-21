@@ -6,11 +6,11 @@ namespace tests
 {
     public class LabelFNTMultiLineAlignment : AtlasDemoNew
     {
-        private const string LongSentencesExample =
+        public const string LongSentencesExample =
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 
-        private const string LineBreaksExample = "Lorem ipsum dolor\nsit amet\nconsectetur adipisicing elit\nblah\nblah";
-        private const string MixedExample = "ABC\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt\nDEF";
+        public const string LineBreaksExample = "Lorem ipsum dolor\nsit amet\nconsectetur adipisicing elit\nblah\nblah";
+        public const string MixedExample = "ABC\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt\nDEF";
 
         private const float ArrowsMax = 0.95f;
         private const float ArrowsMin = 0.7f;

@@ -9,7 +9,7 @@ namespace tests
     public class AtlasTestSceneNew : TestScene
     {
         static int sceneIdx = -1;
-        static readonly int MAX_LAYER = 5;
+        static readonly int MAX_LAYER = 7;
 
         protected override void NextTestCase()
         {
@@ -72,7 +72,7 @@ namespace tests
                     //          case 14: return new LabelTTFMultiline();
                     //          case 15: return new LabelTTFChinese();
                     //          case 16: return new LabelBMFontChinese();
-                case 5: return new BitmapFontMultiLineAlignment();
+                case 5: return new LabelFNTMultiLineAlignment();
                     //          case 18: return new LabelTTFA8Test();
                     //          case 19: return new BMFontOneAtlas();
                     //          case 20: return new BMFontUnicode();
@@ -82,7 +82,8 @@ namespace tests
                     //          case 24: return new GitHubIssue5();
                     //          // Not a label test. Should be moved to Atlas test
                     //          case 25: return new Atlas1();
-
+                case 6:
+                    return new LabelSFLongLineWrapping();
                 default:
                     break;
             }

@@ -533,8 +533,14 @@ namespace CocosSharp
             }
             else if(labelFormat.FormatFlags == CCLabelFormatFlags.BitmapFont)
             {
-                // First we try loading BitMapFont
+                // Initialize the BitmapFont
                 InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
+            }
+            else if(labelFormat.FormatFlags == CCLabelFormatFlags.SpriteFont)
+            {
+                // Initialize the SpriteFont
+                InitSpriteFont(str, fntFile, size, dimensions, labelFormat, imageOffset, texture);
+
             }
             else if(labelFormat.FormatFlags == CCLabelFormatFlags.SystemFont)
             {
@@ -638,6 +644,68 @@ namespace CocosSharp
 
             horzAlignment = hAlignment;
             vertAlignment = vAlignment;
+
+            IsOpacityCascaded = true;
+
+            ContentSize = CCSize.Zero;
+
+            IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            ImageOffset = imageOffset;
+
+            Text = theString;
+        }
+
+        protected void InitSpriteFont(string theString, string fntFile, float fontSize, CCSize dimensions, CCLabelFormat labelFormat, 
+            CCPoint imageOffset, CCTexture2D texture)
+        {
+            Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
+                "Invalid params for CCLabel SpriteFont");
+
+            if (!String.IsNullOrEmpty(fntFile))
+            {
+                try
+                {
+                    FontAtlas = CCFontAtlasCache.GetFontAtlasSpriteFont(fntFile, fontSize, imageOffset);
+                }
+                catch {}
+
+                if (FontAtlas == null)
+                {
+                    CCLog.Log("SpriteFont CCLabel: Impossible to create font. Please check file: '{0}'", fntFile);
+                    return;
+                }
+
+            }
+
+            currentLabelType = CCLabelType.SpriteFont;
+
+            if (String.IsNullOrEmpty(theString))
+            {
+                theString = String.Empty;
+            }
+
+            // Initialize the TextureAtlas along with children.
+            var capacity = theString.Length;
+
+            BlendFunc = CCBlendFunc.AlphaBlend;
+
+            if (capacity == 0)
+            {
+                capacity = defaultSpriteBatchCapacity;
+            }
+
+            UpdateBlendFunc();
+
+            // no lazy alloc in this node
+            Children = new CCRawList<CCNode>(capacity);
+            Descendants = new CCRawList<CCSprite>(capacity);
+
+            this.labelDimensions = dimensions;
+
+            horzAlignment = labelFormat.Alignment;
+            vertAlignment = labelFormat.LineAlignment;
 
             IsOpacityCascaded = true;
 

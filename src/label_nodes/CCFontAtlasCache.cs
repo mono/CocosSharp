@@ -59,6 +59,32 @@ namespace CocosSharp
             return null;
         }
 
+        public static CCFontAtlas GetFontAtlasSpriteFont (string fontFileName, float fontSize, CCVector2 imageOffset = default(CCVector2))
+        {
+            string atlasName = GenerateFontName(fontFileName, (int)fontSize, GlyphCollection.Custom,false);
+            var atlasAlreadyExists = atlasMap.ContainsKey(atlasName);
+
+            if (!atlasAlreadyExists)
+            {
+                var font = new CCFontSpriteFont(fontFileName, fontSize, imageOffset);
+                if (font != null)
+                {
+                    var tempAtlas = font.CreateFontAtlas();
+                    if (tempAtlas != null)
+                    {
+                        atlasMap[atlasName] = tempAtlas;
+                        return atlasMap[atlasName];
+                    }
+                }
+            }
+            else
+            {
+                return atlasMap[atlasName];
+            }
+
+
+            return null;
+        }
 
     }
 }

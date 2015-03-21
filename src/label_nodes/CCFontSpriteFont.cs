@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -7,10 +9,13 @@ namespace CocosSharp
     {
         CCVector2 _imageOffset;
         public bool IsFontConfigValid { get; private set; }
+        string fontName;
+        float fontSize;
 
-        public CCFontSpriteFont (string fntFilePath, CCVector2 imageOffset = default(CCVector2))
+        public CCFontSpriteFont (string fntFilePath, float fontSize, CCVector2 imageOffset = default(CCVector2))
         { 
-
+            fontName = fntFilePath;
+            fontSize = fontSize;
         }
 
         /// <summary>
@@ -30,11 +35,55 @@ namespace CocosSharp
             // Try to load the texture
             CCTexture2D atlasTexture = null;
 
-            if (atlasTexture == null)
-                atlasTexture = new CCTexture2D();
+            float loadedSize = fontSize;
+
+            SpriteFont font = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
+            if (font == null)
+            {
+                atlasTexture = new CCTexture2D(); 
+            }
+            else
+            {
+                atlasTexture = new CCTexture2D(font.Texture);
+            }
 
             // add the texture (only one for now)
             atlas.AddTexture(atlasTexture, 0);
+
+            // Set the atlas's common height
+            atlas.CommonHeight = font.LineSpacing;
+            // Set the default character to us if a character does not exist in the font
+            atlas.DefaultCharacter = font.DefaultCharacter;
+
+            var glyphs = font.GetGlyphs();
+            var reusedRect = Rectangle.Empty;
+
+            foreach ( var character in font.Characters)
+            {
+                var glyphDefintion = new CCFontLetterDefinition();
+
+                glyphDefintion.LetterChar = character;
+
+                var glyphDef = glyphs[character];
+
+                glyphDefintion.XOffset = glyphDef.LeftSideBearing + glyphDef.Cropping.X;
+
+                glyphDefintion.YOffset = glyphDef.Cropping.Y;
+
+                reusedRect = glyphDef.BoundsInTexture;
+                glyphDefintion.Subrect = new CCRect(reusedRect.X, reusedRect.Y, reusedRect.Width, reusedRect.Height);
+
+                reusedRect = glyphDef.Cropping;
+                glyphDefintion.Cropping = new CCRect(reusedRect.X, reusedRect.Y, reusedRect.Width, reusedRect.Height);
+
+                glyphDefintion.TextureID = 0;
+
+                glyphDefintion.IsValidDefinition = true;
+                glyphDefintion.XAdvance = (int)(font.Spacing + glyphDef.Width + glyphDef.RightSideBearing);//(int)glyphDef.WidthIncludingBearings;
+
+                atlas.AddLetterDefinition(glyphDefintion);
+
+            }
 
             return atlas;
         }
