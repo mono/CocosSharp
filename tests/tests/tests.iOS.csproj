@@ -1139,6 +1139,8 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTPadding.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTBounds.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1244,6 +1246,12 @@
     <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
     <Content Include="Content\TileMaps\staggered_test.xnb" />
     <Content Include="Content\TileMaps\large_map.xnb" />
+    <Content Include="..\testsContent\fonts\boundsTestFont.fnt">
+      <Link>Content\fonts\boundsTestFont.fnt</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\boundsTestFont.png">
+      <Link>Content\fonts\boundsTestFont.png</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

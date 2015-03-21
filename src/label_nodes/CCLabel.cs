@@ -1164,7 +1164,7 @@ namespace CocosSharp
         public override void Visit()
         {
 
-            if (!Visible || Text.Length == 0)
+            if (!Visible || string.IsNullOrEmpty(Text))
             {
                 return;
             }
@@ -1193,44 +1193,17 @@ namespace CocosSharp
 
         void DrawTextSprite()
         {
-            //            if (_fontDefinition._fontFillColor.r != _textColor.r || _fontDefinition._fontFillColor.g != _textColor.g
-            //                || _fontDefinition._fontFillColor.b != _textColor.b)
-            //            {
-            //                updateContent();
-            //            }
-            //
-            //            if (_shadowEnabled && _shadowNode == nullptr)
-            //            {
-            //                _shadowNode = Sprite::createWithTexture(_textSprite->getTexture());
-            //                if (_shadowNode)
-            //                {
-            //                    if (_blendFuncDirty)
-            //                    {
-            //                        _shadowNode->setBlendFunc(_blendFunc);
-            //                    }
-            //                    _shadowNode->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
-            //                    _shadowNode->setColor(_shadowColor);
-            //                    _shadowNode->setOpacity(_shadowOpacity * _displayedOpacity);
-            //                    _shadowNode->setPosition(_shadowOffset.width, _shadowOffset.height);
-            //                    Node::addChild(_shadowNode,0,Node::INVALID_TAG);
-            //                }
-            //            }
-            //            if (_shadowNode)
-            //            {
-            //                _shadowNode->visit(renderer, _modelViewTransform, parentFlags);
-            //            }
             textSprite.Visit();
         }
 
 
         protected override void Draw()
         {
-            //base.Draw();
             // Optimization: Fast Dispatch  
-            //            if (TextureAtlas == null || TextureAtlas.TotalQuads == 0)
-            //            {
-            //                return;
-            //            }
+            if (TextureAtlas == null || TextureAtlas.TotalQuads == 0)
+            {
+                return;
+            }
 
             // Loop through each of our children nodes that may have actions attached.
             foreach(CCSprite child in Children)
