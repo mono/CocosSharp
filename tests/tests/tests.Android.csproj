@@ -569,6 +569,12 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTPadding.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTBounds.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTHundredLabels.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2060,6 +2066,18 @@
     <AndroidAsset Include="Assets\Content\TileMaps\orthogonal-test-polylines.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\staggered_test.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\large_map.xnb" />
+    <AndroidAsset Include="..\testsContent\fonts\arial-26-en-ru_0.png">
+      <Link>Assets\Content\fonts\arial-26-en-ru_0.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\testsContent\fonts\arial-26-en-ru.fnt">
+      <Link>Assets\Content\fonts\arial-26-en-ru.fnt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\testsContent\fonts\boundsTestFont.fnt">
+      <Link>Assets\Content\fonts\boundsTestFont.fnt</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\testsContent\fonts\boundsTestFont.png">
+      <Link>Assets\Content\fonts\boundsTestFont.png</Link>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />

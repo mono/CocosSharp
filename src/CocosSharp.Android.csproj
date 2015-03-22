@@ -364,6 +364,7 @@
     <Compile Include="label_nodes\CCFontAtlasCache.cs" />
     <Compile Include="label_nodes\CCFontFNT.cs" />
     <Compile Include="label_nodes\CCTextLayout.cs" />
+    <Compile Include="label_nodes\CCFontSpriteFont.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
