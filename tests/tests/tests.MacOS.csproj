@@ -1193,6 +1193,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
