@@ -9,7 +9,12 @@ namespace tests
     public class AtlasTestSceneNew : TestScene
     {
         static int sceneIdx = -1;
-        static readonly int MAX_LAYER = 8;
+        static int MAX_LAYER = 0;
+
+        public AtlasTestSceneNew () : base()
+        {
+            MAX_LAYER = labelCreateFunctions.Length;
+        }
 
         protected override void NextTestCase()
         {
@@ -51,47 +56,23 @@ namespace tests
 
             return pLayer;
         }
-        public static CCLayer createAtlasLayer(int nIndex)
+
+        static Func<CCLayer>[] labelCreateFunctions =
+        { 
+                () => new LabelFNTColorAndOpacity(),
+                () => new LabelFNTSpriteActions(),
+                () => new LabelFNTPadding(),
+                () => new LabelFNTOffset(),
+                () => new LabelFNTMultiLine(),
+                () => new LabelFNTMultiLineAlignment(),
+                () => new LabelFNTUNICODELanguages(),
+                () => new LabelFNTBounds(),
+                () => new LabelSFLongLineWrapping()
+        };
+
+        public static CCLayer createAtlasLayer(int index)
         {
-            switch (nIndex)
-            {
-                //          case 0: return new LabelAtlasTest();
-                //          case 1: return new LabelAtlasColorTest();
-                case 0: return new LabelFNTColorAndOpacity();
-                case 1: return new LabelFNTSpriteActions();
-                case 2: return new LabelFNTPadding();
-                case 3: return new LabelFNTOffset();
-                    //          case 6: return new AtlasBitmapColor();
-                    //          case 7: return new AtlasFastBitmap();
-                case 4: return new LabelFNTMultiLine();
-                    //          case 9: return new LabelsEmpty();
-                    //          case 10: return new LabelBMFontHD();
-                    //          case 11: return new LabelAtlasHD();
-                    //          case 12: return new LabelGlyphDesigner();
-                    //          case 13: return new LabelTTFTest();
-                    //          case 14: return new LabelTTFMultiline();
-                    //          case 15: return new LabelTTFChinese();
-                    //          case 16: return new LabelBMFontChinese();
-                case 5: return new LabelFNTMultiLineAlignment();
-                    //          case 18: return new LabelTTFA8Test();
-                    //          case 19: return new BMFontOneAtlas();
-                    //          case 20: return new BMFontUnicode();
-                    //          case 21: return new BMFontInit();
-                    //          case 22: return new TTFFontInit();
-                    //          case 23: return new Issue1343();
-                    //          case 24: return new GitHubIssue5();
-                    //          // Not a label test. Should be moved to Atlas test
-                    //          case 25: return new Atlas1();
-                case 6:
-                    return new LabelFNTBounds();
-                case 7:
-                    return new LabelSFLongLineWrapping();
-                default:
-                    break;
-            }
-
-            return null;
-
+            return labelCreateFunctions[index]();
         }
 
         public override void runThisTest()

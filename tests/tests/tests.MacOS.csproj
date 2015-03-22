@@ -1180,6 +1180,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTBounds.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2550,6 +2553,12 @@
     </Content>
     <Content Include="..\testsContent\fonts\boundsTestFont.png">
       <Link>Content\fonts\boundsTestFont.png</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\arial-26-en-ru_0.png">
+      <Link>Content\fonts\arial-26-en-ru_0.png</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\arial-26-en-ru.fnt">
+      <Link>Content\fonts\arial-26-en-ru.fnt</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
