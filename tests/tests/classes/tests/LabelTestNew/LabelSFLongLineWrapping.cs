@@ -28,14 +28,18 @@ namespace tests
 
 		}
 
-        public override string title()
+        public override string Title
         {
-            return "New Label + SpriteFont";
+            get {
+                return "New Label + SpriteFont";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Uses the new Label with SpriteFont. Testing auto-wrapping";
+            get {
+                return "Uses the new Label with SpriteFont. Testing auto-wrapping";
+            }
         }
     }
 }

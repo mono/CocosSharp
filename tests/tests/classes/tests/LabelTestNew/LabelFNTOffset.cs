@@ -37,14 +37,18 @@ namespace tests
 
 		}
 
-        public override string title()
+        public override string Title
         {
-            return "New Label + .FNT file";
+            get {
+                return "New Label + .FNT file";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Rendering should be OK. Testing offset";
+            get {
+                return "Rendering should be OK. Testing offset";
+            }
         }
     }
 }

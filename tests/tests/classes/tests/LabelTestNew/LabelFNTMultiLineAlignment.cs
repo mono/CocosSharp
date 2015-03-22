@@ -208,9 +208,9 @@ namespace tests
             arrows.PositionY = label.Position.Y;
         }
 
-        public override string title()
+        public override string Title
         {
-            return "";
+            get { return string.Empty; }
         }
     }
 }

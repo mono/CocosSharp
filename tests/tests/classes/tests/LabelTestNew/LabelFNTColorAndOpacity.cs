@@ -75,14 +75,18 @@ namespace tests
             label3.Text = stepString;
         }
 
-        public override string title()
+        public override string Title
         {
-            return "New Label + .FNT file";
+            get {
+                return "New Label + .FNT file";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Testing opacity + tint";
+            get {
+                return "Testing opacity + tint";
+            }
         }
 
     }

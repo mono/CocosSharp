@@ -30,27 +30,19 @@ namespace CocosSharp
 		{
 			get
 			{
-				return title();
+                return "No title";
 			}
 		}
 
-        public virtual string title()
-        {
-            return "No title";
-        }
 
 		public override string Subtitle
 		{
 			get
 			{
-				return subtitle();
+                return string.Empty;
 			}
 		}
 
-        public virtual string subtitle()
-        {
-            return "";
-        }
 
 		public override void RestartCallback(object sender)
 		{

@@ -49,14 +49,18 @@ namespace tests
             drawNode.DrawPolygon(vertices, 4, CCColor4B.Transparent, 1, CCColor4B.White);
 		}
 
-        public override string title()
+        public override string Title
 		{
-            return "New Label + .FNT + Bounds";
+            get {
+                return "New Label + .FNT + Bounds";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "You should see string enclosed by a box";
+            get {
+                return "You should see string enclosed by a box";
+            }
         }
     }
 }

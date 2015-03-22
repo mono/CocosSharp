@@ -26,14 +26,18 @@ namespace tests
 			label.Position = s.Center;		
 		}
 
-        public override string title()
+        public override string Title
 		{
-            return "New Label + .FNT file";
+            get {
+                return "New Label + .FNT file";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Testing padding";
+            get {
+                return "Testing padding";
+            }
         }
     }
 }

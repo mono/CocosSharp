@@ -92,14 +92,16 @@ namespace tests
             CCDrawingPrimitives.End();
         }
 
-        public override string title()
+        public override string Title
         {
-            return "New Label + .FNT file";
+            get {
+                return "New Label + .FNT file";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Using fonts as Sprite objects. Some characters should rotate.";
+            get { return "Using fonts as Sprite objects. Some characters should rotate."; }
         }
     }
 }

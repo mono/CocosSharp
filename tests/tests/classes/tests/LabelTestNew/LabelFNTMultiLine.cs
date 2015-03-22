@@ -57,14 +57,18 @@ namespace tests
 
 		}
 
-        public override string title()
+        public override string Title
         {
-            return "New Label + .FNT file";
+            get {
+                return "New Label + .FNT file";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Multiline + anchor point";
+            get {
+                return "Multiline + anchor point";
+            }
         }
     }
 }
