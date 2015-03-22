@@ -64,6 +64,7 @@ namespace tests
                 () => new LabelFNTPadding(),
                 () => new LabelFNTOffset(),
                 () => new LabelFNTColor(),
+                () => new LabelFNTHundredLabels(),
                 () => new LabelFNTMultiLine(),
                 () => new LabelFNTMultiLineAlignment(),
                 () => new LabelFNTUNICODELanguages(),
