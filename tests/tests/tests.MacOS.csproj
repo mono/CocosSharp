@@ -1183,6 +1183,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
