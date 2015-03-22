@@ -1196,6 +1196,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2572,6 +2575,9 @@
     </Content>
     <Content Include="..\testsContent\fonts\arial-26-en-ru.fnt">
       <Link>Content\fonts\arial-26-en-ru.fnt</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\HKYuanMini.ttf">
+      <Link>Content\fonts\HKYuanMini.ttf</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>

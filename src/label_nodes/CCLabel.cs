@@ -544,6 +544,7 @@ namespace CocosSharp
             }
             else if(labelFormat.FormatFlags == CCLabelFormatFlags.SystemFont)
             {
+                currentLabelType = CCLabelType.SystemFont;
                 SystemFont = fntFile;
                 SystemFontSize = size;
                 Dimensions = dimensions;
