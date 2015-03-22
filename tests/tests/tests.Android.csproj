@@ -575,6 +575,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTHundredLabels.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">

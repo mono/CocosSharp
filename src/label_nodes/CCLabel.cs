@@ -547,6 +547,7 @@ namespace CocosSharp
                 SystemFont = fntFile;
                 SystemFontSize = size;
                 Dimensions = dimensions;
+                AnchorPoint = CCPoint.AnchorMiddle;
                 Text = str;
             }
 
@@ -615,6 +616,8 @@ namespace CocosSharp
 
             }
 
+            AnchorPoint = CCPoint.AnchorMiddle;
+
             FontConfiguration = CCBMFontConfiguration.FontConfigurationWithFile(fntFile);
 
             currentLabelType = CCLabelType.BitMapFont;
@@ -678,6 +681,8 @@ namespace CocosSharp
                 }
 
             }
+
+            AnchorPoint = CCPoint.AnchorMiddle;
 
             currentLabelType = CCLabelType.SpriteFont;
 

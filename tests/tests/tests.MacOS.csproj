@@ -1192,6 +1192,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
