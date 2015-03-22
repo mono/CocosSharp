@@ -66,6 +66,7 @@ namespace tests
                 () => new LabelFNTColor(),
                 () => new LabelFNTHundredLabels(),
                 () => new LabelFNTMultiLine(),
+                () => new LabelFNTandSFEmpty (),
                 () => new LabelFNTMultiLineAlignment(),
                 () => new LabelFNTUNICODELanguages(),
                 () => new LabelFNTBounds(),

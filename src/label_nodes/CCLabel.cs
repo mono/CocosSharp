@@ -127,7 +127,7 @@ namespace CocosSharp
             }
         }
 
-        public static CCLabelFormat TrueTypeFont 
+        public static CCLabelFormat SpriteFont 
         {
             get {
                 return new CCLabelFormat () { FormatFlags = CCLabelFormatFlags.SpriteFont };
@@ -609,7 +609,7 @@ namespace CocosSharp
 
                 if (FontAtlas == null)
                 {
-                    CCLog.Log("Bitnap Font CCLabel: Impossible to create font. Please check file: '{0}'", fntFile);
+                    CCLog.Log("Bitmap Font CCLabel: Impossible to create font. Please check file: '{0}'", fntFile);
                     return;
                 }
 
@@ -784,21 +784,24 @@ namespace CocosSharp
             }
             else
             {
-                var fontDefinition = new CCFontDefinition();
+                if (currentLabelType == CCLabelType.SystemFont)
+                {
+                    var fontDefinition = new CCFontDefinition();
 
-                fontDefinition.FontName = systemFont;
-                fontDefinition.FontSize = (int)systemFontSize;
+                    fontDefinition.FontName = systemFont;
+                    fontDefinition.FontSize = (int)systemFontSize;
 
-                fontDefinition.Alignment = labelFormat.Alignment;
-                fontDefinition.LineAlignment = labelFormat.LineAlignment;
+                    fontDefinition.Alignment = labelFormat.Alignment;
+                    fontDefinition.LineAlignment = labelFormat.LineAlignment;
 
-                fontDefinition.Dimensions = Dimensions;
+                    fontDefinition.Dimensions = Dimensions;
 
-                fontDefinition.FontFillColor = DisplayedColor;
-                fontDefinition.FontAlpha = DisplayedOpacity;
-                fontDefinition.LineBreak = labelFormat.LineBreaking;
+                    fontDefinition.FontFillColor = DisplayedColor;
+                    fontDefinition.FontAlpha = DisplayedOpacity;
+                    fontDefinition.LineBreak = labelFormat.LineBreaking;
 
-                CreateSpriteWithFontDefinition(fontDefinition);
+                    CreateSpriteWithFontDefinition(fontDefinition);
+                }
             }
 
             IsDirty = false;

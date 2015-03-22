@@ -12,7 +12,7 @@ namespace tests
         public LabelSFLongLineWrapping()
         {
             // Long sentence
-            label1 = new CCLabel(LabelFNTMultiLineAlignment.LongSentencesExample, "fonts/arial", 14, CCLabelFormat.TrueTypeFont);
+            label1 = new CCLabel(LabelFNTMultiLineAlignment.LongSentencesExample, "fonts/arial", 14, CCLabelFormat.SpriteFont);
             label1.LabelFormat.Alignment = CCTextAlignment.Center;
             label1.AnchorPoint = CCPoint.AnchorMiddleTop;
             AddChild(label1);
