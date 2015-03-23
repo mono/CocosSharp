@@ -1148,6 +1148,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1264,6 +1267,9 @@
     </Content>
     <Content Include="..\testsContent\fonts\arial-26-en-ru.fnt">
       <Link>Content\fonts\arial-26-en-ru.fnt</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\tahoma.ttf">
+      <Link>Content\fonts\tahoma.ttf</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>

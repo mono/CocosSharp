@@ -72,6 +72,7 @@ namespace tests
                 () => new LabelTTFUnicodeChinese (),
                 () => new LabelFNTMultiLineAlignment(),
                 () => new LabelFNTUNICODELanguages(),
+                () => new LabelTTFAlignmentNew(),
                 () => new LabelFNTBounds(),
                 () => new LabelSFLongLineWrapping()
         };

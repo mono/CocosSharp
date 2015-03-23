@@ -576,6 +576,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">

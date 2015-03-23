@@ -1199,6 +1199,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2579,6 +2582,9 @@
     <Content Include="..\testsContent\fonts\HKYuanMini.ttf">
       <Link>Content\fonts\HKYuanMini.ttf</Link>
     </Content>
+    <Content Include="Assets\Content\fonts\tahoma.ttf">
+      <Link>Content\fonts\tahoma.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2626,9 +2632,6 @@
   <ItemGroup>
     <None Include="Info.Mac.plist">
       <Link>Info.plist</Link>
-    </None>
-    <None Include="Assets\Content\fonts\tahoma.ttf">
-      <Link>Content\fonts\tahoma.ttf</Link>
     </None>
   </ItemGroup>
   <ItemGroup>

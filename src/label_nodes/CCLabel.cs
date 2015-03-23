@@ -816,8 +816,6 @@ namespace CocosSharp
         CCSprite textSprite = null;
         void CreateSpriteWithFontDefinition(CCFontDefinition fontDefinition)
         {
-            currentLabelType =  CCLabelType.SystemFont;
-
             var texture = CreateTextSprite(Text, fontDefinition);
 
             textSprite = new CCSprite(texture);

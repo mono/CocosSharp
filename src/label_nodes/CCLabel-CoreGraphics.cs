@@ -265,11 +265,23 @@ namespace CocosSharp
             var dimensions = new SizeF(textDef.Dimensions.Width, textDef.Dimensions.Height);
 
             var layoutAvailable = true;
+
+            // 
+            // * Note * This seems to only effect Mac because iOS works fine without this work around.
+            // Right Alignment BoundingRectWithSize does not seem to be working correctly when the following conditions are set:
+            //      1) Alignment Right
+            //      2) No dimensions
+            //      3) There are new line characters embedded in the string.
+            //
+            // So we set alignment to Left, calculate our bounds and then restore alignement afterwards before drawing.
+            //
             if (dimensions.Width <= 0)
             {
                 dimensions.Width = 8388608;
                 layoutAvailable = false;
-                textAlign = NSTextAlignment.Left;
+
+                // Set our alignment variables to left - see notes above.
+                nsparagraphStyle.Alignment = NSTextAlignment.Left;
             }
 
             if (dimensions.Height <= 0)
@@ -278,12 +290,18 @@ namespace CocosSharp
                 layoutAvailable = false;
             }
 
-            var boundingRect = stringWithAttributes.BoundingRectWithSize(new SizeF((int)dimensions.Width, (int)dimensions.Height), NSStringDrawingOptions.UsesLineFragmentOrigin);
+            // Calculate our bounding rectangle
+            var boundingRect = stringWithAttributes.BoundingRectWithSize(new SizeF((int)dimensions.Width, (int)dimensions.Height), 
+                NSStringDrawingOptions.UsesLineFragmentOrigin);
+
             if (!layoutAvailable)
             {
                 if (dimensions.Width == 8388608)
                 {
                     dimensions.Width = boundingRect.Width;
+
+                    // Restore our alignment before drawing - see notes above.
+                    nsparagraphStyle.Alignment = textAlign;
                 }
                 if (dimensions.Height == 8388608)
                 {
@@ -338,12 +356,12 @@ namespace CocosSharp
             var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
 
             // Debugging purposes
-            //            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //            var fileName = Path.Combine(path, "Label3.png");
-            //            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
-            //            {
-            //                tex.SaveAsPng(stream, imageWidth, imageHeight);
-            //            }
+//            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+//            var fileName = Path.Combine(path, "Label3.png");
+//            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+//            {
+//                tex.SaveAsPng(stream, imageWidth, imageHeight);
+//            }
 
             // Create our texture of the label string.
             var texture = new CCTexture2D(tex);
@@ -445,7 +463,6 @@ namespace CocosSharp
             {
                 dimensions.Width = 8388608;
                 layoutAvailable = false;
-                textAlign = UITextAlignment.Left;
             }
 
             if (dimensions.Height <= 0)
