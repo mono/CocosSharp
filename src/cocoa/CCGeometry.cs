@@ -1093,11 +1093,11 @@ namespace CocosSharp
             {
                 minx = rect.MinX;
             }
-            if (rect.MaxX < MaxX)
+            if (rect.MaxX <= MaxX)
             {
                 maxx = rect.MaxX;
             }
-            else if (rect.MaxX > MaxX)
+            else
             {
                 maxx = MaxX;
             }
@@ -1110,11 +1110,11 @@ namespace CocosSharp
             {
                 miny = rect.MinY;
             }
-            if (rect.MaxY < MaxY)
+            if (rect.MaxY <= MaxY)
             {
                 maxy = rect.MaxY;
             }
-            else if (rect.MaxY > MaxY)
+            else
             {
                 maxy = MaxY;
             }
@@ -1123,7 +1123,7 @@ namespace CocosSharp
 
         public bool IntersectsRect(CCRect rect)
         {
-            return !(MaxX < rect.MinX || rect.MaxX < MinX || MaxY < rect.MinY || rect.MaxY < MinY);
+            return IntersectsRect(ref rect);
         }
 
         public bool IntersectsRect(ref CCRect rect)
