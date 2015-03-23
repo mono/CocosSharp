@@ -96,7 +96,6 @@ namespace CocosSharp
             {
                 dimensions.Width = 8388608;
                 layoutAvailable = false;
-                textAlign = Layout.Alignment.AlignNormal;
             }
 
             if (dimensions.Height <= 0)
@@ -145,6 +144,15 @@ namespace CocosSharp
 
             imageWidth = (int)dimensions.Width;
             imageHeight = (int)dimensions.Height;
+
+            // Recreate our layout based on calculated dimensions so that we can draw the text correctly
+            // in our image when Alignment is not Left.
+            if (textAlign != Layout.Alignment.AlignNormal)
+            {
+                layout = new StaticLayout(text, textPaint, 
+                    (int)dimensions.Width, textAlign, 1.0f, 0.0f, false);
+            }
+
 
             // Line alignment
             var yOffset = (CCVerticalTextAlignment.Bottom == verticleAlignement 
