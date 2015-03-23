@@ -364,9 +364,6 @@
     <Compile Include="classes\tests\LabelTest\Atlas1.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas3.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="classes\tests\LabelTest\Atlas4.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1150,6 +1147,61 @@
     <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\Physics\PhysicsTest.cs" />
     <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
+    <Compile Include="classes\tests\LabelTest\Atlas3.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\AtlasTestSceneNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTPadding.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOffset.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTBounds.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTHundredLabels.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2515,6 +2567,24 @@
     <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
     <Content Include="Content\TileMaps\staggered_test.xnb" />
     <Content Include="Content\TileMaps\large_map.xnb" />
+    <Content Include="..\testsContent\fonts\boundsTestFont.fnt">
+      <Link>Content\fonts\boundsTestFont.fnt</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\boundsTestFont.png">
+      <Link>Content\fonts\boundsTestFont.png</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\arial-26-en-ru_0.png">
+      <Link>Content\fonts\arial-26-en-ru_0.png</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\arial-26-en-ru.fnt">
+      <Link>Content\fonts\arial-26-en-ru.fnt</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\HKYuanMini.ttf">
+      <Link>Content\fonts\HKYuanMini.ttf</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\tahoma.ttf">
+      <Link>Content\fonts\tahoma.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2563,9 +2633,6 @@
     <None Include="Info.Mac.plist">
       <Link>Info.plist</Link>
     </None>
-    <None Include="Assets\Content\fonts\tahoma.ttf">
-      <Link>Content\fonts\tahoma.ttf</Link>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -2574,5 +2641,6 @@
     <Folder Include="classes\tests\EventDispatcherTest\" />
     <Folder Include="Extensions\" />
     <Folder Include="classes\tests\Physics\" />
+    <Folder Include="classes\tests\LabelTestNew\" />
   </ItemGroup>
 </Project>

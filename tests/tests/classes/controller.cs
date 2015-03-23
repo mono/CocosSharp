@@ -385,6 +385,8 @@ namespace tests
                     scene = new IntervalTestScene(); break;
                 case (int)TestCases.TEST_LABEL:
                     scene = new AtlasTestScene(); break;
+                case (int)TestCases.TEST_LABEL_NEW:
+                    scene = new AtlasTestSceneNew(); break;
                 case (int)TestCases.TEST_TEXT_INPUT:
                     scene = new TextInputTestScene(); break;
                 case (int)TestCases.TEST_SPRITE:

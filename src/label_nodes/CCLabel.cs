@@ -1,480 +1,1230 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text;
 
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
-    public partial class CCLabel : CCLabelBMFont
+
+    public enum GlyphCollection 
     {
-        private struct KerningInfo
+        Dynamic,
+        NEHE,
+        Ascii,
+        Custom
+    };
+
+    // font attributes
+    internal struct CCFontDefinition
+    {
+
+        public string FontName;
+        public int FontSize;
+        public CCTextAlignment Alignment;
+        public CCVerticalTextAlignment LineAlignment;
+        public CCSize Dimensions;
+        public CCColor3B FontFillColor;
+        public byte FontAlpha;
+        public CCLabelLineBreak LineBreak;
+
+    };
+
+
+
+    internal struct LetterInfo
+    {
+        public CCFontLetterDefinition Definition;
+
+        public CCPoint Position;
+        public CCSize  ContentSize;
+        public int   AtlasIndex;
+    };
+
+    [Flags]
+    public enum CCLabelFormatFlags {
+        Unknown               = 0x0001,
+        SpriteFont            = 0x0002,
+        BitmapFont            = 0x0004,
+        CharacterMap          = 0x0008,
+        SystemFont            = 0x0010,
+    }
+
+    public enum  CCLabelLineBreak {
+        None              = 0,
+        Character         = 1,
+        Word              = 2,
+    }
+
+    public sealed class CCLabelFormat : IDisposable, ICloneable 
+    {
+
+        CCLabelFormatFlags formatFlags = CCLabelFormatFlags.Unknown;
+
+
+        public CCLabelFormat ()
         {
-            /// <summary>Specifies the A spacing of the character. The A spacing is the distance to add to the current
-            /// position before drawing the character glyph.</summary>
-            public float A;
-            /// <summary>Specifies the B spacing of the character. The B spacing is the width of the drawn portion of
-            /// the character glyph.</summary>
-            public float B;
-            /// <summary>Specifies the C spacing of the character. The C spacing is the distance to add to the current
-            /// position to provide white space to the right of the character glyph.</summary>
-            public float C;
+            LineBreaking = CCLabelLineBreak.Word;
         }
 
-        private static CCTexture2D labelTexture;
-        static bool isTextureDirty = true;
-
-        string fontName;
-        float fontSize;
-        bool isFontDirty;
-
-        public string FontName
+        public CCLabelFormat (CCLabelFormat format)
         {
-            get { return fontName; }
+            if (format == null)
+                throw new ArgumentNullException ("format");
+
+            Alignment = format.Alignment;
+            LineAlignment = format.LineAlignment;
+            FormatFlags = format.FormatFlags;
+        }
+
+        public CCLabelFormat(CCLabelFormatFlags options) : this()
+        {
+            formatFlags = options;
+        }
+
+        ~CCLabelFormat ()
+        {
+            Dispose (false);
+        }
+
+
+        public CCTextAlignment Alignment {
+            get; set;
+        }
+
+        public CCVerticalTextAlignment LineAlignment { get; set; }
+
+        public CCLabelLineBreak LineBreaking { get; set; }
+
+        public object Clone()
+        {
+            return new CCLabelFormat (this);
+        }
+
+        public void Dispose ()
+        {
+            Dispose (true);
+            System.GC.SuppressFinalize (this);
+        }
+
+        void Dispose (bool disposing)
+        {
+        }
+
+        public static CCLabelFormat BitMapFont
+        {
+            get {
+                return new CCLabelFormat () { FormatFlags = CCLabelFormatFlags.BitmapFont };
+            }
+        }
+
+        public static CCLabelFormat SystemFont 
+        {
+            get {
+                return new CCLabelFormat () { FormatFlags = CCLabelFormatFlags.SystemFont };
+            }
+        }
+
+        public static CCLabelFormat SpriteFont 
+        {
+            get {
+                return new CCLabelFormat () { FormatFlags = CCLabelFormatFlags.SpriteFont };
+            }
+        }
+
+
+        public CCLabelFormatFlags FormatFlags {
+            get {               
+                return formatFlags;
+            }
+
+            set {
+                formatFlags = value;
+            }
+        }
+
+    }
+
+
+
+    public partial class CCLabel : CCNode, ICCTextContainer
+    {
+
+        [Flags]
+        protected enum CCLabelType 
+        {
+            SpriteFont,
+            BitMapFont,
+            CharacterMap,
+            SystemFont
+        };
+
+        public const int AutomaticWidth = -1;
+        const int defaultSpriteBatchCapacity = 29;
+
+        internal static Dictionary<string, CCBMFontConfiguration> fontConfigurations = new Dictionary<string, CCBMFontConfiguration>();
+
+        protected CCLabelLineBreak lineBreak;
+        protected CCTextAlignment horzAlignment = CCTextAlignment.Center;
+        protected CCVerticalTextAlignment vertAlignment = CCVerticalTextAlignment.Top;
+        internal CCBMFontConfiguration FontConfiguration { get; set; }
+        protected string fntConfigFile;
+        protected string labelInitialText;
+
+        protected CCPoint ImageOffset { get; set; }
+        protected CCSize labelDimensions;
+        protected bool IsDirty { get; set; }
+        public CCTextureAtlas TextureAtlas { get ; private set; }
+        public CCRawList<CCSprite> Descendants { get; private set; }
+
+        protected bool isColorModifiedByOpacity = false;
+
+        public CCBlendFunc BlendFunc { get; set; }
+
+        protected CCLabelType currentLabelType;
+        private CCFontAtlas fontAtlas;
+        private List<LetterInfo> lettersInfo = new List<LetterInfo>();
+
+        //! used for optimization
+        CCSprite reusedLetter;
+        CCRect reusedRect;
+
+        // System font
+        bool systemFontDirty;
+        string systemFont;
+        float systemFontSize;
+
+        CCLabelFormat labelFormat;
+
+        // Static properties
+
+        public static float DefaultTexelToContentSizeRatio
+        {
+            set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
+        }
+
+        public static CCSize DefaultTexelToContentSizeRatios { get; set; }
+
+
+        // Instance properties
+
+        protected float LineHeight { get; set; }
+
+        public CCLabelFormat LabelFormat
+        {
+            get { return labelFormat; }
             set
             {
-                if (fontName != value)
+                if (!labelFormat.Equals(value))
                 {
-                    fontName = value;
-                    isFontDirty = true;
+                    // TODO: Check label format flags need to be checked so they can not be
+                    // changed after being set.
+                    labelFormat = value;
+                    IsDirty = true;
                 }
             }
         }
 
-        public float FontSize
+        public override CCPoint AnchorPoint
         {
-            get { return fontSize; }
+            get { return base.AnchorPoint; }
             set
             {
-                if (fontSize != value)
+                if (!AnchorPoint.Equals(value))
                 {
-                    fontSize = value;
-                    isFontDirty = true;
+                    base.AnchorPoint = value;
+                    IsDirty = true;
                 }
             }
         }
 
-        public override string Text
+        public override float Scale
         {
-            get
-            {
-                return base.Text;
-            }
             set
             {
-                if (labelText != value)
+                if (!value.Equals(base.ScaleX) || !value.Equals(base.ScaleY)) 
                 {
-                    InitializeFont(FontName, FontSize, value);
-                    base.Text = value;
+                    base.Scale = value;
+                    IsDirty = true;
                 }
             }
         }
 
-
-        public static void InitializeTTFAtlas(int width, int height)
+        public override float ScaleX
         {
-            m_nWidth = width;
-            m_nHeight = height;
-            m_nDepth = 4;
-
-            labelTexture = new CCTexture2D();
-            m_pData = new int[width * height];
-
-            m_pNodes.Clear();
-            m_pNodes.Add(new ivec3() { x = 1, y = 1, z = m_nWidth - 2 });
+            get { return base.ScaleX; }
+            set
+            {
+                if (!value.Equals(base.ScaleX)) 
+                {
+                    base.ScaleX = value;
+                    IsDirty = true;
+                }
+            }
         }
 
-        private static string GetFontKey(string fontName, float fontSize)
+        public override float ScaleY
         {
-            return String.Format("ttf-{0}-{1}", fontName, fontSize);
+            get { return base.ScaleY; }
+            set
+            {
+                if (!value.Equals(base.ScaleY)) 
+                {
+                    base.ScaleY = value;
+                    IsDirty = true;
+                }
+            }
         }
 
+        public CCTextAlignment HorizontalAlignment
+        {
+            get { return labelFormat.Alignment; }
+            set
+            {
+                if (labelFormat.Alignment != value)
+                {
+                    labelFormat.Alignment = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public CCVerticalTextAlignment VerticalAlignment
+        {
+            get { return labelFormat.LineAlignment; }
+            set
+            {
+                if (labelFormat.LineAlignment != value)
+                {
+                    labelFormat.LineAlignment = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public override CCPoint Position
+        {
+            get { return base.Position; }
+            set
+            {
+                if (base.Position != value)
+                {
+                    base.Position = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public override float PositionX
+        {
+            get { return base.PositionX; }
+            set
+            {
+                if (base.PositionX != value)
+                {
+                    base.PositionX = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public override float PositionY
+        {
+            get { return base.PositionY; }
+            set
+            {
+                if (base.PositionY != value)
+                {
+                    base.PositionY = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public override CCSize ContentSize
+        {
+            get { return base.ContentSize; }
+            set
+            {
+                if (ContentSize != value)
+                {
+                    base.ContentSize = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public CCSize Dimensions
+        {
+            get { return labelDimensions; }
+            set
+            {
+                if (labelDimensions != value)
+                {
+                    labelDimensions = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public CCLabelLineBreak LineBreak
+        {
+            get { return lineBreak; }
+            set
+            {
+                lineBreak = value;
+                IsDirty = true;
+            }
+        }
+
+        public bool IsAntialiased
+        {
+            get { return Texture.IsAntialiased; }
+            set { Texture.IsAntialiased = value; }
+        }
+
+        public virtual CCTexture2D Texture
+        {
+            get { return TextureAtlas.Texture; }
+            set
+            {
+                TextureAtlas.Texture = value;
+                UpdateBlendFunc();
+            }
+        }
+
+        void UpdateBlendFunc()
+        {
+            if (!TextureAtlas.Texture.HasPremultipliedAlpha)
+            {
+                BlendFunc = CCBlendFunc.NonPremultiplied;
+            }
+        }
+
+
+        public virtual string Text
+        {
+            get { return labelInitialText; }
+            set
+            {
+                if (labelInitialText != value)
+                {
+                    labelInitialText = value;
+                    IsDirty = true;
+                    UpdateContent();
+                }
+            }
+        }
+
+        public string SystemFont
+        {
+            get { return systemFont; }
+            set
+            {
+                if (systemFont != value)
+                {
+                    systemFont = value;
+                    systemFontDirty = true;
+
+                }
+            }
+        }
+
+        public float SystemFontSize
+        {
+            get { return systemFontSize; }
+            set
+            {
+                if (systemFontSize != value)
+                {
+                    systemFontSize = value;
+                    systemFontDirty = true;
+
+                }
+            }
+        }
+
+        public static void PurgeCachedData()
+        {
+            if (fontConfigurations != null)
+            {
+                fontConfigurations.Clear();
+            }
+        }
 
         #region Constructors
 
-        public CCLabel()
+        static CCLabel()
+        {
+            DefaultTexelToContentSizeRatios = CCSize.One;
+        }
+
+        public CCLabel() : this("", "")
         {
         }
 
-        public CCLabel(string text, string fontName, float fontSize) :
-            this(text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Left, CCVerticalTextAlignment.Top)
-        { }
-
-        public CCLabel(string text, string fontName, float fontSize, CCTextAlignment hAlignment) :
-            this(text, fontName, fontSize, CCSize.Zero, hAlignment, CCVerticalTextAlignment.Top)
-        { }
-
-        public CCLabel(string text, string fontName, float fontSize, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment) :
-            this(text, fontName, fontSize, CCSize.Zero, hAlignment, vAlignment)
-        { }
-
-        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions) :
-            this(text, fontName, fontSize, dimensions, CCTextAlignment.Left, CCVerticalTextAlignment.Top)
+        public CCLabel(string str, string fntFile)
+            : this(str, fntFile, 0.0f)
         {
         }
 
-        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
-            this(text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
+        public CCLabel(string str, string fntFile, float width)
+            : this(str, fntFile, width, CCTextAlignment.Left)
         {
         }
 
-        public CCLabel(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+        public CCLabel(string str, string fntFile, float width, CCTextAlignment alignment)
+            : this(str, fntFile, width, alignment, CCPoint.Zero)
         {
-            // Can't call base(text, ...), becasue we have to initialize font first
-            InitializeFont(fontName, fontSize, text);
-            this.fontName = fontName;
-            this.fontSize = fontSize;
-            base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, labelTexture);
+        }
+
+        public CCLabel(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset) 
+            : this(str, fntFile, width, alignment, imageOffset, null)
+        {
+        }
+
+        public CCLabel(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset, CCTexture2D texture)
+            : this(str, fntFile, width, alignment, CCVerticalTextAlignment.Top, imageOffset, null)
+        {
+        }
+
+        public CCLabel(string str, string fntFile, float width, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+            CCPoint imageOffset, CCTexture2D texture)
+            : this(str, fntFile, new CCSize(width, 0), hAlignment, vAlignment, imageOffset, texture)
+        {
+        }
+
+        public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+            CCPoint imageOffset, CCTexture2D texture)
+            : this (str, fntFile, dimensions, new CCLabelFormat() { Alignment = hAlignment, LineAlignment = vAlignment}, imageOffset, texture)
+        {
+            // First we try loading BitMapFont
+            //InitBMFont(str, fntFile, dimensions, hAlignment, vAlignment, imageOffset, texture);
+        }
+
+        public CCLabel(string str, string fntFile, CCSize dimensions, CCLabelFormat labelFormat)
+            : this(str, fntFile, dimensions, labelFormat, CCPoint.Zero, null)
+        {   }
+
+        public CCLabel(string str, string fntFile, float size, CCLabelFormat labelFormat)
+            : this (str, fntFile, size, CCSize.Zero, labelFormat)
+        {   }
+
+        public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat)
+            : this (str, fntFile, size, dimensions, labelFormat, CCPoint.Zero, null)
+        {   }
+
+        public CCLabel(string str, string fntFile, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
+        {
+            this.labelFormat = labelFormat;
+            // First we try loading BitMapFont
+            InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
+        }
+
+        public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
+        {
+            this.labelFormat = labelFormat;
+            if (labelFormat.FormatFlags == CCLabelFormatFlags.Unknown)
+            {
+                // First we try loading BitMapFont
+                InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
+            }
+            else if(labelFormat.FormatFlags == CCLabelFormatFlags.BitmapFont)
+            {
+                // Initialize the BitmapFont
+                InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
+            }
+            else if(labelFormat.FormatFlags == CCLabelFormatFlags.SpriteFont)
+            {
+                // Initialize the SpriteFont
+                InitSpriteFont(str, fntFile, size, dimensions, labelFormat, imageOffset, texture);
+
+            }
+            else if(labelFormat.FormatFlags == CCLabelFormatFlags.SystemFont)
+            {
+                currentLabelType = CCLabelType.SystemFont;
+                SystemFont = fntFile;
+                SystemFontSize = size;
+                Dimensions = dimensions;
+                AnchorPoint = CCPoint.AnchorMiddle;
+                Text = str;
+            }
+
+        }
+
+        internal void Reset ()
+        {
+            systemFontDirty = false;
+            systemFont = "Helvetica";
+            systemFontSize = 12;
+        }
+
+        internal CCFontAtlas FontAtlas 
+        { 
+            get {return fontAtlas;}
+            set
+            {
+                if (value != fontAtlas)
+                {
+                    fontAtlas = value;
+
+
+                    if (reusedLetter == null)
+                    {
+                        reusedLetter = new CCSprite();
+                        reusedLetter.IsColorModifiedByOpacity = isColorModifiedByOpacity;
+                        reusedLetter.AnchorPoint = CCPoint.AnchorUpperLeft;
+
+                    }
+
+                    if (fontAtlas != null)
+                    {
+                        if (TextureAtlas != null)
+                            Texture = FontAtlas.GetTexture(0);
+                        else
+                            TextureAtlas = new CCTextureAtlas(FontAtlas.GetTexture(0), defaultSpriteBatchCapacity);
+
+                        LineHeight = fontAtlas.CommonHeight;
+                        IsDirty = true;
+                    }
+
+                }
+            }
+        }
+
+        protected void InitBMFont(string theString, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+            CCPoint imageOffset, CCTexture2D texture)
+        {
+            Debug.Assert(FontConfiguration == null, "re-init is no longer supported");
+            Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
+                "Invalid params for CCLabelBMFont");
+
+            if (!String.IsNullOrEmpty(fntFile))
+            {
+                try
+                {
+                    FontAtlas = CCFontAtlasCache.GetFontAtlasFNT(fntFile, imageOffset);
+                }
+                catch {}
+
+                if (FontAtlas == null)
+                {
+                    CCLog.Log("Bitmap Font CCLabel: Impossible to create font. Please check file: '{0}'", fntFile);
+                    return;
+                }
+
+            }
+
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            FontConfiguration = CCBMFontConfiguration.FontConfigurationWithFile(fntFile);
+
+            currentLabelType = CCLabelType.BitMapFont;
+
+            if (String.IsNullOrEmpty(theString))
+            {
+                theString = String.Empty;
+            }
+
+            // Initialize the TextureAtlas along with children.
+            var capacity = theString.Length;
+
+            BlendFunc = CCBlendFunc.AlphaBlend;
+
+            if (capacity == 0)
+            {
+                capacity = defaultSpriteBatchCapacity;
+            }
+
+            UpdateBlendFunc();
+
+            // no lazy alloc in this node
+            Children = new CCRawList<CCNode>(capacity);
+            Descendants = new CCRawList<CCSprite>(capacity);
+
+            this.labelDimensions = dimensions;
+
+            horzAlignment = hAlignment;
+            vertAlignment = vAlignment;
+
+            IsOpacityCascaded = true;
+
+            ContentSize = CCSize.Zero;
+
+            IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            ImageOffset = imageOffset;
+
+            Text = theString;
+        }
+
+        protected void InitSpriteFont(string theString, string fntFile, float fontSize, CCSize dimensions, CCLabelFormat labelFormat, 
+            CCPoint imageOffset, CCTexture2D texture)
+        {
+            Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
+                "Invalid params for CCLabel SpriteFont");
+
+            if (!String.IsNullOrEmpty(fntFile))
+            {
+                try
+                {
+                    FontAtlas = CCFontAtlasCache.GetFontAtlasSpriteFont(fntFile, fontSize, imageOffset);
+                }
+                catch {}
+
+                if (FontAtlas == null)
+                {
+                    CCLog.Log("SpriteFont CCLabel: Impossible to create font. Please check file: '{0}'", fntFile);
+                    return;
+                }
+
+            }
+
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            currentLabelType = CCLabelType.SpriteFont;
+
+            if (String.IsNullOrEmpty(theString))
+            {
+                theString = String.Empty;
+            }
+
+            // Initialize the TextureAtlas along with children.
+            var capacity = theString.Length;
+
+            BlendFunc = CCBlendFunc.AlphaBlend;
+
+            if (capacity == 0)
+            {
+                capacity = defaultSpriteBatchCapacity;
+            }
+
+            UpdateBlendFunc();
+
+            // no lazy alloc in this node
+            Children = new CCRawList<CCNode>(capacity);
+            Descendants = new CCRawList<CCSprite>(capacity);
+
+            this.labelDimensions = dimensions;
+
+            horzAlignment = labelFormat.Alignment;
+            vertAlignment = labelFormat.LineAlignment;
+
+            IsOpacityCascaded = true;
+
+            ContentSize = CCSize.Zero;
+
+            IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            ImageOffset = imageOffset;
+
+            Text = theString;
         }
 
         #endregion Constructors
 
-
-        #region Scene callback
-
-        protected override void AddedToScene()
+        public override void UpdateColor()
         {
-            base.AddedToScene();
+            base.UpdateColor();
 
-            if (Scene != null)
+            if (TextureAtlas == null)
             {
-                isFontDirty = true;
+                return;
             }
+
+            var color4 = new CCColor4B( DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity );
+
+            // special opacity for premultiplied textures
+            if (IsColorModifiedByOpacity)
+            {
+                color4.R = (byte)(color4.R * DisplayedOpacity / 255.0f);
+                color4.G = (byte)(color4.G * DisplayedOpacity / 255.0f);
+                color4.B = (byte)(color4.B * DisplayedOpacity / 255.0f);
+            }
+
+            var quads = TextureAtlas.Quads;
+            var totalQuads = TextureAtlas.TotalQuads;
+            CCV3F_C4B_T2F_Quad quad;
+
+            for (int index = 0; index < totalQuads; ++index)
+            {
+                quad = quads[index];
+                quad.BottomLeft.Colors = color4;
+                quad.BottomRight.Colors = color4;
+                quad.TopLeft.Colors = color4;
+                quad.TopRight.Colors = color4;
+                TextureAtlas.UpdateQuad(ref quad, index);
+            }
+
+
         }
 
-        #endregion Scene callback
-
-
-        private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
+        public override bool IsColorModifiedByOpacity
         {
-
-            if (m_pData == null)
+            get { return isColorModifiedByOpacity; }
+            set
             {
-                InitializeTTFAtlas(1024, 1024);
-            }
-
-            if (String.IsNullOrEmpty(charset))
-            {
-                charset = " ";
-            }
-
-            var chars = new CCRawList<char>();
-
-            var fontKey = GetFontKey(fontName, fontSize);
-
-            CCBMFontConfiguration fontConfig;
-
-            if (!fontConfigurations.TryGetValue(fontKey, out fontConfig))
-            {
-                fontConfig = new CCBMFontConfiguration();
-                fontConfigurations.Add(fontKey, fontConfig);
-            }
-
-            for (int i = 0; i < charset.Length; i++)
-            {
-                var ch = charset[i];
-                if (!fontConfig.Glyphs.ContainsKey(ch) && chars.IndexOf(ch) == -1)
+                if (isColorModifiedByOpacity != value)
                 {
-                    chars.Add(ch);
-                }
-            }
-
-            if (chars.Count == 0)
-            {
-                return fontConfig;
-            }
-
-            CreateFont(fontName, fontSize, chars);
-
-            fontConfig.CommonHeight = (int)Math.Ceiling(GetFontHeight());
-
-            int[] data = null;
-
-            for (int i = 0; i < chars.Count; i++)
-            {
-                var s = chars[i].ToString();
-
-                var charSize = GetMeasureString(s);
-
-                int w = (int)Math.Ceiling(charSize.Width + 2);
-                int h = (int)Math.Ceiling(charSize.Height + 2);
-
-                if (data == null || data.Length < (w * h))
-                {
-                    data = new int[w * h];
-                }
-
-                unsafe
-                {
-                    int stride;
-                    byte* pBase = GetBitmapData(s, out stride);
-
-                    int minX = w;
-                    int maxX = 0;
-                    int minY = h;
-                    int maxY = 0;
-
-                    for (int y = 0; y < h; y++)
-                    {
-                        var row = (int*)(pBase + y * stride);
-
-                        for (int x = 0; x < w; x++)
-                        {
-                            if (row[x] != 0)
-                            {
-                                minX = Math.Min(minX, x);
-                                maxX = Math.Max(maxX, x);
-                                minY = Math.Min(minY, y);
-                                maxY = Math.Max(maxY, y);
-                            }
-                        }
-                    }
-
-                    w = Math.Max(maxX - minX + 1, 1);
-                    h = Math.Max(maxY - minY + 1, 1);
-
-                    //maxX = minX + w;
-                    //maxY = minY + h;
-
-                    int index = 0;
-                    for (int y = minY; y <= maxY; y++)
-                    {
-                        var row = (int*)(pBase + y * stride);
-                        for (int x = minX; x <= maxX; x++)
-                        {
-                            data[index] = row[x];
-                            index++;
-                        }
-                    }
-
-                    var region = AllocateRegion(w, h);
-
-                    if (region.x >= 0)
-                    {
-                        SetRegionData(region, data, w);
-
-                        var info = GetKerningInfo(chars[i]);
-
-                        var fontDef = new CCBMFontConfiguration.CCBMGlyphDef()
-                        {
-                            Character = chars[i],
-                            Subrect = new CCRect(region.x, region.y, region.width, region.height),
-                            XOffset = minX, // + (int)Math.Ceiling(info.A),
-                            YOffset = minY,
-                            XAdvance = (int)Math.Ceiling(info.A + info.B + info.C)
-                        };
-
-                        fontConfig.CharacterSet.Add(chars[i]);
-                        fontConfig.Glyphs.Add(chars[i], fontDef);
-                    }
-                    else
-                    {
-                        CCLog.Log("Texture atlas is full");
-                    }
-                }
-            }
-
-            isTextureDirty = true;
-
-            return fontConfig;
-        }
-
-        protected override void Draw()
-        {
-            if (isFontDirty)
-            {
-                FontConfiguration = InitializeFont(fontName, fontSize, Text);
-                isFontDirty = false;
-            }
-
-            if (isTextureDirty)
-            {
-                labelTexture.InitWithRawData(m_pData, CCSurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
-                isTextureDirty = false;
-            }
-
-            base.Draw();
-        }
-
-        #region Skyline Bottom Left
-
-        private struct ivec3
-        {
-            public int x;
-            public int y;
-            public int z;
-        }
-
-        public struct ivec4
-        {
-            public int x;
-            public int y;
-            public int width;
-            public int height;
-        }
-
-        private static CCRawList<ivec3> m_pNodes = new CCRawList<ivec3>();
-        private static int m_nUsed;
-        private static int m_nWidth;
-        private static int m_nHeight;
-        private static int m_nDepth;
-        private static int[] m_pData;
-
-        private static int Fit(int index, int width, int height)
-        {
-            var node = m_pNodes[index];
-
-            var x = node.x;
-            var y = node.y;
-            var widthLeft = width;
-            var i = index;
-
-            if ((x + width) > (m_nWidth - 1))
-            {
-                return -1;
-            }
-
-            while (widthLeft > 0)
-            {
-                node = m_pNodes[i];
-
-                if (node.y > y)
-                {
-                    y = node.y;
-                }
-
-                if ((y + height) > (m_nHeight - 1))
-                {
-                    return -1;
-                }
-
-                widthLeft -= node.z;
-
-                ++i;
-            }
-            return y;
-        }
-
-        private static void Merge()
-        {
-            var nodes = m_pNodes.Elements;
-            for (int i = 0, count = m_pNodes.Count; i < count - 1; ++i)
-            {
-                if (nodes[i].y == nodes[i + 1].y)
-                {
-                    nodes[i].z += nodes[i + 1].z;
-                    m_pNodes.RemoveAt(i + 1);
-                    --count;
-                    --i;
+                    isColorModifiedByOpacity = value;
+                    UpdateColor();
                 }
             }
         }
 
-        public static ivec4 AllocateRegion(int width, int height)
+        protected void UpdateContent()
         {
-            ivec3 node, prev;
-            ivec4 region = new ivec4() { x = 0, y = 0, width = width, height = height };
-            int i;
 
-            int bestHeight = int.MaxValue;
-            int bestIndex = -1;
-            int bestWidth = int.MaxValue;
-
-            for (i = 0; i < m_pNodes.Count; ++i)
+            if (string.IsNullOrEmpty(Text))
             {
-                int y = Fit(i, width, height);
+                return;
+            }
 
-                if (y >= 0)
+            if (FontAtlas != null)
+            {
+                LayoutLabel();
+            }
+            else
+            {
+                if (currentLabelType == CCLabelType.SystemFont)
                 {
-                    node = m_pNodes[i];
-                    if (((y + height) < bestHeight) || (((y + height) == bestHeight) && (node.z < bestWidth)))
-                    {
-                        bestHeight = y + height;
-                        bestIndex = i;
-                        bestWidth = node.z;
-                        region.x = node.x;
-                        region.y = y;
-                    }
+                    var fontDefinition = new CCFontDefinition();
+
+                    fontDefinition.FontName = systemFont;
+                    fontDefinition.FontSize = (int)systemFontSize;
+
+                    fontDefinition.Alignment = labelFormat.Alignment;
+                    fontDefinition.LineAlignment = labelFormat.LineAlignment;
+
+                    fontDefinition.Dimensions = Dimensions;
+
+                    fontDefinition.FontFillColor = DisplayedColor;
+                    fontDefinition.FontAlpha = DisplayedOpacity;
+                    fontDefinition.LineBreak = labelFormat.LineBreaking;
+
+                    CreateSpriteWithFontDefinition(fontDefinition);
                 }
             }
 
-            if (bestIndex == -1)
+            IsDirty = false;
+        }
+
+        CCSprite textSprite = null;
+        void CreateSpriteWithFontDefinition(CCFontDefinition fontDefinition)
+        {
+            var texture = CreateTextSprite(Text, fontDefinition);
+
+            textSprite = new CCSprite(texture);
+
+            textSprite.AnchorPoint = CCPoint.AnchorLowerLeft;
+            ContentSize = textSprite.ContentSize;
+
+            base.AddChild(textSprite,0,TagInvalid);
+
+            textSprite.UpdateDisplayedColor(DisplayedColor);
+            textSprite.UpdateDisplayedOpacity(DisplayedOpacity);
+        }
+
+        protected void UpdateFont()
+        {
+            if (FontAtlas != null)
             {
-                region.x = -1;
-                region.y = -1;
-                region.width = 0;
-                region.height = 0;
-                return region;
+                //CCFontAtlasCache.ReleaseFontAtlas(FontAtlas);
+                FontAtlas = null;
             }
 
-            //New node
-            node.x = region.x;
-            node.y = region.y + height;
-            node.z = width;
-            m_pNodes.Insert(bestIndex, node);
+            IsDirty = true;
+            systemFontDirty = false;
+        }
 
-            for (i = bestIndex + 1; i < m_pNodes.Count; ++i)
+        void UpdateQuads()
+        {
+            int index;
+            int lettersCount = lettersInfo.Count;
+
+            for (int ctr = 0; ctr < lettersCount; ++ctr)
             {
-                node = m_pNodes[i];
-                prev = m_pNodes[i - 1];
+                var letterDef = lettersInfo[ctr].Definition;
 
-                if (node.x < (prev.x + prev.z))
+                if (letterDef.IsValidDefinition)
                 {
-                    int shrink = prev.x + prev.z - node.x;
-                    node.x += shrink;
-                    node.z -= shrink;
-                    if (node.z <= 0)
-                    {
-                        m_pNodes.RemoveAt(i);
-                        --i;
-                    }
-                    else
-                    {
-                        m_pNodes[i] = node;
+                    reusedRect = letterDef.Subrect;
+
+                    reusedLetter.Texture = Texture;
+                    // make sure we set AtlasIndex to not initialized here or first character does not display correctly
+                    reusedLetter.AtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
+                    reusedLetter.TextureRectInPixels = reusedRect;
+                    reusedLetter.ContentSize = reusedRect.Size;
+
+                    reusedLetter.Position = lettersInfo[ctr].Position;
+
+                    index = TextureAtlas.TotalQuads;
+                    var letterInfo = lettersInfo[ctr];
+                    letterInfo.AtlasIndex = index;
+                    lettersInfo[ctr] = letterInfo;
+
+                    InsertGlyph(reusedLetter, index);
+                }     
+            }
+        }
+
+        void LayoutLabel ()
+        {
+
+            if (FontAtlas == null || string.IsNullOrEmpty(Text))
+            {
+                ContentSize = CCSize.Zero;
+                return;
+            }
+
+            TextureAtlas.RemoveAllQuads();
+            Descendants.Clear();
+            lettersInfo.Clear();
+
+            FontAtlas.PrepareLetterDefinitions(Text);
+
+            var start = 0;
+            var typesetter = new CCTLTextLayout(this);
+
+            var length = Text.Length;
+            var insetBounds = labelDimensions;
+
+            var layoutAvailable = true;
+            if (insetBounds == CCSize.Zero) 
+            {
+                insetBounds = new CCSize (8388608, 8388608);
+                layoutAvailable = false;
+            }
+
+            var boundsWidth = insetBounds.Width;
+            var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
+            var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
+
+            List<CCTLLine> lineList = new List<CCTLLine>();
+            while (start < length)// && textPosition.Y < insetBounds.Bottom)
+            {
+
+                // Now we ask the typesetter to break off a line for us.
+                // This also will take into account line feeds embedded in the text.
+                //  Example: "This is text \n with a line feed embedded inside it"
+                int count = typesetter.SuggestLineBreak(start, boundsWidth);
+                var line = typesetter.GetLine(start, start + count);
+                lineList.Add(line);
+
+                start += count;
+            }
+
+
+            // Calculate our vertical starting position
+            var totalHeight = lineList.Count * LineHeight;
+            var nextFontPositionY = totalHeight;
+
+            if (Dimensions.Height > 0)
+            {
+                var labelHeightPixel = Dimensions.Height * contentScaleFactorHeight;
+                if (totalHeight > labelHeightPixel)
+                {
+                    int numLines = (int)(labelHeightPixel / LineHeight);
+                    totalHeight = numLines * LineHeight;
+                }
+                switch (VerticalAlignment)
+                {
+                    case CCVerticalTextAlignment.Top:
+                        nextFontPositionY = labelHeightPixel;
                         break;
+                    case CCVerticalTextAlignment.Center:
+                        nextFontPositionY = (labelHeightPixel + totalHeight) * 0.5f;
+                        break;
+                    case CCVerticalTextAlignment.Bottom:
+                        nextFontPositionY = totalHeight;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+
+            var lineGlyphIndex = 0;
+            float longestLine = (labelDimensions.Width > 0) ? labelDimensions.Width : 0;
+
+            // Used for calculating overlapping on last line character
+            var lastCharWidth = 0.0f;
+            int lastCharAdvance = 0;
+
+            // Define our horizontal justification
+            var flushFactor = (float)HorizontalAlignment / (float)CCTextAlignment.Right;
+
+            // We now loop through all of our line's glyph runs
+            foreach (var line in lineList)
+            {
+
+                var gliphRun = line.GlyphRun;
+                var lineWidth = line.Bounds.Width * contentScaleFactorWidth;
+                var flush = line.PenOffsetForFlush(flushFactor, boundsWidth);
+
+                foreach (var glyph in gliphRun)
+                {
+                    var letterPosition = glyph.Position;
+                    var letterDef = glyph.Definition;
+                    lastCharWidth = letterDef.Width * contentScaleFactorWidth;
+                    letterPosition.X += flush;
+                    letterPosition.Y = (nextFontPositionY - letterDef.YOffset) / contentScaleFactorHeight;
+
+                    //recordLetterInfo(letterPosition, glyph.def, lineGlyphIndex++);
+
+                    var tmpInfo = new LetterInfo();
+
+                    tmpInfo.Definition = letterDef;
+                    tmpInfo.Position = letterPosition;
+                    tmpInfo.ContentSize.Width = letterDef.Width;
+                    tmpInfo.ContentSize.Height = letterDef.Height;
+
+                    if (lineGlyphIndex >= lettersInfo.Count)
+                    {
+                        lettersInfo.Add(tmpInfo);
+                    }
+                    else
+                    {
+                        lettersInfo[lineGlyphIndex] = tmpInfo;
+                    }
+
+                    lineGlyphIndex++;
+
+                    lastCharAdvance         = (int)glyph.Definition.XAdvance;
+                }
+
+                // calculate our longest line which is used for calculating our ContentSize
+                if (lineWidth > longestLine)
+                    longestLine = lineWidth;
+
+                nextFontPositionY -= LineHeight;
+            }
+
+            CCSize tmpSize;
+            // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
+            // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
+            // box
+            if(lastCharAdvance < lastCharWidth)
+            {
+                tmpSize.Width = longestLine - lastCharAdvance + lastCharWidth;
+            }
+            else
+            {
+                tmpSize.Width = longestLine;
+            }
+
+            tmpSize.Height = totalHeight;
+
+            if (Dimensions.Height > 0)
+            {
+                tmpSize.Height = Dimensions.Height * contentScaleFactorHeight;
+            }
+
+            ContentSize = tmpSize / CCLabel.DefaultTexelToContentSizeRatios;
+
+            lineList.Clear();
+
+            CCRect uvRect;
+            CCSprite letterSprite;
+
+            for (int c = 0; c < Children.Count; c++) 
+            {
+                letterSprite = (CCSprite)Children[c];
+                int tag = letterSprite.Tag;
+                if(tag >= length)
+                {
+                    RemoveChild(letterSprite, true);
+                }
+                else if(tag >= 0)
+                {
+                    if (letterSprite != null)
+                    {
+                        uvRect = lettersInfo[tag].Definition.Subrect;
+                        letterSprite.TextureRectInPixels = uvRect;
+                        letterSprite.ContentSize = uvRect.Size;
                     }
                 }
-                else
-                {
-                    break;
-                }
             }
 
-            Merge();
+            UpdateQuads();
+            UpdateColor();
 
-            m_nUsed += width * height;
-
-            return region;
         }
 
-        public static void SetRegionData(ivec4 region, int[] data, int stride)
+        public new CCNode this[int letterIndex]
         {
-            var x = region.x;
-            var y = region.y;
-            var width = region.width;
-            var height = region.height;
-
-            Debug.Assert(x > 0);
-            Debug.Assert(y > 0);
-            Debug.Assert(x < (m_nWidth - 1));
-            Debug.Assert((x + width) <= (m_nWidth - 1));
-            Debug.Assert(y < (m_nHeight - 1));
-            Debug.Assert((y + height) <= (m_nHeight - 1));
-
-            var depth = m_nDepth;
-            for (int i = 0; i < height; ++i)
-            {
-                for (int j = 0; j < width; j++)
+            get 
+            { 
+                if (currentLabelType == CCLabelType.SystemFont)
                 {
-                    var b = (byte)((data[i * stride + j] & 0xFF0000) >> 16);
-                    m_pData[((y + i) * m_nWidth + x) + j] = b << 24 | b << 16 | b << 8 | b;
+                    return null;
                 }
-                //    Array.Copy(data, (i * stride), m_pData, ((y + i) * m_nWidth + x), width);
-                //                Buffer.BlockCopy(data, (i * stride), m_pData, ((y + i) * m_nWidth + x) * depth, width * depth);
+
+                if (IsDirty)
+                {
+                    UpdateContent();
+                }
+
+                if (letterIndex < lettersInfo.Count)
+                {
+                    var letter = lettersInfo[letterIndex];
+
+                    if(! letter.Definition.IsValidDefinition)
+                        return null;
+
+                    var sp = (this.GetChildByTag(letterIndex)) as CCSprite;
+
+                    if (sp == null)
+                    {
+                        var uvRect = letter.Definition.Subrect;
+
+                        sp = new CCSprite(FontAtlas.GetTexture(letter.Definition.TextureID),uvRect);
+
+                        sp.Position = new CCPoint(letter.Position.X + uvRect.Size.Width / 2,
+                            letter.Position.Y - uvRect.Size.Height / 2);
+                        sp.Opacity = Opacity;
+
+                        AddSpriteWithoutQuad(sp, letter.AtlasIndex, letterIndex);
+                    }
+                    return sp;
+                }
+
+                return null;            
             }
+        }
+
+        private void AddSpriteWithoutQuad(CCSprite child, int z, int aTag)
+        {
+            Debug.Assert(child != null, "Argument must be non-NULL");
+
+            // quad index is Z
+            child.AtlasIndex = z;
+            child.TextureAtlas = TextureAtlas;
+
+            int i = 0;
+
+            if (Descendants.Count > 0)
+            {
+                CCSprite[] elements = Descendants.Elements;
+                for (int j = 0, count = Descendants.Count; j < count; j++)
+                {
+                    if (elements[i].AtlasIndex <= z)
+                    {
+                        ++i;
+                    }
+                }
+            }
+
+            Descendants.Insert(i, child);
+
+            base.AddChild(child, z, aTag);
+
+        }
+
+        #region Child management
+
+        public override void AddChild(CCNode child, int zOrder = 0, int tag = CCNode.TagInvalid)
+        {
+            Debug.Assert(false, "AddChild is not allowed on CCLabel");
+        }
+
+
+        private void InsertGlyph(CCSprite sprite, int atlasIndex)
+        {
+            Debug.Assert(sprite != null, "child should not be null");
+
+            if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
+            {
+                IncreaseAtlasCapacity();
+            }
+
+            sprite.AtlasIndex = atlasIndex;
+            sprite.TextureAtlas = TextureAtlas;
+            var quad = sprite.Quad;
+
+            TextureAtlas.InsertQuad(ref quad, atlasIndex);
+
+            sprite.UpdateTransformedSpriteTextureQuads();
+
         }
 
         #endregion
+
+        public void IncreaseAtlasCapacity()
+        {
+            // if we're going beyond the current TextureAtlas's capacity,
+            // all the previously initialized sprites will need to redo their texture coords
+            // this is likely computationally expensive
+            int quantity = (TextureAtlas.Capacity + 1) * 4 / 3;
+
+            CCLog.Log(string.Format(
+                "CocosSharp: CCLabel: resizing TextureAtlas capacity from [{0}] to [{1}].",
+                TextureAtlas.Capacity, quantity));
+
+            TextureAtlas.ResizeCapacity(quantity);
+        }
+
+        public override void Visit()
+        {
+
+            if (!Visible || string.IsNullOrEmpty(Text))
+            {
+                return;
+            }
+
+            if (systemFontDirty)
+            {
+                UpdateFont();
+            }
+
+            if (IsDirty)
+            {
+                UpdateContent();
+            }
+
+            Window.DrawManager.PushMatrix();
+
+            Transform();
+
+            if (textSprite != null)
+                DrawTextSprite();
+            else
+                Draw();
+
+            Window.DrawManager.PopMatrix();
+        }
+
+        void DrawTextSprite()
+        {
+            textSprite.Visit();
+        }
+
+
+        protected override void Draw()
+        {
+            // Optimization: Fast Dispatch  
+            if (TextureAtlas == null || TextureAtlas.TotalQuads == 0)
+            {
+                return;
+            }
+
+            // Loop through each of our children nodes that may have actions attached.
+            foreach(CCSprite child in Children)
+            {
+                if (child.Tag >= 0)
+                {
+                    child.UpdateLocalTransformedSpriteTextureQuads();
+                }
+            }
+
+            Window.DrawManager.BlendFunc(BlendFunc);
+            TextureAtlas.DrawQuads();
+        }
+
     }
 
 }

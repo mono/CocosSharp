@@ -18,7 +18,7 @@ namespace CocosSharp
         CCRect textureRectInPixels;
 
         CCSpriteBatchNode batchNode;    // Used batch node (weak reference)
-        CCTextureAtlas textureAtlas;    // Sprite Sheet texture atlas (weak reference)
+        internal CCTextureAtlas TextureAtlas { get; set; }    // Sprite Sheet texture atlas (weak reference)
         CCTexture2D texture;
         string textureFile;
 
@@ -305,7 +305,7 @@ namespace CocosSharp
                     if (value == null) 
                     {
                         AtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
-                        textureAtlas = null;
+                        TextureAtlas = null;
 
                         float x1 = 0.0f;
                         float y1 = 0.0f;
@@ -319,7 +319,7 @@ namespace CocosSharp
                     } 
                     else 
                     {
-                        textureAtlas = batchNode.TextureAtlas;
+                        TextureAtlas = batchNode.TextureAtlas;
 
                         if (Layer != null && batchNode.Layer != Layer) {
                             batchNode.Layer = Layer;
@@ -662,7 +662,7 @@ namespace CocosSharp
                 quad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
                 quad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
 
-                CCTexture2D tex = batchNode != null ? textureAtlas.Texture : texture;
+                CCTexture2D tex = batchNode != null ? TextureAtlas.Texture : texture;
                 if (tex == null)
                 {
                     return;
@@ -748,7 +748,7 @@ namespace CocosSharp
         // In this instance, drawing will not make use of node's local matrix
         public void UpdateTransformedSpriteTextureQuads()
         {
-            if(batchNode == null || AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
+            if(AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
                 return;
                 
             transformedQuad = quad;
@@ -772,8 +772,40 @@ namespace CocosSharp
             transformedQuad.BottomLeft.Vertices = new CCVertex3F(bottomLeft.X, bottomLeft.Y, bottomLeft.Z);
             transformedQuad.BottomRight.Vertices = new CCVertex3F(bottomRight.X, bottomRight.Y, bottomRight.Z);
 
-            if(textureAtlas != null && textureAtlas.TotalQuads > AtlasIndex)
-                textureAtlas.UpdateQuad(ref transformedQuad, AtlasIndex);
+            if(TextureAtlas != null && TextureAtlas.TotalQuads > AtlasIndex)
+                TextureAtlas.UpdateQuad(ref transformedQuad, AtlasIndex);
+        }
+
+        // For when not using a batch node and user is controlling their own texture atlas
+        // In this instance, drawing will make use of node's local matrix  
+        public void UpdateLocalTransformedSpriteTextureQuads()
+        {
+            if(AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
+                return;
+
+            transformedQuad = quad;
+
+            // We can't use the AffineLocalTransform because that's the 2d projection of a 3d transformation
+            // i.e. The Z coords of our quad would remain unaltered which in general incorrect
+            // Instead, we need use the XnaLocalTransform which incorporates any potential z-transforms
+            Matrix worldMatrix = XnaLocalMatrix;
+            Vector3 topLeft = quad.TopLeft.Vertices.XnaVector;
+            Vector3 topRight = quad.TopRight.Vertices.XnaVector;
+            Vector3 bottomLeft = quad.BottomLeft.Vertices.XnaVector;
+            Vector3 bottomRight = quad.BottomRight.Vertices.XnaVector;
+
+            topLeft = Vector3.Transform(topLeft, worldMatrix);
+            topRight = Vector3.Transform(topRight, worldMatrix);
+            bottomLeft = Vector3.Transform(bottomLeft, worldMatrix);
+            bottomRight = Vector3.Transform(bottomRight, worldMatrix);
+
+            transformedQuad.TopLeft.Vertices = new CCVertex3F(topLeft.X, topLeft.Y, topLeft.Z);
+            transformedQuad.TopRight.Vertices = new CCVertex3F(topRight.X, topRight.Y, topRight.Z);
+            transformedQuad.BottomLeft.Vertices = new CCVertex3F(bottomLeft.X, bottomLeft.Y, bottomLeft.Z);
+            transformedQuad.BottomRight.Vertices = new CCVertex3F(bottomRight.X, bottomRight.Y, bottomRight.Z);
+
+            if(TextureAtlas != null && TextureAtlas.TotalQuads > AtlasIndex)
+                TextureAtlas.UpdateQuad(ref transformedQuad, AtlasIndex);
         }
 
         protected override void ParentUpdatedTransform()
@@ -804,7 +836,7 @@ namespace CocosSharp
                 sprite.Visible = Visible;
 
                 Debug.Assert(sprite != null, "CCSprite only supports CCSprites as children when using CCSpriteBatchNode");
-                Debug.Assert(sprite.Texture.Name == textureAtlas.Texture.Name);
+                Debug.Assert(sprite.Texture.Name == TextureAtlas.Texture.Name);
 
                 batchNode.AppendChild(sprite);
 
