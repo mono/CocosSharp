@@ -44,7 +44,7 @@ namespace CocosSharp
 
         public virtual List<char> CurrentGlyphCollection
         {
-            get { return (customGlyphs.Count > 0) ? customGlyphs : new List<char>(GetGlyphCollection(usedGlyphs)); }
+            get { return (customGlyphs.Count > 0) ? customGlyphs : new List<char>(GetGlyphCollection(usedGlyphs).ToCharArray()); }
         }
 
         public virtual void SetCurrentGlyphCollection (GlyphCollection glyphs, string customGlyphs)
@@ -57,7 +57,7 @@ namespace CocosSharp
                     this.customGlyphs.Clear();
                     break;
                 default:
-                    this.customGlyphs.AddRange(customGlyphs);
+                    this.customGlyphs.AddRange(customGlyphs.ToCharArray());
                     break;
 
             }

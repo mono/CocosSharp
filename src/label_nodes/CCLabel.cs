@@ -58,7 +58,7 @@ namespace CocosSharp
         Word              = 2,
     }
 
-    public sealed class CCLabelFormat : IDisposable, ICloneable 
+    public sealed class CCLabelFormat : IDisposable
     {
 
         CCLabelFormatFlags formatFlags = CCLabelFormatFlags.Unknown;
