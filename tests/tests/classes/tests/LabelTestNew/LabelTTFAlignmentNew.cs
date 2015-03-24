@@ -10,17 +10,22 @@ namespace tests
     {
         CCLabel ttf0, ttf1, ttf2;
 
+#if WINDOWS
+        static string tahomaFont = "tahoma";
+#else
+        static string tahomaFont = "fonts/tahoma.ttf";
+#endif
         public LabelTTFAlignmentNew()
         {
-            ttf0 = new CCLabel("Alignment 0\nnew line", "fonts/tahoma.ttf", 16, CCLabelFormat.SystemFont);
+            ttf0 = new CCLabel("Alignment 0\nnew line", tahomaFont, 16, CCLabelFormat.SystemFont);
             ttf0.LabelFormat.Alignment = CCTextAlignment.Left;
             AddChild(ttf0);
 
-            ttf1 = new CCLabel("Alignment 1\nnew line", "fonts/tahoma.ttf", 16, CCLabelFormat.SystemFont);
+            ttf1 = new CCLabel("Alignment 1\nnew line", tahomaFont, 16, CCLabelFormat.SystemFont);
             ttf1.LabelFormat.Alignment = CCTextAlignment.Center;
             AddChild(ttf1);
 
-            ttf2 = new CCLabel("Alignment 2\nnew line", "fonts/tahoma.ttf", 16, CCLabelFormat.SystemFont);
+            ttf2 = new CCLabel("Alignment 2\nnew line", tahomaFont, 16, CCLabelFormat.SystemFont);
             ttf2.LabelFormat.Alignment = CCTextAlignment.Right;
             AddChild(ttf2);
         }
@@ -30,7 +35,7 @@ namespace tests
             base.AddedToScene();
             var s = Layer.VisibleBoundsWorldspace.Size;
 
-			ttf0.Position = s.Center;
+            ttf0.Position = s.Center;
             ttf0.PositionY = (s.Height / 6) * 2 - 30;
 
             ttf1.Position = s.Center;

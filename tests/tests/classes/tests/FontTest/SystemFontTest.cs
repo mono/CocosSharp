@@ -30,6 +30,10 @@ namespace tests.FontTest
 
 #endif
 #if WINDOWS || WINDOWSGL || NETFX_CORE
+
+            // .ttf fonts are loaded from embedded resources
+            // look in Assets/Content/fonts
+
             "A Damn Mess",  // A Damn Mess.ttf
             "Abberancy",    // Abberancy.ttf
             "Abduction",    //Abduction.ttf

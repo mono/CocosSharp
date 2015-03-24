@@ -12,6 +12,7 @@ using SharpDX.WIC;
 using Factory = SharpDX.Direct2D1.Factory;
 using FactoryWrite = SharpDX.DirectWrite.Factory;
 using FactoryImaging = SharpDX.WIC.ImagingFactory;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace CocosSharp
@@ -19,43 +20,23 @@ namespace CocosSharp
 
     public partial class CCLabel
     {
-        [StructLayout(LayoutKind.Sequential)]
-        private struct ABCFloat
-        {
-            /// <summary>Specifies the A spacing of the character. The A spacing is the distance to add to the current
-            /// position before drawing the character glyph.</summary>
-            public float abcfA;
-            /// <summary>Specifies the B spacing of the character. The B spacing is the width of the drawn portion of
-            /// the character glyph.</summary>
-            public float abcfB;
-            /// <summary>Specifies the C spacing of the character. The C spacing is the distance to add to the current
-            /// position to provide white space to the right of the character glyph.</summary>
-            public float abcfC;
-        }
 
         private static Factory Factory2D { get; set; }
         private static FactoryWrite FactoryDWrite { get; set; }
         private static FactoryImaging FactoryImaging { get; set; }
-        private SolidColorBrush _brush;
 
-        private SharpDX.WIC.Bitmap _bitmap;
-        private WicRenderTarget _renderTarget;
         private static Font _defaultFont;
-        private static Font _currentFont;
-        private static float _currentDIP;
-        private static float _currentFontSizeEm;
         private static Size2F dpi;
         private static Dictionary<string, FontFamily> _fontFamilyCache = new Dictionary<string, FontFamily>();
-        private static TextFormat textFormat;
         static float dpiScale = 96f / 72f;  // default but will be recalculated below
-        
+
         // our private font collection and fontLoader
         private static PrivateFontLoader privateFontLoader;
         private static FontCollection privateFontCollection;
 
         private static FontCollection _currentFontCollection;
 
-        private static FontFamily GetFontFamily (string familyName)
+        private static FontFamily GetFontFamily(string familyName)
         {
             int fontIndex = 0;
             _currentFontCollection.FindFamilyName(familyName, out fontIndex);
@@ -68,7 +49,7 @@ namespace CocosSharp
 
         private static Font GenericSanSerif()
         {
-            var sanserifs = new string[] {"Microsoft San Serif", "Arial", "Tahoma"};
+            var sanserifs = new string[] { "Microsoft San Serif", "Arial", "Tahoma" };
             FontFamily _fontFamily = null;
 
             foreach (var family in sanserifs)
@@ -108,24 +89,27 @@ namespace CocosSharp
             if (fontFamily == null)
             {
                 _currentFontCollection = FactoryDWrite.GetSystemFontCollection(true);
+                
                 return GenericSanSerif();
             }
 
             // This is generic right now.  We should be able to handle different styles in the future
             var font = fontFamily.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
-            
+
             return font;
         }
 
-        private string CreateFont(string fontName, float fontSize, CCRawList<char> charset)
+        //private string CreateFont(string fontName, float fontSize, CCRawList<char> charset)
+        private Font CreateFont(string fontName, float fontSize)
         {
+            Font _currentFont;
 
             if (Factory2D == null)
             {
                 Factory2D = new SharpDX.Direct2D1.Factory();
                 FactoryDWrite = new SharpDX.DirectWrite.Factory();
                 FactoryImaging = new SharpDX.WIC.ImagingFactory();
-                
+
                 dpi = Factory2D.DesktopDpi;
                 dpiScale = dpi.Height / 72f;
 
@@ -136,7 +120,6 @@ namespace CocosSharp
             if (_defaultFont == null)
             {
                 _defaultFont = GenericSanSerif();
-                //_defaultDIP = ConvertPointSizeToDIP(_defaultFontSizeEm);
             }
 
             FontFamily fontFamily = GetFontFamily(fontName);
@@ -148,71 +131,19 @@ namespace CocosSharp
 
                 _currentFont = _defaultFont;
 
-                //if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
-                //{
-
-                //    //var appPath = AppDomain.CurrentDomain.BaseDirectory;
-                //    //var contentPath = Path.Combine(appPath, CCContentManager.SharedContentManager.RootDirectory);
-                //    //var fontPath = Path.Combine(contentPath, fontName);
-
-                //    //if (File.Exists(fontPath))
-                //    //{
-                //    //    try
-                //    //    {
-                //    //        if (privateFontLoader == null)
-                //    //        {
-                //    //            privateFontLoader = new PrivateFontLoader(FactoryDWrite, fontName);
-                //    //            privateFontCollection = new FontCollection(FactoryDWrite, privateFontLoader, privateFontLoader.Key);
-                //    //        }
-
-                //    //        _currentFontCollection = privateFontCollection;
-
-                //    //        var family = _currentFontCollection.GetFontFamily(0);
-                //    //        // This is generic right now.  We should be able to handle different styles in the future
-                //    //        var font = family.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
-                //    //        _currentFont = font;
-                //    //        _currentFontSizeEm = fontSize;
-                //    //        _currentDIP = ConvertPointSizeToDIP(fontSize);
-                //    //    }
-                //    //    catch
-                //    //    {
-                //    //        _currentFont = _defaultFont;
-                //    //        _currentFontSizeEm = fontSize;
-                //    //        _currentDIP = ConvertPointSizeToDIP(fontSize);
-                //    //    }
-                //    //}
-
-                //    //else
-                //    //{
-                //    //    _currentFont = _defaultFont;
-                //    //    _currentFontSizeEm = fontSize;
-                //    //    _currentDIP = ConvertPointSizeToDIP(fontSize);
-                //    //}
-                //}
-                //else
-                //{
-                    _currentFont = GetFont(fontName, fontSize);
-                    _currentFontSizeEm = fontSize;
-                    _currentDIP = ConvertPointSizeToDIP(fontSize);
-                //}
+                _currentFont = GetFont(fontName, fontSize);
 
                 _fontFamilyCache.Add(fontName, _currentFont.FontFamily);
+                CCLog.Log("{0} not found.  Defaulting to {1}.", fontName, _currentFont.FontFamily.FamilyNames.GetString(0));
             }
             else
             {
                 _currentFont = fontFamily.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
-                _currentFontSizeEm = fontSize;
-                _currentDIP = ConvertPointSizeToDIP(fontSize);
             }
 
-            fontName = _currentFont.FontFamily.FamilyNames.GetString(0); 
-            textFormat = new TextFormat(FactoryDWrite, fontName, 
-                _currentFontCollection, FontWeight.Regular, FontStyle.Normal, FontStretch.Normal, _currentDIP);
-            
-            GetKerningInfo(charset);
-
-            return _currentFont.ToString();
+            return _currentFont;
         }
+
 
         // Device Independant Pixels
         private static float ConvertPointSizeToDIP(float points)
@@ -220,205 +151,8 @@ namespace CocosSharp
             return points * dpiScale;
         }
 
-        private static Dictionary<char, KerningInfo> _abcValues = new Dictionary<char, KerningInfo>();
-
-        private static void GetKerningInfo(CCRawList<char> charset)
-        {
-            _abcValues.Clear();
-
-            var fontFace = new FontFace(_currentFont);
-            
-            var value = new ABCFloat[1];
-
-            var glyphRun = new GlyphRun();
-            glyphRun.FontFace = fontFace;
-            glyphRun.FontSize = _currentDIP;
-
-            var BrushColor = SharpDX.Color.White;
-            /*
-            SharpDX.DirectWrite.Matrix mtrx = new SharpDX.DirectWrite.Matrix();
-            mtrx.M11 = 1F;
-            mtrx.M12 = 0;
-            mtrx.M21 = 0;
-            mtrx.M22 = 1F;
-            mtrx.Dx = 0;
-            mtrx.Dy = 0;
-            */
-            //GlyphMetrics[] metrics = fontFace.GetGdiCompatibleGlyphMetrics(23, 1, mtrx, false, glyphIndices, false);
-
-            //FontMetrics metr = fontFace.GetGdiCompatibleMetrics(23, 1, new SharpDX.DirectWrite.Matrix());
-            //_pRenderTarget.DrawGlyphRun(new SharpDX.DrawingPointF(left, top), glyphRun, new SharpDX.Direct2D1.SolidColorBrush(_pRenderTarget, BrushColor), MeasuringMode.GdiClassic);
-            int[] codePoints = new int[1];
-            var unitsPerEm = fontFace.Metrics.DesignUnitsPerEm;
-            var familyName = _currentFont.ToString();
-
-            
-            for (int i = 0; i < charset.Count; i++)
-            {
-                var ch = charset[i];
-                if (!_abcValues.ContainsKey(ch))
-                {
-                    var textLayout = new TextLayout(FactoryDWrite, ch.ToString(), textFormat, unitsPerEm, unitsPerEm);
-
-                    var tlMetrics = textLayout.Metrics;
-                    var tlmWidth = tlMetrics.Width;
-                    var tllWidth = tlMetrics.LayoutWidth;
-
-                    codePoints[0] = (int)ch;
-                    short[] glyphIndices = fontFace.GetGlyphIndices(codePoints);
-                    glyphRun.Indices = glyphIndices;
-
-                    var metrics = fontFace.GetDesignGlyphMetrics(glyphIndices, false);
-                    
-                    //var width = metrics[0].AdvanceWidth + metrics[0].LeftSideBearing + metrics[0].RightSideBearing;
-                    //var glyphWidth = _currentFontSizeEm * (float)metrics[0].AdvanceWidth / unitsPerEm;
-                    //var abcWidth = _currentDIP * (float)width / unitsPerEm;
-
-                    //value[0].abcfA = _currentFontSizeEm * (float)metrics[0].LeftSideBearing / unitsPerEm;
-                    //value[0].abcfB = _currentFontSizeEm * (float)metrics[0].AdvanceWidth / unitsPerEm;
-                    //value[0].abcfC = _currentFontSizeEm * (float)metrics[0].RightSideBearing / unitsPerEm;
-
-                    // The A and C values are throwing the spacing off
-                    //value[0].abcfA = _currentDIP * (float)metrics[0].LeftSideBearing / unitsPerEm;
-                    value[0].abcfB = _currentDIP * (float)metrics[0].AdvanceWidth / unitsPerEm;
-                    //value[0].abcfC = _currentDIP * (float)metrics[0].RightSideBearing / unitsPerEm;
-
-                    _abcValues.Add(
-                        ch,
-                        new KerningInfo()
-                        {
-                            A = value[0].abcfA,
-                            B = value[0].abcfB,
-                            C = value[0].abcfC
-                        });
-                }
-            }
-
-        }
-
-        private float GetFontHeight()
-        {
-            return _currentDIP * (float)(_currentFont.Metrics.Ascent + _currentFont.Metrics.Descent + _currentFont.Metrics.LineGap) / _currentFont.Metrics.DesignUnitsPerEm;
-        }
-
-        private CCSize GetMeasureString(string text)
-        {
-
-            var textLayout = new TextLayout(FactoryDWrite, text, textFormat, 2048, 2048);
-            var tlMetrics = textLayout.Metrics;
-
-            return new CCSize(tlMetrics.Width, tlMetrics.Height);
-        }
-
-        private void CreateBitmap(int width, int height)
-        {
-
-
-            if (_bitmap == null || (_bitmap.Size.Width < width || _bitmap.Size.Height < height))
-            {
-
-                //RenderTargetProperties rtp = new RenderTargetProperties(RenderTargetType.Default,
-                //    new SharpDX.Direct2D1.PixelFormat(SharpDX.DXGI.Format.R8G8B8A8_UNorm, AlphaMode.Premultiplied),
-                //    Factory2D.DesktopDpi.Width,
-                //    Factory2D.DesktopDpi.Height,
-                //    RenderTargetUsage.None,
-                //    FeatureLevel.Level_DEFAULT);
-
-                try
-                {
-                    var pixelFormat = SharpDX.WIC.PixelFormat.Format32bppPRGBA;
-                    _bitmap = new SharpDX.WIC.Bitmap(FactoryImaging, width, height, pixelFormat, BitmapCreateCacheOption.CacheOnLoad);
-
-                    _renderTarget = new WicRenderTarget(Factory2D, _bitmap, new RenderTargetProperties());
-                    //_renderTarget = new WicRenderTarget(Factory2D, _bitmap, rtpGDI);
-
-                    if (_brush == null)
-                    {
-                        _brush = new SolidColorBrush(_renderTarget, new Color4(new Color3(1, 1, 1), 1.0f));
-                    }
-
-                }
-                catch (Exception exc)
-                {
-                    var ss = exc.Message;
-                }
-
-            }
- 
-
-        }
-
-
-        private KerningInfo GetKerningInfo(char ch)
-        {
-            return _abcValues[ch];
-        }
-
-        protected void ReleaseResources()
-        {
-            _bitmap.Dispose();
-            _bitmap = null;
-
-            _renderTarget.Dispose();
-            _renderTarget = null;
-
-        }
-
-
-        private void FreeBitmapData()
-        {
-            if (pinnedArray.IsAllocated)
-                pinnedArray.Free();
-        }
-
-        GCHandle pinnedArray;
-        private static Color4 TransparentColor = new Color4(new Color3(1, 1.0f, 1.0f), 0.0f);
-
-        private unsafe byte* GetBitmapData(string s, out int stride)
-        {
-
-            FreeBitmapData();
-
-            var size = GetMeasureString(s);
-
-            var w = (int)(Math.Ceiling(size.Width += 2));
-            var h = (int)(Math.Ceiling(size.Height += 2));
-
-            CreateBitmap(w, h);
-
-            _renderTarget.BeginDraw();
-
-            _renderTarget.Clear(TransparentColor);
-            _renderTarget.AntialiasMode = AntialiasMode.Aliased;
-            textFormat.TextAlignment = TextAlignment.Center;
-            _renderTarget.DrawText(s, textFormat, new RectangleF(0, 0, w, h), _brush);
-
-            _renderTarget.EndDraw();
-
-            //SaveToFile(@"C:\Xamarin\Cocos2D-XNAGraphics\" + s + ".png");
-
-            // Calculate stride of source
-            stride = _bitmap.Size.Width * 4;
-            // Create data array to hold source pixel data
-            //byte[] data = new byte[stride * _bitmap.Size.Height];
-            byte[] data = new byte[stride * _bitmap.Size.Height];
-
-            using (var datas = new DataStream(stride * _bitmap.Size.Height, true, true))
-            {
-                _bitmap.CopyPixels(stride, datas);
-
-                data = datas.ReadRange<byte>(data.Length);
-            }
-
-            ReleaseResources();
-
-            pinnedArray = GCHandle.Alloc(data, GCHandleType.Pinned);
-            IntPtr pointer = pinnedArray.AddrOfPinnedObject();
-            return (byte*)pointer; ;
-        }
-
         // Used for debugging purposes
-        private void SaveToFile(string fileName)
+        private void SaveToFile(string fileName, SharpDX.WIC.Bitmap _bitmap, RenderTarget _renderTarget)
         {
 
             using (var pStream = new WICStream(FactoryImaging, fileName, SharpDX.IO.NativeFileAccess.Write))
@@ -432,7 +166,7 @@ namespace CocosSharp
 
                 // Create a Frame encoder
                 var pFrameEncode = new BitmapFrameEncode(encoder);
-                pFrameEncode.Initialize();                
+                pFrameEncode.Initialize();
 
                 pFrameEncode.SetSize((int)_renderTarget.Size.Width, (int)_renderTarget.Size.Height);
 
@@ -445,6 +179,218 @@ namespace CocosSharp
                 encoder.Commit();
 
             }
+        }
+
+        private static Color4 TransparentColor = new Color4(new Color3(1, 1.0f, 1.0f), 0.0f);
+        internal CCTexture2D CreateTextSprite(string text, CCFontDefinition textDefinition)
+        {
+            if (string.IsNullOrEmpty(text))
+                return new CCTexture2D();
+
+            int imageWidth;
+            int imageHeight;
+            var textDef = textDefinition;
+            var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
+            var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
+            textDef.FontSize *= (int)contentScaleFactorWidth;
+            textDef.Dimensions.Width *= contentScaleFactorWidth;
+            textDef.Dimensions.Height *= contentScaleFactorHeight;
+
+            bool hasPremultipliedAlpha;
+
+            var font = CreateFont(textDef.FontName, textDef.FontSize);
+
+            var _currentFontSizeEm = textDef.FontSize;
+            var _currentDIP = ConvertPointSizeToDIP(_currentFontSizeEm);
+
+            var fontColor = textDef.FontFillColor;
+            var fontAlpha = textDef.FontAlpha;
+            var foregroundColor = new Color4(fontColor.R / 255.0f,
+                fontColor.G / 255.0f,
+                fontColor.B / 255.0f,
+                fontAlpha / 255.0f);
+
+            // alignment
+            var horizontalAlignment = textDef.Alignment;
+            var verticleAlignement = textDef.LineAlignment;
+
+            var textAlign = (CCTextAlignment.Right == horizontalAlignment) ? TextAlignment.Trailing
+                : (CCTextAlignment.Center == horizontalAlignment) ? TextAlignment.Center
+                : TextAlignment.Leading;
+
+            var paragraphAlign = (CCVerticalTextAlignment.Bottom == vertAlignment) ? ParagraphAlignment.Far
+                : (CCVerticalTextAlignment.Center == vertAlignment) ? ParagraphAlignment.Center
+                : ParagraphAlignment.Near;
+
+            // LineBreak
+            var lineBreak = (CCLabelLineBreak.Character == textDef.LineBreak) ? WordWrapping.Wrap
+                : (CCLabelLineBreak.Word == textDef.LineBreak) ? WordWrapping.Wrap
+                : WordWrapping.NoWrap;
+
+            // LineBreak
+            // TODO: Find a way to specify the type of line breaking if possible.
+
+            var dimensions = new CCSize(textDef.Dimensions.Width, textDef.Dimensions.Height);
+
+            var layoutAvailable = true;
+            if (dimensions.Width <= 0)
+            {
+                dimensions.Width = 8388608;
+                layoutAvailable = false;
+            }
+
+            if (dimensions.Height <= 0)
+            {
+                dimensions.Height = 8388608;
+                layoutAvailable = false;
+            }
+
+            var fontName = font.FontFamily.FamilyNames.GetString(0);
+            var textFormat = new TextFormat(FactoryDWrite, fontName,
+                _currentFontCollection, FontWeight.Regular, FontStyle.Normal, FontStretch.Normal, _currentDIP);
+
+            textFormat.TextAlignment = textAlign;
+            textFormat.ParagraphAlignment = paragraphAlign;
+
+            var textLayout = new TextLayout(FactoryDWrite, text, textFormat, dimensions.Width, dimensions.Height);
+
+            var boundingRect = new RectangleF();
+
+            // Loop through all the lines so we can find our drawing offsets
+            var textMetrics = textLayout.Metrics;
+            var lineCount = textMetrics.LineCount;
+
+            // early out if something went wrong somewhere and nothing is to be drawn
+            if (lineCount == 0)
+                return new CCTexture2D();
+
+            // Fill out the bounding rect width and height so we can calculate the yOffset later if needed
+            boundingRect.X = 0; 
+            boundingRect.Y = 0; 
+            boundingRect.Width = textMetrics.Width;
+            boundingRect.Height = textMetrics.Height;
+
+            if (!layoutAvailable)
+            {
+                if (dimensions.Width == 8388608)
+                {
+                    dimensions.Width = boundingRect.Width;
+                }
+                if (dimensions.Height == 8388608)
+                {
+                    dimensions.Height = boundingRect.Height;
+                }
+            }
+
+            imageWidth = (int)dimensions.Width;
+            imageHeight = (int)dimensions.Height;
+
+            // Recreate our layout based on calculated dimensions so that we can draw the text correctly
+            // in our image when Alignment is not Left.
+            if (textAlign != TextAlignment.Leading)
+            {
+                textLayout.MaxWidth = dimensions.Width;
+                textLayout.MaxHeight = dimensions.Height;
+            }
+
+            // Line alignment
+            var yOffset = (CCVerticalTextAlignment.Bottom == verticleAlignement
+                || boundingRect.Bottom >= dimensions.Height) ? dimensions.Height - boundingRect.Bottom  // align to bottom
+                : (CCVerticalTextAlignment.Top == verticleAlignement) ? 0                    // align to top
+                : (imageHeight - boundingRect.Bottom) * 0.5f;                                   // align to center
+
+
+            SharpDX.WIC.Bitmap sharpBitmap = null;
+            WicRenderTarget sharpRenderTarget = null;
+            SolidColorBrush solidBrush = null;
+
+            try
+            {
+                // Select our pixel format
+                var pixelFormat = SharpDX.WIC.PixelFormat.Format32bppPRGBA;
+
+                // create our backing bitmap
+                sharpBitmap = new SharpDX.WIC.Bitmap(FactoryImaging, imageWidth, imageHeight, pixelFormat, BitmapCreateCacheOption.CacheOnLoad);
+
+                // Create the render target that we will draw to
+                sharpRenderTarget = new WicRenderTarget(Factory2D, sharpBitmap, new RenderTargetProperties());
+                // Create our brush to actually draw with
+                solidBrush = new SolidColorBrush(sharpRenderTarget, foregroundColor);
+
+                // Begin the drawing
+                sharpRenderTarget.BeginDraw();
+                // Clear it
+                sharpRenderTarget.Clear(TransparentColor);
+
+                // Draw the text to the bitmap
+                sharpRenderTarget.DrawTextLayout(new Vector2(boundingRect.X, yOffset), textLayout, solidBrush);
+
+                // End our drawing which will commit the rendertarget to the bitmap
+                sharpRenderTarget.EndDraw();
+
+                // Debugging purposes
+                //var s = "Label4";
+                //SaveToFile(@"C:\Xamarin\" + s + ".png", _bitmap, _renderTarget);
+
+                // The following code creates a .png stream in memory of our Bitmap and uses it to create our Textue2D
+                Texture2D tex = null;
+
+                using (var memStream = new MemoryStream())
+                {
+                    using (var encoder = new PngBitmapEncoder(FactoryImaging, memStream))
+                    using (var frameEncoder = new BitmapFrameEncode(encoder))
+                    {
+                        frameEncoder.Initialize();
+                        frameEncoder.WriteSource(sharpBitmap);
+                        frameEncoder.Commit();
+                        encoder.Commit();
+                    }
+                    // Create the Texture2D from the png stream
+                    tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, memStream);
+                }
+
+                // Return our new CCTexture2D created from the Texture2D which will have our text drawn on it.
+                return new CCTexture2D(tex);
+            }
+            catch (Exception exc)
+            {
+                CCLog.Log("CCLabel-Windows: Unable to create the backing image of our text.  Message: {0}", exc.StackTrace);
+            }
+            finally
+            {
+                if (sharpBitmap != null)
+                {
+                    sharpBitmap.Dispose();
+                    sharpBitmap = null;
+                }
+
+                if (sharpRenderTarget != null)
+                {
+                    sharpRenderTarget.Dispose();
+                    sharpRenderTarget = null;
+                }
+
+                if (solidBrush != null)
+                {
+                    solidBrush.Dispose();
+                    solidBrush = null;
+                }
+
+                if (textFormat != null)
+                {
+                    textFormat.Dispose();
+                    textFormat = null;
+                }
+
+                if (textLayout != null)
+                {
+                    textLayout.Dispose();
+                    textLayout = null;
+                }
+            }
+
+            // If we have reached here then something has gone wrong.
+            return new CCTexture2D();
         }
     }
 }

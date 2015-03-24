@@ -10,10 +10,12 @@ namespace CocosSharp
         private List<LetterInfo> glyphRun;
         private CCSize bounds;
 
-        public CCTLLine ()
+        internal static CCTLLine NewCTLLine()
         {
-            glyphRun = new List<LetterInfo>();
-            bounds = CCSize.Zero;
+            var temp = new CCTLLine();
+            temp.glyphRun = new List<LetterInfo>();
+            temp.bounds = CCSize.Zero;
+            return temp;
         }
 
         internal bool AddGlyph(CCPoint point, CCFontLetterDefinition letterDef, int spriteIndex)
@@ -95,7 +97,7 @@ namespace CocosSharp
 
             int stringLength = string.IsNullOrEmpty(breakText) ? 0 : breakText.Length;
             if (stringLength <= 0)
-                return new CCTLLine();
+                return CCTLLine.NewCTLLine();
 
             CCFontLetterDefinition letterDefinition = new CCFontLetterDefinition();
 
@@ -108,7 +110,7 @@ namespace CocosSharp
             var nextFontPositionY = 0.0f;
             var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
             var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
-            var line = new CCTLLine();
+            var line = CCTLLine.NewCTLLine();
 
             for (int x = startRange; x < endRange; x++)
             {
