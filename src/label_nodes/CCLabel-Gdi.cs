@@ -12,6 +12,19 @@ namespace CocosSharp
 {
     public partial class CCLabel
     {
+        private struct KerningInfo
+        {
+            /// <summary>Specifies the A spacing of the character. The A spacing is the distance to add to the current
+            /// position before drawing the character glyph.</summary>
+            public float A;
+            /// <summary>Specifies the B spacing of the character. The B spacing is the width of the drawn portion of
+            /// the character glyph.</summary>
+            public float B;
+            /// <summary>Specifies the C spacing of the character. The C spacing is the distance to add to the current
+            /// position to provide white space to the right of the character glyph.</summary>
+            public float C;
+        }
+
         [StructLayout(LayoutKind.Sequential)]
         private struct ABCFloat
         {
@@ -206,5 +219,12 @@ namespace CocosSharp
 
             return (byte*)_bitmapData.Scan0.ToPointer();
         }
+
+#if XNA
+        internal CCTexture2D CreateTextSprite(string text, CCFontDefinition textDefinition)
+        {
+            return new CCTexture2D();
+        }
+#endif
     }
 }

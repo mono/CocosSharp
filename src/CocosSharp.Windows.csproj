@@ -194,8 +194,14 @@
     <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
+    <Compile Include="label_nodes\CCFont.cs" />
+    <Compile Include="label_nodes\CCFontAtlas.cs" />
+    <Compile Include="label_nodes\CCFontAtlasCache.cs" />
+    <Compile Include="label_nodes\CCFontFNT.cs" />
+    <Compile Include="label_nodes\CCFontSpriteFont.cs" />
     <Compile Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="label_nodes\CCTextLayout.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />

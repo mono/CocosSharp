@@ -44,7 +44,11 @@ namespace CocosSharp
             }
             else
             {
+#if XNA
+                atlasTexture = new CCTexture2D();
+#else
                 atlasTexture = new CCTexture2D(font.Texture);
+#endif
             }
 
             // add the texture (only one for now)
@@ -55,6 +59,8 @@ namespace CocosSharp
             // Set the default character to us if a character does not exist in the font
             atlas.DefaultCharacter = font.DefaultCharacter;
 
+#if !XNA
+            
             var glyphs = font.GetGlyphs();
             var reusedRect = Rectangle.Empty;
 
@@ -84,7 +90,7 @@ namespace CocosSharp
                 atlas.AddLetterDefinition(glyphDefintion);
 
             }
-
+#endif
             return atlas;
         }
 
