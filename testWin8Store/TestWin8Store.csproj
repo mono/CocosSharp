@@ -346,6 +346,60 @@
     <Compile Include="..\tests\tests\classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs">
       <Link>classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\AtlasTestSceneNew.cs">
+      <Link>classes\tests\LabelTestNew\AtlasTestSceneNew.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTBounds.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTBounds.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTColor.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTColor.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTHundredLabels.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTHundredLabels.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTMultiLine.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTMultiLine.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTOffset.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTOffset.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTPadding.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTPadding.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTRetina.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTRetina.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTSpriteActions.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTSpriteActions.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
+      <Link>classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTestNew.cs">
+      <Link>classes\tests\LabelTestNew\LabelTestNew.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs">
+      <Link>classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs">
+      <Link>classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\MultiTouchTest\MultiTouchTest.cs">
       <Link>classes\tests\MultiTouchTest\MultiTouchTest.cs</Link>
     </Compile>
@@ -1137,6 +1191,9 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\Texture2dTest\Texture2dTest.cs">
       <Link>classes\tests\Texture2dTest\Texture2dTest</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\TileMapTest\Shapes.cs">
+      <Link>classes\tests\TileMapTest\Shapes.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\TileMapTest\TileMapTest.cs">
       <Link>classes\tests\TileMapTest\TileMapTest</Link>
