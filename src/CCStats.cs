@@ -102,19 +102,22 @@ namespace CocosSharp
 
 				scale = value;
 
-				fpsLabel.Scale = scale;
-				updateTimeLabel.Scale = scale;
-				drawTimeLabel.Scale = scale;
-				drawCallLabel.Scale = scale;
-				memoryLabel.Scale = scale;
-				gcLabel.Scale = scale;
+                if (isInitialized)
+                {
+                    fpsLabel.Scale = scale;
+                    updateTimeLabel.Scale = scale;
+                    drawTimeLabel.Scale = scale;
+                    drawCallLabel.Scale = scale;
+                    memoryLabel.Scale = scale;
+                    gcLabel.Scale = scale;
 
-				memoryLabel.Position = new CCPoint (4 * scale, 44 * scale) + pos;
-				gcLabel.Position = new CCPoint (4 * scale, 36 * scale) + pos;
-				drawCallLabel.Position = new CCPoint (4 * scale, 28 * scale) + pos;
-				updateTimeLabel.Position = new CCPoint (4 * scale, 20 * scale) + pos;
-				drawTimeLabel.Position = new CCPoint (4 * scale, 12 * scale) + pos;
-				fpsLabel.Position = new CCPoint (4 * scale, 4 * scale) + pos;
+                    memoryLabel.Position = new CCPoint(4 * scale, 44 * scale) + pos;
+                    gcLabel.Position = new CCPoint(4 * scale, 36 * scale) + pos;
+                    drawCallLabel.Position = new CCPoint(4 * scale, 28 * scale) + pos;
+                    updateTimeLabel.Position = new CCPoint(4 * scale, 20 * scale) + pos;
+                    drawTimeLabel.Position = new CCPoint(4 * scale, 12 * scale) + pos;
+                    fpsLabel.Position = new CCPoint(4 * scale, 4 * scale) + pos;
+                }
 			}
 		}
 
