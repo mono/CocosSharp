@@ -114,5 +114,48 @@ namespace CocosSharp
             return stream;
 		}
 
+        // RGB to BGR convert Matrix
+        private static float[][] rgbtobgr = new float[][]
+	      {
+		     new float[] {0, 0, 1, 0, 0},
+		     new float[] {0, 1, 0, 0, 0},
+		     new float[] {1, 0, 0, 0, 0},
+		     new float[] {0, 0, 0, 1, 0},
+		     new float[] {0, 0, 0, 0, 1}
+	      };
+
+        internal static Image RGBToBGR(this Image bmp)
+        {
+            Image newBmp;
+            if ((bmp.PixelFormat & PixelFormat.Indexed) != 0)
+            {
+                newBmp = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format32bppArgb);
+            }
+            else
+            {
+                newBmp = bmp;
+            }
+
+            try
+            {
+                System.Drawing.Imaging.ImageAttributes ia = new System.Drawing.Imaging.ImageAttributes();
+                System.Drawing.Imaging.ColorMatrix cm = new System.Drawing.Imaging.ColorMatrix(rgbtobgr);
+
+                ia.SetColorMatrix(cm);
+                using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(newBmp))
+                {
+                    g.DrawImage(bmp, new System.Drawing.Rectangle(0, 0, bmp.Width, bmp.Height), 0, 0, bmp.Width, bmp.Height, System.Drawing.GraphicsUnit.Pixel, ia);
+                }
+            }
+            finally
+            {
+                if (newBmp != bmp)
+                {
+                    bmp.Dispose();
+                }
+            }
+
+            return newBmp;
+        }
     }
 }

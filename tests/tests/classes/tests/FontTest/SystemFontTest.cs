@@ -29,7 +29,7 @@ namespace tests.FontTest
 			"fonts/ThonburiBold.ttf"
 
 #endif
-#if WINDOWS || WINDOWSGL || NETFX_CORE
+#if WINDOWS || NETFX_CORE
 
             // .ttf fonts are loaded from embedded resources
             // look in Assets/Content/fonts
@@ -66,6 +66,42 @@ namespace tests.FontTest
             //"fonts/Thonburi.ttf",
             //"fonts/ThonburiBold.ttf"
 #endif
+
+#if WINDOWSGL
+
+            "fonts/A Damn Mess.ttf",  // A Damn Mess.ttf
+            "fonts/Abberancy.ttf",    // Abberancy.ttf
+            "fonts/Abduction.ttf",    //Abduction.ttf
+            "fonts/American Typewriter.ttf",  // American Typewriter.ttf
+            "fonts/Scissor Cuts.ttf", //Scissor Cuts.ttf
+            "fonts/Marker Felt.ttf",         //Marker Felt.ttf
+            "fonts/arial.ttf",
+            "fonts/Courier New.ttf",
+            //"Marker Felt",
+			"Comic Sans MS",
+			"Felt",
+			"MoolBoran",
+			"Courier New",
+			"Georgia",
+			"Symbol",
+            "Wingdings",
+			"Arial",
+
+            //"fonts/A Damn Mess.ttf",
+            //"fonts/Abberancy.ttf",
+            //"fonts/Abduction.ttf",
+            //"fonts/American Typewriter.ttf",
+            //"fonts/arial.ttf",
+            //"fonts/Courier New.ttf",
+            //"fonts/Marker Felt.ttf",
+            //"fonts/Paint Boy.ttf",
+            //"fonts/Schwarzwald Regular.ttf",
+            //"fonts/Scissor Cuts.ttf",
+            //"fonts/tahoma.ttf",
+            //"fonts/Thonburi.ttf",
+            //"fonts/ThonburiBold.ttf"
+#endif
+
 #if ANDROID
 			"Arial",
 			"Courier New",

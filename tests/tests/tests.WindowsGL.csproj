@@ -200,6 +200,24 @@
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="classes\tests\IntervalTest\IntervalLayer.cs" />
     <Compile Include="classes\tests\IntervalTest\IntervalTestScene.cs" />
+    <Compile Include="classes\tests\LabelTestNew\AtlasTestSceneNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTBounds.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTHundredLabels.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLine.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLineAlignment.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOffset.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTPadding.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas1.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas3.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas4.cs" />
@@ -452,6 +470,50 @@
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\testsContent\fonts\A Damn Mess.ttf">
+      <Link>Content\fonts\A Damn Mess.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Abberancy.ttf">
+      <Link>Content\fonts\Abberancy.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Abduction.ttf">
+      <Link>Content\fonts\Abduction.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\American Typewriter.ttf">
+      <Link>Content\fonts\American Typewriter.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Marker Felt.ttf">
+      <Link>Content\fonts\Marker Felt.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Paint Boy.ttf">
+      <Link>Content\fonts\Paint Boy.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Schwarzwald Regular.ttf">
+      <Link>Content\fonts\Schwarzwald Regular.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Scissor Cuts.ttf">
+      <Link>Content\fonts\Scissor Cuts.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\tahoma.ttf">
+      <Link>Content\fonts\tahoma.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\Thonburi.ttf">
+      <Link>Content\fonts\Thonburi.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\testsContent\fonts\ThonburiBold.ttf">
+      <Link>Content\fonts\ThonburiBold.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
@@ -459,7 +521,6 @@
     <Folder Include="Content\box2d\" />
     <Folder Include="Content\ccb\ccb\" />
     <Folder Include="Content\extensions\" />
-    <Folder Include="Content\fonts\" />
     <Folder Include="Content\hd\animations\" />
     <Folder Include="Content\hd\ccb\" />
     <Folder Include="Content\hd\extensions\" />
