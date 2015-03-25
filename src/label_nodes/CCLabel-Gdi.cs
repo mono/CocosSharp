@@ -49,7 +49,7 @@ namespace CocosSharp
         private static Brush _brush;
         private static Dictionary<char, KerningInfo> _abcValues = new Dictionary<char, KerningInfo>();
         private static Dictionary<string, FontFamily> _fontFamilyCache = new Dictionary<string, FontFamily>();
-        private static PrivateFontCollection _loadedFonts = new PrivateFontCollection();
+        private static PrivateFontCollection loadedFontsCollection = new PrivateFontCollection();
 
         [DllImport("gdi32.dll", SetLastError = true)]
         static extern IntPtr CreateCompatibleDC(IntPtr hdc);
@@ -91,9 +91,9 @@ namespace CocosSharp
                     {
                         try
                         {
-                            _loadedFonts.AddFontFile(fontPath);
+                            loadedFontsCollection.AddFontFile(fontPath);
 
-                            fontFamily = _loadedFonts.Families[_loadedFonts.Families.Length - 1];
+                            fontFamily = loadedFontsCollection.Families[loadedFontsCollection.Families.Length - 1];
 
                             _currentFont = new Font(fontFamily, fontSize);
                         }
@@ -224,7 +224,7 @@ namespace CocosSharp
         private Font CreateFont(string fontName, float fontSize)
         {
 
-            Font _currentFont;
+            Font currentFont;
 
             if (_defaultFont == null)
             {
@@ -237,7 +237,7 @@ namespace CocosSharp
             {
                 var ext = Path.GetExtension(fontName);
 
-                _currentFont = _defaultFont;
+                currentFont = _defaultFont;
 
                 if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
                 {
@@ -249,32 +249,51 @@ namespace CocosSharp
                     {
                         try
                         {
-                            _loadedFonts.AddFontFile(fontPath);
-                            
-                            fontFamily = _loadedFonts.Families[_loadedFonts.Families.Length - 1];
 
-                            _currentFont = new Font(fontFamily, fontSize);
+                            // Read the font file bytes
+                            var fontBytes = File.ReadAllBytes(fontPath);
+
+                            // Pin the font data for the length of the read file
+                            var fontData = Marshal.AllocCoTaskMem(fontBytes.Length);
+
+                            // Copy the font data to our memory
+                            Marshal.Copy(fontBytes, 0, fontData, fontBytes.Length);
+
+                            // Add the memory data to our private font collection as a Font in Memory
+                            loadedFontsCollection.AddMemoryFont(fontData, fontBytes.Length);
+
+                            // Release the pinned data
+                            Marshal.FreeCoTaskMem(fontData);
+
+                            // Try to get the family name of the 
+                            var ttfFontFamily = CCLabelUtilities.GetFontFamily(fontBytes, 0);
+
+                            fontFamily = new FontFamily(ttfFontFamily, loadedFontsCollection);
+
+                            currentFont = new Font(fontFamily, fontSize);
                         }
                         catch
                         {
-                            _currentFont = _defaultFont;
+                            currentFont = _defaultFont;
                         }
                     }
                 }
                 else
                 {
-                    _currentFont = new Font(fontName, fontSize);
+                    currentFont = new Font(fontName, fontSize);
                 }
 
-                _fontFamilyCache.Add(fontName, _currentFont.FontFamily);
+                _fontFamilyCache.Add(fontName, currentFont.FontFamily);
             }
             else
             {
-                _currentFont = new Font(fontFamily, fontSize);
+                currentFont = new Font(fontFamily, fontSize);
             }
 
+            // Create a small bitmap to be used for our graphics context
             CreateBitmap(1, 1);
-            return _currentFont;
+
+            return currentFont;
         }
 
         static float dpiScale = 96f / 72f;  // default but will be recalculated below
@@ -427,6 +446,7 @@ namespace CocosSharp
                 if (_brush != null)
                     _brush.Dispose();
             }
+
             return new CCTexture2D();
         }
 
