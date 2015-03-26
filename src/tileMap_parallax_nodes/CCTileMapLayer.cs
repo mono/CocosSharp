@@ -321,8 +321,6 @@ namespace CocosSharp
                 if (buffer.ShouldDrawBuffer == false)
                     continue;
 
-                Console.WriteLine (String.Format("Number verts {0}, prim {1}", buffer.NumberOfVisibleVertices, buffer.NumberOfVisiblePrimitives));
-
                 drawManager.DrawRawBuffer(buffer.QuadsVertexBuffer, 
                     buffer.StartingQuadVertIndex, buffer.NumberOfVisibleVertices,
                     buffer.IndexBuffer, 0, buffer.NumberOfVisiblePrimitives);
