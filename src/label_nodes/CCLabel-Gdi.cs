@@ -173,7 +173,7 @@ namespace CocosSharp
 
                 _graphics = Graphics.FromImage(_bitmap);
 
-                _graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                _graphics.SmoothingMode = SmoothingMode.HighQuality;
                 _graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
                 _graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
                 //graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
@@ -403,6 +403,9 @@ namespace CocosSharp
             imageHeight = (int)dimensions.Height;
 
             CreateBitmap(imageWidth, imageHeight);
+
+            if (textDefinition.isShouldAntialias)
+                _graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
             var _brush = new SolidBrush(foregroundColor);
             _graphics.Clear(System.Drawing.Color.Transparent);
