@@ -751,6 +751,23 @@ namespace CocosSharp
             DrawCount++;
         }
 
+        internal void DrawRawBuffer<T>(T[] vertexBuffer, int vStart, int vCount, short[] indexBuffer, int iStart, int iCount)
+            where T : struct, IVertexType
+        {
+            ApplyEffectParams();
+
+            EffectPassCollection passes = currentEffect.CurrentTechnique.Passes;
+            for (int i = 0; i < passes.Count; i++)
+            {
+                passes[i].Apply();
+                graphicsDevice.DrawUserIndexedPrimitives (PrimitiveType.TriangleList, 
+                    vertexBuffer, vStart, vCount, 
+                    indexBuffer, iStart, iCount);
+            }
+
+            DrawCount++;
+        }
+
         internal void DrawQuadsBuffer<T>(CCVertexBuffer<T> vertexBuffer, int start, int n) where T : struct, IVertexType
         {
             if (n == 0)

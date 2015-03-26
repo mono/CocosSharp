@@ -1271,6 +1271,7 @@
     <Content Include="..\testsContent\fonts\tahoma.ttf">
       <Link>Content\fonts\tahoma.ttf</Link>
     </Content>
+    <Content Include="Content\TileMaps\super_large_map.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

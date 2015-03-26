@@ -350,7 +350,7 @@ namespace tests
             // move map to the center of the screen
             var ms = tileMap.MapDimensions;
             var ts = tileMap.TileTexelSize;
-            tileMap.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Column * ts.Width / 2, -ms.Row * ts.Height / 2)));
+            tileLayersContainer.RunAction(new CCMoveTo (1.0f, new CCPoint(-ms.Column * ts.Width / 2, -ms.Row * ts.Height / 2)));
         }
 
 		public override string Title
@@ -953,7 +953,7 @@ namespace tests
     {
         public TMXBug787() : base("TileMaps/iso-test-bug787")
         {
-            tileMap.Scale = (0.25f);
+            tileLayersContainer.Scale = (0.25f);
         }
 
 		public override string Title
@@ -1133,7 +1133,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 33;
+        static int MAX_LAYER = 34;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1267,6 +1267,8 @@ namespace tests
                     return new TMXStaggeredMapTest();
                 case 32:
                     return new TMXLargeMapTest();
+                case 33:
+                    return new TMXSuperLargeMapTest();
 #endif
             }
 
@@ -1407,6 +1409,23 @@ namespace tests
         public override string Title
         {
             get { return "TMX Large map"; }
+        }
+    }
+
+    public class TMXSuperLargeMapTest : TileDemo
+    {
+        public TMXSuperLargeMapTest() : base("TileMaps/super_large_map")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "Super large map : Testing culling"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "400x400 isometric"; }
         }
     }
 
