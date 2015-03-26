@@ -2567,6 +2567,7 @@
     <Content Include="Content\TileMaps\orthogonal-test-polylines.xnb" />
     <Content Include="Content\TileMaps\staggered_test.xnb" />
     <Content Include="Content\TileMaps\large_map.xnb" />
+    <Content Include="Content\TileMaps\super_large_map.xnb" />
     <Content Include="..\testsContent\fonts\boundsTestFont.fnt">
       <Link>Content\fonts\boundsTestFont.fnt</Link>
     </Content>

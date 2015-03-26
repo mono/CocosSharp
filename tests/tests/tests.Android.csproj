@@ -2082,6 +2082,7 @@
     <AndroidAsset Include="..\testsContent\fonts\boundsTestFont.png">
       <Link>Assets\Content\fonts\boundsTestFont.png</Link>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\super_large_map.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
