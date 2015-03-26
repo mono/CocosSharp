@@ -28,11 +28,8 @@ namespace CocosSharp
         private static Font _defaultFont;
         private static Size2F dpi;
         private static Dictionary<string, FontFamily> _fontFamilyCache = new Dictionary<string, FontFamily>();
+        private static Dictionary<string, FontCollection> _fontCollectionCache = new Dictionary<string, FontCollection>();
         static float dpiScale = 96f / 72f;  // default but will be recalculated below
-
-        // our private font collection and fontLoader
-        private static PrivateFontLoader privateFontLoader;
-        private static FontCollection privateFontCollection;
 
         private static FontCollection _currentFontCollection;
 
@@ -75,21 +72,14 @@ namespace CocosSharp
 
             if (fontFamily == null)
             {
-                if (privateFontLoader == null)
-                {
-                    privateFontLoader = new PrivateFontLoader(FactoryDWrite);
-                    privateFontCollection = new FontCollection(FactoryDWrite, privateFontLoader, privateFontLoader.Key);
-                }
-
-                _currentFontCollection = privateFontCollection;
                 fontFamily = GetFontFamily(fontName);
-
             }
 
             if (fontFamily == null)
             {
                 _currentFontCollection = FactoryDWrite.GetSystemFontCollection(true);
-                
+
+                CCLog.Log("{0} not found.  Defaulting to {1}.", fontName, GenericSanSerif().FontFamily.FamilyNames.GetString(0));
                 return GenericSanSerif();
             }
 
@@ -125,20 +115,45 @@ namespace CocosSharp
             FontFamily fontFamily = GetFontFamily(fontName);
 
 
-            if (!_fontFamilyCache.TryGetValue(fontName, out fontFamily))
+            //if (!_fontFamilyCache.TryGetValue(fontName, out fontFamily))
+            FontCollection fontCollection;
+
+            if (!_fontCollectionCache.TryGetValue(fontName, out fontCollection))
             {
                 var ext = Path.GetExtension(fontName);
 
-                _currentFont = _defaultFont;
+                if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
+                {
+                    try
+                    {
+                        var fileFontLoader = new FileFontLoader(FactoryDWrite, fontName);
+                        var fileFontCollection = new FontCollection(FactoryDWrite, fileFontLoader, fileFontLoader.Key);
+                        _currentFontCollection = fileFontCollection;
+                        fontFamily = _currentFontCollection.GetFontFamily(0);
+                        var ffn = fontFamily.FamilyNames;
+                        _currentFont = fontFamily.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
 
-                _currentFont = GetFont(fontName, fontSize);
+                        _fontCollectionCache.Add(fontName, fileFontCollection);
+                        _currentFontCollection = fileFontCollection;
+                    }
+                    catch
+                    {
+                        _currentFont = GetFont(fontName, fontSize);
+                        CCLog.Log("{0} not found.  Defaulting to {1}.", fontName, _currentFont.FontFamily.FamilyNames.GetString(0));
+                    }
+                }
+                else
+                {
+                    _currentFont = GetFont(fontName, fontSize);
+                }
 
-                _fontFamilyCache.Add(fontName, _currentFont.FontFamily);
-                CCLog.Log("{0} not found.  Defaulting to {1}.", fontName, _currentFont.FontFamily.FamilyNames.GetString(0));
             }
             else
             {
+                fontFamily = fontCollection.GetFontFamily(0);
+
                 _currentFont = fontFamily.GetFirstMatchingFont(FontWeight.Regular, FontStretch.Normal, FontStyle.Normal);
+                _currentFontCollection = fontCollection;
             }
 
             return _currentFont;
@@ -319,6 +334,10 @@ namespace CocosSharp
 
                 // Begin the drawing
                 sharpRenderTarget.BeginDraw();
+
+                if (textDefinition.isShouldAntialias)
+                    sharpRenderTarget.AntialiasMode = AntialiasMode.Aliased;
+
                 // Clear it
                 sharpRenderTarget.Clear(TransparentColor);
 
