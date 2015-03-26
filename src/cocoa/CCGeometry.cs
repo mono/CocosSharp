@@ -1064,6 +1064,21 @@ namespace CocosSharp
 
 		#endregion Equality
 
+        public CCRect IntegerRoundedUpRect()
+        {
+            CCRect roundedUpRect = this;
+
+            roundedUpRect.Size.Width = (float)(Math.Ceiling(roundedUpRect.Origin.X + roundedUpRect.Size.Width) 
+                - Math.Floor(roundedUpRect.Origin.X));
+            roundedUpRect.Size.Height = (float)(Math.Ceiling(roundedUpRect.Origin.Y + roundedUpRect.Size.Height) 
+                - Math.Floor(roundedUpRect.Origin.Y));
+            roundedUpRect.Origin.X = (float)Math.Floor(roundedUpRect.Origin.X);
+            roundedUpRect.Origin.Y = (float)Math.Floor(roundedUpRect.Origin.Y);
+
+            return roundedUpRect;
+        }
+
+
         public CCRect Intersection(CCRect rect)
         {
             if (!IntersectsRect(rect))
