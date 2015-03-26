@@ -337,8 +337,8 @@ namespace CocosSharp
                 , boundingRect.Width 
                 , boundingRect.Height);
 
-            //Disable antialias
-            NSGraphicsContext.CurrentContext.ShouldAntialias = false;
+            //Set antialias or not
+            NSGraphicsContext.CurrentContext.ShouldAntialias = textDef.isShouldAntialias;
 
             NSImage image = new NSImage(new SizeF(imageWidth, imageHeight));
 
@@ -365,6 +365,8 @@ namespace CocosSharp
 
             // Create our texture of the label string.
             var texture = new CCTexture2D(tex);
+
+
 
             return texture;
 
@@ -519,8 +521,8 @@ namespace CocosSharp
             UIGraphics.BeginImageContext (new CGSize(imageWidth,imageHeight));
             var context = UIGraphics.GetCurrentContext ();
 
-            //Disable antialias
-            context.SetShouldAntialias(false);
+            //Set antialias or not
+            context.SetShouldAntialias(textDef.isShouldAntialias);
 
             stringWithAttributes.DrawString(drawRect);
 

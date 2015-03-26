@@ -39,7 +39,11 @@ namespace CocosSharp
 
 
             // out paint object to hold our drawn text
-            var textPaint = new TextPaint(PaintFlags.AntiAlias);
+            var paintFlags = new PaintFlags();
+            if (textDefinition.isShouldAntialias)
+                paintFlags = PaintFlags.AntiAlias;
+            
+            var textPaint = new TextPaint(paintFlags);
             textPaint.Color = Android.Graphics.Color.White;
             textPaint.TextAlign = Paint.Align.Left;
 

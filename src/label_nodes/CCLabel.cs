@@ -29,7 +29,7 @@ namespace CocosSharp
         public CCColor3B FontFillColor;
         public byte FontAlpha;
         public CCLabelLineBreak LineBreak;
-
+        public bool isShouldAntialias;
     };
 
 
@@ -805,6 +805,8 @@ namespace CocosSharp
                     fontDefinition.FontFillColor = DisplayedColor;
                     fontDefinition.FontAlpha = DisplayedOpacity;
                     fontDefinition.LineBreak = labelFormat.LineBreaking;
+
+                    fontDefinition.isShouldAntialias = true;
 
                     CreateSpriteWithFontDefinition(fontDefinition);
                 }
