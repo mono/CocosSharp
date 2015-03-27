@@ -37,7 +37,7 @@ namespace tests
         public override string Subtitle
         {
             get {
-                return "Testing new Label + TTF with Chinese character";
+                return "Testing new Label + TTF with Chinese character(s)";
             }
         }
     }

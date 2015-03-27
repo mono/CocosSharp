@@ -225,6 +225,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />

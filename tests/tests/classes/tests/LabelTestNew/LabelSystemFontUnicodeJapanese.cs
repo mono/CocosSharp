@@ -6,11 +6,11 @@ using CocosSharp;
 
 namespace tests
 {
-    public class LabelTTFUnicodeJapanese : AtlasDemoNew
+    public class LabelSystemFontUnicodeJapanese : AtlasDemoNew
     {
 		CCLabel label;
 
-        public LabelTTFUnicodeJapanese()
+        public LabelSystemFontUnicodeJapanese()
         {
             label = new CCLabel("良い一日を", "Hiragino Kaku Gothic Pro", 28, CCLabelFormat.SystemFont);
             label.LabelFormat.Alignment = CCTextAlignment.Center;
@@ -37,7 +37,7 @@ namespace tests
         public override string Subtitle
         {
             get {
-                return "Testing new Label + SystemFont with Japanese character";
+                return "Testing new Label + SystemFont with Japanese character(s)";
             }
         }
     }
