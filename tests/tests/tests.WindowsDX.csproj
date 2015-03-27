@@ -495,17 +495,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="app.config" />
-    <EmbeddedResource Include="Assets\Content\fonts\A Damn Mess.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Abberancy.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Abduction.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\American Typewriter.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Marker Felt.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Paint Boy.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Schwarzwald Regular.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Scissor Cuts.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\tahoma.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\Thonburi.ttf" />
-    <EmbeddedResource Include="Assets\Content\fonts\ThonburiBold.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\animations\" />
