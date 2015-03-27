@@ -1202,6 +1202,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2571,9 +2574,6 @@
     <Content Include="..\testsContent\fonts\boundsTestFont.fnt">
       <Link>Content\fonts\boundsTestFont.fnt</Link>
     </Content>
-    <Content Include="..\testsContent\fonts\boundsTestFont.png">
-      <Link>Content\fonts\boundsTestFont.png</Link>
-    </Content>
     <Content Include="..\testsContent\fonts\arial-26-en-ru_0.png">
       <Link>Content\fonts\arial-26-en-ru_0.png</Link>
     </Content>
@@ -2643,5 +2643,10 @@
     <Folder Include="Extensions\" />
     <Folder Include="classes\tests\Physics\" />
     <Folder Include="classes\tests\LabelTestNew\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\testsContent\fonts\boundsTestFont_0.png">
+      <Link>Content\fonts\boundsTestFont_0.png</Link>
+    </BundleResource>
   </ItemGroup>
 </Project>

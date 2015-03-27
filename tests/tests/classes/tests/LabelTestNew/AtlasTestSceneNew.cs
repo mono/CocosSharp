@@ -70,6 +70,7 @@ namespace tests
                 () => new LabelFNTRetina(),
                 () => new LabelFNTGlyphDesigner(),
                 () => new LabelTTFUnicodeChinese (),
+                () => new LabelTTFUnicodeJapanese (),
                 () => new LabelFNTMultiLineAlignment(),
                 () => new LabelFNTUNICODELanguages(),
                 () => new LabelTTFAlignmentNew(),
