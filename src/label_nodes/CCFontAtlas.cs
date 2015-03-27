@@ -18,6 +18,7 @@ namespace CocosSharp
         public bool IsValidDefinition;
         public int XAdvance;
         public CCRect Cropping;
+        public int Kerning;
 
         public CCRect Subrect
         {

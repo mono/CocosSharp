@@ -23,8 +23,7 @@ namespace tests
 
             s = label1.ContentSize;
 
-            //CCLOG("content size: %.2fx%.2f", s.width, s.height);
-            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
+            CCLog.Log("content size label1: {0,0:f2} x {1,0:f2}", s.Width, s.Height);
 
 
             // Center
@@ -33,8 +32,8 @@ namespace tests
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
 
             s = label2.ContentSize;
-            //CCLOG("content size: %.2fx%.2f", s.width, s.height);
-            CCLog.Log("content size: {0,0:2f}x{1,0:2f}", s.Width, s.Height);
+
+            CCLog.Log("content size label2: {0,0:f2} x {1,0:f2}", s.Width, s.Height);
 
             // right
             label3 = new CCLabel("Multi line\nRight\nThree lines Three", "fonts/bitmapFontTest3.fnt");
@@ -42,7 +41,8 @@ namespace tests
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
 
             s = label3.ContentSize;
-            //CCLOG("content size: %.2fx%.2f", s.width, s.height);
+
+            CCLog.Log("content size labe3: {0,0:f2} x {1,0:f2}", s.Width, s.Height);
         }
 
         protected override void AddedToScene()

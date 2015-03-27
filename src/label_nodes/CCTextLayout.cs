@@ -12,29 +12,29 @@ namespace CocosSharp
 
         internal static CCTLLine NewCTLLine()
         {
-            var temp = new CCTLLine();
-            temp.glyphRun = new List<LetterInfo>();
-            temp.bounds = CCSize.Zero;
-            return temp;
+            var newLine = new CCTLLine();
+            newLine.glyphRun = new List<LetterInfo>();
+            newLine.bounds = CCSize.Zero;
+            return newLine;
         }
 
         internal bool AddGlyph(CCPoint point, CCFontLetterDefinition letterDef, int spriteIndex)
         {
 
-            var tmpInfo = new LetterInfo();
+            var letterInfo = new LetterInfo();
 
-            tmpInfo.Definition = letterDef;
-            tmpInfo.Position = point;
-            tmpInfo.ContentSize.Width = letterDef.Width;
-            tmpInfo.ContentSize.Height = letterDef.Height;
-            bounds.Width = tmpInfo.Position.X + tmpInfo.ContentSize.Width;
+            letterInfo.Definition = letterDef;
+            letterInfo.Position = point;
+            letterInfo.ContentSize.Width = letterDef.Width;
+            letterInfo.ContentSize.Height = letterDef.Height;
+            bounds.Width = letterInfo.Position.X + letterDef.XAdvance + letterDef.Kerning;
             if (bounds.Height < letterDef.Height)
                 bounds.Height = letterDef.Height;
 
-            tmpInfo.AtlasIndex = spriteIndex;
-            glyphRun.Add(tmpInfo);
+            letterInfo.AtlasIndex = spriteIndex;
+            glyphRun.Add(letterInfo);
 
-            return tmpInfo.Definition.IsValidDefinition;
+            return letterInfo.Definition.IsValidDefinition;
         }
 
         public List<LetterInfo> GlyphRun
@@ -95,9 +95,13 @@ namespace CocosSharp
         {
             var breakText = label.Text;
 
-            int stringLength = string.IsNullOrEmpty(breakText) ? 0 : breakText.Length;
+            var stringRange = breakText.Substring(startRange, endRange - startRange);
+            int stringLength = string.IsNullOrEmpty(stringRange) ? 0 : stringRange.TrimEnd().Length;
+
             if (stringLength <= 0)
                 return CCTLLine.NewCTLLine();
+
+            endRange = startRange + stringLength;
 
             CCFontLetterDefinition letterDefinition = new CCFontLetterDefinition();
 
@@ -130,8 +134,11 @@ namespace CocosSharp
                 }
 
                 var kerning = kernings[x];
+                letterDefinition.Kerning = kerning;
+
                 letterPosition.X = (nextFontPositionX + charXOffset + kerning) / contentScaleFactorWidth;
                 letterPosition.Y = (nextFontPositionY - charYOffset) / contentScaleFactorHeight;
+
 
                 nextFontPositionX += charAdvance + kerning;
 

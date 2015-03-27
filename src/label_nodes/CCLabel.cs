@@ -345,10 +345,16 @@ namespace CocosSharp
 
         public override CCSize ContentSize
         {
-            get { return base.ContentSize; }
+            get 
+            {
+                if (IsDirty || systemFontDirty)
+                    UpdateContent();
+                
+                return base.ContentSize; 
+            }
             set
             {
-                if (ContentSize != value)
+                if (base.ContentSize != value)
                 {
                     base.ContentSize = value;
                     IsDirty = true;
@@ -403,7 +409,6 @@ namespace CocosSharp
             }
         }
 
-
         public virtual string Text
         {
             get { return labelInitialText; }
@@ -413,7 +418,6 @@ namespace CocosSharp
                 {
                     labelInitialText = value;
                     IsDirty = true;
-                    UpdateContent();
                 }
             }
         }
@@ -651,7 +655,8 @@ namespace CocosSharp
 
             IsOpacityCascaded = true;
 
-            ContentSize = CCSize.Zero;
+            // We use base here so we do not trigger an update internally.
+            base.ContentSize = CCSize.Zero;
 
             IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = CCPoint.AnchorMiddle;
@@ -776,8 +781,15 @@ namespace CocosSharp
             }
         }
 
+        bool isUpdatingContent = false;
+
         protected void UpdateContent()
         {
+
+            if (isUpdatingContent)
+                return;
+
+            isUpdatingContent = true;
 
             if (string.IsNullOrEmpty(Text))
             {
@@ -813,6 +825,7 @@ namespace CocosSharp
             }
 
             IsDirty = false;
+            isUpdatingContent = false;
         }
 
         CCSprite textSprite = null;
@@ -874,6 +887,7 @@ namespace CocosSharp
             }
         }
 
+        const float MAX_BOUNDS = 8388608;
         void LayoutLabel ()
         {
 
@@ -896,30 +910,57 @@ namespace CocosSharp
             var insetBounds = labelDimensions;
 
             var layoutAvailable = true;
-            if (insetBounds == CCSize.Zero) 
+
+            if (insetBounds.Width <= 0) 
             {
-                insetBounds = new CCSize (8388608, 8388608);
+                insetBounds.Width = MAX_BOUNDS;
                 layoutAvailable = false;
             }
 
-            var boundsWidth = insetBounds.Width;
+            if (insetBounds.Height <= 0) 
+            {
+                insetBounds.Height = MAX_BOUNDS;
+                layoutAvailable = false;
+            }
+
+
             var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
             var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
 
             List<CCTLLine> lineList = new List<CCTLLine>();
-            while (start < length)// && textPosition.Y < insetBounds.Bottom)
+
+            var boundingSize = CCSize.Zero;
+
+            while (start < length)
             {
 
                 // Now we ask the typesetter to break off a line for us.
                 // This also will take into account line feeds embedded in the text.
                 //  Example: "This is text \n with a line feed embedded inside it"
-                int count = typesetter.SuggestLineBreak(start, boundsWidth);
+                int count = typesetter.SuggestLineBreak(start, insetBounds.Width);
                 var line = typesetter.GetLine(start, start + count);
+
                 lineList.Add(line);
+
+                if (line.Bounds.Width > boundingSize.Width)
+                    boundingSize.Width = line.Bounds.Width;
+                
+                boundingSize.Height += line.Bounds.Height;
 
                 start += count;
             }
 
+            if (!layoutAvailable)
+            {
+                if (insetBounds.Width == MAX_BOUNDS)
+                {
+                    insetBounds.Width = boundingSize.Width;
+                }
+                if (insetBounds.Height == MAX_BOUNDS)
+                {
+                    insetBounds.Height = boundingSize.Height;
+                }
+            }
 
             // Calculate our vertical starting position
             var totalHeight = lineList.Count * LineHeight;
@@ -951,7 +992,7 @@ namespace CocosSharp
 
 
             var lineGlyphIndex = 0;
-            float longestLine = (labelDimensions.Width > 0) ? labelDimensions.Width : 0;
+            float longestLine = 0;
 
             // Used for calculating overlapping on last line character
             var lastCharWidth = 0.0f;
@@ -966,17 +1007,16 @@ namespace CocosSharp
 
                 var gliphRun = line.GlyphRun;
                 var lineWidth = line.Bounds.Width * contentScaleFactorWidth;
-                var flush = line.PenOffsetForFlush(flushFactor, boundsWidth);
+                var flush = line.PenOffsetForFlush(flushFactor, boundingSize.Width);
 
                 foreach (var glyph in gliphRun)
                 {
                     var letterPosition = glyph.Position;
                     var letterDef = glyph.Definition;
                     lastCharWidth = letterDef.Width * contentScaleFactorWidth;
+
                     letterPosition.X += flush;
                     letterPosition.Y = (nextFontPositionY - letterDef.YOffset) / contentScaleFactorHeight;
-
-                    //recordLetterInfo(letterPosition, glyph.def, lineGlyphIndex++);
 
                     var tmpInfo = new LetterInfo();
 
@@ -1026,7 +1066,8 @@ namespace CocosSharp
                 tmpSize.Height = Dimensions.Height * contentScaleFactorHeight;
             }
 
-            ContentSize = tmpSize / CCLabel.DefaultTexelToContentSizeRatios;
+            // We use base here so we do not trigger an update internally.
+            base.ContentSize = tmpSize / CCLabel.DefaultTexelToContentSizeRatios;
 
             lineList.Clear();
 
@@ -1150,7 +1191,7 @@ namespace CocosSharp
 
             TextureAtlas.InsertQuad(ref quad, atlasIndex);
 
-            sprite.UpdateTransformedSpriteTextureQuads();
+            sprite.UpdateLocalTransformedSpriteTextureQuads();
 
         }
 
