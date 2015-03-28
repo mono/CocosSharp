@@ -15,7 +15,7 @@ namespace CocosSharp
         public CCFontSpriteFont (string fntFilePath, float fontSize, CCVector2 imageOffset = default(CCVector2))
         { 
             fontName = fntFilePath;
-            fontSize = fontSize;
+            this.fontSize = fontSize;
         }
 
         /// <summary>
