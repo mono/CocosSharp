@@ -579,6 +579,12 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFAlignmentTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2079,10 +2085,16 @@
     <AndroidAsset Include="..\testsContent\fonts\boundsTestFont.fnt">
       <Link>Assets\Content\fonts\boundsTestFont.fnt</Link>
     </AndroidAsset>
-    <AndroidAsset Include="..\testsContent\fonts\boundsTestFont.png">
-      <Link>Assets\Content\fonts\boundsTestFont.png</Link>
-    </AndroidAsset>
     <AndroidAsset Include="Assets\Content\TileMaps\super_large_map.xnb" />
+    <AndroidAsset Include="..\testsContent\fonts\boundsTestFont_0.png">
+      <Link>Assets\Content\fonts\boundsTestFont_0.png</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\testsContent\fonts\HKYuanMini.ttf">
+      <Link>Assets\Content\fonts\HKYuanMini.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\testsContent\fonts\Schwarzwald.ttf">
+      <Link>Assets\Content\fonts\Schwarzwald.ttf</Link>
+    </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
