@@ -1151,6 +1151,12 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFAlignmentTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1259,9 +1265,6 @@
     <Content Include="..\testsContent\fonts\boundsTestFont.fnt">
       <Link>Content\fonts\boundsTestFont.fnt</Link>
     </Content>
-    <Content Include="..\testsContent\fonts\boundsTestFont.png">
-      <Link>Content\fonts\boundsTestFont.png</Link>
-    </Content>
     <Content Include="..\testsContent\fonts\arial-26-en-ru_0.png">
       <Link>Content\fonts\arial-26-en-ru_0.png</Link>
     </Content>
@@ -1272,6 +1275,18 @@
       <Link>Content\fonts\tahoma.ttf</Link>
     </Content>
     <Content Include="Content\TileMaps\super_large_map.xnb" />
+    <Content Include="..\testsContent\fonts\boundsTestFont_0.png">
+      <Link>Content\fonts\boundsTestFont_0.png</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\HKYuanMini.ttf">
+      <Link>Content\fonts\HKYuanMini.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\Schwarzwald.ttf">
+      <Link>Content\fonts\Schwarzwald.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\American Typewriter.ttf">
+      <Link>Content\fonts\American Typewriter.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

@@ -10,7 +10,6 @@ namespace tests
         private CCTextAlignment horizontalAlign;
         private CCVerticalTextAlignment verticalAlign;
         private CCLabel alignmentLabel;
-        private Background colorLayer;
         private CCSize blockSize = new CCSize(200, 160);
         private CCMenu menuLeft;
         private CCMenu menuRight;
