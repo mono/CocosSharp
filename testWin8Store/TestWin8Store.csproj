@@ -388,14 +388,32 @@
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFAlignmentTest.cs">
+      <Link>classes\tests\LabelTestNew\LabelSFAlignmentTest.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFColor.cs">
+      <Link>classes\tests\LabelTestNew\LabelSFColor.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
       <Link>classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs">
+      <Link>classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSystemFontColor.cs">
+      <Link>classes\tests\LabelTestNew\LabelSystemFontColor.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs">
+      <Link>classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTestNew.cs">
       <Link>classes\tests\LabelTestNew\LabelTestNew.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs">
       <Link>classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs">
+      <Link>classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs">
       <Link>classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs</Link>
@@ -1294,6 +1312,10 @@
     <Content Include="..\tests\testsContent\TileMaps\iso-test-zorder1.tmx">
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\tests\tests\Assets\Content\fonts\Schwarzwald.ttf">
+      <Link>Content\fonts\Schwarzwald.ttf</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="TestWin8Store_TemporaryKey.pfx" />
   </ItemGroup>

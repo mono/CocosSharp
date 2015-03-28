@@ -224,10 +224,15 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFAlignmentTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFUnicodeChinese.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas1.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas3.cs" />

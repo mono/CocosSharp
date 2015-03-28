@@ -201,6 +201,7 @@
     <Compile Include="label_nodes\CCFontSpriteFont.cs" />
     <Compile Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="label_nodes\CCLabelUtilities.cs" />
     <Compile Include="label_nodes\CCTextLayout.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />
