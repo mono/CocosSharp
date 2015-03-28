@@ -75,7 +75,13 @@ namespace tests
                 () => new LabelFNTUNICODELanguages(),
                 () => new LabelTTFAlignmentNew(),
                 () => new LabelFNTBounds(),
-                () => new LabelSFLongLineWrapping()
+                () => new LabelSFLongLineWrapping(),
+                () => new LabelSFColor(),
+                () => new LabelSystemFontColor(),
+                () => new LabelTTFFontsTestNew(),
+                () => new LabelSFAlignmentTest(),
+                () => new LabelSystemFontAlignmentTest(),
+
         };
 
         public static CCLayer createAtlasLayer(int index)

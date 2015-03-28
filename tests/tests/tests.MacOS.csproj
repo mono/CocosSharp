@@ -1205,6 +1205,21 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSFColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSFAlignmentTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2585,6 +2600,12 @@
     </Content>
     <Content Include="Assets\Content\fonts\tahoma.ttf">
       <Link>Content\fonts\tahoma.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\American Typewriter.ttf">
+      <Link>Content\fonts\American Typewriter.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\Schwarzwald.ttf">
+      <Link>Content\fonts\Schwarzwald.ttf</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
