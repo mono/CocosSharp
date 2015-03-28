@@ -1007,7 +1007,7 @@ namespace CocosSharp
 
                 var gliphRun = line.GlyphRun;
                 var lineWidth = line.Bounds.Width * contentScaleFactorWidth;
-                var flush = line.PenOffsetForFlush(flushFactor, boundingSize.Width);
+                var flush = line.PenOffsetForFlush(flushFactor, (layoutAvailable) ? insetBounds.Width : boundingSize.Width);
 
                 foreach (var glyph in gliphRun)
                 {
