@@ -45,7 +45,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\WindowsPhone\x86\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;MONOGAME</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -55,7 +55,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\WindowsPhone\x86\Release\</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -66,7 +66,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Bin\WindowsPhone\ARM\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
@@ -76,15 +76,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>Bin\WindowsPhone\ARM\Release\</OutputPath>
-    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE;WINDOWS_PHONE8;MONOGAME</DefineConstants>
     <NoStdLib>true</NoStdLib>
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="label_nodes\CCLabel-Windows.cs" />
-    <None Include="label_nodes\CCLabel.cs" />
+    <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="events\CCEvent.cs" />
     <Compile Include="events\CCEventAccelerate.cs" />
     <Compile Include="events\CCEventDispatcher.cs" />
@@ -106,6 +105,12 @@
     <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
+    <Compile Include="label_nodes\CCFont.cs" />
+    <Compile Include="label_nodes\CCFontAtlas.cs" />
+    <Compile Include="label_nodes\CCFontAtlasCache.cs" />
+    <Compile Include="label_nodes\CCFontFNT.cs" />
+    <Compile Include="label_nodes\CCFontSpriteFont.cs" />
+    <Compile Include="label_nodes\CCTextLayout.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
@@ -419,6 +424,9 @@
       <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
       <Name>ICSharpCode.SharpZLib.WP8</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="label_nodes\CCLabel-Windows.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

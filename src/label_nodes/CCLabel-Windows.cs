@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 
-using System.Runtime.InteropServices;
 
+
+#if !WINDOWS_PHONE8
+using System.Runtime.InteropServices;
 using SharpDX.Direct2D1;
 using SharpDX.DirectWrite;
 using SharpDX;
@@ -13,14 +15,19 @@ using Factory = SharpDX.Direct2D1.Factory;
 using FactoryWrite = SharpDX.DirectWrite.Factory;
 using FactoryImaging = SharpDX.WIC.ImagingFactory;
 using Microsoft.Xna.Framework.Graphics;
-
+#endif
 
 namespace CocosSharp
 {
 
     public partial class CCLabel
     {
-
+#if WINDOWS_PHONE8
+        internal CCTexture2D CreateTextSprite(string text, CCFontDefinition textDefinition)
+        {
+            return new CCTexture2D();
+        }
+#else
         private static Factory Factory2D { get; set; }
         private static FactoryWrite FactoryDWrite { get; set; }
         private static FactoryImaging FactoryImaging { get; set; }
@@ -411,5 +418,6 @@ namespace CocosSharp
             // If we have reached here then something has gone wrong.
             return new CCTexture2D();
         }
+#endif
     }
 }
