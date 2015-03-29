@@ -767,8 +767,11 @@ namespace CocosSharp
             var culledBounds = AffineWorldTransform.Inverse.Transform(VisibleBoundsWorldspace);
             culledBounds = culledBounds.Intersection(BoundingBox);
 
-            CCSize tileSize = TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
-            float tileSizeMax = Math.Max(tileSize.Width, tileSize.Height);
+            // The tileset dimensions may in fact be larger than the actual map tile size which will affect culling
+            CCSize tileSetTileSize = TileSetInfo.TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
+            float tileSetTileSizeMax = Math.Max(tileSetTileSize.Width, tileSetTileSize.Height);
+            CCSize mapTileSize = TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
+
 
             CCRect visibleTiles = nodeToTileCoordsTransform.Transform(culledBounds);
             visibleTiles = visibleTiles.IntegerRoundedUpRect();
@@ -778,7 +781,7 @@ namespace CocosSharp
             int tilesOverX = 0;
             int tilesOverY = 0;
 
-            CCRect overTileRect = new CCRect(0.0f, 0.0f, tileSizeMax - tileSize.Width, tileSizeMax - tileSize.Height);
+            CCRect overTileRect = new CCRect(0.0f, 0.0f, tileSetTileSizeMax - mapTileSize.Width, tileSetTileSizeMax - mapTileSize.Height);
             overTileRect = nodeToTileCoordsTransform.Transform(overTileRect);
 
             tilesOverX = (int)(Math.Ceiling (overTileRect.Origin.X + overTileRect.Size.Width) - Math.Floor(overTileRect.Origin.X));
