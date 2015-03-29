@@ -753,10 +753,10 @@ namespace CocosSharp
             quad.TopLeft.Colors = CCColor4B.White;
             quad.TopRight.Colors = CCColor4B.White;
 
-            drawBuffer.QuadsVertexBuffer.Data[adjustedStartVertexIndex] = quad.BottomLeft;
-            drawBuffer.QuadsVertexBuffer.Data[adjustedStartVertexIndex + 1] = quad.BottomRight;
-            drawBuffer.QuadsVertexBuffer.Data[adjustedStartVertexIndex + 2] = quad.TopLeft;
-            drawBuffer.QuadsVertexBuffer.Data[adjustedStartVertexIndex + 3] = quad.TopRight;
+            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex] = quad.TopLeft;
+            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 1] = quad.BottomLeft;
+            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 2] = quad.TopRight;
+            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 3] = quad.BottomRight;
 
             if (updateBuffer)
                 drawBuffer.QuadsVertexBuffer.UpdateBuffer(adjustedStartVertexIndex, NumOfCornersPerQuad);
