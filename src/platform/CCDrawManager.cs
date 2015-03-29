@@ -1499,7 +1499,8 @@ namespace CocosSharp
         {
             if (elementCount > 0)
             {
-                vertexBuffer.SetData(data.Elements, startIndex, elementCount);
+                int vertexByteSize = vertexBuffer.VertexDeclaration.VertexStride;
+                vertexBuffer.SetData(vertexByteSize * startIndex, data.Elements, startIndex, elementCount, vertexByteSize);
             }
         }
     }
