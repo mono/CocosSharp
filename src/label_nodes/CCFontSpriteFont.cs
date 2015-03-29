@@ -7,15 +7,21 @@ namespace CocosSharp
 {
     public class CCFontSpriteFont : CCFont
     {
-        CCVector2 _imageOffset;
+        CCVector2 imageOffset;
         public bool IsFontConfigValid { get; private set; }
         string fontName;
         float fontSize;
 
-        public CCFontSpriteFont (string fntFilePath, float fontSize, CCVector2 imageOffset = default(CCVector2))
+        public CCFontSpriteFont (string fntFilePath, float fontSize, CCVector2? imageOffset = null)
         { 
             fontName = fntFilePath;
             this.fontSize = fontSize;
+
+            this.imageOffset = CCVector2.Zero;
+
+            if (imageOffset.HasValue)
+                this.imageOffset = imageOffset.Value;
+
         }
 
         /// <summary>

@@ -148,20 +148,18 @@ namespace CocosSharp
     }
 
 
+    [Flags]
+    public enum CCLabelType 
+    {
+        SpriteFont,
+        BitMapFont,
+        CharacterMap,
+        SystemFont
+    };
 
     public partial class CCLabel : CCNode, ICCTextContainer
     {
 
-        [Flags]
-        protected enum CCLabelType 
-        {
-            SpriteFont,
-            BitMapFont,
-            CharacterMap,
-            SystemFont
-        };
-
-        public const int AutomaticWidth = -1;
         const int defaultSpriteBatchCapacity = 29;
 
         internal static Dictionary<string, CCBMFontConfiguration> fontConfigurations = new Dictionary<string, CCBMFontConfiguration>();
@@ -171,7 +169,7 @@ namespace CocosSharp
         protected CCVerticalTextAlignment vertAlignment = CCVerticalTextAlignment.Top;
         internal CCBMFontConfiguration FontConfiguration { get; set; }
         protected string fntConfigFile;
-        protected string labelInitialText;
+        protected string labelText;
 
         protected CCPoint ImageOffset { get; set; }
         protected CCSize labelDimensions;
@@ -183,7 +181,7 @@ namespace CocosSharp
 
         public CCBlendFunc BlendFunc { get; set; }
 
-        protected CCLabelType currentLabelType;
+        public CCLabelType LabelType { get; protected internal set; }
         private CCFontAtlas fontAtlas;
         private List<LetterInfo> lettersInfo = new List<LetterInfo>();
 
@@ -210,7 +208,7 @@ namespace CocosSharp
 
         // Instance properties
 
-        protected float LineHeight { get; set; }
+        public float LineHeight { get; internal set; }
 
         public CCLabelFormat LabelFormat
         {
@@ -411,12 +409,12 @@ namespace CocosSharp
 
         public virtual string Text
         {
-            get { return labelInitialText; }
+            get { return labelText; }
             set
             {
-                if (labelInitialText != value)
+                if (labelText != value)
                 {
-                    labelInitialText = value;
+                    labelText = value;
                     IsDirty = true;
                 }
             }
@@ -548,7 +546,7 @@ namespace CocosSharp
             }
             else if(labelFormat.FormatFlags == CCLabelFormatFlags.SystemFont)
             {
-                currentLabelType = CCLabelType.SystemFont;
+                LabelType = CCLabelType.SystemFont;
                 SystemFont = fntFile;
                 SystemFontSize = size;
                 Dimensions = dimensions;
@@ -625,7 +623,7 @@ namespace CocosSharp
 
             FontConfiguration = CCBMFontConfiguration.FontConfigurationWithFile(fntFile);
 
-            currentLabelType = CCLabelType.BitMapFont;
+            LabelType = CCLabelType.BitMapFont;
 
             if (String.IsNullOrEmpty(theString))
             {
@@ -690,7 +688,7 @@ namespace CocosSharp
 
             AnchorPoint = CCPoint.AnchorMiddle;
 
-            currentLabelType = CCLabelType.SpriteFont;
+            LabelType = CCLabelType.SpriteFont;
 
             if (String.IsNullOrEmpty(theString))
             {
@@ -802,7 +800,7 @@ namespace CocosSharp
             }
             else
             {
-                if (currentLabelType == CCLabelType.SystemFont)
+                if (LabelType == CCLabelType.SystemFont)
                 {
                     var fontDefinition = new CCFontDefinition();
 
@@ -1102,7 +1100,7 @@ namespace CocosSharp
         {
             get 
             { 
-                if (currentLabelType == CCLabelType.SystemFont)
+                if (LabelType == CCLabelType.SystemFont)
                 {
                     return null;
                 }
@@ -1197,7 +1195,7 @@ namespace CocosSharp
 
         #endregion
 
-        public void IncreaseAtlasCapacity()
+        protected void IncreaseAtlasCapacity()
         {
             // if we're going beyond the current TextureAtlas's capacity,
             // all the previously initialized sprites will need to redo their texture coords

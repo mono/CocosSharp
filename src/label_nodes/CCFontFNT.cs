@@ -6,13 +6,17 @@ namespace CocosSharp
     public class CCFontFNT : CCFont
     {
         internal CCBMFontConfiguration Configuration { get; set; }
-        CCVector2 _imageOffset;
+        CCVector2 imageOffset;
         public bool IsFontConfigValid { get; private set; }
 
-        public CCFontFNT(string fntFilePath, CCVector2 imageOffset = default(CCVector2))
+        public CCFontFNT(string fntFilePath, CCVector2? imageOffset = null)
         { 
+            
             Configuration = CCBMFontConfiguration.FontConfigurationWithFile(fntFilePath);
-            _imageOffset = imageOffset;
+            this.imageOffset = CCVector2.Zero;
+
+            if (imageOffset.HasValue)
+                this.imageOffset = imageOffset.Value;
 
             if (Configuration != null)
                 IsFontConfigValid = true;
