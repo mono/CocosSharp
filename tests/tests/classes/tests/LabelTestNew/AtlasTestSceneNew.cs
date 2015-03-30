@@ -82,6 +82,7 @@ namespace tests
                 () => new LabelSFAlignmentTest(),
                 () => new LabelSystemFontAlignmentTest(),
                 () => new LabelSFOldNew(),
+                () => new LabelFNTOldNew(),
 
         };
 

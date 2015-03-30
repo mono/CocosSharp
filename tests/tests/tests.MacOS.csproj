@@ -1221,6 +1221,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOldNew.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
