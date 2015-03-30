@@ -11,6 +11,7 @@ namespace CocosSharp
         public bool IsFontConfigValid { get; private set; }
         string fontName;
         float fontSize;
+        float fontScale;
 
         public CCFontSpriteFont (string fntFilePath, float fontSize, CCVector2? imageOffset = null)
         { 
@@ -22,6 +23,7 @@ namespace CocosSharp
             if (imageOffset.HasValue)
                 this.imageOffset = imageOffset.Value;
 
+            fontScale = 1.0f;
         }
 
         /// <summary>
@@ -55,6 +57,11 @@ namespace CocosSharp
 #else
                 atlasTexture = new CCTexture2D(font.Texture);
 #endif
+            }
+
+            if (loadedSize != 0)
+            {
+                fontScale = fontSize / loadedSize * CCSpriteFontCache.FontScale;
             }
 
             // add the texture (only one for now)
@@ -91,7 +98,8 @@ namespace CocosSharp
                 glyphDefintion.TextureID = 0;
 
                 glyphDefintion.IsValidDefinition = true;
-                glyphDefintion.XAdvance = (int)(font.Spacing + glyphDef.Width + glyphDef.RightSideBearing);//(int)glyphDef.WidthIncludingBearings;
+                //glyphDefintion.XAdvance = (int)(font.Spacing + glyphDef.Width + glyphDef.RightSideBearing);
+                glyphDefintion.XAdvance = (int)glyphDef.WidthIncludingBearings;
 
                 atlas.AddLetterDefinition(glyphDefintion);
 
@@ -131,6 +139,13 @@ namespace CocosSharp
             return ret;
         }
 
+        public override float FontScale
+        {
+            get
+            {
+                return fontScale;
+            }
+        }
     }
 }
 

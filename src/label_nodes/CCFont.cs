@@ -69,6 +69,10 @@ namespace CocosSharp
             get { return 0; }
         }
 
+        public virtual float FontScale
+        {
+            get { return 1; }
+        }
     }
 }
 

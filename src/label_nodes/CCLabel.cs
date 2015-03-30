@@ -675,6 +675,7 @@ namespace CocosSharp
                 try
                 {
                     FontAtlas = CCFontAtlasCache.GetFontAtlasSpriteFont(fntFile, fontSize, imageOffset);
+                    Scale = FontAtlas.Font.FontScale;
                 }
                 catch {}
 
@@ -924,6 +925,8 @@ namespace CocosSharp
 
             var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
             var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
+            var scaleX = ScaleX;
+            var scaleY = ScaleY;
 
             List<CCTLLine> lineList = new List<CCTLLine>();
 
@@ -964,9 +967,9 @@ namespace CocosSharp
             var totalHeight = lineList.Count * LineHeight;
             var nextFontPositionY = totalHeight;
 
-            if (Dimensions.Height > 0)
+            if (layoutAvailable && labelDimensions.Height > 0)
             {
-                var labelHeightPixel = Dimensions.Height * contentScaleFactorHeight;
+                var labelHeightPixel = labelDimensions.Height / scaleY * contentScaleFactorHeight;
                 if (totalHeight > labelHeightPixel)
                 {
                     int numLines = (int)(labelHeightPixel / LineHeight);
@@ -1005,7 +1008,8 @@ namespace CocosSharp
 
                 var gliphRun = line.GlyphRun;
                 var lineWidth = line.Bounds.Width * contentScaleFactorWidth;
-                var flush = line.PenOffsetForFlush(flushFactor, (layoutAvailable) ? insetBounds.Width : boundingSize.Width);
+                var flushWidth = (layoutAvailable) ? insetBounds.Width / scaleX : boundingSize.Width;
+                var flush = line.PenOffsetForFlush(flushFactor, flushWidth) ;
 
                 foreach (var glyph in gliphRun)
                 {
@@ -1059,9 +1063,9 @@ namespace CocosSharp
 
             tmpSize.Height = totalHeight;
 
-            if (Dimensions.Height > 0)
+            if (labelDimensions.Height > 0)
             {
-                tmpSize.Height = Dimensions.Height * contentScaleFactorHeight;
+                tmpSize.Height = labelDimensions.Height * contentScaleFactorHeight;
             }
 
             // We use base here so we do not trigger an update internally.
@@ -1172,7 +1176,6 @@ namespace CocosSharp
         {
             Debug.Assert(false, "AddChild is not allowed on CCLabel");
         }
-
 
         private void InsertGlyph(CCSprite sprite, int atlasIndex)
         {
