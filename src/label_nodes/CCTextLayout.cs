@@ -314,7 +314,7 @@ namespace CocosSharp
     /// <summary>
     /// Describes the line breaking condition.
     /// </summary>
-    public enum LineBreakCondition
+    internal enum LineBreakCondition
     {
         /// <summary>
         /// Break is allowed.
@@ -336,7 +336,7 @@ namespace CocosSharp
     /// <summary>
     /// Represents struct to store information about line break position and condition.
     /// </summary>
-    public struct LineBreakElement
+    internal struct LineBreakElement
     {
         private int m_position;
         private LineBreakCondition m_condition;
