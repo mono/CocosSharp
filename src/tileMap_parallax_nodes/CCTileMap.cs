@@ -154,7 +154,11 @@ namespace CocosSharp
             
         public Dictionary<string, string> TilePropertiesForGID(short tileGid)
         {
-            return TileProperties[tileGid];
+            Dictionary<string, string> propertiesDict = null;
+
+            TileProperties.TryGetValue(tileGid, out propertiesDict);
+
+            return propertiesDict;
         }
 
         #endregion Fetching tile map data
