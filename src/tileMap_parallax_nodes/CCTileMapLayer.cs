@@ -788,7 +788,9 @@ namespace CocosSharp
             int tilesOverX = 0;
             int tilesOverY = 0;
 
-            CCRect overTileRect = new CCRect(0.0f, 0.0f, tileSetTileSizeMax - mapTileSize.Width, tileSetTileSizeMax - mapTileSize.Height);
+            CCRect overTileRect = new CCRect(0.0f, 0.0f, 
+                Math.Max(tileSetTileSizeMax - mapTileSize.Width, 0), 
+                Math.Max(tileSetTileSizeMax - mapTileSize.Height,0));
             overTileRect = nodeToTileCoordsTransform.Transform(overTileRect);
 
             tilesOverX = (int)(Math.Ceiling (overTileRect.Origin.X + overTileRect.Size.Width) - Math.Floor(overTileRect.Origin.X));
