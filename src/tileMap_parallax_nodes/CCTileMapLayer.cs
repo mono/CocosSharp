@@ -50,7 +50,8 @@ namespace CocosSharp
 
         public CCTileMapType MapType { get; private set; }                  
         public CCTileMapCoordinates LayerSize { get; private set; }
-        public CCSize TileTexelSize { get; private set; }                                 
+        public CCTileMapCoordinates TileCoordOffset { get; private set; }
+        public CCSize TileTexelSize { get; private set; }
         public CCTileSetInfo TileSetInfo { get; private set; }
         public Dictionary<string, string> LayerProperties { get; set; }
 
@@ -136,7 +137,7 @@ namespace CocosSharp
             TileTexelSize = mapInfo.TileTexelSize;
             TileSetInfo = tileSetInfo;
 
-            Position = LayerOffset(layerInfo.TileCoordOffset);
+            TileCoordOffset = new CCTileMapCoordinates(layerInfo.TileCoordOffset);
             ContentSize = LayerSize.Size * TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
 
             tileSetTexture = texture;
@@ -296,6 +297,13 @@ namespace CocosSharp
                     tileCoordsToNodeTransform = CCAffineTransform.Identity;
                     break;
             }
+
+            // Adding global tile offsets that are specified by the layer info
+            CCPoint tileOffset = LayerOffset(TileCoordOffset);
+            tileCoordsToNodeTransform.Tx += tileOffset.X;
+            tileCoordsToNodeTransform.Ty += tileOffset.Y;
+            tileCoordsToNodeTransformOdd.Tx += tileOffset.X;
+            tileCoordsToNodeTransformOdd.Ty += tileOffset.Y;
 
             nodeToTileCoordsTransform = tileCoordsToNodeTransform.Inverse;
             nodeToTileCoordsTransformOdd = tileCoordsToNodeTransformOdd.Inverse;
@@ -548,28 +556,27 @@ namespace CocosSharp
             return property;
         }
 
-        CCPoint LayerOffset(CCPoint offsetInTileCoords)
+        CCPoint LayerOffset(CCTileMapCoordinates tileCoords)
         {
             CCPoint offsetInNodespace = CCPoint.Zero;
             switch (MapType)
             {
             case CCTileMapType.Ortho:
-                offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width, -offsetInTileCoords.Y * TileTexelSize.Height);
+                offsetInNodespace = new CCPoint(tileCoords.Column * TileTexelSize.Width, -tileCoords.Row * TileTexelSize.Height);
                 break;
             case CCTileMapType.Iso:
-                offsetInNodespace = new CCPoint((TileTexelSize.Width / 2) * (offsetInTileCoords.X - offsetInTileCoords.Y),
-                    (TileTexelSize.Height / 2) * (-offsetInTileCoords.X - offsetInTileCoords.Y));
+                offsetInNodespace = new CCPoint((TileTexelSize.Width / 2) * (tileCoords.Column - tileCoords.Row),
+                (TileTexelSize.Height / 2) * (-tileCoords.Column - tileCoords.Row));
                 break;
             case CCTileMapType.Staggered:
                 float diffX = 0;
-                if ((int)offsetInTileCoords.Y % 2 == 1)
+                if ((int)tileCoords.Row % 2 == 1)
                     diffX = TileTexelSize.Width / 2;
 
-                offsetInNodespace = new CCPoint(offsetInTileCoords.X * TileTexelSize.Width + diffX, 
-                    -offsetInTileCoords.Y * TileTexelSize.Height/2);
+                offsetInNodespace = new CCPoint(tileCoords.Column * TileTexelSize.Width + diffX, 
+                    -tileCoords.Row * TileTexelSize.Height/2);
                 break;
             case CCTileMapType.Hex:
-                Debug.Assert(offsetInTileCoords.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
                 break;
             }
 
