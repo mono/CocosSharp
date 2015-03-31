@@ -115,6 +115,7 @@ namespace CocosSharp
             var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
             var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
             var line = CCTLLine.NewCTLLine();
+            var additionalKerning = label.AdditionalKerning;
 
             for (int x = startRange; x < endRange; x++)
             {
@@ -140,7 +141,7 @@ namespace CocosSharp
                 letterPosition.Y = (nextFontPositionY - charYOffset) / contentScaleFactorHeight;
 
 
-                nextFontPositionX += charAdvance + kerning;
+                nextFontPositionX += charAdvance + kerning + additionalKerning;
 
                 line.AddGlyph(letterPosition, letterDefinition, x);
             }
@@ -160,6 +161,7 @@ namespace CocosSharp
 
             bool isStartOfLine = false;
             float startOfLine = -1;
+            var additionalKerning = label.AdditionalKerning;
 
             float scaleX = label.ScaleX;
 
@@ -204,7 +206,7 @@ namespace CocosSharp
                 letterPosition.X = (nextFontPositionX + charXOffset + kerning) / contentScaleFactorWidth;
                 letterPosition.Y = (nextFontPositionY - charYOffset) / contentScaleFactorHeight;
 
-                nextFontPositionX += charAdvance + kerning;
+                nextFontPositionX += charAdvance + kerning + additionalKerning;
 
                 if (!isStartOfLine)
                 {

@@ -195,6 +195,7 @@ namespace CocosSharp
         float systemFontSize;
 
         float lineHeight = 0;
+        float additionalKerning = 0;
 
         CCLabelFormat labelFormat;
 
@@ -221,6 +222,22 @@ namespace CocosSharp
                 if (value != lineHeight)
                 {
                     lineHeight = value;
+                    IsDirty = true;
+                }
+            }
+        }
+
+        public float AdditionalKerning 
+        { 
+            get { return additionalKerning; } 
+            set
+            {
+                if (LabelType == CCLabelType.SystemFont)
+                    CCLog.Log("Not supported system font!");
+
+                if (value != additionalKerning)
+                {
+                    additionalKerning = value;
                     IsDirty = true;
                 }
             }
