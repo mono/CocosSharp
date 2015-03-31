@@ -98,7 +98,7 @@ namespace tests
         public override string Subtitle
         {
             get {
-                return "Comparison between old(red) and\nnew(white) bitmap font label";
+                return "Comparison between old(red) and\nnew(white) bitmap font label\ntesting scaling";
             }
         }
     }
