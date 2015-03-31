@@ -240,7 +240,8 @@ namespace CocosSharp
                         {
                             breakElement = lineBreakElements[na];
                         }
-                        return breakElement.Position + 1 - startIndex;
+                        var count = breakElement.Position + 1 - startIndex;
+                        return count > 0 ? count : 1;
                     }
                     else
                     {
