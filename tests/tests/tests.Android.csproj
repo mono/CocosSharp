@@ -585,6 +585,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTFlippedY.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOldNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">

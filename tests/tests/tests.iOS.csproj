@@ -1158,6 +1158,8 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTFlippedY.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTOldNew.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
