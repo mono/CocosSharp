@@ -1133,7 +1133,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 34;
+        static int MAX_LAYER = 35;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1268,6 +1268,8 @@ namespace tests
                 case 32:
                     return new TMXLargeMapTest();
                 case 33:
+                    return new TMXLargeMapScalingTest();
+                case 34:
                     return new TMXSuperLargeMapTest();
 #endif
             }
@@ -1411,6 +1413,26 @@ namespace tests
             get { return "TMX Large map"; }
         }
     }
+
+    public class TMXLargeMapScalingTest : TileDemo
+    {
+        public TMXLargeMapScalingTest() : base("TileMaps/large_map")
+        {
+            var action = new CCRepeatForever(new CCSequence(new CCScaleTo(2.0f, 0.5f), new CCScaleTo(2.0f, 2f)));
+            tileLayersContainer.RunAction(action);
+        }
+
+        public override string Title
+        {
+            get { return "TMX Large map"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Making sure culling handles scaling of map"; }
+        }
+    }
+
 
     public class TMXSuperLargeMapTest : TileDemo
     {
