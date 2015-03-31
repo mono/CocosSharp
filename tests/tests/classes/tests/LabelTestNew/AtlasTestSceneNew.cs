@@ -84,6 +84,7 @@ namespace tests
                 () => new LabelSFOldNew(),
                 () => new LabelFNTOldNew(),
                 () => new LabelFNTFlippedY(),
+                () => new LabelFNTLineHeightTest(),
 
         };
 

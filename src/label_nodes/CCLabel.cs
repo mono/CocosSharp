@@ -194,6 +194,8 @@ namespace CocosSharp
         string systemFont;
         float systemFontSize;
 
+        float lineHeight = 0;
+
         CCLabelFormat labelFormat;
 
         // Static properties
@@ -208,7 +210,21 @@ namespace CocosSharp
 
         // Instance properties
 
-        public float LineHeight { get; internal set; }
+        public float LineHeight 
+        { 
+            get { return lineHeight; } 
+            set
+            {
+                if (LabelType == CCLabelType.SystemFont)
+                    CCLog.Log("Not supported system font!");
+                
+                if (value != lineHeight)
+                {
+                    lineHeight = value;
+                    IsDirty = true;
+                }
+            }
+        }
 
         public CCLabelFormat LabelFormat
         {
