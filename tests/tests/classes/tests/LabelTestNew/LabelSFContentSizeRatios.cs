@@ -6,15 +6,15 @@ using CocosSharp;
 
 namespace tests
 {
-    public class LabelFNTContentSize : AtlasDemoNew
+    public class LabelSFContentSizeRatios : AtlasDemoNew
     {
 		CCLabel label1;
         CCSize defaultTexelToContentSizeRatios;
 
-        public LabelFNTContentSize()
+        public LabelSFContentSizeRatios()
         {
-            // CCLabel Bitmap Font
-            label1 = new CCLabel("Testing Content\nSize", "fonts/bitmapFontTest3.fnt");
+            // CCLabel Sprite Font
+            label1 = new CCLabel("Testing Content\nSize", "MarkerFelt", 22);
             label1.LabelFormat.Alignment = CCTextAlignment.Center;
 
             AddChild(label1);
@@ -27,7 +27,7 @@ namespace tests
 
             defaultTexelToContentSizeRatios = CCLabel.DefaultTexelToContentSizeRatios;
 
-            CCLabel.DefaultTexelToContentSizeRatio = defaultTexelToContentSizeRatios.Width * 0.5f;;
+            CCLabel.DefaultTexelToContentSizeRatio = defaultTexelToContentSizeRatios.Width * 0.6f;;
 
             var s = Layer.VisibleBoundsWorldspace.Size;
             label1.Position = s.Center;
@@ -43,14 +43,14 @@ namespace tests
         public override string Title
         {
             get {
-                return "New Label + .FNT file";
+                return "New Label + SpriteFont file";
             }
         }
 
         public override string Subtitle
         {
             get {
-                return "Testing Content Size";
+                return "Testing Content Scale Ratios";
             }
         }
     }

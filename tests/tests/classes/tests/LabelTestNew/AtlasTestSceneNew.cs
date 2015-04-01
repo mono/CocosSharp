@@ -86,7 +86,8 @@ namespace tests
                 () => new LabelFNTFlippedY(),
                 () => new LabelFNTLineHeightTest(),
                 () => new LabelFNTAdditionalKerningTest(),
-                () => new LabelFNTContentSize(),
+                () => new LabelFNTContentSizeRatios(),
+                () => new LabelSFContentSizeRatios(),
 
         };
 
