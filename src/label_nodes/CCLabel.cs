@@ -505,39 +505,40 @@ namespace CocosSharp
         {
         }
 
-        public CCLabel(string str, string fntFile, float width)
-            : this(str, fntFile, width, CCTextAlignment.Left)
+        public CCLabel(string str, string fntFile, float size)
+            : this(str, fntFile, size, CCTextAlignment.Left)
         {
         }
 
-        public CCLabel(string str, string fntFile, float width, CCTextAlignment alignment)
-            : this(str, fntFile, width, alignment, CCPoint.Zero)
+        public CCLabel(string str, string fntFile, float size, CCTextAlignment alignment)
+            : this(str, fntFile, size, alignment, CCPoint.Zero)
         {
         }
 
-        public CCLabel(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset) 
-            : this(str, fntFile, width, alignment, imageOffset, null)
+        public CCLabel(string str, string fntFile, float size, CCTextAlignment alignment, CCPoint imageOffset) 
+            : this(str, fntFile, size, alignment, imageOffset, null)
         {
         }
 
-        public CCLabel(string str, string fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset, CCTexture2D texture)
-            : this(str, fntFile, width, alignment, CCVerticalTextAlignment.Top, imageOffset, null)
+        public CCLabel(string str, string fntFile, float size, CCTextAlignment alignment, CCPoint imageOffset, CCTexture2D texture)
+            : this(str, fntFile, size, alignment, CCVerticalTextAlignment.Top, imageOffset, null)
         {
         }
 
-        public CCLabel(string str, string fntFile, float width, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+        public CCLabel(string str, string fntFile, float size, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
-            : this(str, fntFile, new CCSize(width, 0), hAlignment, vAlignment, imageOffset, texture)
+            : this(str, fntFile, size, CCSize.Zero,
+                new CCLabelFormat() { Alignment = hAlignment, LineAlignment = vAlignment}, 
+                imageOffset, texture)
         {
         }
 
         public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
-            : this (str, fntFile, dimensions, new CCLabelFormat() { Alignment = hAlignment, LineAlignment = vAlignment}, imageOffset, texture)
-        {
-            // First we try loading BitMapFont
-            //InitBMFont(str, fntFile, dimensions, hAlignment, vAlignment, imageOffset, texture);
-        }
+            : this (str, fntFile, dimensions, 
+                new CCLabelFormat() { FormatFlags = CCLabelFormatFlags.BitmapFont, Alignment = hAlignment, LineAlignment = vAlignment}, 
+                imageOffset, texture)
+        {   }
 
         public CCLabel(string str, string fntFile, CCSize dimensions, CCLabelFormat labelFormat)
             : this(str, fntFile, dimensions, labelFormat, CCPoint.Zero, null)
@@ -560,24 +561,43 @@ namespace CocosSharp
 
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
-            this.labelFormat = labelFormat;
-            if (labelFormat.FormatFlags == CCLabelFormatFlags.Unknown)
+            this.labelFormat = (size == 0) ? CCLabelFormat.BitMapFont : labelFormat;
+
+            if (this.labelFormat.FormatFlags == CCLabelFormatFlags.Unknown)
             {
                 // First we try loading BitMapFont
+                CCLog.Log("Label Format Unknown: Trying BitmapFont ...");
                 InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
+                // If we do not load a Bitmap Font then try a SpriteFont
+                if (FontAtlas == null)
+                {
+                    CCLog.Log("Label Format Unknown: Trying SpriteFont ...");
+                    InitSpriteFont(str, fntFile, size, dimensions, labelFormat, imageOffset, texture);
+                }
+                // If we do not load a Bitmap Font nor a SpriteFont then try the last time for a System Font
+                if (FontAtlas == null)
+                {
+                    CCLog.Log("Label Format Unknown: Trying System Font ...");
+                    LabelType = CCLabelType.SystemFont;
+                    SystemFont = fntFile;
+                    SystemFontSize = size;
+                    Dimensions = dimensions;
+                    AnchorPoint = CCPoint.AnchorMiddle;
+                    Text = str;
+                }
             }
-            else if(labelFormat.FormatFlags == CCLabelFormatFlags.BitmapFont)
+            else if(this.labelFormat.FormatFlags == CCLabelFormatFlags.BitmapFont)
             {
                 // Initialize the BitmapFont
                 InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
             }
-            else if(labelFormat.FormatFlags == CCLabelFormatFlags.SpriteFont)
+            else if(this.labelFormat.FormatFlags == CCLabelFormatFlags.SpriteFont)
             {
                 // Initialize the SpriteFont
                 InitSpriteFont(str, fntFile, size, dimensions, labelFormat, imageOffset, texture);
 
             }
-            else if(labelFormat.FormatFlags == CCLabelFormatFlags.SystemFont)
+            else if(this.labelFormat.FormatFlags == CCLabelFormatFlags.SystemFont)
             {
                 LabelType = CCLabelType.SystemFont;
                 SystemFont = fntFile;
