@@ -1231,6 +1231,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTAdditionalKerningTest.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTContentSize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
