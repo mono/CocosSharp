@@ -358,7 +358,7 @@ namespace CocosSharp
             }
         }
 
-        CCSize UntrimmedSizeInPixels
+        protected internal CCSize UntrimmedSizeInPixels
         {
             get
             {

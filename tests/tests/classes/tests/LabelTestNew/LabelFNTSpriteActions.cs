@@ -58,7 +58,6 @@ namespace tests
 			var lastChar = label2[3];
             lastChar.RunAction(rot_4ever);
 
-            //schedule( schedule_selector(Atlas4::step), 0.1f);
             base.Schedule(step, 0.1f);
         }
 

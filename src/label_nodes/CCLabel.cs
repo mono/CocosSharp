@@ -893,6 +893,8 @@ namespace CocosSharp
             int index;
             int lettersCount = lettersInfo.Count;
 
+            var contentScaleFactor = DefaultTexelToContentSizeRatios;
+
             for (int ctr = 0; ctr < lettersCount; ++ctr)
             {
                 var letterDef = lettersInfo[ctr].Definition;
@@ -905,7 +907,7 @@ namespace CocosSharp
                     // make sure we set AtlasIndex to not initialized here or first character does not display correctly
                     reusedLetter.AtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
                     reusedLetter.TextureRectInPixels = reusedRect;
-                    reusedLetter.ContentSize = reusedRect.Size;
+                    reusedLetter.ContentSize = reusedRect.Size / contentScaleFactor;
 
                     reusedLetter.Position = lettersInfo[ctr].Position;
 
@@ -1147,6 +1149,7 @@ namespace CocosSharp
                     UpdateContent();
                 }
 
+                var contentScaleFactor = DefaultTexelToContentSizeRatios;
                 if (letterIndex < lettersInfo.Count)
                 {
                     var letter = lettersInfo[letterIndex];
@@ -1160,10 +1163,21 @@ namespace CocosSharp
                     {
                         var uvRect = letter.Definition.Subrect;
 
-                        sp = new CCSprite(FontAtlas.GetTexture(letter.Definition.TextureID),uvRect);
+                        sp = new CCSprite(FontAtlas.GetTexture(letter.Definition.TextureID), uvRect);
 
-                        sp.Position = new CCPoint(letter.Position.X + uvRect.Size.Width / 2,
-                            letter.Position.Y - uvRect.Size.Height / 2);
+                        // The calculations for untrimmed size already take into account the
+                        // content scale factor so here we back it out or the sprite shows
+                        // up with the incorrect ratio.
+                        sp.UntrimmedSizeInPixels = uvRect.Size * contentScaleFactor;
+
+                        // Calc position offset taking into account the content scale factor.
+                        var offset = new CCSize((uvRect.Size.Width * 0.5f) / contentScaleFactor.Width,
+                            (uvRect.Size.Height * 0.5f) / contentScaleFactor.Height);
+
+                        // apply the offset to the letter position
+                        sp.PositionX = letter.Position.X + offset.Width;
+                        sp.PositionY = letter.Position.Y - offset.Height;
+
                         sp.Opacity = Opacity;
 
                         AddSpriteWithoutQuad(sp, letter.AtlasIndex, letterIndex);

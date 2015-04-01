@@ -305,6 +305,7 @@ namespace CocosSharp
                 CCLabelTtf.DefaultTexelToContentSizeRatios = value;
                 CCLabelBMFont.DefaultTexelToContentSizeRatios = value;
                 CCTileMapLayer.DefaultTexelToContentSizeRatios = value;
+                CCLabel.DefaultTexelToContentSizeRatios = value;
             }
         }
 
