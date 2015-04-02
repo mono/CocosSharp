@@ -41,6 +41,8 @@ namespace tests
 			if (!string.IsNullOrEmpty(subtitleStr))
             {
                 SubtitleLabel = new CCLabel(subtitleStr, "arial", 16, CCLabelFormat.SpriteFont);
+                SubtitleLabel.AnchorPoint = CCPoint.AnchorMiddleTop;
+                SubtitleLabel.HorizontalAlignment = CCTextAlignment.Center;
                 AddChild(SubtitleLabel, TestScene.TITLE_LEVEL);
             }
 

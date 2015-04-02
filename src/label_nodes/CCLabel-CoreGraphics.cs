@@ -138,7 +138,7 @@ namespace CocosSharp
                         nativeFont = new CTFont(cgFont, dpiSize, null);
                         if (!nativeFontDescriptors.ContainsKey(fileName))
                         {
-                                nativeFontDescriptors.Add(fileName, nativeFont.PostScriptName);
+                            nativeFontDescriptors.Add(fileName, nativeFont.PostScriptName);
                             NSError error;
 
                             var registered = CTFontManager.RegisterGraphicsFont(cgFont, out error);
