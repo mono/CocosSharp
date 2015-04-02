@@ -241,41 +241,35 @@ namespace CocosSharp
 
                 if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
                 {
-                    var appPath = AppDomain.CurrentDomain.BaseDirectory;
-                    var contentPath = Path.Combine(appPath, CCContentManager.SharedContentManager.RootDirectory);
-                    var fontPath = Path.Combine(contentPath, fontName);
 
-                    if (File.Exists(fontPath))
+                    try
                     {
-                        try
-                        {
 
-                            // Read the font file bytes
-                            var fontBytes = File.ReadAllBytes(fontPath);
+                        // Read the font file bytes
+                        var fontBytes = CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fontName);
 
-                            // Pin the font data for the length of the read file
-                            var fontData = Marshal.AllocCoTaskMem(fontBytes.Length);
+                        // Pin the font data for the length of the read file
+                        var fontData = Marshal.AllocCoTaskMem(fontBytes.Length);
 
-                            // Copy the font data to our memory
-                            Marshal.Copy(fontBytes, 0, fontData, fontBytes.Length);
+                        // Copy the font data to our memory
+                        Marshal.Copy(fontBytes, 0, fontData, fontBytes.Length);
 
-                            // Add the memory data to our private font collection as a Font in Memory
-                            loadedFontsCollection.AddMemoryFont(fontData, fontBytes.Length);
+                        // Add the memory data to our private font collection as a Font in Memory
+                        loadedFontsCollection.AddMemoryFont(fontData, fontBytes.Length);
 
-                            // Release the pinned data
-                            Marshal.FreeCoTaskMem(fontData);
+                        // Release the pinned data
+                        Marshal.FreeCoTaskMem(fontData);
 
-                            // Try to get the family name of the 
-                            var ttfFontFamily = CCLabelUtilities.GetFontFamily(fontBytes, 0);
+                        // Try to get the family name of the 
+                        var ttfFontFamily = CCLabelUtilities.GetFontFamily(fontBytes, 0);
 
-                            fontFamily = new FontFamily(ttfFontFamily, loadedFontsCollection);
+                        fontFamily = new FontFamily(ttfFontFamily, loadedFontsCollection);
 
-                            currentFont = new Font(fontFamily, fontSize);
-                        }
-                        catch
-                        {
-                            currentFont = _defaultFont;
-                        }
+                        currentFont = new Font(fontFamily, fontSize);
+                    }
+                    catch
+                    {
+                        currentFont = _defaultFont;
                     }
                 }
                 else

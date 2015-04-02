@@ -122,7 +122,6 @@ namespace CocosSharp
             FontFamily fontFamily = GetFontFamily(fontName);
 
 
-            //if (!_fontFamilyCache.TryGetValue(fontName, out fontFamily))
             FontCollection fontCollection;
 
             if (!_fontCollectionCache.TryGetValue(fontName, out fontCollection))

@@ -32,16 +32,16 @@ namespace tests.FontTest
 #endif
 #if WINDOWS || NETFX_CORE || WINDOWSGL
 
-            "fonts/A Damn Mess.ttf",
-            "fonts/Abberancy.ttf",
+            "A Damn Mess.ttf",
+            "Abberancy.ttf",
             "fonts/Abduction.ttf",
-            "fonts/American Typewriter.ttf",
+            "American Typewriter.ttf",
             "fonts/arial.ttf",
             "fonts/Courier New.ttf",
-            "fonts/Marker Felt.ttf",
-            "fonts/Paint Boy.ttf",
+            "Marker Felt.ttf",
+            "Paint Boy.ttf",
             "fonts/Schwarzwald Regular.ttf",
-            "fonts/Scissor Cuts.ttf",
+            "Scissor Cuts.ttf",
             "fonts/tahoma.ttf",
             "fonts/Thonburi.ttf",
             "fonts/ThonburiBold.ttf",
