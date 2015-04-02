@@ -53,13 +53,14 @@ namespace CocosSharp
             var ext = System.IO.Path.GetExtension(fontName);
             if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
             {
+                
+                CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fontName, out fontName);
 
-              var path = System.IO.Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fontName);
                 var activity = Game.Activity;
 
                 try
                 {
-                    var typeface = Typeface.CreateFromAsset(activity.Assets, path);
+                    var typeface = Typeface.CreateFromAsset(activity.Assets, fontName);
                     textPaint.SetTypeface(typeface);
                 }
                 catch (Exception)

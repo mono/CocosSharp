@@ -1293,6 +1293,9 @@
     <Content Include="..\testsContent\fonts\American Typewriter.ttf">
       <Link>Content\fonts\American Typewriter.ttf</Link>
     </Content>
+    <Content Include="..\testsContent\fonts\Courier New.ttf">
+      <Link>Content\fonts\Courier New.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

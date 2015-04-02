@@ -117,25 +117,16 @@ namespace CocosSharp
                 if (nativeFontDescriptors == null)
                     nativeFontDescriptors = new Dictionary<string, CTFontDescriptor> ();
 
-                //Try loading from Bundle first
-                var fontName = fileName.Substring (0, fileName.Length - ext.Length);
-                var path = CCContentManager.SharedContentManager.RootDirectory + Path.DirectorySeparatorChar + fontName;
-                var pathForResource = NSBundle.MainBundle.PathForResource (path, ext.Substring(1));
-
-                NSUrl url;
-
-                if (!string.IsNullOrEmpty(pathForResource))
-                    url = NSUrl.FromFilename (pathForResource);
-                else
-                    url = NSUrl.FromFilename (fileName);
-
                 // We will not use CTFontManager.RegisterFontsForUrl (url, CTFontManagerScope.Process);
                 // here.  The reason is that there is no way we can be sure that the font can be created to
                 // to identify the family name afterwards.  So instead we will create a CGFont from a data provider.
                 // create CTFont to obtain the CTFontDescriptor, store family name and font descriptor to be accessed
                 // later.
                 try {
-                    var dataProvider = new CGDataProvider (url.Path);
+
+                    var assetBytes = CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fileName);
+
+                    var dataProvider = new CGDataProvider (assetBytes, 0, assetBytes.Length);
                     var cgFont = CGFont.CreateFromProvider (dataProvider);
 
                     try 

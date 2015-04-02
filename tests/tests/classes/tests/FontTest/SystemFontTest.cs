@@ -9,24 +9,25 @@ namespace tests.FontTest
 		private static readonly string[] fontList =
 		{
 #if IOS || IPHONE || MACOS
+                "A Damn Mess.ttf",
+                "Abberancy.ttf",
+                "fonts/Abduction.ttf",
+                "fonts/American Typewriter.ttf",
+                "fonts/Courier New.ttf",
+                "Marker Felt.ttf",
+                "Paint Boy.ttf",
+                "fonts/Schwarzwald Regular.ttf",
+                "fonts/Scissor Cuts.ttf",
+                "tahoma.ttf",
+                "fonts/Thonburi.ttf",
+                "fonts/ThonburiBold.ttf",
+
 			"Chalkduster",
 			"Noteworthy",
 			"Marker Felt",
 			"Papyrus",
 			"American Typewriter",
 			"Arial",
-			"fonts/A Damn Mess.ttf",
-			"fonts/Abberancy.ttf",
-			"fonts/Abduction.ttf",
-			"fonts/American Typewriter.ttf",
-			"fonts/Courier New.ttf",
-			"fonts/Marker Felt.ttf",
-			"fonts/Paint Boy.ttf",
-			"fonts/Schwarzwald Regular.ttf",
-			"fonts/Scissor Cuts.ttf",
-			"fonts/tahoma.ttf",
-			"fonts/Thonburi.ttf",
-			"fonts/ThonburiBold.ttf"
 
 #endif
 #if WINDOWS || NETFX_CORE || WINDOWSGL
@@ -58,17 +59,17 @@ namespace tests.FontTest
 			"Courier New",
 			"Georgia",
 
-            "fonts/A Damn Mess.ttf",
-            "fonts/Abberancy.ttf",
+            "A Damn Mess.ttf",
+            "Abberancy.ttf",
             "fonts/Abduction.ttf",
             "fonts/American Typewriter.ttf",
-            "fonts/arial.ttf",
+            "arial.ttf",
             "fonts/Courier New.ttf",
-            "fonts/Marker Felt.ttf",
-            "fonts/Paint Boy.ttf",
+            "Marker Felt.ttf",
+            "Paint Boy.ttf",
             "fonts/Schwarzwald Regular.ttf",
             "fonts/Scissor Cuts.ttf",
-            "fonts/tahoma.ttf",
+            "tahoma.ttf",
             "fonts/Thonburi.ttf",
             "fonts/ThonburiBold.ttf"
 #endif

@@ -349,8 +349,9 @@ namespace CocosSharp
         }
 #endif
 
-        public Stream GetAssetStream(string assetName)
+        public Stream GetAssetStream(string assetName, out string fileName)
         {
+            fileName = string.Empty;
             var realName = GetRealName(assetName);
 
             CheckDefaultPath(searchPaths);
@@ -364,6 +365,7 @@ namespace CocosSharp
 
                     try
                     {
+                        fileName = path;
                         //TODO: for platforms with access to the file system, first check for the existence of the file 
                         return TitleContainer.OpenStream(path);
                     }
@@ -374,7 +376,42 @@ namespace CocosSharp
                 }
             }
 
+            fileName = string.Empty;
             throw new ContentLoadException("Failed to load the asset stream from " + assetName);
+        }
+
+        public Stream GetAssetStream(string assetName)
+        {
+            var fileName = string.Empty;
+            return GetAssetStream(assetName, out fileName);
+        }
+
+        public byte[] GetAssetStreamAsBytes(string assetName, out string fileName)
+        {
+            fileName = string.Empty;
+            try
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    GetAssetStream(assetName, out fileName).CopyTo(memoryStream);
+                    return memoryStream.ToArray();
+                }
+            }
+            catch { return null; }
+        }
+
+        public byte[] GetAssetStreamAsBytes(string assetName)
+        {
+
+            try
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    GetAssetStream(assetName).CopyTo(memoryStream);
+                    return memoryStream.ToArray();
+                }
+            }
+            catch { return null; }
         }
 
         public List<string> SearchResolutionsOrder

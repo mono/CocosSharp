@@ -2619,6 +2619,12 @@
     <Content Include="..\testsContent\fonts\Schwarzwald.ttf">
       <Link>Content\fonts\Schwarzwald.ttf</Link>
     </Content>
+    <Content Include="..\testsContent\fonts\Courier New.ttf">
+      <Link>Content\fonts\Courier New.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\Marker Felt.ttf">
+      <Link>Content\fonts\Marker Felt.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

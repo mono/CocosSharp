@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using CocosSharp;
@@ -21,6 +22,8 @@ namespace tests
             //application.AllowUserResizing = true;
             application.PreferMultiSampling = false;
             application.ContentRootDirectory = "Content";
+
+            application.ContentSearchResolutionOrder = new List<string>() { "images", "fonts" };
 
             sharedWindow = mainWindow;
 
