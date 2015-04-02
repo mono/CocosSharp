@@ -103,7 +103,7 @@ namespace CocosSharp
 //            stream.CopyTo(fileStream);
 //            fileStream.Dispose();
 //        }
-        new Dictionary<string, CTFontDescriptor> nativeFontDescriptors;
+        static new Dictionary<string, string> nativeFontDescriptors;
 
         string LoadFontFile (string fileName)
         {
@@ -115,8 +115,12 @@ namespace CocosSharp
             {
 
                 if (nativeFontDescriptors == null)
-                    nativeFontDescriptors = new Dictionary<string, CTFontDescriptor> ();
+                    nativeFontDescriptors = new Dictionary<string, string> ();
 
+                string fd = null;
+                if (nativeFontDescriptors.TryGetValue(fileName, out fd))
+                    return fd;
+                        
                 // We will not use CTFontManager.RegisterFontsForUrl (url, CTFontManagerScope.Process);
                 // here.  The reason is that there is no way we can be sure that the font can be created to
                 // to identify the family name afterwards.  So instead we will create a CGFont from a data provider.
@@ -132,9 +136,9 @@ namespace CocosSharp
                     try 
                     {
                         nativeFont = new CTFont(cgFont, dpiSize, null);
-                        if (!nativeFontDescriptors.ContainsKey(nativeFont.FamilyName))
+                        if (!nativeFontDescriptors.ContainsKey(fileName))
                         {
-                            nativeFontDescriptors.Add(nativeFont.FamilyName, nativeFont.GetFontDescriptor());
+                                nativeFontDescriptors.Add(fileName, nativeFont.PostScriptName);
                             NSError error;
 
                             var registered = CTFontManager.RegisterGraphicsFont(cgFont, out error);
@@ -273,6 +277,7 @@ namespace CocosSharp
 
                 // Set our alignment variables to left - see notes above.
                 nsparagraphStyle.Alignment = NSTextAlignment.Left;
+                stringWithAttributes = new NSAttributedString(text, nsAttributes);
             }
 
             if (dimensions.Height <= 0)
@@ -293,6 +298,7 @@ namespace CocosSharp
 
                     // Restore our alignment before drawing - see notes above.
                     nsparagraphStyle.Alignment = textAlign;
+                    stringWithAttributes = new NSAttributedString(text, nsAttributes);
                 }
                 if (dimensions.Height == 8388608)
                 {
