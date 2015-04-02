@@ -34,7 +34,7 @@ namespace tests
                 var location = touches[0].Location;
 
                 if (label1.BoundingBoxTransformedToWorld.ContainsPoint(location))
-                    Console.WriteLine("Hit");
+                    CCLog.Log("Hit");
             };
             AddEventListener(touchListener);
 

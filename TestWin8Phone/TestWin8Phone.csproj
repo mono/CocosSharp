@@ -78,9 +78,6 @@
     <Compile Include="..\tests\tests\classes\controller.cs">
       <Link>classes\controller</Link>
     </Compile>
-    <Compile Include="..\tests\tests\classes\test.cs">
-      <Link>classes\test</Link>
-    </Compile>
     <Compile Include="..\tests\tests\classes\testBasic.cs">
       <Link>classes\testBasic</Link>
     </Compile>
@@ -566,6 +563,9 @@
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\AtlasTestSceneNew.cs">
       <Link>classes\tests\LabelTestNew\AtlasTestSceneNew.cs</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTAdditionalKerningTest.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTAdditionalKerningTest.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTandSFEmpty.cs</Link>
     </Compile>
@@ -578,11 +578,20 @@
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTFlippedY.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTFlippedY.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTGlyphDesigner.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTHundredLabels.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTHundredLabels.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTMultiLine.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTMultiLine.cs</Link>
@@ -592,6 +601,9 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTOffset.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTOffset.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTOldNew.cs">
+      <Link>classes\tests\LabelTestNew\LabelFNTOldNew.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTPadding.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTPadding.cs</Link>
@@ -611,8 +623,14 @@
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFColor.cs">
       <Link>classes\tests\LabelTestNew\LabelSFColor.cs</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs">
+      <Link>classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
       <Link>classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFOldNew.cs">
+      <Link>classes\tests\LabelTestNew\LabelSFOldNew.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs">
       <Link>classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs</Link>

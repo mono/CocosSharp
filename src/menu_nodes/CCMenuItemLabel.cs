@@ -84,7 +84,6 @@ namespace CocosSharp
     }
 
 
-    #if !WINDOWS_PHONE
     public class CCMenuItemLabel : CCMenuItemLabelBase
     {
         CCLabel label;
@@ -153,7 +152,6 @@ namespace CocosSharp
         #endregion Constructors
 
     }
-    #endif
 
     public class CCMenuItemLabelAtlas : CCMenuItemLabelBase
     {
