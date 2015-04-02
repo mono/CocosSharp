@@ -30,7 +30,7 @@ namespace CocosSharp
         {
             Target = target;
             Enabled = true;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            AnchorPoint = CCPoint.AnchorMiddle;
         }
 
         #endregion Constructors

@@ -61,8 +61,8 @@ namespace CocosSharp
             if(newValue != null)
             {
                 AddChild(newValue);
-                newValue.AnchorPoint = new CCPoint(0, 0);
-                ContentSize = newValue.ContentSize;
+                newValue.AnchorPoint = CCPoint.AnchorLowerLeft;
+                ContentSize = newValue.ScaledContentSize;
             }
 
             if(oldValue != null)
