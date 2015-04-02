@@ -9,7 +9,7 @@ namespace tests
         public static int TITLE_LEVEL = 99999;
 
         CCMenu pMenu;
-        CCMenuItemLabelTTF pMenuItem;
+        CCMenuItemLabel pMenuItem;
         CCLayer contentLayer;
 
         #if USE_PHYSICS
@@ -24,8 +24,8 @@ namespace tests
             AddChild(contentLayer, MENU_LEVEL);
 
             //add the menu item for back to main menu
-            var label = new CCLabelTtf("MainMenu", "arial", 30);
-            pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
+            var label = new CCLabel("MainMenu", "arial", 20, CCLabelFormat.SpriteFont);
+            pMenuItem = new CCMenuItemLabel(label, MainMenuCallback);
 
             pMenu = new CCMenu(pMenuItem);
 
@@ -37,7 +37,7 @@ namespace tests
         {
             base.OnEnter();
             CCRect visibleBounds = contentLayer.VisibleBoundsWorldspace;
-            var visiblePoint = new CCPoint (visibleBounds.Origin.X + visibleBounds.Size.Width - pMenuItem.ContentSize.Width - 10.0f, visibleBounds.Origin.Y + 25);
+            var visiblePoint = new CCPoint (visibleBounds.Right().X - (pMenuItem.ScaledContentSize.Width / 2) - 50.0f, visibleBounds.Bottom().Y + 25);
 
             pMenu.Position = CCPoint.Zero;
             pMenuItem.Position = visiblePoint;

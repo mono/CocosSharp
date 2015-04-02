@@ -105,7 +105,6 @@
     <EmbeddedResource Include="grossini.mask" />
     <Compile Include="classes\AppDelegate.cs" />
     <Compile Include="classes\controller.cs" />
-    <Compile Include="classes\test.cs" />
     <Compile Include="classes\testBasic.cs" />
     <Compile Include="classes\testResource.cs" />
     <Compile Include="classes\TestNavigationLayer.cs" />
@@ -1160,6 +1159,10 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTFlippedY.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTOldNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTAdditionalKerningTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">

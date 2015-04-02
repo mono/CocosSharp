@@ -14,17 +14,17 @@ namespace tests
 
         #region Properties
 
-        protected CCLabelTtf TitleLabel { get; private set; }
-        protected CCLabelTtf SubtitleLabel { get; private set; }
+        protected CCLabel TitleLabel { get; private set; }
+        protected CCLabel SubtitleLabel { get; private set; }
 
         public virtual string Title
         {
-            get { return ""; }
+            get { return string.Empty; }
         }
 
         public virtual string Subtitle
         {
-            get { return ""; }
+            get { return string.Empty; }
         }
 
         #endregion Properties
@@ -34,15 +34,13 @@ namespace tests
 
         public TestNavigationLayer()
         {
-            TitleLabel = new CCLabelTtf(Title, "arial", 60);
-            TitleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            TitleLabel = new CCLabel(Title, "arial", 32, CCLabelFormat.SpriteFont);
             AddChild(TitleLabel, TestScene.TITLE_LEVEL);
 
             string subtitleStr = Subtitle;
 			if (!string.IsNullOrEmpty(subtitleStr))
             {
-                SubtitleLabel = new CCLabelTtf(subtitleStr, "arial", 30);
-                SubtitleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                SubtitleLabel = new CCLabel(subtitleStr, "arial", 16, CCLabelFormat.SpriteFont);
                 AddChild(SubtitleLabel, TestScene.TITLE_LEVEL);
             }
 
@@ -64,29 +62,32 @@ namespace tests
         {
             base.OnEnter(); 
 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            var visibleRect = VisibleBoundsWorldspace;
 
 			if (!string.IsNullOrEmpty(Title))
 				TitleLabel.Text = Title;
 
-            TitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 50));
+            TitleLabel.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 30);
 
 			if (!string.IsNullOrEmpty(Subtitle))
 				SubtitleLabel.Text = Subtitle;
 
             if(SubtitleLabel != null)
-                SubtitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 100));
+                SubtitleLabel.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 60);
 
 
             float padding = 10.0f;
-            float halfRestartWidth = restartMenuItem.ContentSize.Width / 2.0f;
+            float halfRestartHeight = restartMenuItem.ContentSize.Height / 2.0f;
 
-            navigationMenu.Position = new CCPoint(0, 0);
-            backMenuItem.Position = (new CCPoint(windowSize.Width / 2 - backMenuItem.ContentSize.Width / 2.0f - halfRestartWidth - padding, 
-                padding + halfRestartWidth));
-            restartMenuItem.Position = (new CCPoint(windowSize.Width / 2, padding + halfRestartWidth));
-            nextMenuItem.Position = (new CCPoint(windowSize.Width / 2 + nextMenuItem.ContentSize.Width / 2.0f + halfRestartWidth + padding, 
-                padding + halfRestartWidth));
+
+            navigationMenu.Position = CCPoint.Zero;
+            backMenuItem.Position = new CCPoint(visibleRect.Center.X - restartMenuItem.ContentSize.Width * 2.0f, 
+                visibleRect.Bottom().Y + halfRestartHeight) ;  
+
+            restartMenuItem.Position = new CCPoint(visibleRect.Center.X, visibleRect.Bottom().Y + halfRestartHeight);
+
+            nextMenuItem.Position = new CCPoint(visibleRect.Center.X + restartMenuItem.ContentSize.Width * 2.0f, 
+                visibleRect.Bottom().Y + halfRestartHeight);
         }
 
         #endregion Setup content

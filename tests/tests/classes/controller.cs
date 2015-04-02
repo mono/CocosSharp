@@ -14,17 +14,16 @@ namespace tests
     {
         const int MENU_ITEM_Z_ORDER = 10000;
 
-        static int LINE_SPACE = 70;
+        static int LINE_SPACE = 40;
         static CCPoint curPos = CCPoint.Zero;
 
         int currentItemIndex = 0;
         CCPoint homePosition;
-        CCPoint lastPosition;
 
         CCPoint beginTouchPos;
 
         CCSprite menuIndicator;
-        CCLabelTtf versionLabel;
+        CCLabel versionLabel;
 
         CCMenu testListMenu;
         List<CCMenuItem> testListMenuItems = new List<CCMenuItem>();
@@ -47,23 +46,27 @@ namespace tests
 
             #if !PSM && !WINDOWS_PHONE
             #if NETFX_CORE
-            versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 30);
+            versionLabel = new CCLabel("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 30);
             #else
-            versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 30);
+            versionLabel = new CCLabel("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 24, CCLabelFormat.SpriteFont);
             #endif
             AddChild(versionLabel, 20000);
             #endif
 
             // Add test list menu
             testListMenu = new CCMenu();
-            for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
-            {
-                CCLabelTtf label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 50);
-                CCMenuItem menuItem = new CCMenuItemLabelTTF(label, MenuCallback);
 
-				testListMenu.AddChild(menuItem, i + MENU_ITEM_Z_ORDER);
+            var i = 0;
+            foreach (var test in testCases.Keys)
+            {
+                var label = new CCLabel(test, "arial", 24, CCLabelFormat.SpriteFont);
+                var menuItem = new CCMenuItemLabel(label, MenuCallback);
+
+                testListMenu.AddChild(menuItem, i++ + MENU_ITEM_Z_ORDER);
                 testListMenuItems.Add(menuItem);
             }
+
+            LINE_SPACE = (int)(testListMenuItems[0].ContentSize.Height * 1.5f);
 
             #if XBOX || OUYA
             CCSprite sprite = new CCSprite("Images/aButton");
@@ -83,6 +86,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); 
+
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
             // Laying out content based on window size
@@ -91,16 +95,15 @@ namespace tests
 
 #if !PSM && !WINDOWS_PHONE
 
-            versionLabel.HorizontalAlignment = CCTextAlignment.Left;
-            versionLabel.Position = new CCPoint (10.0f, visibleBounds.Size.Height - 40);
+            versionLabel.AnchorPoint = CCPoint.AnchorUpperLeft;
+            versionLabel.Position = new CCPoint (10.0f, visibleBounds.Size.Height);
 #endif
-            testListMenu.ContentSize = new CCSize(visibleBounds.Size.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
+            testListMenu.ContentSize = new CCSize(visibleBounds.Size.Width, (testCases.Count + 1) * LINE_SPACE);
 
             int i = 0;
             foreach (CCMenuItem testItem in testListMenuItems) 
             {
-                testItem.Position = new CCPoint(visibleBounds.Size.Width /2.0f, (visibleBounds.Size.Height - (i + 1) * LINE_SPACE));
-
+                testItem.Position = new CCPoint(visibleBounds.Size.Center.X, (visibleBounds.Top().Y - (i + 1) * LINE_SPACE));
                 i++;
             }
                 
@@ -163,8 +166,8 @@ namespace tests
         {
             testListMenuItems[currentItemIndex].Selected = false;
             currentItemIndex = (currentItemIndex + 1) % testListMenuItems.Count;
-            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
-            testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
+
+            testListMenu.Position = new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE);
             curPos = testListMenu.Position;
             SelectMenuItem();
         }
@@ -176,7 +179,7 @@ namespace tests
             if(currentItemIndex < 0) {
                 currentItemIndex = testListMenuItems.Count - 1;
             }
-            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -294,9 +297,9 @@ namespace tests
                 return;
             }
 
-            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height))
+            if (nextPos.Y > ((testCases.Count + 1) * LINE_SPACE - visibleBounds.Size.Height))
             {
-                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height)));
+                testListMenu.Position = (new CCPoint(0, ((testCases.Count + 1) * LINE_SPACE - visibleBounds.Size.Height)));
                 return;
             }
 
@@ -324,9 +327,9 @@ namespace tests
                 return;
             }
 
-            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height))
+            if (nextPos.Y > ((testCases.Count + 1) * LINE_SPACE - visibleBounds.Size.Height))
             {
-                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height)));
+                testListMenu.Position = (new CCPoint(0, ((testCases.Count + 1) * LINE_SPACE - visibleBounds.Size.Height)));
                 return;
             }
 
@@ -337,111 +340,66 @@ namespace tests
         #endregion Event handling
 
 
+        public static Dictionary<string, Func<TestScene>> testCases = new Dictionary<string, Func<TestScene>> 
+            {
+
+            {"Accelerometer", () => new AccelerometerTestScene()}, 
+            {"ActionManagerTest", () => new ActionManagerTestScene()},
+            {"ActionsEaseTest", () => new EaseActionsTestScene()},
+            {"ActionsProgressTest", () => new ProgressActionsTestScene()},
+            {"ActionsTest", () => new ActionsTestScene()},
+            {"Box2dTest", () => new Box2DTestScene()},
+            {"Box2dTestBed(Box2D)", () => new Box2D.TestBed.Box2dTestBedScene()},
+            {"ClickAndMoveTest", () => new ClickAndMoveTest()},
+            {"ClippingNodeTest", () => new ClippingNodeTestScene()},
+            {"CocosDenshionTest", () => new CocosDenshionTestScene()},
+            //{"DirectorTest", () => new AccelerometerTestScene()},
+            {"DrawPrimitivesTest", () => new DrawPrimitivesTestScene()},
+            {"EffectAdvancedTest", () => new EffectAdvanceScene()},
+            {"EffectsTest", () => new EffectTestScene()},
+            {"EventDispatcherTest", () => new EventDispatcherTestScene()},
+            {"ExtensionsTest", () => new ExtensionsTestScene()},
+            {"FontTest", () => new FontTestScene()},
+            {"IntervalTest", () => new IntervalTestScene()},
+            {"LabelTest", () => new AtlasTestScene()},
+            {"LabelTest - New", () => new AtlasTestSceneNew()},
+            {"LayerTest", () => new LayerTestScene()},
+            {"MenuTest", () => new MenuTestScene()},
+            {"MotionStreakTest", () => new MotionStreakTestScene()},
+            {"MultiTouchTest", () => new MultiTouchTestScene()},
+            {"NodeTest", () => new CocosNodeTestScene()},
+            {"OrientationTest", () => new OrientationTestScene()},
+            {"ParallaxTest", () => new ParallaxTestScene()},
+            {"ParticleTest", () => new ParticleTestScene()},
+            {"PerformanceTest", () => new PerformanceTestScene()},
+#if USE_PHYSICS
+            {"Physics", () => new PhysicsTestScene()},
+#endif
+            {"RenderTextureTest", () => new RenderTextureScene()},
+            {"RotateWorldTest", () => new RotateWorldTestScene()},
+            {"SceneTest", () => new SceneTestScene()},
+            {"SchedulerTest", () => new SchedulerTestScene()},
+            {"SpriteTest", () => new SpriteTestScene()},
+            {"SystemFontTest", () => new SystemFontTestScene()},
+            {"TextInputTest", () => new TextInputTestScene()},
+            {"Texture2DTest", () => new TextureTestScene()},
+            {"TileMapTest",  () => new TileMapTestScene()},
+            {"TouchesTest",  () => new PongScene()},
+            {"TransitionsTest", () => new TransitionsTestScene()},
+            {"ZwoptexTest", () => new ZwoptexTestScene()},
+
+
+            };
+        
+
+
         public static TestScene CreateTestScene(int index)
         {
             //Application.PurgeAllCachedData();
 
             TestScene scene = null;
 
-            switch(index)
-            {
-                case (int)TestCases.TEST_ACTIONS:
-                    scene = new ActionsTestScene(); break;
-                case (int)TestCases.TEST_TRANSITIONS:
-                    scene = new TransitionsTestScene(); break;
-                case (int)TestCases.TEST_PROGRESS_ACTIONS:
-                    scene = new ProgressActionsTestScene(); break;
-                case (int)TestCases.TEST_EFFECTS:
-                    scene = new EffectTestScene(); break;
-                case (int)TestCases.TEST_CLICK_AND_MOVE:
-                    scene = new ClickAndMoveTest(); break;
-                case (int)TestCases.TEST_ROTATE_WORLD:
-                    scene = new RotateWorldTestScene(); break;
-                case (int)TestCases.TEST_PARTICLE:
-                    scene = new ParticleTestScene(); break;
-                case (int)TestCases.TEST_EASE_ACTIONS:
-                    scene = new EaseActionsTestScene(); break;
-                case (int)TestCases.TEST_MOTION_STREAK:
-                    scene = new MotionStreakTestScene(); break;
-                case (int)TestCases.TEST_DRAW_PRIMITIVES:
-                    scene = new DrawPrimitivesTestScene(); break;
-                case (int)TestCases.TEST_COCOSNODE:
-                    scene = new CocosNodeTestScene(); break;
-                case (int)TestCases.TEST_TOUCHES:
-                    scene = new PongScene(); break;
-                case (int)TestCases.TEST_MENU:
-                    scene = new MenuTestScene(); break;
-                case (int)TestCases.TEST_ACTION_MANAGER:
-                    scene = new ActionManagerTestScene(); break;
-                case (int)TestCases.TEST_LAYER:
-                    scene = new LayerTestScene(); break;
-                case (int)TestCases.TEST_SCENE:
-                    scene = new SceneTestScene(); break;
-                case (int)TestCases.TEST_PARALLAX:
-                    scene = new ParallaxTestScene(); break;
-                case (int)TestCases.TEST_TILE_MAP:
-                    scene = new TileMapTestScene(); break;
-                case (int)TestCases.TEST_INTERVAL:
-                    scene = new IntervalTestScene(); break;
-                case (int)TestCases.TEST_LABEL:
-                    scene = new AtlasTestScene(); break;
-                case (int)TestCases.TEST_LABEL_NEW:
-                    scene = new AtlasTestSceneNew(); break;
-                case (int)TestCases.TEST_TEXT_INPUT:
-                    scene = new TextInputTestScene(); break;
-                case (int)TestCases.TEST_SPRITE:
-                    scene = new SpriteTestScene(); break;
-                case (int)TestCases.TEST_SCHEDULER:
-                    scene = new SchedulerTestScene(); break;
-                case (int)TestCases.TEST_RENDERTEXTURE:
-                    scene = new RenderTextureScene(); break;
-                case (int)TestCases.TEST_TEXTURE2D:
-                    scene = new TextureTestScene(); break;
-                case (int)TestCases.TEST_BOX2D:
-                    scene = new Box2DTestScene(); break;
-                case (int)TestCases.TEST_BOX2DBED2:
-                    scene = new Box2D.TestBed.Box2dTestBedScene(); break;
-                case (int)TestCases.TEST_EFFECT_ADVANCE:
-                    scene = new EffectAdvanceScene(); break;
-                case (int)TestCases.TEST_ACCELEROMRTER:
-                    scene = new AccelerometerTestScene(); break;
-                case (int)TestCases.TEST_COCOSDENSHION:
-                    scene = new CocosDenshionTestScene(); break;
-                case (int)TestCases.TEST_PERFORMANCE:
-                    scene = new PerformanceTestScene(); break;
-                case (int)TestCases.TEST_ZWOPTEX:
-                    scene = new ZwoptexTestScene(); break;
-                case (int)TestCases.TEST_FONTS:
-                    scene = new FontTestScene(); break;
-                    #if IPHONE || IOS || MACOS || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
-                case (int)TestCases.TEST_SYSTEM_FONTS:
-                    scene = new SystemFontTestScene(); break;
-                    #endif
-                case (int)TestCases.TEST_CLIPPINGNODE:
-                    scene = new ClippingNodeTestScene();
-                    break;
-
-                case (int)TestCases.TEST_EXTENSIONS:
-                    scene = new ExtensionsTestScene();
-                    break;
-                case (int)TestCases.TEST_ORIENTATION:
-                    scene = new OrientationTestScene();
-                    break;
-                case(int)TestCases.TEST_MULTITOUCH:
-                    scene = new MultiTouchTestScene();
-                    break;
-                case(int)TestCases.TEST_EVENTDISPATCHER:
-                    scene = new EventDispatcherTestScene();
-                    break;
-                    #if USE_PHYSICS
-                case(int)TestCases.TEST_PHYSICS:
-                    scene = new PhysicsTestScene();
-                    break;
-                    #endif
-                default:
-                    break;
-            }
-
+            scene = testCases.Values.ElementAt(index) ();
             return scene;
         }
     }

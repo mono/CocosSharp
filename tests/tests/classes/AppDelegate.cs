@@ -26,6 +26,8 @@ namespace tests
 
             CCSize winSize = mainWindow.WindowSizeInPixels;
             CCScene.SetDefaultDesignResolution(winSize.Width, winSize.Height, CCSceneResolutionPolicy.ShowAll);
+            //CCScene.SetDefaultDesignResolution(winSize.Width/2, winSize.Height/2, CCSceneResolutionPolicy.ShowAll);
+
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
 			//application.PreferredBackBufferWidth = 1024;
@@ -39,7 +41,7 @@ namespace tests
             application.HandleMediaStateAutomatically = false; // Bug in MonoGame - https://github.com/Cocos2DXNA/cocos2d-xna/issues/325
             #endif
 
-            CCSpriteFontCache.FontScale = 0.6f;
+            //CCSpriteFontCache.FontScale = 0.6f;
             CCSpriteFontCache.RegisterFont("arial", 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 50, 64);
             CCSpriteFontCache.RegisterFont("MarkerFelt", 16, 18, 22, 32);
             CCSpriteFontCache.RegisterFont("MarkerFelt-Thin", 12, 18);
@@ -57,7 +59,7 @@ namespace tests
 //            {
 //                application.ContentSearchPaths.Insert(0,"HD");
 //            }
-
+            //CCApplication.DefaultTexelToContentSizeRatio = 2f;
             CCScene scene = new CCScene(sharedWindow);
             CCLayer layer = new TestController();
 
