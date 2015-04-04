@@ -13,6 +13,7 @@ namespace CocosSharp
         struct FontMapEntry
         {
             public string FontName;
+            public string FontPath;
             public float FontSize;
         }
 
@@ -61,7 +62,8 @@ namespace CocosSharp
         static CCSpriteFontCache()
         {
             var cm = CCContentManager.SharedContentManager;
-            contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
+            //contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
+            contentManager = new ContentManager(cm.ServiceProvider, cm.RootDirectory);
             FontScale = 1.0f;
         }
 
@@ -102,15 +104,17 @@ namespace CocosSharp
                 //Already loaded
                 var entry = loadedFontsMap[key];
                 loadedSize = entry.FontSize;
-                return contentManager.Load<SpriteFont>(FontKey(entry.FontName, entry.FontSize));
+                return contentManager.Load<SpriteFont>(entry.FontPath);
             }
 
             SpriteFont result = null;
             var loadedName = fontName;
             loadedSize = fontSize;
+            var fontPath = fontName;
+
             try
             {
-                result = InternalLoadFont(fontName, fontSize, out loadedSize);
+                result = InternalLoadFont(fontName, fontSize, out loadedSize, out fontPath);
             }
             catch (ContentLoadException)
             {
@@ -123,31 +127,43 @@ namespace CocosSharp
                 try
                 {
                     loadedName = DefaultFont;
-                    result = InternalLoadFont(loadedName, fontSize, out loadedSize);
+                    result = InternalLoadFont(loadedName, fontSize, out loadedSize, out fontPath);
                 }
                 catch (ContentLoadException)
                 {
                 }
             }
-
-            if (result != null)
+            else 
             {
-                loadedFontsMap.Add(key, new FontMapEntry() {FontName = loadedName, FontSize = loadedSize});
+                loadedFontsMap.Add(key, new FontMapEntry() {FontName = loadedName, FontSize = loadedSize, FontPath = fontPath});
             }
 
             return result;
         }
 
-        SpriteFont InternalLoadFont(string fontName, float fontSize, out float loadedSize)
+        SpriteFont InternalLoadFont(string fontName, float fontSize, out float loadedSize, out string fontPath)
         {
             loadedSize = fontSize;
+            fontPath = fontName;
 
-            try
+            var searchPaths = CCContentManager.SharedContentManager.SearchPaths;
+            var searchResolutionsOrder = CCContentManager.SharedContentManager.SearchResolutionsOrder;
+            foreach (var searchPath in searchPaths)
             {
-                return contentManager.Load<SpriteFont>(FontKey(fontName, fontSize));
-            }
-            catch (ContentLoadException)
-            {
+                foreach (string resolutionOrder in searchResolutionsOrder)
+                {
+                    fontPath = Path.Combine(Path.Combine(searchPath, resolutionOrder), FontKey(fontName, fontSize));
+
+                    try
+                    {
+                        //TODO: for platforms with access to the file system, first check for the existence of the file 
+                        return contentManager.Load<SpriteFont>(fontPath);
+                    }
+                    catch (ContentLoadException)
+                    {
+                        // try other path
+                    }
+                }
             }
 
             //Try nearest size
@@ -166,17 +182,45 @@ namespace CocosSharp
                     }
                 }
 
-                try
+                foreach (var searchPath in searchPaths)
                 {
-                    return contentManager.Load<SpriteFont>(FontKey(fontName, loadedSize));
-                }
-                catch (ContentLoadException)
-                {
+                    foreach (string resolutionOrder in searchResolutionsOrder)
+                    {
+                        fontPath = Path.Combine(Path.Combine(searchPath, resolutionOrder), FontKey(fontName, loadedSize));
+
+                        try
+                        {
+                            //TODO: for platforms with access to the file system, first check for the existence of the file 
+                            return contentManager.Load<SpriteFont>(fontPath);
+                        }
+                        catch (ContentLoadException)
+                        {
+                            // try other path
+                        }
+                    }
                 }
             }
 
             loadedSize = 0;
-            return contentManager.Load<SpriteFont>(fontName);
+            foreach (var searchPath in searchPaths)
+            {
+                foreach (string resolutionOrder in searchResolutionsOrder)
+                {
+                    fontPath = Path.Combine(Path.Combine(searchPath, resolutionOrder), fontName);
+
+                    try
+                    {
+                        //TODO: for platforms with access to the file system, first check for the existence of the file 
+                        return contentManager.Load<SpriteFont>(fontPath);
+                    }
+                    catch (ContentLoadException)
+                    {
+                        // try other path
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

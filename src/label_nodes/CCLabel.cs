@@ -561,7 +561,9 @@ namespace CocosSharp
 
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
-            this.labelFormat = (size == 0) ? CCLabelFormat.BitMapFont : labelFormat;
+            this.labelFormat = (size == 0 && labelFormat.FormatFlags == CCLabelFormatFlags.Unknown) 
+                ? CCLabelFormat.BitMapFont 
+                : labelFormat;
 
             if (this.labelFormat.FormatFlags == CCLabelFormatFlags.Unknown)
             {
