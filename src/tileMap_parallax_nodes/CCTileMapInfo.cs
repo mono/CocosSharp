@@ -617,12 +617,16 @@ namespace CocosSharp
 
 	    string ToFloatString(float f)
 	    {
-			// Tiled does not include a decimal point if the fractional value is 0.
-			// Mimic this behavior so that any implementations relying on int values still work
-			// if the maps do not include fractional values in positioning and widths/heights.
-		    string str = f.ToString("0.0");
-		    var arr = str.Split('.');
-		    return arr[1] == "0" ? arr[0] : str;
+            double floorF = Math.Floor(f);
+
+            // Different numeric dict values can be either int or float depending on context
+            // When we call Parse.int(str), we need to format of the string to include no decimals
+            // or else a bad format exception is thrown
+
+            if (f == floorF)
+                return ((int)f).ToString();
+            else
+                return f.ToString();
 	    }
 
         #endregion Parse begin element methods
