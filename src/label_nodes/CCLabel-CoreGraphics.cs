@@ -334,25 +334,29 @@ namespace CocosSharp
                 , boundingRect.Width 
                 , boundingRect.Height);
 
-            //Set antialias or not
-            NSGraphicsContext.CurrentContext.ShouldAntialias = textDef.isShouldAntialias;
 
-            NSImage image = new NSImage(new SizeF(imageWidth, imageHeight));
+            NSImage image = null;
+            try
+            {
+                //Set antialias or not
+                NSGraphicsContext.CurrentContext.ShouldAntialias = textDef.isShouldAntialias;
 
-            image.LockFocus();
+                image = new NSImage(new SizeF(imageWidth, imageHeight));
 
-            // set a default transform
-            var transform = new NSAffineTransform();
-            transform.Set();
+                image.LockFocus();
 
-            stringWithAttributes.DrawInRect(drawRect);
+                // set a default transform
+                var transform = new NSAffineTransform();
+                transform.Set();
 
-            image.UnlockFocus();
+                stringWithAttributes.DrawInRect(drawRect);
 
-            // We will use Texture2D from stream here instead of CCTexture2D stream.
-            var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
+                image.UnlockFocus();
 
-            // Debugging purposes
+                // We will use Texture2D from stream here instead of CCTexture2D stream.
+                var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
+
+                // Debugging purposes
 //            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 //            var fileName = Path.Combine(path, "Label3.png");
 //            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
@@ -360,12 +364,31 @@ namespace CocosSharp
 //                tex.SaveAsPng(stream, imageWidth, imageHeight);
 //            }
 
-            // Create our texture of the label string.
-            var texture = new CCTexture2D(tex);
+                // Create our texture of the label string.
+                var texture = new CCTexture2D(tex);
 
+                return texture;
+            }
+            catch (Exception exc)
+            {
+                CCLog.Log ("CCLabel: Error creating native label:{0}\n{1}", exc.Message, exc.StackTrace);
+            }
+            finally
+            {
+                // clean up the resources
+                if (image != null) 
+                {
+                    image.Dispose ();
+                    image = null;
+                }
+                if (stringWithAttributes != null) 
+                {
+                    stringWithAttributes.Dispose ();
+                    stringWithAttributes = null;
+                }
+            }
+            return new CCTexture2D ();
 
-
-            return texture;
 
         }
         #else
@@ -515,32 +538,60 @@ namespace CocosSharp
                 , boundingRect.Height);
 
 
-            UIGraphics.BeginImageContext (new CGSize(imageWidth,imageHeight));
-            var context = UIGraphics.GetCurrentContext ();
+            UIImage image = null;
+            CGContext context = null;
+            try 
+            {
+                UIGraphics.BeginImageContext (new CGSize(imageWidth,imageHeight));
+                context = UIGraphics.GetCurrentContext ();
 
-            //Set antialias or not
-            context.SetShouldAntialias(textDef.isShouldAntialias);
+                //Set antialias or not
+                context.SetShouldAntialias(textDef.isShouldAntialias);
 
-            stringWithAttributes.DrawString(drawRect);
+                stringWithAttributes.DrawString(drawRect);
 
-            var image = UIGraphics.GetImageFromCurrentImageContext ();
+                image = UIGraphics.GetImageFromCurrentImageContext ();
 
-            // We will use Texture2D from stream here instead of CCTexture2D stream.
-            var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
+                // We will use Texture2D from stream here instead of CCTexture2D stream.
+                var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
 
-            // Debugging purposes
-//            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-//            var fileName = Path.Combine(path, "Label3.png");
-//            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
-//            {
-//                tex.SaveAsPng(stream, imageWidth, imageHeight);
-//            }
+                // Debugging purposes
+    //            var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+    //            var fileName = Path.Combine(path, "Label3.png");
+    //            using (var stream = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+    //            {
+    //                tex.SaveAsPng(stream, imageWidth, imageHeight);
+    //            }
 
-            // Create our texture of the label string.
-            var texture = new CCTexture2D(tex);
+                // Create our texture of the label string.
+                var texture = new CCTexture2D(tex);
 
-            return texture;
-
+                return texture;
+            }
+            catch (Exception exc)
+            {
+                CCLog.Log ("CCLabel: Error creating native label:{0}\n{1}", exc.Message, exc.StackTrace);
+            }
+            finally
+            {
+                // clean up the resources
+                if (image != null) 
+                {
+                    image.Dispose ();
+                    image = null;
+                }
+                if (context != null) 
+                {
+                    context.Dispose ();
+                    context = null;
+                }
+                if (stringWithAttributes != null) 
+                {
+                    stringWithAttributes.Dispose ();
+                    stringWithAttributes = null;
+                }
+            }
+            return new CCTexture2D ();
         }
         #endif
 	}
