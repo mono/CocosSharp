@@ -53,7 +53,7 @@ namespace tests
             var size = VisibleBoundsWorldspace.Size;
 
             // create and initialize a Label
-			label = new CCLabel(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 3f,
+            label = new CCLabel(LongSentencesExample, "fonts/markerFelt.fnt", new CCSize(size.Width / 3f, 0),
 				CCTextAlignment.Center);
             //label.LineBreakWithoutSpace = true;
             arrowsBar = new CCSprite("Images/arrowsBar");
