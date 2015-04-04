@@ -533,10 +533,25 @@ namespace CocosSharp
         {
         }
 
+        public CCLabel(string str, string fntFile, CCSize dimensions)
+            : this (str, fntFile, dimensions, 
+                new CCLabelFormat(), CCPoint.Zero, null)
+        {   }
+
+        public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment)
+            : this (str, fntFile, dimensions, 
+                new CCLabelFormat() { Alignment = hAlignment}, 
+                CCPoint.Zero, null)
+        {   }
+
+        public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignement)
+            : this (str, fntFile, dimensions, hAlignment, vAlignement, CCPoint.Zero, null)
+        {   }
+
         public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
             : this (str, fntFile, dimensions, 
-                new CCLabelFormat() { FormatFlags = CCLabelFormatFlags.BitmapFont, Alignment = hAlignment, LineAlignment = vAlignment}, 
+                new CCLabelFormat() { Alignment = hAlignment, LineAlignment = vAlignment}, 
                 imageOffset, texture)
         {   }
 
