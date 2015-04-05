@@ -552,6 +552,8 @@ namespace CocosSharp
 
                 image = UIGraphics.GetImageFromCurrentImageContext ();
 
+                UIGraphics.EndImageContext();
+
                 // We will use Texture2D from stream here instead of CCTexture2D stream.
                 var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, image);
 
