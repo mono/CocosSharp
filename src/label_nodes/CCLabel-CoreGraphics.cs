@@ -255,7 +255,10 @@ namespace CocosSharp
 
             // Mac crashes if the width or height is 0
             if (realDimensions == SizeF.Empty)
-                throw new ArgumentOutOfRangeException("Native string:", "Dimensions of native NSAttributedString can not be 0,0");
+            {
+                CCLog.Log("Native string:", "Dimensions of native NSAttributedString can not be 0,0");
+                return new CCTexture2D();
+            }
 
             var dimensions = new SizeF(textDef.Dimensions.Width, textDef.Dimensions.Height);
 
@@ -277,6 +280,8 @@ namespace CocosSharp
 
                 // Set our alignment variables to left - see notes above.
                 nsparagraphStyle.Alignment = NSTextAlignment.Left;
+                stringWithAttributes.Dispose();
+                stringWithAttributes = null;
                 stringWithAttributes = new NSAttributedString(text, nsAttributes);
             }
 
@@ -298,6 +303,8 @@ namespace CocosSharp
 
                     // Restore our alignment before drawing - see notes above.
                     nsparagraphStyle.Alignment = textAlign;
+                    stringWithAttributes.Dispose();
+                    stringWithAttributes = null;
                     stringWithAttributes = new NSAttributedString(text, nsAttributes);
                 }
                 if (dimensions.Height == 8388608)
