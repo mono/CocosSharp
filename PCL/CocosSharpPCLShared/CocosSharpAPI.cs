@@ -687,6 +687,9 @@ namespace CocosSharp {
         public System.Collections.Generic.List<System.String> SearchPaths { get { return default(System.Collections.Generic.List<System.String>); } }
         public System.Collections.Generic.List<System.String> SearchResolutionsOrder { get { return default(System.Collections.Generic.List<System.String>); } }
         public System.IO.Stream GetAssetStream(string assetName) { return default(System.IO.Stream); }
+        public System.IO.Stream GetAssetStream(string assetName, out string fileName) { fileName = default(string); return default(System.IO.Stream); }
+        public System.Byte[] GetAssetStreamAsBytes(string assetName) { return default(System.Byte[]); }
+        public System.Byte[] GetAssetStreamAsBytes(string assetName, out string fileName) { fileName = default(string); return default(System.Byte[]); }
         public override T Load<T>(string assetName) { return default(T); }
         public T Load<T>(string assetName, bool weakReference) { return default(T); }
         protected override void ReloadGraphicsAssets() { }
@@ -1379,6 +1382,7 @@ namespace CocosSharp {
         public CCFont() { }
         public virtual System.Collections.Generic.List<System.Char> CurrentGlyphCollection { get { return default(System.Collections.Generic.List<System.Char>); } }
         public virtual int FontMaxHeight { get { return default(int); } }
+        public virtual float FontScale { get { return default(float); } }
         public string GetGlyphCollection(CocosSharp.GlyphCollection glyphs) { return default(string); }
         public virtual System.Int32[] HorizontalKerningForText(string text, out int numLetters) { numLetters = default(int); return default(System.Int32[]); }
         public virtual void SetCurrentGlyphCollection(CocosSharp.GlyphCollection glyphs, string customGlyphs) { }
@@ -1391,6 +1395,7 @@ namespace CocosSharp {
     }
     public partial class CCFontSpriteFont : CocosSharp.CCFont {
         public CCFontSpriteFont(string fntFilePath, float fontSize, System.Nullable<CocosSharp.CCVector2> imageOffset=null) { }
+        public override float FontScale { get { return default(float); } }
         public bool IsFontConfigValid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
         public override System.Int32[] HorizontalKerningForText(string text, out int numLetters) { numLetters = default(int); return default(System.Int32[]); }
         public void PurgeCachedData() { }
@@ -1809,17 +1814,21 @@ namespace CocosSharp {
         protected CocosSharp.CCVerticalTextAlignment vertAlignment;
         public CCLabel() { }
         public CCLabel(string str, string fntFile) { }
+        public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions) { }
         public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat) { }
         public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
+        public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment) { }
+        public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignement) { }
         public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public CCLabel(string str, string fntFile, float width) { }
+        public CCLabel(string str, string fntFile, float size) { }
         public CCLabel(string str, string fntFile, float size, CocosSharp.CCLabelFormat labelFormat) { }
         public CCLabel(string str, string fntFile, float size, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat) { }
         public CCLabel(string str, string fntFile, float size, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public CCLabel(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment) { }
-        public CCLabel(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset) { }
-        public CCLabel(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public CCLabel(string str, string fntFile, float width, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
+        public CCLabel(string str, string fntFile, float size, CocosSharp.CCTextAlignment alignment) { }
+        public CCLabel(string str, string fntFile, float size, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset) { }
+        public CCLabel(string str, string fntFile, float size, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
+        public CCLabel(string str, string fntFile, float size, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
+        public float AdditionalKerning { get { return default(float); } set { } }
         public override CocosSharp.CCPoint AnchorPoint { get { return default(CocosSharp.CCPoint); } set { } }
         public CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
@@ -1836,7 +1845,7 @@ namespace CocosSharp {
         public CocosSharp.CCLabelFormat LabelFormat { get { return default(CocosSharp.CCLabelFormat); } set { } }
         public CocosSharp.CCLabelType LabelType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCLabelType); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected internal set { } }
         public CocosSharp.CCLabelLineBreak LineBreak { get { return default(CocosSharp.CCLabelLineBreak); } set { } }
-        public float LineHeight { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
+        public float LineHeight { get { return default(float); } set { } }
         public override CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
         public override float PositionX { get { return default(float); } set { } }
         public override float PositionY { get { return default(float); } set { } }
@@ -3508,6 +3517,7 @@ namespace CocosSharp {
         public virtual CocosSharp.CCTexture2D Texture { get { return default(CocosSharp.CCTexture2D); } set { } }
         public CocosSharp.CCRect TextureRectInPixels { get { return default(CocosSharp.CCRect); } set { } }
         protected internal CocosSharp.CCV3F_C4B_T2F_Quad TransformedQuad { get { return default(CocosSharp.CCV3F_C4B_T2F_Quad); } }
+        protected internal CocosSharp.CCSize UntrimmedSizeInPixels { get { return default(CocosSharp.CCSize); } set { } }
         public override bool Visible { get { return default(bool); } set { } }
         public override void AddChild(CocosSharp.CCNode child, int zOrder, int tag) { }
         public override void Deserialize(System.IO.Stream stream) { }
@@ -3930,6 +3940,7 @@ namespace CocosSharp {
         public CocosSharp.CCTileMapType MapType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileMapType); } }
         public override byte Opacity { get { return default(byte); } set { } }
         public CocosSharp.CCSize TileContentSize { get { return default(CocosSharp.CCSize); } }
+        public CocosSharp.CCTileMapCoordinates TileCoordOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileMapCoordinates); } }
         public CocosSharp.CCTileSetInfo TileSetInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileSetInfo); } }
         public CocosSharp.CCSize TileTexelSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } }
         protected override void AddedToScene() { }
@@ -4602,18 +4613,6 @@ namespace CocosSharp {
     }
     public partial interface ICCUpdatable {
         void Update(float dt);
-    }
-    public enum LineBreakCondition {
-        Allowed = 0,
-        Mandatory = 1,
-        Prohibited = 2,
-    }
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct LineBreakElement {
-        public LineBreakElement(int position, CocosSharp.LineBreakCondition condition) { throw new System.NotImplementedException(); }
-        public CocosSharp.LineBreakCondition Condition { get { return default(CocosSharp.LineBreakCondition); } set { } }
-        public int Position { get { return default(int); } set { } }
-        public override string ToString() { return default(string); }
     }
     public partial class PlistArray : CocosSharp.PlistObject<System.Collections.Generic.List<CocosSharp.PlistObjectBase>>, System.Collections.Generic.IEnumerable<CocosSharp.PlistObjectBase>, System.Collections.IEnumerable {
         public PlistArray() : base (default(System.Collections.Generic.List<CocosSharp.PlistObjectBase>)) { }
