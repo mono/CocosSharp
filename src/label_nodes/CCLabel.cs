@@ -900,6 +900,10 @@ namespace CocosSharp
         CCSprite textSprite = null;
         void CreateSpriteWithFontDefinition(CCFontDefinition fontDefinition)
         {
+
+            if (textSprite != null)
+                textSprite.RemoveFromParent();
+
             var texture = CreateTextSprite(Text, fontDefinition);
 
             textSprite = new CCSprite(texture);
