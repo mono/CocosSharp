@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Runtime.InteropServices;
+using System;
 
 namespace CocosSharp
 {
@@ -62,6 +63,25 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Cleaning up
+
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+
+            if (disposing)
+            {
+                Indices = null;
+                OriginalVertices = null;
+                Vertices = null;
+                indexBuffer = null;
+                vertexBuffer = null;
+            }
+
+        }
+        #endregion
+
         #region Vertex Indexers
 
         public CCVertex3F this[CCGridSize pos]
@@ -93,7 +113,6 @@ namespace CocosSharp
         }
 
         #endregion Vertex Indexers
-
 
         public override void Blit()
         {

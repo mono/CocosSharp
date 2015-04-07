@@ -29,6 +29,9 @@ namespace CocosSharp
             get { return grid; }
             set 
             {
+                if (grid != null)
+                    grid.Dispose();
+                
                 grid = value;
                 if(value != null) 
                 {

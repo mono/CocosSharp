@@ -107,6 +107,34 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        #region Cleaning up
+
+        ~CCGridBase ()
+        {
+            this.Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if(disposing) 
+            {
+                // Dispose of managed resources
+                Texture.Dispose();
+                Grabber = null;
+            }
+
+
+        }
+        #endregion
+
+
         public abstract void Reuse();
         public abstract void CalculateVertexPoints();
 
