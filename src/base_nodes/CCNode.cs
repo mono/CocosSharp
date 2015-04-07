@@ -602,7 +602,11 @@ namespace CocosSharp
 
         public virtual CCSize ScaledContentSize
         {
-            get { return new CCSize(ContentSize.Width * ScaleX, ContentSize.Height * ScaleY); }
+            get 
+            {
+                var sizeToScale = ContentSize;
+                return new CCSize(sizeToScale.Width * ScaleX, sizeToScale.Height * ScaleY); 
+            }
         }
 
         public virtual CCSize ContentSize

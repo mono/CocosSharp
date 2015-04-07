@@ -909,7 +909,7 @@ namespace CocosSharp
             textSprite = new CCSprite(texture);
 
             textSprite.AnchorPoint = CCPoint.AnchorLowerLeft;
-            ContentSize = textSprite.ContentSize;
+            base.ContentSize = textSprite.ContentSize;
 
             base.AddChild(textSprite,0,TagInvalid);
 
