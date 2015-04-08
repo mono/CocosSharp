@@ -233,6 +233,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />

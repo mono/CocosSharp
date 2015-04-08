@@ -223,6 +223,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
@@ -478,72 +479,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
-      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+    <Content Include="Assets\Content\**\*.*">
+      <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\testsContent\fonts\A Damn Mess.ttf">
-      <Link>Content\fonts\A Damn Mess.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Abberancy.ttf">
-      <Link>Content\fonts\Abberancy.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Abduction.ttf">
-      <Link>Content\fonts\Abduction.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\American Typewriter.ttf">
-      <Link>Content\fonts\American Typewriter.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Marker Felt.ttf">
-      <Link>Content\fonts\Marker Felt.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Paint Boy.ttf">
-      <Link>Content\fonts\Paint Boy.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Schwarzwald Regular.ttf">
-      <Link>Content\fonts\Schwarzwald Regular.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Scissor Cuts.ttf">
-      <Link>Content\fonts\Scissor Cuts.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\tahoma.ttf">
-      <Link>Content\fonts\tahoma.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\Thonburi.ttf">
-      <Link>Content\fonts\Thonburi.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\testsContent\fonts\ThonburiBold.ttf">
-      <Link>Content\fonts\ThonburiBold.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\animations\" />
-    <Folder Include="Content\box2d\" />
-    <Folder Include="Content\ccb\ccb\" />
-    <Folder Include="Content\extensions\" />
-    <Folder Include="Content\hd\animations\" />
-    <Folder Include="Content\hd\ccb\" />
-    <Folder Include="Content\hd\extensions\" />
-    <Folder Include="Content\hd\fonts\" />
-    <Folder Include="Content\hd\Images\bugs\" />
-    <Folder Include="Content\hd\TileMaps\" />
-    <Folder Include="Content\Images\bugs\" />
-    <Folder Include="Content\Images\sprites_test\" />
-    <Folder Include="Content\Particles\" />
-    <Folder Include="Content\Sounds\" />
-    <Folder Include="Content\zwoptex\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

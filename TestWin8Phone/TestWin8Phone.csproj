@@ -632,6 +632,9 @@
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFOldNew.cs">
       <Link>classes\tests\LabelTestNew\LabelSFOldNew.cs</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSystemFont168.cs">
+      <Link>classes\tests\LabelTestNew\LabelSystemFont168.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs">
       <Link>classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs</Link>
     </Compile>
