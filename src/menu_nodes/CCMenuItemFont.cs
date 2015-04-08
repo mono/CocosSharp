@@ -2,7 +2,7 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCMenuItemFont : CCMenuItemLabelTTF
+    public class CCMenuItemFont : CCMenuItemLabel
     {
 
         #region Properties
@@ -16,7 +16,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCMenuItemFont (string labelString, Action<object> selector = null) 
-            : base(new CCLabelTtf(labelString, FontName, FontSize), selector)
+            : base(new CCLabel(labelString, FontName, FontSize), selector)
         {
         }
 
