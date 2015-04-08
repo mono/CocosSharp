@@ -591,6 +591,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2100,6 +2101,9 @@
     </AndroidAsset>
     <AndroidAsset Include="..\testsContent\fonts\Schwarzwald.ttf">
       <Link>Assets\Content\fonts\Schwarzwald.ttf</Link>
+    </AndroidAsset>
+    <AndroidAsset Include="..\testsContent\fonts\MorrisRoman-Black.ttf">
+      <Link>Assets\Content\fonts\MorrisRoman-Black.ttf</Link>
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>

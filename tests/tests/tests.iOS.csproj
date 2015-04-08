@@ -1163,6 +1163,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1295,6 +1296,9 @@
     </Content>
     <Content Include="..\testsContent\fonts\Courier New.ttf">
       <Link>Content\fonts\Courier New.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\MorrisRoman-Black.ttf">
+      <Link>Content\fonts\MorrisRoman-Black.ttf</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
