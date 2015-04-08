@@ -3,6 +3,7 @@ using System;
 
 namespace CocosSharp
 {
+    [Obsolete("Use CCLabel instead.")]
     public class CCLabelTtf : CCSprite, ICCTextContainer
     {
         float fontSize;

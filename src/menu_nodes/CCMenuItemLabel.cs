@@ -236,7 +236,7 @@ namespace CocosSharp
         #endregion Constructors
     }
 
-
+    [Obsolete("Use CCMenuItemLabel instead.")]
     public class CCMenuItemLabelTTF : CCMenuItemLabelBase
     {
         CCLabelTtf labelTTF;
@@ -296,12 +296,12 @@ namespace CocosSharp
 
 
         #region Constructors
-
+        [Obsolete("Use CCMenuItemLabel instead.")]
         public CCMenuItemLabelTTF(CCLabelTtf labelTTF, Action<object> target = null) : base(target)
         {
             LabelTTF = labelTTF;
         }
-
+        [Obsolete("Use CCMenuItemLabel instead.")]
         public CCMenuItemLabelTTF(Action<object> target = null) : base(target)
         {
 
@@ -311,7 +311,7 @@ namespace CocosSharp
 
     }
 
-
+    [Obsolete("Use CCMenuItemLabel instead.")]
     public class CCMenuItemLabelBMFont : CCMenuItemLabelBase
     {
         CCLabelBMFont labelBMFont;
@@ -371,7 +371,7 @@ namespace CocosSharp
 
 
         #region Constructors
-
+        [Obsolete("Use CCMenuItemLabel instead.")]
         public CCMenuItemLabelBMFont(CCLabelBMFont labelBMFont, Action<object> target = null) : base(target)
         {
             LabelBMFont = labelBMFont;

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CocosSharp
 {
+    [Obsolete("Use CCLabel instead.")]
     public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer
     {
         public const int AutomaticWidth = -1;
