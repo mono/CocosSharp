@@ -1232,6 +1232,9 @@
     </Compile>
     <Compile Include="classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2624,6 +2627,9 @@
     </Content>
     <Content Include="..\testsContent\fonts\Marker Felt.ttf">
       <Link>Content\fonts\Marker Felt.ttf</Link>
+    </Content>
+    <Content Include="..\testsContent\fonts\MorrisRoman-Black.ttf">
+      <Link>Content\fonts\MorrisRoman-Black.ttf</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>

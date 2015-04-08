@@ -88,6 +88,7 @@ namespace tests
                 () => new LabelFNTAdditionalKerningTest(),
                 () => new LabelFNTContentSizeRatios(),
                 () => new LabelSFContentSizeRatios(),
+                () => new LabelSystemFont168(),
 
         };
 
