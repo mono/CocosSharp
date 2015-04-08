@@ -408,6 +408,35 @@ namespace CocosSharp
             dirty = true;
         }
 
+        public void DrawLine(CCPoint from, CCPoint to, float lineWidth, CCColor4B color)
+        {
+            var cl = color;
+
+            var a = from;
+            var b = to;
+
+            var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
+
+            var lww = lineWidth;
+            var nw = n * lww;
+            var v0 = b - nw;
+            var v1 = b + nw;
+            var v2 = a - nw;
+            var v3 = a + nw;
+
+            // Triangles from beginning to end
+            AddTriangleVertex(new CCV3F_C4B(v1, cl));
+            AddTriangleVertex(new CCV3F_C4B(v2, cl));
+            AddTriangleVertex(new CCV3F_C4B(v0, cl));
+
+            AddTriangleVertex(new CCV3F_C4B(v1, cl));
+            AddTriangleVertex(new CCV3F_C4B(v2, cl));
+            AddTriangleVertex(new CCV3F_C4B(v3, cl));
+
+            dirty = true;
+        }
+
+
         public void DrawCircle(CCPoint center, float radius, float angle, int segments, CCColor4B color)
         {
             float increment = MathHelper.Pi * 2.0f / segments;
@@ -451,6 +480,88 @@ namespace CocosSharp
             CCColor4F bc = new CCColor4F(borderColor.R/255f, borderColor.G/255f, borderColor.B/255f, borderColor.A/255f);
             DrawPolygon(pt, 4, cf, borderWidth, bc);
         }
+
+        public void DrawEllipse (CCRect rect, float lineWidth, CCColor4B color)
+        {
+            DrawEllipticalArc(rect, 0, 360, false, lineWidth, color);
+        }
+
+        public void DrawEllipse (int x, int y, int width, int height, float lineWidth, CCColor4B color)
+        {
+            DrawEllipticalArc(x,y,width,height,0,360,false, lineWidth, color);
+
+        }
+
+        internal void DrawEllipticalArc(CCRect arcRect, double lambda1, double lambda2,
+            bool isPieSlice, float lineWidth, CCColor4B color)
+        {
+            make_arcs( 
+                arcRect.Origin.X, arcRect.Origin.Y, arcRect.Size.Width, arcRect.Size.Height, 
+                (float)lambda1, (float)lambda2, 
+                false, true, isPieSlice, lineWidth, color);
+        }
+
+        internal void DrawEllipticalArc(float x, float y, float width, float height, double lambda1, double lambda2,
+            bool isPieSlice, float lineWidth, CCColor4B color)
+        {
+            make_arcs( 
+                x, y, width, height, 
+                (float)lambda1, (float)lambda2, 
+                false, true, isPieSlice, lineWidth, color);
+        }       
+
+
+        /// <summary>
+        /// draws a cubic bezier path
+        /// @since v0.8
+        /// </summary>
+        public void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments, float lineWidth, CCColor4B color)
+        {
+
+            float t = 0;
+            float increment = 1.0f / segments;
+
+            var vertices = new CCPoint[segments];
+
+            vertices[0] = origin;
+
+            for (int i = 1; i < segments; ++i, t+= increment)
+            {
+                vertices[i].X = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
+                vertices[i].Y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
+            }
+
+            vertices[segments - 1] = destination;
+
+            for (int i = 0; i < vertices.Length - 1; i++)
+            {
+                DrawLine(vertices[i], vertices[i + 1], lineWidth, color);
+            }
+
+            //DrawPolygon(vertices, vertices.Length, color, 0, CCColor4B.Transparent);
+        }
+
+        public void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, float lineWidth, CCColor4B color)
+        {
+            float t = 0;
+            float increment = 1.0f / segments;
+
+            var vertices = new CCPoint[segments];
+
+            vertices[0] = origin;
+
+            for (int i = 1; i < segments; ++i, t+= increment)
+            {
+                vertices[i].X = CCSplineMath.QuadBezier(origin.X, control.X, destination.X, t);
+                vertices[i].Y = CCSplineMath.QuadBezier(origin.Y, control.Y, destination.Y, t);
+            }
+
+            vertices[segments-1] = destination;
+
+            DrawPolygon(vertices, vertices.Length, CCColor4B.Transparent, lineWidth, color);
+        }
+
+
 
         public void DrawPolygon(CCPoint[] verts, int count, CCColor4B fillColor, float borderWidth,
                         CCColor4B borderColor)
@@ -634,6 +745,161 @@ namespace CocosSharp
             }
 
             _batch.End();
+
+        }
+
+        static CCPoint startPoint = CCPoint.Zero;
+        static CCPoint destinationPoint = CCPoint.Zero;
+        static CCPoint controlPoint1 = CCPoint.Zero;
+        static CCPoint controlPoint2 = CCPoint.Zero;
+
+        const int SEGMENTS = 50;
+
+        /*
+         * Based on the algorithm described in
+         *      http://www.stillhq.com/ctpfaq/2002/03/c1088.html#AEN1212
+         */
+        void
+        make_arc(bool start, float x, float y, float width,
+            float height, float startAngle, float endAngle, bool antialiasing, bool isPieSlice, float lineWidth, CCColor4B color)
+        {
+            float delta, bcp;
+            double sin_alpha, sin_beta, cos_alpha, cos_beta;
+            float PI = (float)Math.PI;
+
+            float rx = width / 2;
+            float ry = height / 2;
+
+            /* center */
+            float cx = x + rx;
+            float cy = y + ry;
+
+            /* angles in radians */
+            float alpha = startAngle * PI / 180;
+            float beta = endAngle * PI / 180;
+
+            /* adjust angles for ellipses */
+            alpha = (float)Math.Atan2(rx * Math.Sin(alpha), ry * Math.Cos(alpha));
+            beta = (float)Math.Atan2(rx * Math.Sin(beta), ry * Math.Cos(beta));
+
+            if (Math.Abs(beta - alpha) > PI)
+            {
+                if (beta > alpha)
+                    beta -= 2 * PI;
+                else
+                    alpha -= 2 * PI;
+            }
+
+            delta = beta - alpha;
+            bcp = (float)(4.0 / 3.0 * (1 - Math.Cos(delta / 2)) / Math.Sin(delta / 2));
+
+            sin_alpha = Math.Sin(alpha);
+            sin_beta = Math.Sin(beta);
+            cos_alpha = Math.Cos(alpha);
+            cos_beta = Math.Cos(beta);
+
+            /* don't move to starting point if we're continuing an existing curve */
+            if (start)
+            {
+                /* starting point */
+                double sx = cx + rx * cos_alpha;
+                double sy = cy + ry * sin_alpha;
+                if (isPieSlice) 
+                {
+                    destinationPoint.X = (float)sx;
+                    destinationPoint.Y = (float)sy;
+
+                    DrawPolygon(new CCPoint[] {startPoint,destinationPoint}, 2, CCColor4B.Transparent, lineWidth, color);
+                }
+
+                startPoint.X = (float)sx;
+                startPoint.Y = (float)sy;
+            }
+
+            destinationPoint.X = cx + rx * (float)cos_beta;
+            destinationPoint.Y = cy + ry * (float)sin_beta;
+
+            controlPoint1.X = cx + rx * (float)(cos_alpha - bcp * sin_alpha);
+            controlPoint1.Y = cy + ry * (float)(sin_alpha + bcp * cos_alpha);
+
+            controlPoint2.X = cx + rx * (float)(cos_beta + bcp * sin_beta);
+            controlPoint2.Y = cy + ry * (float)(sin_beta - bcp * cos_beta);
+
+
+            DrawCubicBezier(startPoint, controlPoint1, controlPoint2, destinationPoint, SEGMENTS, lineWidth, color); 
+
+            startPoint.X = destinationPoint.X;
+            startPoint.Y = destinationPoint.Y;
+        }
+
+
+        void
+        make_arcs(float x, float y, float width, float height, float startAngle, float sweepAngle,
+            bool convert_units, bool antialiasing, bool isPieSlice, float lineWidth, CCColor4B color)
+        {
+            int i;
+            float drawn = 0;
+            float endAngle;
+            bool enough = false;
+
+            endAngle = startAngle + sweepAngle;
+            /* if we end before the start then reverse positions (to keep increment positive) */
+            if (endAngle < startAngle)
+            {
+                var temp = endAngle;
+                endAngle = startAngle;
+                startAngle = temp;
+            }
+
+            if (isPieSlice) {
+                startPoint.X = x + (width / 2);
+                startPoint.Y = y + (height / 2);
+            }
+
+            /* i is the number of sub-arcs drawn, each sub-arc can be at most 90 degrees.*/
+            /* there can be no more then 4 subarcs, ie. 90 + 90 + 90 + (something less than 90) */
+            for (i = 0; i < 4; i++)
+            {
+                float current = startAngle + drawn;
+                float additional;
+
+                if (enough) 
+                {
+                    if (isPieSlice) 
+                    {
+                        startPoint.X = x + (width / 2);
+                        startPoint.Y = y + (height / 2);
+                        DrawPolygon(new CCPoint[] {destinationPoint, startPoint}, 2, CCColor4B.Transparent, lineWidth, color);
+                    }
+                    return;
+                }
+
+                additional = endAngle - current; /* otherwise, add the remainder */
+                if (additional > 90)
+                {
+                    additional = 90.0f;
+                }
+                else
+                {
+                    /* a near zero value will introduce bad artefact in the drawing (#78999) */
+                    if (( additional >= -0.0001f) && (additional <= 0.0001f))
+                        return;
+                    enough = true;
+                }
+
+                make_arc((i == 0),    /* only move to the starting pt in the 1st iteration */
+                    x, y, width, height,   /* bounding rectangle */
+                    current, current + additional, antialiasing, isPieSlice, lineWidth, color);
+
+                drawn += additional;
+
+            }
+
+            if (isPieSlice) {
+                startPoint.X = x + (width / 2);
+                startPoint.Y = y + (height / 2);
+                DrawPolygon (new CCPoint[] { destinationPoint, startPoint}, 2, CCColor4B.Transparent, lineWidth, color);
+            }
 
         }
 

@@ -626,6 +626,26 @@ namespace tests
 
             draw.DrawSegment(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
                 new CCColor4F(1, 0, 1, 0.5f));
+
+            CCSize size = Layer.VisibleBoundsWorldspace.Size;
+
+            var visibleRect = VisibleBoundsWorldspace;
+
+            // draw quad bezier path
+            draw.DrawQuadBezier(new CCPoint(0, size.Height),
+                visibleRect.Center,
+                (CCPoint)visibleRect.Size,
+                50, 3,
+                new CCColor4B(255, 0, 255, 255));
+
+            // draw cubic bezier path
+            draw.DrawCubicBezier(visibleRect.Center,
+                new CCPoint(size.Width / 2 + 30, size.Height / 2 + 50),
+                new CCPoint(size.Width / 2 + 60, size.Height / 2 - 50),
+                new CCPoint(size.Width, size.Height / 2), 100, 2, CCColor4B.Green);
+
+            // draw an ellipse within rectangular region
+            draw.DrawEllipse(new CCRect(100, 300, 100, 200), 2, CCColor4B.AliceBlue);
         }
 
         #endregion Setup content

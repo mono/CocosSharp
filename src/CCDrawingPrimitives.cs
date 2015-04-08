@@ -369,13 +369,13 @@ namespace CocosSharp
 			DrawEllipticalArc(rect, 0, 360, false, color);
 		}
 
-		public static void DrawEllips (int x, int y, int width, int height)
+		public static void DrawEllipse (int x, int y, int width, int height)
 		{
 			DrawEllipticalArc(x,y,width,height,0,360,false, DrawColor);
 
 		}
 
-		public static void DrawEllips (int x, int y, int width, int height, CCColor4B color)
+		public static void DrawEllipse (int x, int y, int width, int height, CCColor4B color)
         {
             DrawEllipticalArc(x,y,width,height,0,360,false, color);
             

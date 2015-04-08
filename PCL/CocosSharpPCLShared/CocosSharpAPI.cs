@@ -768,10 +768,10 @@ namespace CocosSharp {
         public static void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, float scaleX=1f, float scaleY=1f) { }
         public static void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments) { }
         public static void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color) { }
-        public static void DrawEllips(int x, int y, int width, int height) { }
-        public static void DrawEllips(int x, int y, int width, int height, CocosSharp.CCColor4B color) { }
         public static void DrawEllipse(CocosSharp.CCRect rect) { }
         public static void DrawEllipse(CocosSharp.CCRect rect, CocosSharp.CCColor4B color) { }
+        public static void DrawEllipse(int x, int y, int width, int height) { }
+        public static void DrawEllipse(int x, int y, int width, int height, CocosSharp.CCColor4B color) { }
         public static void DrawLine(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination) { }
         public static void DrawLine(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color) { }
         public void DrawLineList(CocosSharp.CCV3F_C4B[] verts) { }
@@ -816,10 +816,15 @@ namespace CocosSharp {
         protected override void Draw() { }
         public void DrawCircle(CocosSharp.CCPoint pos, float radius, CocosSharp.CCColor4B color) { }
         public void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, CocosSharp.CCColor4B color) { }
+        public void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments, float lineWidth, CocosSharp.CCColor4B color) { }
         public void DrawDot(CocosSharp.CCPoint pos, float radius, CocosSharp.CCColor4F color) { }
+        public void DrawEllipse(CocosSharp.CCRect rect, float lineWidth, CocosSharp.CCColor4B color) { }
+        public void DrawEllipse(int x, int y, int width, int height, float lineWidth, CocosSharp.CCColor4B color) { }
+        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float lineWidth, CocosSharp.CCColor4B color) { }
         public void DrawLineList(CocosSharp.CCV3F_C4B[] verts) { }
         public void DrawPolygon(CocosSharp.CCPoint[] verts, int count, CocosSharp.CCColor4B fillColor, float borderWidth, CocosSharp.CCColor4B borderColor) { }
         public void DrawPolygon(CocosSharp.CCPoint[] verts, int count, CocosSharp.CCColor4F fillColor, float borderWidth, CocosSharp.CCColor4F borderColor) { }
+        public void DrawQuadBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments, float lineWidth, CocosSharp.CCColor4B color) { }
         public void DrawRect(CocosSharp.CCRect rect) { }
         public void DrawRect(CocosSharp.CCRect rect, CocosSharp.CCColor4B fillColor) { }
         public void DrawRect(CocosSharp.CCRect rect, CocosSharp.CCColor4B fillColor, float borderWidth, CocosSharp.CCColor4B borderColor) { }
