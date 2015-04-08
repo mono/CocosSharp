@@ -81,7 +81,7 @@ namespace CocosSharp
     {
         static CCParticleSystemConfig config;
 
-        public CCParticleFire(CCPoint position) : base(250)
+        public CCParticleFire(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(250, emitterMode)
         {
             if (config == null) 
             {
@@ -199,7 +199,7 @@ namespace CocosSharp
     //
     public class CCParticleFireworks : CCParticleSystemQuad
     {
-        public CCParticleFireworks(CCPoint position) : base(1500)
+        public CCParticleFireworks(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(1500, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 3.5f;
@@ -255,11 +255,11 @@ namespace CocosSharp
     //
     public class CCParticleSun : CCParticleSystemQuad
     {
-        public CCParticleSun(CCPoint position) : this(position, 350)
+        public CCParticleSun(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : this(position, 350, emitterMode)
         { 
         }
 
-        public CCParticleSun (CCPoint position, int num) : base(num)
+        public CCParticleSun (CCPoint position, int num, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(num, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 1;
@@ -298,7 +298,7 @@ namespace CocosSharp
     //
     public class CCParticleGalaxy : CCParticleSystemQuad
     {
-        public CCParticleGalaxy(CCPoint position) : base(200)
+        public CCParticleGalaxy(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(200, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 4;
@@ -337,7 +337,7 @@ namespace CocosSharp
 
     public class CCParticleFlower : CCParticleSystemQuad
     {
-        public CCParticleFlower(CCPoint position) : base(250)
+        public CCParticleFlower(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(250, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 4;
@@ -375,7 +375,7 @@ namespace CocosSharp
 
     public class CCParticleMeteor : CCParticleSystemQuad
     {
-        public CCParticleMeteor(CCPoint position) : base(150)
+        public CCParticleMeteor(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(150, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 2;
@@ -413,7 +413,7 @@ namespace CocosSharp
 
     public class CCParticleSpiral : CCParticleSystemQuad
     {
-        public CCParticleSpiral(CCPoint position) : base(500)
+        public CCParticleSpiral(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(500, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Position = position;
@@ -451,7 +451,7 @@ namespace CocosSharp
 
     public class CCParticleExplosion : CCParticleSystemQuad
     {
-        public CCParticleExplosion(CCPoint position) : base(700)
+        public CCParticleExplosion(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(700, emitterMode)
         {
             Duration = 0.1f;
             Life = 5.0f;
@@ -489,7 +489,7 @@ namespace CocosSharp
 
     public class CCParticleSmoke : CCParticleSystemQuad
     {
-        public CCParticleSmoke(CCPoint position) : base(200)
+        public CCParticleSmoke(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(200, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 4;
@@ -525,7 +525,7 @@ namespace CocosSharp
 
     public class CCParticleSnow : CCParticleSystemQuad
     {
-        public CCParticleSnow(CCPoint position) : base(700)
+        public CCParticleSnow(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(700, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Life = 45;
@@ -563,7 +563,7 @@ namespace CocosSharp
 
     public class CCParticleRain : CCParticleSystemQuad
     {
-        public CCParticleRain(CCPoint position) : base(1000)
+        public CCParticleRain(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(1000, emitterMode)
         {
             Duration = ParticleDurationInfinity;
             Position = position;

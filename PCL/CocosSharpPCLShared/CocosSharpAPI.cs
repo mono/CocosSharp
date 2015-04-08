@@ -2559,38 +2559,38 @@ namespace CocosSharp {
         public override void Visit() { }
     }
     public partial class CCParticleExplosion : CocosSharp.CCParticleSystemQuad {
-        public CCParticleExplosion(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleExplosion(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleFire : CocosSharp.CCParticleSystemQuad {
-        public CCParticleFire(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleFire(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleFireworks : CocosSharp.CCParticleSystemQuad {
-        public CCParticleFireworks(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleFireworks(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleFlower : CocosSharp.CCParticleSystemQuad {
-        public CCParticleFlower(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleFlower(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleGalaxy : CocosSharp.CCParticleSystemQuad {
-        public CCParticleGalaxy(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleGalaxy(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleMeteor : CocosSharp.CCParticleSystemQuad {
-        public CCParticleMeteor(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleMeteor(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleRain : CocosSharp.CCParticleSystemQuad {
-        public CCParticleRain(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleRain(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleSmoke : CocosSharp.CCParticleSystemQuad {
-        public CCParticleSmoke(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleSmoke(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleSnow : CocosSharp.CCParticleSystemQuad {
-        public CCParticleSnow(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleSnow(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleSpiral : CocosSharp.CCParticleSystemQuad {
-        public CCParticleSpiral(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleSpiral(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleSun : CocosSharp.CCParticleSystemQuad {
-        public CCParticleSun(CocosSharp.CCPoint position) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
-        public CCParticleSun(CocosSharp.CCPoint position, int num) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleSun(CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
+        public CCParticleSun(CocosSharp.CCPoint position, int num, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(int), default(CocosSharp.CCEmitterMode)) { }
     }
     public partial class CCParticleSystem : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
         public const int ParticleDurationInfinity = -1;
