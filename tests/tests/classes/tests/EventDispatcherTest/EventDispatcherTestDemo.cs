@@ -467,7 +467,7 @@ namespace tests
 
 			var removeAllTouchItem = new CCMenuItemFont("Remove All Touch Listeners", (sender) => {
 				var senderItem = (CCMenuItemFont)sender;
-				senderItem.LabelTTF.Text = "Only Next item could be clicked";
+				senderItem.Label.Text = "Only Next item could be clicked";
 
                 RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 
@@ -1239,7 +1239,7 @@ namespace tests
 				{
 					var senderItem = (CCMenuItemFont) sender;
 
-					senderItem.LabelTTF.Text = "Only 'Reset' item could be clicked";
+					senderItem.Label.Text = "Only 'Reset' item could be clicked";
 
 					RemoveAllListeners();
 
