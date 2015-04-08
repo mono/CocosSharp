@@ -1503,6 +1503,7 @@ namespace CocosSharp {
         protected CocosSharp.CCVertex3F[] OriginalVertices { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCVertex3F[]); } }
         public override void Blit() { }
         public override void CalculateVertexPoints() { }
+        protected override void Dispose(bool disposing) { }
         public CocosSharp.CCVertex3F OriginalVertex(CocosSharp.CCGridSize pos) { return default(CocosSharp.CCVertex3F); }
         public CocosSharp.CCVertex3F OriginalVertex(int x, int y) { return default(CocosSharp.CCVertex3F); }
         public override void Reuse() { }
@@ -1553,6 +1554,9 @@ namespace CocosSharp {
         public virtual void BeforeDraw() { }
         public virtual void Blit() { }
         public abstract void CalculateVertexPoints();
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        ~CCGridBase() { }
         public ulong NextPOT(ulong x) { return default(ulong); }
         public abstract void Reuse();
     }
@@ -1878,6 +1882,7 @@ namespace CocosSharp {
         public string Text { get { return default(string); } set { } }
         public override void UpdateAtlasValues() { }
     }
+    [System.ObsoleteAttribute("Use CCLabel instead.")]
     public partial class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCTextContainer {
         public const int AutomaticWidth = -1;
         protected string fntConfigFile;
@@ -1953,6 +1958,7 @@ namespace CocosSharp {
         None = 0,
         Word = 2,
     }
+    [System.ObsoleteAttribute("Use CCLabel instead.")]
     public partial class CCLabelTtf : CocosSharp.CCSprite, CocosSharp.ICCTextContainer {
         protected string labelText;
         public CCLabelTtf() { }
@@ -2142,8 +2148,8 @@ namespace CocosSharp {
         public virtual void Activate() { }
         public virtual void RegisterScriptHandler(string functionName) { }
     }
-    public partial class CCMenuItemFont : CocosSharp.CCMenuItemLabelTTF {
-        public CCMenuItemFont(string labelString, System.Action<System.Object> selector=null) : base (default(CocosSharp.CCLabelTtf), default(System.Action<System.Object>)) { }
+    public partial class CCMenuItemFont : CocosSharp.CCMenuItemLabel {
+        public CCMenuItemFont(string labelString, System.Action<System.Object> selector=null) : base (default(CocosSharp.CCLabel), default(System.Action<System.Object>)) { }
         public static string FontName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public static uint FontSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
@@ -2190,14 +2196,19 @@ namespace CocosSharp {
         public override void Activate() { }
         protected void LabelWillChange(CocosSharp.CCNode oldValue, CocosSharp.CCNode newValue) { }
     }
+    [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
     public partial class CCMenuItemLabelBMFont : CocosSharp.CCMenuItemLabelBase {
+        [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
         public CCMenuItemLabelBMFont(CocosSharp.CCLabelBMFont labelBMFont, System.Action<System.Object> target=null) : base (default(System.Action<System.Object>)) { }
         public override bool Enabled { get { return default(bool); } set { } }
         public CocosSharp.CCLabelBMFont LabelBMFont { get { return default(CocosSharp.CCLabelBMFont); } set { } }
         public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
     }
+    [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
     public partial class CCMenuItemLabelTTF : CocosSharp.CCMenuItemLabelBase {
+        [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
         public CCMenuItemLabelTTF(CocosSharp.CCLabelTtf labelTTF, System.Action<System.Object> target=null) : base (default(System.Action<System.Object>)) { }
+        [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
         public CCMenuItemLabelTTF(System.Action<System.Object> target=null) : base (default(System.Action<System.Object>)) { }
         public override bool Enabled { get { return default(bool); } set { } }
         public CocosSharp.CCLabelTtf LabelTTF { get { return default(CocosSharp.CCLabelTtf); } set { } }
