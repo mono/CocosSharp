@@ -457,35 +457,83 @@ namespace CocosSharp
             DefaultTexelToContentSizeRatios = CCSize.One;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
         public CCLabel() : this("", "")
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
         public CCLabel(string str, string fntFile)
             : this(str, fntFile, 0.0f)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
         public CCLabel(string str, string fntFile, float size)
             : this(str, fntFile, size, CCTextAlignment.Left)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="alignment">Horizontal Alignment of the text.</param>
         public CCLabel(string str, string fntFile, float size, CCTextAlignment alignment)
             : this(str, fntFile, size, alignment, CCPoint.Zero)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="alignment">Horizontal Alignment of the text.</param>
+        /// <param name="imageOffset">Image offset.</param>
         public CCLabel(string str, string fntFile, float size, CCTextAlignment alignment, CCPoint imageOffset) 
             : this(str, fntFile, size, alignment, imageOffset, null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="alignment">Horizontal Alignment of the text.</param>
+        /// <param name="imageOffset">Image offset.</param>
+        /// <param name="texture">Texture Atlas to be used.</param>
         public CCLabel(string str, string fntFile, float size, CCTextAlignment alignment, CCPoint imageOffset, CCTexture2D texture)
             : this(str, fntFile, size, alignment, CCVerticalTextAlignment.Top, imageOffset, null)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="hAlignment">Horizontal Alignment of the text.</param>
+        /// <param name="vAlignment">Vertical alignment.</param>
+        /// <param name="imageOffset">Image offset.</param>
+        /// <param name="texture">Texture Atlas to be used.</param>
         public CCLabel(string str, string fntFile, float size, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
             : this(str, fntFile, size, CCSize.Zero,
@@ -494,21 +542,52 @@ namespace CocosSharp
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions)
             : this (str, fntFile, dimensions, 
                 new CCLabelFormat(), CCPoint.Zero, null)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="hAlignment">Horizontal alignment of the text.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment)
             : this (str, fntFile, dimensions, 
                 new CCLabelFormat() { Alignment = hAlignment}, 
                 CCPoint.Zero, null)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="hAlignment">Horizontal alignment of the text.</param>
+        /// <param name="vAlignement">Vertical alignement of the text.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignement)
             : this (str, fntFile, dimensions, hAlignment, vAlignement, CCPoint.Zero, null)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="hAlignment">Horizontal alignment of the text.</param>
+        /// <param name="vAlignement">Vertical alignement of the text.</param>
+        /// <param name="imageOffset">Image offset.</param>
+        /// <param name="texture">Texture Atlas to be used.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
             : this (str, fntFile, dimensions, 
@@ -516,18 +595,49 @@ namespace CocosSharp
                 imageOffset, texture)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCLabelFormat labelFormat)
             : this(str, fntFile, dimensions, labelFormat, CCPoint.Zero, null)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
         public CCLabel(string str, string fntFile, float size, CCLabelFormat labelFormat)
             : this (str, fntFile, size, CCSize.Zero, labelFormat)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat)
             : this (str, fntFile, size, dimensions, labelFormat, CCPoint.Zero, null)
         {   }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
+        /// <param name="imageOffset">Image offset.</param>
+        /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
             this.labelFormat = labelFormat;
@@ -535,6 +645,16 @@ namespace CocosSharp
             InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
+        /// <param name="imageOffset">Image offset.</param>
+        /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
             this.labelFormat = (size == 0 && labelFormat.FormatFlags == CCLabelFormatFlags.Unknown) 
