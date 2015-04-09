@@ -42,6 +42,7 @@ namespace CocosSharp
         const string DataElementEncoding = "encoding";
         const string DataElementCompression = "compression";
         const string DataElementBase64 = "base64";
+        const string DataElementCsv = "csv";
         const string DataElementGzip = "gzip";
         const string DataElementZlib = "zlib";
 
@@ -421,24 +422,24 @@ namespace CocosSharp
             string compression = currentAttributeDict.ContainsKey(DataElementCompression) 
                 ? currentAttributeDict[DataElementCompression] : String.Empty;
 
-            if (encoding == DataElementBase64)
+            if (encoding == DataElementBase64) 
             {
                 tileDataCompressionType = tileDataCompressionType | CCTileDataCompressionType.Base64;
                 storingCharacters = true;
 
-                if (compression == DataElementGzip)
-                {
+                if (compression == DataElementGzip) {
                     tileDataCompressionType = tileDataCompressionType | CCTileDataCompressionType.Gzip;
-                }
-                else if (compression == DataElementZlib)
-                {
+                } else if (compression == DataElementZlib) {
                     tileDataCompressionType = tileDataCompressionType | CCTileDataCompressionType.Zlib;
+                } else if (compression != String.Empty) {
+                    throw new NotImplementedException (
+                        String.Format ("CCTileMapInfo: ParseDataElement: Unsupported compression method {0}", compression));
                 }
-                else if (compression != String.Empty)
-                {
-                    throw new NotImplementedException(
-                        String.Format("CCTileMapInfo: ParseDataElement: Unsupported compression method {0}", compression));
-                }
+            } 
+            else if (encoding == DataElementCsv) 
+            {
+                tileDataCompressionType = CCTileDataCompressionType.Csv;
+                storingCharacters = true;
             }
 
             else if(encoding != String.Empty)
@@ -701,15 +702,34 @@ namespace CocosSharp
                     int i4 = i * 4;
                     uint gidAndFlags = (uint) (
                         encoded[i4] |
-                        encoded[i4 + 1] << 8 |
-                        encoded[i4 + 2] << 16 |
-                        encoded[i4 + 3] << 24);
+                        encoded[(int)(i4 + 1)] << 8 |
+                        encoded[(int)(i4 + 2)] << 16 |
+                        encoded[(int)(i4 + 3)] << 24);
 
                     layer.TileGIDAndFlags[i] = CCTileMapFileEncodedTileFlags.DecodeGidAndFlags(gidAndFlags);
                 }
 
                 currentString = null;
             }
+            else if(tileDataCompressionType == CCTileDataCompressionType.Csv)
+            {
+                storingCharacters = false;
+
+                int layersCount = Layers != null ? Layers.Count : 0;
+                CCTileLayerInfo layer = layersCount > 0 ? Layers[layersCount - 1] : null;
+
+                var str = System.Text.Encoding.Default.GetString(currentString).Split(',');
+
+                for (int i = 0; i < layer.TileGIDAndFlags.Length; i++)
+                {
+                    uint gidAndFlags = uint.Parse(str[i]);
+                    layer.TileGIDAndFlags[i] = CCTileMapFileEncodedTileFlags.DecodeGidAndFlags(gidAndFlags);
+                }
+
+                currentString = null;
+            }
+
+
             else if((tileDataCompressionType & CCTileDataCompressionType.None) != 0)
             {
                 currentXmlTileIndex = 0;
