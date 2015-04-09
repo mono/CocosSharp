@@ -335,45 +335,6 @@ namespace CocosSharp
             }
         }
 
-        public override CCPoint Position
-        {
-            get { return base.Position; }
-            set
-            {
-                if (base.Position != value)
-                {
-                    base.Position = value;
-                    IsDirty = true;
-                }
-            }
-        }
-
-        public override float PositionX
-        {
-            get { return base.PositionX; }
-            set
-            {
-                if (base.PositionX != value)
-                {
-                    base.PositionX = value;
-                    IsDirty = true;
-                }
-            }
-        }
-
-        public override float PositionY
-        {
-            get { return base.PositionY; }
-            set
-            {
-                if (base.PositionY != value)
-                {
-                    base.PositionY = value;
-                    IsDirty = true;
-                }
-            }
-        }
-
         public override CCSize ContentSize
         {
             get 
