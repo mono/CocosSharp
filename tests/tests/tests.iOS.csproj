@@ -1300,6 +1300,11 @@
     <Content Include="..\testsContent\fonts\MorrisRoman-Black.ttf">
       <Link>Content\fonts\MorrisRoman-Black.ttf</Link>
     </Content>
+    <Content Include="Content\TileMaps\desert-palace.xnb" />
+    <Content Include="Content\TileMaps\desert-palace-tiles.xnb" />
+    <Content Include="Content\TileMaps\lamp-16x16.xnb" />
+    <Content Include="Content\TileMaps\animation_diff_tile_dim.xnb" />
+    <Content Include="Content\TileMaps\animation_large_map.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

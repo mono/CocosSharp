@@ -1133,7 +1133,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 35;
+        static int MAX_LAYER = 38;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1271,6 +1271,12 @@ namespace tests
                     return new TMXLargeMapScalingTest();
                 case 34:
                     return new TMXSuperLargeMapTest();
+                case 35:
+                    return new TMXTileDifferentTileDimAnimationTest();
+                case 36:
+                    return new TMXAnimationLargeMapTest();
+                case 37:
+                    return new TMXTileAnimationTest();
 #endif
             }
 
@@ -1430,6 +1436,57 @@ namespace tests
         public override string Subtitle
         {
             get { return "Making sure culling handles scaling of map"; }
+        }
+    }
+
+    public class TMXTileAnimationTest : TileDemo
+    {
+        public TMXTileAnimationTest() : base("TileMaps/desert-palace")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "Tile animation"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Water and lamp should be animated"; }
+        }
+    }
+
+    public class TMXTileDifferentTileDimAnimationTest : TileDemo
+    {
+        public TMXTileDifferentTileDimAnimationTest() : base("TileMaps/animation_diff_tile_dim")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "Tile animation"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Should correctly handle cycling over tiles with different dimensions"; }
+        }
+    }
+
+    public class TMXAnimationLargeMapTest : TileDemo
+    {
+        public TMXAnimationLargeMapTest() : base("TileMaps/animation_large_map")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "Tile animation"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Testing animation performance on a large map with culling"; }
         }
     }
 

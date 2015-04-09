@@ -566,6 +566,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TileMaps\desert-palace.tmx">
+      <Name>tilemap_no_encoding</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\animation_large_map.tmx">
+      <Name>tilemap_no_encoding</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\animation_diff_tile_dim.tmx">
+      <Name>tilemap_no_encoding</Name>
+      <Importer>TMXImporter</Importer>
+      <Processor>TMXProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="TileMaps\fixed-ortho-bgtiles.png">
       <Name>fixed-ortho-bgtiles</Name>
       <Importer>TextImporter</Importer>
@@ -609,6 +630,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TileMaps\iso-test1.png">
+      <Name>iso-test1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\desert-palace-tiles.png">
+      <Name>iso-test1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TileMaps\lamp-16x16.png">
       <Name>iso-test1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

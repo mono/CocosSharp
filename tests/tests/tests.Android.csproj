@@ -2105,6 +2105,11 @@
     <AndroidAsset Include="..\testsContent\fonts\MorrisRoman-Black.ttf">
       <Link>Assets\Content\fonts\MorrisRoman-Black.ttf</Link>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\TileMaps\animation_diff_tile_dim.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\animation_large_map.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\desert-palace-tiles.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\desert-palace.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\lamp-16x16.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
