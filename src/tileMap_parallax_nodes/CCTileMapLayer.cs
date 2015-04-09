@@ -17,6 +17,7 @@ namespace CocosSharp
         const int MaxTilesPerDrawBuffer = (ushort.MaxValue + 1) / 4;
 
         bool visibleTileRangeDirty;
+        bool tileAnimationsDirty;
         bool useAutomaticVertexZ;
         float defaultTileVertexZ;
 
@@ -30,8 +31,10 @@ namespace CocosSharp
         CCAffineTransform nodeToTileCoordsTransformOdd;
 
         CCTexture2D tileSetTexture;
-        CCTileGidAndFlags[] tileGIDAndFlagsArray;
         CCTileMapDrawBufferManager drawBufferManager;
+
+        Dictionary<short, short> currentTileGidAnimations;
+        List<CCActionState> activeTileAnimationActionStates;
 
         #region Properties
 
@@ -46,6 +49,8 @@ namespace CocosSharp
 
         // Instance properties
 
+        internal CCTileGidAndFlags[] TileGIDAndFlagsArray { get; private set; }
+
         public string LayerName { get; set; }
 
         public CCTileMapType MapType { get; private set; }                  
@@ -54,6 +59,7 @@ namespace CocosSharp
         public CCSize TileTexelSize { get; private set; }
         public CCTileSetInfo TileSetInfo { get; private set; }
         public Dictionary<string, string> LayerProperties { get; set; }
+        public Dictionary<short, CCRepeatForever> TileAnimations { get; private set; }
 
 
         public bool Antialiased
@@ -141,13 +147,15 @@ namespace CocosSharp
             ContentSize = LayerSize.Size * TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
 
             tileSetTexture = texture;
-            tileGIDAndFlagsArray = layerInfo.TileGIDAndFlags;
+            TileGIDAndFlagsArray = layerInfo.TileGIDAndFlags;
 
             TileSetInfo.TilesheetSize = tileSetTexture.ContentSizeInPixels;
 
             UpdateTileCoordsToNodeTransform();
 
             ParseInternalProperties();
+
+            InitialiseTileAnimations(mapInfo);
 
             InitialiseDrawBuffers();
         }
@@ -171,7 +179,7 @@ namespace CocosSharp
 
         void InitialiseDrawBuffers()
         {
-            drawBufferManager = new CCTileMapDrawBufferManager(LayerSize.Row, LayerSize.Column, tileGIDAndFlagsArray);
+            drawBufferManager = new CCTileMapDrawBufferManager(LayerSize.Row, LayerSize.Column, this);
 
             // Initialize the QuadsVertexBuffers
             if (tileSetTexture.ContentSizeInPixels != CCSize.Zero)
@@ -188,13 +196,32 @@ namespace CocosSharp
             drawBufferManager.UpdateQuadBuffers();
         }
 
+
+        void InitialiseTileAnimations(CCTileMapInfo mapInfo)
+        {
+            currentTileGidAnimations = new Dictionary<short, short>();
+            activeTileAnimationActionStates = new List<CCActionState>();
+
+            var tileAnimDict = mapInfo.TileAnimations;
+            TileAnimations = new Dictionary<short, CCRepeatForever>();
+
+            foreach (short gid in tileAnimDict.Keys)
+            {
+                var repeatAction = new CCRepeatForever(new CCTileAnimation(gid, tileAnimDict[gid]));
+                TileAnimations.Add(gid, repeatAction);
+            }
+        }
+
         #endregion Constructors
+
 
         protected override void AddedToScene()
         {
             base.AddedToScene();
 
             visibleTileRangeDirty = true;
+
+            StartTileAnimations();
         }
 
         protected override void VisibleBoundsChanged()
@@ -311,8 +338,11 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            if(visibleTileRangeDirty)
+            if (visibleTileRangeDirty)
                 UpdateVisibleTileRange();
+
+            if (tileAnimationsDirty)
+                UpdateTileAnimations();
 
             base.Draw();
 
@@ -365,6 +395,15 @@ namespace CocosSharp
         int FlattenedTileIndex(CCTileMapCoordinates tileCoords)
         {
             return FlattenedTileIndex(tileCoords.Column, tileCoords.Row);
+        }
+
+        CCTileMapCoordinates TileCoordForFlattenedIndex(int flattenedIndex)
+        {
+            int col, row;
+            row = flattenedIndex / LayerSize.Column;
+            col = flattenedIndex % LayerSize.Column;
+
+            return new CCTileMapCoordinates(col, row);
         }
 
         #endregion Convenience methods
@@ -488,7 +527,7 @@ namespace CocosSharp
             {
                 int flattenedIndex = FlattenedTileIndex(column, row);
 
-                tileGIDAndFlags = tileGIDAndFlagsArray[flattenedIndex];
+                tileGIDAndFlags = TileGIDAndFlagsArray[flattenedIndex];
             }
 
             return tileGIDAndFlags;
@@ -499,6 +538,11 @@ namespace CocosSharp
             return TilePosition(new CCTileMapCoordinates(column, row));
         }
 
+        public CCPoint TilePosition(int flattenedIndex)
+        {
+            return TilePosition(TileCoordForFlattenedIndex(flattenedIndex));
+        }
+
         public CCPoint TilePosition(CCTileMapCoordinates tileCoords)
         {
             if((MapType == CCTileMapType.Hex && tileCoords.Column % 2 == 1) ||
@@ -506,6 +550,11 @@ namespace CocosSharp
                 return tileCoordsToNodeTransformOdd.Transform(tileCoords.Point);
 
             return tileCoordsToNodeTransform.Transform(tileCoords.Point);
+        }
+
+        public float TileVertexZ(int flattenedIndex)
+        {
+            return TileVertexZ(TileCoordForFlattenedIndex(flattenedIndex));
         }
 
         public float TileVertexZ(int column, int row)
@@ -643,14 +692,20 @@ namespace CocosSharp
             SetBatchRenderedTileGID(tileCoords.Column, tileCoords.Row, gidAndFlags);
         }
 
+        public void ReplaceTileGIDQuad(short originalGid, short gidOfQuadToUse)
+        {
+            currentTileGidAnimations[originalGid] = gidOfQuadToUse;
+            tileAnimationsDirty = true;
+        }
+
         void SetBatchRenderedTileGID(int column, int row, CCTileGidAndFlags gidAndFlags)
         {
             int flattenedIndex = FlattenedTileIndex(column, row);
-            CCTileGidAndFlags prevGid = tileGIDAndFlagsArray[flattenedIndex];
+            CCTileGidAndFlags prevGid = TileGIDAndFlagsArray[flattenedIndex];
 
             if(gidAndFlags != prevGid)
             {
-                tileGIDAndFlagsArray[flattenedIndex] = gidAndFlags;
+                TileGIDAndFlagsArray[flattenedIndex] = gidAndFlags;
                 UpdateQuadAt(column, row);
             }
         }
@@ -668,105 +723,10 @@ namespace CocosSharp
         void UpdateQuadAt(int tileCoordX, int tileCoordY, bool updateBuffer = true)
         {
             int flattenedTileIndex = FlattenedTileIndex(tileCoordX, tileCoordY);
-            CCTileGidAndFlags tileGID = tileGIDAndFlagsArray[flattenedTileIndex];
+            CCTileGidAndFlags tileGID = TileGIDAndFlagsArray[flattenedTileIndex];
 
             CCTileMapVertAndIndexBuffer drawBuffer = drawBufferManager.GetDrawBufferAtIndex(flattenedTileIndex);
-            int adjustedTileIndex = flattenedTileIndex - drawBuffer.TileStartIndex;
-            int adjustedStartVertexIndex = adjustedTileIndex * NumOfCornersPerQuad;
-
-            if (tileGID.Gid == 0)
-            {
-                for (int i = 0; i < NumOfCornersPerQuad; i++)
-                    drawBuffer.QuadsVertexBuffer.Data[adjustedStartVertexIndex + i] = new CCV3F_C4B_T2F();
-
-                if (updateBuffer)
-                    drawBuffer.QuadsVertexBuffer.UpdateBuffer(adjustedStartVertexIndex, NumOfCornersPerQuad);
-
-                return;
-            }
-
-            float left, right, top, bottom, vertexZ;
-            vertexZ = TileVertexZ(tileCoordX, tileCoordY);
-
-
-            CCSize tileSize = TileSetInfo.TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
-            CCSize texSize = TileSetInfo.TilesheetSize;
-            CCPoint tilePos = TilePosition(tileCoordX, tileCoordY);
-
-            var quadVertexData = drawBuffer.QuadsVertexBuffer.Data;
-            var quad = new CCV3F_C4B_T2F_Quad();
-
-            // vertices
-            if ((tileGID.Flags & CCTileFlags.TileDiagonal) != 0)
-            {
-                left = tilePos.X;
-                right = tilePos.X + tileSize.Height;
-                bottom = tilePos.Y + tileSize.Width;
-                top = tilePos.Y;
-            }
-            else
-            {
-                left = tilePos.X;
-                right = tilePos.X + tileSize.Width;
-                bottom = tilePos.Y + tileSize.Height;
-                top = tilePos.Y;
-            }
-
-            float temp;
-            if((tileGID.Flags & CCTileFlags.Vertical) !=0 )
-            {
-                temp = top;
-                top = bottom;
-                bottom = temp;
-            }
-
-            if ((tileGID.Flags & CCTileFlags.Horizontal) != 0)
-            {
-                temp = left;
-                left = right;
-                right = temp;
-            }
-
-            if((tileGID.Flags & CCTileFlags.TileDiagonal) != 0)
-            {
-                // FIXME: not working correcly
-                quad.BottomLeft.Vertices = new CCVertex3F(left, bottom, vertexZ);
-                quad.BottomRight.Vertices = new CCVertex3F(left, top, vertexZ);
-                quad.TopLeft.Vertices = new CCVertex3F(right, bottom, vertexZ);
-                quad.TopRight.Vertices = new CCVertex3F(right, top, vertexZ);
-            }
-            else
-            {
-                quad.BottomLeft.Vertices = new CCVertex3F(left, bottom, vertexZ);
-                quad.BottomRight.Vertices = new CCVertex3F(right, bottom, vertexZ);
-                quad.TopLeft.Vertices = new CCVertex3F(left, top, vertexZ);
-                quad.TopRight.Vertices = new CCVertex3F(right, top, vertexZ);
-            }
-
-            // texcoords
-            CCRect tileTexture = TileSetInfo.TextureRectForGID(tileGID.Gid);
-            left   = ((tileTexture.Origin.X ) / texSize.Width) + 0.5f / texSize.Width;
-            right  = left + ((tileTexture.Size.Width) / texSize.Width) - 1.0f / texSize.Width;
-            bottom = ((tileTexture.Origin.Y) / texSize.Height) + 0.5f / texSize.Height;
-            top    = bottom + ((tileTexture.Size.Height) / texSize.Height) - 1.0f / texSize.Height;
-
-            quad.BottomLeft.TexCoords = new CCTex2F(left, bottom);
-            quad.BottomRight.TexCoords = new CCTex2F(right, bottom);
-            quad.TopLeft.TexCoords = new CCTex2F(left, top);
-            quad.TopRight.TexCoords = new CCTex2F(right, top);
-
-            quad.BottomLeft.Colors = CCColor4B.White;
-            quad.BottomRight.Colors = CCColor4B.White;
-            quad.TopLeft.Colors = CCColor4B.White;
-            quad.TopRight.Colors = CCColor4B.White;
-
-            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex] = quad.TopLeft;
-            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 1] = quad.BottomLeft;
-            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 2] = quad.TopRight;
-            drawBuffer.QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 3] = quad.BottomRight;
-
-            if (updateBuffer)
-                drawBuffer.QuadsVertexBuffer.UpdateBuffer(adjustedStartVertexIndex, NumOfCornersPerQuad);
+            drawBuffer.UpdateQuad(flattenedTileIndex, ref tileGID, updateBuffer);
         }
 
         void UpdateVisibleTileRange()
@@ -815,7 +775,34 @@ namespace CocosSharp
             visibleTileRangeDirty = false;
         }
 
+        void UpdateTileAnimations()
+        {
+            foreach(KeyValuePair<short, short> tileAnim in currentTileGidAnimations)
+                drawBufferManager.ReplaceTileGIDQuad(tileAnim.Key, tileAnim.Value);
+
+            tileAnimationsDirty = false;
+        }
+
         #endregion Updating buffers
+
+
+        #region Tile Animation methods
+
+        public void StartTileAnimations()
+        {
+            foreach(KeyValuePair<short, CCRepeatForever> tileAnim in TileAnimations)
+                activeTileAnimationActionStates.Add(RunAction(tileAnim.Value));
+        }
+
+        public void StopTileAnimations()
+        {
+            foreach(CCActionState actionState in activeTileAnimationActionStates)
+                StopAction(actionState);
+
+            activeTileAnimationActionStates.Clear();
+        }
+
+        #endregion Tile Animation methods
 
 
         #region Internal draw buffer management
@@ -823,12 +810,12 @@ namespace CocosSharp
         class CCTileMapDrawBufferManager : IDisposable
         {
             public List<CCTileMapVertAndIndexBuffer> Buffers { get; private set; }
-            CCTileGidAndFlags[] TileGIDAndFlagsArray { get; set; }
+            CCTileMapLayer TileMapLayer { get; set; }
 
-            public CCTileMapDrawBufferManager(int mapCols, int mapRows, CCTileGidAndFlags[] gidAndFlags)
+            public CCTileMapDrawBufferManager(int mapCols, int mapRows, CCTileMapLayer tileMapLayer)
             {
                 Buffers = new List<CCTileMapVertAndIndexBuffer>();
-                TileGIDAndFlagsArray = gidAndFlags;
+                TileMapLayer = tileMapLayer;
 
                 // Create the appropriate number of buffers to hold the map.
                 int numOfTiles = mapCols * mapRows;
@@ -838,7 +825,7 @@ namespace CocosSharp
                     int tilesLeft = numOfTiles - tilesProcessed;
                     int tilesInThisBuffer = Math.Min( tilesLeft, MaxTilesPerDrawBuffer );
 
-                    CreateDrawBuffer( tilesInThisBuffer, tilesProcessed );
+                    CreateDrawBuffer(tilesInThisBuffer, tilesProcessed);
 
                     tilesProcessed += tilesInThisBuffer;
                 }
@@ -909,8 +896,8 @@ namespace CocosSharp
                     TileStartIndex    = firstTileId,
                     TileEndIndex      = firstTileId + tileCount - 1,
                     QuadsVertexBuffer = new CCVertexBuffer<CCV3F_C4B_T2F>(vertsInThisBuffer, CCBufferUsage.WriteOnly),
-                    IndexBuffer = new CCIndexBuffer<short>(indicesInThisBuffer, BufferUsage.WriteOnly),
-                    TileGIDAndFlagsArray = TileGIDAndFlagsArray
+                    IndexBuffer = new CCIndexBuffer<ushort>(indicesInThisBuffer, BufferUsage.WriteOnly),
+                    TileMapLayer = TileMapLayer
                 };
 
                 Buffers.Add(buffer);
@@ -924,6 +911,12 @@ namespace CocosSharp
                     buffer.QuadsVertexBuffer.UpdateBuffer();
                 }
             }
+
+            public void ReplaceTileGIDQuad(short originalGid, short gidOfQuadToUse)
+            {
+                foreach (var buffer in Buffers)
+                    buffer.ReplaceTileGIDQuad(originalGid, gidOfQuadToUse);
+            }
         }
 
         class CCTileMapVertAndIndexBuffer
@@ -933,12 +926,12 @@ namespace CocosSharp
             public int TileStartIndex { get; set; }
             public int TileEndIndex { get; set; }
             public CCVertexBuffer<CCV3F_C4B_T2F> QuadsVertexBuffer { get; set; }
-            public CCIndexBuffer<short> IndexBuffer { get; set; }
-            public CCTileGidAndFlags[] TileGIDAndFlagsArray { get; set; }
+            public CCIndexBuffer<ushort> IndexBuffer { get; set; }
+            public CCTileMapLayer TileMapLayer { get; set; }
 
             public bool ShouldDrawBuffer { get; private set; }
             public int IndexBufferSize { get; private set; }
-            public int StartingQuadVertIndex { get; private set; }
+            public int StartingVisibleTileIndex { get; private set; }
             public int NumberOfVisibleVertices { get; private set; }
             public int NumberOfVisiblePrimitives { get; private set; }
 
@@ -955,7 +948,7 @@ namespace CocosSharp
                 IndexBufferSize = 0; 
                 NumberOfVisiblePrimitives = 0;
                 NumberOfVisibleVertices = 0;
-                StartingQuadVertIndex = startTileIndex > TileStartIndex ? (startTileIndex - TileStartIndex) * NumOfCornersPerQuad : 0;
+                StartingVisibleTileIndex = Math.Max(startTileIndex - TileStartIndex, 0);
                 ShouldDrawBuffer = false;
             }
 
@@ -971,19 +964,20 @@ namespace CocosSharp
 
                 for (int tileIndex = startTileIndex; tileIndex <= endTileIndex; tileIndex++)
                 {
-                    if (TileGIDAndFlagsArray[tileIndex].Gid == 0)
+                    if (TileMapLayer.TileGIDAndFlagsArray[tileIndex].Gid == 0)
                         continue;
 
-                    int quadVertIndex = (tileIndex - TileStartIndex) * NumOfCornersPerQuad;
+                    ushort quadVertIndex = (ushort)((tileIndex - TileStartIndex) * NumOfCornersPerQuad);
+
                     int indexBufferOffset = IndexBufferSize;
                     var indices = IndexBuffer.Data.Elements;
 
-                    indices[indexBufferOffset + 0] = (short)(quadVertIndex + 0);
-                    indices[indexBufferOffset + 1] = (short)(quadVertIndex + 1);
-                    indices[indexBufferOffset + 2] = (short)(quadVertIndex + 2);
-                    indices[indexBufferOffset + 3] = (short)(quadVertIndex + 3);
-                    indices[indexBufferOffset + 4] = (short)(quadVertIndex + 2);
-                    indices[indexBufferOffset + 5] = (short)(quadVertIndex + 1);
+                    indices[(int)(indexBufferOffset + 0)] = (ushort)(quadVertIndex + 0);
+                    indices[(int)(indexBufferOffset + 1)] = (ushort)(quadVertIndex + 1);
+                    indices[(int)(indexBufferOffset + 2)] = (ushort)(quadVertIndex + 2);
+                    indices[(int)(indexBufferOffset + 3)] = (ushort)(quadVertIndex + 3);
+                    indices[(int)(indexBufferOffset + 4)] = (ushort)(quadVertIndex + 2);
+                    indices[(int)(indexBufferOffset + 5)] = (ushort)(quadVertIndex + 1);
 
                     IndexBufferSize += NumOfVerticesPerQuad;
                     NumberOfVisiblePrimitives += NumOfPrimitivesPerQuad;
@@ -995,6 +989,131 @@ namespace CocosSharp
             {
                 IndexBuffer.Count = IndexBufferSize;
                 IndexBuffer.UpdateBuffer();
+            }
+
+            public void ReplaceTileGIDQuad(short originalGid, short gidOfQuadToUse)
+            {
+                var indices = IndexBuffer.Data.Elements;
+
+                for(int i = 0, N = IndexBufferSize; i < N; i+=6)
+                {
+                    int tileIndex = (indices[i] / NumOfCornersPerQuad) + TileStartIndex;
+                    var gidAndFlag = TileMapLayer.TileGIDAndFlagsArray[tileIndex];
+
+                    /*
+                    So here we're updating the underlying quadvertexbuffer after each quad change
+                    The alternative is to determine the min/max tile index and call QuadsVertexBuffer.UpdateBuffer() over that range.
+                    The assumption is that replacing tile gid quads is primarily used for animating tiles that share a common original gid.
+                    In particular, we would expect that animated tiles are small in number and/or sparsely spread out across the tile map
+                    e.g. Water tiles/trees/character/light source etc.
+                    So it's likely updating over a range would unnecessarily update a large number of unchanged quads
+                    */
+                    if(gidAndFlag.Gid == originalGid)
+                    {
+                        var replacementQuadGid = new CCTileGidAndFlags(gidOfQuadToUse, gidAndFlag.Flags);
+                        UpdateQuad(tileIndex, ref replacementQuadGid, true);
+                    }
+                }
+            }
+
+            public void UpdateQuad(int flattenedTileIndex, ref CCTileGidAndFlags tileGID, bool updateBuffer = false)
+            {
+                int adjustedTileIndex = flattenedTileIndex - TileStartIndex;
+                int adjustedStartVertexIndex = adjustedTileIndex * NumOfCornersPerQuad;
+
+                if (tileGID.Gid == 0)
+                {
+                    for (int i = 0; i < NumOfCornersPerQuad; i++)
+                        QuadsVertexBuffer.Data[adjustedStartVertexIndex + i] = new CCV3F_C4B_T2F();
+
+                    if (updateBuffer)
+                        QuadsVertexBuffer.UpdateBuffer(adjustedStartVertexIndex, NumOfCornersPerQuad);
+
+                    return;
+                }
+
+                float left, right, top, bottom, vertexZ;
+                vertexZ = TileMapLayer.TileVertexZ(flattenedTileIndex);
+
+
+                CCSize tileSize = TileMapLayer.TileSetInfo.TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
+                CCSize texSize = TileMapLayer.TileSetInfo.TilesheetSize;
+                CCPoint tilePos = TileMapLayer.TilePosition(flattenedTileIndex);
+
+                var quadVertexData = QuadsVertexBuffer.Data;
+                var quad = new CCV3F_C4B_T2F_Quad();
+
+                // vertices
+                if ((tileGID.Flags & CCTileFlags.TileDiagonal) != 0)
+                {
+                    left = tilePos.X;
+                    right = tilePos.X + tileSize.Height;
+                    bottom = tilePos.Y + tileSize.Width;
+                    top = tilePos.Y;
+                }
+                else
+                {
+                    left = tilePos.X;
+                    right = tilePos.X + tileSize.Width;
+                    bottom = tilePos.Y + tileSize.Height;
+                    top = tilePos.Y;
+                }
+
+                float temp;
+                if((tileGID.Flags & CCTileFlags.Vertical) !=0 )
+                {
+                    temp = top;
+                    top = bottom;
+                    bottom = temp;
+                }
+
+                if ((tileGID.Flags & CCTileFlags.Horizontal) != 0)
+                {
+                    temp = left;
+                    left = right;
+                    right = temp;
+                }
+
+                if((tileGID.Flags & CCTileFlags.TileDiagonal) != 0)
+                {
+                    // FIXME: not working correcly
+                    quad.BottomLeft.Vertices = new CCVertex3F(left, bottom, vertexZ);
+                    quad.BottomRight.Vertices = new CCVertex3F(left, top, vertexZ);
+                    quad.TopLeft.Vertices = new CCVertex3F(right, bottom, vertexZ);
+                    quad.TopRight.Vertices = new CCVertex3F(right, top, vertexZ);
+                }
+                else
+                {
+                    quad.BottomLeft.Vertices = new CCVertex3F(left, bottom, vertexZ);
+                    quad.BottomRight.Vertices = new CCVertex3F(right, bottom, vertexZ);
+                    quad.TopLeft.Vertices = new CCVertex3F(left, top, vertexZ);
+                    quad.TopRight.Vertices = new CCVertex3F(right, top, vertexZ);
+                }
+
+                // texcoords
+                CCRect tileTexture = TileMapLayer.TileSetInfo.TextureRectForGID(tileGID.Gid);
+                left   = ((tileTexture.Origin.X ) / texSize.Width) + 0.5f / texSize.Width;
+                right  = left + ((tileTexture.Size.Width) / texSize.Width) - 1.0f / texSize.Width;
+                bottom = ((tileTexture.Origin.Y) / texSize.Height) + 0.5f / texSize.Height;
+                top    = bottom + ((tileTexture.Size.Height) / texSize.Height) - 1.0f / texSize.Height;
+
+                quad.BottomLeft.TexCoords = new CCTex2F(left, bottom);
+                quad.BottomRight.TexCoords = new CCTex2F(right, bottom);
+                quad.TopLeft.TexCoords = new CCTex2F(left, top);
+                quad.TopRight.TexCoords = new CCTex2F(right, top);
+
+                quad.BottomLeft.Colors = CCColor4B.White;
+                quad.BottomRight.Colors = CCColor4B.White;
+                quad.TopLeft.Colors = CCColor4B.White;
+                quad.TopRight.Colors = CCColor4B.White;
+
+                QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex] = quad.TopLeft;
+                QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 1] = quad.BottomLeft;
+                QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 2] = quad.TopRight;
+                QuadsVertexBuffer.Data.Elements[adjustedStartVertexIndex + 3] = quad.BottomRight;
+
+                if(updateBuffer)
+                    QuadsVertexBuffer.UpdateBuffer(adjustedStartVertexIndex, NumOfCornersPerQuad);
             }
         }
 

@@ -19,6 +19,7 @@ namespace CocosSharp
         Base64 = 1 << 1,
         Gzip = 1 << 2,
         Zlib = 1 << 3,
+        Csv = 1 << 4
     }
 
     public enum CCTileMapProperty
@@ -28,7 +29,8 @@ namespace CocosSharp
         Layer,
         ObjectGroup,
         Object,
-        Tile
+        Tile,
+        TileAnimation
     }
 
     [Flags]
@@ -40,6 +42,18 @@ namespace CocosSharp
         TileDiagonal = 8,
         FlippedAll = (Horizontal | Vertical | TileDiagonal),
         FlippedMask = ~(FlippedAll)
+    }
+
+    public struct CCTileAnimationKeyFrame
+    {
+        public short Gid { get; set; }
+        public short Duration { get; set; }
+
+        public CCTileAnimationKeyFrame(short gid, short duration) : this()
+        {
+            Gid = gid;
+            Duration = duration;
+        }
     }
 
     public struct CCTileGidAndFlags

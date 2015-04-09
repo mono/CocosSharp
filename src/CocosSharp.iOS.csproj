@@ -408,6 +408,7 @@
     <Compile Include="label_nodes\CCFontFNT.cs" />
     <Compile Include="label_nodes\CCFontSpriteFont.cs" />
     <Compile Include="label_nodes\CCTextLayout.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileAnimation.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

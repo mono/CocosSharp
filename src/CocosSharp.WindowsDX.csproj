@@ -441,6 +441,7 @@
     <Compile Include="tileMap_parallax_nodes\CCTileMapObjectGroup.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
+    <Compile Include="tileMap_parallax_nodes\CCTileAnimation.cs" />
     <Compile Include="Platform\CCGeometryBatch.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />

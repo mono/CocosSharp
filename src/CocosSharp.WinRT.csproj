@@ -964,6 +964,9 @@
     <Compile Include=".\tileMap_parallax_nodes\CCTileSetInfo.cs">
       <LogicalName>tileMap_parallax_nodes\CCTileSetInfo</LogicalName>
     </Compile>
+    <Compile Include=".\tileMap_parallax_nodes\CCTileAnimation.cs">
+      <LogicalName>tileMap_parallax_nodes\CCTileAnimation</LogicalName>
+    </Compile>
     <Compile Include=".\Platform\CCGeometryBatch.cs">
       <LogicalName>Platform\CCGeometryBatch</LogicalName>
     </Compile>

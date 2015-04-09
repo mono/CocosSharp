@@ -25,6 +25,9 @@ namespace CocosSharp
         const string TileElementId = "id";
         const string TileElementGidAndFlags = "gid";
 
+        const string TileAnimKeyFrameGid = "tileid";
+        const string TileAnimKeyFrameDuration = "duration";
+
         const string LayerElementName = "name";
         const string LayerElementNumOfColumns = "width";
         const string LayerElementNumOfRows = "height";
@@ -78,6 +81,7 @@ namespace CocosSharp
         uint currentXmlTileIndex;
         byte[] currentString;
         Dictionary<string,string> currentAttributeDict;
+        List<CCTileAnimationKeyFrame> currentTileAnimationKeyFrames;
 
 
         #region Properties
@@ -94,6 +98,7 @@ namespace CocosSharp
         internal List<CCTileMapObjectGroup> ObjectGroups { get; private set; }
         internal Dictionary<string, string> MapProperties { get; private set; }
         internal Dictionary<short, Dictionary<string, string>> TileProperties { get; private set; }
+        internal Dictionary<short, List<CCTileAnimationKeyFrame>> TileAnimations { get; private set; }
 
         #endregion Properties
 
@@ -135,6 +140,7 @@ namespace CocosSharp
             ObjectGroups = new List<CCTileMapObjectGroup>(4);
             MapProperties = new Dictionary<string, string>();
             TileProperties = new Dictionary<short, Dictionary<string, string>>();
+            TileAnimations = new Dictionary<short, List<CCTileAnimationKeyFrame>>();
             tileDataCompressionType = CCTileDataCompressionType.None;
             currentParentElement = CCTileMapProperty.None;
             currentFirstGID = 0;
@@ -145,6 +151,8 @@ namespace CocosSharp
                 { "map", Tuple.Create<Action,Action>(ParseMapElement, ParseMapEndElement) },
                 { "tileset", Tuple.Create<Action,Action>(ParseTilesetElement, ParseTilesetEndElement) },
                 { "tile", Tuple.Create<Action,Action>(ParseTileElement, ParseTileEndElement) },
+                { "animation", Tuple.Create<Action,Action>(ParseTileAnimationElement, ParseTileAnimationEndElement) },
+                { "frame", Tuple.Create<Action,Action>(ParseTileAnimationKeyFrameElement, ParseTileAnimationKeyFrameEndElement) },
                 { "layer", Tuple.Create<Action,Action>(ParseLayerElement, ParseLayerEndElement) },
                 { "objectgroup", Tuple.Create<Action,Action>(ParseObjectGroupElement, ParseObjectGroupEndElement) },
                 { "image", Tuple.Create<Action,Action>(ParseImageElement, ParseImageEndElement) },
@@ -334,6 +342,30 @@ namespace CocosSharp
                 currentParentElement = CCTileMapProperty.Tile;
             }
 
+        }
+
+        void ParseTileAnimationElement()
+        {
+            if(currentParentElement == CCTileMapProperty.Tile) 
+            {
+                currentParentElement = CCTileMapProperty.TileAnimation;
+                currentTileAnimationKeyFrames = new List<CCTileAnimationKeyFrame>();
+            }
+        }
+
+        void ParseTileAnimationKeyFrameElement()
+        {
+            if(currentParentElement == CCTileMapProperty.TileAnimation && currentTileAnimationKeyFrames != null) 
+            {
+                int tilesetCount = Tilesets != null ? Tilesets.Count : 0;
+                CCTileSetInfo info = tilesetCount > 0 ? Tilesets[tilesetCount - 1] : null;
+
+                short frameGid = (short)(info.FirstGid + short.Parse(currentAttributeDict[TileAnimKeyFrameGid]));
+                short frameDuration = short.Parse(currentAttributeDict [TileAnimKeyFrameDuration]);
+
+                if(frameGid >= 0 && frameDuration > 0)
+                    currentTileAnimationKeyFrames.Add (new CCTileAnimationKeyFrame(frameGid, frameDuration));
+            }
         }
 
         void ParseLayerElement()
@@ -640,6 +672,23 @@ namespace CocosSharp
         }
 
         void ParseTileEndElement()
+        {
+        }
+
+        void ParseTileAnimationEndElement()
+        {
+            if(currentParentElement == CCTileMapProperty.TileAnimation) 
+            {
+                if(currentTileAnimationKeyFrames != null && currentTileAnimationKeyFrames.Count > 0)
+                    TileAnimations.Add(ParentGID, currentTileAnimationKeyFrames);
+
+                currentTileAnimationKeyFrames = null;
+            }
+
+            currentParentElement = CCTileMapProperty.Tile;
+        }
+
+        void ParseTileAnimationKeyFrameEndElement()
         {
         }
 
