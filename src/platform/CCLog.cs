@@ -33,10 +33,16 @@ namespace CocosSharp
 
         static CCLog ()
         {
+
+#if DEBUG
+            // We wrap this in a DEBUG conditional as there is no sense to attach a lambda to
+            // the logger if it will just be an empty invoke.  The Debug.WriteLine will conditionally
+            // be compiled out when building for Release anyway.
             Logger = (format, args) =>
                 {
                     Debug.WriteLine(format, args);
                 };
+#endif
         }
 
         public static void Log(string format, params object[] args)

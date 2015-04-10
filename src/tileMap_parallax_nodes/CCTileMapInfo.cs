@@ -767,7 +767,7 @@ namespace CocosSharp
                 int layersCount = Layers != null ? Layers.Count : 0;
                 CCTileLayerInfo layer = layersCount > 0 ? Layers[layersCount - 1] : null;
 
-                var str = System.Text.Encoding.Default.GetString(currentString).Split(',');
+                var str = System.Text.Encoding.UTF8.GetString(currentString, 0, currentString.Length).Split(',');
 
                 for (int i = 0; i < layer.TileGIDAndFlags.Length; i++)
                 {
