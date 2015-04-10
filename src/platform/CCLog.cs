@@ -25,45 +25,24 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCLog
+    public static class CCLog
     { 
 
-        private static ICCLog customLogger;
-        private static bool hasCustomLog = false;
+        public delegate void LogDelegate (string value, params object[] args);
+        public static LogDelegate Logger;
 
-        public static void Log(string message)
+        static CCLog ()
         {
-            if (hasCustomLog)
-                customLogger.Log(message);
-
-            Debug.WriteLine(message);
+            #if DEBUG
+            Logger = Debug.WriteLine;
+            #endif
         }
 
         public static void Log(string format, params object[] args)
         {
-            if (hasCustomLog)
-                customLogger.Log(format, args);
-
-            Debug.WriteLine(format, args);
-        }
-
-        public static ICCLog CustomCCLog
-        {
-            set 
-            {
-                customLogger = value;
-                hasCustomLog = (customLogger == null) ? false : true;
-            }
+            var localLogAction = Logger;
+            if (localLogAction != null)
+                localLogAction.Invoke(format, args);
         }
     }
-}
-
-namespace CocosSharp
-{
-    public interface ICCLog
-    {
-        void Log(string message);
-        void Log(string format, params object[] args);
-    }
-
 }

@@ -1855,9 +1855,6 @@ namespace CocosSharp {
         public CocosSharp.CCLabelType LabelType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCLabelType); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected internal set { } }
         public CocosSharp.CCLabelLineBreak LineBreak { get { return default(CocosSharp.CCLabelLineBreak); } set { } }
         public float LineHeight { get { return default(float); } set { } }
-        public override CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
-        public override float PositionX { get { return default(float); } set { } }
-        public override float PositionY { get { return default(float); } set { } }
         public override float Scale { set { } }
         public override float ScaleX { get { return default(float); } set { } }
         public override float ScaleY { get { return default(float); } set { } }
@@ -2089,10 +2086,10 @@ namespace CocosSharp {
         public override void Update(float time) { }
     }
     public partial class CCLog {
+        public static CocosSharp.CCLog.LogDelegate Logger;
         public CCLog() { }
-        public static CocosSharp.ICCLog CustomCCLog { set { } }
-        public static void Log(string message) { }
         public static void Log(string format, params System.Object[] args) { }
+        public delegate void LogDelegate(string value, params System.Object[] args);
     }
     public static partial class CCMacros {
         public static float CCDegreesToRadians(float angle) { return default(float); }
@@ -3836,9 +3833,16 @@ namespace CocosSharp {
         public CocosSharp.CCPoint StartPosition;
         public CCTile() { }
     }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    public partial struct CCTileAnimationKeyFrame {
+        public CCTileAnimationKeyFrame(short gid, short duration) { throw new System.NotImplementedException(); }
+        public short Duration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(short); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public short Gid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(short); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+    }
     [System.FlagsAttribute]
     public enum CCTileDataCompressionType {
         Base64 = 2,
+        Csv = 16,
         Gzip = 4,
         None = 1,
         Zlib = 8,
@@ -3955,6 +3959,7 @@ namespace CocosSharp {
         public CocosSharp.CCTileMapCoordinates LayerSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileMapCoordinates); } }
         public CocosSharp.CCTileMapType MapType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileMapType); } }
         public override byte Opacity { get { return default(byte); } set { } }
+        public System.Collections.Generic.Dictionary<System.Int16, CocosSharp.CCRepeatForever> TileAnimations { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Collections.Generic.Dictionary<System.Int16, CocosSharp.CCRepeatForever>); } }
         public CocosSharp.CCSize TileContentSize { get { return default(CocosSharp.CCSize); } }
         public CocosSharp.CCTileMapCoordinates TileCoordOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileMapCoordinates); } }
         public CocosSharp.CCTileSetInfo TileSetInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTileSetInfo); } }
@@ -3968,12 +3973,17 @@ namespace CocosSharp {
         protected override void ParentUpdatedTransform() { }
         public void RemoveTile(CocosSharp.CCTileMapCoordinates tileCoords) { }
         public void RemoveTile(int column, int row) { }
+        public void ReplaceTileGIDQuad(short originalGid, short gidOfQuadToUse) { }
         public void SetTileGID(CocosSharp.CCTileGidAndFlags gidAndFlags, CocosSharp.CCTileMapCoordinates tileCoords) { }
+        public void StartTileAnimations() { }
+        public void StopTileAnimations() { }
         public CocosSharp.CCTileGidAndFlags TileGIDAndFlags(CocosSharp.CCTileMapCoordinates tileCoords) { return default(CocosSharp.CCTileGidAndFlags); }
         public CocosSharp.CCTileGidAndFlags TileGIDAndFlags(int column, int row) { return default(CocosSharp.CCTileGidAndFlags); }
         public CocosSharp.CCPoint TilePosition(CocosSharp.CCTileMapCoordinates tileCoords) { return default(CocosSharp.CCPoint); }
+        public CocosSharp.CCPoint TilePosition(int flattenedIndex) { return default(CocosSharp.CCPoint); }
         public CocosSharp.CCPoint TilePosition(int column, int row) { return default(CocosSharp.CCPoint); }
         public float TileVertexZ(CocosSharp.CCTileMapCoordinates tileCoords) { return default(float); }
+        public float TileVertexZ(int flattenedIndex) { return default(float); }
         public float TileVertexZ(int column, int row) { return default(float); }
         protected override void VisibleBoundsChanged() { }
     }
@@ -3993,6 +4003,7 @@ namespace CocosSharp {
         Object = 4,
         ObjectGroup = 3,
         Tile = 5,
+        TileAnimation = 6,
     }
     public enum CCTileMapType {
         Hex = 1,
@@ -4592,10 +4603,6 @@ namespace CocosSharp {
         void KeyboardDidShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
         void KeyboardWillHide(CocosSharp.CCIMEKeyboardNotificationInfo info);
         void KeyboardWillShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
-    }
-    public partial interface ICCLog {
-        void Log(string message);
-        void Log(string format, params System.Object[] args);
     }
     public partial class ICCScriptingEngine {
         public ICCScriptingEngine() { }
