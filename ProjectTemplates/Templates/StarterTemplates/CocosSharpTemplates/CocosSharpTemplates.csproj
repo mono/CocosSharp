@@ -107,48 +107,48 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.Android.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.Android.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.Android.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.Android.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.iOS.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.iOS.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.iOS.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.iOS.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.PCL.Shared.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.DX.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.DX.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.DX.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.PCL.Shared.DX.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.GL.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.GL.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.GL.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.PCL.Shared.GL.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.XNA.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.XNA.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.XNA.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.PCL.Shared.XNA.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.Windows.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.Windows.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.Windows.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.Windows.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.Windows8.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.Windows8.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.Windows8.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.Windows8.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsDX.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.WindowsDX.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsDX.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.WindowsDX.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsGL.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.WindowsGL.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsGL.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.WindowsGL.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsPhone8.1.3.2.0.nupkg">
-      <Link>Packages\CocosSharp.WindowsPhone8.1.3.2.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsPhone8.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.WindowsPhone8.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
