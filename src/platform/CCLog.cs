@@ -33,9 +33,10 @@ namespace CocosSharp
 
         static CCLog ()
         {
-            #if DEBUG
-            Logger = Debug.WriteLine;
-            #endif
+            Logger = (format, args) =>
+                {
+                    Debug.WriteLine(format, args);
+                };
         }
 
         public static void Log(string format, params object[] args)
