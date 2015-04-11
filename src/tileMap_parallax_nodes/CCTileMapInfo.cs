@@ -745,15 +745,17 @@ namespace CocosSharp
                 {
                     encoded = currentString;
                 }
-
+                    
                 for (int i = 0; i < layer.TileGIDAndFlags.Length; i++)
                 {
                     int i4 = i * 4;
+
                     uint gidAndFlags = (uint) (
-                        encoded[i4] |
-                        encoded[(int)(i4 + 1)] << 8 |
-                        encoded[(int)(i4 + 2)] << 16 |
-                        encoded[(int)(i4 + 3)] << 24);
+                        (uint)encoded[i4] |
+                        (uint)encoded[(int)(i4 + 1)] << 8 |
+                        (uint)encoded[(int)(i4 + 2)] << 16 |
+                        (uint)encoded[(int)(i4 + 3)] << 24);
+                        
 
                     layer.TileGIDAndFlags[i] = CCTileMapFileEncodedTileFlags.DecodeGidAndFlags(gidAndFlags);
                 }
