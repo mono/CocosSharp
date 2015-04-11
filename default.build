@@ -4,6 +4,7 @@
   <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}" />
   <property name="mdtooldir" value="/Applications/Xamarin\ Studio.app/Contents/MacOS"/>
   <property name="configuration" value="Release" unless="${property::exists('configuration')}" />
+  <property name="msbuild12dir" value="C:\Program Files (x86)\MSBuild\12.0\Bin" />
 
   <target name="checkos" description="check the operating system">
     <property name="os" value="${operating-system::get-platform(environment::get-operating-system())}"/>
@@ -28,8 +29,9 @@
     <call target="buildphysics"/>
     <call target="buildPCL"/>
     <call target="buildwindows"/>
-	<call target="buildpipeline"/>
+    <call target="buildpipeline"/>
     <call target="buildwindowsphone8"/>
+    <call target="buildwindowsphone81"/>
     <call target="buildios"/>
     <call target="buildmac"/>
     <call target="buildandroid"/>
@@ -104,6 +106,16 @@
       <nant buildfile="MonoGame/default.build" target="buildwindows8" />
       <exec program="msbuild " commandline="CocosSharp.Windows8.sln /t:Clean /p:Configuration=${configuration}" />
       <exec program="msbuild " commandline="CocosSharp.Windows8.sln /t:Rebuild /p:Configuration=${configuration}" />
+    </if>
+  </target>
+
+  <target name="buildwindowsphone81" description="Build Windows Phone 8.1" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\WindowsPhone\v8.1\Microsoft.Cpp.WindowsPhone.8.1.targets')}">
+        <nant buildfile="MonoGame/default.build" target="buildwindowsphone81" />
+        <exec program="${msbuild12dir}\msbuild.exe " commandline='CocosSharp.WindowsPhone81.sln /t:Clean /p:Configuration=${configuration} /p:Platform="Any CPU"' />
+        <exec program="${msbuild12dir}\msbuild.exe " commandline='CocosSharp.WindowsPhone81.sln /t:Rebuild /p:Configuration=${configuration} /p:Platform="Any CPU"' />
+      </if>
     </if>
   </target>
 
@@ -196,6 +208,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows8.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone8.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone81.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}"' />

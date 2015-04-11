@@ -72,6 +72,10 @@
 	    <file src="..\..\MonoGame\MonoGame.Framework\bin\WindowsPhone\ARM\Release\*.*" target="build\wp8\ARM" />
       <file src="build\wp8\CocosSharp.targets" target="build\wp8\CocosSharp.PCL.Shared.targets" />
 
+  <files>
+    <!--Windows Phone 8.1-->
+    <file src="..\..\src\bin\WindowsPhone81\AnyCPU\Release\*.dll" target="lib\wpa81" />
+  </files>
 
   </files>
 

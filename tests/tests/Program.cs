@@ -128,7 +128,7 @@ namespace tests
     }
 #endif
 
-#if NETFX_CORE 
+#if NETFX_CORE && !WINDOWS_PHONE81
     public static class Program 
     {
         static void Main() 

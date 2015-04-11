@@ -110,7 +110,7 @@ namespace CocosSharp
             var graphics = new GraphicsDeviceManager(this);
             #endif
 
-            #if WINDOWS || WINDOWSGL || MACOS || NETFX_CORE
+            #if WINDOWS || WINDOWSGL || MACOS || (NETFX_CORE && !WINDOWS_PHONE81)
             this.IsMouseVisible = true;
             #endif
 
@@ -242,42 +242,61 @@ namespace CocosSharp
 
         #region Properties
 
-        #if NETFX_CORE
+        #if NETFX_CORE && !WINDOWS_PHONE81
 
         public static void Create(CCApplicationDelegate appDelegate)
         {
-        Action<CCGame, Windows.ApplicationModel.Activation.IActivatedEventArgs> initAction =
-        delegate(CCGame game, Windows.ApplicationModel.Activation.IActivatedEventArgs args)
-        {
-        foreach (var component in game.Components)
-        {
-        if (component is CCApplication)
-        {
-        var instance = component as CCApplication;
-        instance.ApplicationDelegate = appDelegate;
-        }
-        }
-        };
-        var factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>(initAction);
-        Windows.ApplicationModel.Core.CoreApplication.Run(factory);
+            Action<CCGame, Windows.ApplicationModel.Activation.IActivatedEventArgs> initAction =
+            delegate(CCGame game, Windows.ApplicationModel.Activation.IActivatedEventArgs args)
+            {
+                foreach (var component in game.Components)
+                {
+                    if (component is CCApplication)
+                    {
+                        var instance = component as CCApplication;
+                        instance.ApplicationDelegate = appDelegate;
+                    }
+                }
+            };
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>(initAction);
+            Windows.ApplicationModel.Core.CoreApplication.Run(factory);
 
         }
 
         public static void Create(CCApplicationDelegate appDelegate, LaunchActivatedEventArgs args, Windows.UI.Core.CoreWindow coreWindow, SwapChainBackgroundPanel swapChainBackgroundPanel)
         {
-        var game = MonoGame.Framework.XamlGame<CCGame>.Create(args, coreWindow, swapChainBackgroundPanel);
-        foreach (var component in game.Components)
-        {
-        if (component is CCApplication)
-        {
-        var instance = component as CCApplication;
-        instance.ApplicationDelegate = appDelegate;
-        }
-        }
+            var game = MonoGame.Framework.XamlGame<CCGame>.Create(args, coreWindow, swapChainBackgroundPanel);
+            foreach (var component in game.Components)
+            {
+                if (component is CCApplication)
+                {
+                    var instance = component as CCApplication;
+                    instance.ApplicationDelegate = appDelegate;
+                }
+            }
 
         }
 
         #endif
+
+#if WINDOWS_PHONE81
+
+        public static void Create(CCApplicationDelegate appDelegate, string launchArguments, Windows.UI.Core.CoreWindow coreWindow, SwapChainBackgroundPanel swapChainBackgroundPanel)
+        {
+            var game = MonoGame.Framework.XamlGame<CCGame>.Create(launchArguments, coreWindow, swapChainBackgroundPanel);
+            foreach (var component in game.Components)
+            {
+                if (component is CCApplication)
+                {
+                    var instance = component as CCApplication;
+                    instance.ApplicationDelegate = appDelegate;
+                }
+            }
+
+        }
+
+
+#endif
 
         #if WINDOWS_PHONE
 
