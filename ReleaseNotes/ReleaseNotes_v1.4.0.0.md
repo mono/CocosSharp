@@ -2,7 +2,9 @@
 
 ## Breaking changes 
  ---
-None (although please see details of Unified labels for future breaking changes)
+
+* Changes to CCLog custom logging interface as described [here](https://github.com/mono/CocosSharp/wiki/Logging)
+* Please also see details of Unified labels for future breaking changes
 
 ## Key new features
  ---
@@ -29,6 +31,8 @@ var label4 = new CCLabel("Hello MorrisRoman-Black", "fonts/MorrisRoman-Black.ttf
 Note, that while the now obsolete <code>CCLabelBMFont</code> and <code>CCLabelTtf</code> classes remain in this release, to avoid confusion, we will aim to remove these classes entirely in subsequent releases. Thus it is recommended that users migrate their existing code-base to use unified labels as soon as possible. 
 
 Further in-depth details on the features of the new unified <code>CCLabel</code> implementation can be found [here](https://github.com/mono/CocosSharp/wiki/Labels).
+
+Also, a special thanks to René Ruppert for testing and putting the new labels through their paces!
 
  ---
 ### Beefed up tile map support
