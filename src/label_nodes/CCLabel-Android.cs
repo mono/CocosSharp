@@ -39,13 +39,14 @@ namespace CocosSharp
 
 
             // out paint object to hold our drawn text
-            var paintFlags = new PaintFlags();
-            if (textDefinition.isShouldAntialias)
-                paintFlags = PaintFlags.AntiAlias;
+//            var paintFlags = new PaintFlags();
+//            if (textDefinition.isShouldAntialias)
+//                paintFlags = PaintFlags.AntiAlias | PaintFlags.SubpixelText;
             
-            var textPaint = new TextPaint(paintFlags);
+            var textPaint = new TextPaint();
             textPaint.Color = Android.Graphics.Color.White;
             textPaint.TextAlign = Paint.Align.Left;
+            textPaint.AntiAlias = textDefinition.isShouldAntialias;
 
             textPaint.TextSize = textDef.FontSize;
 
@@ -156,6 +157,7 @@ namespace CocosSharp
             {
                 layout = new StaticLayout(text, textPaint, 
                     (int)dimensions.Width, textAlign, 1.0f, 0.0f, false);
+              
             }
 
 
@@ -167,7 +169,9 @@ namespace CocosSharp
 
             // Create our platform dependant image to be drawn to.
             var textureBitmap = Bitmap.CreateBitmap(imageWidth, imageHeight, Bitmap.Config.Argb8888);
+
             var drawingCanvas = new Canvas(textureBitmap);
+            drawingCanvas.DrawARGB(0, 255, 255, 255);
 
             // Set our vertical alignment
             drawingCanvas.Translate(0, yOffset);

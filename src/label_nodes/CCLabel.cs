@@ -377,10 +377,32 @@ namespace CocosSharp
             }
         }
 
+        bool isAntialiased = CCTexture2D.DefaultIsAntialiased;
         public bool IsAntialiased
         {
-            get { return Texture.IsAntialiased; }
-            set { Texture.IsAntialiased = value; }
+            get 
+            {
+                if (TextureAtlas != null && TextureAtlas.Texture != null)
+                    return TextureAtlas.Texture.IsAntialiased;
+                else if (textSprite != null)
+                    return textSprite.IsAntialiased;
+                else
+                    return CCTexture2D.DefaultIsAntialiased;
+            }
+
+            set 
+            { 
+                if (value != isAntialiased)
+                {
+                    if (TextureAtlas != null && TextureAtlas.Texture != null)
+                        TextureAtlas.Texture.IsAntialiased = value;
+                    else if (textSprite != null)
+                        textSprite.IsAntialiased = value;
+
+                    isAntialiased = value;
+
+                }
+            }
         }
 
         public virtual CCTexture2D Texture
@@ -968,7 +990,7 @@ namespace CocosSharp
                     fontDefinition.FontAlpha = DisplayedOpacity;
                     fontDefinition.LineBreak = labelFormat.LineBreaking;
 
-                    fontDefinition.isShouldAntialias = true;
+                    fontDefinition.isShouldAntialias = IsAntialiased;
 
                     CreateSpriteWithFontDefinition(fontDefinition);
                 }
@@ -988,6 +1010,7 @@ namespace CocosSharp
             var texture = CreateTextSprite(Text, fontDefinition);
 
             textSprite = new CCSprite(texture);
+            textSprite.IsAntialiased = isAntialiased;
 
             textSprite.AnchorPoint = CCPoint.AnchorLowerLeft;
             base.ContentSize = textSprite.ContentSize;
