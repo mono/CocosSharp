@@ -724,6 +724,7 @@ namespace CocosSharp
                 SystemFontSize = size;
                 Dimensions = dimensions;
                 AnchorPoint = CCPoint.AnchorMiddle;
+                BlendFunc = CCBlendFunc.AlphaBlend;
                 Text = str;
             }
 
@@ -1011,7 +1012,7 @@ namespace CocosSharp
 
             textSprite = new CCSprite(texture);
             textSprite.IsAntialiased = isAntialiased;
-
+            textSprite.BlendFunc = BlendFunc;
             textSprite.AnchorPoint = CCPoint.AnchorLowerLeft;
             base.ContentSize = textSprite.ContentSize;
 
