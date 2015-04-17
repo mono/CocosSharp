@@ -167,25 +167,38 @@ namespace CocosSharp
                 : (CCVerticalTextAlignment.Top == verticleAlignement) ? 0                    // align to top
                 : (imageHeight - boundingRect.Bottom) * 0.5f;                                   // align to center
 
-            // Create our platform dependant image to be drawn to.
-            var textureBitmap = Bitmap.CreateBitmap(imageWidth, imageHeight, Bitmap.Config.Argb8888);
+            try {
+                // Create our platform dependant image to be drawn to.
+                using (Bitmap textureBitmap = Bitmap.CreateBitmap(imageWidth, imageHeight, Bitmap.Config.Argb8888))
+                {
+                    using (Canvas drawingCanvas = new Canvas(textureBitmap))
+                    {
+                        drawingCanvas.DrawARGB(0, 255, 255, 255);
 
-            var drawingCanvas = new Canvas(textureBitmap);
-            drawingCanvas.DrawARGB(0, 255, 255, 255);
+                        // Set our vertical alignment
+                        drawingCanvas.Translate(0, yOffset);
 
-            // Set our vertical alignment
-            drawingCanvas.Translate(0, yOffset);
+                        // Now draw the text using our layout
+                        layout.Draw(drawingCanvas);
 
-            // Now draw the text using our layout
-            layout.Draw(drawingCanvas);
+                        // We will use Texture2D from stream here instead of CCTexture2D stream.
+                        var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, textureBitmap);
 
-            // We will use Texture2D from stream here instead of CCTexture2D stream.
-            var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, textureBitmap);
+                        // Create our texture of the label string.  
+                        // Note the use of the third parameter as premultiplied = false
+                        // be careful changing that parameter as it will cause problems with blending
+                        // later on.
+                        var texture = new CCTexture2D(tex, CCSurfaceFormat.Color, false);
 
-            // Create our texture of the label string.
-            var texture = new CCTexture2D(tex);
-
-            return texture;
+                        return texture;
+                    }
+                }   
+            }
+            catch (Exception exc)
+            {
+                CCLog.Log ("CCLabel Android: Error creating native label:{0}\n{1}", exc.Message, exc.StackTrace);
+                return new CCTexture2D();
+            }
         }
     }
 }
