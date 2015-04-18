@@ -56,7 +56,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	///
 	/// authors of the original java version : John Leuner, Jochen Hoenicke
 	/// </summary>
-	public class StreamManipulator
+	internal class StreamManipulator
 	{
 		#region Constructors
 		/// <summary>

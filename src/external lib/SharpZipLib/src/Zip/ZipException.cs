@@ -41,6 +41,8 @@ using System;
 #if !NETCF_1_0 && !NETCF_2_0
 using System.Runtime.Serialization;
 #endif
+using System.Runtime.CompilerServices;
+[assembly: InternalsVisibleTo("CocosSharp")]
 
 namespace ICSharpCode.SharpZipLib.Zip 
 {
@@ -51,7 +53,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 #if !NETCF_1_0 && !NETCF_2_0
 	[Serializable]
 #endif
-	public class ZipException : SharpZipBaseException
+	internal class ZipException : SharpZipBaseException
 	{
 #if !NETCF_1_0 && !NETCF_2_0
 		/// <summary>

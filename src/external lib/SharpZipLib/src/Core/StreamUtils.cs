@@ -41,7 +41,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// <summary>
 	/// Provides simple <see cref="Stream"/>" utilities.
 	/// </summary>
-	public sealed class StreamUtils
+	internal sealed class StreamUtils
 	{
 		/// <summary>
 		/// Read from a <see cref="Stream"/> ensuring all the required data is read.
@@ -143,7 +143,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <param name="sender">The source for this event.</param>
 		/// <param name="name">The name to use with the event.</param>
 		/// <remarks>This form is specialised for use within #Zip to support events during archive operations.</remarks>
-		static public void Copy(Stream source, Stream destination,
+		static internal void Copy(Stream source, Stream destination,
 			byte[] buffer, ProgressHandler progressHandler, TimeSpan updateInterval, object sender, string name)
 		{
 			Copy(source, destination, buffer, progressHandler, updateInterval, sender, name, -1);
@@ -162,7 +162,7 @@ namespace ICSharpCode.SharpZipLib.Core
 		/// <param name="fixedTarget">A predetermined fixed target value to use with progress updates.
 		/// If the value is negative the target is calculated by looking at the stream.</param>
 		/// <remarks>This form is specialised for use within #Zip to support events during archive operations.</remarks>
-		static public void Copy(Stream source, Stream destination,
+		static internal void Copy(Stream source, Stream destination,
 			byte[] buffer, 
 			ProgressHandler progressHandler, TimeSpan updateInterval, 
 			object sender, string name, long fixedTarget)

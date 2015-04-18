@@ -47,7 +47,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	/// <remarks>The use of absolute names is supported although its use is not valid 
 	/// according to Zip naming conventions, and should not be used if maximum compatability is desired.</remarks>
-	public class ZipNameTransform : INameTransform
+	internal class ZipNameTransform : INameTransform
 	{
 		#region Constructors
 		/// <summary>

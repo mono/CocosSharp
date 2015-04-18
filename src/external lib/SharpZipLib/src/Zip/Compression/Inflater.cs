@@ -69,7 +69,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	///
 	/// author of the original java version : John Leuner, Jochen Hoenicke
 	/// </summary>
-	public class Inflater
+	internal class Inflater
 	{
 		#region Constants/Readonly
 		/// <summary>

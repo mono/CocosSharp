@@ -49,7 +49,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// While it has been superceded by more recent and more powerful algorithms, its still in use and 
 	/// is viable for preventing casual snooping
 	/// </summary>
-	public abstract class PkzipClassic : SymmetricAlgorithm
+	internal abstract class PkzipClassic : SymmetricAlgorithm
 	{
 		/// <summary>
 		/// Generates new encryption keys based on given seed
@@ -375,7 +375,7 @@ namespace ICSharpCode.SharpZipLib.Encryption
 	/// Defines a wrapper object to access the Pkzip algorithm. 
 	/// This class cannot be inherited.
 	/// </summary>
-	public sealed class PkzipClassicManaged : PkzipClassic
+	internal sealed class PkzipClassicManaged : PkzipClassic
 	{
 		/// <summary>
 		/// Get / set the applicable block size in bits.

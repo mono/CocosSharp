@@ -42,7 +42,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// FastZipEvents supports all events applicable to <see cref="FastZip">FastZip</see> operations.
 	/// </summary>
-	public class FastZipEvents
+	internal class FastZipEvents
 	{
 		/// <summary>
 		/// Delegate to invoke when processing directories.
@@ -185,7 +185,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// FastZip provides facilities for creating and extracting zip files.
 	/// </summary>
-	public class FastZip
+	internal class FastZip
 	{
 		#region Enumerations
 		/// <summary>

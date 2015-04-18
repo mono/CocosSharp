@@ -56,7 +56,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	/// <remarks>
 	/// The buffer supports decryption of incoming data.
 	/// </remarks>
-	public class InflaterInputBuffer
+	internal class InflaterInputBuffer
 	{
 		#region Constructors
 		/// <summary>
@@ -351,7 +351,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	///
 	/// Author of the original java version : John Leuner.
 	/// </summary>
-	public class InflaterInputStream : Stream
+	internal class InflaterInputStream : Stream
 	{
 		#region Constructors
 		/// <summary>
@@ -376,7 +376,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		/// <param name = "inf">
 		/// The decompressor used to decompress data read from baseInputStream
 		/// </param>
-		public InflaterInputStream(Stream baseInputStream, Inflater inf)
+		internal InflaterInputStream(Stream baseInputStream, Inflater inf)
 			: this(baseInputStream, inf, 4096)
 		{
 		}
@@ -394,7 +394,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		/// <param name = "bufferSize">
 		/// Size of the buffer to use
 		/// </param>
-		public InflaterInputStream(Stream baseInputStream, Inflater inflater, int bufferSize)
+		internal InflaterInputStream(Stream baseInputStream, Inflater inflater, int bufferSize)
 		{
 			if (baseInputStream == null) {
 				throw new ArgumentNullException("baseInputStream");
@@ -700,12 +700,12 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 		/// <summary>
 		/// Decompressor for this stream
 		/// </summary>
-		protected Inflater inf;
+		internal Inflater inf;
 
 		/// <summary>
 		/// <see cref="InflaterInputBuffer">Input buffer</see> for this stream.
 		/// </summary>
-		protected InflaterInputBuffer inputBuffer;
+		internal InflaterInputBuffer inputBuffer;
 
 		/// <summary>
 		/// Base stream the inflater reads from.

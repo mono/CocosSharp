@@ -86,7 +86,7 @@ namespace ICSharpCode.SharpZipLib.Checksums
 	/// </summary>
 	/// <see cref="ICSharpCode.SharpZipLib.Zip.Compression.Streams.InflaterInputStream"/>
 	/// <see cref="ICSharpCode.SharpZipLib.Zip.Compression.Streams.DeflaterOutputStream"/>
-	public sealed class Adler32 : IChecksum
+	internal sealed class Adler32 : IChecksum
 	{
 		/// <summary>
 		/// largest prime smaller than 65536

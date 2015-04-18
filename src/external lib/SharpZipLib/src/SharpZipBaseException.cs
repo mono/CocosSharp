@@ -50,7 +50,7 @@ namespace ICSharpCode.SharpZipLib
 #if !NETCF_1_0 && !NETCF_2_0
 	[Serializable]
 #endif
-	public class SharpZipBaseException : ApplicationException
+	internal class SharpZipBaseException : ApplicationException
 	{
 #if !NETCF_1_0 && !NETCF_2_0
 		/// <summary>

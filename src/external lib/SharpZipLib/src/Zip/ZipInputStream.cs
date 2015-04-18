@@ -50,7 +50,6 @@ using ICSharpCode.SharpZipLib.Zip.Compression.Streams;
 #if !NETCF_1_0
 using ICSharpCode.SharpZipLib.Encryption;
 #endif
-
 namespace ICSharpCode.SharpZipLib.Zip
 {
 	/// <summary>
@@ -101,7 +100,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// }
 	/// </code>
 	/// </example>
-	public class ZipInputStream : InflaterInputStream
+	internal class ZipInputStream : InflaterInputStream
 	{
 		#region Instance Fields
 

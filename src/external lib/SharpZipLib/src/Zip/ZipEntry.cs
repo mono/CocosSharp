@@ -52,7 +52,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Defines known values for the <see cref="HostSystemID"/> property.
 	/// </summary>
-	public enum HostSystemID
+	internal enum HostSystemID
 	{
 		/// <summary>
 		/// Host system = MSDOS
@@ -149,7 +149,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <br/>
 	/// <br/>Author of the original java version : Jochen Hoenicke
 	/// </summary>
-	public class ZipEntry : ICloneable
+	internal class ZipEntry : ICloneable
 	{
 		[Flags]
 		enum Known : byte
@@ -821,7 +821,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </returns>
 		/// <see cref="ICSharpCode.SharpZipLib.Zip.CompressionMethod.Deflated"/>
 		/// <see cref="ICSharpCode.SharpZipLib.Zip.CompressionMethod.Stored"/>
-		public CompressionMethod CompressionMethod {
+		internal CompressionMethod CompressionMethod {
 			get {
 				return method;
 			}
@@ -1181,7 +1181,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// </summary>
 		/// <param name="method">The compression method to test.</param>
 		/// <returns>Returns true if the compression method is supported; false otherwise</returns>
-		public static bool IsCompressionMethodSupported(CompressionMethod method)
+		internal static bool IsCompressionMethodSupported(CompressionMethod method)
 		{
 			return
 				( method == CompressionMethod.Deflated ) ||

@@ -57,7 +57,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// <example>The following expression includes all name ending in '.dat' with the exception of 'dummy.dat'
 	/// "+\.dat$;-^dummy\.dat$"
 	/// </example>
-	public class NameFilter : IScanFilter
+	internal class NameFilter : IScanFilter
 	{
 		#region Constructors
 		/// <summary>

@@ -65,7 +65,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Arguments used with KeysRequiredEvent
 	/// </summary>
-	public class KeysRequiredEventArgs : EventArgs
+	internal class KeysRequiredEventArgs : EventArgs
 	{
 		#region Constructors
 		/// <summary>
@@ -119,7 +119,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// The strategy to apply to testing.
 	/// </summary>
-	public enum TestStrategy
+	internal enum TestStrategy
 	{
 		/// <summary>
 		/// Find the first error only.
@@ -135,7 +135,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// The operation in progress reported by a <see cref="ZipTestResultHandler"/> during testing.
 	/// </summary>
 	/// <seealso cref="ZipFile.TestArchive(bool)">TestArchive</seealso>
-	public enum TestOperation
+	internal enum TestOperation
 	{
 		/// <summary>
 		/// Setting up testing.
@@ -172,7 +172,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// Status returned returned by <see cref="ZipTestResultHandler"/> during testing.
 	/// </summary>
 	/// <seealso cref="ZipFile.TestArchive(bool)">TestArchive</seealso>
-	public class TestStatus
+	internal class TestStatus
 	{
 		#region Constructors
 		/// <summary>
@@ -276,14 +276,14 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// </summary>
 	/// <remarks>If the message is non-null an error has occured.  If the message is null
 	/// the operation as found in <see cref="TestStatus">status</see> has started.</remarks>
-	public delegate void ZipTestResultHandler(TestStatus status, string message);
+	internal delegate void ZipTestResultHandler(TestStatus status, string message);
 	#endregion
 	
 	#region Update Definitions
 	/// <summary>
 	/// The possible ways of <see cref="ZipFile.CommitUpdate()">applying updates</see> to an archive.
 	/// </summary>
-	public enum FileUpdateMode
+	internal enum FileUpdateMode
 	{
 		/// <summary>
 		/// Perform all updates on temporary files ensuring that the original file is saved.
@@ -340,7 +340,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// }
 	/// </code>
 	/// </example>
-	public class ZipFile : IEnumerable, IDisposable
+	internal class ZipFile : IEnumerable, IDisposable
 	{
 		#region KeyHandling
 		
@@ -1305,7 +1305,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// Get/set the <see cref="IEntryFactory"/> used to generate <see cref="ZipEntry"/> values
 		/// during updates.
 		/// </summary>
-		public IEntryFactory EntryFactory
+		internal IEntryFactory EntryFactory
 		{
 			get {
 				return updateEntryFactory_;
@@ -1354,7 +1354,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <summary>
 		/// Get / set a value indicating how Zip64 Extension usage is determined when adding entries.
 		/// </summary>
-		public UseZip64 UseZip64
+		internal UseZip64 UseZip64
 		{
 			get { return useZip64_; }
 			set { useZip64_ = value; }
@@ -1567,7 +1567,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <exception cref="ArgumentNullException">Argument supplied is null.</exception>
 		/// <exception cref="ObjectDisposedException">ZipFile has been closed.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">Compression method is not supported.</exception>
-		public void Add(string fileName, CompressionMethod compressionMethod, bool useUnicodeText )
+		internal void Add(string fileName, CompressionMethod compressionMethod, bool useUnicodeText )
 		{
 			if (fileName == null) {
 				throw new ArgumentNullException("fileName");
@@ -1598,7 +1598,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <param name="compressionMethod">The compression method to use.</param>
 		/// <exception cref="ArgumentNullException">ZipFile has been closed.</exception>
 		/// <exception cref="ArgumentOutOfRangeException">The compression method is not supported.</exception>
-		public void Add(string fileName, CompressionMethod compressionMethod)
+		internal void Add(string fileName, CompressionMethod compressionMethod)
 		{
 			if ( fileName == null ) {
 				throw new ArgumentNullException("fileName");
@@ -3957,7 +3957,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Provides a static way to obtain a source of data for an entry.
 	/// </summary>
-	public interface IStaticDataSource
+	internal interface IStaticDataSource
 	{
 		/// <summary>
 		/// Get a source of data by creating a new stream.
@@ -3971,7 +3971,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// Represents a source of data that can dynamically provide
 	/// multiple <see cref="Stream">data sources</see> based on the parameters passed.
 	/// </summary>
-	public interface IDynamicDataSource
+	internal interface IDynamicDataSource
 	{
 		/// <summary>
 		/// Get a data source.
@@ -3986,7 +3986,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Default implementation of a <see cref="IStaticDataSource"/> for use with files stored on disk.
 	/// </summary>
-	public class StaticDiskDataSource : IStaticDataSource
+	internal class StaticDiskDataSource : IStaticDataSource
 	{
 		/// <summary>
 		/// Initialise a new instnace of <see cref="StaticDiskDataSource"/>
@@ -4018,7 +4018,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Default implementation of <see cref="IDynamicDataSource"/> for files stored on disk.
 	/// </summary>
-	public class DynamicDiskDataSource : IDynamicDataSource
+	internal class DynamicDiskDataSource : IDynamicDataSource
 	{
 		/// <summary>
 		/// Initialise a default instance of <see cref="DynamicDiskDataSource"/>.
@@ -4054,7 +4054,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Defines facilities for data storage when updating Zip Archives.
 	/// </summary>
-	public interface IArchiveStorage
+	internal interface IArchiveStorage
 	{
 		/// <summary>
 		/// Get the <see cref="FileUpdateMode"/> to apply during updates.
@@ -4099,7 +4099,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// An abstract <see cref="IArchiveStorage"/> suitable for extension by inheritance.
 	/// </summary>
-	abstract public class BaseArchiveStorage : IArchiveStorage
+	abstract internal class BaseArchiveStorage : IArchiveStorage
 	{
 		#region Constructors
 		/// <summary>
@@ -4169,7 +4169,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// An <see cref="IArchiveStorage"/> implementation suitable for hard disks.
 	/// </summary>
-	public class DiskArchiveStorage : BaseArchiveStorage
+	internal class DiskArchiveStorage : BaseArchiveStorage
 	{
 		#region Constructors
 		/// <summary>
@@ -4363,7 +4363,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// An <see cref="IArchiveStorage"/> implementation suitable for in memory streams.
 	/// </summary>
-	public class MemoryArchiveStorage : BaseArchiveStorage
+	internal class MemoryArchiveStorage : BaseArchiveStorage
 	{
 		#region Constructors
 		/// <summary>

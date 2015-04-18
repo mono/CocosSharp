@@ -50,7 +50,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// 
 	/// author of the original java version : Jochen Hoenicke
 	/// </summary>
-	public class PendingBuffer
+	internal class PendingBuffer
 	{
 		#region Instance Fields
 		/// <summary>

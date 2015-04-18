@@ -38,7 +38,6 @@
 
 using System;
 
-
 namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams 
 {
 	
@@ -48,7 +47,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression.Streams
 	/// to repeat stuff.<br/>
 	/// Author of the original java version : John Leuner
 	/// </summary>
-	public class OutputWindow
+	internal class OutputWindow
 	{
 		#region Constants
 		const int WindowSize = 1 << 15;

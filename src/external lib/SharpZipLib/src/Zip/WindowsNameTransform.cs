@@ -38,13 +38,12 @@ using System.IO;
 using System.Text;
 
 using ICSharpCode.SharpZipLib.Core;
-
 namespace ICSharpCode.SharpZipLib.Zip
 {
 	/// <summary>
 	/// WindowsNameTransform transforms <see cref="ZipFile"/> names to windows compatible ones.
 	/// </summary>
-	public class WindowsNameTransform : INameTransform
+	internal class WindowsNameTransform : INameTransform
 	{
 		/// <summary>
 		/// Initialises a new instance of <see cref="WindowsNameTransform"/>

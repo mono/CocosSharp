@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// 
 	/// author of the original java version : Jochen Hoenicke
 	/// </summary>
-	public class DeflaterPending : PendingBuffer
+	internal class DeflaterPending : PendingBuffer
 	{
 		/// <summary>
 		/// Construct instance with default buffer size

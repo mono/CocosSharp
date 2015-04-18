@@ -52,7 +52,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// 
 	/// author of the original java version : Jochen Hoenicke
 	/// </summary>
-	public class Deflater
+	internal class Deflater
 	{
 		#region Deflater Documentation
 		/*

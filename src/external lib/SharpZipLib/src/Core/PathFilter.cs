@@ -43,7 +43,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// by full path name.
 	/// See <see cref="NameFilter">NameFilter</see> for more detail on filtering.
 	/// </summary>
-	public class PathFilter : IScanFilter
+	internal class PathFilter : IScanFilter
 	{
 		#region Constructors
 		/// <summary>
@@ -84,7 +84,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// ExtendedPathFilter filters based on name, file size, and the last write time of the file.
 	/// </summary>
 	/// <remarks>Provides an example of how to customise filtering.</remarks>
-	public class ExtendedPathFilter : PathFilter
+	internal class ExtendedPathFilter : PathFilter
 	{
 		#region Constructors
 		/// <summary>
@@ -260,7 +260,7 @@ namespace ICSharpCode.SharpZipLib.Core
 	/// </summary>
 	/// <remarks>A sample showing how filters might be extended.</remarks>
 	[Obsolete("Use ExtendedPathFilter instead")]
-	public class NameAndSizeFilter : PathFilter
+	internal class NameAndSizeFilter : PathFilter
 	{
 
 		/// <summary>

@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// ExtraData tagged value interface.
 	/// </summary>
-	public interface ITaggedData
+	internal interface ITaggedData
 	{
 		/// <summary>
 		/// Get the ID for this tagged data value.
@@ -70,7 +70,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// A raw binary tagged value
 	/// </summary>
-	public class RawTaggedData : ITaggedData
+	internal class RawTaggedData : ITaggedData
 	{
 		/// <summary>
 		/// Initialise a new instance.
@@ -143,7 +143,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Class representing extended unix date time values.
 	/// </summary>
-	public class ExtendedUnixData : ITaggedData
+	internal class ExtendedUnixData : ITaggedData
 	{
 		/// <summary>
 		/// Flags indicate which values are included in this instance.
@@ -343,7 +343,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Class handling NT date time values.
 	/// </summary>
-	public class NTTaggedData : ITaggedData
+	internal class NTTaggedData : ITaggedData
 	{
 		/// <summary>
 		/// Get the ID for this tagged data value.
@@ -515,7 +515,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// means that for extra data created by passing in data can have the values modified by the caller
 	/// in some circumstances.
 	/// </remarks>
-	sealed public class ZipExtraData : IDisposable
+	sealed internal class ZipExtraData : IDisposable
 	{
 		#region Constructors
 		/// <summary>

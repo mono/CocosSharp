@@ -64,7 +64,7 @@ namespace ICSharpCode.SharpZipLib.Checksums
 	/// the information needed to generate CRC's on data a byte at a time for all
 	/// combinations of CRC register values and incoming bytes.
 	/// </summary>
-	public sealed class Crc32 : IChecksum
+	internal sealed class Crc32 : IChecksum
 	{
 		const uint CrcSeed = 0xFFFFFFFF;
 		

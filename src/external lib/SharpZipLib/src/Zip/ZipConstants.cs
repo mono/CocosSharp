@@ -47,7 +47,6 @@ using System.Threading;
 #if NETCF_1_0 || NETCF_2_0
 using System.Globalization;
 #endif
-
 namespace ICSharpCode.SharpZipLib.Zip 
 {
 
@@ -56,7 +55,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Determines how entries are tested to see if they should use Zip64 extensions or not.
 	/// </summary>
-	public enum UseZip64
+	internal enum UseZip64
 	{
 		/// <summary>
 		/// Zip64 will not be forced on entries during processing.
@@ -76,7 +75,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// The kind of compression used for an entry in an archive
 	/// </summary>
-	public enum CompressionMethod
+	internal enum CompressionMethod
 	{
 		/// <summary>
 		/// A direct copy of the file contents is held in the archive
@@ -109,7 +108,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Identifies the encryption algorithm used for an entry
 	/// </summary>
-	public enum EncryptionAlgorithm
+	internal enum EncryptionAlgorithm
 	{
 		/// <summary>
 		/// No encryption has been used.
@@ -173,7 +172,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// Defines the contents of the general bit flags field for an archive entry.
 	/// </summary>
 	[Flags]
-	public enum GeneralBitFlags : int
+	internal enum GeneralBitFlags : int
 	{
 		/// <summary>
 		/// Bit 0 if set indicates that the file is encrypted
@@ -248,7 +247,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// This class contains constants used for Zip format files
 	/// </summary>
-	public sealed class ZipConstants
+	internal sealed class ZipConstants
 	{
 		#region Versions
 		/// <summary>
@@ -494,7 +493,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// there are many variable factors, codepage 850 is often a good choice for
 		/// European users, however be careful about compatability.
 		/// </summary>
-		public static int DefaultCodePage {
+		internal static int DefaultCodePage {
 			get {
 				return defaultCodePage; 
 			}
@@ -520,7 +519,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <returns>
 		/// data[0]..data[count - 1] converted to a string
 		/// </returns>
-		public static string ConvertToString(byte[] data, int count)
+		internal static string ConvertToString(byte[] data, int count)
 		{
 			if ( data == null ) {
 				return string.Empty;	
@@ -538,7 +537,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <returns>
 		/// <paramref name="data">data</paramref>converted to a string
 		/// </returns>
-		public static string ConvertToString(byte[] data)
+		internal static string ConvertToString(byte[] data)
 		{
 			if ( data == null ) {
 				return string.Empty;	
@@ -557,7 +556,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <returns>
 		/// <paramref name="data">data</paramref>converted to a string
 		/// </returns>
-		public static string ConvertToStringExt(int flags, byte[] data, int count)
+		internal static string ConvertToStringExt(int flags, byte[] data, int count)
 		{
 			if ( data == null ) {
 				return string.Empty;	
@@ -581,7 +580,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// <returns>
 		/// <paramref name="data">data</paramref>converted to a string
 		/// </returns>
-		public static string ConvertToStringExt(int flags, byte[] data)
+		internal static string ConvertToStringExt(int flags, byte[] data)
 		{
 			if ( data == null ) {
 				return string.Empty;	
@@ -602,7 +601,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// String to convert to an array
 		/// </param>
 		/// <returns>Converted array</returns>
-		public static byte[] ConvertToArray(string str)
+		internal static byte[] ConvertToArray(string str)
 		{
 			if ( str == null ) {
 				return new byte[0];
@@ -619,7 +618,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 		/// String to convert to an array
 		/// </param>
 		/// <returns>Converted array</returns>
-		public static byte[] ConvertToArray(int flags, string str)
+		internal static byte[] ConvertToArray(int flags, string str)
 		{
 			if (str == null) {
 				return new byte[0];

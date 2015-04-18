@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// <summary>
 	/// Huffman tree used for inflation
 	/// </summary>
-	public class InflaterHuffmanTree
+	internal class InflaterHuffmanTree
 	{
 		#region Constants
 		const int MAX_BITLEN = 15;
@@ -190,7 +190,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 		/// <returns>
 		/// the next symbol, or -1 if not enough input is available.
 		/// </returns>
-		public int GetSymbol(StreamManipulator input)
+		internal int GetSymbol(StreamManipulator input)
 		{
 			int lookahead, symbol;
 			if ((lookahead = input.PeekBits(9)) >= 0) {

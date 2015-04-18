@@ -43,7 +43,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Holds data pertinent to a data descriptor.
 	/// </summary>
-	public class DescriptorData
+	internal class DescriptorData
 	{
 		/// <summary>
 		/// Get /set the compressed size of data.

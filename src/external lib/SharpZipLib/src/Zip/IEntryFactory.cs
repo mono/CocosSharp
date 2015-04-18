@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Defines factory methods for creating new <see cref="ZipEntry"></see> values.
 	/// </summary>
-	public interface IEntryFactory
+	internal interface IEntryFactory
 	{
 		/// <summary>
 		/// Create a <see cref="ZipEntry"/> for a file given its name

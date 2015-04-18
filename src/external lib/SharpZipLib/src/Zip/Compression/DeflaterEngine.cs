@@ -47,7 +47,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// <summary>
 	/// Strategies for deflater
 	/// </summary>
-	public enum DeflateStrategy 
+	internal enum DeflateStrategy 
 	{
 		/// <summary>
 		/// The default strategy
@@ -87,7 +87,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// Low level compression engine for deflate algorithm which uses a 32K sliding window
 	/// with secondary compression from Huffman/Shannon-Fano codes.
 	/// </summary>
-	public class DeflaterEngine : DeflaterConstants 
+	internal class DeflaterEngine : DeflaterConstants 
 	{
 		#region Constants
 		const int TooFar = 4096;

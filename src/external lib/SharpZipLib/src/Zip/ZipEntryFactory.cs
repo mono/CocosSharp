@@ -48,7 +48,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// <summary>
 	/// Basic implementation of <see cref="IEntryFactory"></see>
 	/// </summary>
-	public class ZipEntryFactory : IEntryFactory
+	internal class ZipEntryFactory : IEntryFactory
 	{
 		#region Enumerations
 		/// <summary>

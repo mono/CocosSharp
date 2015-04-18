@@ -95,7 +95,7 @@ namespace ICSharpCode.SharpZipLib.Zip
 	/// }	
 	/// </code>
 	/// </example>
-	public class ZipOutputStream : DeflaterOutputStream
+	internal class ZipOutputStream : DeflaterOutputStream
 	{
 		#region Constructors
 		/// <summary>

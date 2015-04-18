@@ -43,7 +43,7 @@ namespace ICSharpCode.SharpZipLib.Checksums
 	/// <summary>
 	/// Bzip2 checksum algorithm
 	/// </summary>
-	public class StrangeCRC : IChecksum
+	internal class StrangeCRC : IChecksum
 	{
 		readonly static uint[] crc32Table = {
 			0x00000000, 0x04c11db7, 0x09823b6e, 0x0d4326d9,

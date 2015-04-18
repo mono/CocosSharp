@@ -45,7 +45,7 @@ namespace ICSharpCode.SharpZipLib.Zip.Compression
 	/// <summary>
 	/// This class contains constants used for deflation.
 	/// </summary>
-	public class DeflaterConstants 
+	internal class DeflaterConstants 
 	{
 		/// <summary>
 		/// Set to true to enable debugging
