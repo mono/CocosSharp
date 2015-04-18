@@ -103,9 +103,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>external lib\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="XamMac" />
   </ItemGroup>
@@ -430,12 +427,136 @@
     <Compile Include="label_nodes\CCFontFNT.cs" />
     <Compile Include="label_nodes\CCFontSpriteFont.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileAnimation.cs" />
+    <Compile Include="external lib\SharpZipLib\src\SharpZipBaseException.cs">
+      <Link>support\zip_support\SharpZipLib\src\SharpZipBaseException.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Checksums\CRC32.cs">
+      <Link>support\zip_support\SharpZipLib\src\Checksums\CRC32.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Checksums\IChecksum.cs">
+      <Link>support\zip_support\SharpZipLib\src\Checksums\IChecksum.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Checksums\StrangeCRC.cs">
+      <Link>support\zip_support\SharpZipLib\src\Checksums\StrangeCRC.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\FileSystemScanner.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\FileSystemScanner.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\INameTransform.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\INameTransform.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\IScanFilter.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\IScanFilter.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\NameFilter.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\NameFilter.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\PathFilter.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\PathFilter.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\StreamUtils.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\StreamUtils.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Core\WindowsPathUtils.cs">
+      <Link>support\zip_support\SharpZipLib\src\Core\WindowsPathUtils.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Encryption\PkzipClassic.cs">
+      <Link>support\zip_support\SharpZipLib\src\Encryption\PkzipClassic.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Encryption\ZipAESStream.cs">
+      <Link>support\zip_support\SharpZipLib\src\Encryption\ZipAESStream.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Encryption\ZipAESTransform.cs">
+      <Link>support\zip_support\SharpZipLib\src\Encryption\ZipAESTransform.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\FastZip.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\FastZip.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\IEntryFactory.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\IEntryFactory.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\WindowsNameTransform.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\WindowsNameTransform.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipConstants.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipConstants.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipEntry.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipEntry.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipEntryFactory.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipEntryFactory.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipException.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipException.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipExtraData.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipExtraData.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipFile.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipFile.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipHelperStream.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipHelperStream.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipInputStream.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipInputStream.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipNameTransform.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipNameTransform.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\ZipOutputStream.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\ZipOutputStream.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Deflater.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Deflater.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\DeflaterConstants.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\DeflaterConstants.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\DeflaterEngine.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\DeflaterEngine.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\DeflaterHuffman.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\DeflaterHuffman.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\DeflaterPending.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\DeflaterPending.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Inflater.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Inflater.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\InflaterDynHeader.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\InflaterDynHeader.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\InflaterHuffmanTree.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\InflaterHuffmanTree.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\PendingBuffer.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\PendingBuffer.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Streams\DeflaterOutputStream.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Streams\DeflaterOutputStream.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Streams\InflaterInputStream.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Streams\InflaterInputStream.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Streams\OutputWindow.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Streams\OutputWindow.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Streams\StreamManipulator.cs">
+      <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Streams\StreamManipulator.cs</Link>
+    </Compile>
+    <Compile Include="external lib\SharpZipLib\src\Checksums\Adler32.cs">
+      <Link>support\zip_support\SharpZipLib\src\Checksums\Adler32.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
     <Folder Include="support\Serialization\" />
     <Folder Include="events\" />
     <Folder Include="physics\" />
+    <Folder Include="support\zip_support\SharpZipLib\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">

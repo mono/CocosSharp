@@ -2085,9 +2085,8 @@ namespace CocosSharp {
         public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void Update(float time) { }
     }
-    public partial class CCLog {
+    public static partial class CCLog {
         public static CocosSharp.CCLog.LogDelegate Logger;
-        public CCLog() { }
         public static void Log(string format, params System.Object[] args) { }
         public delegate void LogDelegate(string value, params System.Object[] args);
     }
