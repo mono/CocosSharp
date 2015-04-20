@@ -287,7 +287,7 @@ namespace CocosSharp
         /** Rotates a point counter clockwise by the angle around a pivot
             @param v is the point to rotate
             @param pivot is the pivot, naturally
-            @param angle is the angle of rotation cw in radians
+            @param angle is the angle of rotation ccw in radians
             @returns the rotated point
             @since v0.99.1
         */
