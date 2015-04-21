@@ -11,7 +11,7 @@ namespace CocosSharp
         public CCBatchCommand(float globalZOrder, CCBlendFunc blendType, CCTextureAtlas texture, CCAffineTransform modelViewTransform, int flags) 
             : base(globalZOrder, modelViewTransform, flags)
         {
-            CommandType = CommandType.BATCH_COMMAND;
+            CommandType = CCRenderCommandType.Batch;
             Texture = texture;
             BlendType = blendType;
         }

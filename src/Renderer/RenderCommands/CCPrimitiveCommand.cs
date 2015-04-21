@@ -22,7 +22,7 @@ namespace CocosSharp
             CCBlendFunc blendType, CCAffineTransform modelViewTransform, int flags = 0)
             : base(globalZOrder, modelViewTransform, flags)
         {
-            CommandType = CommandType.PRIMITIVE_COMMAND;
+            CommandType = CCRenderCommandType.Primitive;
             Primitive = primitive;
             BlendType = blendType;
             Texture = texture;
