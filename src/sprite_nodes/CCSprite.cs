@@ -17,8 +17,6 @@ namespace CocosSharp
 
         CCRect textureRectInPixels;
 
-        CCSpriteBatchNode batchNode;    // Used batch node (weak reference)
-        internal CCTextureAtlas TextureAtlas { get; set; }    // Sprite Sheet texture atlas (weak reference)
         CCTexture2D texture;
         string textureFile;
 
@@ -44,6 +42,7 @@ namespace CocosSharp
 
         protected internal CCV3F_C4B_T2F_Quad Quad { get { return quad; } }
         protected internal CCV3F_C4B_T2F_Quad TransformedQuad { get { return transformedQuad; } } 
+        internal CCTextureAtlas TextureAtlas { get; set; }
 
         public bool IsAntialiased
         {
@@ -292,55 +291,12 @@ namespace CocosSharp
             }
         }
 
-        public CCSpriteBatchNode BatchNode
-        {
-            get { return batchNode; }
-            set
-            {
-                if (value != batchNode) 
-                {
-
-                    batchNode = value;
-
-                    if (value == null) 
-                    {
-                        AtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
-                        TextureAtlas = null;
-
-                        float x1 = 0.0f;
-                        float y1 = 0.0f;
-                        float x2 = x1 + ContentSize.Width;
-                        float y2 = y1 + ContentSize.Height;
-
-                        quad.BottomLeft.Vertices = new CCVertex3F (x1, y1, 0);
-                        quad.BottomRight.Vertices = new CCVertex3F (x2, y1, 0);
-                        quad.TopLeft.Vertices = new CCVertex3F (x1, y2, 0);
-                        quad.TopRight.Vertices = new CCVertex3F (x2, y2, 0);
-                    } 
-                    else 
-                    {
-                        TextureAtlas = batchNode.TextureAtlas;
-
-                        if (Layer != null && batchNode.Layer != Layer) {
-                            batchNode.Layer = Layer;
-                        }
-                    }
-
-                    UpdateSpriteTextureQuads();
-                }
-            }
-        }
-
         public virtual CCTexture2D Texture
         {
             get { return texture; }
             set
             {
-                // If batchnode, then texture id should be the same
-                Debug.Assert(batchNode == null || value.Name == batchNode.Texture.Name,
-                    "CCSprite: Batched sprites should use the same texture as the batchnode");
-
-                if (batchNode == null && texture != value)
+                if (texture != value)
                 {
                     texture = value;
 
@@ -382,10 +338,6 @@ namespace CocosSharp
 
         public CCSprite()
         {  
-            // do not remove this
-            // This sets up the atlas index correctly.  If not set correctly lot of weird sprite artifacts start showing up.
-            BatchNode = null;
-
             IsTextureRectRotated = false;
 
             opacityModifyRGB = true;
@@ -425,10 +377,6 @@ namespace CocosSharp
         // Used externally by non-subclasses
         internal void InitWithTexture(CCTexture2D texture, CCRect? texRectInPixels=null, bool rotated=false)
         {
-            // do not remove this
-            // This sets up the atlas index correctly.  If not set correctly lot of weird sprite artifacts start showing up.
-            BatchNode = null;
-
             IsTextureRectRotated = rotated;
             CCSize texSize = (texture != null) ? texture.ContentSizeInPixels : CCSize.Zero;
 
@@ -495,12 +443,17 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        internal override void VisitRenderer()
+        {
+            // Add command to renderer
+            // WARNING: NOT USING GLOBAL Z
+            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
+            Renderer.AddCommand(new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, quad));
+        }
 
         protected override void Draw()
         {
             base.Draw();
-
-            Debug.Assert(batchNode == null);
 
             CCDrawManager drawManager = DrawManager;
 
@@ -592,9 +545,6 @@ namespace CocosSharp
 
         protected void UpdateBlendFunc()
         {
-            Debug.Assert(batchNode == null,
-                "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
-
             // it's possible to have an untextured sprite
             if (texture == null || !texture.HasPremultipliedAlpha)
             {
@@ -662,7 +612,7 @@ namespace CocosSharp
                 quad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
                 quad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
 
-                CCTexture2D tex = batchNode != null ? TextureAtlas.Texture : texture;
+                CCTexture2D tex = texture;
                 if (tex == null)
                 {
                     return;
@@ -820,35 +770,6 @@ namespace CocosSharp
 
         #region Child management
 
-        public override void AddChild(CCNode child, int zOrder, int tag)
-        {
-            Debug.Assert(child != null, "Argument must be non-NULL");
-
-            if (batchNode != null)
-            {
-                var sprite = child as CCSprite;
-
-                // Adding sprite to batch node breaks scene graph hierarchy
-                // => When adding we make sure child sprite has the same visibility
-                // This is a bit of a hack because visibility is only updated during Add
-                // In the future, we will separate rendering from scene graph allowing us to elimnate
-                // CCSpriteBatchNode so that problems like these don't occur
-                sprite.Visible = Visible;
-
-                Debug.Assert(sprite != null, "CCSprite only supports CCSprites as children when using CCSpriteBatchNode");
-                Debug.Assert(sprite.Texture.Name == TextureAtlas.Texture.Name);
-
-                batchNode.AppendChild(sprite);
-
-                if (!IsReorderChildDirty)
-                {
-                    SetReorderChildDirtyRecursively();
-                }
-            }
-
-            base.AddChild(child, zOrder, tag);
-        }
-
         public override void ReorderChild(CCNode child, int zOrder)
         {
             Debug.Assert(child != null);
@@ -859,38 +780,7 @@ namespace CocosSharp
                 return;
             }
 
-            if (batchNode != null && !IsReorderChildDirty)
-            {
-                SetReorderChildDirtyRecursively();
-                batchNode.ReorderBatch(true);
-            }
-
             base.ReorderChild(child, zOrder);
-        }
-
-        public override void RemoveChild(CCNode child, bool cleanup)
-        {
-            if (batchNode != null)
-            {
-                batchNode.RemoveSpriteFromAtlas((CCSprite)(child));
-            }
-
-            base.RemoveChild(child, cleanup);
-        }
-
-        public override void RemoveAllChildren(bool cleanup)
-        {
-            if (batchNode != null)
-            {
-                CCSpriteBatchNode batch = batchNode;
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    batch.RemoveSpriteFromAtlas((CCSprite)elements[i]);
-                }
-            }
-
-            base.RemoveAllChildren(cleanup);
         }
 
         public override void SortAllChildren()
@@ -902,30 +792,7 @@ namespace CocosSharp
 
                 Array.Sort(elements, 0, count, this);
 
-                if (batchNode != null)
-                {
-                    for (int i = 0; i < count; i++)
-                    {
-                        elements[i].SortAllChildren();
-                    }
-                }
-
                 IsReorderChildDirty = false;
-            }
-        }
-
-        public virtual void SetReorderChildDirtyRecursively()
-        {
-            //only set parents flag the first time
-            if (!IsReorderChildDirty)
-            {
-                IsReorderChildDirty = true;
-                CCNode node = Parent;
-                while (node != null && node != batchNode)
-                {
-                    ((CCSprite)node).SetReorderChildDirtyRecursively();
-                    node = node.Parent;
-                }
             }
         }
 

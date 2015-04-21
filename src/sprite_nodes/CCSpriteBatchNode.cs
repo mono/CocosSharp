@@ -207,7 +207,7 @@ namespace CocosSharp
             CCSprite[] elements = Descendants.Elements;
             for (int i = 0, count = Descendants.Count; i < count; i++)
             {
-                elements[i].BatchNode = null;
+                //elements[i].BatchNode = null;
             }
 
             base.RemoveAllChildren(cleanup);
@@ -256,7 +256,7 @@ namespace CocosSharp
             }
 
             TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
             sprite.AtlasIndex = uIndex;
 
             Descendants.Insert(uIndex, sprite);
@@ -298,7 +298,7 @@ namespace CocosSharp
             int index = Descendants.Count - 1;
 
             sprite.AtlasIndex = index;
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
 
             TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
 
@@ -562,7 +562,7 @@ namespace CocosSharp
             TextureAtlas.RemoveQuadAtIndex(sprite.AtlasIndex);
 
             // Cleanup sprite. It might be reused (issue #569)
-            sprite.BatchNode = null;
+            //sprite.BatchNode = null;
 
             var uIndex = Descendants.IndexOf(sprite);
 
@@ -614,7 +614,7 @@ namespace CocosSharp
             //
             // update the quad directly. Don't add the sprite to the scene graph
             //
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
             TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
@@ -635,7 +635,7 @@ namespace CocosSharp
             //
             // update the quad directly. Don't add the sprite to the scene graph
             //
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
             // UpdateTransform updates the textureAtlas quad

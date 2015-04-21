@@ -2127,6 +2127,7 @@ namespace CocosSharp
         internal virtual void VisitRenderer()
         {
             // Add command to renderer
+            Draw();
         }
 
         internal void Transform(CCDrawManager drawManager)
