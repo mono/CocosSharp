@@ -4,56 +4,72 @@ using System.Collections.Generic;
 namespace CocosSharp
 {
 
-    internal class RenderQueue<TPriority, TItem>
+    internal class CCRenderQueue<TPriority, TItem>
     {
-        readonly SortedList<TPriority, Queue<TItem>> subQueues;
+        readonly SortedList<TPriority, Queue<TItem>> priorityQueues;
 
-        public RenderQueue(IComparer<TPriority> priorityComparer)
+        #region Properties
+
+        public bool HasItems
         {
-            subQueues = new SortedList<TPriority, Queue<TItem>>(priorityComparer);
+            get { return priorityQueues.Count > 0; }
         }
 
-        public RenderQueue() : this(Comparer<TPriority>.Default) { }
+        public int Count
+        {
+            get 
+            { 
+                int count = 0;
+                foreach (var subqs in priorityQueues)
+                    count += subqs.Value.Count;
+                
+                return count;
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCRenderQueue(IComparer<TPriority> priorityComparer)
+        {
+            priorityQueues = new SortedList<TPriority, Queue<TItem>>(priorityComparer);
+        }
+
+        public CCRenderQueue() : this(Comparer<TPriority>.Default) { }
+
+        #endregion Constructors
+
 
         public void Enqueue(TPriority priority, TItem item)
         {
-            if (!subQueues.ContainsKey(priority))
-            {
-                AddQueueOfPriority(priority);
-            }
+            if (!priorityQueues.ContainsKey(priority))
+                priorityQueues.Add(priority, new Queue<TItem>());
 
-            subQueues[priority].Enqueue(item);
-        }
-
-        private void AddQueueOfPriority(TPriority priority)
-        {
-            subQueues.Add(priority, new Queue<TItem>());
+            priorityQueues[priority].Enqueue(item);
         }
 
         public TItem Peek()
         {
             if (HasItems)
-            {
-                return subQueues[subQueues.Keys[0]].Peek();
-            }
+                return priorityQueues[priorityQueues.Keys[0]].Peek();
             else
                 throw new InvalidOperationException("The queue is empty");
         }
 
-        public bool HasItems
-        {
-            get {
-
-                return subQueues.Count > 0;
-            }
-        }
-
-
         public TItem Dequeue(TPriority priority)
         {
-
             if (HasItems)
-                return DequeueFromPriorityQueue();
+            {
+                var queue = priorityQueues[priority];
+                TItem nextItem = queue.Dequeue();
+
+                if (queue.Count == 0)
+                    priorityQueues.Remove(priority);
+                
+                return nextItem;
+            }
             else
                 throw new InvalidOperationException("The queue is empty");
         }
@@ -61,38 +77,9 @@ namespace CocosSharp
         public TItem Dequeue()
         {
             if (HasItems)
-                return DequeueFromPriorityQueue();
+                return Dequeue(priorityQueues.Keys[0]);
             else
                 throw new InvalidOperationException("The queue is empty");
-        }
-
-        private TItem DequeueFromPriorityQueue()
-        {
-
-            var key = subQueues.Keys[0];
-            var first = subQueues[key]; 
-
-            TItem nextItem = first.Dequeue();
-
-            // if our subqueu is empty then we need to remove it
-            if (first.Count == 0)
-            {
-                subQueues.Remove(key);
-            }
-            return nextItem;
-        }
-
-        public int Count
-        {
-
-            get { 
-                int count = 0;
-                foreach (var subqs in subQueues)
-                {
-                    count += subqs.Value.Count;
-                }
-                return count;
-            }
         }
     }
 

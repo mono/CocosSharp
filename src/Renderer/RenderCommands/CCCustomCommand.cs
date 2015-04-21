@@ -6,10 +6,9 @@ namespace CocosSharp
     public class CCCustomCommand : CCRenderCommand
     {
         public Action Action { get; set; }
-        public CCCustomCommand(float globalZOrder, CCAffineTransform modelViewTransform, int flags = 0) 
-            : base(globalZOrder, modelViewTransform, flags)
+        public CCCustomCommand(float globalZOrder, CCAffineTransform worldTransform) 
+            : base(globalZOrder, worldTransform)
         {
-            CommandType = CommandType.CUSTOM_COMMAND;
         }
 
         public CCCustomCommand(float globalZOrder) 

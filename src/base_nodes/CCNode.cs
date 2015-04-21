@@ -849,6 +849,11 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
+        internal CCRenderer Renderer
+        {
+            get { return Window != null ? Window.Renderer : null; }
+        }
+
         internal virtual Matrix XnaLocalMatrix 
         { 
             get { return xnaLocalMatrix; }
@@ -2092,8 +2097,8 @@ namespace CocosSharp
                     }
                 }
 
-                // self draw
-                Draw();
+                VisitRenderer();
+
                 // draw the children
                 for (; i < count; ++i)
                 {
@@ -2106,8 +2111,7 @@ namespace CocosSharp
             }
             else
             {
-                // self draw
-                Draw();
+                VisitRenderer();
             }
 
             if (Grid != null && Grid.Active)
@@ -2118,6 +2122,11 @@ namespace CocosSharp
             }
 
             drawManager.PopMatrix();
+        }
+
+        internal virtual void VisitRenderer()
+        {
+            // Add command to renderer
         }
 
         internal void Transform(CCDrawManager drawManager)

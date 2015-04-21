@@ -430,12 +430,18 @@
     <Compile Include="label_nodes\CCFontFNT.cs" />
     <Compile Include="label_nodes\CCFontSpriteFont.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileAnimation.cs" />
+    <Compile Include="Renderer\CCRenderer.cs" />
+    <Compile Include="Renderer\CCRenderQueue.cs" />
+    <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
     <Folder Include="support\Serialization\" />
     <Folder Include="events\" />
     <Folder Include="physics\" />
+    <Folder Include="Renderer\" />
+    <Folder Include="Renderer\RenderCommands\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
