@@ -550,6 +550,16 @@
     <Compile Include="external lib\SharpZipLib\src\Checksums\Adler32.cs">
       <Link>support\zip_support\SharpZipLib\src\Checksums\Adler32.cs</Link>
     </Compile>
+    <Compile Include="Renderer\CCBatchCommand.cs" />
+    <Compile Include="Renderer\CCCustomCommand.cs" />
+    <Compile Include="Renderer\CCGroupCommand.cs" />
+    <Compile Include="Renderer\CCPrimitive.cs" />
+    <Compile Include="Renderer\CCPrimitiveCommand.cs" />
+    <Compile Include="Renderer\CCQuadCommand.cs" />
+    <Compile Include="Renderer\CCRenderCommand.cs" />
+    <Compile Include="Renderer\CCRenderQueue.cs" />
+    <Compile Include="Renderer\CCRenderQueueId.cs" />
+    <Compile Include="Renderer\CCRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
@@ -557,6 +567,7 @@
     <Folder Include="events\" />
     <Folder Include="physics\" />
     <Folder Include="support\zip_support\SharpZipLib\" />
+    <Folder Include="Renderer\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
