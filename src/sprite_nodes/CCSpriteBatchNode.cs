@@ -255,8 +255,8 @@ namespace CocosSharp
                 IncreaseAtlasCapacity();
             }
 
-            TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
-            //sprite.BatchNode = this;
+            //TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
+            ///sprite.BatchNode = this;
             sprite.AtlasIndex = uIndex;
 
             Descendants.Insert(uIndex, sprite);
@@ -300,7 +300,7 @@ namespace CocosSharp
             sprite.AtlasIndex = index;
             //sprite.BatchNode = this;
 
-            TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
+            //TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
 
             // add children recursively
             CCRawList<CCNode> children = sprite.Children;
@@ -617,11 +617,11 @@ namespace CocosSharp
             //sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
-            TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
+            //TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
 
             // XXX: updateTransform will update the textureAtlas too using updateQuad.
             // XXX: so, it should be AFTER the insertQuad
-            sprite.UpdateTransformedSpriteTextureQuads();
+            //sprite.UpdateTransformedSpriteTextureQuads();
         }
 
         protected void UpdateQuadFromSprite(CCSprite sprite, int index)
@@ -639,7 +639,7 @@ namespace CocosSharp
             sprite.AtlasIndex = index;
 
             // UpdateTransform updates the textureAtlas quad
-            sprite.UpdateTransformedSpriteTextureQuads();
+            //sprite.UpdateTransformedSpriteTextureQuads();
         }
 
         protected CCSpriteBatchNode AddSpriteWithoutQuad(CCSprite child, int z, int aTag)
