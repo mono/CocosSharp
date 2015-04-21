@@ -1430,7 +1430,8 @@ namespace CocosSharp
             if (textSprite != null)
                 DrawTextSprite();
             else
-                Draw();
+                //Draw();
+                VisitRenderer();
 
             Window.DrawManager.PopMatrix();
         }
@@ -1440,6 +1441,29 @@ namespace CocosSharp
             textSprite.Visit();
         }
 
+        internal override void VisitRenderer()
+        {
+
+            // Optimization: Fast Dispatch  
+            if (TextureAtlas == null || TextureAtlas.TotalQuads == 0)
+            {
+                return;
+            }
+
+            // Loop through each of our children nodes that may have actions attached.
+            foreach(CCSprite child in Children)
+            {
+                if (child.Tag >= 0)
+                {
+                    child.UpdateLocalTransformedSpriteTextureQuads();
+                }
+            }
+
+            // Add command to renderer
+            // WARNING: NOT USING GLOBAL Z
+            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
+            Renderer.AddCommand(new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, TextureAtlas.Quads.Elements));
+        }
 
         protected override void Draw()
         {
