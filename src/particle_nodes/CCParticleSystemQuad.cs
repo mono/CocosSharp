@@ -161,6 +161,15 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        internal override void VisitRenderer()
+        {
+            // Add command to renderer
+            // WARNING: NOT USING GLOBAL Z
+            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
+            var quadsCommand = new CCQuadCommand(GlobalZOrder, AffineWorldTransform, Texture, BlendFunc, ParticleCount, quads.Elements);
+            Renderer.AddCommand(quadsCommand);
+
+        }
 
         protected override void Draw()
         {

@@ -554,6 +554,8 @@
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\CCRenderQueue.cs" />
+    <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCBatchCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />

@@ -88,7 +88,8 @@ namespace CocosSharp
 
             Transform();
 
-            Draw();
+            //Draw();
+            VisitRenderer();
 
             if (Grid != null && Grid.Active)
             {
@@ -96,6 +97,21 @@ namespace CocosSharp
             }
 
             Window.DrawManager.PopMatrix();
+        }
+
+        internal override void VisitRenderer()
+        {
+
+            if (TextureAtlas.TotalQuads == 0)
+            {
+                return;
+            }
+
+            // Add command to renderer
+            // WARNING: NOT USING GLOBAL Z
+            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
+            var batchCommand = new CCBatchCommand(VertexZ, BlendFunc, TextureAtlas);
+            Renderer.AddCommand(batchCommand);        
         }
 
         protected override void Draw()

@@ -11,14 +11,15 @@ namespace CocosSharp
         {
             None = 0x0,
             Quad = 0x1,
-            Custom = 0x2
+            Custom = 0x2,
+            Batch  = 0x4,
         }
 
         CCCommandType currentCommandType;
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
         List<CCQuadCommand> quadCommands;
         CCRenderQueue<long, CCRenderCommand> renderQueue;
-        CCDrawManager drawManager;
+        internal CCDrawManager DrawManager { get; set; }
 
 
         #region Constructors
@@ -28,7 +29,7 @@ namespace CocosSharp
             currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>();
             quadCommands = new List<CCQuadCommand>();
             renderQueue = new CCRenderQueue<long, CCRenderCommand>();
-            drawManager = drawManagerIn;
+            DrawManager = drawManagerIn;
         }
 
         #endregion Constructors
@@ -104,7 +105,7 @@ namespace CocosSharp
                 {
                     if (numOfQuads > 0)
                     {
-                        drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
+                        DrawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
                         startIndex += numOfQuads;
                         numOfQuads = 0;
@@ -113,13 +114,13 @@ namespace CocosSharp
                     lastMaterialId = command.MaterialId;
                 }
 
-                command.UseMaterial(drawManager);
+                command.UseMaterial(DrawManager);
                 numOfQuads += command.Quads.Length;
             }
 
             // Draw any remaining quads
             if (numOfQuads > 0)
-                drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
+                DrawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
             quadCommands.Clear();
             currentBatchedQuads.Clear();

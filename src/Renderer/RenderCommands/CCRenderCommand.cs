@@ -9,6 +9,7 @@ namespace CocosSharp
         protected internal long RenderId { get; protected set; }
         internal float GlobalDepth { get; private set; }
         internal CCAffineTransform WorldTransform { get; private set; }
+        internal CCRenderer.CCCommandType CommandType { get; set; }
 
         #endregion Properties
 

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCCustomCommand : CCRenderCommand
+    internal class CCCustomCommand : CCRenderCommand
     {
         public Action Action { get; set; }
         public CCCustomCommand(float globalZOrder, CCAffineTransform worldTransform) 
             : base(globalZOrder, worldTransform)
         {
+            CommandType = CCRenderer.CCCommandType.Custom;
         }
 
         public CCCustomCommand(float globalZOrder) 
@@ -17,13 +18,15 @@ namespace CocosSharp
 
         }
 
-        internal override void Execute(CCDrawManager drawManager)
+        internal override void RequestRenderCommand(CCRenderer renderer)
         {
             if (Action != null)
             {
                 Action();
             }
+
         }
+
     }
 }
 

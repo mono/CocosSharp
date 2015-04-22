@@ -9,6 +9,7 @@ namespace CocosSharp
         internal CCTexture2D Texture { get; private set; }
         internal CCBlendFunc BlendType { get; private set; }
         internal CCV3F_C4B_T2F_Quad[] Quads { get; private set; }
+        internal int QuadCount { get; private set; }
         internal uint MaterialId { get; private set; }
 
         #endregion Properties
@@ -19,9 +20,16 @@ namespace CocosSharp
         public CCQuadCommand(float globalDepth, CCAffineTransform worldTransform, 
             CCTexture2D texture, CCBlendFunc blendType, 
             params CCV3F_C4B_T2F_Quad[] quads) 
+            : this(globalDepth, worldTransform, texture, blendType, quads.Length, quads)
+        {  }
+
+        public CCQuadCommand(float globalDepth, CCAffineTransform worldTransform, 
+            CCTexture2D texture, CCBlendFunc blendType, int quadCount,
+            params CCV3F_C4B_T2F_Quad[] quads) 
             : base(globalDepth, worldTransform)
         {
             Quads = quads;
+            QuadCount = quadCount;
             Texture = texture;
             BlendType = blendType;
 
