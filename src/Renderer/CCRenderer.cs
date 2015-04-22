@@ -3,6 +3,24 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
+
+    internal class RenderQueuePriority : IComparer<long>
+    {
+
+        public int Compare(long first, long other)
+        {
+            var depth1 = first >> 24;
+            var depth2 = other >> 24;
+
+            if (depth1 < depth2)
+                return 1;
+            else if (depth1 > depth2)
+                return -1;
+            else return 0;
+               
+        }
+    }
+
     // Implementation based off of discussion "Implementing a Render Queue for Games" http://ploobs.com.br/?p=2378 
     internal class CCRenderer
     {      
@@ -28,12 +46,11 @@ namespace CocosSharp
         {
             currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>();
             quadCommands = new List<CCQuadCommand>();
-            renderQueue = new CCRenderQueue<long, CCRenderCommand>();
+            renderQueue = new CCRenderQueue<long, CCRenderCommand>(new RenderQueuePriority());
             DrawManager = drawManagerIn;
         }
 
         #endregion Constructors
-
 
         public void AddCommand(CCRenderCommand command)
         {

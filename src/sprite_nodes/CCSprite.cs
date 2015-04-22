@@ -446,7 +446,7 @@ namespace CocosSharp
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            Renderer.AddCommand(new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, quad));
+            Renderer.AddCommand(new CCQuadCommand(ZOrder, AffineWorldTransform, Texture, BlendFunc, quad));
         }
 
         protected override void Draw()

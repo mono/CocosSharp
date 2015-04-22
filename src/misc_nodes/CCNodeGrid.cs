@@ -122,8 +122,6 @@ namespace CocosSharp
             if (Grid != null && Grid.Active)
             {
                 OnGridEndDraw();
-                //drawManager.SetIdentityMatrix();
-                //Grid.Blit();
             }
 
             drawManager.PopMatrix();
