@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-
     internal class RenderQueuePriority : IComparer<long>
     {
 
         public int Compare(long first, long other)
         {
+            // 2D - We could probably always return 0 here because our children should already be sorted.
+            // but just to make sure if something changes later
+            // When we implement 3D we will need to take other factores into account.
             var depth1 = first >> 24;
             var depth2 = other >> 24;
 

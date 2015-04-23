@@ -707,7 +707,7 @@ namespace CocosSharp
                 || lineVertices.Count > 0 
                 || (spriteFont != null && stringData != null && stringData.Count > 0))
             {
-                var customCommandOnDraw = new CCCustomCommand(ZOrder, AffineWorldTransform);
+                var customCommandOnDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
                 bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
                 //customCommandOnDraw.DebugInfo = "CCDrawNode OnDraw + " + renderTarget;
                 //renderTarget = false;
@@ -740,21 +740,21 @@ namespace CocosSharp
 
             if (triangleVertices.Count > 0)
             {
-                var customCommandTriangles = new CCCustomCommand(ZOrder, AffineWorldTransform);
+                var customCommandTriangles = new CCCustomCommand(VertexZ, AffineWorldTransform);
                 customCommandTriangles.Action = FlushTriangles;
                 AddCustomCommandOnDraw(customCommandTriangles);
             }
 
             if (lineVertices.Count > 0)
             {
-                var customCommandLines = new CCCustomCommand(ZOrder, AffineWorldTransform);
+                var customCommandLines = new CCCustomCommand(VertexZ, AffineWorldTransform);
                 customCommandLines.Action = FlushLines;
                 AddCustomCommandOnDraw(customCommandLines);
             }
 
             if (spriteFont != null && stringData != null && stringData.Count > 0)
             {
-                var customCommandStrings = new CCCustomCommand(ZOrder, AffineWorldTransform);
+                var customCommandStrings = new CCCustomCommand(VertexZ, AffineWorldTransform);
                 customCommandStrings.Action = DrawStrings;
                 AddCustomCommandOnDraw(customCommandStrings);
             }
@@ -768,7 +768,7 @@ namespace CocosSharp
                 if (!renderTarget)
                 {
 
-                    var customCommandOnEndDraw = new CCCustomCommand(ZOrder, AffineWorldTransform);
+                    var customCommandOnEndDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
 
                     //customCommandOnEndDraw.DebugInfo = "CCDrawNode OnEndDraw + " + renderTarget;
 

@@ -110,7 +110,7 @@ namespace CocosSharp
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            var batchCommand = new CCBatchCommand(ZOrder, BlendFunc, TextureAtlas);
+            var batchCommand = new CCBatchCommand(VertexZ, BlendFunc, TextureAtlas);
             Renderer.AddCommand(batchCommand);        
         }
 

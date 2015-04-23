@@ -166,7 +166,7 @@ namespace CocosSharp
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            var quadsCommand = new CCQuadCommand(ZOrder, AffineWorldTransform, Texture, BlendFunc, ParticleCount, quads.Elements);
+            var quadsCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, ParticleCount, quads.Elements);
             Renderer.AddCommand(quadsCommand);
 
         }
