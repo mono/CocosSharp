@@ -555,6 +555,8 @@
     <Compile Include="Renderer\CCRenderQueue.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="particle_nodes\CCParticleBatchNode.cs" />
+    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
+    <Compile Include="Renderer\CCPrimitive.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />

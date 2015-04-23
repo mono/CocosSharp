@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
@@ -32,7 +33,7 @@ namespace CocosSharp
             None = 0x0,
             Quad = 0x1,
             Custom = 0x2,
-            Batch  = 0x4,
+            Primitive = 0x4,
         }
 
         CCCommandType currentCommandType;
@@ -96,6 +97,20 @@ namespace CocosSharp
                 Flush();
 
             currentCommandType = CCCommandType.Quad;
+        }
+
+        internal void ProcessPrimitiveRenderCommand <T, T2> (CCPrimitiveCommand <T, T2> primitiveCommand)
+            where T : struct, IVertexType
+            where T2 : struct
+           
+        {
+            var worldTransform = primitiveCommand.WorldTransform;
+
+            primitiveCommand.UseMaterial(drawManager);
+            primitiveCommand.Primitive.Draw (drawManager);
+
+            currentCommandType = CCCommandType.Primitive;
+
         }
 
         #endregion Processing render commands

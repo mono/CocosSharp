@@ -13,35 +13,31 @@ namespace CocosSharp
         public CCBlendFunc BlendType { get; set; }
         public CCPrimitive<T, T2> Primitive { get; set; }
 
-        public CCPrimitiveCommand (float globalZOrder, CCPrimitive<T,T2> primitive, 
-            CCBlendFunc blendType, CCAffineTransform modelViewTransform, int flags = 0)
-            : this (globalZOrder, null, primitive, blendType, modelViewTransform, flags)
+        public CCPrimitiveCommand (float globalDepth, CCAffineTransform worldTransform, CCPrimitive<T,T2> primitive, 
+            CCBlendFunc blendType)
+            : this (globalDepth, worldTransform, null, primitive, blendType)
         {        }
 
-        public CCPrimitiveCommand (float globalZOrder, CCTexture2D texture, CCPrimitive<T,T2> primitive, 
-            CCBlendFunc blendType, CCAffineTransform modelViewTransform, int flags = 0)
-            : base(globalZOrder, modelViewTransform, flags)
+        public CCPrimitiveCommand (float globalDepth, CCAffineTransform worldTransform, CCTexture2D texture, CCPrimitive<T,T2> primitive, 
+            CCBlendFunc blendType)
+            : base(globalDepth, worldTransform)
         {
-            CommandType = CCRenderCommandType.Primitive;
             Primitive = primitive;
             BlendType = blendType;
             Texture = texture;
         }
 
-        internal override void Execute(CCDrawManager drawManager)
+        internal override void RequestRenderCommand(CCRenderer renderer)
         {
-            // Set Texture
-            drawManager.BindTexture(Texture);
-
-            // Set blend mode
-            drawManager.BlendFunc(BlendType);
-
-            // Draw the Primitives
-            Primitive.Draw(drawManager);
-
-            drawManager.DrawCount++;  // Drawn batches
-            //drawManager.DrawVerticesCount = Primitive.Count; // Drawn Vertices in this batch
+            renderer.ProcessPrimitiveRenderCommand (this);
         }
+
+        internal void UseMaterial(CCDrawManager drawManager)
+        {
+            drawManager.BlendFunc(BlendType);
+            drawManager.BindTexture(Texture);
+        }
+
     }
 }
 
