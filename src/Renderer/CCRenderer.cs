@@ -124,6 +124,9 @@ namespace CocosSharp
             var quadElements = currentBatchedQuads.Elements;
             uint lastMaterialId = 0;
 
+            drawManager.PushMatrix();
+            drawManager.SetIdentityMatrix();
+
             foreach (CCQuadCommand command in quadCommands)
             {
                 var newMaterialID = command.MaterialId;
@@ -150,6 +153,8 @@ namespace CocosSharp
 
             quadCommands.Clear();
             currentBatchedQuads.Clear();
+
+            drawManager.PopMatrix();
         }
     }
 }
