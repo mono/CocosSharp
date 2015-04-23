@@ -9,7 +9,6 @@ namespace CocosSharp
         public CCCustomCommand(float globalZOrder, CCAffineTransform worldTransform) 
             : base(globalZOrder, worldTransform)
         {
-            CommandType = CCRenderer.CCCommandType.Custom;
         }
 
         public CCCustomCommand(float globalZOrder) 

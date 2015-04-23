@@ -9,7 +9,6 @@ namespace CocosSharp
         public CCGroupCommand(float globalZOrder, bool begin = true )
             : base (globalZOrder)
         {
-            CommandType = CCRenderCommandType.Group;
             Begin = begin;
         }
 

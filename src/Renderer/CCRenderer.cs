@@ -39,7 +39,7 @@ namespace CocosSharp
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
         List<CCQuadCommand> quadCommands;
         CCRenderQueue<long, CCRenderCommand> renderQueue;
-        internal CCDrawManager DrawManager { get; set; }
+        CCDrawManager drawManager;
 
 
         #region Constructors
@@ -49,7 +49,7 @@ namespace CocosSharp
             currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>();
             quadCommands = new List<CCQuadCommand>();
             renderQueue = new CCRenderQueue<long, CCRenderCommand>(new RenderQueuePriority());
-            DrawManager = drawManagerIn;
+            drawManager = drawManagerIn;
         }
 
         #endregion Constructors
@@ -91,6 +91,13 @@ namespace CocosSharp
             currentCommandType = CCCommandType.Quad;
         }
 
+        internal void ProcessBatchRenderCommand(CCBatchCommand batchCommand)
+        {
+            batchCommand.RenderBatch(drawManager);
+
+            currentCommandType = CCCommandType.Batch;
+        }
+
         #endregion Processing render commands
 
 
@@ -124,7 +131,7 @@ namespace CocosSharp
                 {
                     if (numOfQuads > 0)
                     {
-                        DrawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
+                        drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
                         startIndex += numOfQuads;
                         numOfQuads = 0;
@@ -133,13 +140,13 @@ namespace CocosSharp
                     lastMaterialId = command.MaterialId;
                 }
 
-                command.UseMaterial(DrawManager);
+                command.UseMaterial(drawManager);
                 numOfQuads += command.Quads.Length;
             }
 
             // Draw any remaining quads
             if (numOfQuads > 0)
-                DrawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
+                drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
             quadCommands.Clear();
             currentBatchedQuads.Clear();

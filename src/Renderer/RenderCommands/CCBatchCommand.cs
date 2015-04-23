@@ -5,27 +5,36 @@ namespace CocosSharp
 
     internal class CCBatchCommand : CCRenderCommand
     {
-        CCTextureAtlas Texture { get; set; }
-        public CCBlendFunc BlendType { get; set; }
+        #region Properties
 
-        public CCBatchCommand(float globalZOrder, CCBlendFunc blendType, CCTextureAtlas texture, CCAffineTransform modelViewTransform) 
-            : base(globalZOrder, modelViewTransform)
+        internal CCTextureAtlas TextureAtlas { get; private set; }
+        internal CCBlendFunc BlendType { get; private set; }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCBatchCommand(float globalZOrder, CCAffineTransform worldTransform, CCBlendFunc blendType, CCTextureAtlas textureAtlas) 
+            : base(globalZOrder, worldTransform)
         {
-            CommandType = CCRenderer.CCCommandType.Batch;
-            Texture = texture;
+            TextureAtlas = textureAtlas;
             BlendType = blendType;
         }
 
-        public CCBatchCommand(float globalZOrder, CCBlendFunc blendType, CCTextureAtlas texture) 
-            : this(globalZOrder, blendType, texture, CCAffineTransform.Identity)
-        {  }
+        #endregion Constructors
+
+
+        internal void RenderBatch(CCDrawManager drawManager)
+        {
+            drawManager.BindTexture(TextureAtlas.Texture);
+            drawManager.BlendFunc(BlendType);
+            TextureAtlas.DrawQuads();
+        }
 
         internal override void RequestRenderCommand(CCRenderer renderer)
         {
-            var drawManager = renderer.DrawManager;
-            drawManager.BindTexture(Texture.Texture);
-            drawManager.BlendFunc(BlendType);
-            Texture.DrawQuads();
+            renderer.ProcessBatchRenderCommand(this);
         }
     }
 }
