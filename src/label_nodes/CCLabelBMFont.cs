@@ -39,6 +39,7 @@ namespace CocosSharp
         // Instance properties
 
         public CCTextureAtlas TextureAtlas { get ; private set; }
+        public CCBlendFunc BlendFunc { get; set; }
 
         protected int LineHeight { get; set; }
 
