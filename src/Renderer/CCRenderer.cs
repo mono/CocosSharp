@@ -81,21 +81,15 @@ namespace CocosSharp
 
             quadCommands.Add(quadCommand);
 
-            foreach(var quad in quadCommand.Quads)
-                currentBatchedQuads.Add(worldTransform.Transform(quad));
+            var quads = quadCommand.Quads;
+            for(int i = 0, N = quadCommand.QuadCount; i < N; ++i)
+                currentBatchedQuads.Add(worldTransform.Transform(quads[i]));
 
             // We've changed command types so render previous sequence of commands
             if((currentCommandType | CCCommandType.Quad) == CCCommandType.None)
                 Flush();
 
             currentCommandType = CCCommandType.Quad;
-        }
-
-        internal void ProcessBatchRenderCommand(CCBatchCommand batchCommand)
-        {
-            batchCommand.RenderBatch(drawManager);
-
-            currentCommandType = CCCommandType.Batch;
         }
 
         #endregion Processing render commands
@@ -144,7 +138,7 @@ namespace CocosSharp
                 }
 
                 command.UseMaterial(drawManager);
-                numOfQuads += command.Quads.Length;
+                numOfQuads += command.QuadCount;
             }
 
             // Draw any remaining quads
