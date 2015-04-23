@@ -6,7 +6,7 @@ using System.Text;
 namespace CocosSharp
 {
     [Obsolete("Use CCLabel instead.")]
-    public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer
+    public class CCLabelBMFont : CCNode, ICCTextContainer
     {
         public const int AutomaticWidth = -1;
 
@@ -37,6 +37,8 @@ namespace CocosSharp
 
 
         // Instance properties
+
+        public CCTextureAtlas TextureAtlas { get ; private set; }
 
         protected int LineHeight { get; set; }
 
@@ -207,7 +209,7 @@ namespace CocosSharp
 
                     FontConfiguration = newConf;
 
-                    Texture = CCTextureCache.SharedTextureCache.AddImage(FontConfiguration.AtlasName);
+                    TextureAtlas.Texture = CCTextureCache.SharedTextureCache.AddImage(FontConfiguration.AtlasName);
 
                     IsDirty = true;
                 }
@@ -342,7 +344,7 @@ namespace CocosSharp
                 theString = String.Empty;
             }
 
-            base.InitCCSpriteBatchNode(texture, theString.Length);
+            TextureAtlas = new CCTextureAtlas(texture, theString.Length);
 
             this.labelDimensions = dimensions;
 
