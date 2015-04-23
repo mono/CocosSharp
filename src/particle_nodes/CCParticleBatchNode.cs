@@ -209,7 +209,7 @@ namespace CocosSharp
 
             InsertChild(pChild, atlasIndex, tag);
 
-            pChild.BatchNode = this;
+            //pChild.BatchNode = this;
         }
 
         // don't use lazy sorting, reordering the particle systems quads afterwards would be too complex
@@ -426,7 +426,7 @@ namespace CocosSharp
             TextureAtlas.FillWithEmptyQuadsFromIndex(TextureAtlas.TotalQuads, pChild.TotalParticles);
 
             // particle could be reused for self rendering
-            pChild.BatchNode = null;
+            //pChild.BatchNode = null;
 
             // Need to remove child from list of children before we update atlas indices
             base.RemoveChild(pChild, cleanup);
@@ -443,7 +443,7 @@ namespace CocosSharp
         {
             for (int i = 0; i < Children.Count; i++)
             {
-                ((CCParticleSystem) Children.Elements[i]).BatchNode = null;
+                //((CCParticleSystem) Children.Elements[i]).BatchNode = null;
             }
 
             base.RemoveAllChildren(doCleanup);

@@ -25,26 +25,10 @@ namespace CocosSharp
                     if (EmitterMode == CCEmitterMode.Gravity) 
                     {
                         GravityParticles = new CCParticleGravity[value];
-
-                        if(BatchNode != null)
-                        {
-                            for (int i = 0; i < value; i++)
-                            {
-                                GravityParticles[i].AtlasIndex = i;
-                            }
-                        }
                     } 
                     else 
                     {
                         RadialParticles = new CCParticleRadial[value];
-
-                        if(BatchNode != null)
-                        {
-                            for (int i = 0; i < value; i++)
-                            {
-                                RadialParticles[i].AtlasIndex = i;
-                            }
-                        }
                     }
 
                     if (Quads == null) 
@@ -87,36 +71,6 @@ namespace CocosSharp
         public CCRect TextureRect
         {
             set { ResetTexCoords(value); }
-        }
-
-        public override CCParticleBatchNode BatchNode
-        {
-            set
-            {
-                if (BatchNode != value)
-                {
-                    CCParticleBatchNode oldBatch = BatchNode;
-
-                    base.BatchNode = value;
-
-                    if (value == null)
-                    {
-                        Debug.Assert (BatchNode == null, "Memory should not be alloced when not using batchNode");
-                        Debug.Assert ((quads == null), "Memory already alloced");
-
-                        Quads = new CCRawList<CCV3F_C4B_T2F_Quad> (TotalParticles);
-                        Texture = oldBatch.Texture;
-                    }
-
-                    else if (oldBatch == null)
-                    {
-                        var batchQuads = BatchNode.TextureAtlas.Quads.Elements;
-                        BatchNode.TextureAtlas.Dirty = true;
-                        Array.Copy(quads.Elements, 0, batchQuads, AtlasIndex, TotalParticles);
-                        Quads = null;
-                    }
-                }
-            }
         }
 
         CCRawList<CCV3F_C4B_T2F_Quad> Quads
@@ -163,6 +117,9 @@ namespace CocosSharp
 
         internal override void VisitRenderer()
         {
+            if(ParticleCount == 0)
+                return;
+
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
@@ -173,8 +130,6 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            Debug.Assert(BatchNode == null, "draw should not be called when added to a particleBatchNode");
-
             Window.DrawManager.BindTexture(Texture);
             Window.DrawManager.BlendFunc(BlendFunc);
             Window.DrawManager.DrawQuads(quads, 0, ParticleCount);
@@ -216,19 +171,10 @@ namespace CocosSharp
 
             CCV3F_C4B_T2F_Quad[] rawQuads;
             int start, end;
-            if (BatchNode != null)
-            {
-                rawQuads = BatchNode.TextureAtlas.Quads.Elements;
-                BatchNode.TextureAtlas.Dirty = true;
-                start = AtlasIndex;
-                end = AtlasIndex + TotalParticles;
-            }
-            else
-            {
-                rawQuads = Quads.Elements;
-                start = 0;
-                end = TotalParticles;
-            }
+
+            rawQuads = Quads.Elements;
+            start = 0;
+            end = TotalParticles;
 
             for (int i = start; i < end; i++)
             {
@@ -255,14 +201,6 @@ namespace CocosSharp
             else
             {
                 newPosition = particle.Position;
-            }
-
-            // translate newPos to correct position, since matrix transform isn't performed in batchnode
-            // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
-            if(BatchNode != null)
-            {
-                newPosition.X += Position.X;
-                newPosition.Y += Position.Y;
             }
 
             CCColor4B color = new CCColor4B();
@@ -366,16 +304,7 @@ namespace CocosSharp
                 currentPosition = Position;
             }
 
-            CCV3F_C4B_T2F_Quad[] rawQuads;
-            if (BatchNode != null)
-            {
-                rawQuads = BatchNode.TextureAtlas.Quads.Elements;
-                BatchNode.TextureAtlas.Dirty = true;
-            }
-            else
-            {
-                rawQuads = Quads.Elements;
-            }
+            CCV3F_C4B_T2F_Quad[] rawQuads = Quads.Elements;
 
             if (EmitterMode == CCEmitterMode.Gravity) 
             {
@@ -390,38 +319,20 @@ namespace CocosSharp
         void UpdateGravityParticleQuads(CCV3F_C4B_T2F_Quad[] rawQuads)
         {
             var count = ParticleCount;
-            if (BatchNode != null)
+
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    UpdateQuad(ref rawQuads[AtlasIndex + GravityParticles[i].AtlasIndex], ref GravityParticles[i].ParticleBase);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    UpdateQuad(ref rawQuads[i], ref GravityParticles[i].ParticleBase);
-                }
+                UpdateQuad(ref rawQuads[i], ref GravityParticles[i].ParticleBase);
             }
         }
 
         void UpdateRadialParticleQuads(CCV3F_C4B_T2F_Quad[] rawQuads)
         {
             var count = ParticleCount;
-            if (BatchNode != null)
+
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < count; i++)
-                {
-                    UpdateQuad(ref rawQuads[AtlasIndex + RadialParticles[i].AtlasIndex], ref RadialParticles[i].ParticleBase);
-                }
-            }
-            else
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    UpdateQuad(ref rawQuads[i], ref RadialParticles[i].ParticleBase);
-                }
+                UpdateQuad(ref rawQuads[i], ref RadialParticles[i].ParticleBase);
             }
         }
 

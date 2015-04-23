@@ -1628,7 +1628,7 @@ namespace tests
 
         void SwitchRender(float dt)
         {
-            bool usingBatch = (Emitter.BatchNode != null);
+            bool usingBatch = false; //(Emitter.BatchNode != null);
             Emitter.RemoveFromParent(false);
 
             CCNode newParent = (usingBatch ? parent2 : parent1);
