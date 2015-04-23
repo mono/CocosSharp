@@ -110,8 +110,8 @@ namespace CocosSharp
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            var batchCommand = new CCBatchCommand(VertexZ, AffineWorldTransform, BlendFunc, TextureAtlas);
-            Renderer.AddCommand(batchCommand);        
+            var quadCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, TextureAtlas.Texture, BlendFunc, TextureAtlas.Quads.Elements);
+            Renderer.AddCommand(quadCommand);        
         }
 
         protected override void Draw()
