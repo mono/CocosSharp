@@ -78,12 +78,18 @@ namespace CocosSharp
         internal void ProcessQuadRenderCommand(CCQuadCommand quadCommand)
         {
             var worldTransform = quadCommand.WorldTransform;
+            var identity = worldTransform == CCAffineTransform.Identity;
 
             quadCommands.Add(quadCommand);
 
             var quads = quadCommand.Quads;
-            for(int i = 0, N = quadCommand.QuadCount; i < N; ++i)
-                currentBatchedQuads.Add(worldTransform.Transform(quads[i]));
+            for (int i = 0, N = quadCommand.QuadCount; i < N; ++i)
+            {
+                if (identity)
+                    currentBatchedQuads.Add(quads[i]);
+                else
+                    currentBatchedQuads.Add(worldTransform.Transform(quads[i]));
+            }
 
             // We've changed command types so render previous sequence of commands
             if((currentCommandType | CCCommandType.Quad) == CCCommandType.None)
