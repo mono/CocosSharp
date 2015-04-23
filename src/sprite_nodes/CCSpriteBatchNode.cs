@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    [Obsolete("This class is now obsolete and has been made redundant by CCRenderer.")]
     public class CCSpriteBatchNode : CCNode, ICCTexture
     {
         const int defaultSpriteBatchCapacity = 29;
@@ -396,21 +397,21 @@ namespace CocosSharp
 
         void Swap(int oldIndex, int newIndex)
         {
-            CCSprite[] sprites = Descendants.Elements;
-            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.Quads;
-
-            TextureAtlas.Dirty = true;
-
-            CCSprite tempItem = sprites[oldIndex];
-            CCV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
-
-            //update the index of other swapped item
-            sprites[newIndex].AtlasIndex = oldIndex;
-
-            sprites[oldIndex] = sprites[newIndex];
-            quads[oldIndex] = quads[newIndex];
-            sprites[newIndex] = tempItem;
-            quads[newIndex] = tempItemQuad;
+//            CCSprite[] sprites = Descendants.Elements;
+//            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.Quads;
+//
+//            TextureAtlas.Dirty = true;
+//
+//            CCSprite tempItem = sprites[oldIndex];
+//            CCV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
+//
+//            //update the index of other swapped item
+//            sprites[newIndex].AtlasIndex = oldIndex;
+//
+//            sprites[oldIndex] = sprites[newIndex];
+//            quads[oldIndex] = quads[newIndex];
+//            sprites[newIndex] = tempItem;
+//            quads[newIndex] = tempItemQuad;
         }
 
         public void ReorderBatch(bool reorder)
