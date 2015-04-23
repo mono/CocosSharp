@@ -529,6 +529,11 @@
     <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Streams\StreamManipulator.cs">
       <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Streams\StreamManipulator.cs</Link>
     </Compile>
+    <Compile Include="Renderer\CCRenderQueue.cs" />
+    <Compile Include="Renderer\CCRenderer.cs" />
+    <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
@@ -554,5 +559,6 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="support\zip_support\SharpZipLib\" />
+    <Folder Include="Renderer\" />
   </ItemGroup>
 </Project>
