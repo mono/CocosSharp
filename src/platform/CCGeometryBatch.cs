@@ -274,11 +274,27 @@ namespace CocosSharp
             
         }
 
+        Matrix savedRenderingStateProjection;
+        Matrix savedRenderingStateView;
+        Matrix savedRenderingStateWorld;
+
+        void SaveBatchState()
+        {
+
+            // We need to save these state values off so that we can use them later in the RenderBatch method
+            // The state of these values may have changed between the time we entered the command and the 
+            // renderer gets around to calling us back.
+            savedRenderingStateProjection = DrawManager.ProjectionMatrix;
+            savedRenderingStateView = DrawManager.ViewMatrix;
+            savedRenderingStateWorld = DrawManager.WorldMatrix;
+        }
+
         // Submit the batch to the driver, typically implemented
         // with a call to DrawIndexedPrimitive 
         //
         public virtual void Draw()
         {  
+            SaveBatchState();
             DrawManager.Renderer.AddCommand(renderGeometryBatch);
         }
 
@@ -295,10 +311,10 @@ namespace CocosSharp
                 basicEffect.TextureEnabled = true;
 
             device.BlendState = instance.BlendState;
-            basicEffect.Projection = DrawManager.ProjectionMatrix;
-            basicEffect.View = DrawManager.ViewMatrix;
+            basicEffect.Projection = savedRenderingStateProjection;
+            basicEffect.View = savedRenderingStateView;
             //basicEffect.World = DrawManager.WorldMatrix;
-            basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, DrawManager.WorldMatrix) ;
+            basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, savedRenderingStateWorld) ;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
