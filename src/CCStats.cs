@@ -192,9 +192,9 @@ namespace CocosSharp
 				}
 			}
 
-			Scale = 1;
-
 			isInitialized = true;
+
+			Scale = 1;
 		}
 
 
