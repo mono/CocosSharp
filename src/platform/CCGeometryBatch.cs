@@ -37,6 +37,8 @@ namespace CocosSharp
         bool hasBegun;
         bool isDisposed;
 
+        CCCustomCommand renderGeometryBatch;
+
         public bool AutoClearInstances { get; set; }
 
         #region Properties
@@ -69,6 +71,8 @@ namespace CocosSharp
             basicEffect.TextureEnabled = true;
 
             AutoClearInstances = true;
+
+            renderGeometryBatch = new CCCustomCommand(0) { Action = RenderBatch };
         }
 
         public CCGeometryBatch(int bufferSize=DefaultBufferSize)
@@ -206,10 +210,8 @@ namespace CocosSharp
 
         }
 
-        // Submit the batch to the driver, typically implemented
-        // with a call to DrawIndexedPrimitive 
-        //
-        public virtual void Draw()
+        // This will be called from the Renderer
+        void RenderBatch ()
         {
             if (batchItemList.Count == 0) return;
 
@@ -239,8 +241,8 @@ namespace CocosSharp
 
                 // if the texture changed, we need to flush and bind the new texture
                 var shouldFlush = (geometryPacket.Texture != null && !ReferenceEquals(geometryPacket.Texture.XNATexture, lastTexture))
-                                  || lastAttributes != geometry.InstanceAttributes
-                                  || numberOfVertices + geometryNumberOfVertices > short.MaxValue;
+                    || lastAttributes != geometry.InstanceAttributes
+                    || numberOfVertices + geometryNumberOfVertices > short.MaxValue;
 
 
                 if (shouldFlush)
@@ -269,7 +271,15 @@ namespace CocosSharp
 
             if (AutoClearInstances)
                 ClearInstances();
+            
+        }
 
+        // Submit the batch to the driver, typically implemented
+        // with a call to DrawIndexedPrimitive 
+        //
+        public virtual void Draw()
+        {  
+            DrawManager.Renderer.AddCommand(renderGeometryBatch);
         }
 
         private void FlushVertexArray(CCGeometryInstanceAttributes instance, int numberOfVerticies, int numberOfIndices)

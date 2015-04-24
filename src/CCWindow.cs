@@ -326,6 +326,8 @@ namespace CocosSharp
             {
                 CCScene runningScene = director.RunningScene;
 
+                DrawManager.Renderer = Renderer;
+
                 // draw the scene
                 if (runningScene != null) 
                 {

@@ -111,6 +111,7 @@ namespace CocosSharp
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }
+        internal CCRenderer Renderer { get; set; }
 
         public bool VertexColorEnabled
         {
