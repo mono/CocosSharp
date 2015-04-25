@@ -126,8 +126,8 @@ namespace CocosSharp
                 throw new InvalidOperationException("End must be called before Begin can be called again.");
             }
 
-            //tell our basic effect to begin.
-            UpdateMatrix();
+            // Call the update function
+            Update ();
 
             // flip the error checking boolean. It's now ok to call AddVertex, Flush,
             // and End.
@@ -203,7 +203,8 @@ namespace CocosSharp
         //
         public virtual void Update()
         {
-
+            //tell our basic effect to begin by setting up the matrices.
+            UpdateMatrix();
         }
 
         // This will be called from the Renderer
