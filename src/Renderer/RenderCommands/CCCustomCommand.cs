@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -32,7 +33,9 @@ namespace CocosSharp
         internal void RenderCustomCommand(CCDrawManager drawManager)
         {
             drawManager.PushMatrix();
-            drawManager.WorldMatrix = WorldTransform.XnaMatrix;
+            drawManager.SetIdentityMatrix();
+            var worldTrans = WorldTransform.XnaMatrix;
+            drawManager.MultMatrix(ref worldTrans);
 
             Action();
 

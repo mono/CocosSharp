@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
@@ -92,9 +93,9 @@ namespace CocosSharp
                     currentBatchedQuads.Add(worldTransform.Transform(quads[i]));
             }
 
-            // We've changing command types so render any pending sequence of commandss
+            // We're changing command types so render any pending sequence of commandss
             // e.g. Batched quad commands
-            if((currentCommandType | CCCommandType.Quad) == CCCommandType.None)
+            if((currentCommandType & CCCommandType.Quad) == CCCommandType.None)
                 Flush();
 
             currentCommandType = CCCommandType.Quad;
@@ -107,9 +108,9 @@ namespace CocosSharp
         {
             var worldTransform = primitiveCommand.WorldTransform;
 
-            // We've changing command types so render any pending sequence of commands
+            // We're changing command types so render any pending sequence of commands
             // e.g. Batched quad commands
-            if((currentCommandType | CCCommandType.Primitive) == CCCommandType.None)
+            if((currentCommandType & CCCommandType.Primitive) == CCCommandType.None)
                 Flush();
 
             primitiveCommand.RenderPrimitive(drawManager);
@@ -120,9 +121,9 @@ namespace CocosSharp
 
         internal void ProcessCustomRenderCommand(CCCustomCommand customCommand)
         {
-            // We've changing command types so render any pending sequence of commands
+            // We're changing command types so render any pending sequence of commands
             // e.g. Batched quad commands
-            if((currentCommandType | CCCommandType.Custom) == CCCommandType.None)
+            if((currentCommandType & CCCommandType.Custom) == CCCommandType.None)
                 Flush();
 
             customCommand.RenderCustomCommand(drawManager);
