@@ -106,8 +106,12 @@ namespace CocosSharp
         {
             var worldTransform = primitiveCommand.WorldTransform;
 
-            primitiveCommand.UseMaterial(drawManager);
-            primitiveCommand.Primitive.Draw (drawManager);
+            // We've changing command types so render and pending sequence of commands
+            // e.g. Batched quad commands
+            if((currentCommandType | CCCommandType.Primitive) == CCCommandType.None)
+                Flush();
+
+            primitiveCommand.RenderPrimitive(drawManager);
 
             currentCommandType = CCCommandType.Primitive;
 
