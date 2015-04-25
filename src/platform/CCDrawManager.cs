@@ -111,7 +111,7 @@ namespace CocosSharp
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }
-        internal CCRenderer Renderer { get; set; }
+        internal CCRenderer Renderer { get; private set; }
 
         public bool VertexColorEnabled
         {
@@ -285,6 +285,8 @@ namespace CocosSharp
         internal CCDrawManager(GraphicsDeviceManager deviceManager, CCSize proposedScreenSize, 
             CCDisplayOrientation supportedOrientations)
         {
+            Renderer = new CCRenderer(this);
+
             graphicsDeviceMgr = deviceManager;
 
             depthTest = true;
