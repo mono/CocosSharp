@@ -92,7 +92,7 @@ namespace CocosSharp
                     currentBatchedQuads.Add(worldTransform.Transform(quads[i]));
             }
 
-            // We've changing command types so render and pending sequence of commandss
+            // We've changing command types so render any pending sequence of commandss
             // e.g. Batched quad commands
             if((currentCommandType | CCCommandType.Quad) == CCCommandType.None)
                 Flush();
@@ -107,7 +107,7 @@ namespace CocosSharp
         {
             var worldTransform = primitiveCommand.WorldTransform;
 
-            // We've changing command types so render and pending sequence of commands
+            // We've changing command types so render any pending sequence of commands
             // e.g. Batched quad commands
             if((currentCommandType | CCCommandType.Primitive) == CCCommandType.None)
                 Flush();
@@ -120,7 +120,7 @@ namespace CocosSharp
 
         internal void ProcessCustomRenderCommand(CCCustomCommand customCommand)
         {
-            // We've changing command types so render and pending sequence of commands
+            // We've changing command types so render any pending sequence of commands
             // e.g. Batched quad commands
             if((currentCommandType | CCCommandType.Custom) == CCCommandType.None)
                 Flush();
