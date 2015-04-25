@@ -125,7 +125,7 @@ namespace CocosSharp
             if((currentCommandType | CCCommandType.Custom) == CCCommandType.None)
                 Flush();
 
-            customCommand.RenderCustomCommand();
+            customCommand.RenderCustomCommand(drawManager);
 
             currentCommandType = CCCommandType.Custom;
         }

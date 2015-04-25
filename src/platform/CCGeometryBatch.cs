@@ -37,8 +37,6 @@ namespace CocosSharp
         bool hasBegun;
         bool isDisposed;
 
-        CCCustomCommand renderGeometryBatch;
-
         public bool AutoClearInstances { get; set; }
 
         #region Properties
@@ -71,8 +69,6 @@ namespace CocosSharp
             basicEffect.TextureEnabled = true;
 
             AutoClearInstances = true;
-
-            renderGeometryBatch = new CCCustomCommand(0) { Action = RenderBatch };
         }
 
         public CCGeometryBatch(int bufferSize=DefaultBufferSize)
@@ -274,28 +270,13 @@ namespace CocosSharp
             
         }
 
-        Matrix savedRenderingStateProjection;
-        Matrix savedRenderingStateView;
-        Matrix savedRenderingStateWorld;
-
-        void SaveBatchState()
-        {
-
-            // We need to save these state values off so that we can use them later in the RenderBatch method
-            // The state of these values may have changed between the time we entered the command and the 
-            // renderer gets around to calling us back.
-            savedRenderingStateProjection = DrawManager.ProjectionMatrix;
-            savedRenderingStateView = DrawManager.ViewMatrix;
-            savedRenderingStateWorld = DrawManager.WorldMatrix;
-        }
-
         // Submit the batch to the driver, typically implemented
         // with a call to DrawIndexedPrimitive 
         //
         public virtual void Draw()
         {  
-            SaveBatchState();
-            DrawManager.Renderer.AddCommand(renderGeometryBatch);
+            DrawManager.Renderer.AddCommand(
+                new CCCustomCommand(0, new CCAffineTransform(DrawManager.WorldMatrix), RenderBatch));
         }
 
         private void FlushVertexArray(CCGeometryInstanceAttributes instance, int numberOfVerticies, int numberOfIndices)
@@ -311,10 +292,9 @@ namespace CocosSharp
                 basicEffect.TextureEnabled = true;
 
             device.BlendState = instance.BlendState;
-            basicEffect.Projection = savedRenderingStateProjection;
-            basicEffect.View = savedRenderingStateView;
-            //basicEffect.World = DrawManager.WorldMatrix;
-            basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, savedRenderingStateWorld) ;
+            basicEffect.Projection = DrawManager.ProjectionMatrix;
+            basicEffect.View = DrawManager.ViewMatrix;
+            basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, DrawManager.WorldMatrix);
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
