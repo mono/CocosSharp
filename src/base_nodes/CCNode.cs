@@ -675,7 +675,8 @@ namespace CocosSharp
                 CCNode parent = this.Parent;
                 if (parent != null) 
                 {
-                    worldTransform = CCAffineTransform.Concat(AffineLocalTransform, parent.AffineWorldTransform);
+                    var parentTransform = parent.AffineWorldTransform;
+                    CCAffineTransform.Concat(ref worldTransform, ref parentTransform, out worldTransform);
                 }
 
                 return worldTransform;
@@ -2617,6 +2618,7 @@ namespace CocosSharp
             affineLocalTransform.D = cx * scaleY;
             affineLocalTransform.Tx = x;
             affineLocalTransform.Ty = y;
+            affineLocalTransform.Tz = VertexZ;
 
             // XXX: Try to inline skew
             // If skew is needed, apply skew and then anchor point
@@ -2627,7 +2629,7 @@ namespace CocosSharp
                     (float) Math.Tan(CCMacros.CCDegreesToRadians(skewX)), 1.0f,
                     0.0f, 0.0f);
 
-                affineLocalTransform = CCAffineTransform.Concat(skewMatrix, affineLocalTransform);
+                CCAffineTransform.Concat(ref skewMatrix, ref affineLocalTransform, out affineLocalTransform);
 
                 // adjust anchor point
                 if (!anchorPointInPoints.Equals(CCPoint.Zero))
@@ -2638,9 +2640,8 @@ namespace CocosSharp
                 }
             }
 
-            affineLocalTransform = CCAffineTransform.Concat(additionalTransform, affineLocalTransform);
+            CCAffineTransform.Concat(ref additionalTransform, ref affineLocalTransform, out affineLocalTransform);
 
-            // The affine transform is only 2d, so we need to manually incorporate the vertexZ translation
             XnaLocalMatrix = affineLocalTransform.XnaMatrix;
             xnaLocalMatrix.M43 = VertexZ;
 
@@ -2693,7 +2694,8 @@ namespace CocosSharp
             XnaLocalMatrix = matrix12;
             //XnaLocalMatrix = fauxLocalCameraTransform * xnaLocalMatrix;
 
-            affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
+            var affineCameraTrans = new CCAffineTransform(fauxLocalCameraTransform);
+            CCAffineTransform.Concat(ref affineCameraTrans, ref affineLocalTransform, out affineLocalTransform);
 
             if (Children != null)
             {
