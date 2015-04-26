@@ -336,15 +336,19 @@ namespace CocosSharp
             nodeToTileCoordsTransformOdd = tileCoordsToNodeTransformOdd.Inverse;
         }
 
-        protected override void Draw()
+        internal override void VisitRenderer()
+        {
+            DrawManager.Renderer.AddCommand(
+                new CCCustomCommand(0, new CCAffineTransform(DrawManager.WorldMatrix), RenderTileMapLayer));
+        }
+
+        void RenderTileMapLayer()
         {
             if (visibleTileRangeDirty)
                 UpdateVisibleTileRange();
 
             if (tileAnimationsDirty)
                 UpdateTileAnimations();
-
-            base.Draw();
 
             CCDrawManager drawManager = Window.DrawManager;
 
