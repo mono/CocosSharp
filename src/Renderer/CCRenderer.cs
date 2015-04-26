@@ -10,18 +10,11 @@ namespace CocosSharp
 
         public int Compare(long first, long other)
         {
-            // 2D - We could probably always return 0 here because our children should already be sorted.
-            // but just to make sure if something changes later
-            // When we implement 3D we will need to take other factores into account.
-            var depth1 = first >> 24;
-            var depth2 = other >> 24;
-
-            if (depth1 < depth2)
+            if (first < other)
                 return 1;
-            else if (depth1 > depth2)
+            else if (first > other)
                 return -1;
             else return 0;
-               
         }
     }
 
@@ -37,6 +30,7 @@ namespace CocosSharp
             Primitive = 0x4,
         }
 
+        byte currentGroupId;
         CCCommandType currentCommandType;
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
         List<CCQuadCommand> quadCommands;
@@ -58,12 +52,24 @@ namespace CocosSharp
 
         public void AddCommand(CCRenderCommand command)
         {
+            command.Group = currentGroupId;
             renderQueue.Enqueue(command.RenderId, command);
+        }
+
+        public void PushGroup()
+        {
+            currentGroupId += 1;
+        }
+
+        public void PopGroup()
+        {
+            currentGroupId -= 1;
         }
 
         internal void VisitRenderQueue()
         {
             currentCommandType = CCCommandType.None;
+            currentGroupId = 0;
 
             while (renderQueue.HasItems)
             {

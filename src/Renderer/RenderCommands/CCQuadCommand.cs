@@ -41,17 +41,20 @@ namespace CocosSharp
             MaterialId = (uint)textureId << 12 | (uint)BlendType.GetHashCode();
 
             System.Diagnostics.Debug.Assert(MaterialId != 0, "Material Id not set");
-
-            // 64 - 57 : Group id (byte)
-            // 56 - 25 : Global depth (float)
-            // 24 - 1 : Material id (24 bit)
-
-            RenderId = RenderId
-                | (long)MaterialId;
         }
 
         #endregion Constructors
 
+        protected override void GenerateId(ref long renderId)
+        {
+            // 64 - 57 : Group id (byte)
+            // 56 - 25 : Global depth (float)
+            // 24 - 1 : Material id (24 bit)
+            base.GenerateId(ref renderId);
+
+            renderId = renderId
+                | (long)MaterialId;
+        }
 
         internal override void RequestRenderCommand(CCRenderer renderer)
         {
