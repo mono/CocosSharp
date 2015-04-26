@@ -43,7 +43,10 @@ namespace CocosSharp
                 drawManager.DrawBuffer(VertexBuffer, IndexBuffer, 0, IndexBuffer.Count / 3);
             }
             else
-                drawManager.DrawPrimitives(PrimitiveType, VertexBuffer.Data.Elements, 0, VertexBuffer.Count);
+            {
+                var primitiveCount = (PrimitiveType == PrimitiveType.TriangleList) ? 3 : 2;
+                drawManager.DrawPrimitives(PrimitiveType, VertexBuffer.Data.Elements, 0, VertexBuffer.Count / primitiveCount);
+            }
 
         }
     }

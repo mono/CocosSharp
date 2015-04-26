@@ -42,9 +42,17 @@ namespace CocosSharp
 
         public void RenderPrimitive(CCDrawManager drawManager)
         {
+            drawManager.PushMatrix();
+            drawManager.SetIdentityMatrix();
+            var worldTrans = WorldTransform.XnaMatrix;
+            drawManager.MultMatrix(ref worldTrans);
+
             drawManager.BlendFunc(BlendType);
             drawManager.BindTexture(Texture);
+
             Primitive.Draw(drawManager);
+
+            drawManager.PopMatrix();
         }
     }
 }
