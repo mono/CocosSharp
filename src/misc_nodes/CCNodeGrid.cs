@@ -64,7 +64,9 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                OnGridBeginDraw();
+                Renderer.PushGroup();
+                CCCustomCommand command = new CCCustomCommand(long.MinValue, AffineWorldTransform, OnGridBeginDraw);
+                Renderer.AddCommand(command);
                 Transform(drawManager);
             }
             else
@@ -102,7 +104,7 @@ namespace CocosSharp
                 }
 
                 // self draw
-                Draw();
+                VisitRenderer();
                 // draw the children
                 for (; i < count; ++i)
                 {
@@ -116,12 +118,14 @@ namespace CocosSharp
             else
             {
                 // self draw
-                Draw();
+                VisitRenderer();
             }
 
             if (Grid != null && Grid.Active)
             {
-                OnGridEndDraw();
+                CCCustomCommand command = new CCCustomCommand(long.MaxValue, AffineWorldTransform, OnGridEndDraw);
+                Renderer.AddCommand(command);
+                Renderer.PopGroup();
             }
 
             drawManager.PopMatrix();

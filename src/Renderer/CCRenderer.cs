@@ -10,11 +10,24 @@ namespace CocosSharp
 
         public int Compare(long first, long other)
         {
-            if (first < other)
-                return 1;
-            else if (first > other)
-                return -1;
-            else return 0;
+            // 64 - 57 : Group id (byte)
+            // 56 - 25 : Global depth (float)
+            // 24 - 1 : Material id (24 bit)
+
+            var group1 = first & ((long)(byte.MaxValue) << 56);
+            var group2 = other & ((long)(byte.MaxValue) << 56);
+
+            int compareValue = group1.CompareTo(group2);
+
+            if(compareValue == 0)
+            {
+                var depth1 = first >> 24;
+                var depth2 = other >> 24;
+
+                compareValue = depth1.CompareTo(depth2);
+            }
+
+            return compareValue;
         }
     }
 
