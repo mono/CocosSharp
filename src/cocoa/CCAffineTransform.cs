@@ -279,9 +279,9 @@ namespace CocosSharp
 
         public void Transform(ref CCV3F_C4B quadPoint)
         {
-            var x = 0.0f;
-            var y = 0.0f;
-            Transform(quadPoint.Vertices.X, quadPoint.Vertices.Y, out x, out y);
+            var x = quadPoint.Vertices.X;
+            var y = quadPoint.Vertices.Y;
+            Transform(ref x, ref y);
             quadPoint.Vertices.X = x;
             quadPoint.Vertices.Y = y;
         }
