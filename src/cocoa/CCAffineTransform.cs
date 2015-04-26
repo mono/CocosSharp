@@ -282,6 +282,15 @@ namespace CocosSharp
             quadPoint.Vertices.Y = y;
         }
 
+        public void Transform(ref CCV3F_C4B quadPoint)
+        {
+            var x = 0.0f;
+            var y = 0.0f;
+            Transform(quadPoint.Vertices.X, quadPoint.Vertices.Y, out x, out y);
+            quadPoint.Vertices.X = x;
+            quadPoint.Vertices.Y = y;
+        }
+
         public CCV3F_C4B_T2F_Quad Transform(CCV3F_C4B_T2F_Quad quad)
         {
             Transform(ref quad.TopLeft);
