@@ -26,9 +26,21 @@ namespace CocosSharp
 		#endregion Constructors
 
 
+        protected CCNodeGrid GridNode(CCNode target)
+        {
+            var gridNodeTarget = target as CCNodeGrid;
+            if (gridNodeTarget == null)
+            {
+                CCLog.Log("Grid Actions can only target CCNodeGrids.");
+                return null;
+            }
+
+            return gridNodeTarget;
+        }
+
 		protected internal override CCActionState StartAction(CCNode target)
 		{
-			return new CCGridActionState (this, target);
+            return new CCGridActionState (this, GridNode(target));
 		}
 
 		public override CCFiniteTimeAction Reverse ()
@@ -49,25 +61,12 @@ namespace CocosSharp
 			protected set { } 
 		}
 
-        public CCGridActionState (CCGridAction action, CCNodeGrid target) : this (action, (CCNode)target)
-        {
-        }
-
-        [Obsolete("Grid Actions should only target CCNodeGrids.")]
-		public CCGridActionState (CCGridAction action, CCNode target) : base (action, target)
+        public CCGridActionState (CCGridAction action, CCNodeGrid target) : base (action, target)
 		{
 			GridSize = action.GridSize;
 
-            var gridNodeTarget = Target as CCNodeGrid;
-            if (gridNodeTarget == null)
-                CCLog.Log("Obsolete -- Grid Actions should only target CCNodeGrids.");
 
-            CCGridBase targetGrid;
-
-            if (gridNodeTarget != null)
-                targetGrid = gridNodeTarget.Grid;
-            else
-			    targetGrid = Target.Grid;
+            CCGridBase targetGrid = target.Grid;
 
 			if (targetGrid != null && targetGrid.ReuseGrid > 0)
 			{
@@ -90,15 +89,10 @@ namespace CocosSharp
 				}
 
 				CCGridBase newgrid = Grid;
-                if (gridNodeTarget != null)
+                if (target != null)
                 {
-                    gridNodeTarget.Grid = newgrid;
-                    gridNodeTarget.Grid.Active = true;
-                }
-                else
-                {
-                    Target.Grid = newgrid;
-                    Target.Grid.Active = true;
+                    target.Grid = newgrid;
+                    target.Grid.Active = true;
                 }
 			}
 		}

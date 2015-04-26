@@ -699,23 +699,6 @@ namespace CocosSharp
         {
             get { return GetChildByTag(tag); }
         }
-
-        public CCGridBase Grid 
-        { 
-            get { return grid; }
-            set 
-            {
-                if (grid != null)
-                    grid.Dispose ();
-                
-                grid = value;
-                if(value != null) 
-                {
-                    grid.Scene = Scene;
-                    grid.Layer = Layer;
-                }
-            }
-        }
             
         public virtual CCScene Scene
         {
@@ -2061,15 +2044,7 @@ namespace CocosSharp
 
             drawManager.PushMatrix();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                Transform (drawManager);
-            }
-            else
-            {
-                Transform(drawManager);
-            }
+            Transform(drawManager);
 
             int i = 0;
 
@@ -2112,13 +2087,6 @@ namespace CocosSharp
             else
             {
                 VisitRenderer();
-            }
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-                drawManager.SetIdentityMatrix();
-                Grid.Blit();
             }
 
             drawManager.PopMatrix();

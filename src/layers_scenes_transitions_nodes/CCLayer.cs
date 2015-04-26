@@ -290,12 +290,6 @@ namespace CocosSharp
 
             Window.DrawManager.PushMatrix();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                TransformAncestors();
-            }
-
             Window.DrawManager.SetIdentityMatrix();
 
             BeforeDraw();
@@ -337,11 +331,6 @@ namespace CocosSharp
             }
 
             AfterDraw();
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-            }
 
             Window.DrawManager.PopMatrix();
         }

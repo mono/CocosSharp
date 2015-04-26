@@ -45,7 +45,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCSplitColsState (this, target);
+            return new CCSplitColsState (this, GridNode(target));
         }
     }
 
@@ -59,7 +59,7 @@ namespace CocosSharp
         // We only need the height
         private float height = 0;
 
-        public CCSplitColsState (CCSplitCols action, CCNode target) : base (action, target)
+        public CCSplitColsState (CCSplitCols action, CCNodeGrid target) : base (action, target)
         {
             VisibleSize = Target.VisibleBoundsWorldspace.Size;
             height = VisibleSize.Height;

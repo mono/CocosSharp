@@ -80,21 +80,10 @@ namespace CocosSharp
 
             Window.DrawManager.PushMatrix();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                TransformAncestors();
-            }
-
             Transform();
 
             //Draw();
             VisitRenderer();
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-            }
 
             Window.DrawManager.PopMatrix();
         }

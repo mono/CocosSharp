@@ -47,7 +47,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCTurnOffTilesState (this, target);
+            return new CCTurnOffTilesState (this, GridNode(target));
         }
     }
 
@@ -62,7 +62,7 @@ namespace CocosSharp
 
         CCQuad3 zero;
 
-        public CCTurnOffTilesState (CCTurnOffTiles action, CCNode target) : base (action, target)
+        public CCTurnOffTilesState (CCTurnOffTiles action, CCNodeGrid target) : base (action, target)
         {
             int i;
 
