@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,14 +9,7 @@ namespace CocosSharp
 	public class CCPrimitiveBatch : IDisposable
     {
 		const int DefaultBufferSize = 500;
-
-        // a basic effect, which contains the shaders that we will use to draw our
-        // primitives.
-        readonly BasicEffect basicEffect;
-
-        // the device that we will issue draw calls to.
-        readonly GraphicsDevice device;
-
+  
         readonly CCV3F_C4B[] lineVertices;
         readonly CCV3F_C4B[] triangleVertices;
 
@@ -26,6 +20,9 @@ namespace CocosSharp
 
         int lineVertsCount;
         int triangleVertsCount;
+
+        List<CCV3F_C4B[]> triangleVerts;
+        List<CCV3F_C4B[]> lineVerts;
 
         #region Properties
 
@@ -44,14 +41,13 @@ namespace CocosSharp
             {
                 throw new ArgumentNullException("graphicsDevice");
             }
-            device = drawManager.XnaGraphicsDevice;
-
+  
             triangleVertices = new CCV3F_C4B[bufferSize - bufferSize % 3];
             lineVertices = new CCV3F_C4B[bufferSize - bufferSize % 2];
 
-            // set up a new basic effect, and enable vertex colors.
-            basicEffect = new BasicEffect(drawManager.XnaGraphicsDevice);
-            basicEffect.VertexColorEnabled = true;
+            triangleVerts = new List<CCV3F_C4B[]>();
+            lineVerts = new List<CCV3F_C4B[]>();
+
         }
 
         public CCPrimitiveBatch(int bufferSize=DefaultBufferSize)
@@ -73,9 +69,6 @@ namespace CocosSharp
 		{
 			if (disposing && !isDisposed)
 			{
-				if (basicEffect != null)
-					basicEffect.Dispose();
-
 				isDisposed = true;
 			}
 		}
@@ -83,11 +76,6 @@ namespace CocosSharp
 		#endregion Cleaning up
 
 
-		public void SetProjection(ref Matrix projection)
-        {
-            basicEffect.Projection = projection;
-        }
-			
         // Begin is called to tell the PrimitiveBatch what kind of primitives will be
         // drawn, and to prepare the graphics card to render those primitives.
         public void Begin()
@@ -97,20 +85,9 @@ namespace CocosSharp
                 throw new InvalidOperationException("End must be called before Begin can be called again.");
             }
 
-            //tell our basic effect to begin.
-            UpdateMatrix();
-
             // flip the error checking boolean. It's now ok to call AddVertex, Flush,
             // and End.
             hasBegun = true;
-        }
-
-        public void UpdateMatrix()
-        {
-            basicEffect.Projection = DrawManager.ProjectionMatrix; ;
-            basicEffect.View = DrawManager.ViewMatrix;
-            basicEffect.World = DrawManager.WorldMatrix;
-            basicEffect.CurrentTechnique.Passes[0].Apply();
         }
 
         public bool IsReady()
@@ -177,8 +154,38 @@ namespace CocosSharp
             FlushTriangles();
             FlushLines();
 
+            DrawManager.Renderer.AddCommand(
+                new CCCustomCommand(0, new CCAffineTransform(DrawManager.WorldMatrix), Flush));
+
             hasBegun = false;
         }
+
+        void Flush()
+        {
+
+            // Make sure that TextureEnabled is false (not enabled) or primitives will not show up.
+            DrawManager.TextureEnabled = false;
+            // Make sure that VertexColor is true (enabled) or primitives will not show up.
+            DrawManager.VertexColorEnabled = true;
+
+            foreach (var triangle in triangleVerts)
+            {
+                int primitiveCount = triangle.Length / 3;
+                DrawManager.DrawPrimitives(PrimitiveType.TriangleList, triangle, 0, primitiveCount);
+            }
+
+            foreach (var line in lineVerts)
+            {
+                int primitiveCount = line.Length / 2;
+                DrawManager.DrawPrimitives(PrimitiveType.LineList, line, 0, primitiveCount);
+            }
+
+            triangleVerts.Clear();
+            lineVerts.Clear();
+
+            hasBegun = false;
+        }
+
 
         void FlushTriangles()
         {
@@ -190,16 +197,14 @@ namespace CocosSharp
             if (triangleVertsCount >= 3)
             {
                 int primitiveCount = triangleVertsCount / 3;
-                // submit the draw call to the graphics card
-#if NETFX_CORE
-                device.SamplerStates[0] = SamplerState.LinearClamp;
-#else
-                device.SamplerStates[0] = SamplerState.AnisotropicClamp;
-#endif
-                device.DrawUserPrimitives(PrimitiveType.TriangleList, triangleVertices, 0, primitiveCount);
+
+                var triangles = new CCV3F_C4B[triangleVertsCount];
+                Array.Copy(triangleVertices, triangles, triangleVertsCount);
+                // add the Triangle List to our triangles list vertices for later rendering from the Renderer
+                triangleVerts.Add(triangles);
+
                 triangleVertsCount -= primitiveCount * 3;
 
-                DrawManager.DrawCount++;
             }
         }
 
@@ -213,16 +218,14 @@ namespace CocosSharp
             if (lineVertsCount >= 2)
             {
                 int primitiveCount = lineVertsCount / 2;
-                // submit the draw call to the graphics card
-#if NETFX_CORE
-                device.SamplerStates[0] = SamplerState.LinearClamp;
-#else
-                device.SamplerStates[0] = SamplerState.AnisotropicClamp;
-#endif
-                device.DrawUserPrimitives(PrimitiveType.LineList, lineVertices, 0, primitiveCount);
+
+                var lines = new CCV3F_C4B[lineVertsCount];
+                Array.Copy(lineVertices, lines, triangleVertsCount);
+                // add the Line Lists to our line list vertices for later rendering from the Renderer
+                lineVerts.Add(lines);
+
                 lineVertsCount -= primitiveCount * 2;
 
-                DrawManager.DrawCount++;
             }
         }
     }
