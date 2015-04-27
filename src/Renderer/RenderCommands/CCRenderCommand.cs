@@ -32,8 +32,8 @@ namespace CocosSharp
             set { group = value; idDirty = true; }
         }
 
-        internal float GlobalDepth { get; private set; }
-        internal CCAffineTransform WorldTransform { get; private set; }
+        internal float GlobalDepth { get; set; }
+        internal CCAffineTransform WorldTransform { get; set; }
 
         #endregion Properties
 
