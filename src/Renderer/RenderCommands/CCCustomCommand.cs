@@ -21,6 +21,11 @@ namespace CocosSharp
         {
         }
 
+        public CCCustomCommand(float globalZOrder) 
+            : this(globalZOrder, CCAffineTransform.Identity, null)
+        {
+        }
+
         #endregion Constructors
 
 

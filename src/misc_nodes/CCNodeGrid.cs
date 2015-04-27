@@ -64,7 +64,6 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                Renderer.PushGroup();
                 CCCustomCommand command = new CCCustomCommand(long.MinValue, AffineWorldTransform, OnGridBeginDraw);
                 Renderer.AddCommand(command);
                 Transform(drawManager);
@@ -125,7 +124,6 @@ namespace CocosSharp
             {
                 CCCustomCommand command = new CCCustomCommand(long.MaxValue, AffineWorldTransform, OnGridEndDraw);
                 Renderer.AddCommand(command);
-                Renderer.PopGroup();
             }
 
             drawManager.PopMatrix();

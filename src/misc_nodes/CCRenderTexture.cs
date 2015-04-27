@@ -82,16 +82,28 @@ namespace CocosSharp
         {
             CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
 
+            drawManager.Renderer.PushGroup();
+
+            var beginCommand = new CCCustomCommand (VertexZ);
+            beginCommand.Action = OnBegin;
+            drawManager.Renderer.AddCommand(beginCommand);
+
+        }
+
+        void OnBegin()
+        {
+            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
+
             // Save the current matrix
             drawManager.PushMatrix();
 
-//            Matrix projection = Matrix.CreateOrthographicOffCenter(
-//                -1.0f / widthRatio, 1.0f / widthRatio,
-//                -1.0f / heightRatio, 1.0f / heightRatio,
-//                -1, 1
-//            );
-//
-//            drawManager.MultMatrix(ref projection);
+            //            Matrix projection = Matrix.CreateOrthographicOffCenter(
+            //                -1.0f / widthRatio, 1.0f / widthRatio,
+            //                -1.0f / heightRatio, 1.0f / heightRatio,
+            //                -1, 1
+            //            );
+            //
+            //            drawManager.MultMatrix(ref projection);
 
             drawManager.SetRenderTarget(Texture);
 
@@ -107,7 +119,15 @@ namespace CocosSharp
             Begin();
             beginClearColor = new CCColor4B(r, g, b, a);
             clearFlags = ClearFlags.ColorBuffer;
-            CCDrawManager.SharedDrawManager.Clear(beginClearColor);
+
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(beginClearColor);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+            //CCDrawManager.SharedDrawManager.Clear(beginClearColor);
         }
 
         public void BeginWithClear(float r, float g, float b, float a, float depthValue)
@@ -116,7 +136,15 @@ namespace CocosSharp
             beginClearColor = new CCColor4B(r, g, b, a);
             beginDepthValue = depthValue;
             clearFlags = ClearFlags.ColorBuffer | ClearFlags.DepthBuffer;
-            CCDrawManager.SharedDrawManager.Clear(beginClearColor, depthValue);
+
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(beginClearColor, depthValue);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+            //CCDrawManager.SharedDrawManager.Clear(beginClearColor, depthValue);
         }
 
 		public void BeginWithClear(float r, float g, float b, float a, float depthValue, int stencilValue)
@@ -126,7 +154,15 @@ namespace CocosSharp
             beginDepthValue = depthValue;
             beginStencilValue = stencilValue;
             clearFlags = ClearFlags.All;
-			CCDrawManager.SharedDrawManager.Clear(beginClearColor, depthValue, stencilValue);
+
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(beginClearColor, depthValue, stencilValue);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+			//CCDrawManager.SharedDrawManager.Clear(beginClearColor, depthValue, stencilValue);
 		}
 
 		public void BeginWithClear(CCColor4B col)
@@ -134,7 +170,15 @@ namespace CocosSharp
 			Begin();
             beginClearColor = col;
             clearFlags = ClearFlags.ColorBuffer;
-			CCDrawManager.SharedDrawManager.Clear(col);
+
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(col);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+			//CCDrawManager.SharedDrawManager.Clear(col);
 		}
 
 		public void BeginWithClear(CCColor4B col, float depthValue)
@@ -144,7 +188,14 @@ namespace CocosSharp
             beginDepthValue = depthValue;
             clearFlags = ClearFlags.ColorBuffer | ClearFlags.DepthBuffer;
 
-			CCDrawManager.SharedDrawManager.Clear(col, depthValue);
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(col, depthValue);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+			//CCDrawManager.SharedDrawManager.Clear(col, depthValue);
 		}
 
 		public void BeginWithClear(CCColor4B col, float depthValue, int stencilValue)
@@ -154,7 +205,15 @@ namespace CocosSharp
             beginDepthValue = depthValue;
             beginStencilValue = stencilValue;
             clearFlags = ClearFlags.All;
-			CCDrawManager.SharedDrawManager.Clear(col, depthValue, stencilValue);
+
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(col, depthValue, stencilValue);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+			//CCDrawManager.SharedDrawManager.Clear(col, depthValue, stencilValue);
 		}
 
         public void ClearDepth(float depthValue)
@@ -185,7 +244,15 @@ namespace CocosSharp
             Begin();
             beginClearColor = col;
             clearFlags |= ClearFlags.ColorBuffer;
-            CCDrawManager.SharedDrawManager.Clear(beginClearColor);
+
+            var beginWithClearCommand = new CCCustomCommand(VertexZ);
+            beginWithClearCommand.Action = () => 
+                {
+                    CCDrawManager.SharedDrawManager.Clear(beginClearColor);
+                };
+            DrawManager.Renderer.AddCommand(beginWithClearCommand);
+
+            //CCDrawManager.SharedDrawManager.Clear(beginClearColor);
             End();
         }
 
@@ -204,9 +271,24 @@ namespace CocosSharp
 
         public virtual void End()
         {
-            CCDrawManager.SharedDrawManager.PopMatrix();
 
-            CCDrawManager.SharedDrawManager.SetRenderTarget((CCTexture2D) null);
+            var endCommand = new CCCustomCommand(VertexZ);
+            endCommand.Action = OnEnd;
+
+            DrawManager.Renderer.AddCommand(endCommand);
+
+            DrawManager.Renderer.PopGroup();
+
+
+//            CCDrawManager.SharedDrawManager.PopMatrix();
+//
+//            CCDrawManager.SharedDrawManager.SetRenderTarget((CCTexture2D) null);
+        }
+
+        void OnEnd ()
+        {
+            CCDrawManager.SharedDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.RestoreRenderTarget();
         }
 
         public override void Visit()
