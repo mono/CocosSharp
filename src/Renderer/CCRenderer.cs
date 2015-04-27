@@ -46,7 +46,7 @@ namespace CocosSharp
         byte currentGroupId;
         CCCommandType currentCommandType;
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
-        List<CCQuadCommand> quadCommands;
+        CCRawList<CCQuadCommand> quadCommands;
         CCRenderQueue<long, CCRenderCommand> renderQueue;
         CCDrawManager drawManager;
 
@@ -55,8 +55,8 @@ namespace CocosSharp
 
         internal CCRenderer(CCDrawManager drawManagerIn)
         {
-            currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>();
-            quadCommands = new List<CCQuadCommand>();
+            currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(256, true);
+            quadCommands = new CCRawList<CCQuadCommand>(256, true);
             renderQueue = new CCRenderQueue<long, CCRenderCommand>(new RenderQueuePriority());
             drawManager = drawManagerIn;
         }
