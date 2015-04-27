@@ -199,6 +199,8 @@ namespace CocosSharp
 
         CCLabelFormat labelFormat;
 
+        CCQuadCommand quadCommand = null;
+
         // Static properties
 
         public static float DefaultTexelToContentSizeRatio
@@ -1462,7 +1464,19 @@ namespace CocosSharp
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            Renderer.AddCommand(new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, TextureAtlas.Quads.Elements));
+            if (quadCommand == null)
+                quadCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, TextureAtlas.Quads.Elements);
+            else
+            {
+                quadCommand.GlobalDepth = VertexZ;
+                quadCommand.WorldTransform = AffineWorldTransform;
+                quadCommand.Texture = Texture;
+                quadCommand.BlendType = BlendFunc;
+                quadCommand.Quads = TextureAtlas.Quads.Elements;
+                quadCommand.QuadCount = TextureAtlas.Quads.Count;
+            }
+                
+            Renderer.AddCommand(quadCommand);
         }
 
         protected override void Draw()

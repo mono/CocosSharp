@@ -21,8 +21,8 @@ namespace CocosSharp
         int lineVertsCount;
         int triangleVertsCount;
 
-        List<CCV3F_C4B[]> triangleVerts;
-        List<CCV3F_C4B[]> lineVerts;
+        CCRawList<CCV3F_C4B[]> triangleVerts;
+        CCRawList<CCV3F_C4B[]> lineVerts;
 
         #region Properties
 
@@ -45,8 +45,8 @@ namespace CocosSharp
             triangleVertices = new CCV3F_C4B[bufferSize - bufferSize % 3];
             lineVertices = new CCV3F_C4B[bufferSize - bufferSize % 2];
 
-            triangleVerts = new List<CCV3F_C4B[]>();
-            lineVerts = new List<CCV3F_C4B[]>();
+            triangleVerts = new CCRawList<CCV3F_C4B[]>(100, true);
+            lineVerts = new CCRawList<CCV3F_C4B[]>(100, true);
 
         }
 
@@ -168,20 +168,19 @@ namespace CocosSharp
             // Make sure that VertexColor is true (enabled) or primitives will not show up.
             DrawManager.VertexColorEnabled = true;
 
-            foreach (var triangle in triangleVerts)
+            while (triangleVerts.Count > 0)
             {
-                int primitiveCount = triangle.Length / 3;
-                DrawManager.DrawPrimitives(PrimitiveType.TriangleList, triangle, 0, primitiveCount);
+                var triangle = triangleVerts.Pop();
+                DrawManager.DrawPrimitives(PrimitiveType.TriangleList, triangle, 0, triangle.Length / 3);
+
             }
 
-            foreach (var line in lineVerts)
+            while (lineVerts.Count > 0)
             {
-                int primitiveCount = line.Length / 2;
-                DrawManager.DrawPrimitives(PrimitiveType.LineList, line, 0, primitiveCount);
+                var line = lineVerts.Pop();
+                DrawManager.DrawPrimitives(PrimitiveType.LineList, line, 0, line.Length / 2);
             }
 
-            triangleVerts.Clear();
-            lineVerts.Clear();
 
             hasBegun = false;
         }

@@ -22,6 +22,8 @@ namespace CocosSharp
 
         protected CCV3F_C4B_T2F_Quad quad;
 
+        CCQuadCommand quadCommand = null;
+
         #region Properties
 
         // Static properties
@@ -446,7 +448,19 @@ namespace CocosSharp
             // Add command to renderer
             // WARNING: NOT USING GLOBAL Z
             // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            Renderer.AddCommand(new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, quad));
+            if (quadCommand == null)
+                quadCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, quad);
+            else
+            {
+                quadCommand.GlobalDepth = VertexZ;
+                quadCommand.WorldTransform = AffineWorldTransform;
+                quadCommand.Texture = texture;
+                quadCommand.BlendType = BlendFunc;
+                quadCommand.Quads = new CCV3F_C4B_T2F_Quad[1] { quad };
+                quadCommand.QuadCount = 1;
+            }
+
+            Renderer.AddCommand(quadCommand);
         }
 
         protected override void Draw()
