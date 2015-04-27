@@ -65,6 +65,14 @@ namespace CocosSharp
 		{
 			GridSize = action.GridSize;
 
+            // If target is not a CCNodeGrid we will want to emmit a message and 
+            // return or there can be possible NRE's later on.
+            var gridNodeTarget = Target as CCNodeGrid;
+            if (gridNodeTarget == null)
+            {
+                CCLog.Log("Grid Actions only target CCNodeGrids.");
+                return;
+            }
 
             CCGridBase targetGrid = target.Grid;
 
