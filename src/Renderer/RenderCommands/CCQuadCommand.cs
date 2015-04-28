@@ -4,18 +4,59 @@ namespace CocosSharp
 {
     internal class CCQuadCommand : CCRenderCommand
     {
+        bool materialIdDirty;
+
+        CCBlendFunc blendType;
+        CCTexture2D texture;
+        CCV3F_C4B_T2F_Quad[] quads;
+
+        public delegate void UpdateQuadCallback(ref CCV3F_C4B_T2F_Quad[] callback);
+
+
         #region Properties
 
-        internal CCTexture2D Texture { get; set; }
-        internal CCBlendFunc BlendType { get; set; }
-        internal CCV3F_C4B_T2F_Quad[] Quads { get; set; }
+        internal uint MaterialId { get; private set; }
+
+        internal CCTexture2D Texture
+        { 
+            get { return texture; }
+            set { texture = value; materialIdDirty = true; RenderIdDirty = true; }
+        }
+
+        internal CCBlendFunc BlendType
+        { 
+            get { return blendType; }
+            set { blendType = value; materialIdDirty = true; RenderIdDirty = true; }
+        }
+
         internal int QuadCount { get; set; }
-        internal uint MaterialId { get; set; }
+
+        internal CCV3F_C4B_T2F_Quad[] Quads 
+        { 
+            get { return quads; }
+            set { quads = value; }
+        }
 
         #endregion Properties
 
 
         #region Constructors
+
+        public CCQuadCommand(int quadCount)
+        {
+            if(quadCount > 0) 
+            {
+                QuadCount = quadCount;
+                quads = new CCV3F_C4B_T2F_Quad[quadCount];
+                for(int i = 0; i < quadCount; ++i) 
+                {
+                    quads[i].BottomLeft.Colors = CCColor4B.White;
+                    quads[i].BottomRight.Colors = CCColor4B.White;
+                    quads[i].TopLeft.Colors = CCColor4B.White;
+                    quads[i].TopRight.Colors = CCColor4B.White;
+                }
+            }
+        }
 
         public CCQuadCommand(float globalDepth, CCAffineTransform worldTransform, 
             CCTexture2D texture, CCBlendFunc blendType, 
@@ -32,18 +73,19 @@ namespace CocosSharp
             QuadCount = quadCount;
             Texture = texture;
             BlendType = blendType;
-
-            var textureId = texture == null ? 0 : texture.TextureId;
-
-            // Material id should be 24 bits
-            // First 12 bits blend func. hash code (Src ^ Dest)
-            // Last 12 bits texture id
-            MaterialId = (uint)textureId << 12 | (uint)BlendType.GetHashCode();
-
-            System.Diagnostics.Debug.Assert(MaterialId != 0, "Material Id not set");
         }
 
         #endregion Constructors
+
+
+        void GenerateMaterialId()
+        {
+            // Material id should be 24 bits
+            // First 12 bits blend func. hash code (Src ^ Dest)
+            // Last 12 bits texture id
+            var textureId = texture == null ? 0 : texture.TextureId;
+            MaterialId = (uint)textureId << 12 | (uint)BlendType.GetHashCode();
+        }
 
         protected override void GenerateId(ref long renderId)
         {
@@ -52,8 +94,19 @@ namespace CocosSharp
             // 24 - 1 : Material id (24 bit)
             base.GenerateId(ref renderId);
 
+            if(materialIdDirty)
+            {
+                GenerateMaterialId();
+                materialIdDirty = false;
+            }
+
             renderId = renderId
                 | (long)MaterialId;
+        }
+
+        internal void RequestUpdateQuads(UpdateQuadCallback callback)
+        {
+            callback(ref quads);
         }
 
         internal override void RequestRenderCommand(CCRenderer renderer)

@@ -4,22 +4,24 @@ namespace CocosSharp
 {
     internal abstract class CCRenderCommand
     {
-        bool idDirty;
         long renderId;
-
         byte group;
+        float globalDepth;
+        CCAffineTransform worldTransform;
 
 
         #region Properties
+
+        protected bool RenderIdDirty { get; set; }
 
         protected internal long RenderId 
         { 
             get 
             { 
-                if(idDirty)
+                if(RenderIdDirty)
                 {
                     GenerateId(ref renderId);
-                    idDirty = false;
+                    RenderIdDirty = false;
                 }
 
                 return renderId;
@@ -29,16 +31,27 @@ namespace CocosSharp
         internal byte Group 
         { 
             get { return group; }
-            set { group = value; idDirty = true; }
+            set { group = value; RenderIdDirty = true; }
         }
 
-        internal float GlobalDepth { get; set; }
-        internal CCAffineTransform WorldTransform { get; set; }
+        internal float GlobalDepth
+        {
+            get { return globalDepth; }
+            set { globalDepth = value; RenderIdDirty = true; }
+        }
+
+        internal CCAffineTransform WorldTransform 
+        { 
+            get { return worldTransform; }
+            set { worldTransform = value; RenderIdDirty = true; }
+        }
 
         #endregion Properties
 
 
         #region Constructors
+
+        public CCRenderCommand() {}
 
         public CCRenderCommand(float gobalDepth, CCAffineTransform worldTransform)
         {

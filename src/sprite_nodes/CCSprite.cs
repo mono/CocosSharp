@@ -17,12 +17,8 @@ namespace CocosSharp
 
         CCRect textureRectInPixels;
 
-        CCTexture2D texture;
-        string textureFile;
+        CCQuadCommand quadCommand;
 
-        protected CCV3F_C4B_T2F_Quad quad;
-
-        CCQuadCommand quadCommand = null;
 
         #region Properties
 
@@ -39,9 +35,7 @@ namespace CocosSharp
         // Instance properties
 
         public int AtlasIndex { get ; internal set; }
-        public CCBlendFunc BlendFunc { get; set; }
-
-        protected internal CCV3F_C4B_T2F_Quad Quad { get { return quad; } }
+        protected internal CCV3F_C4B_T2F_Quad Quad { get { return quadCommand.Quads[0]; } }
         internal CCTextureAtlas TextureAtlas { get; set; }
 
         public bool IsAntialiased
@@ -125,6 +119,12 @@ namespace CocosSharp
             }
         }
 
+        public CCBlendFunc BlendFunc 
+        { 
+            get { return quadCommand.BlendType; }
+            set { quadCommand.BlendType = value; }
+        }
+            
         public override float Rotation
         {
             set
@@ -273,7 +273,7 @@ namespace CocosSharp
                     CCTexture2D newTexture = value.Texture;
 
                     // update texture before updating texture rect
-                    if (newTexture != texture) 
+                    if (newTexture != Texture) 
                     {
                         Texture = newTexture;
                     }
@@ -293,16 +293,16 @@ namespace CocosSharp
 
         public virtual CCTexture2D Texture
         {
-            get { return texture; }
+            get { return quadCommand.Texture; }
             set
             {
-                if (texture != value)
+                if (Texture != value)
                 {
-                    texture = value;
+                    quadCommand.Texture = value;
 
                     if(TextureRectInPixels == CCRect.Zero) 
                     {
-                        CCSize texSize = texture.ContentSizeInPixels;
+                        CCSize texSize = value.ContentSizeInPixels;
                         TextureRectInPixels = new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height);
                     }
 
@@ -337,24 +337,16 @@ namespace CocosSharp
         }
 
         public CCSprite()
-        {  
+        {
             IsTextureRectRotated = false;
 
             opacityModifyRGB = true;
             BlendFunc = CCBlendFunc.AlphaBlend;
 
-            //AnchorPoint = CCPoint.AnchorMiddle;
-
-            quad = new CCV3F_C4B_T2F_Quad();
-            quad.BottomLeft.Colors = CCColor4B.White;
-            quad.BottomRight.Colors = CCColor4B.White;
-            quad.TopLeft.Colors = CCColor4B.White;
-            quad.TopRight.Colors = CCColor4B.White;
-
-            UpdateSpriteTextureQuads();        
+            UpdateSpriteTextureQuads();
         }
 
-        public CCSprite(CCTexture2D texture=null, CCRect? texRectInPixels=null, bool rotated=false)
+        public CCSprite(CCTexture2D texture=null, CCRect? texRectInPixels=null, bool rotated=false) : this()
         {
             InitWithTexture(texture, texRectInPixels, rotated);
         }
@@ -363,19 +355,18 @@ namespace CocosSharp
         {
         }
 
-        public CCSprite(CCSize contentSize, CCSpriteFrame spriteFrame)
+        public CCSprite(CCSize contentSize, CCSpriteFrame spriteFrame) : this()
         {
             ContentSize = contentSize;
             InitWithSpriteFrame(spriteFrame);
         }
 
-        public CCSprite(string fileName, CCRect? texRectInPixels=null)
+        public CCSprite(string fileName, CCRect? texRectInPixels=null) : this()
         {
             InitWithFile(fileName, texRectInPixels);
         }
-
-        // Used externally by non-subclasses
-        internal void InitWithTexture(CCTexture2D texture, CCRect? texRectInPixels=null, bool rotated=false)
+            
+        void InitWithTexture(CCTexture2D texture, CCRect? texRectInPixels=null, bool rotated=false)
         {
             IsTextureRectRotated = rotated;
             CCSize texSize = (texture != null) ? texture.ContentSizeInPixels : CCSize.Zero;
@@ -386,12 +377,6 @@ namespace CocosSharp
             BlendFunc = CCBlendFunc.AlphaBlend;
 
             AnchorPoint = CCPoint.AnchorMiddle;
-
-            quad = new CCV3F_C4B_T2F_Quad();
-            quad.BottomLeft.Colors = CCColor4B.White;
-            quad.BottomRight.Colors = CCColor4B.White;
-            quad.TopLeft.Colors = CCColor4B.White;
-            quad.TopRight.Colors = CCColor4B.White;
 
             Texture = texture;
 
@@ -407,13 +392,7 @@ namespace CocosSharp
             opacityModifyRGB = true;
             BlendFunc = CCBlendFunc.AlphaBlend;
 
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-
-            quad = new CCV3F_C4B_T2F_Quad();
-            quad.BottomLeft.Colors = CCColor4B.White;
-            quad.BottomRight.Colors = CCColor4B.White;
-            quad.TopLeft.Colors = CCColor4B.White;
-            quad.TopRight.Colors = CCColor4B.White;
+            AnchorPoint = CCPoint.AnchorMiddle;
 
             SpriteFrame = spriteFrame;
         }
@@ -421,8 +400,6 @@ namespace CocosSharp
         void InitWithFile(string fileName, CCRect? rectInPoints=null)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
-
-            textureFile = fileName;
 
             // Try sprite frame cache first
             CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache[fileName];
@@ -441,25 +418,18 @@ namespace CocosSharp
             }
         }
 
+        protected override void InitialiseRenderCommand()
+        {
+            quadCommand = new CCQuadCommand(1);
+        }
+
         #endregion Constructors
+
 
         internal override void VisitRenderer()
         {
-            // Add command to renderer
-            // WARNING: NOT USING GLOBAL Z
-            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
-            if (quadCommand == null)
-                quadCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, quad);
-            else
-            {
-                quadCommand.GlobalDepth = VertexZ;
-                quadCommand.WorldTransform = AffineWorldTransform;
-                quadCommand.Texture = texture;
-                quadCommand.BlendType = BlendFunc;
-                quadCommand.Quads = new CCV3F_C4B_T2F_Quad[1] { quad };
-                quadCommand.QuadCount = 1;
-            }
-
+            quadCommand.GlobalDepth = VertexZ;
+            quadCommand.WorldTransform = AffineWorldTransform;
             Renderer.AddCommand(quadCommand);
         }
 
@@ -467,11 +437,16 @@ namespace CocosSharp
         {
             base.Draw();
 
+            quadCommand.RequestUpdateQuads(DrawCallback);
+        }
+
+        void DrawCallback(ref CCV3F_C4B_T2F_Quad[] Quads)
+        {
             CCDrawManager drawManager = DrawManager;
 
             drawManager.BlendFunc(BlendFunc);
             drawManager.BindTexture(Texture);
-            drawManager.DrawQuad(ref quad);
+            drawManager.DrawQuad(ref Quads[0]);
         }
 
         public bool IsSpriteFrameDisplayed(CCSpriteFrame frame)
@@ -480,7 +455,7 @@ namespace CocosSharp
 
             return (
                 CCRect.Equal(ref r, ref textureRectInPixels) &&
-                frame.Texture.Name == texture.Name
+                frame.Texture.Name == Texture.Name
             );
         }
 
@@ -500,63 +475,35 @@ namespace CocosSharp
             SpriteFrame = frame.SpriteFrame;
         }
 
-
-        #region Serialization
-
-        public override void Serialize(System.IO.Stream stream)
-        {
-            base.Serialize(stream);
-            StreamWriter sw = new StreamWriter(stream);
-            CCSerialization.SerializeData(IsTextureRectRotated, sw);
-            CCSerialization.SerializeData(AtlasIndex, sw);
-            CCSerialization.SerializeData(TextureRectInPixels, sw);
-            sw.WriteLine(textureFile == null ? "null" : textureFile);
-        }
-
-        public override void Deserialize(System.IO.Stream stream)
-        {
-            base.Deserialize(stream);
-            StreamReader sr = new StreamReader(stream);
-            textureFile = sr.ReadLine();
-            if (textureFile == "null")
-                textureFile = null;
-            else {
-                CCLog.Log("CCSprite - deserialized with texture file " + textureFile);
-                InitWithFile(textureFile);
-            }
-
-            IsTextureRectRotated = CCSerialization.DeSerializeBool(sr);
-            AtlasIndex = CCSerialization.DeSerializeInt(sr);
-            TextureRectInPixels = CCSerialization.DeSerializeRect(sr);
-        }
-
-        #endregion Serialization
-
-
         #region Color managment
 
 
 		public override void UpdateColor()
         {
+            quadCommand.RequestUpdateQuads(UpdateColorCallback);
+        }
+
+        void UpdateColorCallback(ref CCV3F_C4B_T2F_Quad[] quads)
+        {
             var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
-			//opacityModifyRGB = true;
-            if (opacityModifyRGB)
+
+            if(opacityModifyRGB)
             {
                 color4.R = (byte)(color4.R * DisplayedOpacity / 255.0f);
                 color4.G = (byte)(color4.G * DisplayedOpacity / 255.0f);
                 color4.B = (byte)(color4.B * DisplayedOpacity / 255.0f);
             }
 
-            quad.BottomLeft.Colors = color4;
-            quad.BottomRight.Colors = color4;
-            quad.TopLeft.Colors = color4;
-            quad.TopRight.Colors = color4;
+            quads[0].BottomLeft.Colors = color4;
+            quads[0].BottomRight.Colors = color4;
+            quads[0].TopLeft.Colors = color4;
+            quads[0].TopRight.Colors = color4;
         }
 
         protected void UpdateBlendFunc()
         {
             // it's possible to have an untextured sprite
-            if (texture == null || !texture.HasPremultipliedAlpha)
+            if (Texture == null || !Texture.HasPremultipliedAlpha)
             {
                 BlendFunc = CCBlendFunc.NonPremultiplied;
                 IsColorModifiedByOpacity = false;
@@ -575,11 +522,15 @@ namespace CocosSharp
 
         void UpdateSpriteTextureQuads()
         {
+            quadCommand.RequestUpdateQuads(UpdateSpriteTextureQuadsCallback);
+        }
 
+        void UpdateSpriteTextureQuadsCallback(ref CCV3F_C4B_T2F_Quad[] quads)
+        {
             if (!Visible)
             {
-                quad.BottomRight.Vertices =
-                    quad.TopLeft.Vertices = quad.TopRight.Vertices = quad.BottomLeft.Vertices = new CCVertex3F(0, 0, 0);
+                quads[0].BottomRight.Vertices = quads[0].TopLeft.Vertices 
+                    = quads[0].TopRight.Vertices = quads[0].BottomLeft.Vertices = CCVertex3F.Zero;
             }
             else
             {
@@ -617,19 +568,18 @@ namespace CocosSharp
                 float y2 = y1 + (subRectRatio.Size.Height * ContentSize.Height);
 
                 // Don't set z-value: The node's transform will be set to include z offset
-                quad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
-                quad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
-                quad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
-                quad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
+                quads[0].BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
+                quads[0].BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
+                quads[0].TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
+                quads[0].TopRight.Vertices = new CCVertex3F(x2, y2, 0);
 
-                CCTexture2D tex = texture;
-                if (tex == null)
+                if (Texture == null)
                 {
                     return;
                 }
 
-                float atlasWidth = tex.PixelsWide;
-                float atlasHeight = tex.PixelsHigh;
+                float atlasWidth = Texture.PixelsWide;
+                float atlasHeight = Texture.PixelsHigh;
 
                 float left, right, top, bottom;
 
@@ -657,14 +607,14 @@ namespace CocosSharp
                         CCMacros.CCSwap(ref left, ref right);
                     }
 
-                    quad.BottomLeft.TexCoords.U = left;
-                    quad.BottomLeft.TexCoords.V = top;
-                    quad.BottomRight.TexCoords.U = left;
-                    quad.BottomRight.TexCoords.V = bottom;
-                    quad.TopLeft.TexCoords.U = right;
-                    quad.TopLeft.TexCoords.V = top;
-                    quad.TopRight.TexCoords.U = right;
-                    quad.TopRight.TexCoords.V = bottom;
+                    quads[0].BottomLeft.TexCoords.U = left;
+                    quads[0].BottomLeft.TexCoords.V = top;
+                    quads[0].BottomRight.TexCoords.U = left;
+                    quads[0].BottomRight.TexCoords.V = bottom;
+                    quads[0].TopLeft.TexCoords.U = right;
+                    quads[0].TopLeft.TexCoords.V = top;
+                    quads[0].TopRight.TexCoords.U = right;
+                    quads[0].TopRight.TexCoords.V = bottom;
                 }
                 else
                 {
@@ -690,33 +640,39 @@ namespace CocosSharp
                         CCMacros.CCSwap(ref top, ref bottom);
                     }
 
-                    quad.BottomLeft.TexCoords.U = left;
-                    quad.BottomLeft.TexCoords.V = bottom;
-                    quad.BottomRight.TexCoords.U = right;
-                    quad.BottomRight.TexCoords.V = bottom;
-                    quad.TopLeft.TexCoords.U = left;
-                    quad.TopLeft.TexCoords.V = top;
-                    quad.TopRight.TexCoords.U = right;
-                    quad.TopRight.TexCoords.V = top;
+                    quads[0].BottomLeft.TexCoords.U = left;
+                    quads[0].BottomLeft.TexCoords.V = bottom;
+                    quads[0].BottomRight.TexCoords.U = right;
+                    quads[0].BottomRight.TexCoords.V = bottom;
+                    quads[0].TopLeft.TexCoords.U = left;
+                    quads[0].TopLeft.TexCoords.V = top;
+                    quads[0].TopRight.TexCoords.U = right;
+                    quads[0].TopRight.TexCoords.V = top;
                 }
             }
         }
-            
+
+
         public void UpdateLocalTransformedSpriteTextureQuads()
+        {
+            quadCommand.RequestUpdateQuads(UpdateLocalTransformedSpriteTextureQuadsCallback);
+        }
+
+        void UpdateLocalTransformedSpriteTextureQuadsCallback(ref CCV3F_C4B_T2F_Quad[] quads)
         {
             if(AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
                 return;
 
-            var transformedQuad = quad;
+            var transformedQuad = quads[0];
 
             // We can't use the AffineLocalTransform because that's the 2d projection of a 3d transformation
             // i.e. The Z coords of our quad would remain unaltered which in general incorrect
             // Instead, we need use the XnaLocalTransform which incorporates any potential z-transforms
             Matrix worldMatrix = XnaLocalMatrix;
-            Vector3 topLeft = quad.TopLeft.Vertices.XnaVector;
-            Vector3 topRight = quad.TopRight.Vertices.XnaVector;
-            Vector3 bottomLeft = quad.BottomLeft.Vertices.XnaVector;
-            Vector3 bottomRight = quad.BottomRight.Vertices.XnaVector;
+            Vector3 topLeft = quads[0].TopLeft.Vertices.XnaVector;
+            Vector3 topRight = quads[0].TopRight.Vertices.XnaVector;
+            Vector3 bottomLeft = quads[0].BottomLeft.Vertices.XnaVector;
+            Vector3 bottomRight = quads[0].BottomRight.Vertices.XnaVector;
 
             topLeft = Vector3.Transform(topLeft, worldMatrix);
             topRight = Vector3.Transform(topRight, worldMatrix);
