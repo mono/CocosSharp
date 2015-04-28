@@ -835,7 +835,7 @@ namespace CocosSharp
 
         internal CCRenderer Renderer
         {
-            get { return Window != null ? Window.Renderer : null; }
+            get { return Window != null ? Window.Renderer : DrawManager.Renderer; }
         }
 
         internal virtual Matrix XnaLocalMatrix 
@@ -2026,9 +2026,8 @@ namespace CocosSharp
         // This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
         public virtual void Visit()
         {
-            bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
             
-            if ((!Visible || Scene == null) && !renderTarget)
+            if ((!Visible))    
             {
                 return;
             }
@@ -2036,7 +2035,7 @@ namespace CocosSharp
             var drawManager = DrawManager;
 
             // Set camera view/proj matrix even if ChildClippingMode is None
-            if(Camera != null && !renderTarget)
+            if(Camera != null)
             {
                 drawManager.ViewMatrix = Camera.ViewMatrix;
                 drawManager.ProjectionMatrix = Camera.ProjectionMatrix;

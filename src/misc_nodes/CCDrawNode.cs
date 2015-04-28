@@ -680,119 +680,72 @@ namespace CocosSharp
 
         public void Render()
         {
-            //Draw();
             VisitRenderer();
         }
 
         void AddCustomCommandOnDraw(CCCustomCommand customCommandOnDraw)
         {
-            if (Renderer != null)
+            var renderer = (Renderer != null) ? Renderer : DrawManager.Renderer;
+            if (renderer != null)
             {
-                Renderer.AddCommand(customCommandOnDraw);
+                renderer.AddCommand(customCommandOnDraw);
             }
         }
 
         internal override void VisitRenderer()
         {
-            // Add command to renderer
-            // WARNING: NOT USING GLOBAL Z
             if (dirty)
             {
                 //TODO: Set vertices to buffer
                 dirty = false;
             }
 
-
             if (triangleVertices.Count > 0
                 || lineVertices.Count > 0 
                 || (spriteFont != null && stringData != null && stringData.Count > 0))
             {
                 var customCommandOnDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
-                bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
-                //customCommandOnDraw.DebugInfo = "CCDrawNode OnDraw + " + renderTarget;
-                //renderTarget = false;
-                if (renderTarget)
-                {
-                    customCommandOnDraw.Action = ()=> 
-                        {
-                            var drawManager = DrawManager;
-                            drawManager.TextureEnabled = false;
-                            drawManager.BlendFunc(BlendFunc);
-                        };
-                }
-                else
-                {
-                    customCommandOnDraw.Action = ()=> 
-                        {
-                            var drawManager = DrawManager;
+                customCommandOnDraw.Action = ()=> 
+                    {
+                        var drawManager = DrawManager;
 
-                            drawManager.PushMatrix();
-                            var matrix = AffineWorldTransform.XnaMatrix;
-                            drawManager.MultMatrix(ref matrix);
-                            drawManager.TextureEnabled = false;
-                            drawManager.BlendFunc(BlendFunc);
-                        };
+                        drawManager.TextureEnabled = false;
+                        drawManager.BlendFunc(BlendFunc);
+                    };
 
-                }
                 AddCustomCommandOnDraw(customCommandOnDraw);
 
-            }
-
-            if (triangleVertices.Count > 0)
-            {
-                var customCommandTriangles = new CCCustomCommand(VertexZ, AffineWorldTransform);
-                customCommandTriangles.Action = FlushTriangles;
-                AddCustomCommandOnDraw(customCommandTriangles);
-            }
-
-            if (lineVertices.Count > 0)
-            {
-                var customCommandLines = new CCCustomCommand(VertexZ, AffineWorldTransform);
-                customCommandLines.Action = FlushLines;
-                AddCustomCommandOnDraw(customCommandLines);
-            }
-
-            if (spriteFont != null && stringData != null && stringData.Count > 0)
-            {
-                var customCommandStrings = new CCCustomCommand(VertexZ, AffineWorldTransform);
-                customCommandStrings.Action = DrawStrings;
-                AddCustomCommandOnDraw(customCommandStrings);
-            }
-
-            if (triangleVertices.Count > 0
-                || lineVertices.Count > 0 
-                || (spriteFont != null && stringData != null && stringData.Count > 0))
-            {
-                bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
-                //renderTarget = false;
-                if (!renderTarget)
+                if (triangleVertices.Count > 0)
                 {
-
-                    var customCommandOnEndDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
-
-                    //customCommandOnEndDraw.DebugInfo = "CCDrawNode OnEndDraw + " + renderTarget;
-
-                    customCommandOnEndDraw.Action = ()=> 
-                        {
-                            DrawManager.PopMatrix();
-                        };
-                    AddCustomCommandOnDraw(customCommandOnEndDraw);
+                    var customCommandTriangles = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    customCommandTriangles.Action = FlushTriangles;
+                    AddCustomCommandOnDraw(customCommandTriangles);
                 }
 
+                if (lineVertices.Count > 0)
+                {
+                    var customCommandLines = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    customCommandLines.Action = FlushLines;
+                    AddCustomCommandOnDraw(customCommandLines);
+                }
+
+                if (spriteFont != null && stringData != null && stringData.Count > 0)
+                {
+                    var customCommandStrings = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    customCommandStrings.Action = DrawStrings;
+                    AddCustomCommandOnDraw(customCommandStrings);
+                }
+
+                var customCommandOnEndDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
+
+                customCommandOnEndDraw.Action = ()=> 
+                    {
+                        DrawManager.PopMatrix();
+                    };
+                AddCustomCommandOnDraw(customCommandOnEndDraw);
             }
 
         }
-
-//        protected override void Draw()
-//        {
-//
-//            var drawManager = DrawManager;
-//            drawManager.TextureEnabled = false;
-//            drawManager.BlendFunc(BlendFunc);
-//            FlushTriangles();
-//            FlushLines();
-//            DrawStrings();
-//        }
 
         void FlushTriangles()
         {
