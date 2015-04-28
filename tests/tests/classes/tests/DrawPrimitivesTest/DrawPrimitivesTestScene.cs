@@ -11,6 +11,11 @@ namespace tests
         private static int sceneIdx = -1;
         private static int MAX_LAYER = 9;
 
+        public DrawPrimitivesTestScene () : base()
+        {
+            MAX_LAYER = createPrimitiveLayerFunctions.Length;
+        }
+
         public override void runThisTest()
         {
             CCLayer pLayer = nextTestAction();
@@ -18,32 +23,24 @@ namespace tests
             Scene.Director.ReplaceScene(this);
         }
 
-        public static CCLayer createTestLayer(int nIndex)
+        public static CCLayer createTestLayer(int index)
         {
-            switch (nIndex)
-            {
-                case 0:
-                    return new DrawPrimitivesTest();
-                case 1:
-                    return new DrawNodeTest();
-                case 2:
-                    return new DrawNodeTest1();
-                case 3:
-                    return new DrawPrimitivesWithRenderTextureTest();
-                case 4:
-                    return new DrawPrimitivesWithRenderTextureTest1();
-                case 5:
-                    return new DrawPrimitivesWithRenderTextureTest2();
-                case 6:
-                    return new DrawPrimitivesWithRenderTextureTest3();
-                case 7:
-                    return new GeometryBatchTest1();
-                case 8:
-                    return new GeometryBatchTest2();
-            }
-            return null;
+            return createPrimitiveLayerFunctions[index]();
         }
 
+        static Func<CCLayer>[] createPrimitiveLayerFunctions =
+            { 
+                () => new DrawPrimitivesTest(),
+                () => new DrawNodeTest(),
+                () => new DrawNodeTest1(),
+                () => new DrawPrimitivesWithRenderTextureTest(),
+                () => new DrawPrimitivesWithRenderTextureTest1(),
+                () => new DrawPrimitivesWithRenderTextureTest2(),
+                () => new DrawPrimitivesWithRenderTextureTest3(),
+                () => new GeometryBatchTest1 (),
+                () => new GeometryBatchTest2(),
+            };
+        
         protected override void NextTestCase()
         {
             nextTestAction();
