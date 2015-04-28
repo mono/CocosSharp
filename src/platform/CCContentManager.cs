@@ -175,12 +175,9 @@ namespace CocosSharp
 
             var realName = GetRealName(assetName);
 
-            CheckDefaultPath(searchPaths);
-            CheckDefaultPath(searchResolutionsOrder);
-
-            foreach (var searchPath in searchPaths)
+            foreach (var searchPath in SearchPaths)
             {
-                foreach (string resolutionOrder in searchResolutionsOrder)
+                foreach (string resolutionOrder in SearchResolutionsOrder)
                 {
                     var path = Path.Combine(Path.Combine(searchPath, resolutionOrder), realName);
 
@@ -354,12 +351,9 @@ namespace CocosSharp
             fileName = string.Empty;
             var realName = GetRealName(assetName);
 
-            CheckDefaultPath(searchPaths);
-            CheckDefaultPath(searchResolutionsOrder);
-
-            foreach (var searchPath in searchPaths)
+            foreach (var searchPath in SearchPaths)
             {
-                foreach (string resolutionOrder in searchResolutionsOrder)
+                foreach (string resolutionOrder in SearchResolutionsOrder)
                 {
                     var path = Path.Combine(Path.Combine(RootDirectory, Path.Combine(searchPath, resolutionOrder)), realName);
 
@@ -416,16 +410,24 @@ namespace CocosSharp
 
         public List<string> SearchResolutionsOrder
         {
-            get { return searchResolutionsOrder; }
+            get
+            {
+                CheckDefaultPath(searchResolutionsOrder);
+                return searchResolutionsOrder;
+            }
 
-			internal set { searchResolutionsOrder = value; }
+            internal set { searchResolutionsOrder = value; }
         }
 
         public List<string> SearchPaths
         {
-            get { return searchPaths; }
+            get
+            {
+                CheckDefaultPath(searchPaths);
+                return searchPaths;
+            }
 
-			internal set { searchPaths = value; }
+            internal set { searchPaths = value; }
         }
 
         void CheckDefaultPath(List<string> paths)
