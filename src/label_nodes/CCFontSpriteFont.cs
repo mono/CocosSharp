@@ -38,32 +38,24 @@ namespace CocosSharp
 
         internal override CCFontAtlas CreateFontAtlas()
         {
-            var atlas = new CCFontAtlas(this);
-
-            // Try to load the texture
-            CCTexture2D atlasTexture = null;
-
             float loadedSize = fontSize;
-
             SpriteFont font = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
             if (font == null)
             {
-                atlasTexture = new CCTexture2D(); 
+                return null;
             }
-            else
-            {
 #if XNA
-                atlasTexture = new CCTexture2D();
+            CCTexture2D atlasTexture = new CCTexture2D();
 #else
-                atlasTexture = new CCTexture2D(font.Texture);
+            CCTexture2D atlasTexture = new CCTexture2D(font.Texture);
 #endif
-            }
 
             if (loadedSize != 0)
             {
                 fontScale = fontSize / loadedSize * CCSpriteFontCache.FontScale;
             }
 
+            var atlas = new CCFontAtlas(this);
             // add the texture (only one for now)
             atlas.AddTexture(atlasTexture, 0);
 
