@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CocosSharp
 {
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     internal abstract class CCRenderCommand
     {
         long renderId;
@@ -82,9 +84,17 @@ namespace CocosSharp
 
         internal abstract void RequestRenderCommand(CCRenderer renderer);
 
+        internal string DebugDisplayString
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
         public override string ToString()
         {
-            return string.Format("[CCRenderCommand: Command Depth {0}]", GlobalDepth);
+            return string.Concat("[CCRenderCommand: Group ", Group.ToString(), " Depth ", GlobalDepth.ToString(),"]");
         }
 
     }

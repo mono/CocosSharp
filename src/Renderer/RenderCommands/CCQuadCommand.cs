@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CocosSharp
 {
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     internal class CCQuadCommand : CCRenderCommand
     {
         bool materialIdDirty;
@@ -118,6 +120,22 @@ namespace CocosSharp
         {
             drawManager.BlendFunc(BlendType);
             drawManager.BindTexture(Texture);
+        }
+
+        internal new string DebugDisplayString
+        {
+            get
+            {
+                return ToString();
+
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Concat("[CCQuadCommand: Group ", Group.ToString(), " Depth ", GlobalDepth.ToString(),
+                " QuadCount ", QuadCount,
+                " MaterialId ", MaterialId.ToString());
         }
     }
 }

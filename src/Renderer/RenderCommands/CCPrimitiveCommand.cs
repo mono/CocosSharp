@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     internal class CCPrimitiveCommand <T, T2> : CCRenderCommand
         where T : struct, IVertexType
         where T2 : struct
@@ -53,6 +55,19 @@ namespace CocosSharp
             Primitive.Draw(drawManager);
 
             drawManager.PopMatrix();
+        }
+
+        internal new string DebugDisplayString
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Concat("[CCPrimitiveCommand: Group ", Group.ToString(), " Depth ", GlobalDepth.ToString(),"]");
         }
     }
 }

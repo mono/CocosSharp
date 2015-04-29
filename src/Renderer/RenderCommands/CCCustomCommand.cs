@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
     internal class CCCustomCommand : CCRenderCommand
     {
         public Action Action { get; internal set; }
@@ -38,13 +40,28 @@ namespace CocosSharp
         internal void RenderCustomCommand(CCDrawManager drawManager)
         {
             drawManager.PushMatrix();
-            drawManager.SetIdentityMatrix();
-            var worldTrans = WorldTransform.XnaMatrix;
-            drawManager.MultMatrix(ref worldTrans);
-
+            if (WorldTransform != CCAffineTransform.Identity)
+            {
+                drawManager.SetIdentityMatrix();
+                var worldTrans = WorldTransform.XnaMatrix;
+                drawManager.MultMatrix(ref worldTrans);
+            }
             Action();
 
             drawManager.PopMatrix();
+        }
+
+        internal new string DebugDisplayString
+        {
+            get
+            {
+                return ToString();
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Concat("[CCCustomCommand: Group ", Group.ToString(), " Depth ", GlobalDepth.ToString(),"]");
         }
     }
 }
