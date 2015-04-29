@@ -40,9 +40,9 @@ namespace CocosSharp
         internal void RenderCustomCommand(CCDrawManager drawManager)
         {
             drawManager.PushMatrix();
+            drawManager.SetIdentityMatrix();
             if (WorldTransform != CCAffineTransform.Identity)
             {
-                drawManager.SetIdentityMatrix();
                 var worldTrans = WorldTransform.XnaMatrix;
                 drawManager.MultMatrix(ref worldTrans);
             }

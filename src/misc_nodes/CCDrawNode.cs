@@ -704,45 +704,28 @@ namespace CocosSharp
                 || lineVertices.Count > 0 
                 || (spriteFont != null && stringData != null && stringData.Count > 0))
             {
-                var customCommandOnDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
-                customCommandOnDraw.Action = ()=> 
-                    {
-                        var drawManager = DrawManager;
-
-                        drawManager.TextureEnabled = false;
-                        drawManager.BlendFunc(BlendFunc);
-                    };
-
-                AddCustomCommandOnDraw(customCommandOnDraw);
 
                 if (triangleVertices.Count > 0)
                 {
-                    var customCommandTriangles = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    var customCommandTriangles = new CCCustomCommand(VertexZ, AffineLocalTransform);
                     customCommandTriangles.Action = FlushTriangles;
                     AddCustomCommandOnDraw(customCommandTriangles);
                 }
 
                 if (lineVertices.Count > 0)
                 {
-                    var customCommandLines = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    var customCommandLines = new CCCustomCommand(VertexZ, AffineLocalTransform);
                     customCommandLines.Action = FlushLines;
                     AddCustomCommandOnDraw(customCommandLines);
                 }
 
                 if (spriteFont != null && stringData != null && stringData.Count > 0)
                 {
-                    var customCommandStrings = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    var customCommandStrings = new CCCustomCommand(VertexZ, AffineLocalTransform);
                     customCommandStrings.Action = DrawStrings;
                     AddCustomCommandOnDraw(customCommandStrings);
                 }
 
-                var customCommandOnEndDraw = new CCCustomCommand(VertexZ, AffineWorldTransform);
-
-                customCommandOnEndDraw.Action = ()=> 
-                    {
-                        DrawManager.PopMatrix();
-                    };
-                AddCustomCommandOnDraw(customCommandOnEndDraw);
             }
 
         }
@@ -752,10 +735,14 @@ namespace CocosSharp
             var triangleVertsCount = triangleVertices.Count;
             if (triangleVertsCount >= 3)
             {
+                var drawManager = DrawManager;
+
+                drawManager.TextureEnabled = false;
+                drawManager.BlendFunc(BlendFunc);
+
                 int primitiveCount = triangleVertsCount / 3;
                 // submit the draw call to the graphics card
                 DrawManager.DrawPrimitives(PrimitiveType.TriangleList, triangleVertices.Elements, 0, primitiveCount);
-                //DrawManager.DrawCount++;
             }
         }
 
@@ -764,10 +751,14 @@ namespace CocosSharp
             var lineVertsCount = lineVertices.Count;
             if (lineVertsCount >= 2)
             {
+                var drawManager = DrawManager;
+
+                drawManager.TextureEnabled = false;
+                drawManager.BlendFunc(BlendFunc);
+
                 int primitiveCount = lineVertsCount / 2;
                 // submit the draw call to the graphics card
                  DrawManager.DrawPrimitives(PrimitiveType.LineList, lineVertices.Elements, 0, primitiveCount);
-                //DrawManager.DrawCount++;
             }
         }
 
@@ -777,22 +768,27 @@ namespace CocosSharp
             if (spriteFont == null || stringData == null || stringData.Count == 0)
                 return; 
 
-            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+            var drawManager = DrawManager;
 
-            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            drawManager.TextureEnabled = false;
+            drawManager.BlendFunc(BlendFunc);
+
+            var batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+
+            batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             for (int i = 0; i < stringData.Count; i++)
             {
                 stringBuilder.Length = 0;
                 stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
 
-                _batch.DrawString(spriteFont,
+                batch.DrawString(spriteFont,
                     stringBuilder,
                     new Vector2(stringData[i].X, stringData[i].Y),
                     stringData[i].Color);
             }
 
-            _batch.End();
+            batch.End();
 
         }
 

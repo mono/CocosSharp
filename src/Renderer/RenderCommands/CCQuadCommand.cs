@@ -135,7 +135,7 @@ namespace CocosSharp
         {
             return string.Concat("[CCQuadCommand: Group ", Group.ToString(), " Depth ", GlobalDepth.ToString(),
                 " QuadCount ", QuadCount,
-                " MaterialId ", MaterialId.ToString());
+                " MaterialId ", MaterialId.ToString(),"]");
         }
     }
 }

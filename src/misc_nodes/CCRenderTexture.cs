@@ -68,6 +68,7 @@ namespace CocosSharp
             Sprite = new CCSprite(Texture);
             Sprite.ContentSize = contentSize;
             Sprite.BlendFunc = CCBlendFunc.AlphaBlend;
+            Sprite.AnchorPoint = CCPoint.AnchorLowerLeft;
 
             // Make sure we set our content size or AnchorPoint will not work correctly
             ContentSize = textureSizeInPixels;
@@ -84,7 +85,7 @@ namespace CocosSharp
 
             drawManager.Renderer.PushGroup();
 
-            var beginCommand = new CCCustomCommand (VertexZ);
+            var beginCommand = new CCCustomCommand(VertexZ, AffineWorldTransform);
             beginCommand.Action = OnBegin;
             drawManager.Renderer.AddCommand(beginCommand);
 
@@ -278,6 +279,12 @@ namespace CocosSharp
             CCDrawManager.SharedDrawManager.RestoreRenderTarget();
         }
 
+        public override void Visit()
+        {
+            VisitRenderer();
+        }
+
+
         internal override void VisitRenderer()
         {
             
@@ -293,10 +300,17 @@ namespace CocosSharp
         {
             if (AutoDraw)
             {
+
                 Begin();
 
                 //Begin will create a render group using new render target
-                Clear(clearFlags, beginClearColor, beginDepthValue, beginStencilValue);
+                var clearCommand = new CCCustomCommand(VertexZ);
+                clearCommand.Action = () => 
+                    {
+                        Clear(clearFlags, beginClearColor, beginDepthValue, beginStencilValue);
+                    };
+                DrawManager.Renderer.AddCommand(clearCommand);
+
 
                 //! make sure all children are drawn
                 SortAllChildren();
@@ -311,7 +325,6 @@ namespace CocosSharp
                 End();
             }
 
-            //base.Draw();
         }
 
         public bool SaveToStream(Stream stream, CCImageFormat format)
