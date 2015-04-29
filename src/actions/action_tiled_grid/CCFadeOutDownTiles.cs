@@ -44,7 +44,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCFadeOutDownTilesState (this, target);
+            return new CCFadeOutDownTilesState (this, GridNode(target));
         }
     }
 
@@ -53,7 +53,7 @@ namespace CocosSharp
 
     public class CCFadeOutDownTilesState : CCFadeOutUpTilesState
     {
-        public CCFadeOutDownTilesState (CCFadeOutDownTiles action, CCNode target) : base (action, target)
+        public CCFadeOutDownTilesState (CCFadeOutDownTiles action, CCNodeGrid target) : base (action, target)
         {
         }
 

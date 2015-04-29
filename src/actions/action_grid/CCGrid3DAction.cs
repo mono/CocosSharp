@@ -26,7 +26,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCGrid3DActionState (this, target);
+            return new CCGrid3DActionState (this, GridNode(target));
         }
     }
 
@@ -78,12 +78,6 @@ namespace CocosSharp
         public CCGrid3DActionState (CCGrid3DAction action, CCNodeGrid target) : base (action, target)
         {
         }
-
-        [Obsolete("Grid Actions should only target CCNodeGrids.")]
-        public CCGrid3DActionState (CCGrid3DAction action, CCNode target) : base (action, target)
-        {
-        }
-
 
         #region Grid Vertex manipulation
 

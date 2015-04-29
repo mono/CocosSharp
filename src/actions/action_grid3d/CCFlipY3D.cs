@@ -15,7 +15,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCFlipY3DState (this, target);
+            return new CCFlipY3DState (this, GridNode(target));
         }
     }
 
@@ -24,7 +24,8 @@ namespace CocosSharp
 
     public class CCFlipY3DState : CCFlipX3DState
     {
-        public CCFlipY3DState (CCFlipY3D action, CCNode target) : base (action, target)
+        public CCFlipY3DState (CCFlipY3D action, CCNodeGrid target) 
+            : base (action, target)
         {
         }
 

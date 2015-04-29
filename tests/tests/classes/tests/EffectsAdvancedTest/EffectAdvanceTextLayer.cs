@@ -41,16 +41,11 @@ namespace tests
 			bgNode = new CCNodeGrid ();
 			bgNode.AnchorPoint = CCPoint.AnchorMiddle;
             contentLayer.AddChild (bgNode);
-            //bgNode.Position = visibleBounds.Center;
 
 			var bg = new CCSprite("Images/background3");
-            //bg.AnchorPoint = CCPoint.AnchorMiddle;
             bg.Position = visibleBounds.Center;
 
-            //bgNode.ContentSize = bg.ContentSize;
-
 			bgNode.AddChild (bg);
-
 
             Target1 = new CCNodeGrid();
             Target1.AnchorPoint = CCPoint.AnchorMiddle;
@@ -60,7 +55,6 @@ namespace tests
             bgNode.AddChild (Target1);
 
             Target1.Position = bg.BoundingBox.Center + new CCPoint(-100.0f, 0.0f);
-            //grossini.Position = 
 
 			var sc = new CCScaleBy(2, 5);
 			var sc_back = sc.Reverse();

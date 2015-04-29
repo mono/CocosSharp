@@ -48,7 +48,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCFadeOutTRTilesState (this, target);
+            return new CCFadeOutTRTilesState (this, GridNode(target));
         }
     }
 
@@ -57,7 +57,7 @@ namespace CocosSharp
 
     public class CCFadeOutTRTilesState : CCTiledGrid3DActionState
     {
-        public CCFadeOutTRTilesState (CCFadeOutTRTiles action, CCNode target) : base (action, target)
+        public CCFadeOutTRTilesState (CCFadeOutTRTiles action, CCNodeGrid target) : base (action, target)
         {
         }
 
@@ -121,7 +121,7 @@ namespace CocosSharp
         {
             CCQuad3 coords = OriginalTile (pos);
 
-            var step = (Target is CCNodeGrid) ?  ((CCNodeGrid)Target).Grid.Step : Target.Grid.Step;
+            var step = ((CCNodeGrid)Target).Grid.Step;
 
             float dx = (step.X / 2) * (1.0f - distance);
             float dy = (step.Y / 2) * (1.0f - distance);

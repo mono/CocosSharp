@@ -16,7 +16,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCWaves3DState (this, target);
+            return new CCWaves3DState (this, GridNode(target));
         }
     }
 
@@ -25,7 +25,7 @@ namespace CocosSharp
 
     public class CCWaves3DState : CCLiquidState
     {
-        public CCWaves3DState (CCWaves3D action, CCNode target) : base (action, target)
+        public CCWaves3DState (CCWaves3D action, CCNodeGrid target) : base (action, target)
         {
         }
 

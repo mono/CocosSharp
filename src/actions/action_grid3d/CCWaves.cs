@@ -22,7 +22,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCWavesState (this, target);
+            return new CCWavesState (this, GridNode(target));
         }
     }
 
@@ -35,7 +35,7 @@ namespace CocosSharp
 
         public bool Horizontal { get; set; }
 
-        public CCWavesState (CCWaves action, CCNode target) : base (action, target)
+        public CCWavesState (CCWaves action, CCNodeGrid target) : base (action, target)
         {
             Vertical = action.Vertical;
             Horizontal = action.Horizontal;

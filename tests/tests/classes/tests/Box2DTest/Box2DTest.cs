@@ -277,8 +277,6 @@ namespace tests
                 if (sprite.Visible && sprite.PhysicsBody.Position.y < 0f) {
                     _world.DestroyBody (sprite.PhysicsBody);
                     sprite.Visible = false;
-                } else {
-                    sprite.UpdateTransformedSpriteTextureQuads();
                 }
             }
 

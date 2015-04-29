@@ -48,7 +48,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCWavesTiles3DState (this, target);
+            return new CCWavesTiles3DState (this, GridNode(target));
         }
     }
 
@@ -59,7 +59,7 @@ namespace CocosSharp
     {
         public int Waves { get; set; }
 
-        public CCWavesTiles3DState (CCWavesTiles3D action, CCNode target) : base (action, target)
+        public CCWavesTiles3DState (CCWavesTiles3D action, CCNodeGrid target) : base (action, target)
         {
             Waves = action.Waves;
         }

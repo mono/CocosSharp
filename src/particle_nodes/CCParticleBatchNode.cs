@@ -80,22 +80,27 @@ namespace CocosSharp
 
             Window.DrawManager.PushMatrix();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                TransformAncestors();
-            }
-
             Transform();
 
-            Draw();
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-            }
+            //Draw();
+            VisitRenderer();
 
             Window.DrawManager.PopMatrix();
+        }
+
+        internal override void VisitRenderer()
+        {
+
+            if (TextureAtlas.TotalQuads == 0)
+            {
+                return;
+            }
+
+            // Add command to renderer
+            // WARNING: NOT USING GLOBAL Z
+            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
+            var quadCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, TextureAtlas.Texture, BlendFunc, TextureAtlas.Quads.Elements);
+            Renderer.AddCommand(quadCommand);        
         }
 
         protected override void Draw()
@@ -193,7 +198,7 @@ namespace CocosSharp
 
             InsertChild(pChild, atlasIndex, tag);
 
-            pChild.BatchNode = this;
+            //pChild.BatchNode = this;
         }
 
         // don't use lazy sorting, reordering the particle systems quads afterwards would be too complex
@@ -410,7 +415,7 @@ namespace CocosSharp
             TextureAtlas.FillWithEmptyQuadsFromIndex(TextureAtlas.TotalQuads, pChild.TotalParticles);
 
             // particle could be reused for self rendering
-            pChild.BatchNode = null;
+            //pChild.BatchNode = null;
 
             // Need to remove child from list of children before we update atlas indices
             base.RemoveChild(pChild, cleanup);
@@ -427,7 +432,7 @@ namespace CocosSharp
         {
             for (int i = 0; i < Children.Count; i++)
             {
-                ((CCParticleSystem) Children.Elements[i]).BatchNode = null;
+                //((CCParticleSystem) Children.Elements[i]).BatchNode = null;
             }
 
             base.RemoveAllChildren(doCleanup);

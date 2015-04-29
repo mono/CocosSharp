@@ -90,6 +90,11 @@ namespace CocosSharp
 			}
 		}
 
+        internal Vector3 XnaVector
+        {
+            get { return new Vector3 (X, Y, 0.0f); }
+        }
+
 		#endregion Properties
 
 
@@ -730,6 +735,10 @@ namespace CocosSharp
         }
 
         public CCPoint3(CCPoint xy, float z) : this(xy.X, xy.Y, z)
+        {
+        }
+
+        internal CCPoint3(Vector3 xnaVec) : this(xnaVec.X, xnaVec.Y, xnaVec.Z)
         {
         }
 

@@ -675,7 +675,8 @@ namespace CocosSharp
                 CCNode parent = this.Parent;
                 if (parent != null) 
                 {
-                    worldTransform = CCAffineTransform.Concat(AffineLocalTransform, parent.AffineWorldTransform);
+                    var parentTransform = parent.AffineWorldTransform;
+                    CCAffineTransform.Concat(ref worldTransform, ref parentTransform, out worldTransform);
                 }
 
                 return worldTransform;
@@ -698,23 +699,6 @@ namespace CocosSharp
         public CCNode this[int tag]
         {
             get { return GetChildByTag(tag); }
-        }
-
-        public CCGridBase Grid 
-        { 
-            get { return grid; }
-            set 
-            {
-                if (grid != null)
-                    grid.Dispose ();
-                
-                grid = value;
-                if(value != null) 
-                {
-                    grid.Scene = Scene;
-                    grid.Layer = Layer;
-                }
-            }
         }
             
         public virtual CCScene Scene
@@ -849,6 +833,11 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
+        internal CCRenderer Renderer
+        {
+            get { return Window != null ? Window.Renderer : DrawManager.Renderer; }
+        }
+
         internal virtual Matrix XnaLocalMatrix 
         { 
             get { return xnaLocalMatrix; }
@@ -949,7 +938,7 @@ namespace CocosSharp
 
         public CCNode()
         {
-
+            InitialiseRenderCommand();
 #if USE_PHYSICS
 			_physicsBody = null;
 			_physicsScaleStartX = 1.0f;
@@ -975,6 +964,8 @@ namespace CocosSharp
 
             FauxLocalCameraUpDirection = new CCPoint3(0.0f, 1.0f, 0.0f);
         }
+
+        protected virtual void InitialiseRenderCommand() {}
 
         #endregion Constructors
 
@@ -2037,9 +2028,8 @@ namespace CocosSharp
         // This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
         public virtual void Visit()
         {
-            bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
             
-            if ((!Visible || Scene == null) && !renderTarget)
+            if ((!Visible))    
             {
                 return;
             }
@@ -2047,7 +2037,7 @@ namespace CocosSharp
             var drawManager = DrawManager;
 
             // Set camera view/proj matrix even if ChildClippingMode is None
-            if(Camera != null && !renderTarget)
+            if(Camera != null)
             {
                 drawManager.ViewMatrix = Camera.ViewMatrix;
                 drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
@@ -2056,15 +2046,7 @@ namespace CocosSharp
 
             drawManager.PushMatrix();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                Transform (drawManager);
-            }
-            else
-            {
-                Transform(drawManager);
-            }
+            Transform(drawManager);
 
             int i = 0;
 
@@ -2092,8 +2074,8 @@ namespace CocosSharp
                     }
                 }
 
-                // self draw
-                Draw();
+                VisitRenderer();
+
                 // draw the children
                 for (; i < count; ++i)
                 {
@@ -2106,18 +2088,16 @@ namespace CocosSharp
             }
             else
             {
-                // self draw
-                Draw();
-            }
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-                drawManager.SetIdentityMatrix();
-                Grid.Blit();
+                VisitRenderer();
             }
 
             drawManager.PopMatrix();
+        }
+
+        internal virtual void VisitRenderer()
+        {
+            // Add command to renderer
+            Draw();
         }
 
         internal void Transform(CCDrawManager drawManager)
@@ -2639,6 +2619,7 @@ namespace CocosSharp
             affineLocalTransform.D = cx * scaleY;
             affineLocalTransform.Tx = x;
             affineLocalTransform.Ty = y;
+            affineLocalTransform.Tz = VertexZ;
 
             // XXX: Try to inline skew
             // If skew is needed, apply skew and then anchor point
@@ -2649,7 +2630,7 @@ namespace CocosSharp
                     (float) Math.Tan(CCMacros.CCDegreesToRadians(skewX)), 1.0f,
                     0.0f, 0.0f);
 
-                affineLocalTransform = CCAffineTransform.Concat(skewMatrix, affineLocalTransform);
+                CCAffineTransform.Concat(ref skewMatrix, ref affineLocalTransform, out affineLocalTransform);
 
                 // adjust anchor point
                 if (!anchorPointInPoints.Equals(CCPoint.Zero))
@@ -2660,9 +2641,8 @@ namespace CocosSharp
                 }
             }
 
-            affineLocalTransform = CCAffineTransform.Concat(additionalTransform, affineLocalTransform);
+            CCAffineTransform.Concat(ref additionalTransform, ref affineLocalTransform, out affineLocalTransform);
 
-            // The affine transform is only 2d, so we need to manually incorporate the vertexZ translation
             XnaLocalMatrix = affineLocalTransform.XnaMatrix;
             xnaLocalMatrix.M43 = VertexZ;
 
@@ -2715,7 +2695,8 @@ namespace CocosSharp
             XnaLocalMatrix = matrix12;
             //XnaLocalMatrix = fauxLocalCameraTransform * xnaLocalMatrix;
 
-            affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
+            var affineCameraTrans = new CCAffineTransform(fauxLocalCameraTransform);
+            CCAffineTransform.Concat(ref affineCameraTrans, ref affineLocalTransform, out affineLocalTransform);
 
             if (Children != null)
             {

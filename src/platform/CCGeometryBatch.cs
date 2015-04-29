@@ -126,8 +126,8 @@ namespace CocosSharp
                 throw new InvalidOperationException("End must be called before Begin can be called again.");
             }
 
-            //tell our basic effect to begin.
-            UpdateMatrix();
+            // Call the update function
+            Update ();
 
             // flip the error checking boolean. It's now ok to call AddVertex, Flush,
             // and End.
@@ -203,13 +203,12 @@ namespace CocosSharp
         //
         public virtual void Update()
         {
-
+            //tell our basic effect to begin by setting up the matrices.
+            UpdateMatrix();
         }
 
-        // Submit the batch to the driver, typically implemented
-        // with a call to DrawIndexedPrimitive 
-        //
-        public virtual void Draw()
+        // This will be called from the Renderer
+        void RenderBatch ()
         {
             if (batchItemList.Count == 0) return;
 
@@ -239,8 +238,8 @@ namespace CocosSharp
 
                 // if the texture changed, we need to flush and bind the new texture
                 var shouldFlush = (geometryPacket.Texture != null && !ReferenceEquals(geometryPacket.Texture.XNATexture, lastTexture))
-                                  || lastAttributes != geometry.InstanceAttributes
-                                  || numberOfVertices + geometryNumberOfVertices > short.MaxValue;
+                    || lastAttributes != geometry.InstanceAttributes
+                    || numberOfVertices + geometryNumberOfVertices > short.MaxValue;
 
 
                 if (shouldFlush)
@@ -269,7 +268,16 @@ namespace CocosSharp
 
             if (AutoClearInstances)
                 ClearInstances();
+            
+        }
 
+        // Submit the batch to the driver, typically implemented
+        // with a call to DrawIndexedPrimitive 
+        //
+        public virtual void Draw()
+        {  
+            DrawManager.Renderer.AddCommand(
+                new CCCustomCommand(0, new CCAffineTransform(DrawManager.WorldMatrix), RenderBatch));
         }
 
         private void FlushVertexArray(CCGeometryInstanceAttributes instance, int numberOfVerticies, int numberOfIndices)
@@ -287,8 +295,7 @@ namespace CocosSharp
             device.BlendState = instance.BlendState;
             basicEffect.Projection = DrawManager.ProjectionMatrix;
             basicEffect.View = DrawManager.ViewMatrix;
-            //basicEffect.World = DrawManager.WorldMatrix;
-            basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, DrawManager.WorldMatrix) ;
+            basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, DrawManager.WorldMatrix);
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {

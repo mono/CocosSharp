@@ -7,21 +7,31 @@ namespace CocosSharp
         where T : struct, IVertexType
         where T2 : struct
     {
+        #region Properties
 
         CCVertexBuffer<T> VertexBuffer { get; set; }
         CCIndexBuffer<T2> IndexBuffer { get; set; }
         PrimitiveType PrimitiveType { get; set; }
 
-        public CCPrimitive (CCVertexBuffer<T> vertexBuffer, CCIndexBuffer<T2> indexBuffer = null, PrimitiveType primitiveType = PrimitiveType.TriangleList)
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCPrimitive (CCVertexBuffer<T> vertexBuffer, 
+            CCIndexBuffer<T2> indexBuffer = null, 
+            PrimitiveType primitiveType = PrimitiveType.TriangleList)
         {
             VertexBuffer = vertexBuffer;
             IndexBuffer = indexBuffer;
             PrimitiveType = primitiveType;
         }
 
+        #endregion Constructors
+
+
         public void Draw (CCDrawManager drawManager)
         {
-            // early out
             if (VertexBuffer == null || VertexBuffer.Count == 0)
                 return;
 
@@ -33,7 +43,10 @@ namespace CocosSharp
                 drawManager.DrawBuffer(VertexBuffer, IndexBuffer, 0, IndexBuffer.Count / 3);
             }
             else
-                drawManager.DrawPrimitives(PrimitiveType, VertexBuffer.Data.Elements, 0, VertexBuffer.Count);
+            {
+                var primitiveCount = (PrimitiveType == PrimitiveType.TriangleList) ? 3 : 2;
+                drawManager.DrawPrimitives(PrimitiveType, VertexBuffer.Data.Elements, 0, VertexBuffer.Count / primitiveCount);
+            }
 
         }
     }

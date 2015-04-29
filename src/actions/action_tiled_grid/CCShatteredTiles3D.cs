@@ -50,7 +50,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCShatteredTiles3DState (this, target);
+            return new CCShatteredTiles3DState (this, GridNode(target));
         }
     }
 
@@ -65,7 +65,7 @@ namespace CocosSharp
 
         protected bool ShatterOnce { get; private set; }
 
-        public CCShatteredTiles3DState (CCShatteredTiles3D action, CCNode target) : base (action, target)
+        public CCShatteredTiles3DState (CCShatteredTiles3D action, CCNodeGrid target) : base (action, target)
         {
             Range = action.Range;
             ShatterZ = action.ShatterZ;

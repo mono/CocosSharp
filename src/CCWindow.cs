@@ -31,6 +31,7 @@ namespace CocosSharp
 
         internal List<CCDirector> SceneDirectors { get { return sceneDirectors; } }
         internal CCDrawManager DrawManager { get { return CCDrawManager.SharedDrawManager; } }
+        internal CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
         internal GameWindow XnaWindow { get; private set; }
         internal GraphicsDeviceManager DeviceManager { get; private set; }
         private CCDirector defaultDirector;
@@ -323,10 +324,15 @@ namespace CocosSharp
             {
                 CCScene runningScene = director.RunningScene;
 
+                //DrawManager.Renderer = Renderer;
+
                 // draw the scene
                 if (runningScene != null) 
                 {
                     runningScene.Visit();
+
+                    Renderer.VisitRenderQueue();
+
                     if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
                         EventDispatcher.DispatchEvent (eventAfterVisit);
                 }

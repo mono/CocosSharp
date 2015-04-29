@@ -1,218 +1,213 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    internal enum QUEUE_GROUP
+    internal class RenderQueuePriority : IComparer<long>
     {
-        GLOBALZ_NEG = 0,
-        GLOBALZ_ZERO = 1,
-        GLOBALZ_POS = 2,
-        QUEUE_COUNT = 3,
-    };
 
-    /// <summary>
-    /// Implementation of a render queue as explained in the following:
-    /// 
-    /// Implementing a Render Queue for Games -> http://ploobs.com.br/?p=2378
-    /// Order your graphics draw calls around -> http://realtimecollisiondetection.net/blog/?p=86
-    /// Cocos2D-X Render Pipeline Documentation -> http://www.cocos2d-x.org/wiki/Cocos2d_v30_renderer_pipeline_roadmap
-    /// 
-    /// </summary>
-    public class CCRenderer
-    {
-        CCDrawManager DrawManager { get; set; }
-
-        CCRawList<CCV3F_C4B_T2F_Quad> quads;
-
-        RenderQueue<CCRenderQueueId, CCRenderCommand> RenderQueue { get; set; }
-
-        int LastMaterialID { get; set; }
-        int FilledVertex { get; set; }
-        int FilledIndex { get; set; }
-        int NumberQuads { get; set; }
-        bool IsRendering { get; set; }
-        bool isDepthTestFor2D { get; set; }
-
-        int Group { get; set; }
-
-        List<CCRenderCommand> batchCommands;
-        List<CCQuadCommand> batchQuadCommands;
-        int numberQuads = 0;
-
-        static int BATCH_QUADCOMMAND_RESEVER_SIZE = 64;
-        internal const int MATERIAL_ID_DO_NOT_BATCH = 0;
-
-        internal CCRenderer(CCDrawManager drawManager)
+        public int Compare(long first, long other)
         {
-            DrawManager = drawManager;
+            // 64 - 57 : Group id (byte)
+            // 56 - 25 : Global depth (float)
+            // 24 - 1 : Material id (24 bit)
 
-            RenderQueue = new RenderQueue<CCRenderQueueId, CCRenderCommand>();
+            var group1 = first & ((long)(byte.MaxValue) << 56);
+            var group2 = other & ((long)(byte.MaxValue) << 56);
 
-            quads = new CCRawList<CCV3F_C4B_T2F_Quad>();
+            int compareValue = group1.CompareTo(group2);
 
-            batchCommands = new List<CCRenderCommand>(BATCH_QUADCOMMAND_RESEVER_SIZE);
-            batchQuadCommands = new List<CCQuadCommand>(BATCH_QUADCOMMAND_RESEVER_SIZE);
+            if(compareValue == 0)
+            {
+                var depth1 = first >> 24;
+                var depth2 = other >> 24;
+
+                compareValue = depth1.CompareTo(depth2);
+            }
+
+            return compareValue;
+        }
+    }
+
+    // Implementation based off of discussion "Implementing a Render Queue for Games" http://ploobs.com.br/?p=2378 
+    internal class CCRenderer
+    {      
+        [Flags]
+        internal enum CCCommandType
+        {
+            None = 0x0,
+            Quad = 0x1,
+            Custom = 0x2,
+            Primitive = 0x4,
         }
 
-        public void AddComand (CCRenderCommand command)
+        byte currentGroupId;
+        CCCommandType currentCommandType;
+        CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
+        CCRawList<CCQuadCommand> quadCommands;
+        CCRenderQueue<long, CCRenderCommand> renderQueue;
+        CCDrawManager drawManager;
+
+
+        #region Constructors
+
+        internal CCRenderer(CCDrawManager drawManagerIn)
         {
-            var renderQueueId = new CCRenderQueueId(Group, 0, (int)command.Depth, command.MaterialId);
-            RenderQueue.Enqueue(renderQueueId, command);
+            currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(256, true);
+            quadCommands = new CCRawList<CCQuadCommand>(256, true);
+            renderQueue = new CCRenderQueue<long, CCRenderCommand>(new RenderQueuePriority());
+            drawManager = drawManagerIn;
+        }
+
+        #endregion Constructors
+
+        public void AddCommand(CCRenderCommand command)
+        {
+            command.Group = currentGroupId;
+            renderQueue.Enqueue(command.RenderId, command);
+        }
+
+        public void PushGroup()
+        {
+            currentGroupId += 1;
+        }
+
+        public void PopGroup()
+        {
+            currentGroupId -= 1;
         }
 
         internal void VisitRenderQueue()
         {
+            currentCommandType = CCCommandType.None;
+            currentGroupId = 0;
 
-            IsRendering = true;
-            quads.Clear();
-
-            while (RenderQueue.HasItems)
+            while (renderQueue.HasItems)
             {
-                var command = RenderQueue.Dequeue();
-                ExecuteRenderCommand(command);
+                var command = renderQueue.Dequeue();
+                command.RequestRenderCommand(this);
             }
 
+            // Flush any remaining render commands
             Flush();
+        }
 
-            IsRendering = false;
+        #region Processing render commands
+
+        internal void ProcessQuadRenderCommand(CCQuadCommand quadCommand)
+        {
+            var worldTransform = quadCommand.WorldTransform;
+            var identity = worldTransform == CCAffineTransform.Identity;
+
+            quadCommands.Add(quadCommand);
+
+            var quads = quadCommand.Quads;
+            for (int i = 0, N = quadCommand.QuadCount; i < N; ++i)
+            {
+                if (identity)
+                    currentBatchedQuads.Add(quads[i]);
+                else
+                    currentBatchedQuads.Add(worldTransform.Transform(quads[i]));
+            }
+
+            // We're changing command types so render any pending sequence of commandss
+            // e.g. Batched quad commands
+            if((currentCommandType & CCCommandType.Quad) == CCCommandType.None)
+                Flush();
+
+            currentCommandType = CCCommandType.Quad;
+        }
+
+        internal void ProcessPrimitiveRenderCommand <T, T2> (CCPrimitiveCommand <T, T2> primitiveCommand)
+            where T : struct, IVertexType
+            where T2 : struct
+           
+        {
+            var worldTransform = primitiveCommand.WorldTransform;
+
+            // We're changing command types so render any pending sequence of commands
+            // e.g. Batched quad commands
+            if((currentCommandType & CCCommandType.Primitive) == CCCommandType.None)
+                Flush();
+
+            primitiveCommand.RenderPrimitive(drawManager);
+
+            currentCommandType = CCCommandType.Primitive;
+
+        }
+
+        internal void ProcessCustomRenderCommand(CCCustomCommand customCommand)
+        {
+            // We're changing command types so render any pending sequence of commands
+            // e.g. Batched quad commands
+            if((currentCommandType & CCCommandType.Custom) == CCCommandType.None)
+                Flush();
+
+            customCommand.RenderCustomCommand(drawManager);
+
+            currentCommandType = CCCommandType.Custom;
+        }
+
+        #endregion Processing render commands
+
+
+        void Flush()
+        {
+            switch(currentCommandType)
+            {
+                case CCCommandType.Quad:
+                    DrawBatchedQuads();
+                    break;
+                default:
+                    break;
+            }
         }
 
         void DrawBatchedQuads()
         {
-
-            //TODO: we can improve the draw performance by insert material switching command before hand.
-
-            int indexToDraw = 0;
+            int numOfQuads = 0;
             int startIndex = 0;
 
-            //Upload buffer to graphics device
-            if(numberQuads <= 0 || batchQuadCommands.Count == 0)
-            {
+            if(currentBatchedQuads.Count <= 0 || quadCommands.Count == 0)
                 return;
-            }
 
-            //Start drawing verties in batch
-            var drawManager = DrawManager;
+            var quadElements = currentBatchedQuads.Elements;
+            uint lastMaterialId = 0;
 
-            var quadElements = quads.Elements;
+            drawManager.PushMatrix();
+            drawManager.SetIdentityMatrix();
 
-            foreach (CCQuadCommand cmd in batchQuadCommands)
+            foreach (CCQuadCommand command in quadCommands)
             {
-                var newMaterialID = cmd.MaterialId;
-                if (LastMaterialID != newMaterialID || newMaterialID == MATERIAL_ID_DO_NOT_BATCH)
+                var newMaterialID = command.MaterialId;
+                if (lastMaterialId != newMaterialID)
                 {
-                    if (indexToDraw > 0)
+                    if (numOfQuads > 0)
                     {
+                        drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
-                        drawManager.DrawQuads(quads, startIndex, indexToDraw);
-                        //drawnBatches++;
-                        //drawnVertices += indexToDraw;
-
-                        startIndex += indexToDraw;
-                        indexToDraw = 0;
-
+                        startIndex += numOfQuads;
+                        numOfQuads = 0;
                     }
 
-                    LastMaterialID = cmd.MaterialId;
+                    lastMaterialId = command.MaterialId;
                 }
 
-                cmd.UseMaterial(drawManager);
-                indexToDraw += cmd.QuadCount;
+                command.UseMaterial(drawManager);
+                numOfQuads += command.QuadCount;
             }
 
-            // Draw any remaining quad
-            if (indexToDraw > 0)
-            {
-                drawManager.DrawQuads(quads, startIndex, indexToDraw);
-            }
+            // Draw any remaining quads
+            if (numOfQuads > 0)
+                drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
+            quadCommands.Clear();
+            currentBatchedQuads.Clear();
 
-
-            batchQuadCommands.Clear();
-            numberQuads = 0;
-
+            drawManager.PopMatrix();
         }
-
-        void FlushQuads()
-        {
-
-            if (quads.Count > 0)
-            {
-                DrawBatchedQuads();
-                LastMaterialID = 0;
-            }
-
-        }
-
-        void ExecuteRenderCommand (CCRenderCommand command)
-        {
-            if (command is CCQuadCommand)
-            {
-                Flush3D();
-                FlushTriangles();
-
-                //Console.WriteLine(((CCQuadCommand)command).QuadCount);
-                var quadCommand = (CCQuadCommand)command;
-
-                var drawManager = DrawManager;
-
-                //Draw batched quads if necessary
-                // TODO: Check for buffer size
-                if(command.IsSkipBatching) // || (numberQuads + cmd->getQuadCount()) * 4 > VBO_SIZE )
-                {
-
-                    // TODO: Check for buffer size
-                    //CCASSERT(cmd->getQuadCount()>= 0 && cmd->getQuadCount() * 4 < VBO_SIZE, "VBO for vertex is not big enough, please break the data down or use customized render command");
-
-                    //Draw batched quads if VBO is full
-                    DrawBatchedQuads();
-                }
-
-                var mv = command.ModelViewTransform;
-
-                batchQuadCommands.Add(quadCommand);
-
-                for (int b = 0; b < quadCommand.QuadCount; b++)
-                {
-                    quads.Add(mv.Transform(quadCommand.Quads[b]));
-                }
-                numberQuads += quadCommand.QuadCount;
-
-                if (quadCommand.IsSkipBatching)
-                {
-                    DrawBatchedQuads();
-                }
-            }
-            else
-            {
-                Flush();
-                command.Execute(DrawManager);
-            }
-
-        }
-
-        void Flush()
-        {
-            Flush2D();
-            Flush3D();
-        }
-
-        void Flush2D()
-        {
-            FlushQuads();
-            FlushTriangles();
-        }
-
-        void Flush3D()
-        {
-        }
-
-        void FlushTriangles()
-        {
-
-        }
-
     }
 }
 

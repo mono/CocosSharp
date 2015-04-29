@@ -45,7 +45,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCSplitRowsState (this, target);
+            return new CCSplitRowsState (this, GridNode(target));
         }
     }
 
@@ -59,7 +59,7 @@ namespace CocosSharp
         // We only need the width
         private float width = 0;
 
-        public CCSplitRowsState (CCSplitRows action, CCNode target) : base (action, target)
+        public CCSplitRowsState (CCSplitRows action, CCNodeGrid target) : base (action, target)
         {
             VisibleSize = Target.VisibleBoundsWorldspace.Size;
             width = VisibleSize.Width;
