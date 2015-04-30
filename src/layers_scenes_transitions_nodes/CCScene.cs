@@ -437,14 +437,14 @@ namespace CocosSharp
 		
 		#endregion
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             CCDrawManager drawManager = Window.DrawManager;
 
             if(drawManager.CurrentRenderTarget == null)
                 drawManager.Viewport = Viewport.XnaViewport; 
 
-            base.Visit();
+            base.Visit(ref parentWorldTransform);
         }
     }
 }

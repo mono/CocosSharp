@@ -268,7 +268,7 @@ namespace CocosSharp
 
         #region Visiting and drawing
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransfrom)
         {
             if (!Visible || Window == null)
             {
@@ -288,7 +288,7 @@ namespace CocosSharp
 
             if (ChildClippingMode == CCClipMode.None)
             {
-                base.Visit();
+                base.Visit(ref parentWorldTransfrom);
                 return;
             }
 

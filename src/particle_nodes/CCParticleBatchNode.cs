@@ -64,7 +64,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             // CAREFUL:
             // This visit is almost identical to CCNode#visit

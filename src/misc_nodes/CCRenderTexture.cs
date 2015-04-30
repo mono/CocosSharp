@@ -279,7 +279,7 @@ namespace CocosSharp
             CCDrawManager.SharedDrawManager.RestoreRenderTarget();
         }
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             VisitRenderer();
         }

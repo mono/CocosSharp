@@ -1407,7 +1407,7 @@ namespace CocosSharp
             TextureAtlas.ResizeCapacity(quantity);
         }
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
 
             if (!Visible || string.IsNullOrEmpty(Text))

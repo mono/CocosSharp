@@ -116,7 +116,7 @@ namespace CocosSharp
         CCNode parent;
 
         Matrix xnaLocalMatrix;
-        CCAffineTransform affineLocalTransform;
+        protected CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
 
         List<CCEventListener> toBeAddedListeners;                       // The listeners to be added lazily when an EventDispatcher is not yet available
@@ -797,6 +797,12 @@ namespace CocosSharp
         {
             get { return Scene != null ? Scene.Viewport : null; }
             set { Scene.Viewport = value; }
+        }
+
+
+        internal CCDrawManager DrawManager 
+        {
+            get  { return Window != null ? Window.DrawManager : CCDrawManager.SharedDrawManager; }
         }
 
         internal CCRenderer Renderer
@@ -1957,16 +1963,13 @@ namespace CocosSharp
         {
         }
 
-        internal virtual CCDrawManager DrawManager 
+        public void Visit()
         {
-            get 
-            {
-                return Window != null ? Window.DrawManager : CCDrawManager.SharedDrawManager;
-            }
+            var identity = CCAffineTransform.Identity;
+            Visit(ref identity);
         }
 
-        // This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
-        public virtual void Visit()
+        public virtual void Visit(ref CCAffineTransform parentWorldTransform)
         {
             
             if ((!Visible))    
@@ -1983,6 +1986,8 @@ namespace CocosSharp
                 drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
             }
 
+            var worldTransform = CCAffineTransform.Identity;
+            CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
 
             drawManager.PushMatrix();
 
@@ -2005,7 +2010,7 @@ namespace CocosSharp
                         // don't break loop on invisible children
                         if (elements[i].Visible)
                         {
-                            elements[i].Visit();
+                            elements[i].Visit(ref worldTransform);
                         }
                     }
                     else
@@ -2022,7 +2027,7 @@ namespace CocosSharp
                     // Draw the z >= 0 order children next.
                     if (elements[i].Visible)
                     {
-                        elements[i].Visit();
+                        elements[i].Visit(ref worldTransform);
                     }
                 }
             }

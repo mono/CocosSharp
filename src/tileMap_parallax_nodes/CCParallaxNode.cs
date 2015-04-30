@@ -42,7 +42,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             CCPoint pos = AbsolutePosition;
 
@@ -56,7 +56,7 @@ namespace CocosSharp
                 lastPosition = pos;
             }
 
-            base.Visit();
+            base.Visit(ref parentWorldTransform);
         }
 
 

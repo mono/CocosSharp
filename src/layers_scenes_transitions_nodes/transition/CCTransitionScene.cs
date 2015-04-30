@@ -50,14 +50,14 @@ namespace CocosSharp
             AddChild(OutSceneNodeContainer);
         }
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             bool outSceneVisible = OutSceneNodeContainer.Visible;
             bool inSceneVisible = InSceneNodeContainer.Visible;
 
             CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
 
-            base.Visit();
+            base.Visit(ref parentWorldTransform);
 
             if (IsInSceneOnTop)
             {

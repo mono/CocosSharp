@@ -24,7 +24,7 @@ namespace CocosSharp
         /// Gets or sets the grid object that is used when applying effects.
         /// </summary>
         /// <value>The grid.</value>
-        public new CCGridBase Grid 
+        public CCGridBase Grid 
         { 
             get { return grid; }
             set 
@@ -41,7 +41,7 @@ namespace CocosSharp
             }
         }
 
-        public override void Visit ()
+        public override void Visit (ref CCAffineTransform parentWorldTransform)
         {
             bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
 
@@ -59,6 +59,8 @@ namespace CocosSharp
                 drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
             }
 
+            var worldTransform = CCAffineTransform.Identity;
+            CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
 
             drawManager.PushMatrix();
 
