@@ -75,7 +75,6 @@ namespace CocosSharp
     public class CCNode : ICCUpdatable, ICCFocusable, IComparer<CCNode>, IComparable<CCNode>
     {
         public const int TagInvalid = -1;                               // Use this to determine if a tag has been set on the node.
-        static uint globalOrderOfArrival = 1;
 
         bool ignoreAnchorPointForPosition;
         bool isCleaned = false;
@@ -84,8 +83,6 @@ namespace CocosSharp
 
         int tag;
         int zOrder;
-        int localZOrder;
-        float globalZOrder;
         float vertexZ;
 
         float rotationX;
@@ -199,8 +196,6 @@ namespace CocosSharp
         public object UserObject { get; set; }
         public string Name { get; set; }
         public CCRawList<CCNode> Children { get; protected set; }
-
-        internal protected uint OrderOfArrival { get; internal set; }
 
         protected bool IsReorderChildDirty { get; set; }
         protected byte RealOpacity { get; set; }
@@ -323,26 +318,12 @@ namespace CocosSharp
             get { return zOrder; }
             set
             {
-                zOrder = value;
-                if (Parent != null)
+                if(zOrder != value)
                 {
-                    Parent.ReorderChild(this, value);
-                }
-            }
-        }
-
-        public int LocalZOrder 
-        { 
-            get { return localZOrder; }
-
-            set 
-            {
-                if (localZOrder != value)
-                {
-                    localZOrder = value;
+                    zOrder = value;
                     if (Parent != null)
                     {
-                        Parent.ReorderChild(this, localZOrder);
+                        Parent.ReorderChild(this, value);
                     }
 
                     if(EventDispatcher != null)
@@ -354,21 +335,6 @@ namespace CocosSharp
         public int NumberOfRunningActions
         {
             get { return ActionManager != null ? ActionManager.NumberOfRunningActionsInTarget (this) : 0; }
-        }
-
-        public float GlobalZOrder 
-        { 
-            get { return globalZOrder; }
-            set
-            {
-                if (globalZOrder != value)
-                {
-                    globalZOrder = value;
-                    if (EventDispatcher != null)
-                        EventDispatcher.MarkDirty = this;
-                }
-
-            }
         }
 
         public virtual float VertexZ 
@@ -1369,7 +1335,6 @@ namespace CocosSharp
             CCSerialization.SerializeData(ignoreAnchorPointForPosition, sw);
             CCSerialization.SerializeData(IsRunning, sw);
             CCSerialization.SerializeData(IsReorderChildDirty, sw);
-            CCSerialization.SerializeData(OrderOfArrival, sw);
             CCSerialization.SerializeData(tag, sw);
             CCSerialization.SerializeData(zOrder, sw);
             CCSerialization.SerializeData(anchorPoint, sw);
@@ -1407,7 +1372,6 @@ namespace CocosSharp
             ignoreAnchorPointForPosition = CCSerialization.DeSerializeBool(sr);
             IsRunning = CCSerialization.DeSerializeBool(sr);
             IsReorderChildDirty = CCSerialization.DeSerializeBool(sr);
-            OrderOfArrival = (uint)CCSerialization.DeSerializeInt(sr);
             tag = CCSerialization.DeSerializeInt(sr);
             zOrder = CCSerialization.DeSerializeInt(sr);
             AnchorPoint = CCSerialization.DeSerializePoint(sr);
@@ -1456,7 +1420,7 @@ namespace CocosSharp
         public void AddChild(CCNode child)
         {
             Debug.Assert(child != null, "Argument must be no-null");
-            AddChild(child, child.LocalZOrder, child.Tag);
+            AddChild(child, child.ZOrder, child.Tag);
         }
 
         public void AddChild(CCNode child, int zOrder)
@@ -1480,7 +1444,6 @@ namespace CocosSharp
 
             child.Parent = this;
             child.tag = tag;
-            child.OrderOfArrival = globalOrderOfArrival++;
             if (child.isCleaned)
             {
                 child.ResetCleanState();
@@ -1515,7 +1478,6 @@ namespace CocosSharp
             ChangedChildTag(child, TagInvalid, tag);
 
             child.zOrder = z;
-            child.LocalZOrder = z;
         }
 
         #endregion AddChild
@@ -1661,32 +1623,12 @@ namespace CocosSharp
 
         int IComparer<CCNode>.Compare(CCNode n1, CCNode n2)
         {
-            if (n1.LocalZOrder < n2.LocalZOrder || (n1.LocalZOrder == n2.LocalZOrder && n1.OrderOfArrival < n2.OrderOfArrival))
-            {
-                return -1;
-            }
-
-            if (n1 == n2)
-            {
-                return 0;
-            }
-
-            return 1;
+            return n1.CompareTo(n2);
         }
 
         public int CompareTo(CCNode that)
         {
-            if (this.LocalZOrder < that.LocalZOrder || (this.LocalZOrder == that.LocalZOrder && this.OrderOfArrival < that.OrderOfArrival))
-            {
-                return -1;
-            }
-
-            if (this == that)
-            {
-                return 0;
-            }
-
-            return 1;
+            return this.ZOrder.CompareTo(that.ZOrder);
         }
 
         public virtual void SortAllChildren()
@@ -1730,15 +1672,13 @@ namespace CocosSharp
         public virtual void ReorderChild(CCNode child, int zOrder)
         {
             // lets not do anything here if the z-order is not to be changed
-            if (child.localZOrder == zOrder && child.zOrder == zOrder)
+            if (child.zOrder == zOrder)
                 return;
 
             Debug.Assert(child != null, "Child must be non-null");
 
             IsReorderChildDirty = true;
-            child.OrderOfArrival = globalOrderOfArrival++;
             child.zOrder = zOrder;
-            child.LocalZOrder = zOrder;
         }
 
         #endregion Child Sorting

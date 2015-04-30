@@ -192,7 +192,7 @@ namespace tests
         {
             // get the userdata, it's the index of the menu item clicked
             CCMenuItem menuItem = (CCMenuItem)sender;
-			var nIdx = menuItem.LocalZOrder - MENU_ITEM_Z_ORDER;
+            var nIdx = menuItem.ZOrder - MENU_ITEM_Z_ORDER;
 
             // create the test scene and run it
             TestScene scene = CreateTestScene(nIdx);

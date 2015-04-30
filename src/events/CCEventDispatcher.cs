@@ -1068,19 +1068,10 @@ namespace CocosSharp
                 {
                     child = children[i];
 
-                    if ( child != null && child.LocalZOrder < 0 )
+                    if ( child != null && child.ZOrder < 0 )
                         VisitTarget(child, false);
                     else
                         break;
-                }
-
-                if (nodeListenersMap.ContainsKey(node))
-                {
-                    if (!globalZOrderNodeMap.ContainsKey (node.GlobalZOrder)) 
-                    {
-                        globalZOrderNodeMap.Add (node.GlobalZOrder, new List<CCNode> ());
-                    }
-                    globalZOrderNodeMap[node.GlobalZOrder].Add(node);
                 }
 
                 for( ; i < childrenCount; i++ )
@@ -1088,18 +1079,6 @@ namespace CocosSharp
                     child = children[i];
                     if (child != null)
                         VisitTarget(child, false);
-                }
-            }
-            else
-            {
-                if (nodeListenersMap.ContainsKey(node))
-                {
-                    if (!globalZOrderNodeMap.ContainsKey (node.GlobalZOrder)) 
-                    {
-                        globalZOrderNodeMap.Add (node.GlobalZOrder, new List<CCNode> ());
-                    }
-                    globalZOrderNodeMap[node.GlobalZOrder].Add(node);
-
                 }
             }
 

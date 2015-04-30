@@ -324,7 +324,6 @@ namespace CocosSharp
             {
                 oldIndex = sprite.AtlasIndex;
                 sprite.AtlasIndex = curIndex;
-                sprite.OrderOfArrival = 0;
                 if (oldIndex != curIndex)
                 {
                     Swap(oldIndex, curIndex);
@@ -340,7 +339,6 @@ namespace CocosSharp
                     //all children are in front of the parent
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.OrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -357,7 +355,6 @@ namespace CocosSharp
                     {
                         oldIndex = sprite.AtlasIndex;
                         sprite.AtlasIndex = curIndex;
-                        sprite.OrderOfArrival = 0;
                         if (oldIndex != curIndex)
                         {
                             Swap(oldIndex, curIndex);
@@ -374,7 +371,6 @@ namespace CocosSharp
                     //all children have a zOrder < 0)
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.OrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);

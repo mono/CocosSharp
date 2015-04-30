@@ -88,7 +88,7 @@ namespace CocosSharp
                 // draw children zOrder < 0
                 for (; i < count; ++i)
                 {
-                    if (elements[i].LocalZOrder < 0)
+                    if (elements[i].ZOrder < 0)
                     {
                         // don't break loop on invisible children
                         if (elements[i].Visible)
