@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -43,12 +44,17 @@ namespace CocosSharp
             Primitive = 0x4,
         }
 
+        byte currentLayerGroupId;
         byte currentGroupId;
         CCCommandType currentCommandType;
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
         CCRawList<CCQuadCommand> quadCommands;
         CCRenderQueue<long, CCRenderCommand> renderQueue;
         CCDrawManager drawManager;
+
+        const uint MaxLayerDepth = 20;
+        readonly Matrix[] layerGroupViewMatrixStack;
+        readonly Matrix[] layerGroupProjMatrixStack;
 
 
         #region Constructors
@@ -59,6 +65,9 @@ namespace CocosSharp
             quadCommands = new CCRawList<CCQuadCommand>(256, true);
             renderQueue = new CCRenderQueue<long, CCRenderCommand>(new RenderQueuePriority());
             drawManager = drawManagerIn;
+
+            layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
+            layerGroupProjMatrixStack = new Matrix[MaxLayerDepth];
         }
 
         #endregion Constructors
@@ -66,7 +75,27 @@ namespace CocosSharp
         public void AddCommand(CCRenderCommand command)
         {
             command.Group = currentGroupId;
+            command.LayerGroup = currentLayerGroupId;
             renderQueue.Enqueue(command.RenderId, command);
+        }
+
+        public void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
+        {
+            if(currentLayerGroupId == MaxLayerDepth - 1)
+            {
+                Debug.Fail(String.Format("Maximum layer depth of {0} reached", MaxLayerDepth));
+                return;
+            }
+
+            currentLayerGroupId+=1;
+            layerGroupViewMatrixStack[currentLayerGroupId] = viewMatrix;
+            layerGroupProjMatrixStack[currentLayerGroupId] = projMatrix;
+        }
+
+        public void PopLayerGroup()
+        {
+            if(currentLayerGroupId > 0)
+                currentLayerGroupId -= 1;
         }
 
         public void PushGroup()
@@ -82,11 +111,24 @@ namespace CocosSharp
         internal void VisitRenderQueue()
         {
             currentCommandType = CCCommandType.None;
+            currentLayerGroupId = 0;
             currentGroupId = 0;
+
+            drawManager.ViewMatrix = Matrix.Identity;
+            drawManager.ProjectionMatrix = Matrix.Identity;
 
             while (renderQueue.HasItems)
             {
                 var command = renderQueue.Dequeue();
+                byte layerGroupId = command.LayerGroup;
+
+                if(layerGroupId != currentLayerGroupId) 
+                {
+                    currentGroupId = layerGroupId;
+                    drawManager.ViewMatrix = layerGroupViewMatrixStack[currentGroupId];
+                    drawManager.ProjectionMatrix = layerGroupProjMatrixStack[currentGroupId];
+                }
+
                 command.RequestRenderCommand(this);
             }
 

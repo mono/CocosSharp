@@ -278,8 +278,12 @@ namespace CocosSharp
             // Set camera view/proj matrix even if ChildClippingMode is None
             if(Camera != null)
             {
-                Window.DrawManager.ViewMatrix = Camera.ViewMatrix;
-                Window.DrawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+                var viewMatrix = Camera.ViewMatrix;
+                var projMatrix = Camera.ProjectionMatrix;
+
+                Renderer.PushLayerGroup(ref viewMatrix, ref projMatrix);
+                Window.DrawManager.ViewMatrix = viewMatrix;
+                Window.DrawManager.ProjectionMatrix = projMatrix;
             }
 
             if (ChildClippingMode == CCClipMode.None)
@@ -333,6 +337,9 @@ namespace CocosSharp
             AfterDraw();
 
             Window.DrawManager.PopMatrix();
+
+            if(Camera != null)
+                Renderer.PopLayerGroup();
         }
 
         void BeforeDraw()

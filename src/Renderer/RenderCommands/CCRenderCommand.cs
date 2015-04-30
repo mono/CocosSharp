@@ -8,6 +8,7 @@ namespace CocosSharp
     {
         long renderId;
         byte group;
+        byte layerGroup;
         float globalDepth;
         CCAffineTransform worldTransform;
 
@@ -28,6 +29,12 @@ namespace CocosSharp
 
                 return renderId;
             }
+        }
+
+        internal byte LayerGroup
+        {
+            get { return layerGroup; }
+            set { layerGroup = value; RenderIdDirty = true; } 
         }
 
         internal byte Group 
