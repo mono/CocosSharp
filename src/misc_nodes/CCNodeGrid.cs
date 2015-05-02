@@ -68,11 +68,6 @@ namespace CocosSharp
             {
                 CCCustomCommand command = new CCCustomCommand(long.MinValue, AffineWorldTransform, OnGridBeginDraw);
                 Renderer.AddCommand(command);
-                Transform(drawManager);
-            }
-            else
-            {
-                Transform(drawManager);
             }
 
             if (Target != null)
@@ -105,7 +100,7 @@ namespace CocosSharp
                 }
 
                 // self draw
-                VisitRenderer();
+                VisitRenderer(ref worldTransform);
                 // draw the children
                 for (; i < count; ++i)
                 {
@@ -119,7 +114,7 @@ namespace CocosSharp
             else
             {
                 // self draw
-                VisitRenderer();
+                VisitRenderer(ref worldTransform);
             }
 
             if (Grid != null && Grid.Active)

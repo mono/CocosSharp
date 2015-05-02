@@ -678,11 +678,6 @@ namespace CocosSharp
                 stringData.Clear();
         }
 
-        public void Render()
-        {
-            VisitRenderer();
-        }
-
         void AddCustomCommandOnDraw(CCCustomCommand customCommandOnDraw)
         {
             var renderer = (Renderer != null) ? Renderer : DrawManager.Renderer;
@@ -692,7 +687,7 @@ namespace CocosSharp
             }
         }
 
-        internal override void VisitRenderer()
+        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             if (dirty)
             {

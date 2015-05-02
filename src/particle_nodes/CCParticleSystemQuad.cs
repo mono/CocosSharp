@@ -115,7 +115,7 @@ namespace CocosSharp
 
         #endregion Constructors
 
-        internal override void VisitRenderer()
+        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             if(ParticleCount == 0)
                 return;

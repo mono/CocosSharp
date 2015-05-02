@@ -1637,7 +1637,7 @@ namespace CocosSharp
             return this.ZOrder.CompareTo(that.ZOrder);
         }
 
-        public virtual void SortAllChildren()
+        public void SortAllChildren()
         {
             if (IsReorderChildDirty)
             {
@@ -1959,10 +1959,6 @@ namespace CocosSharp
         {
         }
 
-        protected virtual void Draw()
-        {
-        }
-
         public void Visit()
         {
             var identity = CCAffineTransform.Identity;
@@ -1971,99 +1967,36 @@ namespace CocosSharp
 
         public virtual void Visit(ref CCAffineTransform parentWorldTransform)
         {
-            
-            if ((!Visible))    
-            {
+            if(!Visible)
                 return;
-            }
-
-            var drawManager = DrawManager;
-
-            // Set camera view/proj matrix even if ChildClippingMode is None
-            if(Camera != null)
-            {
-                drawManager.ViewMatrix = Camera.ViewMatrix;
-                drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
-            }
 
             var worldTransform = CCAffineTransform.Identity;
             CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
 
-            drawManager.PushMatrix();
+            SortAllChildren();
 
-            Transform(drawManager);
+            VisitRenderer(ref worldTransform);
 
-            int i = 0;
-
-            if ((Children != null) && (Children.Count > 0))
+            if(Children != null)
             {
-                SortAllChildren();
-
-                CCNode[] elements = Children.Elements;
-                int count = Children.Count;
-
-                // draw children zOrder < 0
-                for (; i < count; ++i)
+                var elements = Children.Elements;
+                for(int i = 0, N = Children.Count; i < N; ++i)
                 {
-                    if (elements[i].zOrder < 0)
-                    {
-                        // don't break loop on invisible children
-                        if (elements[i].Visible)
-                        {
-                            elements[i].Visit(ref worldTransform);
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                VisitRenderer();
-
-                // draw the children
-                for (; i < count; ++i)
-                {
-                    // Draw the z >= 0 order children next.
-                    if (elements[i].Visible)
-                    {
-                        elements[i].Visit(ref worldTransform);
-                    }
+                    var child = elements[i];
+                    if (child.Visible)
+                        child.Visit(ref worldTransform);
                 }
             }
-            else
-            {
-                VisitRenderer();
-            }
-
-            drawManager.PopMatrix();
         }
 
-        internal virtual void VisitRenderer()
+        internal virtual void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            // Add command to renderer
             Draw();
         }
 
-        internal void Transform(CCDrawManager drawManager)
+        protected virtual void Draw()
         {
-            drawManager.MultMatrix(ref xnaLocalMatrix);
         }
-
-        public void Transform()
-        {
-            Transform(Window.DrawManager);
-        }
-
-        public void TransformAncestors()
-        {
-            if (Parent != null)
-            {
-                Parent.TransformAncestors();
-                Parent.Transform();
-            }
-        }
-
 
         #region Color and Opacity
 

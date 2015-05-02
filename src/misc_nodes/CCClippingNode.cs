@@ -104,9 +104,7 @@ namespace CocosSharp
 
             if (Window.DrawManager.BeginDrawMask(Viewport.ViewportInPixels, Inverted, AlphaThreshold))
             {
-                Window.DrawManager.PushMatrix();
-
-                Transform();
+                Window.DrawManager.PushMatrix();;
 
                 Stencil.Visit(ref parentWorldTransform);
 

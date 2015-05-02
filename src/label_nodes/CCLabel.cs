@@ -1425,17 +1425,14 @@ namespace CocosSharp
                 UpdateContent();
             }
 
-            Window.DrawManager.PushMatrix();
-
-            Transform();
-
             if (textSprite != null)
                 DrawTextSprite();
             else
-                //Draw();
-                VisitRenderer();
-
-            Window.DrawManager.PopMatrix();
+            {
+                var worldTransform = CCAffineTransform.Identity;
+                CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
+                VisitRenderer(ref worldTransform);
+            }
         }
 
         void DrawTextSprite()
@@ -1443,7 +1440,7 @@ namespace CocosSharp
             textSprite.Visit();
         }
 
-        internal override void VisitRenderer()
+        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
 
             // Optimization: Fast Dispatch  
@@ -1460,16 +1457,13 @@ namespace CocosSharp
                     child.UpdateLocalTransformedSpriteTextureQuads();
                 }
             }
-
-            // Add command to renderer
-            // WARNING: NOT USING GLOBAL Z
-            // SHOULD PROBABLY CACHE THE CCQUADCOMMAND
+                
             if (quadCommand == null)
-                quadCommand = new CCQuadCommand(VertexZ, AffineWorldTransform, Texture, BlendFunc, TextureAtlas.Quads.Elements);
+                quadCommand = new CCQuadCommand(worldTransform.Tz, worldTransform, Texture, BlendFunc, TextureAtlas.Quads.Elements);
             else
             {
-                quadCommand.GlobalDepth = VertexZ;
-                quadCommand.WorldTransform = AffineWorldTransform;
+                quadCommand.GlobalDepth = worldTransform.Tz;
+                quadCommand.WorldTransform = worldTransform;
                 quadCommand.Texture = Texture;
                 quadCommand.BlendType = BlendFunc;
                 quadCommand.Quads = TextureAtlas.Quads.Elements;

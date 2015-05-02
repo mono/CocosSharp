@@ -426,27 +426,11 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        internal override void VisitRenderer()
+        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             quadCommand.GlobalDepth = VertexZ;
             quadCommand.WorldTransform = AffineWorldTransform;
             Renderer.AddCommand(quadCommand);
-        }
-
-        protected override void Draw()
-        {
-            base.Draw();
-
-            quadCommand.RequestUpdateQuads(DrawCallback);
-        }
-
-        void DrawCallback(ref CCV3F_C4B_T2F_Quad[] Quads)
-        {
-            CCDrawManager drawManager = DrawManager;
-
-            drawManager.BlendFunc(BlendFunc);
-            drawManager.BindTexture(Texture);
-            drawManager.DrawQuad(ref Quads[0]);
         }
 
         public bool IsSpriteFrameDisplayed(CCSpriteFrame frame)
@@ -704,19 +688,6 @@ namespace CocosSharp
             }
 
             base.ReorderChild(child, zOrder);
-        }
-
-        public override void SortAllChildren()
-        {
-            if (IsReorderChildDirty)
-            {
-                var elements = Children.Elements;
-                int count = Children.Count;
-
-                Array.Sort(elements, 0, count, this);
-
-                IsReorderChildDirty = false;
-            }
         }
 
         #endregion Child management

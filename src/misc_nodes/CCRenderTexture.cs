@@ -281,17 +281,16 @@ namespace CocosSharp
 
         public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
-            VisitRenderer();
+            VisitRenderer(ref parentWorldTransform);
         }
 
 
-        internal override void VisitRenderer()
+        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            
             if (!Visible)
                 return;
 
-            Sprite.Visit();
+            Sprite.Visit(ref worldTransform);
             Draw();
         }
 

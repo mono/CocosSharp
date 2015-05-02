@@ -206,38 +206,6 @@ namespace CocosSharp
             TextureAtlas.RemoveAllQuads();
         }
 
-        public override void SortAllChildren()
-        {
-            if (IsReorderChildDirty)
-            {
-                int count = Children.Count;
-                CCNode[] elements = Children.Elements;
-
-                Array.Sort(elements, 0, count, this);
-
-                //sorted now check all children
-                if (count > 0)
-                {
-                    //first sort all children recursively based on zOrder
-                    for (int i = 0; i < count; i++)
-                    {
-                        elements[i].SortAllChildren();
-                    }
-
-                    int index = 0;
-
-                    //fast dispatch, give every child a new atlasIndex based on their relative zOrder (keep parent -> child relations intact)
-                    // and at the same time reorder descedants and the quads to the right index
-                    for (int i = 0; i < count; i++)
-                    {
-                        UpdateAtlasIndex((CCSprite) elements[i], ref index);
-                    }
-                }
-
-                IsReorderChildDirty = false;
-            }
-        }
-
         public void InsertChild(CCSprite sprite, int uIndex)
         {
             if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
