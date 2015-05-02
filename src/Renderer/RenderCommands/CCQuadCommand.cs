@@ -7,6 +7,7 @@ namespace CocosSharp
     internal class CCQuadCommand : CCRenderCommand
     {
         bool materialIdDirty;
+        uint materialId;
 
         CCBlendFunc blendType;
         CCTexture2D texture;
@@ -17,18 +18,30 @@ namespace CocosSharp
 
         #region Properties
 
-        internal uint MaterialId { get; private set; }
+        internal uint MaterialId 
+        { 
+            get 
+            { 
+                if(materialIdDirty)
+                {
+                    GenerateMaterialId();
+                    materialIdDirty = false;
+                }
+
+                return materialId;
+            }
+        }
 
         internal CCTexture2D Texture
         { 
             get { return texture; }
-            set { texture = value; materialIdDirty = true; RenderIdDirty = true; }
+            set { texture = value; materialIdDirty = true; RenderFlagsDirty = true; }
         }
 
         internal CCBlendFunc BlendType
         { 
             get { return blendType; }
-            set { blendType = value; materialIdDirty = true; RenderIdDirty = true; }
+            set { blendType = value; materialIdDirty = true; RenderFlagsDirty = true; }
         }
 
         internal int QuadCount { get; set; }
@@ -79,30 +92,17 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
         void GenerateMaterialId()
         {
-            // Material id should be 24 bits
-            // First 12 bits blend func. hash code (Src ^ Dest)
-            // Last 12 bits texture id
             var textureId = texture == null ? 0 : texture.TextureId;
-            MaterialId = (uint)textureId << 12 | (uint)BlendType.GetHashCode();
+            materialId = (uint)textureId << 12 | (uint)BlendType.GetHashCode();
         }
 
-        protected override void GenerateId(ref long renderId)
+        protected override void GenerateFlags(ref long renderFlag)
         {
-            // 64 - 57 : Group id (byte)
-            // 56 - 25 : Global depth (float)
-            // 24 - 1 : Material id (24 bit)
-            base.GenerateId(ref renderId);
+            base.GenerateFlags(ref renderFlag);
 
-            if(materialIdDirty)
-            {
-                GenerateMaterialId();
-                materialIdDirty = false;
-            }
-
-            renderId = renderId
+            renderFlag = renderFlag
                 | (long)MaterialId;
         }
 

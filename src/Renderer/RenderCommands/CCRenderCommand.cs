@@ -4,9 +4,9 @@ using System.Diagnostics;
 namespace CocosSharp
 {
     [DebuggerDisplay("{DebugDisplayString,nq}")]
-    internal abstract class CCRenderCommand
+    internal abstract class CCRenderCommand : IComparable<CCRenderCommand>
     {
-        long renderId;
+        long renderFlags;
         byte group;
         byte layerGroup;
         float globalDepth;
@@ -15,44 +15,30 @@ namespace CocosSharp
 
         #region Properties
 
-        protected bool RenderIdDirty { get; set; }
+        protected bool RenderFlagsDirty { get; set; }
 
-        protected internal long RenderId 
+        protected internal long RenderFlags 
         { 
             get 
             { 
-                if(RenderIdDirty)
+                if(RenderFlagsDirty)
                 {
-                    GenerateId(ref renderId);
-                    RenderIdDirty = false;
+                    GenerateFlags(ref renderFlags);
+                    RenderFlagsDirty = false;
                 }
 
-                return renderId;
+                return renderFlags;
             }
         }
 
-        internal byte LayerGroup
+        internal byte LayerGroup { get; set; }
+        internal byte Group { get; set; }
+        internal float GlobalDepth { get; set; }
+        internal CCAffineTransform WorldTransform { get; set; }
+
+        internal string DebugDisplayString
         {
-            get { return layerGroup; }
-            set { layerGroup = value; RenderIdDirty = true; } 
-        }
-
-        internal byte Group 
-        { 
-            get { return group; }
-            set { group = value; RenderIdDirty = true; }
-        }
-
-        internal float GlobalDepth
-        {
-            get { return globalDepth; }
-            set { globalDepth = value; RenderIdDirty = true; }
-        }
-
-        internal CCAffineTransform WorldTransform 
-        { 
-            get { return worldTransform; }
-            set { worldTransform = value; RenderIdDirty = true; }
+            get { return ToString(); }
         }
 
         #endregion Properties
@@ -60,50 +46,58 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCRenderCommand() {}
-
         public CCRenderCommand(float gobalDepth, CCAffineTransform worldTransform)
         {
             GlobalDepth = gobalDepth;
             WorldTransform = worldTransform;
 
-            GenerateId(ref renderId);
+            GenerateFlags(ref renderFlags);
         }
 
-        internal CCRenderCommand(float globalZOrder)
-            : this(globalZOrder, CCAffineTransform.Identity)
+        public CCRenderCommand()
+            : this(0, CCAffineTransform.Identity)
         {
         }
 
-        protected virtual void GenerateId(ref long renderId)
+        protected virtual void GenerateFlags(ref long renderFlags)
         {
-            // 64 - 57 : Group id (byte)
-            // 56 - 25 : Global depth (float)
-            // 24 - 1 : Material id (24 bit)
-
-            renderId = (long)Group << 56
-                | (long)GlobalDepth << 24
-                | (long)0x0;
+            renderFlags = 0;
         }
 
         #endregion Constructors
 
-
-        internal abstract void RequestRenderCommand(CCRenderer renderer);
-
-        internal string DebugDisplayString
-        {
-            get
-            {
-                return ToString();
-            }
-        }
-
         public override string ToString()
         {
-            return string.Concat("[CCRenderCommand: Group ", Group.ToString(), " Depth ", GlobalDepth.ToString(),"]");
+            return String.Format("[CCRenderCommand: LayerGroup {0} Group {1} GlobalDepth {2} Flags {3}]", 
+                LayerGroup, Group, GlobalDepth, RenderFlags);
         }
 
+        // The issue with using a single render id to order commands is the handling of
+        // depth which is a floating point number that can't simply be cast as an int value
+        // due to the potential of overflow/rounding errors
+        // So instead we first perform the layer group, group and depth comparisons individually
+        // and then package any remaining traits for comparison (e.g. Material) into the RenderFlags
+        public int CompareTo(CCRenderCommand otherCommand)
+        {
+            int compare = LayerGroup.CompareTo(otherCommand.LayerGroup);
+
+            if(compare == 0)
+            {
+                compare = Group.CompareTo(otherCommand.Group);
+
+                if(compare == 0)
+                {
+                    compare = GlobalDepth.CompareTo(otherCommand.GlobalDepth); 
+
+                    if(compare == 0)
+                        compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
+                }
+            }
+
+            return compare;
+        }
+
+        internal abstract void RequestRenderCommand(CCRenderer renderer);
     }
 }
 

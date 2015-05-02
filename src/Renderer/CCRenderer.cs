@@ -6,33 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    internal class RenderQueuePriority : IComparer<long>
-    {
-
-        public int Compare(long first, long other)
-        {
-            // 64 - 57 : Group id (byte)
-            // 56 - 25 : Global depth (float)
-            // 24 - 1 : Material id (24 bit)
-
-            var group1 = first & ((long)(byte.MaxValue) << 56);
-            var group2 = other & ((long)(byte.MaxValue) << 56);
-
-            int compareValue = group1.CompareTo(group2);
-
-            if(compareValue == 0)
-            {
-                var depth1 = first >> 24;
-                var depth2 = other >> 24;
-
-                compareValue = depth1.CompareTo(depth2);
-            }
-
-            return compareValue;
-        }
-    }
-
-    // Implementation based off of discussion "Implementing a Render Queue for Games" http://ploobs.com.br/?p=2378 
+    // Implementation loosely based off of discussion "Implementing a Render Queue for Games" http://ploobs.com.br/?p=2378 
     internal class CCRenderer
     {      
         [Flags]
@@ -49,7 +23,7 @@ namespace CocosSharp
         CCCommandType currentCommandType;
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
         CCRawList<CCQuadCommand> quadCommands;
-        CCRenderQueue<long, CCRenderCommand> renderQueue;
+        CCRawList<CCRenderCommand> renderQueue;
         CCDrawManager drawManager;
 
         const uint MaxLayerDepth = 20;
@@ -63,7 +37,7 @@ namespace CocosSharp
         {
             currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(256, true);
             quadCommands = new CCRawList<CCQuadCommand>(256, true);
-            renderQueue = new CCRenderQueue<long, CCRenderCommand>(new RenderQueuePriority());
+            renderQueue = new CCRawList<CCRenderCommand>();
             drawManager = drawManagerIn;
 
             layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
@@ -76,7 +50,8 @@ namespace CocosSharp
         {
             command.Group = currentGroupId;
             command.LayerGroup = currentLayerGroupId;
-            renderQueue.Enqueue(command.RenderId, command);
+
+            renderQueue.Push(command);
         }
 
         public void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
@@ -114,12 +89,13 @@ namespace CocosSharp
             currentLayerGroupId = 0;
             currentGroupId = 0;
 
+            Array.Sort<CCRenderCommand>(renderQueue.Elements, 0, renderQueue.Count);
+
             drawManager.ViewMatrix = Matrix.Identity;
             drawManager.ProjectionMatrix = Matrix.Identity;
 
-            while (renderQueue.HasItems)
+            foreach(CCRenderCommand command in renderQueue)
             {
-                var command = renderQueue.Dequeue();
                 byte layerGroupId = command.LayerGroup;
 
                 if(layerGroupId != currentLayerGroupId) 
@@ -131,6 +107,9 @@ namespace CocosSharp
 
                 command.RequestRenderCommand(this);
             }
+
+            // This only resets the count of the queue so is inexpensive
+            renderQueue.Clear();
 
             // Flush any remaining render commands
             Flush();
