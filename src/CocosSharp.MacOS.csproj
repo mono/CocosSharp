@@ -553,7 +553,6 @@
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
-    <Compile Include="particle_nodes\CCParticleBatchNode.cs" />
     <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
     <Compile Include="Renderer\CCPrimitive.cs" />
   </ItemGroup>
