@@ -428,8 +428,8 @@ namespace CocosSharp
 
         internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            quadCommand.GlobalDepth = VertexZ;
-            quadCommand.WorldTransform = AffineWorldTransform;
+            quadCommand.GlobalDepth = worldTransform.Tz;
+            quadCommand.WorldTransform = worldTransform;
             Renderer.AddCommand(quadCommand);
         }
 

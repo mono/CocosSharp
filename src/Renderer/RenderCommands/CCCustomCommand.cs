@@ -23,10 +23,16 @@ namespace CocosSharp
         {
         }
 
-        public CCCustomCommand(float globalZOrder) 
-            : this(globalZOrder, CCAffineTransform.Identity, null)
+        public CCCustomCommand(CCAffineTransform worldTransform) 
+            : this(worldTransform.Tz, worldTransform)
         {
         }
+
+        public CCCustomCommand(float vertexZ) 
+            : this(vertexZ, CCAffineTransform.Identity)
+        {
+        }
+
 
         #endregion Constructors
 

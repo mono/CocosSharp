@@ -702,21 +702,21 @@ namespace CocosSharp
 
                 if (triangleVertices.Count > 0)
                 {
-                    var customCommandTriangles = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    var customCommandTriangles = new CCCustomCommand(worldTransform);
                     customCommandTriangles.Action = FlushTriangles;
                     AddCustomCommandOnDraw(customCommandTriangles);
                 }
 
                 if (lineVertices.Count > 0)
                 {
-                    var customCommandLines = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    var customCommandLines = new CCCustomCommand(worldTransform);
                     customCommandLines.Action = FlushLines;
                     AddCustomCommandOnDraw(customCommandLines);
                 }
 
                 if (spriteFont != null && stringData != null && stringData.Count > 0)
                 {
-                    var customCommandStrings = new CCCustomCommand(VertexZ, AffineWorldTransform);
+                    var customCommandStrings = new CCCustomCommand(worldTransform);
                     customCommandStrings.Action = DrawStrings;
                     AddCustomCommandOnDraw(customCommandStrings);
                 }

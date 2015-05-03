@@ -339,7 +339,7 @@ namespace CocosSharp
         internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             DrawManager.Renderer.AddCommand(
-                new CCCustomCommand(0, new CCAffineTransform(DrawManager.WorldMatrix), RenderTileMapLayer));
+                new CCCustomCommand(worldTransform.Tz, worldTransform, RenderTileMapLayer));
         }
 
         void RenderTileMapLayer()

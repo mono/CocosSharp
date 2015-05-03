@@ -66,12 +66,12 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                CCCustomCommand command = new CCCustomCommand(long.MinValue, AffineWorldTransform, OnGridBeginDraw);
+                CCCustomCommand command = new CCCustomCommand(float.MinValue, worldTransform, OnGridBeginDraw);
                 Renderer.AddCommand(command);
             }
 
             if (Target != null)
-                Target.Visit ();
+                Target.Visit (ref worldTransform);
 
             int i = 0;
 
@@ -90,7 +90,7 @@ namespace CocosSharp
                         // don't break loop on invisible children
                         if (elements[i].Visible)
                         {
-                            elements[i].Visit();
+                            elements[i].Visit(ref worldTransform);
                         }
                     }
                     else
@@ -107,7 +107,7 @@ namespace CocosSharp
                     // Draw the z >= 0 order children next.
                     if (elements[i].Visible)
                     {
-                        elements[i].Visit();
+                        elements[i].Visit(ref worldTransform);
                     }
                 }
             }
@@ -119,7 +119,7 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                CCCustomCommand command = new CCCustomCommand(long.MaxValue, AffineWorldTransform, OnGridEndDraw);
+                CCCustomCommand command = new CCCustomCommand(float.MaxValue, worldTransform, OnGridEndDraw);
                 Renderer.AddCommand(command);
             }
 

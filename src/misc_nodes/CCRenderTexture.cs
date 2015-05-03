@@ -19,19 +19,21 @@ namespace CocosSharp
         [Flags]
         enum ClearFlags
         {
-            None           =           0x0,
-            ColorBuffer    =           0x1,
-            DepthBuffer    =           0x2,
-            StencilBuffer  =           0x4,
-            All            = DepthBuffer | StencilBuffer | ColorBuffer 
+            None = 0x0,
+            ColorBuffer = 0x1,
+            DepthBuffer = 0x2,
+            StencilBuffer = 0x4,
+            All = ~0x0
         }
 
 
         bool firstUsage = true;
         RenderTarget2D renderTarget2D;
 
+
         #region Properties
 
+        public bool AutoDraw { get; set; }
         public CCSprite Sprite { get; set; }
         public CCTexture2D Texture { get; private set; }
         protected CCSurfaceFormat PixelFormat { get; private set; }
@@ -281,7 +283,10 @@ namespace CocosSharp
 
         public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
-            VisitRenderer(ref parentWorldTransform);
+            var worldTransform = CCAffineTransform.Identity;
+            CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
+
+            VisitRenderer(ref worldTransform);
         }
 
 
@@ -291,19 +296,13 @@ namespace CocosSharp
                 return;
 
             Sprite.Visit(ref worldTransform);
-            Draw();
-        }
-
-        public bool AutoDraw = false;
-        protected override void Draw()
-        {
             if (AutoDraw)
             {
 
                 Begin();
 
                 //Begin will create a render group using new render target
-                var clearCommand = new CCCustomCommand(VertexZ);
+                var clearCommand = new CCCustomCommand(worldTransform.Tz);
                 clearCommand.Action = () => 
                     {
                         Clear(clearFlags, beginClearColor, beginDepthValue, beginStencilValue);
@@ -317,13 +316,12 @@ namespace CocosSharp
                 foreach(var child in Children)
                 {
                     if (child != Sprite)
-                        child.Visit();
+                        child.Visit(ref worldTransform);
                 }
 
                 //End will pop the current render group
                 End();
             }
-
         }
 
         public bool SaveToStream(Stream stream, CCImageFormat format)
