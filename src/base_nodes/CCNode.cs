@@ -1971,7 +1971,7 @@ namespace CocosSharp
                 return;
 
             var worldTransform = CCAffineTransform.Identity;
-            CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
+            CCAffineTransform.Concat(ref affineLocalTransform, ref parentWorldTransform, out worldTransform);
 
             SortAllChildren();
 

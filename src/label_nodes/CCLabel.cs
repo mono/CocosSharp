@@ -1425,19 +1425,13 @@ namespace CocosSharp
                 UpdateContent();
             }
 
-            if (textSprite != null)
-                DrawTextSprite();
-            else
-            {
-                var worldTransform = CCAffineTransform.Identity;
-                CCAffineTransform.Concat(ref parentWorldTransform, ref affineLocalTransform, out worldTransform);
-                VisitRenderer(ref worldTransform);
-            }
-        }
+            var worldTransform = CCAffineTransform.Identity;
+            CCAffineTransform.Concat(ref affineLocalTransform, ref parentWorldTransform, out worldTransform);
 
-        void DrawTextSprite()
-        {
-            textSprite.Visit();
+            if (textSprite != null)
+                textSprite.Visit(ref worldTransform);
+            else
+                VisitRenderer(ref worldTransform);
         }
 
         internal override void VisitRenderer(ref CCAffineTransform worldTransform)
