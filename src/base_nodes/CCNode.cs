@@ -1991,7 +1991,6 @@ namespace CocosSharp
 
         internal virtual void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            Draw();
         }
 
         protected virtual void Draw()
