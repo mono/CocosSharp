@@ -1466,28 +1466,6 @@ namespace CocosSharp
                 
             Renderer.AddCommand(quadCommand);
         }
-
-        protected override void Draw()
-        {
-            // Optimization: Fast Dispatch  
-            if (TextureAtlas == null || TextureAtlas.TotalQuads == 0)
-            {
-                return;
-            }
-
-            // Loop through each of our children nodes that may have actions attached.
-            foreach(CCSprite child in Children)
-            {
-                if (child.Tag >= 0)
-                {
-                    child.UpdateLocalTransformedSpriteTextureQuads();
-                }
-            }
-
-            Window.DrawManager.BlendFunc(BlendFunc);
-            TextureAtlas.DrawQuads();
-        }
-
     }
 
 }
