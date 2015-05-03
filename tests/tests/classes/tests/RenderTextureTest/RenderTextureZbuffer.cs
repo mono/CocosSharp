@@ -175,7 +175,7 @@ namespace tests
             var texture = new CCRenderTexture(size,size);
             //var texture = new CCRenderTexture(512, 512);
 
-            texture.AnchorPoint = new CCPoint(0, 0);
+            texture.Sprite.AnchorPoint = new CCPoint(0, 0);
             texture.Begin();
 
             Visit();

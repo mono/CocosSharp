@@ -137,6 +137,25 @@ namespace CocosSharp
             CCDrawManager.SharedDrawManager.RestoreRenderTarget();
         }
 
+        public void Clear(CCColor4B col)
+        {
+            Begin();
+            beginClearColor = col;
+            clearFlags |= ClearFlags.ColorBuffer;
+
+            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
+
+            var beginWithClearCommand = new CCCustomCommand(long.MinValue);
+            beginWithClearCommand.Action = () => 
+                {
+                    drawManager.Clear(beginClearColor);
+                };
+            drawManager.Renderer.AddCommand(beginWithClearCommand);
+
+            End();
+        }
+
+
         public bool SaveToStream(Stream stream, CCImageFormat format)
         {
             if (format == CCImageFormat.Png)

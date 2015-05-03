@@ -78,11 +78,11 @@ namespace tests
             /* B1: setup */
             spriteNonpremulti.Position = new CCPoint(windowSize.Width / 2 - 16, windowSize.Height / 2 - 16);
 
-            rend.Position = new CCPoint(windowSize.Width / 2 + 16, windowSize.Height / 2);
+            rend.Sprite.Position = new CCPoint(windowSize.Width / 2 + 16, windowSize.Height / 2);
 
             AddChild(spriteNonpremulti);
             AddChild(spritePremulti);
-            AddChild(rend);
+            AddChild(rend.Sprite);
         }
 
         #endregion Setup content

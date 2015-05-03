@@ -79,9 +79,9 @@ namespace tests
             base.OnEnter(); 
 
             var windowSize = Layer.VisibleBoundsWorldspace.Size;
-
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
-            AddChild(text, 24);
+            text.Sprite.Position = windowSize.Center;
+            AddChild(text.Sprite, 24);
 
             CCDrawNode draw = new CCDrawNode();
 
@@ -124,19 +124,18 @@ namespace tests
 
             CCRenderTexture rtm = new CCRenderTexture(new CCSize(200.0f, 200.0f), new CCSize(200.0f, 200.0f), CCSurfaceFormat.Color, CCDepthFormat.Depth24Stencil8);
 
-            rtm.AddChild(circle);
-
             rtm.BeginWithClear(CCColor4B.Orange);
+            circle.Visit();
             rtm.End();
 
             // Make sure our children nodes get visited
             rtm.AutoDraw = true;
 
-            rtm.Position = VisibleBoundsWorldspace.Center;
-            rtm.AnchorPoint = CCPoint.AnchorMiddle;
+            rtm.Sprite.Position = VisibleBoundsWorldspace.Center;
+            rtm.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
 
 
-            AddChild(rtm);
+            AddChild(rtm.Sprite);
         }
 
         #endregion Setup content
@@ -167,10 +166,14 @@ namespace tests
             circle.Visit(); // Draw to rendertarget
             rtm.End();
 
-            rtm.Position = VisibleBoundsWorldspace.Center;
-            rtm.AnchorPoint = CCPoint.AnchorMiddle;
+            rtm.Sprite.Position = VisibleBoundsWorldspace.Center;
+            rtm.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
 
-            AddChild(rtm);
+            var sprite = rtm.Sprite;
+            sprite.AnchorPoint = CCPoint.AnchorMiddle;
+            sprite.Position = VisibleBoundsWorldspace.Center;
+
+            AddChild(sprite);
         }
 
         #endregion Setup content
@@ -218,8 +221,6 @@ namespace tests
     {
         protected override void Draw()
         {
-            base.Draw();
-
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
 
             var visibleRect = VisibleBoundsWorldspace;

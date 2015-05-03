@@ -69,15 +69,12 @@ namespace tests
             target = new CCRenderTexture(windowSize, windowSize,
                 CCSurfaceFormat.Color, 
                 CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);
+            target.Clear(CCColor4B.Transparent);
 
-            // Let's clear the rendertarget here so that we start off fresh.
-            // Some platforms do not seem to be initializing the rendertarget color so this will make sure the background shows up colored instead of 
-            // what looks like non initialized.  Mostly MacOSX for now.
-            target.Clear(0,0,0,255);
 
-            target.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
+            target.Sprite.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
 
-            target.AnchorPoint = CCPoint.AnchorMiddle;
+            target.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
 
             // It's possible to modify the RenderTexture blending function by
             //CCBlendFunc tbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
@@ -85,7 +82,7 @@ namespace tests
 
             // note that the render texture is a CCNode, and contains a sprite of its texture for convience,
             // so we can just parent it to the scene like any other CCNode
-            AddChild(target, -1);
+            AddChild(target.Sprite);
 
             saveImageMenu.AlignItemsVertically();
             saveImageMenu.Position = new CCPoint(windowSize.Width - 80, windowSize.Height - 30);
@@ -144,8 +141,8 @@ namespace tests
 
         void ClearImage(object sender)
         {
-            target.Clear(CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), 
-                CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1());
+//            target.Clear(CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), 
+//                CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1());
         }
 
         void SaveImage(object sender)
