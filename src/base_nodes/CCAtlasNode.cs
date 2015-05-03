@@ -129,12 +129,10 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
-        protected override void Draw()
+        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            Window.DrawManager.BlendFunc(BlendFunc);
-
-            TextureAtlas.DrawNumberOfQuads(QuadsToDraw, 0);
+            var quadsCommand = new CCQuadCommand(worldTransform.Tz, worldTransform, Texture, BlendFunc, QuadsToDraw, TextureAtlas.Quads.Elements);
+            Renderer.AddCommand(quadsCommand);
         }
 
         void CalculateMaxItems()
