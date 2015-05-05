@@ -175,7 +175,7 @@ namespace CocosSharp
         protected CCSize labelDimensions;
         protected bool IsDirty { get; set; }
         public CCTextureAtlas TextureAtlas { get ; private set; }
-        public CCRawList<CCSprite> Descendants { get; private set; }
+        protected CCRawList<CCSprite> Descendants { get; private set; }
 
         protected bool isColorModifiedByOpacity = false;
 
