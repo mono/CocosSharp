@@ -1164,6 +1164,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">

@@ -1235,6 +1235,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />

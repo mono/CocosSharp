@@ -89,6 +89,7 @@ namespace tests
                 () => new LabelFNTContentSizeRatios(),
                 () => new LabelSFContentSizeRatios(),
                 () => new LabelSystemFont168(),
+                () => new LabelSystemFontRenderTexture(),
 
         };
 

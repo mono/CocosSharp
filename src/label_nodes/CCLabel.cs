@@ -1405,6 +1405,7 @@ namespace CocosSharp
             TextureAtlas.ResizeCapacity(quantity);
         }
 
+
         public override void Visit()
         {
 
@@ -1423,16 +1424,16 @@ namespace CocosSharp
                 UpdateContent();
             }
 
-            Window.DrawManager.PushMatrix();
+            DrawManager.PushMatrix();
 
-            Transform();
+            Transform(DrawManager);
 
             if (textSprite != null)
                 DrawTextSprite();
             else
                 Draw();
 
-            Window.DrawManager.PopMatrix();
+            DrawManager.PopMatrix();
         }
 
         void DrawTextSprite()
