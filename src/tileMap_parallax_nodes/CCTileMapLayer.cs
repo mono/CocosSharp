@@ -297,10 +297,10 @@ namespace CocosSharp
 
                     tileCoordsToNodeTransformOdd = new CCAffineTransform(new Matrix
                         (
-                            height * (float)Math.Sqrt(0.75), -height/2, 0.0f, 0.0f,
+                            height * (float)Math.Sqrt(0.75), 0.0f, 0.0f, 0.0f,
                             0.0f , -height, 0.0f, 0.0f,
                             0.0f, 0.0f, 1.0f, 0.0f,
-                            0.0f, yOffset, 0.0f, 1.0f
+                            0.0f, yOffset - height/2, 0.0f, 1.0f
                         ));
                     break;
                 case CCTileMapType.Staggered:
