@@ -440,7 +440,7 @@ namespace CocosSharp
             var directory = string.Empty;
             if (string.IsNullOrEmpty (TileMapFileName))
                 tileset.TilesheetFilename = imagename;
-            else if (!CCFileUtils.GetDirectoryName (imagename, out directory))
+            else
                 tileset.TilesheetFilename = CCFileUtils.FullPathFromRelativeFile (imagename, TileMapFileName);
         }
 
