@@ -1133,7 +1133,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 39;
+        static int MAX_LAYER = 38;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1277,8 +1277,6 @@ namespace tests
                     return new TMXAnimationLargeMapTest();
                 case 37:
                     return new TMXTileAnimationTest();
-                case 38:
-                    return new TMXLayerWithMutiTilesets();
 #endif
             }
 
@@ -1702,21 +1700,4 @@ namespace tests
 		}
     }
 
-    public class TMXLayerWithMutiTilesets:TileDemo
-    {
-        public TMXLayerWithMutiTilesets()
-            : base("TileMaps/desert-palace-multi-tileset")
-        {
-			// Background layer should display red circles
-        }
-
-		public override string Title
-		{
-			get { return "TMX Multi Tileset for #195 issue"; }
-		}
-        public override string Subtitle
-        {
-            get { return "The body and body animation should be display"; }
-        }
-    }
 }
