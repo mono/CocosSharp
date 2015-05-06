@@ -65,8 +65,8 @@ namespace CocosSharp
                 {
                     if (layerInfo.Visible)
                     {
-                        CCTileSetInfo[] tilesets = TilesetForLayer(layerInfo);
-                        CCTileMapLayer child = new CCTileMapLayer(tilesets, layerInfo, mapInfo);
+                        CCTileSetInfo tileset = TilesetForLayer(layerInfo);
+                        CCTileMapLayer child = new CCTileMapLayer(tileset, layerInfo, mapInfo);
                         TileLayersContainer.AddChild(child, idx, idx);
 
                         idx++;
@@ -85,43 +85,32 @@ namespace CocosSharp
         {
         }
 
-        CCTileSetInfo[] TilesetForLayer(CCTileLayerInfo layerInfo)
+        CCTileSetInfo TilesetForLayer(CCTileLayerInfo layerInfo)
         {
             CCTileMapCoordinates size = layerInfo.LayerDimensions;
             List<CCTileSetInfo> tilesets = MapInfo.Tilesets;
-            List<CCTileSetInfo> results = new List<CCTileSetInfo>();
             int numOfTiles = size.Row * size.Column;
 
             if (tilesets != null)
             {
-                for (int tilesetIdx = 0; tilesetIdx < tilesets.Count; tilesetIdx++)
-                {
-                    CCTileSetInfo tileset = tilesets[tilesetIdx];
-                    bool contains = false;
-                    short tilesetLastGid = (short)(tilesetIdx < tilesets.Count - 1 ? tilesets[tilesetIdx + 1].FirstGid - 1 : short.MaxValue);
-                    for (uint tileIdx = 0; tileIdx < numOfTiles; tileIdx++)
-                    {
-                        CCTileGidAndFlags gidAndFlags = layerInfo.TileGIDAndFlags[tileIdx];
-                        if (gidAndFlags.Gid != 0 && gidAndFlags.Gid >= tileset.FirstGid && gidAndFlags.Gid <= tilesetLastGid)
-                        {
-                            //return tileset;
-                            results.Add(tileset);
-                            contains = true;
-                            break;
-                        }
-                    }
-                    if (contains) continue;
-                }
+	            for (int tilesetIdx = 0; tilesetIdx < tilesets.Count; tilesetIdx++)
+	            {
+		            CCTileSetInfo tileset = tilesets[tilesetIdx];
+		            short tilesetLastGid = (short) (tilesetIdx < tilesets.Count - 1 ? tilesets[tilesetIdx + 1].FirstGid - 1 : short.MaxValue);
+		            for ( uint tileIdx = 0; tileIdx < numOfTiles; tileIdx++ )
+		            {
+			            CCTileGidAndFlags gidAndFlags = layerInfo.TileGIDAndFlags[tileIdx];
+
+			            if (gidAndFlags.Gid != 0 && gidAndFlags.Gid >= tileset.FirstGid && gidAndFlags.Gid <= tilesetLastGid)
+			            {
+				            return tileset;
+			            }
+		            }
+	            }
             }
-            if (results.Count > 0)
-            {
-                return results.ToArray();
-            }
-            else
-            {
-                CCLog.Log("CocosSharp: Warning: CCTileMapLayer: TileMap layer '{0}' has no tiles", layerInfo.Name);
-                return null;
-            }
+
+            CCLog.Log("CocosSharp: Warning: CCTileMapLayer: TileMap layer '{0}' has no tiles", layerInfo.Name);
+            return null;
         }
 
         #endregion Constructors
