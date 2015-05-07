@@ -21,14 +21,14 @@ namespace CocosSharp
 
         public bool Antialiased
         {
-            set 
-            { 
-                foreach(CCNode child in TileLayersContainer.Children)
+            set
+            {
+                foreach (CCNode child in TileLayersContainer.Children)
                 {
                     var layer = child as CCTileMapLayer;
                     if (layer != null)
                     {
-                        layer.Antialiased = value; 
+                        layer.Antialiased = value;
                     }
                 }
             }
@@ -39,7 +39,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTileMap(CCTileMapInfo mapInfo) 
+        public CCTileMap(CCTileMapInfo mapInfo)
             : base(CCCameraProjection.Projection2D)
         {
             Type = mapInfo.MapType;
@@ -51,7 +51,7 @@ namespace CocosSharp
             MapProperties = mapInfo.MapProperties;
             TileProperties = mapInfo.TileProperties;
 
-            TileLayersContainer 
+            TileLayersContainer
                 = new CCNode(MapDimensions.Size * TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios);
 
             AddChild(TileLayersContainer);
@@ -61,12 +61,12 @@ namespace CocosSharp
             List<CCTileLayerInfo> layers = mapInfo.Layers;
             if (layers != null)
             {
-                foreach(CCTileLayerInfo layerInfo in layers)
+                foreach (CCTileLayerInfo layerInfo in layers)
                 {
                     if (layerInfo.Visible)
                     {
-                        CCTileSetInfo tileset = TilesetForLayer(layerInfo);
-                        CCTileMapLayer child = new CCTileMapLayer(tileset, layerInfo, mapInfo);
+                        CCTileSetInfo[] tilesets = TilesetsForLayer(layerInfo);
+                        CCTileMapLayer child = new CCTileMapLayer(tilesets, layerInfo, mapInfo);
                         TileLayersContainer.AddChild(child, idx, idx);
 
                         idx++;
@@ -75,42 +75,47 @@ namespace CocosSharp
             }
         }
 
-        public CCTileMap(StreamReader tmxFile) 
+        public CCTileMap(StreamReader tmxFile)
             : this(new CCTileMapInfo(tmxFile))
         {
         }
 
-        public CCTileMap(string tmxFile) 
+        public CCTileMap(string tmxFile)
             : this(new CCTileMapInfo(tmxFile))
         {
         }
 
-        CCTileSetInfo TilesetForLayer(CCTileLayerInfo layerInfo)
+        CCTileSetInfo[] TilesetsForLayer(CCTileLayerInfo layerInfo)
         {
             CCTileMapCoordinates size = layerInfo.LayerDimensions;
             List<CCTileSetInfo> tilesets = MapInfo.Tilesets;
+            List<CCTileSetInfo> results = new List<CCTileSetInfo>();
             int numOfTiles = size.Row * size.Column;
 
             if (tilesets != null)
             {
-	            for (int tilesetIdx = 0; tilesetIdx < tilesets.Count; tilesetIdx++)
-	            {
-		            CCTileSetInfo tileset = tilesets[tilesetIdx];
-		            short tilesetLastGid = (short) (tilesetIdx < tilesets.Count - 1 ? tilesets[tilesetIdx + 1].FirstGid - 1 : short.MaxValue);
-		            for ( uint tileIdx = 0; tileIdx < numOfTiles; tileIdx++ )
-		            {
-			            CCTileGidAndFlags gidAndFlags = layerInfo.TileGIDAndFlags[tileIdx];
-
-			            if (gidAndFlags.Gid != 0 && gidAndFlags.Gid >= tileset.FirstGid && gidAndFlags.Gid <= tilesetLastGid)
-			            {
-				            return tileset;
-			            }
-		            }
-	            }
+                for (int tilesetIdx = 0; tilesetIdx < tilesets.Count; tilesetIdx++)
+                {
+                    CCTileSetInfo tileset = tilesets[tilesetIdx];
+                    short tilesetLastGid = (short)(tilesetIdx < tilesets.Count - 1 ? tilesets[tilesetIdx + 1].FirstGid - 1 : short.MaxValue);
+                    for (uint tileIdx = 0; tileIdx < numOfTiles; tileIdx++)
+                    {
+                        CCTileGidAndFlags gidAndFlags = layerInfo.TileGIDAndFlags[tileIdx];
+                        if (gidAndFlags.Gid != 0 && gidAndFlags.Gid >= tileset.FirstGid && gidAndFlags.Gid <= tilesetLastGid)
+                        {
+                            results.Add(tileset);
+                            break;
+                        }
+                    }
+                }
             }
-
-            CCLog.Log("CocosSharp: Warning: CCTileMapLayer: TileMap layer '{0}' has no tiles", layerInfo.Name);
-            return null;
+            if (results.Count > 0)
+                return results.ToArray();
+            else
+            {
+                CCLog.Log("CocosSharp: Warning: CCTileMapLayer: TileMap layer '{0}' has no tiles", layerInfo.Name);
+                return null;
+            }
         }
 
         #endregion Constructors
@@ -120,7 +125,7 @@ namespace CocosSharp
 
         public CCTileMapLayer LayerNamed(string layerName)
         {
-            foreach(CCNode child in TileLayersContainer.Children.Elements)
+            foreach (CCNode child in TileLayersContainer.Children.Elements)
             {
                 var layer = child as CCTileMapLayer;
                 if (layer != null && layer.LayerName == layerName)
@@ -135,7 +140,7 @@ namespace CocosSharp
         {
             if (ObjectGroups != null)
             {
-                foreach(CCTileMapObjectGroup objectGroup in ObjectGroups)
+                foreach (CCTileMapObjectGroup objectGroup in ObjectGroups)
                 {
                     if (objectGroup.GroupName == groupName)
                     {
@@ -151,7 +156,7 @@ namespace CocosSharp
         {
             return MapProperties[propertyName];
         }
-            
+
         public Dictionary<string, string> TilePropertiesForGID(short tileGid)
         {
             Dictionary<string, string> propertiesDict = null;

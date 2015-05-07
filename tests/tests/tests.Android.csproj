@@ -2111,6 +2111,8 @@
     <AndroidAsset Include="Assets\Content\TileMaps\desert-palace-tiles.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\desert-palace.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\lamp-16x16.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\desert-palace-multi-tileset.xnb" />
+    <AndroidAsset Include="Assets\Content\TileMaps\people.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
