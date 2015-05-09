@@ -7,10 +7,6 @@ namespace CocosSharp
     internal abstract class CCRenderCommand : IComparable<CCRenderCommand>
     {
         long renderFlags;
-        byte group;
-        byte layerGroup;
-        float globalDepth;
-        CCAffineTransform worldTransform;
 
 
         #region Properties
@@ -31,6 +27,7 @@ namespace CocosSharp
             }
         }
 
+        internal uint ArrivalIndex { get; set; }
         internal byte LayerGroup { get; set; }
         internal byte Group { get; set; }
         internal float GlobalDepth { get; set; }
@@ -90,7 +87,16 @@ namespace CocosSharp
                     compare = GlobalDepth.CompareTo(otherCommand.GlobalDepth); 
 
                     if(compare == 0)
+                    {
                         compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
+
+                        // If all traits are equal, then use the arrival index to differentiate
+                        // This is necessary because we rely on quick sort to sort our commands which is
+                        // an unstable sorting algorithm
+                        // i.e. Does not guarantee to presever order between two equal elements
+                        if(compare == 0)
+                            compare = ArrivalIndex.CompareTo(otherCommand.ArrivalIndex);
+                    }
                 }
             }
 

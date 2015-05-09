@@ -1423,13 +1423,7 @@ namespace CocosSharp
 
         #region AddChild
 
-        public void AddChild(CCNode child)
-        {
-            Debug.Assert(child != null, "Argument must be no-null");
-            AddChild(child, child.ZOrder, child.Tag);
-        }
-
-        public void AddChild(CCNode child, int zOrder)
+        public void AddChild(CCNode child, int zOrder = 0)
         {
             Debug.Assert(child != null, "Argument must be no-null");
             AddChild(child, zOrder, child.Tag);

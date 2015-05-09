@@ -18,6 +18,7 @@ namespace CocosSharp
             Primitive = 0x4,
         }
 
+        uint currentArrivalIndex;
         byte currentLayerGroupId;
         byte currentGroupId;
         CCCommandType currentCommandType;
@@ -50,6 +51,7 @@ namespace CocosSharp
         {
             command.Group = currentGroupId;
             command.LayerGroup = currentLayerGroupId;
+            command.ArrivalIndex = ++currentArrivalIndex;
 
             renderQueue.Push(command);
         }
@@ -88,6 +90,7 @@ namespace CocosSharp
             currentCommandType = CCCommandType.None;
             currentLayerGroupId = 0;
             currentGroupId = 0;
+            currentArrivalIndex = 0;
 
             Array.Sort<CCRenderCommand>(renderQueue.Elements, 0, renderQueue.Count);
 
