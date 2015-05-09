@@ -372,7 +372,7 @@ namespace CocosSharp
         public static CCAffineTransform Translate(CCAffineTransform t, float tx, float ty, float tz = 0.0f)
         {
             Matrix translate = Matrix.CreateTranslation(tx, ty, tz);
-            return new CCAffineTransform(Matrix.Multiply(t.xnaMatrix, translate));
+            return new CCAffineTransform(Matrix.Multiply(translate, t.xnaMatrix));
         }
 
         public static CCAffineTransform Rotate(CCAffineTransform t, float anAngle)
