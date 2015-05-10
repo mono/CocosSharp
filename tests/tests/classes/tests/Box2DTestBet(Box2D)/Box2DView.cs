@@ -56,13 +56,15 @@ namespace Box2D.TestBed
             base.Update(dt);
         }
 
-        protected override void Draw()
+        void RenderBoxView()
         {
             m_test.Step(settings);
-
-            base.Draw();
-
             m_test.InternalDraw(settings);
+        }
+
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
+        {
+            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderBoxView));
         }
 
 		public override void OnExit ()
