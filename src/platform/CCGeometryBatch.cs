@@ -5,161 +5,58 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCGeometryBatch : IDisposable
+    public class CCGeometryBatch : CCNode
     {
         const int DefaultBufferSize = 256;
 
-        // a basic effect, which contains the shaders that we will use to draw our
-        // primitives.
-        readonly BasicEffect basicEffect;
-
-        // the device that we will issue draw calls to.
-        readonly GraphicsDevice device;
-
-        /// <summary>
-        /// The list of batch CCGeometryInstances items to process.
-        /// </summary>
-        private readonly List<CCGeometryInstance> batchItemList;
-
-        /// <summary>
-        /// The available CCGeometryInstance queue so that we reuse these objects when we can.
-        /// </summary>
-        private readonly Queue<CCGeometryInstance> freeBatchItemQueue;
-
-        /// <summary>
-        /// Vertex index array. The values in this array never change.
-        /// </summary>
-        private short[] indiciesArray = { };
-        private CCV3F_C4B_T2F[] verticiesArray = { };
-
-        // hasBegun is flipped to true once Begin is called, and is used to make
-        // sure users don't call End before Begin is called.
-        bool hasBegun;
-        bool isDisposed;
-
-        public bool AutoClearInstances { get; set; }
-
-        #region Properties
-
-        internal CCDrawManager DrawManager { get; set; }
-
-        #endregion Properties
+        CCRawList<short> indicesArray;
+        CCRawList<CCV3F_C4B_T2F> verticesArray;
+        CCRawList<CCGeometryInstance> batchItemList;
+        BasicEffect basicEffect;
 
 
         #region Constructors
 
-        internal CCGeometryBatch(CCDrawManager drawManager, int bufferSize=DefaultBufferSize)
+        public CCGeometryBatch(int bufferSize=DefaultBufferSize)
         {
-            DrawManager = drawManager;
-
-            if (drawManager.XnaGraphicsDevice == null)
-            {
-                throw new ArgumentNullException("graphicsDevice");
-            }
-            device = drawManager.XnaGraphicsDevice;
-
-            batchItemList = new List<CCGeometryInstance>(bufferSize);
-            freeBatchItemQueue = new Queue<CCGeometryInstance>(bufferSize);
-
-            EnsureCapacity(bufferSize, bufferSize * 2);
-
-            // set up a new basic effect, and enable vertex colors.
-            basicEffect = new BasicEffect(drawManager.XnaGraphicsDevice);
-            basicEffect.VertexColorEnabled = true;
-            basicEffect.TextureEnabled = true;
-
-            AutoClearInstances = true;
+            indicesArray = new CCRawList<short>(bufferSize * 2);
+            verticesArray = new CCRawList<CCV3F_C4B_T2F>(bufferSize);
+            batchItemList = new CCRawList<CCGeometryInstance>(bufferSize);
         }
 
-        public CCGeometryBatch(int bufferSize=DefaultBufferSize)
-            : this (CCDrawManager.SharedDrawManager, bufferSize)
-        {  }
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            basicEffect = new BasicEffect(DrawManager.XnaGraphicsDevice);
+            basicEffect.VertexColorEnabled = true;
+            basicEffect.TextureEnabled = true;
+        }
 
         #endregion Constructors
 
 
-        #region Cleaning up
 
-        public void Dispose()
+        #region Creating/removing geometry
+
+        [Obsolete("No need to call Begin/End. Simply add GeometryBatch to parent node to render.")]
+        public void Begin()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
 
-        protected virtual void Dispose(bool disposing)
+        [Obsolete("No need to call Begin/End. Simply add GeometryBatch to parent node to render.")]
+        public void End()
         {
-            if (disposing && !isDisposed)
-            {
-                if (basicEffect != null)
-                    basicEffect.Dispose();
-
-                batchItemList.Clear();
-                freeBatchItemQueue.Clear();
-
-                isDisposed = true;
-            }
         }
 
-        #endregion Cleaning up
-
-        // Remove all instances from the geometry batch
-        //
         public void ClearInstances()
         {
-            var itemCount = batchItemList.Count;
-            for (int i = 0; i < itemCount; i++)
-            {
-                var item = batchItemList[i];
-                item.Clear();
-                freeBatchItemQueue.Enqueue(item);
-
-            }
             batchItemList.Clear();
         }
 
-        // Begin is called to tell the PrimitiveBatch what kind of primitives will be
-        // drawn, and to prepare the graphics card to render those primitives.
-        public void Begin()
-        {
-            if (hasBegun)
-            {
-                throw new InvalidOperationException("End must be called before Begin can be called again.");
-            }
-
-            // Call the update function
-            Update ();
-
-            // flip the error checking boolean. It's now ok to call AddVertex, Flush,
-            // and End.
-            hasBegun = true;
-        }
-
-        public void UpdateMatrix()
-        {
-            basicEffect.Projection = DrawManager.ProjectionMatrix; ;
-            basicEffect.View = DrawManager.ViewMatrix;
-            basicEffect.World = DrawManager.WorldMatrix;
-            basicEffect.CurrentTechnique.Passes[0].Apply();
-        }
-
-        public bool IsReady()
-        {
-            return hasBegun; 
-        }
-
-        /// <summary>
-        /// Create an instance of CCGeometryInstance if there is none available in the free item queue. Otherwise,
-        /// a previously allocated SpriteBatchItem is reused.
-        /// </summary>
-        /// <returns></returns>
         public CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies)
         {
-            if (!hasBegun)
-            {
-                throw new InvalidOperationException("Begin must be called before CreateGeometryInstance can be called.");
-            }
-
-            var item = freeBatchItemQueue.Count > 0 ? freeBatchItemQueue.Dequeue() : new CCGeometryInstance();
+            var item = new CCGeometryInstance();
 
             if (item.GeometryPacket.Vertices.Length < numberOfVertices) 
                 item.GeometryPacket.Vertices = new CCV3F_C4B_T2F[numberOfVertices];
@@ -175,40 +72,24 @@ namespace CocosSharp
             return item;
         }
 
-
-        /// <summary>
-        /// Resize and recreate the missing indices for the index and vertex position color buffers.
-        /// </summary>
-        /// <param name="numberOfVertices"></param>
-        /// <param name="numberOfIndices"></param>
-        private void EnsureCapacity(int numberOfVerticies, int numberOfIndicies)
+        void EnsureCapacity(int numberOfVerticies, int numberOfIndicies)
         {
-            if (verticiesArray.Length < numberOfVerticies) verticiesArray = new CCV3F_C4B_T2F[numberOfVerticies];
-            if (indiciesArray.Length < numberOfIndicies) indiciesArray = new short[numberOfIndicies];
+            verticesArray.Capacity = Math.Max(verticesArray.Capacity, numberOfVerticies);
+            indicesArray.Capacity = Math.Max(indicesArray.Capacity, numberOfIndicies);
         }
 
-        // Commit all instances, to be called once before the 
-        // render loop begins and after every change to the
-        // instances collection 
-        //
-        public virtual void Commit()
+        #endregion Creating/removing geometry
+
+
+        #region Rendering
+
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            if (batchItemList.Count == 0)
-                return;
+            Renderer.AddCommand(
+                new CCCustomCommand(worldTransform.Tz, worldTransform, RenderBatch));
         }
 
-        // Update the geometry batch, eventually prepare GPU-specific
-        // data ready to be submitted to the driver, fill vertex and 
-        // index buffers as necessary, to be called once per frame
-        //
-        public virtual void Update()
-        {
-            //tell our basic effect to begin by setting up the matrices.
-            UpdateMatrix();
-        }
-
-        // This will be called from the Renderer
-        void RenderBatch ()
+        void RenderBatch()
         {
             if (batchItemList.Count == 0) return;
 
@@ -249,50 +130,36 @@ namespace CocosSharp
                     numberOfIndices = 0;
                     lastTexture = (geometryPacket.Texture != null) ? geometryPacket.Texture.XNATexture : null;
                     lastAttributes = geometry.InstanceAttributes;
-                    device.Textures[0] = lastTexture;
+                    DrawManager.XnaGraphicsDevice.Textures[0] = lastTexture;
                 }
 
                 int[] itemIndicies = geometryPacket.Indicies;
                 int itemIndiciesCount = geometryPacket.NumberOfIndicies;
                 for (int ii = 0, t = numberOfIndices; ii < itemIndiciesCount; ii++, t++)
-                    indiciesArray[t] = (short)(itemIndicies[ii] + numberOfVertices);
+                    indicesArray[t] = (short)(itemIndicies[ii] + numberOfVertices);
 
                 numberOfIndices += itemIndiciesCount;
 
-                Array.Copy(geometryPacket.Vertices, 0, verticiesArray, numberOfVertices, geometryNumberOfVertices);
+                Array.Copy(geometryPacket.Vertices, 0, verticesArray.Elements, numberOfVertices, geometryNumberOfVertices);
                 numberOfVertices += geometryNumberOfVertices;
 
             }
 
             FlushVertexArray(lastAttributes, numberOfVertices, numberOfIndices);
-
-            if (AutoClearInstances)
-                ClearInstances();
-            
         }
 
-        // Submit the batch to the driver, typically implemented
-        // with a call to DrawIndexedPrimitive 
-        //
-        public virtual void Draw()
-        {  
-            DrawManager.Renderer.AddCommand(
-                new CCCustomCommand(0, new CCAffineTransform(DrawManager.WorldMatrix), RenderBatch));
-        }
-
-        private void FlushVertexArray(CCGeometryInstanceAttributes instance, int numberOfVerticies, int numberOfIndices)
+        void FlushVertexArray(CCGeometryInstanceAttributes instance, int numberOfVerticies, int numberOfIndices)
         {
             if (numberOfVerticies == 0) return;
 
-            // update our drawing count
             DrawManager.DrawCount++;
 
-            if (device.Textures[0] == null)
+            if (DrawManager.XnaGraphicsDevice.Textures[0] == null)
                 basicEffect.TextureEnabled = false;
             else
                 basicEffect.TextureEnabled = true;
 
-            device.BlendState = instance.BlendState;
+            DrawManager.XnaGraphicsDevice.BlendState = instance.BlendState;
             basicEffect.Projection = DrawManager.ProjectionMatrix;
             basicEffect.View = DrawManager.ViewMatrix;
             basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, DrawManager.WorldMatrix);
@@ -302,28 +169,13 @@ namespace CocosSharp
                 pass.Apply();
                 basicEffect.GraphicsDevice.DrawUserIndexedPrimitives(
                     instance.PrimitiveType,
-                    verticiesArray, 0, numberOfVerticies,
-                    indiciesArray, 0, numberOfIndices / 3);
+                    verticesArray.Elements, 0, numberOfVerticies,
+                    indicesArray.Elements, 0, numberOfIndices / 3);
             }
 
         }
 
-        // End is called once all the primitives have been drawn using AddVertex.
-        // it will call Flush to actually submit the draw call to the graphics card, and
-        // then tell the basic effect to end.
-        public void End()
-        {
-            if (!hasBegun)
-            {
-                throw new InvalidOperationException("Begin must be called before End can be called.");
-            }
-
-            Draw();
-
-            // Draw whatever the user wanted us to draw
-            hasBegun = false;
-        }
-
+        #endregion Rendering
     }
 
     public class CCGeometryInstanceAttributes 
