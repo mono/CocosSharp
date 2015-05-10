@@ -1434,7 +1434,7 @@ namespace CocosSharp
                 VisitRenderer(ref worldTransform);
         }
 
-        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
 
             // Optimization: Fast Dispatch  

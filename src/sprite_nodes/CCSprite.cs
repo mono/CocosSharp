@@ -426,7 +426,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             quadCommand.GlobalDepth = worldTransform.Tz;
             quadCommand.WorldTransform = worldTransform;

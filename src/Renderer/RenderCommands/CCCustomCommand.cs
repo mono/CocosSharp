@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 namespace CocosSharp
 {
     [DebuggerDisplay("{DebugDisplayString,nq}")]
-    internal class CCCustomCommand : CCRenderCommand
+    public class CCCustomCommand : CCRenderCommand
     {
         public Action Action { get; internal set; }
 

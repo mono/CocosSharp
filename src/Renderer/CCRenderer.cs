@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace CocosSharp
 {
     // Implementation loosely based off of discussion "Implementing a Render Queue for Games" http://ploobs.com.br/?p=2378 
-    internal class CCRenderer
+    public class CCRenderer
     {      
         [Flags]
         internal enum CCCommandType

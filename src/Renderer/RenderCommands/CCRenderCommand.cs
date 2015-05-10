@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace CocosSharp
 {
     [DebuggerDisplay("{DebugDisplayString,nq}")]
-    internal abstract class CCRenderCommand : IComparable<CCRenderCommand>
+    public abstract class CCRenderCommand : IComparable<CCRenderCommand>
     {
         long renderFlags;
 
@@ -91,7 +91,7 @@ namespace CocosSharp
                         compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
 
                         // If all traits are equal, then use the arrival index to differentiate
-                        // This is necessary because we rely on quick sort to sort our commands which is
+                        // This is necessary because we rely on quick sort to sort our command queue which is
                         // an unstable sorting algorithm
                         // i.e. Does not guarantee to presever order between two equal elements
                         if(compare == 0)

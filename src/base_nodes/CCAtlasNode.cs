@@ -129,7 +129,7 @@ namespace CocosSharp
 
         #endregion Constructors
 
-        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             var quadsCommand = new CCQuadCommand(worldTransform.Tz, worldTransform, Texture, BlendFunc, QuadsToDraw, TextureAtlas.Quads.Elements);
             Renderer.AddCommand(quadsCommand);

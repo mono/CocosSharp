@@ -336,7 +336,7 @@ namespace CocosSharp
             nodeToTileCoordsTransformOdd = tileCoordsToNodeTransformOdd.Inverse;
         }
 
-        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             DrawManager.Renderer.AddCommand(
                 new CCCustomCommand(worldTransform.Tz, worldTransform, RenderTileMapLayer));

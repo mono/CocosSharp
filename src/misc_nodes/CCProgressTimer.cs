@@ -160,7 +160,7 @@ namespace CocosSharp
             base.Visit(ref parentWorldTransform);
         }
 
-        internal override void VisitRenderer(ref CCAffineTransform worldTransform)
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderProgress));
         }

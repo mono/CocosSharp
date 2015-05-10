@@ -799,15 +799,14 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
+        public CCRenderer Renderer
+        {
+            get { return Window != null ? Window.Renderer : DrawManager.Renderer; }
+        }
 
         internal CCDrawManager DrawManager 
         {
             get  { return Window != null ? Window.DrawManager : CCDrawManager.SharedDrawManager; }
-        }
-
-        internal CCRenderer Renderer
-        {
-            get { return Window != null ? Window.Renderer : DrawManager.Renderer; }
         }
 
         internal virtual Matrix XnaLocalMatrix 
@@ -1983,7 +1982,7 @@ namespace CocosSharp
             }
         }
 
-        internal virtual void VisitRenderer(ref CCAffineTransform worldTransform)
+        protected virtual void VisitRenderer(ref CCAffineTransform worldTransform)
         {
         }
 
