@@ -140,10 +140,6 @@ namespace CocosSharp
 
         public virtual void Blit()
         {
-            CCDrawManager drawManager = Scene.Window.DrawManager;
-            drawManager.Viewport = Scene.Viewport.XnaViewport;
-            drawManager.ViewMatrix = Layer.Camera.ViewMatrix;
-            drawManager.ProjectionMatrix = Layer.Camera.ProjectionMatrix;
         }
 
         public virtual void BeforeDraw()

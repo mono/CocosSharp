@@ -282,8 +282,6 @@ namespace CocosSharp
                 var projMatrix = Camera.ProjectionMatrix;
 
                 Renderer.PushLayerGroup(ref viewMatrix, ref projMatrix);
-                Window.DrawManager.ViewMatrix = viewMatrix;
-                Window.DrawManager.ProjectionMatrix = projMatrix;
             }
 
             if (ChildClippingMode == CCClipMode.None)
@@ -291,10 +289,6 @@ namespace CocosSharp
                 base.Visit(ref parentWorldTransfrom);
                 return;
             }
-
-            Window.DrawManager.PushMatrix();
-
-            Window.DrawManager.SetIdentityMatrix();
 
             BeforeDraw();
 

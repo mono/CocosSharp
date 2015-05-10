@@ -2,9 +2,7 @@
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// CCNodeGrid allows the hosting of a target node that will have a CCGridAction effect applied to it.
-    /// </summary>
+    // CCNodeGrid allows the hosting of a target node that will have a CCGridAction effect applied to it.
     public class CCNodeGrid : CCNode
     {
         CCGridBase grid;
@@ -45,9 +43,7 @@ namespace CocosSharp
 
         public override void Visit (ref CCAffineTransform parentWorldTransform)
         {
-            bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
-
-            if ((!Visible || Scene == null) && !renderTarget)
+            if (!Visible || Scene == null)
                 return;
 
             var worldTransform = CCAffineTransform.Identity;
