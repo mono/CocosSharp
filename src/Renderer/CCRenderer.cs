@@ -18,9 +18,9 @@ namespace CocosSharp
             Primitive = 0x4,
         }
 
-        int currentGroupIdIndex;
+        int currentLayerGroupIdIndex, currentGroupIdIndex;
         uint currentArrivalIndex;
-        byte currentLayerGroupId;
+        byte currentLayerGroupId, maxLayerGroupId;
         byte currentGroupId, maxGroupId;
         CCCommandType currentCommandType;
         CCRawList<CCV3F_C4B_T2F_Quad> currentBatchedQuads;
@@ -31,7 +31,7 @@ namespace CocosSharp
         const uint MaxLayerDepth = 20;
         readonly Matrix[] layerGroupViewMatrixStack;
         readonly Matrix[] layerGroupProjMatrixStack;
-        readonly byte[] groupIdStack;
+        readonly byte[] layerGropuIdStack, groupIdStack;
 
 
         #region Constructors
@@ -45,6 +45,7 @@ namespace CocosSharp
 
             layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
             layerGroupProjMatrixStack = new Matrix[MaxLayerDepth];
+            layerGropuIdStack = new byte[MaxLayerDepth];
             groupIdStack = new byte[MaxLayerDepth];
         }
 
@@ -67,15 +68,15 @@ namespace CocosSharp
                 return;
             }
 
-            currentLayerGroupId+=1;
+            currentLayerGroupId = ++maxLayerGroupId;
+            layerGropuIdStack[++currentLayerGroupIdIndex] = currentLayerGroupId;
             layerGroupViewMatrixStack[currentLayerGroupId] = viewMatrix;
             layerGroupProjMatrixStack[currentLayerGroupId] = projMatrix;
         }
 
         public void PopLayerGroup()
         {
-            if(currentLayerGroupId > 0)
-                currentLayerGroupId -= 1;
+            currentLayerGroupId = layerGropuIdStack[--currentLayerGroupIdIndex];
         }
 
         public void PushGroup()
@@ -86,16 +87,18 @@ namespace CocosSharp
 
         public void PopGroup()
         {
-            currentGroupId = groupIdStack[currentGroupIdIndex--];
+            currentGroupId = groupIdStack[--currentGroupIdIndex];
         }
 
         internal void VisitRenderQueue()
         {
             currentCommandType = CCCommandType.None;
             currentLayerGroupId = 0;
+            currentLayerGroupIdIndex = 0;
             currentGroupId = 0;
             currentGroupIdIndex = 0;
             currentArrivalIndex = 0;
+            maxLayerGroupId = 0;
             maxGroupId = 0;
 
             Array.Sort<CCRenderCommand>(renderQueue.Elements, 0, renderQueue.Count);
@@ -109,9 +112,9 @@ namespace CocosSharp
 
                 if(layerGroupId != currentLayerGroupId) 
                 {
-                    currentGroupId = layerGroupId;
-                    drawManager.ViewMatrix = layerGroupViewMatrixStack[currentGroupId];
-                    drawManager.ProjectionMatrix = layerGroupProjMatrixStack[currentGroupId];
+                    currentLayerGroupId = layerGroupId;
+                    drawManager.ViewMatrix = layerGroupViewMatrixStack[currentLayerGroupId];
+                    drawManager.ProjectionMatrix = layerGroupProjMatrixStack[currentLayerGroupId];
                 }
 
                 command.RequestRenderCommand(this);
@@ -123,7 +126,7 @@ namespace CocosSharp
             // Flush any remaining render commands
             Flush();
 
-            currentGroupId = 0;
+            currentLayerGroupId = 0;
         }
 
         #region Processing render commands

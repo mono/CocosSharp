@@ -287,6 +287,10 @@ namespace CocosSharp
             if (ChildClippingMode == CCClipMode.None)
             {
                 base.Visit(ref parentWorldTransfrom);
+
+                if(Camera != null)
+                    Renderer.PopLayerGroup();
+
                 return;
             }
 
@@ -329,8 +333,6 @@ namespace CocosSharp
             }
 
             AfterDraw();
-
-            Window.DrawManager.PopMatrix();
 
             if(Camera != null)
                 Renderer.PopLayerGroup();
