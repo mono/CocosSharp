@@ -239,18 +239,19 @@ namespace tests.Clipping
 
         public override void Setup()
         {
+            CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             stencil = Stencil();
             stencil.Tag = kTagStencilNode;
-            stencil.Position = new CCPoint(50, 50);
+            stencil.Position = windowSize.Center;
 
             CCClippingNode clipper = Clipper();
             clipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
             clipper.Stencil = stencil;
             AddChild(clipper);
 
-			content = Content();
-			content.Tag = kTagContentNode;
+            content = Content();
+            content.Tag = kTagContentNode;
             content.Position = new CCPoint(50, 50);
             clipper.AddChild(content);
         }
@@ -259,12 +260,13 @@ namespace tests.Clipping
 		{
 			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
-            stencil.RunAction(this.ActionRotate());
-            content.RunAction (this.ActionScale());
-
 			var s = windowSize;
+
 			this[kTagClipperNode].Position = new CCPoint(s.Width / 2 - 50, s.Height / 2 - 50);
 
+
+            stencil.RunAction(this.ActionRotate());
+            content.RunAction (this.ActionScale());
 		}
     }
 
