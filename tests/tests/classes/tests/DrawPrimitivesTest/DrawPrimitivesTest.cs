@@ -219,7 +219,12 @@ namespace tests
 
     public class DrawPrimitivesTest : BaseDrawNodeTest
     {
-        protected override void Draw()
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
+        {
+            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderDrawPrimTest));
+        }
+
+        void RenderDrawPrimTest()
         {
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -362,8 +367,9 @@ namespace tests
 
     public class GeometryBatchTest1 : BaseDrawNodeTest
     {
-
+        CCAffineTransform currentWorldTransform;
         CCTexture2D texture;
+        CCGeometryBatch geoBatch;
 
         public GeometryBatchTest1 () : base()
         {
@@ -375,17 +381,15 @@ namespace tests
         protected override void AddedToScene()
         {
             base.AddedToScene();
+
+            CreateGeom();
         }
 
-        protected override void Draw()
+        void CreateGeom()
         {
-            base.Draw();
-
+            geoBatch = new CCGeometryBatch();
+            AddChild(geoBatch);
             var visibleRect = VisibleBoundsWorldspace;
-
-            var geoBatch = new CCGeometryBatch();
-
-            geoBatch.Begin();
 
             var item = geoBatch.CreateGeometryInstance(3, 3);
 
@@ -429,8 +433,6 @@ namespace tests
             rotation.Ty = windowSize.Center.Y - texture.PixelsHigh / 2;
 
             item.InstanceAttributes.AdditionalTransform = rotation;
-
-            geoBatch.End();
         }
 
         public override string Title
@@ -452,7 +454,7 @@ namespace tests
 
     public class GeometryBatchTest2 : BaseDrawNodeTest
     {
-
+        CCAffineTransform currentWorldTransform;
         CCTexture2D texture;
         CCGeometryBatch geoBatch = new CCGeometryBatch();
 
@@ -460,6 +462,7 @@ namespace tests
         {
             texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
             //texture = CCTextureCache.SharedTextureCache.AddImage("Images/BackGround.png");
+            AddChild(geoBatch);
 
         }
 
@@ -468,12 +471,6 @@ namespace tests
             base.AddedToScene();
 
             var visibleRect = VisibleBoundsWorldspace;
-
-            // We will not clear the primitives after creating them
-            // This will allow us to keep drawing the same over and over.
-            geoBatch.AutoClearInstances = false;
-
-            geoBatch.Begin();
 
             var item = geoBatch.CreateGeometryInstance(3, 3);
 
@@ -517,21 +514,12 @@ namespace tests
             rotation.Ty = windowSize.Center.Y - texture.PixelsHigh / 2;
 
             item.InstanceAttributes.AdditionalTransform = rotation;
-
-            geoBatch.End();
         }
 
         public override void OnExit()
         {
-            // We will clean the batch up here.
             geoBatch.ClearInstances();
-        }
-
-        protected override void Draw()
-        {
-            base.Draw();
-
-            geoBatch.Draw();
+            base.OnExit();
         }
 
         public override string Title
