@@ -175,7 +175,7 @@ namespace CocosSharp
         protected CCSize labelDimensions;
         protected bool IsDirty { get; set; }
         public CCTextureAtlas TextureAtlas { get ; private set; }
-        public CCRawList<CCSprite> Descendants { get; private set; }
+        protected CCRawList<CCSprite> Descendants { get; private set; }
 
         protected bool isColorModifiedByOpacity = false;
 
@@ -423,6 +423,7 @@ namespace CocosSharp
             {
                 BlendFunc = CCBlendFunc.NonPremultiplied;
             }
+            quadCommand.BlendType = BlendFunc;
         }
 
         public virtual string Text
@@ -764,6 +765,8 @@ namespace CocosSharp
                         else
                             TextureAtlas = new CCTextureAtlas(FontAtlas.GetTexture(0), defaultSpriteBatchCapacity);
 
+                        quadCommand.Texture = TextureAtlas.Texture;
+
                         LineHeight = fontAtlas.CommonHeight;
                         IsDirty = true;
                     }
@@ -1067,6 +1070,9 @@ namespace CocosSharp
                     InsertGlyph(reusedLetter, index);
                 }     
             }
+            quadCommand.Quads = TextureAtlas.Quads.Elements;
+            quadCommand.QuadCount = TextureAtlas.Quads.Count;
+
         }
 
         const float MAX_BOUNDS = 8388608;
@@ -1407,6 +1413,11 @@ namespace CocosSharp
             TextureAtlas.ResizeCapacity(quantity);
         }
 
+        protected override void InitialiseRenderCommand()
+        {
+            quadCommand = new CCQuadCommand(0);
+        }
+
         public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
 
@@ -1452,17 +1463,8 @@ namespace CocosSharp
                 }
             }
                 
-            if (quadCommand == null)
-                quadCommand = new CCQuadCommand(worldTransform.Tz, worldTransform, Texture, BlendFunc, TextureAtlas.Quads.Elements);
-            else
-            {
-                quadCommand.GlobalDepth = worldTransform.Tz;
-                quadCommand.WorldTransform = worldTransform;
-                quadCommand.Texture = Texture;
-                quadCommand.BlendType = BlendFunc;
-                quadCommand.Quads = TextureAtlas.Quads.Elements;
-                quadCommand.QuadCount = TextureAtlas.Quads.Count;
-            }
+            quadCommand.GlobalDepth = worldTransform.Tz;
+            quadCommand.WorldTransform = worldTransform;
                 
             Renderer.AddCommand(quadCommand);
         }
