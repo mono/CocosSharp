@@ -296,41 +296,20 @@ namespace CocosSharp
 
             BeforeDraw();
 
-            if (!noDrawChildren && Children != null)
+            VisitRenderer(ref parentWorldTransfrom);
+
+            if(!noDrawChildren && Children != null)
             {
                 SortAllChildren();
-
-                CCNode[] arrayData = Children.Elements;
-                int count = Children.Count;
-                int i = 0;
-
-                // draw children zOrder < 0
-                for (; i < count; i++)
+                var elements = Children.Elements;
+                for(int i = 0, N = Children.Count; i < N; ++i)
                 {
-                    CCNode child = arrayData[i];
-                    if (child.ZOrder < 0)
-                    {
-                        if(child.Visible)
-                            child.Visit();
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                Draw();
-
-                // draw children zOrder >= 0
-                for (; i < count; i++)
-                {
-                    arrayData[i].Visit();
+                    var child = elements[i];
+                    if (child.Visible)
+                        child.Visit();
                 }
             }
-            else
-            {
-                Draw();
-            }
+
 
             AfterDraw();
 
