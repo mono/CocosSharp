@@ -11,6 +11,7 @@ namespace CocosSharp
         CCRawList<CCV3F_C4B_T2F_Quad> quads;
         CCPoint currentPosition;
 
+        CCQuadCommand quadsCommand;
 
         #region Properties
 
@@ -65,6 +66,8 @@ namespace CocosSharp
                     CCSize s = value.ContentSizeInPixels;
                     TextureRect = new CCRect (0, 0, s.Width, s.Height);
                 }
+
+                quadsCommand.Texture = value;
             }
         }
 
@@ -115,23 +118,23 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        protected override void InitialiseRenderCommand()
+        {
+            quadsCommand = new CCQuadCommand(0);
+        }
+
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             if(ParticleCount == 0)
                 return;
 
-            var quadsCommand = new CCQuadCommand(worldTransform.Tz, worldTransform, Texture, BlendFunc, ParticleCount, quads.Elements);
+            quadsCommand.GlobalDepth = worldTransform.Tz;
+            quadsCommand.WorldTransform = worldTransform;
+            quadsCommand.BlendType = this.BlendFunc;
+
             Renderer.AddCommand(quadsCommand);
 
         }
-
-        protected override void Draw()
-        {
-            Window.DrawManager.BindTexture(Texture);
-            Window.DrawManager.BlendFunc(BlendFunc);
-            Window.DrawManager.DrawQuads(quads, 0, ParticleCount);
-        }
-
 
         #region Updating quads
 
@@ -184,6 +187,9 @@ namespace CocosSharp
                 rawQuads[i].TopRight.TexCoords.U = right;
                 rawQuads[i].TopRight.TexCoords.V = top;
             }
+
+            quadsCommand.Quads = rawQuads;
+            quadsCommand.QuadCount = end;
         }
 
         void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, ref CCParticleBase particle)
@@ -311,6 +317,8 @@ namespace CocosSharp
             {
                 UpdateRadialParticleQuads(rawQuads);
             }
+            quadsCommand.Quads = rawQuads;
+            quadsCommand.QuadCount = ParticleCount;
         }
 
         void UpdateGravityParticleQuads(CCV3F_C4B_T2F_Quad[] rawQuads)
