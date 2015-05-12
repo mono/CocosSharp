@@ -86,16 +86,18 @@ namespace CocosSharp
                 {
                     compare = GlobalDepth.CompareTo(otherCommand.GlobalDepth); 
 
+                    // If all traits are equal, then use the arrival index to differentiate
+                    // This is necessary because we rely on quick sort to sort our command queue which is
+                    // an unstable sorting algorithm
+                    // i.e. Does not guarantee to presever order between two equal elements
                     if(compare == 0)
                     {
-                        compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
+                        compare = ArrivalIndex.CompareTo(otherCommand.ArrivalIndex);
 
-                        // If all traits are equal, then use the arrival index to differentiate
-                        // This is necessary because we rely on quick sort to sort our command queue which is
-                        // an unstable sorting algorithm
-                        // i.e. Does not guarantee to presever order between two equal elements
                         if(compare == 0)
-                            compare = ArrivalIndex.CompareTo(otherCommand.ArrivalIndex);
+                        {
+                            compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
+                        }
                     }
                 }
             }
