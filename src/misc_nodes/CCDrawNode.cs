@@ -166,7 +166,7 @@ namespace CocosSharp
 		// An Efficient Way to Draw Approximate Circles in OpenGL
 		// Try to keep from calculating Cos and Sin of values everytime and just use
 		// add and subtract where possible to calculate the values.
-		public void DrawDot(CCPoint pos, float radius, CCColor4F color)
+		public void DrawDot(CCPoint pos, float radius, CCColor4B color)
 		{
 			var cl = color;
 

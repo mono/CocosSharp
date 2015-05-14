@@ -369,7 +369,7 @@ namespace tests
     {
         CCAffineTransform currentWorldTransform;
         CCTexture2D texture;
-        CCGeometryBatch geoBatch;
+        CCGeometryNode geoBatch;
 
         public GeometryBatchTest1 () : base()
         {
@@ -387,7 +387,7 @@ namespace tests
 
         void CreateGeom()
         {
-            geoBatch = new CCGeometryBatch();
+            geoBatch = new CCGeometryNode();
             AddChild(geoBatch);
             var visibleRect = VisibleBoundsWorldspace;
 
@@ -439,7 +439,7 @@ namespace tests
         {
             get
             {
-                return "Geometry Batch";
+                return "Geometry Node";
             }
         }
 
@@ -454,9 +454,8 @@ namespace tests
 
     public class GeometryBatchTest2 : BaseDrawNodeTest
     {
-        CCAffineTransform currentWorldTransform;
         CCTexture2D texture;
-        CCGeometryBatch geoBatch = new CCGeometryBatch();
+        CCGeometryNode geoBatch = new CCGeometryNode();
 
         public GeometryBatchTest2 () : base()
         {
