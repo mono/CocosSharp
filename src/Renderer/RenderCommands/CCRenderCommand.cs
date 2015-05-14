@@ -76,28 +76,23 @@ namespace CocosSharp
         // and then package any remaining traits for comparison (e.g. Material) into the RenderFlags
         public int CompareTo(CCRenderCommand otherCommand)
         {
-            int compare = LayerGroup.CompareTo(otherCommand.LayerGroup);
+            int compare = Group.CompareTo(otherCommand.Group);
 
             if(compare == 0)
             {
-                compare = Group.CompareTo(otherCommand.Group);
+                compare = GlobalDepth.CompareTo(otherCommand.GlobalDepth); 
 
+                // If all traits are equal, then use the arrival index to differentiate
+                // This is necessary because we rely on quick sort to sort our command queue which is
+                // an unstable sorting algorithm
+                // i.e. Does not guarantee to presever order between two equal elements
                 if(compare == 0)
                 {
-                    compare = GlobalDepth.CompareTo(otherCommand.GlobalDepth); 
+                    compare = ArrivalIndex.CompareTo(otherCommand.ArrivalIndex);
 
-                    // If all traits are equal, then use the arrival index to differentiate
-                    // This is necessary because we rely on quick sort to sort our command queue which is
-                    // an unstable sorting algorithm
-                    // i.e. Does not guarantee to presever order between two equal elements
                     if(compare == 0)
                     {
-                        compare = ArrivalIndex.CompareTo(otherCommand.ArrivalIndex);
-
-                        if(compare == 0)
-                        {
-                            compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
-                        }
+                        compare = RenderFlags.CompareTo(otherCommand.RenderFlags);
                     }
                 }
             }

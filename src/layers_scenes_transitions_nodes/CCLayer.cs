@@ -306,7 +306,7 @@ namespace CocosSharp
                 {
                     var child = elements[i];
                     if (child.Visible)
-                        child.Visit();
+                        child.Visit(ref parentWorldTransfrom);
                 }
             }
 
