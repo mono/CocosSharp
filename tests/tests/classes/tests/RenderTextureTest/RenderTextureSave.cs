@@ -44,8 +44,6 @@ namespace tests
             brush.Color = CCColor3B.Red;
             brush.Opacity = 20;
 
-            AddChild(brush);
-
             // Save image menu
             CCMenuItemFont.FontSize = 16;
             CCMenuItemFont.FontName = "arial";
@@ -101,6 +99,7 @@ namespace tests
 
         void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
+            CCAffineTransform worldTransform = AffineWorldTransform;
             CCTouch touch = touches[0];
             CCPoint start = touch.Location;
             CCPoint end = touch.PreviousLocation;
@@ -128,7 +127,7 @@ namespace tests
                     brush.Color = new CCColor3B((byte) (CCRandom.Next() % 127 + 128), 255, 255);
 
                     // Call visit to draw the brush, don't call draw..
-                    brush.Visit();
+                    brush.Visit(ref worldTransform);
                 }
             }
 
