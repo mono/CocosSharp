@@ -534,6 +534,52 @@ namespace CocosSharp
                 false, true, isPieSlice, lineWidth, color);
         }       
 
+        public void DrawCatmullRom(List<CCPoint> points, int segments)
+        {
+            DrawCardinalSpline(points, 0.5f, segments);
+        }
+
+        public void DrawCardinalSpline(List<CCPoint> config, float tension, int segments)
+        {
+
+            int p;
+            float lt;
+            float deltaT = 1.0f / config.Count;
+
+            int count = config.Count;
+
+            var vertices = new CCPoint[segments + 1];
+
+            for (int i = 0; i < segments + 1; i++)
+            {
+                float dt = (float) i / segments;
+
+                // border
+                if (dt == 1)
+                {
+                    p = count - 1;
+                    lt = 1;
+                }
+                else
+                {
+                    p = (int) (dt / deltaT);
+                    lt = (dt - deltaT * p) / deltaT;
+                }
+
+                // Interpolate    
+                int c = config.Count - 1;
+                CCPoint pp0 = config[Math.Min(c, Math.Max(p - 1, 0))];
+                CCPoint pp1 = config[Math.Min(c, Math.Max(p + 0, 0))];
+                CCPoint pp2 = config[Math.Min(c, Math.Max(p + 1, 0))];
+                CCPoint pp3 = config[Math.Min(c, Math.Max(p + 2, 0))];
+
+                vertices[i] = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
+            }
+            var drawColor = new CCColor4B (Color.R, Color.G, Color.B, Opacity);
+            DrawPolygon(vertices, vertices.Length, CCColor4B.Transparent, 1, drawColor);
+        }
+
+
 
         /// <summary>
         /// draws a cubic bezier path
