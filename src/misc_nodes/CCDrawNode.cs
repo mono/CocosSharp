@@ -408,6 +408,11 @@ namespace CocosSharp
             dirty = true;
         }
 
+        public void DrawLine(CCPoint from, CCPoint to, float lineWidth)
+        {
+            DrawLine(from, to, lineWidth, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
+        }
+
         public void DrawLine(CCPoint from, CCPoint to, float lineWidth, CCColor4B color)
         {
             var cl = color;
@@ -454,6 +459,25 @@ namespace CocosSharp
 
             CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
             DrawPolygon(verts.ToArray(), verts.Count, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
+        }
+
+        public void DrawRect(CCPoint p, float size)
+        {
+
+            DrawRect (p,size, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
+        }
+
+        public void DrawRect(CCPoint p, float size, CCColor4B color)
+        {
+
+            var rect = CCRect.Zero;
+
+            float hs = size / 2.0f;
+
+            rect.Origin = p + new CCPoint(-hs, -hs);
+            rect.Size = new CCSize (size, size);
+
+            DrawRect (rect, color);
         }
 
         public void DrawRect(CCRect rect)
