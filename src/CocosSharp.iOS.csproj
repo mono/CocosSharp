@@ -259,7 +259,6 @@
     <Compile Include="misc_nodes\CCRenderTexture.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />
-    <Compile Include="particle_nodes\CCParticleBatchNode.cs" />
     <Compile Include="particle_nodes\CCParticleExamples.cs" />
     <Compile Include="particle_nodes\CCParticleSystem.cs" />
     <Compile Include="particle_nodes\CCParticleSystemQuad.cs" />
@@ -397,7 +396,6 @@
     <Compile Include="tileMap_parallax_nodes\CCTileMapObjectGroup.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
-    <Compile Include="Platform\CCGeometryBatch.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="label_nodes\CCFont.cs" />
     <Compile Include="label_nodes\CCFontAtlas.cs" />
@@ -529,13 +527,13 @@
     <Compile Include="external lib\SharpZipLib\src\Zip\Compression\Streams\StreamManipulator.cs">
       <Link>support\zip_support\SharpZipLib\src\Zip\Compression\Streams\StreamManipulator.cs</Link>
     </Compile>
-    <Compile Include="Renderer\CCRenderQueue.cs" />
     <Compile Include="Renderer\CCRenderer.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
     <Compile Include="Renderer\CCPrimitive.cs" />
+    <Compile Include="misc_nodes\CCGeometryNode.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
