@@ -1936,6 +1936,7 @@ namespace tests
     {
         readonly List<CCPoint> pointList = new List<CCPoint>();
 
+        CCDrawNode drawSplines = new CCDrawNode ();
 
         #region Properties
 
@@ -1985,35 +1986,44 @@ namespace tests
 
             Kathia.Position = new CCPoint(windowSize.Width / 2, 50);
             Kathia.RunAction(seq2);
+
+            AddChild (drawSplines);
         }
 
         #endregion Setup content
 
-
-        protected override void Draw()
+        protected override void VisitRenderer (ref CCAffineTransform worldTransform)
         {
-            base.Draw();
+            base.VisitRenderer (ref worldTransform);
+            Renderer.AddCommand (new CCCustomCommand(worldTransform.Tz, worldTransform, CustomDraw));
+        }
 
-			// move to 50,50 since the "by" path will start at 50,50
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(50, 50, 0);
-
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCardinalSpline(pointList, 0, 100);
-			CCDrawingPrimitives.End();
-
-            CCDrawingPrimitives.PopMatrix();
-
+        protected void CustomDraw()
+        {
             var s = Layer.VisibleBoundsWorldspace.Size;
+            drawSplines.Clear ();
+            var translate = CCAffineTransform.Identity;
+            translate.Tx = 50;
+            translate.Ty = 50;
 
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(s.Width / 2, 50, 0);
+            List<CCPoint> pointList2 = new List<CCPoint>();
+            foreach (var point in pointList) 
+            {
+                pointList2.Add (translate.Transform (point));
+            }
 
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
-			CCDrawingPrimitives.End();
+            drawSplines.DrawCardinalSpline(pointList2, 0, 100);
 
-            CCDrawingPrimitives.PopMatrix();
+            translate.Tx = s.Width / 2;
+            translate.Ty = 50;
+
+            pointList2.Clear ();
+            foreach (var point in pointList) 
+            {
+                pointList2.Add (translate.Transform (point));
+            }
+
+            drawSplines.DrawCardinalSpline(pointList2, 1, 100);
         }
     }
 
@@ -2023,6 +2033,7 @@ namespace tests
         readonly List<CCPoint> pointList = new List<CCPoint>();
         readonly List<CCPoint> pointList2 = new List<CCPoint>();
 
+        CCDrawNode drawCatmullRoms = new CCDrawNode ();
 
         #region Properties
 
@@ -2080,26 +2091,36 @@ namespace tests
 
             Tamara.RunAction(seq);
             Kathia.RunAction(seq2);
+
+            AddChild (drawCatmullRoms);
         }
 
         #endregion Setup content
 
-
-        protected override void Draw()
+        protected override void VisitRenderer (ref CCAffineTransform worldTransform)
         {
-            base.Draw();
+            base.VisitRenderer (ref worldTransform);
+            Renderer.AddCommand (new CCCustomCommand(worldTransform.Tz, worldTransform, CustomDraw));
+        }
+
+        protected void CustomDraw()
+        {
+            drawCatmullRoms.Clear ();
+
+            var translate = CCAffineTransform.Identity;
+            translate.Tx = 50;
+            translate.Ty = 50;
 
             // move to 50,50 since the "by" path will start at 50,50
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(50, 50, 0);
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
-            CCDrawingPrimitives.End();
-            CCDrawingPrimitives.PopMatrix();
+            List<CCPoint> pointList3 = new List<CCPoint>();
+            foreach (var point in pointList) 
+            {
+                pointList3.Add (translate.Transform (point));
+            }
 
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
-            CCDrawingPrimitives.End();
+            drawCatmullRoms.DrawCatmullRom(pointList3, 50);
+
+            drawCatmullRoms.DrawCatmullRom (pointList2, 50);
         }
     }
 
