@@ -29,7 +29,7 @@ namespace CocosSharp
         CCRawList<CCRenderCommand> renderQueue;
         CCDrawManager drawManager;
 
-        const uint MaxLayerDepth = 20;
+        const uint MaxStackDepth = 100;
         readonly Viewport[] viewportGroupStack;
         readonly Matrix[] layerGroupViewMatrixStack;
         readonly Matrix[] layerGroupProjMatrixStack;
@@ -45,12 +45,12 @@ namespace CocosSharp
             renderQueue = new CCRawList<CCRenderCommand>();
             drawManager = drawManagerIn;
 
-            viewportGroupStack = new Viewport[MaxLayerDepth];
-            layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
-            layerGroupProjMatrixStack = new Matrix[MaxLayerDepth];
-            viewportGroupIdStack = new byte[MaxLayerDepth];
-            layerGroupIdStack = new byte[MaxLayerDepth];
-            groupIdStack = new byte[MaxLayerDepth];
+            viewportGroupStack = new Viewport[MaxStackDepth];
+            layerGroupViewMatrixStack = new Matrix[MaxStackDepth];
+            layerGroupProjMatrixStack = new Matrix[MaxStackDepth];
+            viewportGroupIdStack = new byte[MaxStackDepth];
+            layerGroupIdStack = new byte[MaxStackDepth];
+            groupIdStack = new byte[MaxStackDepth];
         }
 
         #endregion Constructors
@@ -84,9 +84,9 @@ namespace CocosSharp
 
         internal void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
         {
-            if(currentLayerGroupId == MaxLayerDepth - 1)
+            if(currentLayerGroupId == MaxStackDepth - 1)
             {
-                Debug.Fail(String.Format("Maximum layer depth of {0} reached", MaxLayerDepth));
+                Debug.Fail(String.Format("Maximum layer depth of {0} reached", MaxStackDepth));
                 return;
             }
 
