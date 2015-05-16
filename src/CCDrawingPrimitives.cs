@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
+    [Obsolete("CCDrawPrimitives is obsolete - Please use CCDrawNode")]
     public partial class CCDrawingPrimitives
     {
         static CCDrawManager drawManager;
