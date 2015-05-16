@@ -129,7 +129,6 @@ namespace tests
             rtm.End();
 
             // Make sure our children nodes get visited
-            rtm.AutoDraw = true;
 
             rtm.Sprite.Position = VisibleBoundsWorldspace.Center;
             rtm.Sprite.AnchorPoint = CCPoint.AnchorMiddle;

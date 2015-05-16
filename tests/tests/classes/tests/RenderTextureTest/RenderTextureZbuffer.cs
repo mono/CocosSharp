@@ -176,7 +176,7 @@ namespace tests
             //var texture = new CCRenderTexture(512, 512);
 
             texture.Sprite.AnchorPoint = new CCPoint(0, 0);
-            texture.Begin();
+            texture.BeginWithClear(CCColor4B.Transparent);
 
             Visit();
 

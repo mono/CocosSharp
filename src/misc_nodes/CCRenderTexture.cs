@@ -94,7 +94,9 @@ namespace CocosSharp
 
 
             clearColor = CCColor4B.Transparent;
-            Clear(clearColor);
+            drawManager.SetRenderTarget(Texture);
+            drawManager.Clear(clearColor);
+            drawManager.RestoreRenderTarget();
         }
 
         #endregion Constructors
@@ -148,13 +150,6 @@ namespace CocosSharp
 
         void OnEnd()
         {
-            drawManager.RestoreRenderTarget();
-        }
-
-        public void Clear(CCColor4B col, float depth = 1.0f, int stencil = 0)
-        {
-            drawManager.SetRenderTarget(Texture);
-            drawManager.Clear(col, depth, stencil);
             drawManager.RestoreRenderTarget();
         }
 

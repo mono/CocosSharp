@@ -44,6 +44,8 @@ namespace tests
             brush.Color = CCColor3B.Red;
             brush.Opacity = 20;
 
+            AddChild(brush);
+
             // Save image menu
             CCMenuItemFont.FontSize = 16;
             CCMenuItemFont.FontName = "arial";
@@ -67,7 +69,6 @@ namespace tests
             target = new CCRenderTexture(windowSize, windowSize,
                 CCSurfaceFormat.Color, 
                 CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);
-            target.Clear(CCColor4B.Transparent);
 
 
             target.Sprite.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
