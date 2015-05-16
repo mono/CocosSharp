@@ -408,9 +408,14 @@ namespace CocosSharp
             dirty = true;
         }
 
-        public void DrawLine(CCPoint from, CCPoint to, float lineWidth)
+        public void DrawLine(CCPoint from, CCPoint to, float lineWidth = 1)
         {
             DrawLine(from, to, lineWidth, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
+        }
+
+        public void DrawLine(CCPoint from, CCPoint to, CCColor4B color)
+        {
+            DrawLine(from, to, 1, color);
         }
 
         public void DrawLine(CCPoint from, CCPoint to, float lineWidth, CCColor4B color)

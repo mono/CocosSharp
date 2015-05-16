@@ -61,6 +61,17 @@ namespace tests
             base.Schedule(step, 0.1f);
         }
 
+        public override void OnEnter ()
+        {
+            base.OnEnter ();
+
+            var s = Layer.VisibleBoundsWorldspace.Size;
+
+            var drawNode = new CCDrawNode();
+            drawNode.DrawLine( new CCPoint(0, s.Height/2), new CCPoint(s.Width, s.Height/2), new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f) );
+            drawNode.DrawLine( new CCPoint(s.Width/2, 0), new CCPoint(s.Width/2, s.Height), new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f) );
+            AddChild(drawNode, -1);
+        }
 
         protected override void AddedToScene()
         {
@@ -79,16 +90,6 @@ namespace tests
 
 			var label1 = (CCLabel)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
             label1.Text = (Stepstring);
-        }
-
-        protected override void Draw()
-        {
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height / 2), new CCPoint(s.Width, s.Height / 2));
-            CCDrawingPrimitives.DrawLine(new CCPoint(s.Width / 2, 0), new CCPoint(s.Width / 2, s.Height));
-            CCDrawingPrimitives.End();
         }
 
         public override string Title
