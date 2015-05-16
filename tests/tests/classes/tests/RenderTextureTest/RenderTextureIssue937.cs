@@ -66,7 +66,7 @@ namespace tests
             //  CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
             //  rend.Sprite.BlendFunc = bf;
 
-            rend.Begin();
+            rend.BeginWithClear(CCColor4B.Transparent);
             // A2
             spritePremulti.Visit();
             // B2

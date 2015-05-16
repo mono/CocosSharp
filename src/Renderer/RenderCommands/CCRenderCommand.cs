@@ -28,6 +28,7 @@ namespace CocosSharp
         }
 
         internal uint ArrivalIndex { get; set; }
+        internal byte ViewportGroup { get; set; }
         internal byte LayerGroup { get; set; }
         internal byte Group { get; set; }
         internal float GlobalDepth { get; set; }
@@ -56,12 +57,26 @@ namespace CocosSharp
         {
         }
 
+        protected CCRenderCommand(CCRenderCommand copy)
+            : this(copy.GlobalDepth, copy.WorldTransform)
+        {
+            renderFlags = copy.renderFlags;
+            RenderFlagsDirty = copy.RenderFlagsDirty;
+
+            // All other ivars should be updated dy dynamically depending on where it was added
+            // to the render queue
+        }
+
+
         protected virtual void GenerateFlags(ref long renderFlags)
         {
             renderFlags = 0;
         }
 
+        public abstract CCRenderCommand Copy();
+
         #endregion Constructors
+
 
         public override string ToString()
         {

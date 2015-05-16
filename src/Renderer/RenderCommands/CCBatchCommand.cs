@@ -22,6 +22,18 @@ namespace CocosSharp
             BlendType = blendType;
         }
 
+        protected CCBatchCommand(CCBatchCommand copy)
+            : base(copy)
+        {
+            TextureAtlas = copy.TextureAtlas;
+            BlendType = copy.BlendType;
+        }
+
+        public override CCBatchCommand Copy()
+        {
+            return new CCBatchCommand(this);
+        }
+
         #endregion Constructors
 
 

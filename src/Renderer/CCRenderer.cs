@@ -18,8 +18,9 @@ namespace CocosSharp
             Primitive = 0x4,
         }
 
-        int currentLayerGroupIdIndex, currentGroupIdIndex;
+        int currentViewportIdIndex, currentLayerGroupIdIndex, currentGroupIdIndex;
         uint currentArrivalIndex;
+        byte currentViewportGroupId, maxViewportGroupId;
         byte currentLayerGroupId, maxLayerGroupId;
         byte currentGroupId, maxGroupId;
         CCCommandType currentCommandType;
@@ -28,10 +29,11 @@ namespace CocosSharp
         CCRawList<CCRenderCommand> renderQueue;
         CCDrawManager drawManager;
 
-        const uint MaxLayerDepth = 20;
+        const uint MaxStackDepth = 100;
+        readonly Viewport[] viewportGroupStack;
         readonly Matrix[] layerGroupViewMatrixStack;
         readonly Matrix[] layerGroupProjMatrixStack;
-        readonly byte[] layerGropuIdStack, groupIdStack;
+        readonly byte[] viewportGroupIdStack, layerGroupIdStack, groupIdStack;
 
 
         #region Constructors
@@ -43,40 +45,60 @@ namespace CocosSharp
             renderQueue = new CCRawList<CCRenderCommand>();
             drawManager = drawManagerIn;
 
-            layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
-            layerGroupProjMatrixStack = new Matrix[MaxLayerDepth];
-            layerGropuIdStack = new byte[MaxLayerDepth];
-            groupIdStack = new byte[MaxLayerDepth];
+            viewportGroupStack = new Viewport[MaxStackDepth];
+            layerGroupViewMatrixStack = new Matrix[MaxStackDepth];
+            layerGroupProjMatrixStack = new Matrix[MaxStackDepth];
+            viewportGroupIdStack = new byte[MaxStackDepth];
+            layerGroupIdStack = new byte[MaxStackDepth];
+            groupIdStack = new byte[MaxStackDepth];
         }
 
         #endregion Constructors
 
         public void AddCommand(CCRenderCommand command)
         {
+            // Render command might be used multiple times per draw loop
+            // e.g. within render texture
+            if(currentGroupId != 0)
+                command = command.Copy();
+
             command.Group = currentGroupId;
+            command.ViewportGroup = currentViewportGroupId;
             command.LayerGroup = currentLayerGroupId;
             command.ArrivalIndex = ++currentArrivalIndex;
 
             renderQueue.Push(command);
         }
 
-        public void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
+        internal void PushViewportGroup(ref Viewport viewport)
         {
-            if(currentLayerGroupId == MaxLayerDepth - 1)
+            currentViewportGroupId = ++maxViewportGroupId;
+            viewportGroupIdStack[++currentViewportIdIndex] = currentViewportGroupId;
+            viewportGroupStack[currentViewportGroupId] = viewport;
+        }
+
+        internal void PopViewportGroup()
+        {
+            currentViewportGroupId = viewportGroupIdStack[--currentViewportIdIndex];
+        }
+
+        internal void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
+        {
+            if(currentLayerGroupId == MaxStackDepth - 1)
             {
-                Debug.Fail(String.Format("Maximum layer depth of {0} reached", MaxLayerDepth));
+                Debug.Fail(String.Format("Maximum layer depth of {0} reached", MaxStackDepth));
                 return;
             }
 
             currentLayerGroupId = ++maxLayerGroupId;
-            layerGropuIdStack[++currentLayerGroupIdIndex] = currentLayerGroupId;
+            layerGroupIdStack[++currentLayerGroupIdIndex] = currentLayerGroupId;
             layerGroupViewMatrixStack[currentLayerGroupId] = viewMatrix;
             layerGroupProjMatrixStack[currentLayerGroupId] = projMatrix;
         }
 
-        public void PopLayerGroup()
+        internal void PopLayerGroup()
         {
-            currentLayerGroupId = layerGropuIdStack[--currentLayerGroupIdIndex];
+            currentLayerGroupId = layerGroupIdStack[--currentLayerGroupIdIndex];
         }
 
         public void PushGroup()
@@ -93,11 +115,14 @@ namespace CocosSharp
         internal void VisitRenderQueue()
         {
             currentCommandType = CCCommandType.None;
+            currentViewportGroupId = 0;
+            currentViewportIdIndex = 0;
             currentLayerGroupId = 0;
             currentLayerGroupIdIndex = 0;
             currentGroupId = 0;
             currentGroupIdIndex = 0;
             currentArrivalIndex = 0;
+            maxViewportGroupId = 0;
             maxLayerGroupId = 0;
             maxGroupId = 0;
 
@@ -108,6 +133,15 @@ namespace CocosSharp
 
             foreach(CCRenderCommand command in renderQueue)
             {
+                byte viewportGroupId = command.ViewportGroup;
+
+                if(viewportGroupId != currentViewportGroupId)
+                {
+                    currentViewportGroupId = viewportGroupId;
+                    drawManager.Viewport = viewportGroupStack[currentViewportGroupId];
+                }
+
+
                 byte layerGroupId = command.LayerGroup;
 
                 if(layerGroupId != currentLayerGroupId) 
@@ -126,8 +160,10 @@ namespace CocosSharp
             // Flush any remaining render commands
             Flush();
 
+            currentViewportGroupId = 0;
             currentLayerGroupId = 0;
         }
+
 
         #region Processing render commands
 

@@ -15,7 +15,6 @@ namespace CocosSharp
 
     public class CCRenderTexture
     {
-
         [Flags]
         enum ClearFlags
         {
@@ -26,43 +25,56 @@ namespace CocosSharp
             All = ~0x0
         }
 
-
-        bool firstUsage = true;
+        bool shouldClear;
+        CCColor4B clearColor;
+                
         RenderTarget2D renderTarget2D;
+        CCDrawManager drawManager;
+        CCRenderer renderer;
+
+        Matrix renderViewMatrix;
+        Matrix renderProjMatrix;
+        Viewport renderViewport;
 
 
         #region Properties
 
-        public bool AutoDraw { get; set; }
-        public CCSprite Sprite { get; set; }
+        public CCSprite Sprite { get; private set; }
         public CCTexture2D Texture { get; private set; }
         protected CCSurfaceFormat PixelFormat { get; private set; }
 
+        CCColor4B ClearColor
+        {
+            get { return clearColor; }
+            set
+            {
+                clearColor = value;
+                shouldClear = true;
+            }
+        }
+
         #endregion Properties
 
-        CCColor4B beginClearColor = CCColor4B.Transparent;
-        float beginDepthValue = 0;
-        int beginStencilValue = 0;
 
-        ClearFlags clearFlags = ClearFlags.None;
 
         #region Constructors
 
         public CCRenderTexture()
         {
             PixelFormat = CCSurfaceFormat.Color;
+            drawManager = CCDrawManager.SharedDrawManager;
+            renderer = drawManager.Renderer;
         }
 
         public CCRenderTexture(CCSize contentSize, CCSize textureSizeInPixels, 
             CCSurfaceFormat colorFormat=CCSurfaceFormat.Color, 
             CCDepthFormat depthFormat=CCDepthFormat.None, 
-            CCRenderTargetUsage usage=CCRenderTargetUsage.DiscardContents)
+            CCRenderTargetUsage usage=CCRenderTargetUsage.DiscardContents) : this()
         {
             int textureWidth = (int)textureSizeInPixels.Width;
             int textureHeight = (int)textureSizeInPixels.Height;
 
-            firstUsage = true;
-            renderTarget2D = CCDrawManager.SharedDrawManager.CreateRenderTarget(
+            renderTarget2D = drawManager.CreateRenderTarget(
                 textureWidth, textureHeight, colorFormat, depthFormat, usage);
 
             Texture = new CCTexture2D(renderTarget2D, colorFormat, true, false);
@@ -71,6 +83,20 @@ namespace CocosSharp
             Sprite = new CCSprite(Texture);
             Sprite.ContentSize = contentSize;
             Sprite.BlendFunc = CCBlendFunc.AlphaBlend;
+
+            CCPoint center = contentSize.Center;
+
+            renderViewMatrix = 
+                Matrix.CreateLookAt(new CCPoint3(center, 300.0f).XnaVector, new CCPoint3(center, 0.0f).XnaVector, Vector3.Up);
+            renderProjMatrix = 
+                Matrix.CreateOrthographic(contentSize.Width, contentSize.Height, 1024f, -1024);
+            renderViewport = new Viewport(0, 0, textureWidth, textureHeight);
+
+
+            clearColor = CCColor4B.Transparent;
+            drawManager.SetRenderTarget(Texture);
+            drawManager.Clear(clearColor);
+            drawManager.RestoreRenderTarget();
         }
 
         #endregion Constructors
@@ -78,11 +104,10 @@ namespace CocosSharp
 
         public void Begin()
         {
-            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
-
-            drawManager.Renderer.PushGroup();
-
-            var beginCommand = new CCCustomCommand(long.MinValue);
+            renderer.PushGroup();
+            renderer.PushViewportGroup(ref renderViewport);
+            renderer.PushLayerGroup(ref renderViewMatrix, ref renderProjMatrix);
+            var beginCommand = new CCCustomCommand(float.MinValue);
             beginCommand.Action = OnBegin;
             drawManager.Renderer.AddCommand(beginCommand);
 
@@ -94,67 +119,39 @@ namespace CocosSharp
 
             drawManager.SetRenderTarget(Texture);
 
-            if (firstUsage)
+            if(shouldClear)
             {
-                drawManager.Clear(beginClearColor);
-                firstUsage = false;
+                drawManager.Clear(clearColor);
+                shouldClear = false;
             }
         }
 
-        public void BeginWithClear(byte r, byte g, byte b, byte a, float depthValue = 1.0f, int stencilValue = 0)
+        public void BeginWithClear(byte r, byte g, byte b, byte a, float depth = 1.0f, int stencil = 0)
         {
-            BeginWithClear(new CCColor4B(r, g, b, a), depthValue, stencilValue);
+            BeginWithClear(new CCColor4B(r, g, b, a), depth, stencil);
         }
 
-        public void BeginWithClear(CCColor4B beginClearColor, float depthValue = 1.0f, int stencilValue = 0)
+        public void BeginWithClear(CCColor4B clearColor, float depth = 1.0f, int stencil = 0)
 		{
+            ClearColor = clearColor;
             Begin();
-            beginDepthValue = depthValue;
-            beginStencilValue = stencilValue;
-            clearFlags = ClearFlags.All;
-
-            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
-
-            var beginWithClearCommand = new CCCustomCommand(long.MinValue);
-            beginWithClearCommand.Action = () => 
-                {
-                    drawManager.Clear(beginClearColor, depthValue, stencilValue);
-                };
-            drawManager.Renderer.AddCommand(beginWithClearCommand);
 		}
 
-        public virtual void End()
+        public void End()
         {
             var endCommand = new CCCustomCommand(float.MaxValue);
             endCommand.Action = OnEnd;
 
-            CCDrawManager.SharedDrawManager.Renderer.AddCommand(endCommand);
-            CCDrawManager.SharedDrawManager.Renderer.PopGroup();
+            renderer.AddCommand(endCommand);
+            renderer.PopLayerGroup();
+            renderer.PopViewportGroup();
+            renderer.PopGroup();
         }
 
-        void OnEnd ()
+        void OnEnd()
         {
-            CCDrawManager.SharedDrawManager.RestoreRenderTarget();
+            drawManager.RestoreRenderTarget();
         }
-
-        public void Clear(CCColor4B col)
-        {
-            Begin();
-            beginClearColor = col;
-            clearFlags |= ClearFlags.ColorBuffer;
-
-            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
-
-            var beginWithClearCommand = new CCCustomCommand(long.MinValue);
-            beginWithClearCommand.Action = () => 
-                {
-                    drawManager.Clear(beginClearColor);
-                };
-            drawManager.Renderer.AddCommand(beginWithClearCommand);
-
-            End();
-        }
-
 
         public bool SaveToStream(Stream stream, CCImageFormat format)
         {

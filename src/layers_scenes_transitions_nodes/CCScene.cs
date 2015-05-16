@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
@@ -439,12 +440,13 @@ namespace CocosSharp
 
         public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
-            CCDrawManager drawManager = Window.DrawManager;
+            Viewport vp = Viewport.XnaViewport;
 
-            if(drawManager.CurrentRenderTarget == null)
-                drawManager.Viewport = Viewport.XnaViewport; 
+            Renderer.PushViewportGroup(ref vp);
 
             base.Visit(ref parentWorldTransform);
+
+            Renderer.PopViewportGroup();
         }
     }
 }
