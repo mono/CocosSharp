@@ -52,9 +52,6 @@ namespace tests
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/bugs/circle.plist");
 
-            mgr = new CCSpriteBatchNode("Images/bugs/circle", 9);
-            AddChild(mgr);
-
             sp1 = new CCSprite("Images/bugs/circle");
             sp2 = new CCSprite("Images/bugs/circle");
             sp3 = new CCSprite("Images/bugs/circle");
@@ -65,15 +62,15 @@ namespace tests
             sp8 = new CCSprite("Images/bugs/circle");
             sp9 = new CCSprite("Images/bugs/circle");
 
-            mgr.AddChild(sp1, 9);
-            mgr.AddChild(sp2, 8);
-            mgr.AddChild(sp3, 7);
-            mgr.AddChild(sp4, 6);
-            mgr.AddChild(sp5, 5);
-            mgr.AddChild(sp6, 4);
-            mgr.AddChild(sp7, 3);
-            mgr.AddChild(sp8, 2);
-            mgr.AddChild(sp9, 1);
+            AddChild(sp1, 9);
+            AddChild(sp2, 8);
+            AddChild(sp3, 7);
+            AddChild(sp4, 6);
+            AddChild(sp5, 5);
+            AddChild(sp6, 4);
+            AddChild(sp7, 3);
+            AddChild(sp8, 2);
+            AddChild(sp9, 1);
 
             sp9.Color = CCColor3B.Yellow;
         }
@@ -89,6 +86,7 @@ namespace tests
             base.OnEnter(); 
 
             CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            CCPoint center = windowSize.Center;
 
             label.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.25f);
             label2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.5f);
@@ -97,6 +95,16 @@ namespace tests
             label.VertexZ = 50;
             label2.VertexZ = 0;
             label3.VertexZ = -50;
+
+            sp1.Position = center;
+            sp2.Position = center;
+            sp3.Position = center;
+            sp4.Position = center;
+            sp5.Position = center;
+            sp6.Position = center;
+            sp7.Position = center;
+            sp8.Position = center;
+            sp9.Position = center;
 
             sp1.VertexZ = 400;
             sp2.VertexZ = 300;
@@ -173,12 +181,13 @@ namespace tests
         {
             var size = Layer.VisibleBoundsWorldspace.Size;
             var texture = new CCRenderTexture(size,size);
-            //var texture = new CCRenderTexture(512, 512);
+
+            CCAffineTransform worldTransform = AffineWorldTransform;
 
             texture.Sprite.AnchorPoint = new CCPoint(0, 0);
             texture.BeginWithClear(CCColor4B.Transparent);
 
-            Visit();
+            Visit(ref worldTransform);
 
             texture.End();
 
