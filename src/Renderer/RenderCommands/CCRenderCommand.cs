@@ -28,6 +28,7 @@ namespace CocosSharp
         }
 
         internal uint ArrivalIndex { get; set; }
+        internal byte ViewportGroup { get; set; }
         internal byte LayerGroup { get; set; }
         internal byte Group { get; set; }
         internal float GlobalDepth { get; set; }

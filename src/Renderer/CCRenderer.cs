@@ -18,8 +18,9 @@ namespace CocosSharp
             Primitive = 0x4,
         }
 
-        int currentLayerGroupIdIndex, currentGroupIdIndex;
+        int currentViewportIdIndex, currentLayerGroupIdIndex, currentGroupIdIndex;
         uint currentArrivalIndex;
+        byte currentViewportGroupId, maxViewportGroupId;
         byte currentLayerGroupId, maxLayerGroupId;
         byte currentGroupId, maxGroupId;
         CCCommandType currentCommandType;
@@ -29,9 +30,10 @@ namespace CocosSharp
         CCDrawManager drawManager;
 
         const uint MaxLayerDepth = 20;
+        readonly Viewport[] viewportGroupStack;
         readonly Matrix[] layerGroupViewMatrixStack;
         readonly Matrix[] layerGroupProjMatrixStack;
-        readonly byte[] layerGroupIdStack, groupIdStack;
+        readonly byte[] viewportGroupIdStack, layerGroupIdStack, groupIdStack;
 
 
         #region Constructors
@@ -43,8 +45,10 @@ namespace CocosSharp
             renderQueue = new CCRawList<CCRenderCommand>();
             drawManager = drawManagerIn;
 
+            viewportGroupStack = new Viewport[MaxLayerDepth];
             layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
             layerGroupProjMatrixStack = new Matrix[MaxLayerDepth];
+            viewportGroupIdStack = new byte[MaxLayerDepth];
             layerGroupIdStack = new byte[MaxLayerDepth];
             groupIdStack = new byte[MaxLayerDepth];
         }
@@ -59,13 +63,26 @@ namespace CocosSharp
                 command = command.Copy();
 
             command.Group = currentGroupId;
+            command.ViewportGroup = currentViewportGroupId;
             command.LayerGroup = currentLayerGroupId;
             command.ArrivalIndex = ++currentArrivalIndex;
 
             renderQueue.Push(command);
         }
 
-        public void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
+        internal void PushViewportGroup(ref Viewport viewport)
+        {
+            currentViewportGroupId = ++maxViewportGroupId;
+            viewportGroupIdStack[++currentViewportIdIndex] = currentViewportGroupId;
+            viewportGroupStack[currentViewportGroupId] = viewport;
+        }
+
+        internal void PopViewportGroup()
+        {
+            currentViewportGroupId = viewportGroupIdStack[--currentViewportIdIndex];
+        }
+
+        internal void PushLayerGroup(ref Matrix viewMatrix, ref Matrix projMatrix)
         {
             if(currentLayerGroupId == MaxLayerDepth - 1)
             {
@@ -79,7 +96,7 @@ namespace CocosSharp
             layerGroupProjMatrixStack[currentLayerGroupId] = projMatrix;
         }
 
-        public void PopLayerGroup()
+        internal void PopLayerGroup()
         {
             currentLayerGroupId = layerGroupIdStack[--currentLayerGroupIdIndex];
         }
@@ -98,11 +115,14 @@ namespace CocosSharp
         internal void VisitRenderQueue()
         {
             currentCommandType = CCCommandType.None;
+            currentViewportGroupId = 0;
+            currentViewportIdIndex = 0;
             currentLayerGroupId = 0;
             currentLayerGroupIdIndex = 0;
             currentGroupId = 0;
             currentGroupIdIndex = 0;
             currentArrivalIndex = 0;
+            maxViewportGroupId = 0;
             maxLayerGroupId = 0;
             maxGroupId = 0;
 
@@ -113,6 +133,15 @@ namespace CocosSharp
 
             foreach(CCRenderCommand command in renderQueue)
             {
+                byte viewportGroupId = command.ViewportGroup;
+
+                if(viewportGroupId != currentViewportGroupId)
+                {
+                    currentViewportGroupId = viewportGroupId;
+                    drawManager.Viewport = viewportGroupStack[currentViewportGroupId];
+                }
+
+
                 byte layerGroupId = command.LayerGroup;
 
                 if(layerGroupId != currentLayerGroupId) 
@@ -131,8 +160,10 @@ namespace CocosSharp
             // Flush any remaining render commands
             Flush();
 
+            currentViewportGroupId = 0;
             currentLayerGroupId = 0;
         }
+
 
         #region Processing render commands
 
