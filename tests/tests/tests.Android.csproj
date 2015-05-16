@@ -559,7 +559,6 @@
     <Compile Include="..\..\Extensions\GUI\CCScrollView\CCTableViewCell.cs">
       <Link>Extensions\GUI\CCScrollView\CCTableViewCell.cs</Link>
     </Compile>
-    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
     <Compile Include="classes\tests\LabelTestNew\AtlasTestSceneNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTColorAndOpacity.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTMultiLine.cs" />
