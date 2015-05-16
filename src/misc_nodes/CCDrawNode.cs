@@ -539,7 +539,17 @@ namespace CocosSharp
             DrawCardinalSpline(points, 0.5f, segments);
         }
 
+        public void DrawCatmullRom(List<CCPoint> points, int segments, CCColor4B color)
+        {
+            DrawCardinalSpline(points, 0.5f, segments, color);
+        }
+
         public void DrawCardinalSpline(List<CCPoint> config, float tension, int segments)
+        {
+            DrawCardinalSpline(config, tension, segments, new CCColor4B (Color.R, Color.G, Color.B, Opacity));
+        }
+
+        public void DrawCardinalSpline(List<CCPoint> config, float tension, int segments, CCColor4B color)
         {
 
             int p;
@@ -575,8 +585,8 @@ namespace CocosSharp
 
                 vertices[i] = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
             }
-            var drawColor = new CCColor4B (Color.R, Color.G, Color.B, Opacity);
-            DrawPolygon(vertices, vertices.Length, CCColor4B.Transparent, 1, drawColor);
+
+            DrawPolygon(vertices, vertices.Length, CCColor4B.Transparent, 1, color);
         }
 
 
