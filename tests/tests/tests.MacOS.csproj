@@ -1145,7 +1145,6 @@
     </Compile>
     <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\Physics\PhysicsTest.cs" />
-    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
     <Compile Include="classes\tests\LabelTest\Atlas3.cs">
       <SubType>Code</SubType>
     </Compile>

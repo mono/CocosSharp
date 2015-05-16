@@ -1613,8 +1613,8 @@ namespace tests
 						DrawPolygon( bound, draw );
 						break;
 
-					case "ellipse":
-						mainLayer.AddChild(ParseEllipse(bound));
+                    case "ellipse":
+                        DrawEllipse (bound, draw);
 						break;
 				}
 			}
@@ -1648,6 +1648,16 @@ namespace tests
 			}
 		}
 
+        public void DrawEllipse(Dictionary<string, string> dict, CCDrawNode draw)
+        {
+
+            float x = float.Parse( dict["x"] );
+            float y = float.Parse( dict["y"] );
+            float width = float.Parse( dict["width"] );
+            float height = float.Parse( dict["height"] );
+            draw.DrawEllipse (new CCRect (x, y, width, height), 1, new CCColor4B (0, 0, 255, 255));
+        }
+
 		protected List<CCPoint> ParsePoints(string pointsString)
 		{
 			var list = new List<CCPoint>();
@@ -1664,17 +1674,6 @@ namespace tests
 				list.Add( new CCPoint(x, y) );
 			}
 			return list;
-		}
-
-		protected TmxMapEllipse ParseEllipse(Dictionary<string, string> dict)
-		{
-			var shape = new TmxMapEllipse { Color = new CCColor3B( 0, 0, 255 ) };
-			float x = float.Parse( dict["x"] );
-			float y = float.Parse( dict["y"] );
-			float width = float.Parse( dict["width"] );
-			float height = float.Parse( dict["height"] );
-			shape.Rect = new CCRect(x, y, width, height);
-			return shape;
 		}
 
 		#endregion
