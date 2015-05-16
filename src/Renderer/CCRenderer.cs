@@ -59,7 +59,7 @@ namespace CocosSharp
         {
             // Render command might be used multiple times per draw loop
             // e.g. within render texture
-            if(renderQueue.Contains(command))
+            if(currentGroupId != 0)
                 command = command.Copy();
 
             command.Group = currentGroupId;
