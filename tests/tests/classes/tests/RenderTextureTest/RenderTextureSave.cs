@@ -141,8 +141,8 @@ namespace tests
 
         void ClearImage(object sender)
         {
-//            target.Clear(CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), 
-//                CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1());
+            target.BeginWithClear(CCColor4B.Transparent);
+            target.End();
         }
 
         void SaveImage(object sender)
