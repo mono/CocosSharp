@@ -31,7 +31,7 @@ namespace CocosSharp
         const uint MaxLayerDepth = 20;
         readonly Matrix[] layerGroupViewMatrixStack;
         readonly Matrix[] layerGroupProjMatrixStack;
-        readonly byte[] layerGropuIdStack, groupIdStack;
+        readonly byte[] layerGroupIdStack, groupIdStack;
 
 
         #region Constructors
@@ -45,7 +45,7 @@ namespace CocosSharp
 
             layerGroupViewMatrixStack = new Matrix[MaxLayerDepth];
             layerGroupProjMatrixStack = new Matrix[MaxLayerDepth];
-            layerGropuIdStack = new byte[MaxLayerDepth];
+            layerGroupIdStack = new byte[MaxLayerDepth];
             groupIdStack = new byte[MaxLayerDepth];
         }
 
@@ -74,14 +74,14 @@ namespace CocosSharp
             }
 
             currentLayerGroupId = ++maxLayerGroupId;
-            layerGropuIdStack[++currentLayerGroupIdIndex] = currentLayerGroupId;
+            layerGroupIdStack[++currentLayerGroupIdIndex] = currentLayerGroupId;
             layerGroupViewMatrixStack[currentLayerGroupId] = viewMatrix;
             layerGroupProjMatrixStack[currentLayerGroupId] = projMatrix;
         }
 
         public void PopLayerGroup()
         {
-            currentLayerGroupId = layerGropuIdStack[--currentLayerGroupIdIndex];
+            currentLayerGroupId = layerGroupIdStack[--currentLayerGroupIdIndex];
         }
 
         public void PushGroup()
