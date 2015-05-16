@@ -53,6 +53,11 @@ namespace CocosSharp
 
         public void AddCommand(CCRenderCommand command)
         {
+            // Render command might be used multiple times per draw loop
+            // e.g. within render texture
+            if(renderQueue.Contains(command))
+                command = command.Copy();
+
             command.Group = currentGroupId;
             command.LayerGroup = currentLayerGroupId;
             command.ArrivalIndex = ++currentArrivalIndex;

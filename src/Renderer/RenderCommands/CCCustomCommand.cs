@@ -33,6 +33,16 @@ namespace CocosSharp
         {
         }
 
+        protected CCCustomCommand(CCCustomCommand copy)
+            : base(copy)
+        {
+            Action = copy.Action; 
+        }
+
+        public override CCRenderCommand Copy()
+        {
+            return new CCCustomCommand(this);
+        }
 
         #endregion Constructors
 

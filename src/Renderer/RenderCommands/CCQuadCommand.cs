@@ -90,6 +90,23 @@ namespace CocosSharp
             BlendType = blendType;
         }
 
+        protected CCQuadCommand(CCQuadCommand copy)
+            : base(copy)
+        {
+            Quads = copy.quads;
+            QuadCount = copy.QuadCount;
+            Texture = copy.Texture;
+            BlendType = copy.BlendType;
+
+            materialId = copy.materialId;
+            materialIdDirty = copy.materialIdDirty;
+        }
+
+        public override CCRenderCommand Copy()
+        {
+            return new CCQuadCommand(this);
+        }
+
         #endregion Constructors
 
         void GenerateMaterialId()

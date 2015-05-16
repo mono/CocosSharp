@@ -34,6 +34,18 @@ namespace CocosSharp
             Texture = texture;
         }
 
+        protected CCPrimitiveCommand(CCPrimitiveCommand<T,T2> copy)
+        {
+            Primitive = copy.Primitive;
+            BlendType = copy.BlendType;
+            Texture = copy.Texture;
+        }
+
+        public override CCRenderCommand Copy()
+        {
+            return new CCPrimitiveCommand<T, T2>(this);
+        }
+            
         #endregion Constructors
 
 
