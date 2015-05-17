@@ -191,11 +191,10 @@ namespace CocosSharp
 
         public void Transform(ref float x, ref float y, ref float z)
         {
-            Vector3 vec = new Vector3(x, y, z);
-            Vector3.Transform(ref vec, ref xnaMatrix, out vec);
-            x = vec.X;
-            y = vec.Y;
-            z = vec.Z;
+            var tmpX = A * x + C * y + Tx;
+            y = (B * x + D * y + Ty);
+            x = tmpX;
+            z += Tz;
         }
 
         public void Transform(ref float x, ref float y)
@@ -272,18 +271,22 @@ namespace CocosSharp
         {
             var x = quadPoint.Vertices.X;
             var y = quadPoint.Vertices.Y;
-            Transform(ref x, ref y);
+            var z = quadPoint.Vertices.Z;
+            Transform(ref x, ref y, ref z);
             quadPoint.Vertices.X = x;
             quadPoint.Vertices.Y = y;
+            quadPoint.Vertices.Z = z;
         }
 
         public void Transform(ref CCV3F_C4B quadPoint)
         {
             var x = quadPoint.Vertices.X;
             var y = quadPoint.Vertices.Y;
-            Transform(ref x, ref y);
+            var z = quadPoint.Vertices.Z;
+            Transform(ref x, ref y, ref z);
             quadPoint.Vertices.X = x;
             quadPoint.Vertices.Y = y;
+            quadPoint.Vertices.Z = z;
         }
 
         public CCV3F_C4B_T2F_Quad Transform(CCV3F_C4B_T2F_Quad quad)
