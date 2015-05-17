@@ -74,7 +74,8 @@ namespace CocosSharp
 
     public class CCNode : ICCUpdatable, ICCFocusable, IComparer<CCNode>, IComparable<CCNode>
     {
-        public const int TagInvalid = -1;                               // Use this to determine if a tag has been set on the node.
+        // Use this to determine if a tag has been set on the node.
+        public const int TagInvalid = -1;                               
 
         bool ignoreAnchorPointForPosition;
         bool isCleaned = false;
@@ -82,6 +83,7 @@ namespace CocosSharp
         bool isColorCascaded;
 
         int tag;
+        uint arrivalIndex, currentChildArrivalIndex;
         int zOrder;
         float vertexZ;
 
@@ -1439,6 +1441,8 @@ namespace CocosSharp
                 Children = new CCRawList<CCNode>();
             }
 
+            child.arrivalIndex = ++currentChildArrivalIndex;
+
             InsertChild(child, zOrder, tag);
 
             child.Parent = this;
@@ -1627,7 +1631,14 @@ namespace CocosSharp
 
         public int CompareTo(CCNode that)
         {
-            return this.ZOrder.CompareTo(that.ZOrder);
+            int compare = ZOrder.CompareTo(that.ZOrder);
+
+            // In the case where zOrders are equivalent, resort to ordering
+            // based on when children were added to parent
+            if(compare == 0)
+                compare = arrivalIndex.CompareTo(that.arrivalIndex);
+
+            return compare;
         }
 
         public void SortAllChildren()
