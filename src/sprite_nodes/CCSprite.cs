@@ -124,87 +124,6 @@ namespace CocosSharp
             get { return quadCommand.BlendType; }
             set { quadCommand.BlendType = value; }
         }
-            
-        public override float Rotation
-        {
-            set
-            {
-                base.Rotation = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        // Rotation of the sprite, about the X axis, in Degrees.
-        public override float RotationX
-        {
-            get { return base.RotationX; }
-            set
-            {
-                base.RotationX = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        // Rotation of the sprite, about the Y axis, in Degrees.
-        public override float RotationY
-        {
-            get { return base.RotationY; }
-            set
-            {
-                base.RotationY = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        public override float SkewX
-        {
-            get { return base.SkewX; }
-            set
-            {
-                base.SkewX = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        public override float SkewY
-        {
-            get { return base.SkewY; }
-            set
-            {
-                base.SkewY = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        public virtual void ScaleTo(CCSize size)
-        {
-            CCSize content = ContentSize;
-            float sx = size.Width / content.Width;
-            float sy = size.Height / content.Height;
-            base.ScaleX = sx;
-            base.ScaleY = sy;
-            UpdateSpriteTextureQuads();
-        }
-
-        public override float ScaleX
-        {
-            get { return base.ScaleX; }
-            set
-            {
-                base.ScaleX = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        public override float ScaleY
-        {
-            get { return base.ScaleY; }
-            set
-            {
-                base.ScaleY = value;
-                UpdateSpriteTextureQuads();
-            }
-        }
 
         public override CCColor3B Color
         {
@@ -223,16 +142,6 @@ namespace CocosSharp
             {
                 base.ContentSize = value;
 
-                UpdateSpriteTextureQuads();
-            }
-        }
-
-        public override CCPoint Position
-        {
-            get { return base.Position; }
-            set
-            {
-                base.Position = value;
                 UpdateSpriteTextureQuads();
             }
         }
