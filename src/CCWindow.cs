@@ -353,8 +353,6 @@ namespace CocosSharp
                     NotificationNode.Visit();
                 }
 
-                if (EventDispatcher.IsEventListenersFor (EVENT_AFTER_DRAW))
-                    EventDispatcher.DispatchEvent (eventAfterDraw);
             }
 
             DrawManager.PopMatrix();
@@ -374,6 +372,9 @@ namespace CocosSharp
 
                 Renderer.VisitRenderQueue();
             } 
+
+            if (EventDispatcher.IsEventListenersFor (EVENT_AFTER_DRAW))
+                EventDispatcher.DispatchEvent (eventAfterDraw);
         }
 
         internal void Update(float deltaTime)
