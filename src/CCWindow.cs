@@ -324,7 +324,9 @@ namespace CocosSharp
 
         protected void Draw(CCGameTime gameTime)
         {
-            Stats.UpdateStart();
+            // Only draw stats if they are enabled.
+            if (Stats.IsEnabled)
+                Stats.UpdateStart();
 
             DrawManager.PushMatrix();
 
@@ -338,6 +340,8 @@ namespace CocosSharp
                 if (runningScene != null) 
                 {
                     runningScene.Visit();
+
+                    Renderer.VisitRenderQueue();
 
                     if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
                         EventDispatcher.DispatchEvent (eventAfterVisit);
@@ -355,17 +359,21 @@ namespace CocosSharp
 
             DrawManager.PopMatrix();
 
-            Renderer.PushGroup();
-            Renderer.PushViewportGroup(ref defaultViewport);
-            Renderer.PushLayerGroup(ref defaultViewMatrix, ref defaultProjMatrix);
+            // Only draw stats if they are enabled.
+            if (Stats.IsEnabled)
+            {
+                Renderer.PushGroup();
+                Renderer.PushViewportGroup(ref defaultViewport);
+                Renderer.PushLayerGroup(ref defaultViewMatrix, ref defaultProjMatrix);
 
-            Stats.Draw(this);
+                Stats.Draw(this);
 
-            Renderer.PopLayerGroup();
-            Renderer.PopViewportGroup();
-            Renderer.PopGroup();
+                Renderer.PopLayerGroup();
+                Renderer.PopViewportGroup();
+                Renderer.PopGroup();
 
-            Renderer.VisitRenderQueue();
+                Renderer.VisitRenderQueue();
+            } 
         }
 
         internal void Update(float deltaTime)
