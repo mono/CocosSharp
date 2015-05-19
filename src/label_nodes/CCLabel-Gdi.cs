@@ -311,12 +311,8 @@ namespace CocosSharp
 
             var font = CreateFont(textDef.FontName, textDef.FontSize / dpiScale);
 
-            var fontColor = textDef.FontFillColor;
-            var fontAlpha = textDef.FontAlpha;
-            var foregroundColor = System.Drawing.Color.FromArgb(fontAlpha,
-                fontColor.R,
-                fontColor.G,
-                fontColor.B);
+            // color
+            var foregroundColor = System.Drawing.Color.White;
 
             // alignment
             var horizontalAlignment = textDef.Alignment;

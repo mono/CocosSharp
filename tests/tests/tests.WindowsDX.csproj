@@ -236,6 +236,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontAlignmentTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTestNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFAlignmentNew.cs" />
@@ -425,7 +426,6 @@
     <Compile Include="classes\tests\TextInputTest\TextInputTest.cs" />
     <Compile Include="classes\tests\TextInputTest\TextInputTestScene.cs" />
     <Compile Include="classes\tests\Texture2dTest\Texture2dTest.cs" />
-    <Compile Include="classes\tests\TileMapTest\Shapes.cs" />
     <Compile Include="classes\tests\TileMapTest\TileMapTest.cs" />
     <Compile Include="classes\tests\TouchesTest\Ball.cs" />
     <Compile Include="classes\tests\TouchesTest\Paddle.cs" />
