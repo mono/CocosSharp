@@ -86,7 +86,7 @@ namespace CocosSharp
         {
             if(currentLayerGroupId == MaxStackDepth - 1)
             {
-                Debug.Fail(String.Format("Maximum layer depth of {0} reached", MaxStackDepth));
+                Debug.Assert(false,String.Format("Maximum layer depth of {0} reached", MaxStackDepth));
                 return;
             }
 
