@@ -161,7 +161,8 @@ namespace CocosSharp
         public static string FullPathFromRelativeFile(string filename, string relativeFile)
         {
             string path = Path.GetDirectoryName(relativeFile);
-            return Path.Combine(path, RemoveExtension(filename));
+
+            return Path.Combine(path, filename);
         }
 
         public static string RemoveExtension(string fileName)
