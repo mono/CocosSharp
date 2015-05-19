@@ -143,7 +143,7 @@ namespace CocosSharp
 
         #region Child management
 
-        public override void AddChild(CCNode child, int zOrder = 0, int tag = CCNode.TagInvalid)
+        public new void AddChild(CCNode child, int zOrder = 0, int tag = CCNode.TagInvalid)
         {
             Debug.Assert(child != null, "child should not be null");
 
