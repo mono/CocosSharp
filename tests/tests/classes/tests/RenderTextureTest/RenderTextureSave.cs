@@ -141,7 +141,8 @@ namespace tests
 
         void ClearImage(object sender)
         {
-            target.BeginWithClear(CCColor4B.Transparent);
+            target.BeginWithClear((byte)(CCMacros.CCRandomBetween0And1() * 255), (byte)(CCMacros.CCRandomBetween0And1() * 255), 
+                (byte)(CCMacros.CCRandomBetween0And1() * 255), (byte)(CCMacros.CCRandomBetween0And1() * 255));
             target.End();
         }
 
