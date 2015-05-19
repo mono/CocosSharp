@@ -35,9 +35,9 @@ namespace CocosSharp
     /// </summary>
     public class CCFileUtils
     {
-		static bool PopupNotify = true;
+        static bool PopupNotify = true;
 
-		#region Properties
+        #region Properties
 
         // Set/Get whether pop-up a message box when the image load failed
         public static bool IsPopupNotify
@@ -52,7 +52,7 @@ namespace CocosSharp
             }
         }
 
-		#endregion Properties
+        #endregion Properties
 
 
         public static Stream GetFileStream(string fileName)
@@ -197,10 +197,10 @@ namespace CocosSharp
         /// <typeparam name="?"></typeparam>
         /// <param name="?"></param>
         /// <returns></returns>
-		public static Dictionary<string, object> DictionaryWithContentsOfFile(string filename)
+        public static Dictionary<string, object> DictionaryWithContentsOfFile(string filename)
         {
             CCDictMaker tMaker = new CCDictMaker();
-			return tMaker.DictionaryWithContentsOfFile(filename);
+            return tMaker.DictionaryWithContentsOfFile(filename);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace CocosSharp
         /// @param pszZipFileName The relative path of the .zip file
         /// </summary>
         /// <param name="pszZipFileName"></param>
-		public static void SetResource(string zipFilename)
+        public static void SetResource(string zipFilename)
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }
