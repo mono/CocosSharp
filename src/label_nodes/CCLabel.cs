@@ -706,6 +706,7 @@ namespace CocosSharp
                     SystemFontSize = size;
                     Dimensions = dimensions;
                     AnchorPoint = CCPoint.AnchorMiddle;
+                    BlendFunc = CCBlendFunc.AlphaBlend;
                     Text = str;
                 }
             }
