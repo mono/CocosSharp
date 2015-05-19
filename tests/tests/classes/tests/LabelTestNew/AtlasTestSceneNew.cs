@@ -60,6 +60,7 @@ namespace tests
         static Func<CCLayer>[] labelCreateFunctions =
         { 
                 () => new LabelFNTColorAndOpacity(),
+                () => new LabelSystemFontColorAndOpacity(),
                 () => new LabelFNTSpriteActions(),
                 () => new LabelFNTPadding(),
                 () => new LabelFNTOffset(),

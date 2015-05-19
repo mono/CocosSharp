@@ -910,9 +910,46 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        public override void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            var displayedColor = CCColor3B.White;
+            displayedColor.R = (byte)(RealColor.R * parentColor.R / 255.0f);
+            displayedColor.G = (byte)(RealColor.G * parentColor.G / 255.0f);
+            displayedColor.B = (byte)(RealColor.B * parentColor.B / 255.0f);
+
+            base.UpdateDisplayedColor(displayedColor);
+
+            if (LabelType == CCLabelType.SystemFont && textSprite != null)
+            {
+                textSprite.UpdateDisplayedColor(displayedColor);
+            }
+
+        }
+
+        protected internal override void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            var displayedOpacity = (byte) (RealOpacity * parentOpacity / 255.0f);
+
+            base.UpdateDisplayedOpacity(displayedOpacity);
+
+            if (LabelType == CCLabelType.SystemFont && textSprite != null)
+            {
+                textSprite.UpdateDisplayedOpacity(displayedOpacity);
+            }
+
+        }
+
+
         public override void UpdateColor()
         {
-            base.UpdateColor();
+            if (TextureAtlas != null)
+            {
+                quadCommand.RequestUpdateQuads(UpdateColorCallback);
+            }
+        }
+
+        void UpdateColorCallback(ref CCV3F_C4B_T2F_Quad[] quads)
+        {
 
             if (TextureAtlas == null)
             {
@@ -929,21 +966,23 @@ namespace CocosSharp
                 color4.B = (byte)(color4.B * DisplayedOpacity / 255.0f);
             }
 
-            var quads = TextureAtlas.Quads;
-            var totalQuads = TextureAtlas.TotalQuads;
-            CCV3F_C4B_T2F_Quad quad;
-
-            for (int index = 0; index < totalQuads; ++index)
+            if (quads != null)
             {
-                quad = quads[index];
-                quad.BottomLeft.Colors = color4;
-                quad.BottomRight.Colors = color4;
-                quad.TopLeft.Colors = color4;
-                quad.TopRight.Colors = color4;
-                TextureAtlas.UpdateQuad(ref quad, index);
+                
+                var totalQuads = quads.Length;
+                CCV3F_C4B_T2F_Quad quad;
+
+                for (int index = 0; index < totalQuads; ++index)
+                {
+                    quad = quads[index];
+                    quad.BottomLeft.Colors = color4;
+                    quad.BottomRight.Colors = color4;
+                    quad.TopLeft.Colors = color4;
+                    quad.TopRight.Colors = color4;
+                    TextureAtlas.UpdateQuad(ref quad, index);
+                }
+
             }
-
-
         }
 
         public override bool IsColorModifiedByOpacity

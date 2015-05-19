@@ -1163,6 +1163,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.iOS.plist">
@@ -1304,6 +1305,9 @@
     <Content Include="Content\TileMaps\lamp-16x16.xnb" />
     <Content Include="Content\TileMaps\animation_diff_tile_dim.xnb" />
     <Content Include="Content\TileMaps\animation_large_map.xnb" />
+    <Content Include="..\testsContent\fonts\Marker Felt.ttf">
+      <Link>Content\fonts\Marker Felt.ttf</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

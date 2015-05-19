@@ -75,12 +75,7 @@ namespace CocosSharp
             }
 
             // color
-            var fontColor = textDef.FontFillColor;
-            var fontAlpha = textDef.FontAlpha;
-            var foregroundColor = new Android.Graphics.Color(fontColor.R,
-                fontColor.G,
-                fontColor.B,
-                fontAlpha);
+            var foregroundColor = Android.Graphics.Color.White;
 
             textPaint.Color = foregroundColor;
 
