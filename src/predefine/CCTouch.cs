@@ -8,11 +8,9 @@ namespace CocosSharp
 
     public class CCTouch
     {
-        bool startPointCaptured;
-
         CCPoint point;
         CCPoint prevPoint;
-        CCPoint startPoint;
+        readonly CCPoint startPoint;
 
         internal CCNode Target { get; set; }
 
@@ -67,11 +65,12 @@ namespace CocosSharp
 
         #region Constructors
 
-		internal CCTouch(int id=0, float x=0.0f, float y=0.0f)
+        internal CCTouch(int id, float x, float y)
         {
             Id = id;
             point = new CCPoint(x, y);
-            prevPoint = new CCPoint(x, y);
+            prevPoint = point;
+            startPoint = point;
         }
 
         #endregion Constructors
@@ -83,11 +82,6 @@ namespace CocosSharp
             prevPoint = point;
             point.X = x;
             point.Y = y;
-            if (!startPointCaptured)
-            {
-                startPoint = point;
-                startPointCaptured = true;
-            }
         }
     }
 }
