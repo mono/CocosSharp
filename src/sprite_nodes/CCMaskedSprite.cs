@@ -52,10 +52,10 @@ namespace CocosSharp
         public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
             pt = CCPoint.Zero;
-            CCAffineTransform affine1 = target.AffineLocalTransform;
-            CCAffineTransform affine2 = target.AffineLocalTransform;
-            CCRect myBBInWorld = Layer.VisibleBoundsWorldspace;
-            CCRect targetBBInWorld = target.BoundingBox;
+            CCAffineTransform affine1 = AffineWorldTransform;
+            CCAffineTransform affine2 = target.AffineWorldTransform;
+            CCRect myBBInWorld = BoundingBoxTransformedToWorld;
+            CCRect targetBBInWorld = target.BoundingBoxTransformedToWorld;
 
             if (!myBBInWorld.IntersectsRect(targetBBInWorld))
             {
