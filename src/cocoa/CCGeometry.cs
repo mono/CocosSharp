@@ -1078,8 +1078,12 @@ namespace CocosSharp
             return roundedUpRect;
         }
 
-
         public CCRect Intersection(CCRect rect)
+        {
+            return Intersection(ref rect);
+        }
+
+        public CCRect Intersection(ref CCRect rect)
         {
             if (!IntersectsRect(rect))
             {
