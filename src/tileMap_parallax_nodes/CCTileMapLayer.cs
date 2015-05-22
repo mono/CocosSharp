@@ -794,7 +794,8 @@ namespace CocosSharp
         void UpdateVisibleTileRange()
         {
             var culledBounds = AffineWorldTransform.Inverse.Transform(VisibleBoundsWorldspace);
-            culledBounds = culledBounds.Intersection(BoundingBox);
+            var contentRect = new CCRect(0.0f, 0.0f, ContentSize.Width, ContentSize.Height);
+            culledBounds = culledBounds.Intersection(ref contentRect);
 
             foreach (var drawBufferManager in drawBufferManagers)
             {
