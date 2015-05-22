@@ -667,6 +667,8 @@ namespace tests
 
             CCSize s = tileLayersContainer.ContentSize;
             tileLayersContainer.Position = new CCPoint(-s.Width / 2, 0);
+            CCTileMapLayer layer = tileMap.LayerNamed("Trees");
+            layer.Position = new CCPoint(s.Width, 0);
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
@@ -1133,7 +1135,7 @@ namespace tests
     public class TileMapTestScene : TestScene
     {
         static int sceneIdx = -1;
-        static int MAX_LAYER = 39;
+        static int MAX_LAYER = 40;
 
         static CCLayer createTileMapLayer(int nIndex)
         {
@@ -1279,6 +1281,8 @@ namespace tests
                     return new TMXTileAnimationTest();
                 case 38:
                     return new TMXLayerWithMutiTilesets();
+                case 39:
+                    return new TMXLayerRepositionTileLayer();
 #endif
             }
 
@@ -1717,6 +1721,43 @@ namespace tests
         public override string Subtitle
         {
             get { return "Using multiple tilesets in the one CCTileMapLayer with animations"; }
+        }
+    }
+
+
+    public class TMXLayerRepositionTileLayer : TileDemo
+    {
+        public TMXLayerRepositionTileLayer()
+            : base("TileMaps/iso-test-vertexz")
+        {
+        }
+
+        public override string Title
+        {
+            get { return "Non-zero position of tilemap layer"; }
+        }
+        public override string Subtitle
+        {
+            get { return "Testing culling when tilemap layer position is non-zero"; }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+
+            CCSize s = tileLayersContainer.ContentSize;
+            CCTileMapLayer layer = tileMap.LayerNamed("Trees");
+
+            CCMoveBy move = new CCMoveBy (5, new CCPoint(500, 550));
+            CCMoveBy move2 = new CCMoveBy (5, new CCPoint(250, 250));
+            CCFiniteTimeAction back = move.Reverse();
+            CCSequence seq = new CCSequence(move, back);
+
+            tileMap.Camera.NearAndFarOrthographicZClipping 
+              = new CCNearAndFarClipping(-2000f, 2000f);
+
+            layer.RunAction(seq);
+            tileLayersContainer.RunAction(new CCSequence(move2.Reverse(), move2));
         }
     }
 }
