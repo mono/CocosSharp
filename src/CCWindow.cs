@@ -58,8 +58,8 @@ namespace CocosSharp
 
         public bool IsUseDepthTesting
         {
-            get { return DrawManager.DepthTest; }
-            set { DrawManager.DepthTest = value; }
+            get { return Renderer.UsingDepthTest; }
+            set { Renderer.UsingDepthTest = value; }
         }
 
 		public bool DisplayStats 

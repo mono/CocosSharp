@@ -36,6 +36,13 @@ namespace CocosSharp
         readonly byte[] viewportGroupIdStack, layerGroupIdStack, groupIdStack;
 
 
+        #region Properties
+
+        internal bool UsingDepthTest { get; set; }
+
+        #endregion Properties
+
+
         #region Constructors
 
         internal CCRenderer(CCDrawManager drawManagerIn)
@@ -66,6 +73,7 @@ namespace CocosSharp
             command.ViewportGroup = currentViewportGroupId;
             command.LayerGroup = currentLayerGroupId;
             command.ArrivalIndex = ++currentArrivalIndex;
+            command.UsingDepthTest = UsingDepthTest;
 
             renderQueue.Push(command);
         }
@@ -253,40 +261,53 @@ namespace CocosSharp
 
             var quadElements = currentBatchedQuads.Elements;
             uint lastMaterialId = 0;
+            bool originalDepthTestState = drawManager.DepthTest;
+            bool usingDepthTest = originalDepthTestState;
 
             drawManager.PushMatrix();
             drawManager.SetIdentityMatrix();
-            drawManager.DepthTest = true;
+
+            CCQuadCommand prevCommand = null;
 
             foreach (CCQuadCommand command in quadCommands)
             {
                 var newMaterialID = command.MaterialId;
-                if (lastMaterialId != newMaterialID)
+                bool commandUsesDepthTest = command.UsingDepthTest;
+
+                if (lastMaterialId != newMaterialID || commandUsesDepthTest != usingDepthTest)
                 {
-                    if (numOfQuads > 0)
+                    if (numOfQuads > 0 && prevCommand != null)
                     {
+                        prevCommand.UseMaterial(drawManager);
                         drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
 
                         startIndex += numOfQuads;
                         numOfQuads = 0;
                     }
 
-                    lastMaterialId = command.MaterialId;
+                    lastMaterialId = newMaterialID;
+                    usingDepthTest = commandUsesDepthTest;
+
+                    drawManager.DepthTest = usingDepthTest;
                 }
 
-                command.UseMaterial(drawManager);
                 numOfQuads += command.QuadCount;
+                prevCommand = command;
             }
 
             // Draw any remaining quads
-            if (numOfQuads > 0)
+            if (numOfQuads > 0 && prevCommand != null)
+            {
+                prevCommand.UseMaterial(drawManager);
                 drawManager.DrawQuads(currentBatchedQuads, startIndex, numOfQuads);
+            }
 
             quadCommands.Clear();
             currentBatchedQuads.Clear();
 
             drawManager.PopMatrix();
-            drawManager.DepthTest = false;
+
+            drawManager.DepthTest = originalDepthTestState;
         }
     }
 }

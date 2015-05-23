@@ -27,6 +27,7 @@ namespace CocosSharp
             }
         }
 
+        internal bool UsingDepthTest { get; set; }
         internal uint ArrivalIndex { get; set; }
         internal byte ViewportGroup { get; set; }
         internal byte LayerGroup { get; set; }
