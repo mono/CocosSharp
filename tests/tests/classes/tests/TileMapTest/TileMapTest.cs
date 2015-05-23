@@ -667,8 +667,6 @@ namespace tests
 
             CCSize s = tileLayersContainer.ContentSize;
             tileLayersContainer.Position = new CCPoint(-s.Width / 2, 0);
-            CCTileMapLayer layer = tileMap.LayerNamed("Trees");
-            layer.Position = new CCPoint(s.Width, 0);
 
             CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
