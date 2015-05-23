@@ -34,7 +34,6 @@ namespace tests
                 for (int i = 0; i < (currentQuantityOfNodes - quantityOfNodes); i++)
                 {
                     int index = currentQuantityOfNodes - i - 1;
-                    batchNode.RemoveChildAtIndex(index, true);
                 }
                 EndTimer("Current Quantity: add");
             }

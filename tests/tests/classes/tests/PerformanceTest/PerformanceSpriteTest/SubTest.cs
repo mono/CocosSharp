@@ -24,8 +24,6 @@ namespace tests
                 case 6:
                 case 8:
                 case 9:
-                    batchNode.RemoveChildAtIndex(tag, true);
-                    //			[batchNode removeChildByTag:tag+100 cleanup:YES];
                     break;
                 default:
                     break;
