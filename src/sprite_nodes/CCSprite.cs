@@ -556,26 +556,9 @@ namespace CocosSharp
             if(AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
                 return;
 
-            var transformedQuad = quads[0];
+            CCV3F_C4B_T2F_Quad transformedQuad = quads[0];
 
-            // We can't use the AffineLocalTransform because that's the 2d projection of a 3d transformation
-            // i.e. The Z coords of our quad would remain unaltered which in general incorrect
-            // Instead, we need use the XnaLocalTransform which incorporates any potential z-transforms
-            Matrix worldMatrix = XnaLocalMatrix;
-            Vector3 topLeft = quads[0].TopLeft.Vertices.XnaVector;
-            Vector3 topRight = quads[0].TopRight.Vertices.XnaVector;
-            Vector3 bottomLeft = quads[0].BottomLeft.Vertices.XnaVector;
-            Vector3 bottomRight = quads[0].BottomRight.Vertices.XnaVector;
-
-            topLeft = Vector3.Transform(topLeft, worldMatrix);
-            topRight = Vector3.Transform(topRight, worldMatrix);
-            bottomLeft = Vector3.Transform(bottomLeft, worldMatrix);
-            bottomRight = Vector3.Transform(bottomRight, worldMatrix);
-
-            transformedQuad.TopLeft.Vertices = new CCVertex3F(topLeft.X, topLeft.Y, topLeft.Z);
-            transformedQuad.TopRight.Vertices = new CCVertex3F(topRight.X, topRight.Y, topRight.Z);
-            transformedQuad.BottomLeft.Vertices = new CCVertex3F(bottomLeft.X, bottomLeft.Y, bottomLeft.Z);
-            transformedQuad.BottomRight.Vertices = new CCVertex3F(bottomRight.X, bottomRight.Y, bottomRight.Z);
+            AffineLocalTransform.Transform(ref transformedQuad);
 
             if(TextureAtlas != null && TextureAtlas.TotalQuads > AtlasIndex)
                 TextureAtlas.UpdateQuad(ref transformedQuad, AtlasIndex);

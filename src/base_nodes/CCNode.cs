@@ -803,11 +803,6 @@ namespace CocosSharp
             get  { return Window != null ? Window.DrawManager : CCDrawManager.SharedDrawManager; }
         }
 
-        internal virtual Matrix XnaLocalMatrix 
-        { 
-            get { return AffineLocalTransform.XnaMatrix; }
-        }
-
         internal virtual CCEventDispatcher EventDispatcher 
         { 
             get { return Scene != null ? Scene.EventDispatcher : null; }
