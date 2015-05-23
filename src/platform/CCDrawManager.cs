@@ -89,10 +89,6 @@ namespace CocosSharp
         RenderTarget2D currentRenderTarget;
         RenderTarget2D previousRenderTarget;
 
-        Matrix savedViewMatrix;
-        Matrix savedProjectionMatrix;
-        Viewport savedViewport;
-
         Texture2D currentTexture;
 
         GraphicsDevice graphicsDevice;
@@ -111,6 +107,7 @@ namespace CocosSharp
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }
+        internal CCRenderer Renderer { get; private set; }
 
         public bool VertexColorEnabled
         {
@@ -284,6 +281,8 @@ namespace CocosSharp
         internal CCDrawManager(GraphicsDeviceManager deviceManager, CCSize proposedScreenSize, 
             CCDisplayOrientation supportedOrientations)
         {
+            Renderer = new CCRenderer(this);
+
             graphicsDeviceMgr = deviceManager;
 
             depthTest = true;
@@ -1007,32 +1006,13 @@ namespace CocosSharp
             RenderTarget2D target = null;
 
             if (texture != null)
-            {
-                CCSize texSize = texture.ContentSizeInPixels;
-                CCRect texRect = new CCRect (0.0f, 0.0f, texSize.Width, texSize.Height);
-                CCPoint texCenter = texRect.Center;
-
-                savedViewMatrix = ViewMatrix;
-                savedProjectionMatrix = ProjectionMatrix;
-                savedViewport = Viewport;
-
-                ProjectionMatrix = Matrix.CreateOrthographic (
-                    texSize.Width, texSize.Height, 
-                    1024f, -1024);
-                ViewMatrix = Matrix.CreateLookAt(new CCPoint3(texCenter, 300.0f).XnaVector, new CCPoint3(texCenter, 0.0f).XnaVector, Vector3.Up);
-
-                Viewport = new Viewport(0, 0, (int)texSize.Width, (int)texSize.Height);
                 target = texture.XNATexture as RenderTarget2D;
-            }
 
             CurrentRenderTarget = target;
         }
 
         public void RestoreRenderTarget()
         {
-            ViewMatrix = savedViewMatrix;
-            ProjectionMatrix = savedProjectionMatrix;
-            Viewport = savedViewport;
             CurrentRenderTarget = previousRenderTarget;
         }
 

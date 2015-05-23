@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    [Obsolete("This class is now obsolete and has been made redundant by CCRenderer.")]
     public class CCSpriteBatchNode : CCNode, ICCTexture
     {
         const int defaultSpriteBatchCapacity = 29;
@@ -102,7 +103,7 @@ namespace CocosSharp
         }
 
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             // CAREFUL:
             // This visit is almost identical to CocosNode#visit
@@ -118,21 +119,10 @@ namespace CocosSharp
 
             Window.DrawManager.PushMatrix();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                TransformAncestors();
-            }
-
             SortAllChildren();
             CCDrawManager.SharedDrawManager.SetIdentityMatrix();
 
             Draw();
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-            }
 
             Window.DrawManager.PopMatrix();
         }
@@ -153,7 +143,7 @@ namespace CocosSharp
 
         #region Child management
 
-        public override void AddChild(CCNode child, int zOrder = 0, int tag = CCNode.TagInvalid)
+        public new void AddChild(CCNode child, int zOrder = 0, int tag = CCNode.TagInvalid)
         {
             Debug.Assert(child != null, "child should not be null");
 
@@ -207,45 +197,13 @@ namespace CocosSharp
             CCSprite[] elements = Descendants.Elements;
             for (int i = 0, count = Descendants.Count; i < count; i++)
             {
-                elements[i].BatchNode = null;
+                //elements[i].BatchNode = null;
             }
 
             base.RemoveAllChildren(cleanup);
 
             Descendants.Clear();
             TextureAtlas.RemoveAllQuads();
-        }
-
-        public override void SortAllChildren()
-        {
-            if (IsReorderChildDirty)
-            {
-                int count = Children.Count;
-                CCNode[] elements = Children.Elements;
-
-                Array.Sort(elements, 0, count, this);
-
-                //sorted now check all children
-                if (count > 0)
-                {
-                    //first sort all children recursively based on zOrder
-                    for (int i = 0; i < count; i++)
-                    {
-                        elements[i].SortAllChildren();
-                    }
-
-                    int index = 0;
-
-                    //fast dispatch, give every child a new atlasIndex based on their relative zOrder (keep parent -> child relations intact)
-                    // and at the same time reorder descedants and the quads to the right index
-                    for (int i = 0; i < count; i++)
-                    {
-                        UpdateAtlasIndex((CCSprite) elements[i], ref index);
-                    }
-                }
-
-                IsReorderChildDirty = false;
-            }
         }
 
         public void InsertChild(CCSprite sprite, int uIndex)
@@ -255,8 +213,8 @@ namespace CocosSharp
                 IncreaseAtlasCapacity();
             }
 
-            TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
-            sprite.BatchNode = this;
+            //TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
+            ///sprite.BatchNode = this;
             sprite.AtlasIndex = uIndex;
 
             Descendants.Insert(uIndex, sprite);
@@ -298,9 +256,9 @@ namespace CocosSharp
             int index = Descendants.Count - 1;
 
             sprite.AtlasIndex = index;
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
 
-            TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
+            //TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
 
             // add children recursively
             CCRawList<CCNode> children = sprite.Children;
@@ -334,7 +292,6 @@ namespace CocosSharp
             {
                 oldIndex = sprite.AtlasIndex;
                 sprite.AtlasIndex = curIndex;
-                sprite.OrderOfArrival = 0;
                 if (oldIndex != curIndex)
                 {
                     Swap(oldIndex, curIndex);
@@ -350,7 +307,6 @@ namespace CocosSharp
                     //all children are in front of the parent
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.OrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -367,7 +323,6 @@ namespace CocosSharp
                     {
                         oldIndex = sprite.AtlasIndex;
                         sprite.AtlasIndex = curIndex;
-                        sprite.OrderOfArrival = 0;
                         if (oldIndex != curIndex)
                         {
                             Swap(oldIndex, curIndex);
@@ -384,7 +339,6 @@ namespace CocosSharp
                     //all children have a zOrder < 0)
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.OrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -396,21 +350,21 @@ namespace CocosSharp
 
         void Swap(int oldIndex, int newIndex)
         {
-            CCSprite[] sprites = Descendants.Elements;
-            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.Quads;
-
-            TextureAtlas.Dirty = true;
-
-            CCSprite tempItem = sprites[oldIndex];
-            CCV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
-
-            //update the index of other swapped item
-            sprites[newIndex].AtlasIndex = oldIndex;
-
-            sprites[oldIndex] = sprites[newIndex];
-            quads[oldIndex] = quads[newIndex];
-            sprites[newIndex] = tempItem;
-            quads[newIndex] = tempItemQuad;
+//            CCSprite[] sprites = Descendants.Elements;
+//            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.Quads;
+//
+//            TextureAtlas.Dirty = true;
+//
+//            CCSprite tempItem = sprites[oldIndex];
+//            CCV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
+//
+//            //update the index of other swapped item
+//            sprites[newIndex].AtlasIndex = oldIndex;
+//
+//            sprites[oldIndex] = sprites[newIndex];
+//            quads[oldIndex] = quads[newIndex];
+//            sprites[newIndex] = tempItem;
+//            quads[newIndex] = tempItemQuad;
         }
 
         public void ReorderBatch(bool reorder)
@@ -562,7 +516,7 @@ namespace CocosSharp
             TextureAtlas.RemoveQuadAtIndex(sprite.AtlasIndex);
 
             // Cleanup sprite. It might be reused (issue #569)
-            sprite.BatchNode = null;
+            //sprite.BatchNode = null;
 
             var uIndex = Descendants.IndexOf(sprite);
 
@@ -614,14 +568,14 @@ namespace CocosSharp
             //
             // update the quad directly. Don't add the sprite to the scene graph
             //
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
-            TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
+            //TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
 
             // XXX: updateTransform will update the textureAtlas too using updateQuad.
             // XXX: so, it should be AFTER the insertQuad
-            sprite.UpdateTransformedSpriteTextureQuads();
+            //sprite.UpdateTransformedSpriteTextureQuads();
         }
 
         protected void UpdateQuadFromSprite(CCSprite sprite, int index)
@@ -635,11 +589,11 @@ namespace CocosSharp
             //
             // update the quad directly. Don't add the sprite to the scene graph
             //
-            sprite.BatchNode = this;
+            //sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
             // UpdateTransform updates the textureAtlas quad
-            sprite.UpdateTransformedSpriteTextureQuads();
+            //sprite.UpdateTransformedSpriteTextureQuads();
         }
 
         protected CCSpriteBatchNode AddSpriteWithoutQuad(CCSprite child, int z, int aTag)

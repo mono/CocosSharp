@@ -101,6 +101,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs">
+      <Link>classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -1252,9 +1255,6 @@
     <Compile Include="..\..\..\tests\tests\classes\tests\Texture2dTest\Texture2dTest.cs">
       <Link>classes\tests\Texture2dTest\Texture2dTest</Link>
     </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\TileMapTest\Shapes.cs">
-      <Link>classes\tests\TileMapTest\Shapes.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\TileMapTest\TileMapTest.cs">
       <Link>classes\tests\TileMapTest\TileMapTest</Link>
     </Compile>
@@ -1364,7 +1364,6 @@
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

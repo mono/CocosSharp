@@ -305,14 +305,14 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
 		{
 			if (positionsAreDirty)
 			{
 				UpdatePositions();
 				positionsAreDirty = false;
 			}
-			base.Visit();
+            base.Visit(ref parentWorldTransform);
 		}
 
 		public override void UpdateDisplayedColor(CCColor3B parentColor)

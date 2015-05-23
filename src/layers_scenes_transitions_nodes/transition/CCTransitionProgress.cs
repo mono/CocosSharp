@@ -35,22 +35,22 @@ namespace CocosSharp
 
             // create the second render texture for outScene
             CCRenderTexture texture = new CCRenderTexture(bounds.Size, viewportRect.Size);
-            texture.Position = bounds.Center;
-            texture.AnchorPoint = CCPoint.AnchorMiddle;
+            texture.Sprite.Position = bounds.Center;
+            texture.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
 
             // Temporarily add render texture to get layer/scene properties
-            Layer.AddChild(texture);
-            texture.Visible = false;
+            Layer.AddChild(texture.Sprite);
+            texture.Sprite.Visible = false;
 
             // Render outScene to its texturebuffer
             texture.BeginWithClear(0, 0, 0, 1);
             SceneNodeContainerToBeModified.Visit();
             texture.End();
 
-            texture.Visible = true;
+            texture.Sprite.Visible = true;
 
             // No longer want to render texture
-            RemoveChild(texture);
+            RemoveChild(texture.Sprite);
 
             // Since we've passed the outScene to the texture we don't need it.
             if (SceneNodeContainerToBeModified == OutSceneNodeContainer)

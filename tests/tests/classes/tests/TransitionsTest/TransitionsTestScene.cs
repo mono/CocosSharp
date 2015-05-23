@@ -28,7 +28,7 @@ namespace tests
     public class TransitionsTestScene : TestScene
     {
         public static int s_nSceneIdx = 0;
-        public static int MAX_LAYER = 41;
+        public static int MAX_LAYER = 0;
         public static float TRANSITION_DURATION = 1.2f;
         public static string s_back1 = "Images/background1";
         public static string s_back2 = "Images/background2";
@@ -40,6 +40,10 @@ namespace tests
         public static string s_pPathF1 = "Images/f1";
         public static string s_pPathF2 = "Images/f2";
 
+        public TransitionsTestScene()
+        {
+            MAX_LAYER = transitions.Count;
+        }
         protected override void NextTestCase()
         {
         }
@@ -50,57 +54,59 @@ namespace tests
         {
         }
 
-        public static string[] transitions = new string[]
-            {
-                "CCTransitionJumpZoom",
+        public static Dictionary<string, Func<float, CCScene, CCTransitionScene>> transitions = new Dictionary<string, Func<float, CCScene, CCTransitionScene>> 
+        {
+            {"CCTransitionJumpZoom", (time, scene) => new CCTransitionJumpZoom(time, scene)},
+            {"CCTransitionProgressRadialCCW", (time, scene) => new CCTransitionProgressRadialCCW(time, scene)},
+            {"CCTransitionProgressRadialCW", (time, scene) => new CCTransitionProgressRadialCW(time, scene)},
+            {"CCTransitionProgressHorizontal", (time, scene) => new CCTransitionProgressHorizontal(time, scene)},
+            {"CCTransitionProgressVertical", (time, scene) => new CCTransitionProgressVertical(time, scene)},
+            {"CCTransitionProgressInOut", (time, scene) => new CCTransitionProgressInOut(time, scene)},
+            {"CCTransitionProgressOutIn", (time, scene) => new CCTransitionProgressOutIn(time, scene)},
 
-                "CCTransitionProgressRadialCCW",
-                "CCTransitionProgressRadialCW",
-                "CCTransitionProgressHorizontal",
-                "CCTransitionProgressVertical",
-                "CCTransitionProgressInOut",
-                "CCTransitionProgressOutIn",
+            {"CCTransitionCrossFade", (time, scene) => new CCTransitionCrossFade(time, scene)},
 
-                "CCTransitionCrossFade",
-                "TransitionPageForward",
-                "TransitionPageBackward",
-                "CCTransitionFadeTR",
-                "CCTransitionFadeBL",
-                "CCTransitionFadeUp",
-                "CCTransitionFadeDown",
-                "CCTransitionTurnOffTiles",
-                "CCTransitionSplitRows",
-                "CCTransitionSplitCols",
+            {"TransitionPageForward", (time, scene) => new PageTransitionForward(time, scene)},
+            {"TransitionPageBackward", (time, scene) => new PageTransitionBackward(time, scene)},
+            {"CCTransitionFadeTR", (time, scene) => new CCTransitionFadeTR(time, scene)},
+            {"CCTransitionFadeBL", (time, scene) => new CCTransitionFadeBL(time, scene)},
+            {"CCTransitionFadeUp", (time, scene) => new CCTransitionFadeUp(time, scene)},
+            {"CCTransitionFadeDown", (time, scene) => new CCTransitionFadeDown(time, scene)},
 
-                "CCTransitionFade",
-                "FadeWhiteTransition",
+            {"CCTransitionTurnOffTiles", (time, scene) => new CCTransitionTurnOffTiles(time, scene)},
 
-                "FlipXLeftOver",
-                "FlipXRightOver",
-                "FlipYUpOver",
-                "FlipYDownOver",
-                "FlipAngularLeftOver",
-                "FlipAngularRightOver",
+            {"CCTransitionSplitRows", (time, scene) => new CCTransitionSplitRows(time, scene)},
+            {"CCTransitionSplitCols", (time, scene) => new CCTransitionSplitCols(time, scene)},
 
-                "ZoomFlipXLeftOver",
-                "ZoomFlipXRightOver",
-                "ZoomFlipYUpOver",
-                "ZoomFlipYDownOver",
-                "ZoomFlipAngularLeftOver",
-                "ZoomFlipAngularRightOver",
+            {"CCTransitionFade", (time, scene) => new CCTransitionFade(time, scene)},
+            {"FadeWhiteTransition", (time, scene) => new FadeWhiteTransition(time, scene)},
 
-                "CCTransitionShrinkGrow",
-                "CCTransitionRotoZoom",
+            {"FlipXLeftOver", (time, scene) => new FlipXLeftOver(time, scene)},
+            {"FlipXRightOver", (time, scene) => new FlipXRightOver(time, scene)},
+            {"FlipYUpOver", (time, scene) => new FlipYUpOver(time, scene)},
+            {"FlipYDownOver", (time, scene) => new FlipYDownOver(time, scene)},
+            {"FlipAngularLeftOver", (time, scene) => new FlipAngularLeftOver(time, scene)},
+            {"FlipAngularRightOver", (time, scene) => new FlipAngularRightOver(time, scene)},
 
-                "CCTransitionMoveInL",
-                "CCTransitionMoveInR",
-                "CCTransitionMoveInT",
-                "CCTransitionMoveInB",
-                "CCTransitionSlideInL",
-                "CCTransitionSlideInR",
-                "CCTransitionSlideInT",
-                "CCTransitionSlideInB",
-            };
+            {"ZoomFlipXLeftOver", (time, scene) => new ZoomFlipXLeftOver(time, scene)},
+            {"ZoomFlipXRightOver", (time, scene) => new ZoomFlipXRightOver(time, scene)},
+            {"ZoomFlipYUpOver", (time, scene) => new ZoomFlipYUpOver(time, scene)},
+            {"ZoomFlipYDownOver", (time, scene) => new ZoomFlipYDownOver(time, scene)},
+            {"ZoomFlipAngularLeftOver", (time, scene) => new ZoomFlipAngularLeftOver(time, scene)},
+            {"ZoomFlipAngularRightOver", (time, scene) => new ZoomFlipAngularRightOver(time, scene)},
+
+            {"CCTransitionShrinkGrow", (time, scene) => new CCTransitionShrinkGrow(time, scene)},
+            {"CCTransitionRotoZoom", (time, scene) => new CCTransitionRotoZoom(time, scene)},
+
+            {"CCTransitionMoveInL", (time, scene) => new CCTransitionMoveInL(time, scene)},
+            {"CCTransitionMoveInR", (time, scene) => new CCTransitionMoveInR(time, scene)},
+            {"CCTransitionMoveInT", (time, scene) => new CCTransitionMoveInT(time, scene)},
+            {"CCTransitionMoveInB", (time, scene) => new CCTransitionMoveInB(time, scene)},
+            {"CCTransitionSlideInL", (time, scene) => new CCTransitionSlideInL(time, scene)},
+            {"CCTransitionSlideInR", (time, scene) => new CCTransitionSlideInR(time, scene)},
+            {"CCTransitionSlideInT", (time, scene) => new CCTransitionSlideInT(time, scene)},
+            {"CCTransitionSlideInB", (time, scene) => new CCTransitionSlideInB(time, scene)},
+        };
 
         public override void runThisTest()
         {
@@ -110,71 +116,12 @@ namespace tests
             Director.ReplaceScene(this);
         }
 
-        public static CCTransitionScene createTransition(int nIndex, float t, CCScene s)
+        public static CCTransitionScene createTransition(int index, float time, CCScene scene)
         {
             // fix bug #486, without setDepthTest(false), FlipX,Y will flickers
-            s.Window.IsUseDepthTesting = false;
+            scene.Window.IsUseDepthTesting = false;
 
-            switch (nIndex)
-            {
-                case 0:
-                    return new CCTransitionJumpZoom(t, s);
-
-                case 1: return new CCTransitionProgressRadialCCW(t, s);
-                case 2: return new CCTransitionProgressRadialCW(t, s);
-                case 3: return new CCTransitionProgressHorizontal(t, s);
-                case 4: return new CCTransitionProgressVertical(t, s);
-                case 5: return new CCTransitionProgressInOut(t, s);
-                case 6: return new CCTransitionProgressOutIn(t, s);
-
-                case 7: return new CCTransitionCrossFade(t, s);
-
-                case 8: return new PageTransitionForward(t, s);
-                case 9: return new PageTransitionBackward(t, s);
-                case 10: return new CCTransitionFadeTR(t, s);
-                case 11: return new CCTransitionFadeBL(t, s);
-                case 12: return new CCTransitionFadeUp(t, s);
-                case 13: return new CCTransitionFadeDown(t, s);
-
-                case 14: return new CCTransitionTurnOffTiles(t, s);
-
-                case 15: return new CCTransitionSplitRows(t, s);
-                case 16: return new CCTransitionSplitCols(t, s);
-
-                case 17: return new CCTransitionFade(t, s);
-                case 18: return new FadeWhiteTransition(t, s);
-
-                case 19: return new FlipXLeftOver(t, s);
-                case 20: return new FlipXRightOver(t, s);
-                case 21: return new FlipYUpOver(t, s);
-                case 22: return new FlipYDownOver(t, s);
-                case 23: return new FlipAngularLeftOver(t, s);
-                case 24: return new FlipAngularRightOver(t, s);
-
-                case 25: return new ZoomFlipXLeftOver(t, s);
-                case 26: return new ZoomFlipXRightOver(t, s);
-                case 27: return new ZoomFlipYUpOver(t, s);
-                case 28: return new ZoomFlipYDownOver(t, s);
-                case 29: return new ZoomFlipAngularLeftOver(t, s);
-                case 30: return new ZoomFlipAngularRightOver(t, s);
-
-                case 31: return new CCTransitionShrinkGrow(t, s);
-                case 32: return new CCTransitionRotoZoom(t, s);
-
-                case 33: return new CCTransitionMoveInL(t, s);
-                case 34: return new CCTransitionMoveInR(t, s);
-                case 35: return new CCTransitionMoveInT(t, s);
-                case 36: return new CCTransitionMoveInB(t, s);
-
-                case 37: return new CCTransitionSlideInL(t, s);
-                case 38: return new CCTransitionSlideInR(t, s);
-                case 39: return new CCTransitionSlideInT(t, s);
-                case 40: return new CCTransitionSlideInB(t, s);
-
-                default: break;
-            }
-
-            return null;
+            return transitions.Values.ElementAt(index)(time,scene);
         }
     }
 }

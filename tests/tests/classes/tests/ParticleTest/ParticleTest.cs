@@ -30,45 +30,45 @@ namespace tests
             case 0:
                 return new ParticleReorder();
             case 1:
-                return new ParticleBatchHybrid();
-            case 2:
-                return new ParticleBatchMultipleEmitters();
-            case 3:
                 return new DemoFlower();
-            case 4:
+            case 2:
                 return new DemoGalaxy();
-            case 5:
+            case 3:
                 return new DemoFirework();
-            case 6:
+            case 4:
                 return new DemoSpiral();
-            case 7:
+            case 5:
                 return new DemoSun();
-            case 8:
+            case 6:
                 return new DemoMeteor();
-            case 9:
+            case 7:
                 return new DemoFire();
-            case 10:
+            case 8:
                 return new DemoSmoke();
-            case 11:
+            case 9:
                 return new DemoExplosion();
-            case 12:
+            case 10:
                 return new DemoSnow();
-            case 13:
+            case 11:
                 return new DemoRain();
-            case 14:
+            case 12:
                 return new DemoBigFlower();
-            case 15:
+            case 13:
                 return new DemoRotFlower();
-            case 16:
+            case 14:
                 return new DemoModernArt();
-            case 17:
+            case 15:
                 return new DemoRing();
-            case 18:
+            case 16:
                 return new ParallaxParticle();
-            case 19:
+            case 17:
                 return new DemoParticleFromFile("BoilingFoam");
-            case 20:
+            case 18:
                 return new DemoParticleFromFile("BurstPipe");
+            case 19:
+                return new DemoParticleFromFile("Comet");
+            case 20:
+                return new DemoParticleFromFile("Comet");
             case 21:
                 return new DemoParticleFromFile("Comet");
             case 22:
@@ -367,17 +367,6 @@ namespace tests
                     if (Children[i] is CCParticleSystem)
                     {
                         count += ((CCParticleSystem) Children[i]).ParticleCount;
-                    }
-                    else if (Children[i] is CCParticleBatchNode)
-                    {
-                        var bn = (CCParticleBatchNode) Children[i];
-                        for (int j = 0; j < bn.ChildrenCount; j++)
-                        {
-                            if (bn.Children[j] is CCParticleSystem)
-                            {
-                                count += ((CCParticleSystem) bn.Children[j]).ParticleCount;
-                            }
-                        }
                     }
                 }
                 string str = string.Format("{0:0000}", count);
@@ -1504,12 +1493,11 @@ namespace tests
 
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
-            CCParticleBatchNode parent2 = new CCParticleBatchNode (ignore.Texture);
 
             parent1.ContentSize = new CCSize (300.0f, 300.0f);
 
             for (int i = 0; i < 2; i++) {
-                CCNode parent = (i == 0 ? parent1 : parent2);
+                CCNode parent = parent1;
 
                 CCParticleSystemQuad emitter1 = new CCParticleSystemQuad (psConfig);
                 //emitter1.TotalParticles = 200;
@@ -1593,119 +1581,6 @@ namespace tests
         }
     }
 
-
-    public class ParticleBatchHybrid : ParticleDemo
-    {
-        CCNode parent1;
-        CCNode parent2;
-
-		const int NODE_ZORDER = 10;
-
-        public override void OnEnter()
-        {
-            base.OnEnter(); 
-
-            Color = CCColor3B.Black;
-            RemoveChild(Background, true);
-            Background = null;
-
-            Emitter = new CCParticleSystemQuad("Particles/LavaFlow");
-            Emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
-            CCParticleBatchNode batch = new CCParticleBatchNode(Emitter.Texture);
-
-            batch.AddChild(Emitter);
-
-            AddChild(batch, NODE_ZORDER);
-
-            Schedule(SwitchRender, 2.0f);
-
-            CCLayer node = new CCLayer();
-            AddChild(node, NODE_ZORDER);
-
-            parent1 = batch;
-            parent2 = node;
-        }
-
-        void SwitchRender(float dt)
-        {
-            bool usingBatch = (Emitter.BatchNode != null);
-            Emitter.RemoveFromParent(false);
-
-            CCNode newParent = (usingBatch ? parent2 : parent1);
-            newParent.AddChild(Emitter);
-
-            CCLog.Log("Particle: Using new parent: {0}", usingBatch ? "CCNode" : "CCParticleBatchNode");
-        }
-
-		public override string Title
-		{
-			get
-			{
-				return "Paticle Batch";
-			}
-		}
-
-		public override string Subtitle
-		{
-			get
-			{
-				return "Hybrid: batched and non batched every 2 seconds";
-			}
-		}
-    }
-
-    public class ParticleBatchMultipleEmitters : ParticleDemo
-    {
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            var size = VisibleBoundsWorldspace.Size;
-
-            Color = CCColor3B.Black;
-            RemoveChild(Background, true);
-            Background = null;
-
-            CCParticleSystemQuad emitter1 = new CCParticleSystemQuad("Particles/LavaFlow");
-            emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
-            CCParticleSystemQuad emitter2 = new CCParticleSystemQuad("Particles/LavaFlow");
-            emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
-            CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/LavaFlow");
-            emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
-
-            emitter1.Position = (new CCPoint(size.Width / 1.25f, size.Height / 1.25f));
-            emitter2.Position = size.Center;
-            emitter3.Position = (new CCPoint(size.Width / 4, size.Height / 4));
-
-            emitter1.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
-            emitter2.Texture = emitter1.Texture;
-            emitter3.Texture = emitter1.Texture;
-
-            CCParticleBatchNode batch = new CCParticleBatchNode(emitter1.Texture);
-
-            batch.AddChild(emitter1, 0);
-            batch.AddChild(emitter2, 0);
-            batch.AddChild(emitter3, 0);
-
-            AddChild(batch, 10);
-        }
-
-
-		public override string Title
-		{
-			get
-			{
-				return "Paticle Batch";
-			}
-		}
-
-		public override string Subtitle
-		{
-			get
-			{
-				return "Multiple emitters. One Batch";
-			}
-		}
-    }
 
     public class RainbowEffect : CCParticleSystemQuad
     {
@@ -1866,19 +1741,12 @@ namespace tests
             RemoveChild(Background, true);
             Background = null;
 
-            CCParticleBatchNode batchNode = new CCParticleBatchNode("Images/fire", 3000);
-
-            AddChild(batchNode, 1, 2);
-
             for (int i = 0; i < 5; i++)
             {
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/SpinningPeas");
 
                 particleSystem.PositionType = CCPositionType.Grouped;
                 particleSystem.Position = (new CCPoint(i * 50, i * 50));
-
-                particleSystem.Texture = batchNode.Texture;
-                batchNode.AddChild(particleSystem);
             }
 
 
@@ -1905,8 +1773,6 @@ namespace tests
 
     public class AddAndDeleteParticleSystems : ParticleDemo
     {
-        CCParticleBatchNode batchNode;
-
         public override void OnEnter()
         {
 
@@ -1916,15 +1782,9 @@ namespace tests
             RemoveChild(Background, true);
             Background = null;
 
-            //adds the texture inside the plist to the texture cache
-            batchNode = new CCParticleBatchNode("Images/fire", 16000);
-
-            AddChild(batchNode, 1, 2);
-
             for (int i = 0; i < 6; i++)
             {
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
-                particleSystem.Texture = batchNode.Texture;
 
                 particleSystem.PositionType = CCPositionType.Grouped;
                 particleSystem.TotalParticles = (200);
@@ -1932,7 +1792,6 @@ namespace tests
                 particleSystem.Position = (new CCPoint(i * 15 + 100, i * 15 + 100));
 
                 int randZ = CCRandom.Next(100);
-                batchNode.AddChild(particleSystem, randZ, -1);
             }
 
             Schedule(RemoveSystem, 0.5f);
@@ -1941,26 +1800,6 @@ namespace tests
 
         void RemoveSystem(float dt)
         {
-            int nChildrenCount = batchNode.ChildrenCount;
-            if (nChildrenCount > 0)
-            {
-                CCLog.Log("remove random system");
-                int uRand = CCRandom.Next(nChildrenCount - 1);
-                batchNode.RemoveChild(batchNode.Children[uRand], true);
-
-                CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
-                //add new
-
-                particleSystem.PositionType = CCPositionType.Grouped;
-                particleSystem.TotalParticles = (200);
-
-                particleSystem.Position = (new CCPoint(CCRandom.Next(300), CCRandom.Next(400)));
-
-                CCLog.Log("add a new system");
-                int randZ = CCRandom.Next(100);
-                particleSystem.Texture = batchNode.Texture;
-                batchNode.AddChild(particleSystem, randZ, -1);
-            }
         }
 
 		public override string Title
@@ -1981,7 +1820,6 @@ namespace tests
 
     public class ReorderParticleSystems : ParticleDemo
     {
-        CCParticleBatchNode batchNode;
 
         public override void OnEnter()
         {
@@ -1992,15 +1830,10 @@ namespace tests
             RemoveChild(Background, true);
             Background = null;
 
-            batchNode = new CCParticleBatchNode("Images/stars-grayscale", 3000);
-
-            AddChild(batchNode, 1, 2);
-
 
             for (int i = 0; i < 3; i++)
             {
                 var particleSystem = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
-                particleSystem.Texture = (batchNode.Texture);
 
                 // duration
                 particleSystem.Duration = CCParticleSystem.ParticleDurationInfinity;
@@ -2062,7 +1895,6 @@ namespace tests
                 particleSystem.Position = (new CCPoint(i * 10 + 120, 200));
 
 
-                batchNode.AddChild(particleSystem);
                 particleSystem.PositionType = CCPositionType.Free;
             }
 
@@ -2072,8 +1904,6 @@ namespace tests
 
         void ReorderSystem(float dt)
         {
-            var system = (CCParticleSystem) batchNode.Children[1];
-            batchNode.ReorderChild(system, system.ZOrder - 1);
         }
 
 		public override string Title

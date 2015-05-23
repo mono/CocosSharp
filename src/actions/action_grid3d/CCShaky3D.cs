@@ -20,7 +20,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCShaky3DState (this, target);
+            return new CCShaky3DState (this, GridNode(target));
         }
     }
 
@@ -33,7 +33,7 @@ namespace CocosSharp
 
         public int Range { get; set; }
 
-        public CCShaky3DState (CCShaky3D action, CCNode target) : base (action, target)
+        public CCShaky3DState (CCShaky3D action, CCNodeGrid target) : base (action, target)
         {
             Shake = action.Shake;
             Range = action.Range;

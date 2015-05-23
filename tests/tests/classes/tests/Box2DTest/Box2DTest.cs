@@ -14,49 +14,25 @@ namespace tests
 {
     internal class CCPhysicsSprite : CCSprite
     {
-        private b2Body m_pBody; // strong ref
-
         public CCPhysicsSprite(CCTexture2D f, CCRect r)
             : base(f, r)
         {
         }
 
-        public b2Body PhysicsBody { get { return (m_pBody); } set { m_pBody = value; } }
+        public b2Body PhysicsBody { get; set; }
 
-        public override CCAffineTransform AffineLocalTransform
+        public void UpdateSprite()
         {
-            get 
-            {
-                if (m_pBody == null)
-                    return base.AffineLocalTransform;
+            if(PhysicsBody == null)
+                return;
 
-                b2Vec2 pos = m_pBody.Position;
+            b2Vec2 pos = PhysicsBody.Position;
 
-                float x = pos.x * Box2DTestLayer.PTM_RATIO;
-                float y = pos.y * Box2DTestLayer.PTM_RATIO;
+            float x = pos.x * Box2DTestLayer.PTM_RATIO;
+            float y = pos.y * Box2DTestLayer.PTM_RATIO;
 
-                if (IgnoreAnchorPointForPosition) {
-                    x += AnchorPointInPoints.X;
-                    y += AnchorPointInPoints.Y;
-                }
-
-                // Make matrix
-                float radians = m_pBody.Angle;
-                var c = (float)Math.Cos (radians);
-                var s = (float)Math.Sin (radians);
-
-                if (!AnchorPointInPoints.Equals (CCPoint.Zero)) {
-                    x += c * -AnchorPointInPoints.X + -s * -AnchorPointInPoints.Y;
-                    y += s * -AnchorPointInPoints.X + c * -AnchorPointInPoints.Y;
-                }
-
-                // Rot, Translate Matrix
-                var m_sTransform = new CCAffineTransform (c, s,
-                          -s, c,
-                          x, y);
-
-                return m_sTransform;
-            }
+            Position = new CCPoint(x, y);
+            Rotation = -CCMacros.CCRadiansToDegrees(PhysicsBody.Angle);
         }
     }
 
@@ -77,18 +53,12 @@ namespace tests
         public const int PTM_RATIO = 32;
 
         private const int kTagParentNode = 1;
-        private readonly CCTexture2D m_pSpriteTexture; // weak ref
+        private readonly CCTexture2D spriteTexture;
         private b2World _world;
-        private CCSpriteBatchNode _batch;
 
         public Box2DTestLayer()
-        { 
-			//Set up sprite
-			// Use batch node. Faster
-			_batch = new CCSpriteBatchNode("Images/blocks", 100);
-			m_pSpriteTexture = _batch.Texture;
-			AddChild(_batch, 0, kTagParentNode);
-
+        {
+            spriteTexture = new CCTexture2D("Images/blocks");
 		}
 
 		public override void OnEnter()
@@ -232,15 +202,15 @@ namespace tests
 
         public void addNewSpriteAtPosition(CCPoint p)
         {
-            CCLog.Log("Add sprite #{2} : {0} x {1}", p.X, p.Y, _batch.ChildrenCount + 1);
+            //CCLog.Log("Add sprite #{2} : {0} x {1}", p.X, p.Y, _batch.ChildrenCount + 1);
 
             //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
             //just randomly picking one of the images
             int idx = (CCRandom.Float_0_1() > .5 ? 0 : 1);
             int idy = (CCRandom.Float_0_1() > .5 ? 0 : 1);
-            var sprite = new CCPhysicsSprite(m_pSpriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
+            var sprite = new CCPhysicsSprite(spriteTexture, new CCRect(32 * idx, 32 * idy, 32, 32));
 
-            _batch.AddChild(sprite, 0, kTagForPhysicsSprite);
+            AddChild(sprite, 0, kTagForPhysicsSprite);
 
             sprite.Position = new CCPoint(p.X, p.Y);
 
@@ -270,16 +240,19 @@ namespace tests
         public override void Update(float dt)
         {
             _world.Step(dt, 8, 1);
-            //_world.Step(dt, 10, 3);
 
-            foreach (CCPhysicsSprite sprite in _batch.Children)
+            foreach (CCNode node in Children)
             {
+                var sprite = node as CCPhysicsSprite;
+
+                if(sprite == null)
+                    continue;
+
                 if (sprite.Visible && sprite.PhysicsBody.Position.y < 0f) {
                     _world.DestroyBody (sprite.PhysicsBody);
                     sprite.Visible = false;
-                } else {
-                    sprite.UpdateTransformedSpriteTextureQuads();
-                }
+                } else
+                    sprite.UpdateSprite();
             }
 
 //#if WINDOWS || WINDOWSGL || LINUX || MACOS

@@ -61,10 +61,10 @@ namespace CocosSharp
             }
 
             inTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            inTexture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            inTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            inTexture.Sprite.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
+            inTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            AddChild(inTexture);
+            AddChild(inTexture.Sprite);
 
             //  render inScene to its texturebuffer
             inTexture.Begin();
@@ -74,10 +74,10 @@ namespace CocosSharp
             // create the second render texture for outScene
             CCRenderTexture outTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
             outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            outTexture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            outTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            outTexture.Sprite.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
+            outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            AddChild(outTexture);
+            AddChild(outTexture.Sprite);
 
             //  render outScene to its texturebuffer
             outTexture.Begin();

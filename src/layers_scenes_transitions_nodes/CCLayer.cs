@@ -268,7 +268,7 @@ namespace CocosSharp
 
         #region Visiting and drawing
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransfrom)
         {
             if (!Visible || Window == null)
             {
@@ -278,72 +278,43 @@ namespace CocosSharp
             // Set camera view/proj matrix even if ChildClippingMode is None
             if(Camera != null)
             {
-                Window.DrawManager.ViewMatrix = Camera.ViewMatrix;
-                Window.DrawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+                var viewMatrix = Camera.ViewMatrix;
+                var projMatrix = Camera.ProjectionMatrix;
+
+                Renderer.PushLayerGroup(ref viewMatrix, ref projMatrix);
             }
 
             if (ChildClippingMode == CCClipMode.None)
             {
-                base.Visit();
+                base.Visit(ref parentWorldTransfrom);
+
+                if(Camera != null)
+                    Renderer.PopLayerGroup();
+
                 return;
             }
 
-            Window.DrawManager.PushMatrix();
-
-            if (Grid != null && Grid.Active)
-            {
-                Grid.BeforeDraw();
-                TransformAncestors();
-            }
-
-            Window.DrawManager.SetIdentityMatrix();
-
             BeforeDraw();
 
-            if (!noDrawChildren && Children != null)
+            VisitRenderer(ref parentWorldTransfrom);
+
+            if(!noDrawChildren && Children != null)
             {
                 SortAllChildren();
-
-                CCNode[] arrayData = Children.Elements;
-                int count = Children.Count;
-                int i = 0;
-
-                // draw children zOrder < 0
-                for (; i < count; i++)
+                var elements = Children.Elements;
+                for(int i = 0, N = Children.Count; i < N; ++i)
                 {
-                    CCNode child = arrayData[i];
-                    if (child.ZOrder < 0)
-                    {
-                        if(child.Visible)
-                            child.Visit();
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                Draw();
-
-                // draw children zOrder >= 0
-                for (; i < count; i++)
-                {
-                    arrayData[i].Visit();
+                    var child = elements[i];
+                    if (child.Visible)
+                        child.Visit(ref parentWorldTransfrom);
                 }
             }
-            else
-            {
-                Draw();
-            }
+
 
             AfterDraw();
 
-            if (Grid != null && Grid.Active)
-            {
-                Grid.AfterDraw(this);
-            }
-
-            Window.DrawManager.PopMatrix();
+            if(Camera != null)
+                Renderer.PopLayerGroup();
         }
 
         void BeforeDraw()

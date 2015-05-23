@@ -166,7 +166,7 @@ namespace CocosSharp
 		// An Efficient Way to Draw Approximate Circles in OpenGL
 		// Try to keep from calculating Cos and Sin of values everytime and just use
 		// add and subtract where possible to calculate the values.
-		public void DrawDot(CCPoint pos, float radius, CCColor4F color)
+		public void DrawDot(CCPoint pos, float radius, CCColor4B color)
 		{
 			var cl = color;
 
@@ -408,6 +408,16 @@ namespace CocosSharp
             dirty = true;
         }
 
+        public void DrawLine(CCPoint from, CCPoint to, float lineWidth = 1)
+        {
+            DrawLine(from, to, lineWidth, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
+        }
+
+        public void DrawLine(CCPoint from, CCPoint to, CCColor4B color)
+        {
+            DrawLine(from, to, 1, color);
+        }
+
         public void DrawLine(CCPoint from, CCPoint to, float lineWidth, CCColor4B color)
         {
             var cl = color;
@@ -454,6 +464,25 @@ namespace CocosSharp
 
             CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
             DrawPolygon(verts.ToArray(), verts.Count, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
+        }
+
+        public void DrawRect(CCPoint p, float size)
+        {
+
+            DrawRect (p,size, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
+        }
+
+        public void DrawRect(CCPoint p, float size, CCColor4B color)
+        {
+
+            var rect = CCRect.Zero;
+
+            float hs = size / 2.0f;
+
+            rect.Origin = p + new CCPoint(-hs, -hs);
+            rect.Size = new CCSize (size, size);
+
+            DrawRect (rect, color);
         }
 
         public void DrawRect(CCRect rect)
@@ -509,6 +538,62 @@ namespace CocosSharp
                 (float)lambda1, (float)lambda2, 
                 false, true, isPieSlice, lineWidth, color);
         }       
+
+        public void DrawCatmullRom(List<CCPoint> points, int segments)
+        {
+            DrawCardinalSpline(points, 0.5f, segments);
+        }
+
+        public void DrawCatmullRom(List<CCPoint> points, int segments, CCColor4B color)
+        {
+            DrawCardinalSpline(points, 0.5f, segments, color);
+        }
+
+        public void DrawCardinalSpline(List<CCPoint> config, float tension, int segments)
+        {
+            DrawCardinalSpline(config, tension, segments, new CCColor4B (Color.R, Color.G, Color.B, Opacity));
+        }
+
+        public void DrawCardinalSpline(List<CCPoint> config, float tension, int segments, CCColor4B color)
+        {
+
+            int p;
+            float lt;
+            float deltaT = 1.0f / config.Count;
+
+            int count = config.Count;
+
+            var vertices = new CCPoint[segments + 1];
+
+            for (int i = 0; i < segments + 1; i++)
+            {
+                float dt = (float) i / segments;
+
+                // border
+                if (dt == 1)
+                {
+                    p = count - 1;
+                    lt = 1;
+                }
+                else
+                {
+                    p = (int) (dt / deltaT);
+                    lt = (dt - deltaT * p) / deltaT;
+                }
+
+                // Interpolate    
+                int c = config.Count - 1;
+                CCPoint pp0 = config[Math.Min(c, Math.Max(p - 1, 0))];
+                CCPoint pp1 = config[Math.Min(c, Math.Max(p + 0, 0))];
+                CCPoint pp2 = config[Math.Min(c, Math.Max(p + 1, 0))];
+                CCPoint pp3 = config[Math.Min(c, Math.Max(p + 2, 0))];
+
+                vertices[i] = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
+            }
+
+            DrawPolygon(vertices, vertices.Length, CCColor4B.Transparent, 1, color);
+        }
+
 
 
         /// <summary>
@@ -678,12 +763,16 @@ namespace CocosSharp
                 stringData.Clear();
         }
 
-        public void Render()
+        void AddCustomCommandOnDraw(CCCustomCommand customCommandOnDraw)
         {
-            Draw();
+            var renderer = (Renderer != null) ? Renderer : DrawManager.Renderer;
+            if (renderer != null)
+            {
+                renderer.AddCommand(customCommandOnDraw);
+            }
         }
 
-        protected override void Draw()
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             if (dirty)
             {
@@ -691,12 +780,34 @@ namespace CocosSharp
                 dirty = false;
             }
 
-            var drawManager = DrawManager;
-            drawManager.TextureEnabled = false;
-            drawManager.BlendFunc(BlendFunc);
-            FlushTriangles();
-            FlushLines();
-            DrawStrings();
+            if (triangleVertices.Count > 0
+                || lineVertices.Count > 0 
+                || (spriteFont != null && stringData != null && stringData.Count > 0))
+            {
+
+                if (triangleVertices.Count > 0)
+                {
+                    var customCommandTriangles = new CCCustomCommand(worldTransform);
+                    customCommandTriangles.Action = FlushTriangles;
+                    AddCustomCommandOnDraw(customCommandTriangles);
+                }
+
+                if (lineVertices.Count > 0)
+                {
+                    var customCommandLines = new CCCustomCommand(worldTransform);
+                    customCommandLines.Action = FlushLines;
+                    AddCustomCommandOnDraw(customCommandLines);
+                }
+
+                if (spriteFont != null && stringData != null && stringData.Count > 0)
+                {
+                    var customCommandStrings = new CCCustomCommand(worldTransform);
+                    customCommandStrings.Action = DrawStrings;
+                    AddCustomCommandOnDraw(customCommandStrings);
+                }
+
+            }
+
         }
 
         void FlushTriangles()
@@ -704,10 +815,14 @@ namespace CocosSharp
             var triangleVertsCount = triangleVertices.Count;
             if (triangleVertsCount >= 3)
             {
+                var drawManager = DrawManager;
+
+                drawManager.TextureEnabled = false;
+                drawManager.BlendFunc(BlendFunc);
+
                 int primitiveCount = triangleVertsCount / 3;
                 // submit the draw call to the graphics card
                 DrawManager.DrawPrimitives(PrimitiveType.TriangleList, triangleVertices.Elements, 0, primitiveCount);
-                //DrawManager.DrawCount++;
             }
         }
 
@@ -716,10 +831,14 @@ namespace CocosSharp
             var lineVertsCount = lineVertices.Count;
             if (lineVertsCount >= 2)
             {
+                var drawManager = DrawManager;
+
+                drawManager.TextureEnabled = false;
+                drawManager.BlendFunc(BlendFunc);
+
                 int primitiveCount = lineVertsCount / 2;
                 // submit the draw call to the graphics card
                  DrawManager.DrawPrimitives(PrimitiveType.LineList, lineVertices.Elements, 0, primitiveCount);
-                //DrawManager.DrawCount++;
             }
         }
 
@@ -729,22 +848,27 @@ namespace CocosSharp
             if (spriteFont == null || stringData == null || stringData.Count == 0)
                 return; 
 
-            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+            var drawManager = DrawManager;
 
-            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            drawManager.TextureEnabled = false;
+            drawManager.BlendFunc(BlendFunc);
+
+            var batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+
+            batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
             for (int i = 0; i < stringData.Count; i++)
             {
                 stringBuilder.Length = 0;
                 stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
 
-                _batch.DrawString(spriteFont,
+                batch.DrawString(spriteFont,
                     stringBuilder,
                     new Vector2(stringData[i].X, stringData[i].Y),
                     stringData[i].Color);
             }
 
-            _batch.End();
+            batch.End();
 
         }
 

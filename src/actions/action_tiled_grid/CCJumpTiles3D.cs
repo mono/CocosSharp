@@ -48,7 +48,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCJumpTiles3DState (this, target);
+            return new CCJumpTiles3DState (this, GridNode(target));
         }
     }
 
@@ -60,7 +60,7 @@ namespace CocosSharp
         protected int NumberOfJumps { get; set; }
 
 
-        public CCJumpTiles3DState (CCJumpTiles3D action, CCNode target) : base (action, target)
+        public CCJumpTiles3DState (CCJumpTiles3D action, CCNodeGrid target) : base (action, target)
         {
             NumberOfJumps = action.NumberOfJumps;
         }

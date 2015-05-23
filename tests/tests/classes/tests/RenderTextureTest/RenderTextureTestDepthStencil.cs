@@ -80,9 +80,9 @@ namespace tests
 
             rend.End();
 
-            rend.Position = new CCPoint(windowSize.Width * 0.5f, windowSize.Height * 0.5f);
+            rend.Sprite.Position = new CCPoint(windowSize.Width * 0.5f, windowSize.Height * 0.5f);
 
-            AddChild(rend);
+            AddChild(rend.Sprite);
         }
 
         #endregion Setup content

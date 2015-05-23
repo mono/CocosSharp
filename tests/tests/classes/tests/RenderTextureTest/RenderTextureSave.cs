@@ -70,14 +70,10 @@ namespace tests
                 CCSurfaceFormat.Color, 
                 CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);
 
-            // Let's clear the rendertarget here so that we start off fresh.
-            // Some platforms do not seem to be initializing the rendertarget color so this will make sure the background shows up colored instead of 
-            // what looks like non initialized.  Mostly MacOSX for now.
-            target.Clear(0,0,0,255);
 
-            target.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
+            target.Sprite.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
 
-            target.AnchorPoint = CCPoint.AnchorMiddle;
+            target.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
 
             // It's possible to modify the RenderTexture blending function by
             //CCBlendFunc tbf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
@@ -85,7 +81,7 @@ namespace tests
 
             // note that the render texture is a CCNode, and contains a sprite of its texture for convience,
             // so we can just parent it to the scene like any other CCNode
-            AddChild(target, -1);
+            AddChild(target.Sprite);
 
             saveImageMenu.AlignItemsVertically();
             saveImageMenu.Position = new CCPoint(windowSize.Width - 80, windowSize.Height - 30);
@@ -104,6 +100,7 @@ namespace tests
 
         void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
+            CCAffineTransform worldTransform = AffineWorldTransform;
             CCTouch touch = touches[0];
             CCPoint start = touch.Location;
             CCPoint end = touch.PreviousLocation;
@@ -131,7 +128,7 @@ namespace tests
                     brush.Color = new CCColor3B((byte) (CCRandom.Next() % 127 + 128), 255, 255);
 
                     // Call visit to draw the brush, don't call draw..
-                    brush.Visit();
+                    brush.Visit(ref worldTransform);
                 }
             }
 
@@ -144,8 +141,9 @@ namespace tests
 
         void ClearImage(object sender)
         {
-            target.Clear(CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1(), 
-                CCMacros.CCRandomBetween0And1(), CCMacros.CCRandomBetween0And1());
+            target.BeginWithClear((byte)(CCMacros.CCRandomBetween0And1() * 255), (byte)(CCMacros.CCRandomBetween0And1() * 255), 
+                (byte)(CCMacros.CCRandomBetween0And1() * 255), (byte)(CCMacros.CCRandomBetween0And1() * 255));
+            target.End();
         }
 
         void SaveImage(object sender)

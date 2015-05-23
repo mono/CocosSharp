@@ -47,7 +47,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCShakyTiles3DState (this, target);
+            return new CCShakyTiles3DState (this, GridNode(target));
         }
     }
 
@@ -60,7 +60,7 @@ namespace CocosSharp
 
         public int Range { get; set; }
 
-        public CCShakyTiles3DState (CCShakyTiles3D action, CCNode target) : base (action, target)
+        public CCShakyTiles3DState (CCShakyTiles3D action, CCNodeGrid target) : base (action, target)
         {
             ShakeZ = action.ShakeZ;
             Range = action.Range;

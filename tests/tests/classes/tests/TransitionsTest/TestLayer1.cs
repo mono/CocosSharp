@@ -10,8 +10,8 @@ namespace tests
     {
 
 		CCSprite bg1;
-		CCLabelTtf title;
-		CCLabelTtf label;
+		CCLabel title;
+		CCLabel label;
 
 		public TestLayer1()
 			: base()
@@ -19,13 +19,13 @@ namespace tests
 			bg1 = new CCSprite(TransitionsTestScene.s_back1);
 			AddChild(bg1, -1);
 
-			title = new CCLabelTtf((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
+            title = new CCLabel(TransitionsTestScene.transitions.Keys.ElementAt(TransitionsTestScene.s_nSceneIdx), "arial", 32, CCLabelFormat.SpriteFont);
             title.AnchorPoint = new CCPoint(0.5f, 0.5f);
 			AddChild(title);
 			title.Color = new CCColor3B(255, 32, 32);
 
 
-			label = new CCLabelTtf("SCENE 1", "MarkerFelt", 38);
+			label = new CCLabel("SCENE 1", "MarkerFelt", 38, CCLabelFormat.SpriteFont);
             label.AnchorPoint = new CCPoint(0.5f, 0.5f);
 			label.Color = (new CCColor3B(16, 16, 255));
 			AddChild(label);

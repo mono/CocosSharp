@@ -1936,7 +1936,6 @@ namespace tests
     {
         readonly List<CCPoint> pointList = new List<CCPoint>();
 
-
         #region Properties
 
         public override string Title
@@ -1970,51 +1969,46 @@ namespace tests
             pointList.Add(new CCPoint(0, windowSize.Height - 80));
             pointList.Add(new CCPoint(0, 0));
 
+            //
+            // sprite 1 (By)
+            //
+            // Spline with no tension (tension==0)
+            //
+
             var action = new CCCardinalSplineBy (3, pointList, 0);
             var reverse = action.Reverse();
 
             var seq = new CCSequence(action, reverse);
 
-            var action2 = new CCCardinalSplineBy (3, pointList, 1);
-            var reverse2 = action2.Reverse();
-
-            var seq2 = new CCSequence(action2, reverse2);
-
             Tamara.Position = new CCPoint(50, 50);
             Tamara.RunAction(seq);
 
+            var drawNode1 = new CCDrawNode();
+            drawNode1.Position = new CCPoint(50,50);
+            drawNode1.DrawCardinalSpline (pointList, 0, 100, new CCColor4F(1.0f, 0.0f, 1.0f, 1.0f));
+            AddChild(drawNode1);
+
+
+            //
+            // sprite 2 (By)
+            //
+            // Spline with high tension (tension==1)
+            //
+
+            var action2 = new CCCardinalSplineBy (3, pointList, 1);
+            var reverse2 = action2.Reverse();
+
             Kathia.Position = new CCPoint(windowSize.Width / 2, 50);
-            Kathia.RunAction(seq2);
+            Kathia.RunActions(action2, reverse2);
+
+            var drawNode2 = new CCDrawNode();
+            drawNode2.Position = new CCPoint(windowSize.Width / 2,50);
+            drawNode2.DrawCardinalSpline (pointList, 1, 100, new CCColor4F(1.0f, 0.0f, 1.0f, 1.0f));
+            AddChild(drawNode2);        
         }
 
         #endregion Setup content
 
-
-        protected override void Draw()
-        {
-            base.Draw();
-
-			// move to 50,50 since the "by" path will start at 50,50
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(50, 50, 0);
-
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCardinalSpline(pointList, 0, 100);
-			CCDrawingPrimitives.End();
-
-            CCDrawingPrimitives.PopMatrix();
-
-            var s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(s.Width / 2, 50, 0);
-
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
-			CCDrawingPrimitives.End();
-
-            CCDrawingPrimitives.PopMatrix();
-        }
     }
 
 
@@ -2022,7 +2016,6 @@ namespace tests
     {
         readonly List<CCPoint> pointList = new List<CCPoint>();
         readonly List<CCPoint> pointList2 = new List<CCPoint>();
-
 
         #region Properties
 
@@ -2049,6 +2042,13 @@ namespace tests
 
             CenterSprites(2);
 
+            //
+            // sprite 1 (By)
+            //
+            // startPosition can be any coordinate, but since the movement
+            // is relative to the Catmull Rom curve, it is better to start with (0,0).
+            //
+
             Tamara.Position = new CCPoint(50, 50);
 
             pointList.Clear();
@@ -2063,7 +2063,20 @@ namespace tests
 
             var action = new CCCatmullRomBy (3, pointList);
             var reverse = action.Reverse();
-            CCFiniteTimeAction seq = new CCSequence(action, reverse);
+
+            Tamara.RunActions(action, reverse);
+
+            var drawNode1 = new CCDrawNode();
+            drawNode1.Position = new CCPoint(50,50);
+            drawNode1.DrawCatmullRom(pointList, 50, new CCColor4F(1.0f, 0.0f, 1.0f, 1.0f));
+            AddChild(drawNode1);
+
+            //
+            // sprite 2 (To)
+            //
+            // The startPosition is not important here, because it uses a "To" action.
+            // The initial position will be the 1st point of the Catmull Rom path
+            //   
 
             pointList2.Clear();
 
@@ -2078,29 +2091,15 @@ namespace tests
 
             CCFiniteTimeAction seq2 = new CCSequence(action2, reverse2);
 
-            Tamara.RunAction(seq);
             Kathia.RunAction(seq2);
+
+            var drawNode2 = new CCDrawNode();
+            drawNode2.DrawCatmullRom(pointList2, 50, new CCColor4F(1.0f, 0.0f, 1.0f, 1.0f));
+            AddChild(drawNode2);
         }
 
         #endregion Setup content
 
-
-        protected override void Draw()
-        {
-            base.Draw();
-
-            // move to 50,50 since the "by" path will start at 50,50
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(50, 50, 0);
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
-            CCDrawingPrimitives.End();
-            CCDrawingPrimitives.PopMatrix();
-
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
-            CCDrawingPrimitives.End();
-        }
     }
 
 
@@ -2387,18 +2386,17 @@ namespace tests
             var action = new CCCatmullRomBy(3, pointArray);
             var reverse = action.Reverse();
 
-            var seq = new CCSequence(action, reverse);
+            Tamara.RunActions(action, reverse);
 
-            Tamara.RunAction(seq);
-
-            Tamara.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
+            Tamara.RepeatForever(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                    )
-                )
             );
+
+            var drawNode1 = new CCDrawNode();
+            drawNode1.Position = new CCPoint(50,50);
+            drawNode1.DrawCatmullRom(pointArray, 50, new CCColor4F(1.0f, 1.0f, 0.0f, 0.5f));
+            AddChild(drawNode1);
 
             //
             // sprite 2 (To)
@@ -2423,37 +2421,18 @@ namespace tests
 
             Kathia.RunAction(seq2);
 
-            Kathia.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
+            Kathia.RepeatForever(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                    )
-                )
             );
 
+            var drawNode2 = new CCDrawNode();
+            drawNode2.DrawCatmullRom(pointArray2, 50, new CCColor4F(1.0f, 0.0f, 0.0f, 0.5f));
+            AddChild(drawNode2);
         }
 
         #endregion Setup content
 
-
-        protected override void Draw()
-        {
-            base.Draw();
-
-            // move to 50,50 since the "by" path will start at 50,50
-
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(50, 50, 0);
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCatmullRom(pointArray, 50);
-			CCDrawingPrimitives.End();
-            CCDrawingPrimitives.PopMatrix();
-
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCatmullRom(pointArray2, 50);
-			CCDrawingPrimitives.End();
-        }
     }
 
 
@@ -2502,19 +2481,19 @@ namespace tests
             var action = new CCCardinalSplineBy(3, pointArray, 0);
             var reverse = action.Reverse();
 
-            var seq = new CCSequence(action, reverse);
-
             Tamara.Position = new CCPoint(50, 50);
-            Tamara.RunAction(seq);
+            Tamara.RunActions(action, reverse);
 
-            Tamara.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCMoveBy(0.05f, new CCPoint(10, 0)),
-                        new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                    )
-                )
+            Tamara.RepeatForever (
+                    new CCMoveBy(0.05f, new CCPoint(10, 0)),
+                    new CCMoveBy(0.05f, new CCPoint(-10, 0))
             );
+
+            var drawNode1 = new CCDrawNode();
+            drawNode1.Position = new CCPoint(50,50);
+            drawNode1.DrawCardinalSpline (pointArray, 0, 100, new CCColor4F(1.0f, 0.0f, 1.0f, 1.0f));
+            AddChild(drawNode1);
+
             //
             // sprite 2 (By)
             //
@@ -2524,47 +2503,22 @@ namespace tests
             var action2 = new CCCardinalSplineBy(3, pointArray, 1);
             var reverse2 = action2.Reverse();
 
-            var seq2 = new CCSequence(action2, reverse2);
-
             Kathia.Position = new CCPoint(windowSize.Width / 2, 50);
-            Kathia.RunAction(seq2);
+            Kathia.RunActions(action2, reverse2);
 
-            Kathia.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
+            Kathia.RepeatForever(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                    )
-                )
             );
 
+            var drawNode2 = new CCDrawNode();
+            drawNode2.Position = new CCPoint(windowSize.Width / 2,50);
+            drawNode2.DrawCardinalSpline (pointArray, 1, 100, new CCColor4F(0.0f, 0.0f, 1.0f, 1.0f));
+            AddChild(drawNode2);   
         }
 
         #endregion Setup content
 
-
-        protected override void Draw()
-        {
-            base.Draw();
-
-            // move to 50,50 since the "by" path will start at 50,50
-
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(50, 50, 0);
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCardinalSpline(pointArray, 0, 100);
-			CCDrawingPrimitives.End();
-            CCDrawingPrimitives.PopMatrix();
-
-            var s = Layer.VisibleBoundsWorldspace.Size;
-
-            CCDrawingPrimitives.PushMatrix();
-            CCDrawingPrimitives.Translate(s.Width / 2, 50, 0);
-			CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawCardinalSpline(pointArray, 1, 100);
-			CCDrawingPrimitives.End();
-            CCDrawingPrimitives.PopMatrix();
-        }
     }
 
     #endregion

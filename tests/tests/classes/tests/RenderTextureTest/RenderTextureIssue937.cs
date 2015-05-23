@@ -66,7 +66,7 @@ namespace tests
             //  CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
             //  rend.Sprite.BlendFunc = bf;
 
-            rend.Begin();
+            rend.BeginWithClear(CCColor4B.Transparent);
             // A2
             spritePremulti.Visit();
             // B2
@@ -78,11 +78,11 @@ namespace tests
             /* B1: setup */
             spriteNonpremulti.Position = new CCPoint(windowSize.Width / 2 - 16, windowSize.Height / 2 - 16);
 
-            rend.Position = new CCPoint(windowSize.Width / 2 + 16, windowSize.Height / 2);
+            rend.Sprite.Position = new CCPoint(windowSize.Width / 2 + 16, windowSize.Height / 2);
 
             AddChild(spriteNonpremulti);
             AddChild(spritePremulti);
-            AddChild(rend);
+            AddChild(rend.Sprite);
         }
 
         #endregion Setup content

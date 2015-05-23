@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCGeometryBatch : CCNode
+    public class CCGeometryNode : CCNode
     {
         const int DefaultBufferSize = 256;
 
@@ -17,7 +17,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCGeometryBatch(int bufferSize=DefaultBufferSize)
+        public CCGeometryNode(int bufferSize=DefaultBufferSize)
         {
             indicesArray = new CCRawList<short>(bufferSize * 2);
             verticesArray = new CCRawList<CCV3F_C4B_T2F>(bufferSize);
@@ -35,19 +35,7 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
-
         #region Creating/removing geometry
-
-        [Obsolete("No need to call Begin/End. Simply add GeometryBatch to parent node to render.")]
-        public void Begin()
-        {
-        }
-
-        [Obsolete("No need to call Begin/End. Simply add GeometryBatch to parent node to render.")]
-        public void End()
-        {
-        }
 
         public void ClearInstances()
         {

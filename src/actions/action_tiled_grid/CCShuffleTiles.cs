@@ -51,7 +51,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCShuffleTilesState (this, target);
+            return new CCShuffleTilesState (this, GridNode(target));
         }
     }
 
@@ -67,7 +67,7 @@ namespace CocosSharp
         protected int[] TilesOrder { get; private set; }
 
 
-        public CCShuffleTilesState (CCShuffleTiles action, CCNode target) : base (action, target)
+        public CCShuffleTilesState (CCShuffleTiles action, CCNodeGrid target) : base (action, target)
         {
             CCGridSize gridSize = action.GridSize;
             TilesCount = gridSize.X * gridSize.Y;
@@ -160,7 +160,7 @@ namespace CocosSharp
         {
             CCQuad3 coords = OriginalTile (pos);
 
-            var step = (Target is CCNodeGrid) ?  ((CCNodeGrid)Target).Grid.Step : Target.Grid.Step;
+            var step = ((CCNodeGrid)Target).Grid.Step;
 
             coords.BottomLeft.X += (int)(tile.Position.X * step.X);
             coords.BottomLeft.Y += (int)(tile.Position.Y * step.Y);
@@ -181,7 +181,7 @@ namespace CocosSharp
         {
             CCQuad3 coords = OriginalTile (x, y);
 
-            var step = (Target is CCNodeGrid) ?  ((CCNodeGrid)Target).Grid.Step : Target.Grid.Step;
+            var step = ((CCNodeGrid)Target).Grid.Step;
 
             coords.BottomLeft.X += (int)(tile.Position.X * step.X);
             coords.BottomLeft.Y += (int)(tile.Position.Y * step.Y);

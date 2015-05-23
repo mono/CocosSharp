@@ -2,29 +2,17 @@
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// CCNodeGrid allows the hosting of a target node that will have a CCGridAction effect applied to it.
-    /// </summary>
+    // CCNodeGrid allows the hosting of a target node that will have a CCGridAction effect applied to it.
     public class CCNodeGrid : CCNode
     {
+        CCGridBase grid;
 
-        private CCGridBase grid;
 
-        /// <summary>
-        /// Gets or sets the target that the effect is applied to.
-        /// </summary>
-        /// <value>The target.</value>
+        #region Properties
+
         public CCNode Target { get; set; }
 
-        public CCNodeGrid () : base ()
-        {
-        }
-
-        /// <summary>
-        /// Gets or sets the grid object that is used when applying effects.
-        /// </summary>
-        /// <value>The grid.</value>
-        public new CCGridBase Grid 
+        public CCGridBase Grid 
         { 
             get { return grid; }
             set 
@@ -41,96 +29,58 @@ namespace CocosSharp
             }
         }
 
-        public override void Visit ()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCNodeGrid () : base ()
         {
-            bool renderTarget = CCDrawManager.SharedDrawManager.CurrentRenderTarget != null;
-
-            if ((!Visible || Scene == null) && !renderTarget)
-            {
-                return;
-            }
-
-            var drawManager = DrawManager;
-
-            // Set camera view/proj matrix even if ChildClippingMode is None
-            if(Camera != null && !renderTarget)
-            {
-                drawManager.ViewMatrix = Camera.ViewMatrix;
-                drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
-            }
-
-
-            drawManager.PushMatrix();
-
-            if (Grid != null && Grid.Active)
-            {
-                OnGridBeginDraw();
-                Transform(drawManager);
-            }
-            else
-            {
-                Transform(drawManager);
-            }
-
-            if (Target != null)
-                Target.Visit ();
-
-            int i = 0;
-
-            if ((Children != null) && (Children.Count > 0))
-            {
-                SortAllChildren();
-
-                CCNode[] elements = Children.Elements;
-                int count = Children.Count;
-
-                // draw children zOrder < 0
-                for (; i < count; ++i)
-                {
-                    if (elements[i].LocalZOrder < 0)
-                    {
-                        // don't break loop on invisible children
-                        if (elements[i].Visible)
-                        {
-                            elements[i].Visit();
-                        }
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                // self draw
-                Draw();
-                // draw the children
-                for (; i < count; ++i)
-                {
-                    // Draw the z >= 0 order children next.
-                    if (elements[i].Visible)
-                    {
-                        elements[i].Visit();
-                    }
-                }
-            }
-            else
-            {
-                // self draw
-                Draw();
-            }
-
-            if (Grid != null && Grid.Active)
-            {
-                OnGridEndDraw();
-                //drawManager.SetIdentityMatrix();
-                //Grid.Blit();
-            }
-
-            drawManager.PopMatrix();
-
         }
 
-        protected virtual void OnGridBeginDraw ()
+        #endregion Constructors
+
+
+        public override void Visit (ref CCAffineTransform parentWorldTransform)
+        {
+            if (!Visible || Scene == null)
+                return;
+
+            var worldTransform = CCAffineTransform.Identity;
+            CCAffineTransform.Concat(ref affineLocalTransform, ref parentWorldTransform, out worldTransform);
+
+
+            if (Grid != null && Grid.Active)
+            {
+                CCCustomCommand command = new CCCustomCommand(float.MinValue, worldTransform, OnGridBeginDraw);
+                Renderer.PushGroup();
+                Renderer.AddCommand(command);
+            }
+
+            SortAllChildren();
+
+            VisitRenderer(ref worldTransform);
+
+            if(Children != null)
+            {
+                var elements = Children.Elements;
+                for(int i = 0, N = Children.Count; i < N; ++i)
+                {
+                    var child = elements[i];
+                    if (child.Visible)
+                        child.Visit(ref worldTransform);
+                }
+            }
+
+            if (Grid != null && Grid.Active)
+            {
+                CCCustomCommand command = new CCCustomCommand(float.MaxValue, worldTransform, OnGridEndDraw);
+                Renderer.AddCommand(command);
+                Renderer.PopGroup();
+            }
+        }
+
+        protected void OnGridBeginDraw ()
         {
             if (Grid != null && Grid.Active)
             {
@@ -138,7 +88,7 @@ namespace CocosSharp
             }
         }
 
-        protected virtual void OnGridEndDraw ()
+        protected void OnGridEndDraw ()
         {
             if (Grid != null && Grid.Active)
             {
@@ -148,8 +98,6 @@ namespace CocosSharp
             }
 
         }
-
-
     }
 }
 

@@ -451,11 +451,11 @@ namespace tests
 				target.Opacity = 255;
 				if (target == sprite2)
 				{
-					sprite1.LocalZOrder = 100;
+                    sprite1.ZOrder = 100;
 				}
 				else if(target == sprite1)
 				{
-					sprite1.LocalZOrder = 0;
+                    sprite1.ZOrder = 0;
 				}
 			};
 
@@ -1041,7 +1041,7 @@ namespace tests
                     sprite = new CCSprite("Images/CyanSquare.png") { Tag = TAG_SPRITE + i};
                     blueSprite = sprite;
                     //blueSprite.Scene = Scene;
-                    blueSprite.GlobalZOrder = -1;
+                    blueSprite.ZOrder = -1;
 
                 }
                 else
@@ -1113,12 +1113,9 @@ namespace tests
 			updateAccumulator += dt;
 			if ( updateAccumulator > 2.0f)
 			{
-				var z = blueSprite.GlobalZOrder;
-				var lz = blueSprite.LocalZOrder;  // Hack to get around no drawing by GlobalZOrder to move drawing in foreground and background
-				CCLog.Log("GlobalZOrder {0} - New GlobalZOrder {1}.  LocalZOrder {2} - New LocalZOrder {3}.  ", z, -z, lz, -lz);
-				blueSprite.GlobalZOrder = -z;
-				blueSprite.LocalZOrder = -lz;  // Hack to get around no drawing by GlobalZOrder to move drawing in foreground and background
-
+                var z = blueSprite.ZOrder;
+				CCLog.Log("ZOrder {0} - New ZOrder {1}.  ", z, -z);
+                blueSprite.ZOrder = -z;
 				updateAccumulator = 0;
 			}
 

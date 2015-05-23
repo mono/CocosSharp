@@ -19,6 +19,9 @@ namespace CocosSharp
 
         List<CCDirector> sceneDirectors;
 
+        Matrix defaultViewMatrix, defaultProjMatrix;
+        Viewport defaultViewport;
+
         #region Properties
 
         #if !NETFX_CORE
@@ -31,6 +34,7 @@ namespace CocosSharp
 
         internal List<CCDirector> SceneDirectors { get { return sceneDirectors; } }
         internal CCDrawManager DrawManager { get { return CCDrawManager.SharedDrawManager; } }
+        internal CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
         internal GameWindow XnaWindow { get; private set; }
         internal GraphicsDeviceManager DeviceManager { get; private set; }
         private CCDirector defaultDirector;
@@ -54,8 +58,8 @@ namespace CocosSharp
 
         public bool IsUseDepthTesting
         {
-            get { return DrawManager.DepthTest; }
-            set { DrawManager.DepthTest = value; }
+            get { return Renderer.UsingDepthTest; }
+            set { Renderer.UsingDepthTest = value; }
         }
 
 		public bool DisplayStats 
@@ -161,6 +165,11 @@ namespace CocosSharp
             }
 
             Stats.Initialize();
+
+            CCPoint center = screenSizeInPixels.Center;
+            defaultViewMatrix = Matrix.CreateLookAt(new CCPoint3(center, 300.0f).XnaVector, new CCPoint3(center, 0.0f).XnaVector, Vector3.Up);
+            defaultProjMatrix = Matrix.CreateOrthographic(screenSizeInPixels.Width, screenSizeInPixels.Height, 1024f, -1024);
+            defaultViewport = new Viewport(0, 0, (int)screenSizeInPixels.Width, (int)screenSizeInPixels.Height);
         }
 
         #endregion Constructors
@@ -315,7 +324,9 @@ namespace CocosSharp
 
         protected void Draw(CCGameTime gameTime)
         {
-            Stats.UpdateStart();
+            // Only draw stats if they are enabled.
+            if (Stats.IsEnabled)
+                Stats.UpdateStart();
 
             DrawManager.PushMatrix();
 
@@ -323,10 +334,15 @@ namespace CocosSharp
             {
                 CCScene runningScene = director.RunningScene;
 
+                //DrawManager.Renderer = Renderer;
+
                 // draw the scene
                 if (runningScene != null) 
                 {
                     runningScene.Visit();
+
+                    Renderer.VisitRenderQueue();
+
                     if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
                         EventDispatcher.DispatchEvent (eventAfterVisit);
                 }
@@ -343,7 +359,21 @@ namespace CocosSharp
 
             DrawManager.PopMatrix();
 
-            Stats.Draw(this);
+            // Only draw stats if they are enabled.
+            if (Stats.IsEnabled)
+            {
+                Renderer.PushGroup();
+                Renderer.PushViewportGroup(ref defaultViewport);
+                Renderer.PushLayerGroup(ref defaultViewMatrix, ref defaultProjMatrix);
+
+                Stats.Draw(this);
+
+                Renderer.PopLayerGroup();
+                Renderer.PopViewportGroup();
+                Renderer.PopGroup();
+
+                Renderer.VisitRenderQueue();
+            } 
         }
 
         internal void Update(float deltaTime)

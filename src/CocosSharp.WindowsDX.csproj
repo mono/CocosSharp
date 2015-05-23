@@ -191,11 +191,18 @@
     <Compile Include="label_nodes\CCLabel-FontUtilities.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCTextLayout.cs" />
+    <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="physics\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="physics\chipmunk\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="physics\extensions\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="platform\CCArrayPool.cs" />
+    <Compile Include="Renderer\CCPrimitive.cs" />
+    <Compile Include="Renderer\CCRenderer.cs" />
+    <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="actions\action\CCAction.cs" />
     <Compile Include="actions\action\CCFiniteTimeAction.cs" />
@@ -390,7 +397,6 @@
     <Compile Include="misc_nodes\CCRenderTexture.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />
-    <Compile Include="particle_nodes\CCParticleBatchNode.cs" />
     <Compile Include="particle_nodes\CCParticleExamples.cs" />
     <Compile Include="particle_nodes\CCParticleSystem.cs" />
     <Compile Include="particle_nodes\CCParticleSystemQuad.cs" />
@@ -480,7 +486,6 @@
     <Compile Include="tileMap_parallax_nodes\CCTileMapStructs.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileSetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileAnimation.cs" />
-    <Compile Include="Platform\CCGeometryBatch.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>

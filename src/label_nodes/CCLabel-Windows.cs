@@ -224,12 +224,8 @@ namespace CocosSharp
             var _currentFontSizeEm = textDef.FontSize;
             var _currentDIP = ConvertPointSizeToDIP(_currentFontSizeEm);
 
-            var fontColor = textDef.FontFillColor;
-            var fontAlpha = textDef.FontAlpha;
-            var foregroundColor = new Color4(fontColor.R / 255.0f,
-                fontColor.G / 255.0f,
-                fontColor.B / 255.0f,
-                fontAlpha / 255.0f);
+            // color
+            var foregroundColor = Color4.White;
 
             // alignment
             var horizontalAlignment = textDef.Alignment;

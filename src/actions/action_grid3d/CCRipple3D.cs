@@ -34,7 +34,7 @@ namespace CocosSharp
 
         protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCRipple3DState (this, target);
+            return new CCRipple3DState (this, GridNode(target));
         }
     }
 
@@ -50,7 +50,7 @@ namespace CocosSharp
         public int Waves { get; set; }
 
 
-        public CCRipple3DState (CCRipple3D action, CCNode target) : base (action, target)
+        public CCRipple3DState (CCRipple3D action, CCNodeGrid target) : base (action, target)
         {
             Position = action.Position;
             Radius = action.Radius;

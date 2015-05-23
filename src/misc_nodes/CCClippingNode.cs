@@ -90,37 +90,35 @@ namespace CocosSharp
             }
         }
 
-        public override void Visit()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             if (Stencil == null || !Stencil.Visible)
             {
                 if (Inverted)
                 {
                     // draw everything
-                    base.Visit();
+                    base.Visit(ref parentWorldTransform);
                 }
                 return;
             }
 
             if (Window.DrawManager.BeginDrawMask(Viewport.ViewportInPixels, Inverted, AlphaThreshold))
             {
-                Window.DrawManager.PushMatrix();
+                Window.DrawManager.PushMatrix();;
 
-                Transform();
-
-                Stencil.Visit();
+                Stencil.Visit(ref parentWorldTransform);
 
                 Window.DrawManager.PopMatrix();
 
                 Window.DrawManager.EndDrawMask();
 
-                base.Visit();
+                base.Visit(ref parentWorldTransform);
 
                 Window.DrawManager.EndMask();
             }
             else
             {
-                base.Visit();
+                base.Visit(ref parentWorldTransform);
             }
         }
     }

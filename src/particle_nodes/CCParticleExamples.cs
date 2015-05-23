@@ -454,7 +454,7 @@ namespace CocosSharp
         public CCParticleExplosion(CCPoint position, CCEmitterMode emitterMode=CCEmitterMode.Gravity) : base(700, emitterMode)
         {
             Duration = 0.1f;
-            Life = 5.0f;
+            Life = 2.0f;
             LifeVar = 2;
             Position = new CCPoint(position);
             PositionVar = CCPoint.Zero;

@@ -9,7 +9,7 @@ namespace tests
     public class MultiTouchTestLayer : CCLayer
     {
 
-		CCLabelTtf title;
+		CCLabel title;
 
         public MultiTouchTestLayer()
         {
@@ -20,7 +20,7 @@ namespace tests
 
 			AddEventListener(listener);   
 
-			title = new CCLabelTtf("Please touch the screen!", "", 24);
+			title = new CCLabel("Please touch the screen!", "arial", 24, CCLabelFormat.SpriteFont);
             title.AnchorPoint = CCPoint.AnchorMiddle;
 			AddChild(title);
 		}
@@ -115,17 +115,27 @@ namespace tests
     public class TouchPoint : CCNode
     {
 
-        protected override void Draw()
+        CCDrawNode touchPoint = new CCDrawNode();
+
+        public TouchPoint()
         {
-            CCDrawingPrimitives.Begin();
-			CCDrawingPrimitives.DrawColor = new CCColor4B(_touchColor.R, _touchColor.G, _touchColor.B, 255);
-			CCDrawingPrimitives.LineWidth = 10;
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, _touchPoint.Y), new CCPoint(ContentSize.Width, _touchPoint.Y));
-            CCDrawingPrimitives.DrawLine(new CCPoint(_touchPoint.X, 0), new CCPoint(_touchPoint.X, ContentSize.Height));
-			CCDrawingPrimitives.LineWidth = 1;
-			CCDrawingPrimitives.PointSize = 30;
-            CCDrawingPrimitives.DrawPoint(_touchPoint);
-            CCDrawingPrimitives.End();
+            AddChild (touchPoint);
+        }
+
+        protected override void VisitRenderer (ref CCAffineTransform worldTransform)
+        {
+            base.VisitRenderer (ref worldTransform);
+            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderTouchPoint));
+        }
+
+        protected void RenderTouchPoint()
+        {
+            touchPoint.Clear ();
+            touchPoint.Color = new CCColor3B (_touchColor.R, _touchColor.G, _touchColor.B);
+            touchPoint.Opacity = 255;
+            touchPoint.DrawLine (new CCPoint (0, _touchPoint.Y), new CCPoint (ContentSize.Width, _touchPoint.Y), 5);
+            touchPoint.DrawLine (new CCPoint(_touchPoint.X, 0), new CCPoint(_touchPoint.X, ContentSize.Height), 5);
+            touchPoint.DrawRect(_touchPoint, 30);
         }
 
         public void SetTouchPos(CCPoint pt)

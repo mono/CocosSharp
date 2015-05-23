@@ -217,12 +217,7 @@ namespace CocosSharp
             }
 
             // color
-            var fontColor = textDef.FontFillColor;
-            var fontAlpha = textDef.FontAlpha;
-            var foregroundColor = NSColor.FromDeviceRgba(fontColor.R / 255.0f,
-                fontColor.G / 255.0f,
-                fontColor.B / 255.0f,
-                fontAlpha / 255.0f);
+            var foregroundColor = NSColor.White;
 
             // alignment
             var horizontalAlignment = textDef.Alignment;
@@ -441,17 +436,12 @@ namespace CocosSharp
 
             if (font == null) 
             {
-                font = UIFont.FromName (textDef.FontName, textDef.FontSize);
+                font = UIFont.FromName ("Arial", textDef.FontSize);
                 CCLog.Log("{0} not found.  Defaulting to Arial.", textDef.FontName);
             }
 
             // color
-            var fontColor = textDef.FontFillColor;
-            var fontAlpha = textDef.FontAlpha;
-            var foregroundColor = UIColor.FromRGBA (fontColor.R / 255.0f,
-                fontColor.G / 255.0f,
-                fontColor.B / 255.0f,
-                fontAlpha / 255.0f);
+            var foregroundColor = UIColor.White;
 
             // alignment
             var horizontalAlignment = textDef.Alignment;

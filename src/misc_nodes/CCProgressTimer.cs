@@ -155,7 +155,17 @@ namespace CocosSharp
 
         #region Drawing
 
-        protected override void Draw()
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
+        {
+            base.Visit(ref parentWorldTransform);
+        }
+
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
+        {
+            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderProgress));
+        }
+
+        void RenderProgress()
         {
             if (vertexData != null && sprite != null) 
             {

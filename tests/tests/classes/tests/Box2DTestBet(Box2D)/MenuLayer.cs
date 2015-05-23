@@ -17,7 +17,7 @@ namespace Box2D.TestBed
 
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchOneByOne();
-			touchListener.IsSwallowTouches = true;
+			touchListener.IsSwallowTouches = false;
 
 			touchListener.OnTouchBegan = onTouchBegan;
 			touchListener.OnTouchMoved = onTouchMoved;

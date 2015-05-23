@@ -141,7 +141,13 @@ namespace CocosSharp
             UpdateVerticesPosition();
         }
 
-        protected override void Draw()
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
+        {
+            if(Camera != null)
+                Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderLayer));
+        }
+
+        void RenderLayer()
         {
             if(Camera != null)
             {

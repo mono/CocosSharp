@@ -141,8 +141,15 @@
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCTextLayout.cs" />
+    <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="platform\CCArrayPool.cs" />
+    <Compile Include="Renderer\CCPrimitive.cs" />
+    <Compile Include="Renderer\CCRenderer.cs" />
+    <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
+    <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include=".\actions\action\CCAction.cs">
       <LogicalName>actions\action\CCAction</LogicalName>
@@ -689,9 +696,6 @@
     <Compile Include=".\misc_nodes\CCDrawNode.cs">
       <LogicalName>misc_nodes\CCDrawNode</LogicalName>
     </Compile>
-    <Compile Include=".\particle_nodes\CCParticleBatchNode.cs">
-      <LogicalName>particle_nodes\CCParticleBatchNode</LogicalName>
-    </Compile>
     <Compile Include=".\particle_nodes\CCParticleExamples.cs">
       <LogicalName>particle_nodes\CCParticleExamples</LogicalName>
     </Compile>
@@ -966,9 +970,6 @@
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCTileAnimation.cs">
       <LogicalName>tileMap_parallax_nodes\CCTileAnimation</LogicalName>
-    </Compile>
-    <Compile Include=".\Platform\CCGeometryBatch.cs">
-      <LogicalName>Platform\CCGeometryBatch</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">
       <LogicalName>Win8IOExtensions</LogicalName>
