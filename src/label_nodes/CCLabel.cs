@@ -1477,6 +1477,7 @@ namespace CocosSharp
             }
 
             var worldTransform = CCAffineTransform.Identity;
+            var affineLocalTransform = AffineLocalTransform;
             CCAffineTransform.Concat(ref affineLocalTransform, ref parentWorldTransform, out worldTransform);
 
             if (textSprite != null)

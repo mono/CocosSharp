@@ -81,6 +81,7 @@ namespace CocosSharp
         bool isCleaned = false;
         bool isOpacityCascaded;
         bool isColorCascaded;
+        bool transformIsDirty;
 
         int tag;
         uint arrivalIndex, currentChildArrivalIndex;
@@ -110,15 +111,12 @@ namespace CocosSharp
 
         Dictionary<int, List<CCNode>> childrenByTag;
 
-        CCGridBase grid;
-
         CCScene scene;
         CCLayer layer;
 
         CCNode parent;
 
-        Matrix xnaLocalMatrix;
-        protected CCAffineTransform affineLocalTransform;
+        CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
 
         List<CCEventListener> toBeAddedListeners;                       // The listeners to be added lazily when an EventDispatcher is not yet available
@@ -218,7 +216,7 @@ namespace CocosSharp
                 if (value != ignoreAnchorPointForPosition)
                 {
                     ignoreAnchorPointForPosition = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -347,7 +345,7 @@ namespace CocosSharp
                 if (vertexZ != value)
                 {
                     vertexZ = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -358,7 +356,7 @@ namespace CocosSharp
             set
             {
                 skewX = value;
-                UpdateTransform();
+                transformIsDirty = true;
 
 #if USE_PHYSICS
 				if (_physicsBody != null)
@@ -376,7 +374,7 @@ namespace CocosSharp
             set
             {
                 skewY = value;
-                UpdateTransform();
+                transformIsDirty = true;
 
 #if USE_PHYSICS
 				if (_physicsBody != null)
@@ -394,7 +392,7 @@ namespace CocosSharp
             set
             {
                 rotationX = rotationY = value;
-                UpdateTransform();
+                transformIsDirty = true;
 
 #if USE_PHYSICS
 				if (_physicsBody == null || !_physicsBody._rotationResetTag)
@@ -412,7 +410,7 @@ namespace CocosSharp
             set
             {
                 rotationX = value;
-                UpdateTransform();
+                transformIsDirty = true;
             }
         }
 
@@ -422,7 +420,7 @@ namespace CocosSharp
             set
             {
                 rotationY = value;
-                UpdateTransform();
+                transformIsDirty = true;
             }
         }
 
@@ -432,7 +430,7 @@ namespace CocosSharp
             set
             {
                 scaleX = scaleY = value;
-                UpdateTransform();
+                transformIsDirty = true;
 
 #if USE_PHYSICS
 				UpdatePhysicsBodyTransform(Scene);
@@ -447,7 +445,7 @@ namespace CocosSharp
             set
             {
                 scaleX = value;
-                UpdateTransform();
+                transformIsDirty = true;
 
 #if USE_PHYSICS
 				UpdatePhysicsBodyTransform(Scene);
@@ -462,7 +460,7 @@ namespace CocosSharp
             set
             {
                 scaleY = value;
-                UpdateTransform();
+                transformIsDirty = true;
 
 #if USE_PHYSICS
 				UpdatePhysicsBodyTransform(Scene);
@@ -511,7 +509,7 @@ namespace CocosSharp
                 if (position != value || value == CCPoint.Zero) 
                 {
                     position = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
 
 #if USE_PHYSICS
 					if (_physicsBody == null || !_physicsBody._positionResetTag)
@@ -563,7 +561,7 @@ namespace CocosSharp
                 {
                     anchorPoint = value;
                     anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X, contentSize.Height * anchorPoint.Y);
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -587,7 +585,7 @@ namespace CocosSharp
                     contentSize = value;
                     anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X, contentSize.Height * anchorPoint.Y);
 
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -632,7 +630,7 @@ namespace CocosSharp
 
         public virtual CCAffineTransform AffineLocalTransform
         {
-            get { return affineLocalTransform; }
+            get { if(transformIsDirty) UpdateTransform(); return affineLocalTransform; }
         }
 
         public CCAffineTransform AffineWorldTransform
@@ -659,7 +657,7 @@ namespace CocosSharp
                 if (value != additionalTransform) 
                 {
                     additionalTransform = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -692,9 +690,6 @@ namespace CocosSharp
                             child.Scene = scene;
                         }
                     }
-
-                    if (grid != null)
-                        grid.Scene = scene;
 
                     if (scene != null) 
                     {
@@ -745,9 +740,6 @@ namespace CocosSharp
 
                         OnLayerVisibleBoundsChanged(this, null);
                     }
-
-                    if (grid != null)
-                        grid.Scene = scene;
 
                     if (layer != null && layer.Scene != null)
                         this.Scene = layer.Scene;
@@ -813,26 +805,7 @@ namespace CocosSharp
 
         internal virtual Matrix XnaLocalMatrix 
         { 
-            get { return xnaLocalMatrix; }
-            set 
-            {
-                xnaLocalMatrix = value;
-            }
-        }
-
-        protected internal Matrix XnaWorldMatrix 
-        { 
-            get
-            {
-                Matrix xnaWorldMatrix = xnaLocalMatrix;
-                CCNode parent = this.Parent;
-                if (parent != null)
-                {
-                    xnaWorldMatrix *= parent.XnaWorldMatrix;
-                }
-
-                return xnaWorldMatrix;
-            }
+            get { return AffineLocalTransform.XnaMatrix; }
         }
 
         internal virtual CCEventDispatcher EventDispatcher 
@@ -858,7 +831,7 @@ namespace CocosSharp
                 if (fauxLocalCameraCenter != value) 
                 {
                     fauxLocalCameraCenter = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -871,7 +844,7 @@ namespace CocosSharp
                 if (fauxLocalCameraTarget != value) 
                 {
                     fauxLocalCameraTarget = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -884,7 +857,7 @@ namespace CocosSharp
                 if (fauxLocalCameraUpDirection != value) 
                 {
                     fauxLocalCameraUpDirection = value;
-                    UpdateTransform();
+                    transformIsDirty = true;
                 }
             }
         }
@@ -919,7 +892,6 @@ namespace CocosSharp
 #endif
 
             additionalTransform = CCAffineTransform.Identity;
-            xnaLocalMatrix = Matrix.Identity;
             scaleX = 1.0f;
             scaleY = 1.0f;
             Visible = true;
@@ -1974,6 +1946,10 @@ namespace CocosSharp
             if(!Visible)
                 return;
 
+            if(transformIsDirty)
+                UpdateTransform();
+            
+
             var worldTransform = CCAffineTransform.Identity;
             CCAffineTransform.Concat(ref affineLocalTransform, ref parentWorldTransform, out worldTransform);
 
@@ -2524,9 +2500,6 @@ namespace CocosSharp
 
             CCAffineTransform.Concat(ref additionalTransform, ref affineLocalTransform, out affineLocalTransform);
 
-            XnaLocalMatrix = affineLocalTransform.XnaMatrix;
-            xnaLocalMatrix.M43 = VertexZ;
-
             Matrix fauxLocalCameraTransform = Matrix.Identity;
 
             if(FauxLocalCameraCenter != FauxLocalCameraTarget)
@@ -2538,44 +2511,6 @@ namespace CocosSharp
                 fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, 0));
             }
 
-            // Work around bug for ARM64
-            var matrix12 = Matrix.Identity;
-            var m11 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M41);
-            var m12 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M42);
-            var m13 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M43);
-            var m14 = (((fauxLocalCameraTransform.M11 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M12 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M13 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M14 * xnaLocalMatrix.M44);
-            var m21 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M41);
-            var m22 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M42);
-            var m23 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M43);
-            var m24 = (((fauxLocalCameraTransform.M21 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M22 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M23 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M24 * xnaLocalMatrix.M44);
-            var m31 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M41);
-            var m32 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M42);
-            var m33 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M43);
-            var m34 = (((fauxLocalCameraTransform.M31 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M32 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M33 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M34 * xnaLocalMatrix.M44);
-            var m41 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M11) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M21)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M31)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M41);
-            var m42 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M12) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M22)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M32)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M42);
-            var m43 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M13) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M23)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M33)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M43);
-            var m44 = (((fauxLocalCameraTransform.M41 * xnaLocalMatrix.M14) + (fauxLocalCameraTransform.M42 * xnaLocalMatrix.M24)) + (fauxLocalCameraTransform.M43 * xnaLocalMatrix.M34)) + (fauxLocalCameraTransform.M44 * xnaLocalMatrix.M44);
-            matrix12.M11 = m11;
-            matrix12.M12 = m12;
-            matrix12.M13 = m13;
-            matrix12.M14 = m14;
-            matrix12.M21 = m21;
-            matrix12.M22 = m22;
-            matrix12.M23 = m23;
-            matrix12.M24 = m24;
-            matrix12.M31 = m31;
-            matrix12.M32 = m32;
-            matrix12.M33 = m33;
-            matrix12.M34 = m34;
-            matrix12.M41 = m41;
-            matrix12.M42 = m42;
-            matrix12.M43 = m43;
-            matrix12.M44 = m44;
-
-            XnaLocalMatrix = matrix12;
-            //XnaLocalMatrix = fauxLocalCameraTransform * xnaLocalMatrix;
-
             var affineCameraTrans = new CCAffineTransform(fauxLocalCameraTransform);
             CCAffineTransform.Concat(ref affineCameraTrans, ref affineLocalTransform, out affineLocalTransform);
 
@@ -2586,6 +2521,8 @@ namespace CocosSharp
                     child.ParentUpdatedTransform();
                 }
             }
+
+            transformIsDirty = false;
         }
 
         #endregion Transformations

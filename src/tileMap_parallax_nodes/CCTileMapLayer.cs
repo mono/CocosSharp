@@ -94,17 +94,6 @@ namespace CocosSharp
             get { return TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios; }
         }
 
-
-        internal override Matrix XnaLocalMatrix
-        {
-            get { return base.XnaLocalMatrix; }
-            set
-            {
-                base.XnaLocalMatrix = value;
-                visibleTileRangeDirty = true;
-            }
-        }
-
         uint NumberOfTiles
         {
             get { return (uint)(LayerSize.Row * LayerSize.Column); }
