@@ -20,6 +20,7 @@ namespace CocosSharp
         bool tileAnimationsDirty;
         bool useAutomaticVertexZ;
         float defaultTileVertexZ;
+        float minVertexZ;
 
         CCColor4B tileColor;
 
@@ -158,6 +159,8 @@ namespace CocosSharp
             InitialiseTileAnimations(mapInfo);
 
             InitialiseDrawBuffers();
+
+            GenerateMinVertexZ();
         }
 
         void ParseInternalProperties()
@@ -210,6 +213,29 @@ namespace CocosSharp
                 var repeatAction = new CCRepeatForever(new CCTileAnimation(gid, tileAnimDict[gid]));
                 TileAnimations.Add(gid, repeatAction);
             }
+        }
+
+        void GenerateMinVertexZ()
+        {
+            if (useAutomaticVertexZ)
+            {
+                switch (MapType)
+                {
+                    case CCTileMapType.Iso:
+                        minVertexZ = -(LayerSize.Column + LayerSize.Row - 2);
+                        break;
+                    case CCTileMapType.Ortho:
+                        minVertexZ = -(LayerSize.Row - 1);
+                        break;
+                    case CCTileMapType.Staggered:
+                        minVertexZ = -(LayerSize.Row - 1);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+                minVertexZ = defaultTileVertexZ;
         }
 
         #endregion Constructors
@@ -339,7 +365,7 @@ namespace CocosSharp
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             DrawManager.Renderer.AddCommand(
-                new CCCustomCommand(worldTransform.Tz, worldTransform, RenderTileMapLayer));
+                new CCCustomCommand(worldTransform.Tz + minVertexZ, worldTransform, RenderTileMapLayer));
         }
 
         void RenderTileMapLayer()
