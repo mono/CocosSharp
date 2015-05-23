@@ -137,15 +137,22 @@ namespace CocosSharp
 
                 if(viewportGroupId != currentViewportGroupId)
                 {
+                    // We're about to change viewport
+                    // So flush any pending render commands which use previous viewport
+                    Flush();
+
                     currentViewportGroupId = viewportGroupId;
                     drawManager.Viewport = viewportGroupStack[currentViewportGroupId];
                 }
-
 
                 byte layerGroupId = command.LayerGroup;
 
                 if(layerGroupId != currentLayerGroupId) 
                 {
+                    // We're about to change view/proj matrices
+                    // So flush any pending render commands which use previous MVP state
+                    Flush();
+
                     currentLayerGroupId = layerGroupId;
                     drawManager.ViewMatrix = layerGroupViewMatrixStack[currentLayerGroupId];
                     drawManager.ProjectionMatrix = layerGroupProjMatrixStack[currentLayerGroupId];
@@ -249,6 +256,7 @@ namespace CocosSharp
 
             drawManager.PushMatrix();
             drawManager.SetIdentityMatrix();
+            drawManager.DepthTest = true;
 
             foreach (CCQuadCommand command in quadCommands)
             {
@@ -278,6 +286,7 @@ namespace CocosSharp
             currentBatchedQuads.Clear();
 
             drawManager.PopMatrix();
+            drawManager.DepthTest = false;
         }
     }
 }

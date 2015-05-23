@@ -56,6 +56,7 @@ namespace CocosSharp
         internal void RenderCustomCommand(CCDrawManager drawManager)
         {
             drawManager.PushMatrix();
+            drawManager.DepthTest = true;
             drawManager.SetIdentityMatrix();
             if (WorldTransform != CCAffineTransform.Identity)
             {
@@ -65,6 +66,7 @@ namespace CocosSharp
             Action();
 
             drawManager.PopMatrix();
+            drawManager.DepthTest = false;
         }
 
         internal new string DebugDisplayString
