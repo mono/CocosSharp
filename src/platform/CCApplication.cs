@@ -175,7 +175,7 @@ namespace CocosSharp
             base.Update(gameTime);
 
             // Allows the game to exit
-            #if (WINDOWS && !NETFX_CORE) || WINDOWSGL || WINDOWSDX || MACOS
+            #if (WINDOWS && !NETFX_CORE) || WINDOWSGL || WINDOWSDX// || MACOS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             Exit();
             #endif

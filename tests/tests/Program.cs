@@ -51,8 +51,9 @@ namespace tests
 #if MACOS
     class Program : NSApplicationDelegate 
     {
-        public override void FinishedLaunching(MonoMac.Foundation.NSObject notification)
+        public override void DidFinishLaunching (MonoMac.Foundation.NSNotification notification)
         {
+
             CCApplication application = new CCApplication(false, new CCSize(1024f, 768f));
             application.ApplicationDelegate = new AppDelegate();
 
