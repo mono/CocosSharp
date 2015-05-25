@@ -12,7 +12,6 @@
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
-    <AndroidSupportedAbis>armeabi-v7a</AndroidSupportedAbis>
     <MandroidI18n />
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
