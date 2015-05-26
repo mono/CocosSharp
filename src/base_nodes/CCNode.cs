@@ -1968,9 +1968,6 @@ namespace CocosSharp
         {
         }
 
-        protected virtual void Draw()
-        {
-        }
 
         #region Color and Opacity
 

@@ -63,14 +63,14 @@ namespace tests
             return "Manual creation of CCTextureAtlas";
         }
 
-        protected override void Draw()
-        {
-            // GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
-            // GL_TEXTURE_2D
-
-            m_textureAtlas.DrawQuads();
-
-            //	[textureAtlas drawNumberOfQuads:3];
-        }
+//        protected override void Draw()
+//        {
+//            // GL_VERTEX_ARRAY, GL_COLOR_ARRAY, GL_TEXTURE_COORD_ARRAY
+//            // GL_TEXTURE_2D
+//
+//            m_textureAtlas.DrawQuads();
+//
+//            //	[textureAtlas drawNumberOfQuads:3];
+//        }
     }
 }

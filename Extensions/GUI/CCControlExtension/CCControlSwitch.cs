@@ -295,13 +295,6 @@ namespace CocosSharp
             SliderXPosition = value;
         }
 
-        protected override void Draw()
-        {
-//            CCDrawManager.SharedDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
-//            CCDrawManager.SharedDrawManager.BindTexture(Texture);
-//			CCDrawManager.SharedDrawManager.DrawQuad(ref quad);
-        }
-
         public void NeedsLayout()
         {
 			OnSprite.Position = new CCPoint(OnSprite.ContentSize.Width / 2 + sliderXPosition, OnSprite.ContentSize.Height / 2);
