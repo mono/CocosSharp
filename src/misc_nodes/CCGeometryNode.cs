@@ -116,10 +116,11 @@ namespace CocosSharp
                     FlushVertexArray(geometry.InstanceAttributes, numberOfVertices, numberOfIndices);
                     numberOfVertices = 0;
                     numberOfIndices = 0;
-                    lastTexture = (geometryPacket.Texture != null) ? geometryPacket.Texture.XNATexture : null;
+                    bool textureExists = (geometryPacket.Texture != null);
+                    lastTexture = textureExists ? geometryPacket.Texture.XNATexture : null;
                     lastAttributes = geometry.InstanceAttributes;
                     DrawManager.XnaGraphicsDevice.Textures[0] = lastTexture;
-                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = geometryPacket.Texture.SamplerState;
+                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : null;
                 }
 
                 int[] itemIndicies = geometryPacket.Indicies;
