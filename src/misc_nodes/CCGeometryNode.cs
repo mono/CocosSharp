@@ -119,6 +119,7 @@ namespace CocosSharp
                     lastTexture = (geometryPacket.Texture != null) ? geometryPacket.Texture.XNATexture : null;
                     lastAttributes = geometry.InstanceAttributes;
                     DrawManager.XnaGraphicsDevice.Textures[0] = lastTexture;
+                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = geometryPacket.Texture.SamplerState;
                 }
 
                 int[] itemIndicies = geometryPacket.Indicies;
@@ -142,15 +143,14 @@ namespace CocosSharp
 
             DrawManager.DrawCount++;
 
-            if (DrawManager.XnaGraphicsDevice.Textures[0] == null)
-                basicEffect.TextureEnabled = false;
-            else
-                basicEffect.TextureEnabled = true;
+            var texture = DrawManager.XnaGraphicsDevice.Textures[0] as Texture2D;
 
             DrawManager.XnaGraphicsDevice.BlendState = instance.BlendState;
             basicEffect.Projection = DrawManager.ProjectionMatrix;
             basicEffect.View = DrawManager.ViewMatrix;
             basicEffect.World = Matrix.Multiply(instance.AdditionalTransform.XnaMatrix, DrawManager.WorldMatrix);
+            basicEffect.TextureEnabled = texture != null;
+            basicEffect.Texture = texture;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
