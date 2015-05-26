@@ -12,19 +12,16 @@ namespace CocosSharp
             InnerScene = scene;
         }
 
-        protected override void Draw()
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            base.Draw();
-
-            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
-
-            if(this.Visible)
-                InnerScene.Visit();
+            if(this.Visible && InnerScene != null)
+                InnerScene.Visit(ref worldTransform);
         }
     }
 
     class CCTransitionSceneContainerLayer : CCLayer
     {
+        bool isInSceneOnTop;
         CCTransitionSceneContainerNode inSceneNodeContainer;
         CCTransitionSceneContainerNode outSceneNodeContainer;
 
@@ -32,7 +29,25 @@ namespace CocosSharp
         internal CCNode OutSceneNodeContainer { get { return outSceneNodeContainer; } }
         internal CCScene InScene { get { return inSceneNodeContainer.InnerScene; } }
         internal CCScene OutScene { get { return outSceneNodeContainer.InnerScene; } }
-        internal bool IsInSceneOnTop { get; set; }
+        internal bool IsInSceneOnTop 
+        { 
+            get { return isInSceneOnTop; } 
+            set 
+            {
+                isInSceneOnTop = value;
+
+                if(isInSceneOnTop) 
+                {
+                    OutSceneNodeContainer.ZOrder = 1;
+                    InSceneNodeContainer.ZOrder = 0;
+                } 
+                else 
+                {
+                    OutSceneNodeContainer.ZOrder = 0;
+                    InSceneNodeContainer.ZOrder = 1;
+                }
+            }
+        }
 
         public CCTransitionSceneContainerLayer(CCScene inScene, CCScene outScene) 
             : base(new CCCamera(CCCameraProjection.Projection2D, outScene.VisibleBoundsScreenspace.Size))
@@ -46,31 +61,10 @@ namespace CocosSharp
 
             // The trick here is that we're not actually adding the InScene/OutScene as children
             // This keeps the scenes' original parents (if they have one) intact, so that there's no cleanup afterwards
-            AddChild(InSceneNodeContainer);
-            AddChild(OutSceneNodeContainer);
+
+            AddChild(OutSceneNodeContainer, 1);
+            AddChild(InSceneNodeContainer, 0);
         }
-
-        public override void Visit(ref CCAffineTransform parentWorldTransform)
-        {
-            bool outSceneVisible = OutSceneNodeContainer.Visible;
-            bool inSceneVisible = InSceneNodeContainer.Visible;
-
-            CCDrawManager drawManager = CCDrawManager.SharedDrawManager;
-
-            base.Visit(ref parentWorldTransform);
-
-            if (IsInSceneOnTop)
-            {
-                outSceneNodeContainer.Visit();
-                inSceneNodeContainer.Visit();
-            }
-            else
-            {
-                inSceneNodeContainer.Visit();
-                outSceneNodeContainer.Visit();
-            }
-        }
-
     }
 
     public class CCTransitionScene : CCScene

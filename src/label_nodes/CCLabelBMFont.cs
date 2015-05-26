@@ -925,14 +925,18 @@ namespace CocosSharp
             return pRet;
         }
 
-        protected override void Draw()
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
+        {
+            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderLabel));
+        }
+
+        void RenderLabel()
         {
             if (IsDirty)
             {
                 UpdateLabel();
                 IsDirty = false;
             }
-            base.Draw();
         }
     }
 }

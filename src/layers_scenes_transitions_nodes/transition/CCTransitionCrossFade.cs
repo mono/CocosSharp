@@ -37,11 +37,6 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected override void Draw()
-        {
-            // override draw since both scenes (textures) are rendered in 1 scene
-        }
-
         protected override void InitialiseScenes()
         {
             base.InitialiseScenes();

@@ -95,12 +95,20 @@ namespace CocosSharp
 
         #region Drawing
 
-        protected override void Draw()
+        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            Window.DrawManager.BlendFunc(BlendFunc);
-            Window.DrawManager.BindTexture(Texture);
-            Window.DrawManager.VertexColorEnabled = true;
-            Window.DrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, vertices, 0, numOfPoints * 2 - 2);
+            Renderer.PushGroup();
+            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderMotionStreak));
+            Renderer.PopGroup();
+        }
+
+        void RenderMotionStreak()
+        {
+            var drawManager = DrawManager;
+            drawManager.BlendFunc(BlendFunc);
+            drawManager.BindTexture(Texture);
+            drawManager.VertexColorEnabled = true;
+            drawManager.DrawPrimitives(PrimitiveType.TriangleStrip, vertices, 0, numOfPoints * 2 - 2);
         }
 
         #endregion Drawing
