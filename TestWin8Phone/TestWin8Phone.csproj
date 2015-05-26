@@ -1381,10 +1381,6 @@
       <Project>{69E49CEA-FD66-43DA-9F7B-53455767EF63}</Project>
       <Name>CocosSharp.WP8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\src\external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj">
-      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
-      <Name>ICSharpCode.SharpZLib.WP8</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsPhone.csproj">
       <Project>{BAA9A6E4-7690-4DE0-9531-DE0EAEEC9739}</Project>
       <Name>MonoGame.Framework.WindowsPhone</Name>

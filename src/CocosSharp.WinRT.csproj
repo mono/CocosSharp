@@ -810,48 +810,6 @@
     <Compile Include=".\platform\CCReusedObject.cs">
       <LogicalName>platform\ReusedObject</LogicalName>
     </Compile>
-    <Compile Include=".\platform\Zlib\Adler32.cs">
-      <LogicalName>platform\Zlib\Adler32</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\Deflate.cs">
-      <LogicalName>platform\Zlib\Deflate</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\InfBlocks.cs">
-      <LogicalName>platform\Zlib\InfBlocks</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\InfCodes.cs">
-      <LogicalName>platform\Zlib\InfCodes</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\Inflate.cs">
-      <LogicalName>platform\Zlib\Inflate</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\InfTree.cs">
-      <LogicalName>platform\Zlib\InfTree</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\StaticTree.cs">
-      <LogicalName>platform\Zlib\StaticTree</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\SupportClass.cs">
-      <LogicalName>platform\Zlib\SupportClass</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\Tree.cs">
-      <LogicalName>platform\Zlib\Tree</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\ZInputStream.cs">
-      <LogicalName>platform\Zlib\ZInputStream</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\Zlib.cs">
-      <LogicalName>platform\Zlib\Zlib</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\ZOutputStream.cs">
-      <LogicalName>platform\Zlib\ZOutputStream</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\ZStream.cs">
-      <LogicalName>platform\Zlib\ZStream</LogicalName>
-    </Compile>
-    <Compile Include=".\platform\Zlib\ZStreamException.cs">
-      <LogicalName>platform\Zlib\ZStreamException</LogicalName>
-    </Compile>
     <Compile Include=".\predefine\CCMacros.cs">
       <LogicalName>predefine\ccMacros</LogicalName>
     </Compile>
@@ -999,10 +957,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>external lib\XBox360\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
     <Reference Include="SharpDX">
       <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\SharpDX.dll</HintPath>
     </Reference>

@@ -346,20 +346,6 @@
     <Compile Include="platform\CCRawList.cs" />
     <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="platform\CCReusedObject.cs" />
-    <Compile Include="platform\Zlib\Adler32.cs" />
-    <Compile Include="platform\Zlib\Deflate.cs" />
-    <Compile Include="platform\Zlib\InfBlocks.cs" />
-    <Compile Include="platform\Zlib\InfCodes.cs" />
-    <Compile Include="platform\Zlib\Inflate.cs" />
-    <Compile Include="platform\Zlib\InfTree.cs" />
-    <Compile Include="platform\Zlib\StaticTree.cs" />
-    <Compile Include="platform\Zlib\SupportClass.cs" />
-    <Compile Include="platform\Zlib\Tree.cs" />
-    <Compile Include="platform\Zlib\ZInputStream.cs" />
-    <Compile Include="platform\Zlib\Zlib.cs" />
-    <Compile Include="platform\Zlib\ZOutputStream.cs" />
-    <Compile Include="platform\Zlib\ZStream.cs" />
-    <Compile Include="platform\Zlib\ZStreamException.cs" />
     <Compile Include="predefine\CCMacros.cs" />
     <Compile Include="predefine\CCProtocols.cs" />
     <Compile Include="predefine\CCTouch.cs" />
@@ -377,19 +363,45 @@
     <Compile Include="sprite_nodes\CCSpriteSheetCache.cs" />
     <Compile Include="support\CCUserDefault.cs" />
     <Compile Include="support\ccUtils.cs" />
-    <Compile Include="support\Compression\Adler.cs" />
-    <Compile Include="support\Compression\Crc32.cs" />
-    <Compile Include="support\Compression\FlushType.cs" />
-    <Compile Include="support\Compression\GZipStream.cs" />
-    <Compile Include="support\Compression\InflateBlocks.cs" />
-    <Compile Include="support\Compression\InflateCodes.cs" />
-    <Compile Include="support\Compression\InflateManager.cs" />
-    <Compile Include="support\Compression\InfTree.cs" />
-    <Compile Include="support\Compression\SharedUtils.cs" />
-    <Compile Include="support\Compression\ZlibBaseStream.cs" />
-    <Compile Include="support\Compression\ZlibCodec.cs" />
-    <Compile Include="support\Compression\ZlibException.cs" />
-    <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
+    <Compile Include="support\Compression\Adler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\Crc32.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\FlushType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\GZipStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\InflateBlocks.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\InflateCodes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\InflateManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\InfTree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\SharedUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\ZlibBaseStream.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\ZlibCodec.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\ZlibException.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="support\Compression\ZlibStreamFlavor.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />
@@ -425,10 +437,6 @@
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsPhone.csproj">
       <Project>{BAA9A6E4-7690-4DE0-9531-DE0EAEEC9739}</Project>
       <Name>MonoGame.Framework.WindowsPhone</Name>
-    </ProjectReference>
-    <ProjectReference Include="external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj">
-      <Project>{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}</Project>
-      <Name>ICSharpCode.SharpZLib.WP8</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

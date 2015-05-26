@@ -501,8 +501,13 @@
     <Folder Include="Content\Images\sprites_test\" />
     <Folder Include="Content\Particles\" />
     <Folder Include="Content\Sounds\" />
-    <Folder Include="Content\TileMaps\" />
     <Folder Include="Content\zwoptex\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
