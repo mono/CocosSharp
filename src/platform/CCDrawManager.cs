@@ -19,10 +19,10 @@ namespace CocosSharp
 
     public enum CCDepthFormat
     {
-        None = -1,
-        Depth16 = 54,
-        Depth24 = 51,
-        Depth24Stencil8 = 48,           
+        None = Microsoft.Xna.Framework.Graphics.DepthFormat.None,
+        Depth16 = Microsoft.Xna.Framework.Graphics.DepthFormat.Depth16,
+        Depth24 = Microsoft.Xna.Framework.Graphics.DepthFormat.Depth24,
+        Depth24Stencil8 = Microsoft.Xna.Framework.Graphics.DepthFormat.Depth24Stencil8,
     }
 
     public enum CCBufferUsage
