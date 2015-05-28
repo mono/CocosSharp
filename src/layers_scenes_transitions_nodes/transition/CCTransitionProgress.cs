@@ -38,25 +38,16 @@ namespace CocosSharp
             texture.Sprite.Position = bounds.Center;
             texture.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
 
-            // Temporarily add render texture to get layer/scene properties
-            Layer.AddChild(texture.Sprite);
-            texture.Sprite.Visible = false;
 
             // Render outScene to its texturebuffer
-            texture.BeginWithClear(0, 0, 0, 1);
-            SceneNodeContainerToBeModified.Visit();
+            texture.BeginWithClear(0, 0, 0, 255);
+            var worldTransform = SceneNodeContainerToBeModified.AffineWorldTransform;
+            SceneNodeContainerToBeModified.Visit(ref worldTransform);
             texture.End();
-
-            texture.Sprite.Visible = true;
-
-            // No longer want to render texture
-            RemoveChild(texture.Sprite);
 
             // Since we've passed the outScene to the texture we don't need it.
             if (SceneNodeContainerToBeModified == OutSceneNodeContainer)
-            {
                 HideOutShowIn();
-            }
 
             CCProgressTimer node = ProgressTimerNodeWithRenderTexture(texture);
 
@@ -64,7 +55,7 @@ namespace CocosSharp
             var layerAction = new CCProgressFromTo(Duration, From, To);
 
             // add the layer (which contains our two rendertextures) to the scene
-            AddChild(node, 2, SceneRadial);
+            Layer.AddChild(node, 2);
 
             // run the blend action
             node.RunAction(layerAction);

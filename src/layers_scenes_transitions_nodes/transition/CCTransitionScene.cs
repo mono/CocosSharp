@@ -38,13 +38,13 @@ namespace CocosSharp
 
                 if(isInSceneOnTop) 
                 {
-                    OutSceneNodeContainer.ZOrder = 1;
-                    InSceneNodeContainer.ZOrder = 0;
+                    OutSceneNodeContainer.ZOrder = 0;
+                    InSceneNodeContainer.ZOrder = 1;
                 } 
                 else 
                 {
-                    OutSceneNodeContainer.ZOrder = 0;
-                    InSceneNodeContainer.ZOrder = 1;
+                    OutSceneNodeContainer.ZOrder = 1;
+                    InSceneNodeContainer.ZOrder = 0;
                 }
             }
         }
@@ -62,8 +62,17 @@ namespace CocosSharp
             // The trick here is that we're not actually adding the InScene/OutScene as children
             // This keeps the scenes' original parents (if they have one) intact, so that there's no cleanup afterwards
 
-            AddChild(OutSceneNodeContainer, 1);
-            AddChild(InSceneNodeContainer, 0);
+            AddChild(InSceneNodeContainer);
+            AddChild(OutSceneNodeContainer);
+
+        }
+
+
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
+        {
+            Renderer.PushGroup();
+            base.Visit(ref parentWorldTransform);
+            Renderer.PopGroup();
         }
     }
 
@@ -150,9 +159,10 @@ namespace CocosSharp
             OutScene = outScene;
 
             transitionSceneContainerLayer = new CCTransitionSceneContainerLayer(InScene, OutScene);
-            AddChild(transitionSceneContainerLayer);
 
             SceneOrder();
+
+            AddChild(transitionSceneContainerLayer);
         }
 
         #endregion Constructors
