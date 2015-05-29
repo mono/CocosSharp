@@ -163,6 +163,7 @@ namespace CocosSharp
                 : (imageHeight - boundingRect.Bottom) * 0.5f;                                   // align to center
 
             try {
+
                 // Create our platform dependant image to be drawn to.
                 using (Bitmap textureBitmap = Bitmap.CreateBitmap(imageWidth, imageHeight, Bitmap.Config.Argb8888))
                 {
@@ -176,14 +177,26 @@ namespace CocosSharp
                         // Now draw the text using our layout
                         layout.Draw(drawingCanvas);
 
-                        // We will use Texture2D from stream here instead of CCTexture2D stream.
-                        var tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, textureBitmap);
+                        // Create a pixel array
+                        int[] pixels = new int[imageWidth * imageHeight];
 
-                        // Create our texture of the label string.  
-                        // Note the use of the third parameter as premultiplied = false
-                        // be careful changing that parameter as it will cause problems with blending
-                        // later on.
-                        var texture = new CCTexture2D(tex, CCSurfaceFormat.Color, false);
+                        // Now lets get our pixels.
+                        // We use CopyPixelsToBuffer so that it is in Premultiplied Alpha already.
+                        // Using Bitmap.GetPixels return non Premultiplied Alpha which causes blending problems
+                        Java.Nio.IntBuffer byteBuffer = Java.Nio.IntBuffer.Allocate(imageWidth * imageHeight);
+                        textureBitmap.CopyPixelsToBuffer(byteBuffer);
+                        if (byteBuffer.HasArray)
+                        {
+                            byteBuffer.Rewind();
+                            byteBuffer.Get(pixels, 0, pixels.Length);
+                        }
+
+                        // Make sure we recycle - Let's keep it green
+                        textureBitmap.Recycle();
+
+                        // Here we create our Texture and then set our pixel data.
+                        var texture = new CCTexture2D(imageWidth, imageHeight);
+                        texture.XNATexture.SetData<int>(pixels);
 
                         return texture;
                     }
