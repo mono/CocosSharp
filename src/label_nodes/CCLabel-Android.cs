@@ -123,10 +123,10 @@ namespace CocosSharp
             for (int lc = 0; lc < lineCount; lc++)
             {
                 layout.GetLineBounds(lc, lineBounds);
-                var max = layout.GetLineMax(lc);
+                var max = (int)Math.Ceiling(layout.GetLineMax(lc));
 
                 if (boundingRect.Right < max)
-                    boundingRect.Right = (int)max;
+                    boundingRect.Right = max;
 
                 boundingRect.Bottom = lineBounds.Bottom;
             }
