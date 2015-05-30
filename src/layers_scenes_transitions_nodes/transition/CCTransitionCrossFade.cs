@@ -41,71 +41,31 @@ namespace CocosSharp
         {
             base.InitialiseScenes();
 
-            // create a transparent color layer
-            // in which we are going to add our rendertextures
-            var color = new CCColor4B(0, 0, 0, 0);
             var bounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
 
-            // create the first render texture for inScene
-            CCRenderTexture inTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
-
-            if (null == inTexture)
-            {
-                return;
-            }
-
-            inTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            inTexture.Sprite.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            inTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-
-            AddChild(inTexture.Sprite);
-
-            //  render inScene to its texturebuffer
-            inTexture.Begin();
-            InSceneNodeContainer.Visit();
-            inTexture.End();
-
-            // create the second render texture for outScene
             CCRenderTexture outTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
-            outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            outTexture.Sprite.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            CCSprite outTexSprite = outTexture.Sprite;
 
-            AddChild(outTexture.Sprite);
+            var worldTransform = Layer.AffineWorldTransform;
 
-            //  render outScene to its texturebuffer
-            outTexture.Begin();
-            OutSceneNodeContainer.Visit();
+            outTexture.BeginWithClear(0, 0, 0, 0);
+            OutSceneNodeContainer.Visit(ref worldTransform);
             outTexture.End();
 
-            // create blend functions
+            outTexSprite.AnchorPoint = CCPoint.AnchorMiddle;
+            outTexSprite.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
+            outTexSprite.BlendFunc = CCBlendFunc.NonPremultiplied;
+            outTexSprite.Opacity = 255;
 
-            var blend1 = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE); // inScene will lay on background and will not be used with alpha
-            var blend2 = CCBlendFunc.NonPremultiplied; // we are going to blend outScene via alpha 
+            CCAction layerAction = new CCSequence(new CCFadeTo (Duration, 0), new CCCallFunc((Finish)));
 
-            inTexture.Sprite.BlendFunc = blend1;
-            outTexture.Sprite.BlendFunc = blend2;
+            outTexSprite.RunAction(layerAction);
 
-            inTexture.Sprite.Opacity = 255;
-            outTexture.Sprite.Opacity = 255;
+            Layer.AddChild(outTexture.Sprite, 3);
 
-            CCAction layerAction = new CCSequence
-                (
-                    new CCFadeTo (Duration, 0),
-                    new CCCallFunc((Finish))
-                );
-
-            outTexture.Sprite.RunAction(layerAction);
-
-            InSceneNodeContainer.Visible = false;
+            InSceneNodeContainer.Visible = true;
             OutSceneNodeContainer.Visible = false;
-        }
-
-        public override void OnExit()
-        {
-            // remove our layer and release all containing objects 
-            base.OnExit();
         }
 
     }
