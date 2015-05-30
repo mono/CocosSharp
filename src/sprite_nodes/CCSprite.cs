@@ -371,6 +371,26 @@ namespace CocosSharp
         #region Color managment
 
 
+        #region Texture management
+
+        public void ReplaceTexture(CCTexture2D texture, CCRect textureRectInPixels)
+        {
+            Texture = texture;
+            TextureRectInPixels = textureRectInPixels;
+        }
+
+        public void MaximizeTextureRect()
+        {
+            if(Texture != null)
+            {
+                CCSize texSize = Texture.ContentSizeInPixels;
+                TextureRectInPixels = new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height);
+            }
+        }
+
+        #endregion Texture management
+
+
 		public override void UpdateColor()
         {
             quadCommand.RequestUpdateQuads(UpdateColorCallback);
