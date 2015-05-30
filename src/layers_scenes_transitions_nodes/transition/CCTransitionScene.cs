@@ -50,7 +50,7 @@ namespace CocosSharp
         }
 
         public CCTransitionSceneContainerLayer(CCScene inScene, CCScene outScene) 
-            : base(new CCCamera(CCCameraProjection.Projection2D, outScene.VisibleBoundsScreenspace.Size))
+            : base(new CCCamera(CCCameraProjection.Projection3D, outScene.VisibleBoundsScreenspace.Size))
         {
             CCSize contentSize = outScene.VisibleBoundsScreenspace.Size;
 
