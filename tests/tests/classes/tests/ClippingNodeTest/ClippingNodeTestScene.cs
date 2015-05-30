@@ -523,7 +523,7 @@ namespace tests.Clipping
             CCAffineTransform tranform = CCAffineTransform.Identity;
 			tranform = CCAffineTransform.ScaleCopy(tranform, target.ScaleX, target.ScaleY);
 
-            m_pOuterClipper.ContentSize = CCAffineTransform.Transform(target.ContentSize, tranform);
+            m_pOuterClipper.ContentSize = CCAffineTransform.Transform(target.ContentSize, ref tranform);
             m_pOuterClipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_pOuterClipper.RunAction(new CCRepeatForever(new CCRotateBy(1, 45)));
 

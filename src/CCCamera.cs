@@ -245,7 +245,7 @@ namespace CocosSharp
                  * In particular, this will result in imprecise visible bounds
                  */ 
                 nearAndFarPerspectiveClipping.Near
-                    = Math.Max(Math.Abs ((centerInWorldspace.Z - targetInWorldspaceIn.Z) / 2.0f), defaultNearAndFarPerspClipping.Near);
+                    = Math.Max(Math.Abs ((centerInWorldspace.Z - targetInWorldspaceIn.Z) / 3.0f), defaultNearAndFarPerspClipping.Near);
             }
 
             UpdateCameraMatrices();

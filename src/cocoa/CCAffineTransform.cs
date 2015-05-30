@@ -191,10 +191,11 @@ namespace CocosSharp
 
         public void Transform(ref float x, ref float y, ref float z)
         {
-            var tmpX = A * x + C * y + Tx;
-            y = (B * x + D * y + Ty);
-            x = tmpX;
-            z += Tz;
+            Vector3 vector = new Vector3(x, y, z);
+            Vector3.Transform(ref vector, ref xnaMatrix, out vector);
+            x = vector.X;
+            y = vector.Y;
+            z = vector.Z;
         }
 
         public void Transform(ref float x, ref float y)
@@ -356,21 +357,21 @@ namespace CocosSharp
 
         #region Static methods
 
-        public static CCPoint Transform(CCPoint point, CCAffineTransform t)
+        public static CCPoint Transform(CCPoint point, ref CCAffineTransform t)
         {
             Vector3 vec = point.XnaVector;
             Vector3.Transform(ref vec, ref t.xnaMatrix, out vec);
             return new CCPoint(vec.X, vec.Y);
         }
 
-        public static CCPoint3 Transform(CCPoint3 point, CCAffineTransform t)
+        public static CCPoint3 Transform(CCPoint3 point, ref CCAffineTransform t)
         {
             Vector3 vec = point.XnaVector;
             Vector3.Transform(ref vec, ref t.xnaMatrix, out vec);
             return new CCPoint3(vec);
         }
 
-        public static CCSize Transform(CCSize size, CCAffineTransform t)
+        public static CCSize Transform(CCSize size, ref CCAffineTransform t)
         {
             Vector3 vec = new Vector3(size.Width, size.Height, 0.0f);
             Vector3.Transform(ref vec, ref t.xnaMatrix, out vec);
@@ -404,11 +405,9 @@ namespace CocosSharp
 
         public static void Concat(ref CCAffineTransform t1, ref CCAffineTransform t2, out CCAffineTransform tOut)
         {
-            tOut = new CCAffineTransform(t1.A * t2.A + t1.B * t2.C, t1.A * t2.B + t1.B * t2.D,
-                t1.C * t2.A + t1.D * t2.C, t1.C * t2.B + t1.D * t2.D,
-                t1.Tx * t2.A + t1.Ty * t2.C + t2.Tx,
-                t1.Tx * t2.B + t1.Ty * t2.D + t2.Ty,
-                t1.Tz + t2.Tz);
+            Matrix concatMatrix;
+            Matrix.Multiply(ref t1.xnaMatrix, ref t2.xnaMatrix, out concatMatrix);
+            tOut = new CCAffineTransform(concatMatrix);
         }
 
         public static CCAffineTransform Concat(ref CCAffineTransform t1, ref CCAffineTransform t2)

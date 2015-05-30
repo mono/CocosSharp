@@ -2468,6 +2468,7 @@ namespace CocosSharp
             affineLocalTransform.D = cx * scaleY;
             affineLocalTransform.Tx = x;
             affineLocalTransform.Ty = y;
+            affineLocalTransform.Tz = VertexZ;
 
             // If skew is needed, apply skew and then anchor point
             if (needsSkewMatrix)
@@ -2504,7 +2505,6 @@ namespace CocosSharp
 
             var affineCameraTrans = new CCAffineTransform(fauxLocalCameraTransform);
             CCAffineTransform.Concat(ref affineCameraTrans, ref affineLocalTransform, out affineLocalTransform);
-            affineLocalTransform.Tz = VertexZ;
 
             if (Children != null)
             {
