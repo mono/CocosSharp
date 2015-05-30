@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    class CCTransitionSceneContainerNode: CCNode
+    class CCTransitionSceneContainerNode: CCNodeGrid
     {
         public CCScene InnerScene { get; private set; }
 

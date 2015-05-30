@@ -38,6 +38,10 @@ namespace CocosSharp
         {
         }
 
+        public CCNodeGrid (CCSize contentSize) : base (contentSize)
+        {
+        }
+
         #endregion Constructors
 
 
