@@ -29,17 +29,14 @@ namespace CocosSharp
 {
     public class CCTransitionFade : CCTransitionScene
     {
-        const int SceneFade = 2147483647;
-        protected CCColor4B Color;
-
-        CCLayerColor fadeLayer;
+        CCColor4B fadeColor;
 
 
         #region Constructors
 
         public CCTransitionFade (float duration, CCScene scene, CCColor3B color) : base (duration, scene)
         {
-            Color = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
+            fadeColor = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
 
         }
 
@@ -54,11 +51,11 @@ namespace CocosSharp
         {
             base.InitialiseScenes();
 
-            fadeLayer = new CCLayerColor(Color);
+            CCLayerColor fadeLayer = new CCLayerColor(fadeColor);
             fadeLayer.Visible = false;
             InSceneNodeContainer.Visible = false;
 
-            AddChild(fadeLayer, 20, SceneFade);
+            Layer.AddChild(fadeLayer, 3);
 
             var a = (CCFiniteTimeAction) new CCSequence
                                            (
