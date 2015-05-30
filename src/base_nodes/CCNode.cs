@@ -2468,9 +2468,7 @@ namespace CocosSharp
             affineLocalTransform.D = cx * scaleY;
             affineLocalTransform.Tx = x;
             affineLocalTransform.Ty = y;
-            affineLocalTransform.Tz = VertexZ;
 
-            // XXX: Try to inline skew
             // If skew is needed, apply skew and then anchor point
             if (needsSkewMatrix)
             {
@@ -2500,11 +2498,13 @@ namespace CocosSharp
                     new Vector3(FauxLocalCameraCenter.X, FauxLocalCameraCenter.Y, FauxLocalCameraCenter.Z),
                     new Vector3(FauxLocalCameraTarget.X, FauxLocalCameraTarget.Y, FauxLocalCameraTarget.Z),
                     new Vector3(FauxLocalCameraUpDirection.X, FauxLocalCameraUpDirection.Y, FauxLocalCameraUpDirection.Z));
-                fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, 0));
+                fauxLocalCameraTransform.M41 += AnchorPointInPoints.X;
+                fauxLocalCameraTransform.M42 += AnchorPointInPoints.Y;
             }
 
             var affineCameraTrans = new CCAffineTransform(fauxLocalCameraTransform);
             CCAffineTransform.Concat(ref affineCameraTrans, ref affineLocalTransform, out affineLocalTransform);
+            affineLocalTransform.Tz = VertexZ;
 
             if (Children != null)
             {
