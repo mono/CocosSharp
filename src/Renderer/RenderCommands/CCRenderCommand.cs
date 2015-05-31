@@ -88,7 +88,7 @@ namespace CocosSharp
         // The issue with using a single render id to order commands is the handling of
         // depth which is a floating point number that can't simply be cast as an int value
         // due to the potential of overflow/rounding errors
-        // So instead we first perform the layer group, group and depth comparisons individually
+        // So instead we first perform the layer group, group, depth and arrival index comparisons individually
         // and then package any remaining traits for comparison (e.g. Material) into the RenderFlags
         public int CompareTo(CCRenderCommand otherCommand)
         {
@@ -96,7 +96,13 @@ namespace CocosSharp
 
             if(compare == 0)
             {
-                compare = GlobalDepth.CompareTo(otherCommand.GlobalDepth); 
+                // Only sort by depth if depth testing is used by both commands
+                // Main issue is that oftentimes a pure 2d game will typically have all nodes with vertex z = 0
+                // Normally, sorting by depth wouldn't be a problem - depths are equal so compare using other traits below
+                // However, if a 3d effect (e.g. orbit camera) is used then vertex z of nodes will be altered
+                // Here, floating-point errors plus the inprecision of the depth-buffer the further a node is from a camera
+                // means that two nodes originally with vertex z = 0 may not have the exact same vertex z post-effect
+                compare = UsingDepthTest && otherCommand.UsingDepthTest ? GlobalDepth.CompareTo(otherCommand.GlobalDepth) : 0; 
 
                 // If all traits are equal, then use the arrival index to differentiate
                 // This is necessary because we rely on quick sort to sort our command queue which is
