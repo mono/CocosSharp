@@ -9,7 +9,7 @@ namespace tests
 
     public class Background : CCDrawNode
     {
-
+        
         public Background(CCColor4B color)
         {
             Color = new CCColor3B(color);
@@ -22,7 +22,6 @@ namespace tests
             Color = new CCColor3B(color);
             Opacity = color.A;
             AnchorPoint = CCPoint.AnchorMiddle;
-            ContentSize = size;
         }
 
         public override void OnEnter()
@@ -57,28 +56,33 @@ namespace tests
             x = size.Width;
             y = size.Height;
 
-            var offset = new CCPoint(x/4, y/4);
+            var offset = (CCPoint)size / 4.0f;
 
-            var blue = new Background(size, new CCColor4B(0, 0, 255, 255));
-            var red = new Background(size, new CCColor4B(255, 0, 0, 255));
-            var green = new Background(size, new CCColor4B(0, 255, 0, 255));
-            var white = new Background(size, new CCColor4B(255, 255, 255, 255));
+            var blue = new Background(new CCColor4B(0, 0, 255, 255));
+            var red = new Background(new CCColor4B(255, 0, 0, 255));
+            var green = new Background(new CCColor4B(0, 255, 0, 255));
+            var white = new Background(new CCColor4B(255, 255, 255, 255));
 
             blue.Scale = 0.5f;
-            blue.Position = CCPoint.Zero + offset;
+            blue.Position = offset;
             blue.AddChild(new SpriteLayer());
 
             red.Scale = 0.5f;
-            red.Position = new CCPoint(x / 2,0) + offset;
+            red.Position = offset;
+            red.PositionX += x / 2.0f;
 
             green.Scale = 0.5f;
-            green.Position = new CCPoint(0, y / 2) + offset;
+            green.Position = size.Center;
+            green.PositionX -= offset.X;
+            green.PositionY += offset.Y;
             green.AddChild(new TestLayer());
 
             white.Scale = 0.5f;
-            white.Position = new CCPoint(x / 2, y / 2) + offset;
+            white.Position = size.Center + offset;
+            //white.PositionX += x / 2.0f;
+            //white.PositionY += y / 2.0f;
 
-            AddChild(blue);
+            AddChild(blue, -1);
             AddChild(white);
             AddChild(green);
             AddChild(red);

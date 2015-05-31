@@ -49,6 +49,7 @@ namespace CocosSharp
         CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         CCViewport viewport;
         CCWindow window;
+        CCSize designResolutionSize = CCSize.Zero;
 
         // A delegate type for hooking up SceneViewport change notifications.
         internal delegate void SceneViewportChangedEventHandler(object sender, EventArgs e);
@@ -94,7 +95,15 @@ namespace CocosSharp
 		}
 #endif
 
-        public CCSize DesignResolutionSize { get; private set; }
+        public CCSize DesignResolutionSize 
+        { 
+            get { return designResolutionSize; }
+            private set 
+            { 
+                designResolutionSize = value;
+                AnchorPointInPoints = new CCPoint(ContentSize.Width * AnchorPoint.X, ContentSize.Height * AnchorPoint.Y);
+            } 
+        }
 
         public override CCSize ContentSize
         {

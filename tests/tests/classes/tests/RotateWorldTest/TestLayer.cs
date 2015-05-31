@@ -14,10 +14,9 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = Layer.VisibleBoundsWorldspace.Size;
-            CCLabelTtf label = new CCLabelTtf("cocos2d", "arial", 64);
-            label.Position = size.Center;
-            label.AnchorPoint = CCPoint.AnchorMiddle;
+
+            var label = new CCLabel("CocosSharp", "arial", 64, CCLabelFormat.SpriteFont);
+            label.Position = VisibleBoundsWorldspace.Center;
             AddChild(label);
         }
 

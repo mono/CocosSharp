@@ -19,8 +19,9 @@ namespace tests
         }
         public override void runThisTest()
         {
-            CCLayer pLayer = new RotateWorldMainLayer();
-            AddChild(pLayer);
+            var rotateWorld = new RotateWorldMainLayer();
+            AddChild(rotateWorld);
+
             RunAction(new CCRotateBy (4, -360));
             Director.ReplaceScene(this);
         }

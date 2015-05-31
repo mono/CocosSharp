@@ -538,6 +538,11 @@ namespace CocosSharp
         public virtual CCPoint AnchorPointInPoints
         {
             get { return anchorPointInPoints; }
+            internal set 
+            { 
+                anchorPointInPoints = value;
+                transformIsDirty = true;
+            }
         }
 
         // Returns the Anchor Point of the node as a value [0,1], where 1 is 100% of the dimension and 0 is 0%.
