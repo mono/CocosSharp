@@ -146,8 +146,10 @@ namespace tests
             target.End();
         }
 
+        const int spriteTag = 501;
         void SaveImage(object sender)
         {
+            RemoveChildByTag(spriteTag);
             using (var stream = new MemoryStream())
             {
                 target.SaveToStream(stream, CCImageFormat.Png);
@@ -157,11 +159,11 @@ namespace tests
                 var tex = new CCTexture2D(stream);
 
                 CCSprite sprite = new CCSprite(tex);
+                sprite.AnchorPoint = CCPoint.AnchorLowerLeft;
 
                 sprite.Scale = 0.3f;
-                AddChild(sprite);
-                sprite.Position = new CCPoint(40, 40);
-                sprite.Rotation = counter * 3;
+                AddChild(sprite, 0, spriteTag);
+                //sprite.Rotation = counter * 3;
             }
             counter++;
         }
