@@ -30,100 +30,59 @@ namespace tests
     public class TextureTestScene : TestScene
     {
 
-		private static int TEST_CASE_COUNT = 7;
+		private static int TEST_CASE_COUNT = 0;
 
         private static int sceneIdx = -1;
 
+        static Func<CCLayer>[] createTexture2dLayerFunctions =
+     {
+            () => new TextureCache1(),
+            () => new TextureSizeTest(),
+            () => new TextureGLRepeat(),
+            () => new TextureGLClamp(),
+            () => new TextureGLMirror(),
+            () => new TextureAsync(),
+            () => new TextureAlias(),
+            //    () => new TextureMipMap(),
+            //    () => new TexturePVRMipMap(),
+            //    () => new TexturePVRMipMap2(),
+            //    () => new TexturePVRNonSquare(),
+            //    () => new TexturePVRNPOT4444(),
+            //    () => new TexturePVRNPOT8888(),
+            //    () => new TexturePVR2BPP(),
+            //    () => new TexturePVRRaw(),
+            //    () => new TexturePVR(),
+            //    () => new TexturePVR4BPP(),
+            //    () => new TexturePVRRGBA8888(),
+            //    () => new TexturePVRBGRA8888(),
+            //    () => new TexturePVRRGBA4444(),
+            //    () => new TexturePVRRGBA4444GZ(),
+            //    () => new TexturePVRRGBA4444CCZ(),
+            //    () => new TexturePVRRGBA5551(),
+            //    () => new TexturePVRRGB565(),
+            //    () => new TexturePVRA8(),
+            //    () => new TexturePVRI8(),
+            //    () => new TexturePVRAI88(),
+            //    () => new TexturePVRBadEncoding(),
+            //    () => new TexturePNG(),
+            //    () => new TextureJPEG(),
+            //    () => new TexturePixelFormat(),
+            //    () => new TextureBlend(),
+            //    () => new TextureGlClamp(),
+            //    () => new TextureGlRepeat(),
+            //    () => new TextureSizeTest(),
+            //    () => new TextureCache1(),
+
+        };
+
+        public TextureTestScene () : base ()
+        {
+            TEST_CASE_COUNT = createTexture2dLayerFunctions.Length;
+        }
+
         public static CCLayer createTextureTest(int index)
         {
-            CCLayer pLayer = null;
-
-            switch (index)
-            {
-                case 0:
-                    pLayer = new TextureCache1();
-                    break;
-                case 1:
-                    pLayer = new TextureSizeTest();
-                    break;
-                case 2:
-                    pLayer = new TextureGLRepeat();
-                    break;
-                case 3:
-                    pLayer = new TextureGLClamp();
-                    break;
-                case 4:
-                    pLayer = new TextureGLMirror();
-                    break;
-                case 5:
-                    pLayer = new TextureAsync();
-                    break;
-				case 6:
-					pLayer = new TextureAlias(); 
-					break;
-                    //case 1:
-                    //    pLayer = new TextureMipMap(); break;
-                    //case 2:
-                    //    pLayer = new TexturePVRMipMap(); break;
-                    //case 3:
-                    //    pLayer = new TexturePVRMipMap2(); break;
-                    //case 4:
-                    //    pLayer = new TexturePVRNonSquare(); break;
-                    //case 5:
-                    //    pLayer = new TexturePVRNPOT4444(); break;
-                    //case 6:
-                    //    pLayer = new TexturePVRNPOT8888(); break;
-                    //case 7:
-                    //    pLayer = new TexturePVR2BPP(); break;
-                    //case 8:
-                    //    pLayer = new TexturePVRRaw(); break;
-                    //case 9:
-                    //    pLayer = new TexturePVR(); break;
-                    //case 10:
-                    //    pLayer = new TexturePVR4BPP(); break;
-                    //case 11:
-                    //    pLayer = new TexturePVRRGBA8888(); break;
-                    //case 12:
-                    //    pLayer = new TexturePVRBGRA8888(); break;
-                    //case 13:
-                    //    pLayer = new TexturePVRRGBA4444(); break;
-                    //case 14:
-                    //    pLayer = new TexturePVRRGBA4444GZ(); break;
-                    //case 15:
-                    //    pLayer = new TexturePVRRGBA4444CCZ(); break;
-                    //case 16:
-                    //    pLayer = new TexturePVRRGBA5551(); break;
-                    //case 17:
-                    //    pLayer = new TexturePVRRGB565(); break;
-                    //case 18:
-                    //    pLayer = new TexturePVRA8(); break;
-                    //case 19:
-                    //    pLayer = new TexturePVRI8(); break;
-                    //case 20:
-                    //    pLayer = new TexturePVRAI88(); break;
-                    //case 21:
-                    //    pLayer = new TexturePVRBadEncoding(); break;
-                    //case 22:
-                    //    pLayer = new TexturePNG(); break;
-                    //case 23:
-                    //    pLayer = new TextureJPEG(); break;
-                    //case 24:
-                    //    pLayer = new TexturePixelFormat(); break;
-                    //case 25:
-                    //    pLayer = new TextureBlend(); break;
-                    //case 26:
-                    //    pLayer = new TextureGlClamp(); break;
-                    //case 27:
-                    //    pLayer = new TextureGlRepeat(); break;
-                    //case 28:
-                    //    pLayer = new TextureSizeTest(); break;
-                    //case 29:
-                    //    pLayer = new TextureCache1(); break;
-                default:
-                    break;
-            }
-
-            return pLayer;
+            return createTexture2dLayerFunctions[index]();
         }
 
         protected override void NextTestCase()
@@ -178,37 +137,37 @@ namespace tests
     //// TextureDemo
     ////
     ////------------------------------------------------------------------
-    public class TextureDemo : CCLayer
+    public class TextureDemo : TestNavigationLayer
     {
         public override void OnEnter()
         {
             base.OnEnter();
 
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
-            AddChild(label, 1, (int) (enumTag.kTagLabel));
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
+            //var s = Layer.VisibleBoundsWorldspace.Size;
+            //var label = new CCLabel(title(), "arial", 26, CCLabelFormat.SpriteFont);
+            //AddChild(label, 1, (int) (enumTag.kTagLabel));
+            //label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
-            string strSubtitle = subtitle();
-            if (strSubtitle.Length > 0)
-            {
-                CCLabelTtf l = new CCLabelTtf(strSubtitle, "arial", 16);
-                AddChild(l, 1);
-                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
-            }
+            //string strSubtitle = subtitle();
+            //if (strSubtitle.Length > 0)
+            //{
+            //    var l = new CCLabel(strSubtitle, "arial", 16, CCLabelFormat.SpriteFont);
+            //    AddChild(l, 1);
+            //    l.Position = new CCPoint(s.Width / 2, s.Height - 80);
+            //}
 
-            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, (backCallback));
-            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2,
-                (restartCallback));
-            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, (nextCallback));
+            //CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, (backCallback));
+            //CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2,
+            //    (restartCallback));
+            //CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, (nextCallback));
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-            AddChild(menu, 1);
+            //CCMenu menu = new CCMenu(item1, item2, item3);
+            //menu.Position = new CCPoint(0, 0);
+            //item1.Position = new CCPoint(s.Width / 2 - 100, 30);
+            //item2.Position = new CCPoint(s.Width / 2, 30);
+            //item3.Position = new CCPoint(s.Width / 2 + 100, 30);
+            //AddChild(menu, 1);
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
@@ -219,35 +178,25 @@ namespace tests
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.restartTextureTest());
             Scene.Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.nextTextureTest());
             Scene.Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.backTextureTest());
             Scene.Director.ReplaceScene(s);
-        }
-
-        public virtual string title()
-        {
-            return "No title";
-        }
-
-        public virtual string subtitle()
-        {
-            return "";
         }
 
     }
@@ -305,14 +254,17 @@ namespace tests
             // 		CCLog("Error\n");
         }
 
-        public override string title()
+        public override string Title
         {
-            return "Different Texture Sizes";
+            get
+            {
+                return "Different Texture Sizes";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "512x512, 1024x1024. See the console.";
+            get { return "512x512, 1024x1024. See the console."; }
         }
     }
 
@@ -1035,14 +987,14 @@ namespace tests
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
-        public override string title()
+        public override string Title
         {
-            return "AntiAlias / Alias textures";
+            get { return "AntiAlias / Alias textures"; }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Left image is antialiased. Right image is aliases";
+            get { return "Left image is antialiased. Right image is aliases"; }
         }
     }
 
@@ -1263,9 +1215,9 @@ namespace tests
 
         }
 
-        public override string title()
+        public override string Title
         {
-            return "Texture GL_CLAMP";
+            get { return "Texture GL_CLAMP"; }
         }
 
 //        public override string subtitle()
@@ -1313,14 +1265,14 @@ namespace tests
 
         }
 
-        public override string title()
+        public override string Title
         {
-            return "Texture GL_MIRROR";
+            get { return "Texture GL_MIRROR"; }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Texture is repeated within the area and Mirrored.";
+            get { return "Texture is repeated within the area and Mirrored."; }
         }
     }
 
@@ -1360,14 +1312,14 @@ namespace tests
 
         }
 
-        public override string title()
+        public override string Title
         {
-            return "Texture GL_REPEAT";
+            get { return "Texture GL_REPEAT"; }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Texture is repeated within the area.";
+            get { return "Texture is repeated within the area."; }
         }
     }
 
@@ -1417,15 +1369,15 @@ namespace tests
             AddChild(sprite);
         }
 
-        public override string title()
+        public override string Title
         {
-            return "CCTextureCache: remove";
+            get { return "CCTextureCache: remove"; }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
             // temp to remove: for prealpha version
-            return "4 images should appear";
+            get { return "4 images should appear"; }
 
             // return "4 images should appear: alias, antialias, alias, antilias";
         }
@@ -1498,14 +1450,14 @@ namespace tests
             m_nImageOffset++;
         }
 
-        public override string title()
+        public override string Title
         {
-            return "Texture Async Load";
+            get { return "Texture Async Load"; }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Textures should load while an animation is being run";
+            get { return "Textures should load while an animation is being run"; }
         }
     }
 }
