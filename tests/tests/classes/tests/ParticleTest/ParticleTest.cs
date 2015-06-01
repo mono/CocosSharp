@@ -21,102 +21,64 @@ namespace tests
 
         internal static int TagLabelAtlas = 1;
         internal static int SceneIdx = -1;
-        internal static int MAX_LAYER = 43;
+        internal static int MAX_LAYER = 0;
 
-        public static CCLayer CreateParticleLayer(int nIndex)
+        public ParticleTestScene () : base ()
         {
-            switch (nIndex)
-            {
-            case 0:
-                return new ParticleReorder();
-            case 1:
-                return new DemoFlower();
-            case 2:
-                return new DemoGalaxy();
-            case 3:
-                return new DemoFirework();
-            case 4:
-                return new DemoSpiral();
-            case 5:
-                return new DemoSun();
-            case 6:
-                return new DemoMeteor();
-            case 7:
-                return new DemoFire();
-            case 8:
-                return new DemoSmoke();
-            case 9:
-                return new DemoExplosion();
-            case 10:
-                return new DemoSnow();
-            case 11:
-                return new DemoRain();
-            case 12:
-                return new DemoBigFlower();
-            case 13:
-                return new DemoRotFlower();
-            case 14:
-                return new DemoModernArt();
-            case 15:
-                return new DemoRing();
-            case 16:
-                return new ParallaxParticle();
-            case 17:
-                return new DemoParticleFromFile("BoilingFoam");
-            case 18:
-                return new DemoParticleFromFile("BurstPipe");
-            case 19:
-                return new DemoParticleFromFile("Comet");
-            case 20:
-                return new DemoParticleFromFile("Comet");
-            case 21:
-                return new DemoParticleFromFile("Comet");
-            case 22:
-                return new DemoParticleFromFile("debian");
-            case 23:
-                return new DemoParticleFromFile("ExplodingRing");
-            case 24:
-                return new DemoParticleFromFile("LavaFlow");
-            case 25:
-                return new DemoParticleFromFile("SpinningPeas");
-            case 26:
-                return new DemoParticleFromFile("SpookyPeas");
-            case 27:
-                return new DemoParticleFromFile("Upsidedown");
-            case 28:
-                return new DemoParticleFromFile("Flower");
-            case 29:
-                return new DemoParticleFromFile("Spiral");
-            case 30:
-                return new DemoParticleFromFile("Galaxy");
-            case 31:
-                return new DemoParticleFromFile("Phoenix");
-            case 32:
-                return new RadiusMode1();
-            case 33:
-                return new RadiusMode2();
-            case 34:
-                return new Issue704();
-            case 35:
-                return new Issue870();
-            case 36:
-                return new Issue1201();
-                // v1.1 tests
-            case 37:
-                return new MultipleParticleSystems();
-            case 38:
-                return new MultipleParticleSystemsBatched();
-            case 39:
-                return new AddAndDeleteParticleSystems();
-            case 40:
-                return new ReorderParticleSystems();
-            case 41:
-                return new PremultipliedAlphaTest();
-            case 42:
-                return new PremultipliedAlphaTest2();
-            }
+            MAX_LAYER = particleCreateFunctions.Length;
+        }
 
-            return null;
+        static Func<CCLayer>[] particleCreateFunctions =
+        {
+            () => new ParticleReorder(),
+            () => new DemoFlower(),
+            () => new DemoGalaxy(),
+            () => new DemoFirework(),
+            () => new DemoSpiral(),
+            () => new DemoSun(),
+            () => new DemoMeteor(),
+            () => new DemoFire(),
+            () => new DemoSmoke(),
+            () => new DemoExplosion(),
+            () => new DemoSnow(),
+            () => new DemoRain(),
+            () => new DemoBigFlower(),
+            () => new DemoRotFlower(),
+            () => new DemoModernArt(),
+            () => new DemoRing(),
+            () => new ParallaxParticle(),
+            () => new DemoParticleFromFile("BoilingFoam"),
+            () => new DemoParticleFromFile("BurstPipe"),
+            () => new DemoParticleFromFile("Comet"),
+            () => new DemoParticleFromFile("Comet"),
+            () => new DemoParticleFromFile("Comet"),
+            () => new DemoParticleFromFile("debian"),
+            () => new DemoParticleFromFile("ExplodingRing"),
+            () => new DemoParticleFromFile("LavaFlow"),
+            () => new DemoParticleFromFile("SpinningPeas"),
+            () => new DemoParticleFromFile("SpookyPeas"),
+            () => new DemoParticleFromFile("Upsidedown"),
+            () => new DemoParticleFromFile("Flower"),
+            () => new DemoParticleFromFile("Spiral"),
+            () => new DemoParticleFromFile("Galaxy"),
+            () => new DemoParticleFromFile("Phoenix"),
+            () => new RadiusMode1(),
+            () => new RadiusMode2(),
+            () => new Issue704(),
+            () => new Issue870(),
+            () => new Issue1201(),
+            // v1.1 tests
+            () => new MultipleParticleSystems(),
+            () => new MultipleParticleSystemsBatched(),
+            () => new AddAndDeleteParticleSystems(),
+            () => new ReorderParticleSystems(),
+            () => new PremultipliedAlphaTest(),
+            () => new PremultipliedAlphaTest2(),
+        };
+
+        public static CCLayer CreateParticleLayer(int index)
+        {
+            return particleCreateFunctions[index]();
         }
 
         public static CCLayer NextParticleAction()
@@ -1493,11 +1455,12 @@ namespace tests
 
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
+            CCNode parent2 = new CCNode();
 
             parent1.ContentSize = new CCSize (300.0f, 300.0f);
 
             for (int i = 0; i < 2; i++) {
-                CCNode parent = parent1;
+                CCNode parent = (i == 0 ? parent1 : parent2);
 
                 CCParticleSystemQuad emitter1 = new CCParticleSystemQuad (psConfig);
                 //emitter1.TotalParticles = 200;
