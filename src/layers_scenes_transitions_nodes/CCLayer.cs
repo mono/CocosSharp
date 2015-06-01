@@ -188,6 +188,17 @@ namespace CocosSharp
 
         #region Content layout
 
+        public override void Cleanup()
+        {
+            base.Cleanup();
+            if (Children != null)
+            {
+                for (int c = 0; c < Children.Count; c++)
+                {
+                    RemoveAllChildren();
+                }
+            }
+        }
         protected override void AddedToScene()
         {
             base.AddedToScene();
