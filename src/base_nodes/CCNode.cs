@@ -2398,15 +2398,20 @@ namespace CocosSharp
 
         public void Resume()
         {
-            Scheduler.Resume(this);
-            ActionManager.ResumeTarget(this);
-            EventDispatcher.Resume(this);
+            if (Scheduler != null)
+                Scheduler.Resume(this);
+            if (ActionManager != null)
+                ActionManager.ResumeTarget(this);
+            if (EventDispatcher != null)
+                EventDispatcher.Resume(this);
         }
 
         public void Pause()
         {
-            Scheduler.PauseTarget(this);
-            ActionManager.PauseTarget(this);
+            if (Scheduler != null)
+                Scheduler.PauseTarget(this);
+            if (ActionManager != null)
+                ActionManager.PauseTarget(this);
             if (EventDispatcher != null)
                 EventDispatcher.Pause (this);
         }
