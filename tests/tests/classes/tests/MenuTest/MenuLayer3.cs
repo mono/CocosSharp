@@ -43,8 +43,8 @@ namespace tests
         {
             base.AddedToScene();
 
-            var label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
-            var item1 = new CCMenuItemLabelBMFont(label, this.menuCallback2);
+            var label = new CCLabel("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
+            var item1 = new CCMenuItemLabel(label, this.menuCallback2);
 
             CCMenuItemFont.FontSize = 28;
             CCMenuItemFont.FontName = "arial";

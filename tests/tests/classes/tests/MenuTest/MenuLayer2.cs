@@ -47,13 +47,13 @@ namespace tests
         {
             for (int i = 0; i < 2; i++)
             {
-                CCMenu menu = (CCMenu)GetChildByTag(100 + i);
+                var menu = (CCMenu)GetChildByTag(100 + i);
                 menu.Position = m_centeredMenu;
                 if (i == 0)
                 {
                     // TIP: if no padding, padding = 5
                     menu.AlignItemsHorizontally();
-                    CCPoint p = menu.Position;
+                    var p = menu.Position;
                     menu.Position = new CCPoint(p.X + 0, p.Y + 30);
 
                 }
@@ -61,7 +61,7 @@ namespace tests
                 {
                     // TIP: but padding is configurable
                     menu.AlignItemsHorizontally(40);
-                    CCPoint p = menu.Position;
+                    var p = menu.Position;
                     menu.Position = new CCPoint(p.X - 0, p.Y - 30);
                 }
             }
@@ -70,20 +70,20 @@ namespace tests
         {
             for (int i = 0; i < 2; i++)
             {
-                CCMenu menu = (CCMenu)GetChildByTag(100 + i);
+                var menu = (CCMenu)GetChildByTag(100 + i);
                 menu.Position = m_centeredMenu;
                 if (i == 0)
                 {
                     // TIP: if no padding, padding = 5
                     menu.AlignItemsVertically();
-                    CCPoint p = menu.Position;
+                    var p = menu.Position;
                     menu.Position = new CCPoint(p.X + 100, p.Y);
                 }
                 else
                 {
                     // TIP: but padding is configurable
                     menu.AlignItemsVertically(40);
-                    CCPoint p = menu.Position;
+                    var p = menu.Position;
                     menu.Position = new CCPoint(p.X - 100, p.Y);
                 }
             }
@@ -98,15 +98,15 @@ namespace tests
 
             for (int i = 0; i < 2; i++)
             {
-                CCMenuItemImage item1 = new CCMenuItemImage(s_PlayNormal, s_PlaySelect, menuCallback);
-                CCMenuItemImage item2 = new CCMenuItemImage(s_HighNormal, s_HighSelect, menuCallbackOpacity);
-                CCMenuItemImage item3 = new CCMenuItemImage(s_AboutNormal, s_AboutSelect, menuCallbackAlign);
+                var item1 = new CCMenuItemImage(s_PlayNormal, s_PlaySelect, menuCallback);
+                var item2 = new CCMenuItemImage(s_HighNormal, s_HighSelect, menuCallbackOpacity);
+                var item3 = new CCMenuItemImage(s_AboutNormal, s_AboutSelect, menuCallbackAlign);
 
                 item1.ScaleX = 1.5f;
                 item2.ScaleX = 0.5f;
                 item3.ScaleX = 0.5f;
 
-                CCMenu menu = new CCMenu(item1, item2, item3);
+                var menu = new CCMenu(item1, item2, item3);
 
                 menu.Tag = (int)kTag.kTagMenu;
 
@@ -121,13 +121,13 @@ namespace tests
 
         public void menuCallback(object pSender)
         {
-            CCLayerMultiplex m = Parent as CCLayerMultiplex;
+            var m = Parent as CCLayerMultiplex;
             m.SwitchTo(0);
         }
         public void menuCallbackOpacity(object pSender)
         {
-            CCMenu menu = (CCMenu)(((CCNode)(pSender)).Parent);
-            byte opacity = menu.Opacity;
+            var menu = (CCMenu)(((CCNode)(pSender)).Parent);
+            var opacity = menu.Opacity;
             if (opacity == 128)
                 menu.Opacity = 255;
             else

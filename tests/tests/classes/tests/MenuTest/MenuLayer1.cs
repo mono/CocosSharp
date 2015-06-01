@@ -61,9 +61,9 @@ namespace tests
             // We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
             // rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
             // modify this here to make sure we have the correct sizes when they are passed.
-            CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-            CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-            CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+            var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+            var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+            var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
             var item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
@@ -78,15 +78,15 @@ namespace tests
             item3.Color = new CCColor3B(200, 200, 255);
 
             // Font Item
-            CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", (sender) => 
+            var item4 = new CCMenuItemFont("I toggle enable items", (sender) => 
                 {
                     disabledItem.Enabled = !disabledItem.Enabled;
 
                 });
 
             // Label Item (CCLabelBMFont)
-            CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabelBMFont item5 = new CCMenuItemLabelBMFont(label, this.menuCallbackConfig);
+            var label = new CCLabel("configuration", "fonts/bitmapFontTest3.fnt");
+            var item5 = new CCMenuItemLabel(label, this.menuCallbackConfig);
 
 
             // Testing issue #500
@@ -94,10 +94,10 @@ namespace tests
 
             CCMenuItemFont.FontSize = 30;
             // Events
-            CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
+            var item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
 
             // Font Item
-            CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
+            var item7 = new CCMenuItemFont("Quit", this.onQuit);
             item7.RepeatForever(color_action, color_action.Reverse());
 
             menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
@@ -111,7 +111,7 @@ namespace tests
             menu.RunAction(new CCScaleTo(1, 1));
 
 			// elastic effect
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			int i = 0;
 			CCNode child;

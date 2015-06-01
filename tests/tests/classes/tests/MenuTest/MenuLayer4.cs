@@ -50,36 +50,36 @@ namespace tests
 
             CCMenuItemFont.FontSize = 34;
 
-            CCMenuItemToggle item1 = new CCMenuItemToggle(this.menuCallback,
+            var item1 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("On"),
                 new CCMenuItemFont("Off"));
 
             CCMenuItemFont.FontSize = 18;
 
-            CCMenuItemFont title2 = new CCMenuItemFont("Music");
+            var title2 = new CCMenuItemFont("Music");
             title2.Enabled = false;
 
             CCMenuItemFont.FontSize = 34;
-            CCMenuItemToggle item2 = new CCMenuItemToggle(this.menuCallback,
+            var item2 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("On"),
                 new CCMenuItemFont("Off"));
 
             CCMenuItemFont.FontSize = 18;
-            CCMenuItemFont title3 = new CCMenuItemFont("Quality");
+            var title3 = new CCMenuItemFont("Quality");
             title3.Enabled = false;
 
             CCMenuItemFont.FontSize = 34;
-            CCMenuItemToggle item3 = new CCMenuItemToggle(this.menuCallback,
+            var item3 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("High"),
                 new CCMenuItemFont("Low"));
 
             CCMenuItemFont.FontSize = 18;
-            CCMenuItemFont title4 = new CCMenuItemFont("Orientation");
+            var title4 = new CCMenuItemFont("Orientation");
             title4.Enabled = false;
 
             CCMenuItemFont.FontSize = 34;
 
-            CCMenuItemToggle item4 = new CCMenuItemToggle(this.menuCallback,
+            var item4 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("Off"));
 
             item4.AddToggleMenuItems(new CCMenuItemFont ("33%"), new CCMenuItemFont ("66%"), new CCMenuItemFont ("100%"));
@@ -87,8 +87,8 @@ namespace tests
             // you can change the one of the items by doing this
             item4.SelectedIndex = 2;
 
-            CCLabelBMFont label = new CCLabelBMFont("go back", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabelBMFont back = new CCMenuItemLabelBMFont(label, this.backCallback);
+            var label = new CCLabel("go back", "fonts/bitmapFontTest3.fnt");
+            var back = new CCMenuItemLabel(label, this.backCallback);
 
             CCMenu menu = new CCMenu(
                 title1, title2,

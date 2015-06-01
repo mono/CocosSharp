@@ -34,13 +34,13 @@ namespace tests
     {
         public override void runThisTest()
         {
-            CCLayer pLayer1 = new MenuLayer1();
-            CCLayer pLayer2 = new MenuLayer2();
-            CCLayer pLayer3 = new MenuLayer3();
-            CCLayer pLayer4 = new MenuLayer4();
-            CCLayer pLayer5 = new MenuLayerPriorityTest();
+            var pLayer1 = new MenuLayer1();
+            var pLayer2 = new MenuLayer2();
+            var pLayer3 = new MenuLayer3();
+            var pLayer4 = new MenuLayer4();
+            var pLayer5 = new MenuLayerPriorityTest();
 
-            CCLayerMultiplex layer = new CCLayerMultiplex(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5);
+            var layer = new CCLayerMultiplex(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5);
             AddChild(layer, 0);
 
             Director.ReplaceScene(this);
