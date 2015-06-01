@@ -191,11 +191,14 @@ namespace CocosSharp
         public override void Cleanup()
         {
             base.Cleanup();
-            if (Children != null)
+            if (Parent is CCLayer)
             {
-                for (int c = 0; c < Children.Count; c++)
+                if (Children != null)
                 {
-                    RemoveAllChildren();
+                    for (int c = 0; c < Children.Count; c++)
+                    {
+                        RemoveAllChildren();
+                    }
                 }
             }
         }
