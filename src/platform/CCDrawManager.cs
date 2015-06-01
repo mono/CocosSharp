@@ -104,6 +104,7 @@ namespace CocosSharp
         public SpriteBatch SpriteBatch { get; set; }
 
         internal int DrawCount { get; set; }
+        internal int DrawPrimitivesCount { get; set; }
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }
@@ -616,6 +617,14 @@ namespace CocosSharp
             }
 
             DrawCount = 0;
+            DrawPrimitivesCount = 0;
+        }
+
+        internal void UpdateStats()
+        {
+            var metrics = graphicsDevice.Metrics;
+            DrawCount += (int)metrics.DrawCount;
+            DrawPrimitivesCount += (int)metrics.PrimitiveCount;
         }
 
         internal void EndDraw()
@@ -638,6 +647,7 @@ namespace CocosSharp
             }
 
             ResetDevice();
+
         }
 
         internal void DrawPrimitives<T>(PrimitiveType type, T[] vertices, int offset, int count) where T : struct, IVertexType
@@ -655,8 +665,6 @@ namespace CocosSharp
                 passes[i].Apply();
                 graphicsDevice.DrawUserPrimitives(type, vertices, offset, count);
             }
-
-            DrawCount++;
         }
 
         internal void DrawIndexedPrimitives<T>(PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, short[] indexData,
@@ -676,8 +684,6 @@ namespace CocosSharp
                 graphicsDevice.DrawUserIndexedPrimitives(primitiveType, vertexData, vertexOffset, numVertices, indexData, indexOffset,
                     primitiveCount);
             }
-
-            DrawCount++;
         }
 
         public void DrawQuad(ref CCV3F_C4B_T2F_Quad quad)
@@ -724,8 +730,6 @@ namespace CocosSharp
 
             graphicsDevice.SetVertexBuffer(null);
             graphicsDevice.Indices = null;
-
-            DrawCount++;
         }
 
         internal void DrawBuffer<T, T2>(CCVertexBuffer<T> vertexBuffer, CCIndexBuffer<T2> indexBuffer, int start, int count)
@@ -746,8 +750,6 @@ namespace CocosSharp
 
             graphicsDevice.SetVertexBuffer(null);
             graphicsDevice.Indices = null;
-
-            DrawCount++;
         }
 
         internal void DrawRawBuffer<T>(T[] vertexBuffer, int vStart, int vCount, short[] indexBuffer, int iStart, int iCount)
@@ -763,8 +765,6 @@ namespace CocosSharp
                     vertexBuffer, vStart, vCount, 
                     indexBuffer, iStart, iCount);
             }
-
-            DrawCount++;
         }
 
         internal void DrawQuadsBuffer<T>(CCVertexBuffer<T> vertexBuffer, int start, int n) where T : struct, IVertexType
@@ -790,8 +790,6 @@ namespace CocosSharp
 
             graphicsDevice.SetVertexBuffer(null);
             graphicsDevice.Indices = null;
-
-            DrawCount++;
         }
 
         #endregion Drawing

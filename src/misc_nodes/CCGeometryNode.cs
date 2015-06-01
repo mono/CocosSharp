@@ -142,8 +142,6 @@ namespace CocosSharp
         {
             if (numberOfVerticies == 0) return;
 
-            DrawManager.DrawCount++;
-
             var texture = DrawManager.XnaGraphicsDevice.Textures[0] as Texture2D;
 
             DrawManager.XnaGraphicsDevice.BlendState = instance.BlendState;

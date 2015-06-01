@@ -334,8 +334,6 @@ namespace CocosSharp
             {
                 CCScene runningScene = director.RunningScene;
 
-                //DrawManager.Renderer = Renderer;
-
                 // draw the scene
                 if (runningScene != null) 
                 {
@@ -366,6 +364,7 @@ namespace CocosSharp
                 Renderer.PushViewportGroup(ref defaultViewport);
                 Renderer.PushLayerGroup(ref defaultViewMatrix, ref defaultProjMatrix);
 
+                DrawManager.UpdateStats();
                 Stats.Draw(this);
 
                 Renderer.PopLayerGroup();
