@@ -103,8 +103,15 @@ namespace CocosSharp
 
         public SpriteBatch SpriteBatch { get; set; }
 
-        internal int DrawCount { get; set; }
-        internal int DrawPrimitivesCount { get; set; }
+        internal ulong DrawCount { get; set; }
+        internal ulong DrawPrimitivesCount { get; set; }
+
+
+        #if MACOS
+        // Bug https://github.com/mono/MonoGame/issues/3904
+        ulong lastDrawCount;
+        ulong lastDrawPrimitivesCount;
+        #endif
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }
@@ -616,15 +623,27 @@ namespace CocosSharp
                 Clear(CCColor4B.Transparent);
             }
 
+            #if !MACOS
             DrawCount = 0;
             DrawPrimitivesCount = 0;
+            #endif
         }
 
         internal void UpdateStats()
         {
             var metrics = graphicsDevice.Metrics;
-            DrawCount += (int)metrics.DrawCount;
-            DrawPrimitivesCount += (int)metrics.PrimitiveCount;
+
+            #if !MACOS
+            DrawCount += metrics.DrawCount;
+            DrawPrimitivesCount += metrics.PrimitiveCount;
+            #else
+            // bug https://github.com/mono/MonoGame/issues/3904
+            // We will do a small workaround for Mac OSX for now
+            DrawCount = metrics.DrawCount - lastDrawCount - 1;
+            DrawPrimitivesCount = metrics.PrimitiveCount - lastDrawPrimitivesCount - 1;
+            lastDrawCount = metrics.DrawCount;
+            lastDrawPrimitivesCount = metrics.PrimitiveCount;
+            #endif
         }
 
         internal void EndDraw()
