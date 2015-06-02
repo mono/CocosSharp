@@ -76,9 +76,11 @@ namespace tests
 
     public class LayerMultiplexTest : LayerTest
     {
-        CCLayerMultiplex child = new CCLayerMultiplex();
+        CCLayerMultiplex child;
+
         public LayerMultiplexTest()
         {
+            List<CCLayer> layers = new List<CCLayer>();
             for (int i = 0; i < 3; i++)
             {
 				CCLayer l = new CCLayerColor(new CCColor4B(0,255,0));
@@ -100,9 +102,10 @@ namespace tests
 				l.ContentSize = img.ContentSize;
                 l.AddChild(img);
                 l.Position = new CCPoint(128f, 128f);
-                child.AddLayer(l);
+                layers.Add(l);
             }
-			child.InAction = new CCFadeIn(1);
+            child = new CCLayerMultiplex(layers.ToArray());
+            child.InAction = new CCFadeIn(1);
             AddChild(child);
 			Schedule(new Action<float>(AutoMultiplex), 3f);
         }
@@ -129,7 +132,7 @@ namespace tests
         private void AutoMultiplex(float dt)
         {
 			//CCLog.Log ("Switched");
-			var newRand = -1;
+			int newRand = -1;
 			// make sure we always change to a new one
 			do {
 				newRand = rand.Next (3);
