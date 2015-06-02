@@ -35,21 +35,22 @@ namespace CocosSharp
     {
         public static CCCameraProjection DefaultCameraProjection = CCCameraProjection.Projection3D;
 
+        // A delegate type for hooking up Layer Visible Bounds change notifications.
+        internal delegate void LayerVisibleBoundsChangedEventHandler(object sender, EventArgs e);
+        internal event LayerVisibleBoundsChangedEventHandler LayerVisibleBoundsChanged;
+
         bool restoreScissor;
         bool noDrawChildren;
 
         CCCameraProjection initCameraProjection;
+        CCRect visibleBoundsWorldspace;
 
         CCRenderTexture renderTexture;
         CCClipMode childClippingMode;
         CCCamera camera;
 
-        CCRect visibleBoundsWorldspace;
-
-        // A delegate type for hooking up Layer Visible Bounds change notifications.
-        internal delegate void LayerVisibleBoundsChangedEventHandler(object sender, EventArgs e);
-        internal event LayerVisibleBoundsChangedEventHandler LayerVisibleBoundsChanged;
-
+        CCRenderCommand beforeDrawCommand;
+        CCRenderCommand afterDrawCommand;
 
         #region Properties
 
@@ -184,7 +185,14 @@ namespace CocosSharp
             }
         }
 
+        protected override void InitialiseRenderCommand()
+        {
+            beforeDrawCommand = new CCCustomCommand(BeforeDraw);
+            afterDrawCommand = new CCCustomCommand(AfterDraw);
+        }
+
         #endregion Constructors
+
 
         #region Content layout
 
@@ -294,7 +302,9 @@ namespace CocosSharp
                 return;
             }
 
-            BeforeDraw();
+            beforeDrawCommand.GlobalDepth = float.MinValue;
+            beforeDrawCommand.WorldTransform = parentWorldTransfrom;
+            Renderer.AddCommand(beforeDrawCommand);
 
             VisitRenderer(ref parentWorldTransfrom);
 
@@ -310,8 +320,9 @@ namespace CocosSharp
                 }
             }
 
-
-            AfterDraw();
+            afterDrawCommand.GlobalDepth = float.MaxValue;
+            afterDrawCommand.WorldTransform = parentWorldTransfrom;
+            Renderer.AddCommand(afterDrawCommand);
 
             if(Camera != null)
                 Renderer.PopLayerGroup();

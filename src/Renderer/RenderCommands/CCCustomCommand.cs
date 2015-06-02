@@ -33,6 +33,11 @@ namespace CocosSharp
         {
         }
 
+        public CCCustomCommand(Action action)
+            : this(0.0f, CCAffineTransform.Identity, action)
+        {
+        }
+
         protected CCCustomCommand(CCCustomCommand copy)
             : base(copy)
         {
