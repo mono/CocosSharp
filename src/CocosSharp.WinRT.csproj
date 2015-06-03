@@ -822,9 +822,6 @@
     <Compile Include=".\predefine\CCTypes.cs">
       <LogicalName>predefine\CCTypes</LogicalName>
     </Compile>
-    <Compile Include=".\Properties\AssemblyInfo.cs">
-      <LogicalName>Properties\AssemblyInfo</LogicalName>
-    </Compile>
     <Compile Include=".\script_support\CCScriptEngineManager.cs">
       <LogicalName>script_support\CCScriptEngineManager</LogicalName>
     </Compile>

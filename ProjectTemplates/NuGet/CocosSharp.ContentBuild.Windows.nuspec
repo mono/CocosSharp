@@ -22,7 +22,6 @@
     <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll" target="tools\CocosSharp.Importers" />
     <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.dll" target="tools\CocosSharp.Importers" />
     <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\BitMiracle.LibTiff.NET.dll" target="tools\CocosSharp.Importers" />
-    <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\ICSharpCode.SharpZipLib.dll" target="tools\CocosSharp.Importers" />    
   </files>
 
 </package>

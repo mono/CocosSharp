@@ -20,7 +20,6 @@
       <group targetFramework="netcore">
         <reference file="box2d.dll"></reference>
         <reference file="CocosSharp.dll"></reference>
-        <reference file="ICSharpCode.SharpZipLib.dll"></reference>
         <reference file="MonoGame.Framework.dll"></reference>
         <reference file="MonoGame.Framework.Net.dll"></reference>
       </group>
