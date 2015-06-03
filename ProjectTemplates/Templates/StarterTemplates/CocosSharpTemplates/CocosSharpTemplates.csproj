@@ -107,6 +107,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="..\Wp81\Template\bin\EmptyProject.WP81.zip">
+      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.WP81.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="..\..\..\NuGet\bin\CocosSharp.Android.1.4.0.0.nupkg">
       <Link>Packages\CocosSharp.Android.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -127,14 +132,6 @@
       <Link>Packages\CocosSharp.PCL.Shared.GL.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.XNA.1.4.0.0.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.XNA.1.4.0.0.nupkg</Link>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.Windows.1.4.0.0.nupkg">
-      <Link>Packages\CocosSharp.Windows.1.4.0.0.nupkg</Link>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="..\..\..\NuGet\bin\CocosSharp.Windows8.1.4.0.0.nupkg">
       <Link>Packages\CocosSharp.Windows8.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -149,6 +146,10 @@
     </Content>
     <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsPhone8.1.4.0.0.nupkg">
       <Link>Packages\CocosSharp.WindowsPhone8.1.4.0.0.nupkg</Link>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.WindowsPhone81.1.4.0.0.nupkg">
+      <Link>Packages\CocosSharp.WindowsPhone81.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">

@@ -5,23 +5,20 @@ using Microsoft.Xna.Framework;
 
 namespace $safeprojectname$
 {
-	public class IntroLayer : CCLayerColor
-	{
-		CCLabelTtf label;
+    public class IntroLayer : CCLayerColor
+    {
 
-        public IntroLayer()
+        // Define a label variable
+        CCLabel label;
+
+        public IntroLayer() : base(CCColor4B.Blue)
         {
 
             // create and initialize a Label
-            label = new CCLabelTtf("Hello CocosSharp", "MarkerFelt", 22);
-            label.AnchorPoint = CCPoint.AnchorMiddle;
+            label = new CCLabel("Hello CocosSharp", "fonts/MarkerFelt", 22, CCLabelFormat.SpriteFont);
 
             // add the label as a child to this Layer
             AddChild(label);
-
-            // setup our color for the background
-            Color = new CCColor3B(CCColor4B.Blue);
-            Opacity = 255;
 
         }
 
