@@ -50,23 +50,6 @@
     <Folder Include="Content\sounds" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\box2d.dll</HintPath>
-    </Reference>
-    <Reference Include="CocosSharp">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\CocosSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\Lidgren.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\OpenTK.dll</HintPath>
@@ -76,9 +59,6 @@
     <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\Tao.Sdl.dll</HintPath>
-    </Reference>
-    <Reference Include="zlib.net">
-      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\WindowsGL\Release\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

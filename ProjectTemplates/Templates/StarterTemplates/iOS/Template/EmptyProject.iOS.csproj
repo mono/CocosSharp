@@ -97,21 +97,6 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\box2diOS.dll</HintPath>
-    </Reference>
-    <Reference Include="CocosSharp">
-      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\CocosSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Lidgren.Network">
-      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\Lidgren.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\..\..\..\CocosSharp\src\Bin\iPhoneSimulator\Release\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
