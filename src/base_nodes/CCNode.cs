@@ -884,7 +884,6 @@ namespace CocosSharp
 
         public CCNode()
         {
-            InitialiseRenderCommand();
 #if USE_PHYSICS
 			_physicsBody = null;
 			_physicsScaleStartX = 1.0f;
@@ -909,9 +908,7 @@ namespace CocosSharp
 
             FauxLocalCameraUpDirection = new CCPoint3(0.0f, 1.0f, 0.0f);
         }
-
-        protected virtual void InitialiseRenderCommand() {}
-
+            
         #endregion Constructors
 
 

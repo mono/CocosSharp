@@ -162,6 +162,9 @@ namespace CocosSharp
         public CCLayer(CCCameraProjection cameraProjection, CCClipMode clipMode = CCClipMode.None)
             : base()
         {
+            beforeDrawCommand = new CCCustomCommand(BeforeDraw);
+            afterDrawCommand = new CCCustomCommand(AfterDraw);
+
             ChildClippingMode = clipMode;
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = CCPoint.AnchorMiddle;
@@ -183,12 +186,6 @@ namespace CocosSharp
             {
                 renderTexture = null;
             }
-        }
-
-        protected override void InitialiseRenderCommand()
-        {
-            beforeDrawCommand = new CCCustomCommand(BeforeDraw);
-            afterDrawCommand = new CCCustomCommand(AfterDraw);
         }
 
         #endregion Constructors

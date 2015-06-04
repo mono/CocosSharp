@@ -21,6 +21,7 @@ namespace CocosSharp
         CCPoint[] pointVertexes;
         CCV3F_C4B_T2F[] vertices;
 
+        CCRenderCommand streakRenderCommand;
 
         #region Properties
 
@@ -67,6 +68,8 @@ namespace CocosSharp
 
         public CCMotionStreak(float fade, float minSegIn, float strokeIn, CCColor3B color, CCTexture2D texture)
         {
+            streakRenderCommand = new CCCustomCommand(RenderMotionStreak);
+
             AnchorPoint = CCPoint.Zero;
             IgnoreAnchorPointForPosition = true;
             StartingPositionInitialized = false;
@@ -98,7 +101,9 @@ namespace CocosSharp
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             Renderer.PushGroup();
-            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderMotionStreak));
+            streakRenderCommand.GlobalDepth = worldTransform.Tz;
+            streakRenderCommand.WorldTransform = worldTransform;
+            Renderer.AddCommand(streakRenderCommand);
             Renderer.PopGroup();
         }
 

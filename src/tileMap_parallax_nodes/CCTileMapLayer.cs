@@ -34,6 +34,7 @@ namespace CocosSharp
         CCAffineTransform nodeToTileCoordsTransformOdd;
 
         List<CCTileMapDrawBufferManager> drawBufferManagers;
+        CCCustomCommand tileRenderCommand;
 
         Dictionary<short, short> currentTileGidAnimations;
         List<CCActionState> activeTileAnimationActionStates;
@@ -129,6 +130,8 @@ namespace CocosSharp
         CCTileMapLayer(CCTileSetInfo[] tileSetInfos, CCTileLayerInfo layerInfo, CCTileMapInfo mapInfo, CCTileMapCoordinates layerSize,
             int totalNumberOfTiles, int tileCapacity)
         {
+            tileRenderCommand = new CCCustomCommand(RenderTileMapLayer);
+
             this.mapInfo = mapInfo;
             LayerName = layerInfo.Name;
             LayerSize = layerSize;
@@ -362,8 +365,9 @@ namespace CocosSharp
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            DrawManager.Renderer.AddCommand(
-                new CCCustomCommand(worldTransform.Tz + minVertexZ, worldTransform, RenderTileMapLayer));
+            tileRenderCommand.GlobalDepth = worldTransform.Tz + minVertexZ;
+            tileRenderCommand.WorldTransform = worldTransform;
+            DrawManager.Renderer.AddCommand(tileRenderCommand);
         }
 
         void RenderTileMapLayer()

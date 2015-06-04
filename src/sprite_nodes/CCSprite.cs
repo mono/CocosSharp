@@ -11,7 +11,7 @@ namespace CocosSharp
         bool flipY;
         bool isTextureRectRotated;
         bool opacityModifyRGB;
-        bool texQuadsDirty;
+        bool texQuadDirty;
 
         CCPoint unflippedOffsetPositionFromCenter;
         CCSize untrimmedSizeInPixels;
@@ -36,7 +36,6 @@ namespace CocosSharp
         // Instance properties
 
         public int AtlasIndex { get ; internal set; }
-        protected internal CCV3F_C4B_T2F_Quad Quad { get { return quadCommand.Quads[0]; } }
         internal CCTextureAtlas TextureAtlas { get; set; }
 
         public bool IsAntialiased
@@ -66,7 +65,7 @@ namespace CocosSharp
                 if (isTextureRectRotated != value) 
                 {
                     isTextureRectRotated = value;
-                    texQuadsDirty = true;
+                    texQuadDirty = true;
                 }
             }
         }
@@ -79,7 +78,7 @@ namespace CocosSharp
                 if (flipX != value)
                 {
                     flipX = value;
-                    texQuadsDirty = true;
+                    texQuadDirty = true;
                 }
             }
         }
@@ -92,7 +91,7 @@ namespace CocosSharp
                 if (flipY != value)
                 {
                     flipY = value;
-                    texQuadsDirty = true;
+                    texQuadDirty = true;
                 }
             }
         }
@@ -106,7 +105,7 @@ namespace CocosSharp
             set
             {
                 base.Visible = value;
-                texQuadsDirty = true;
+                texQuadDirty = true;
             }
         }
 
@@ -143,7 +142,7 @@ namespace CocosSharp
             {
                 base.ContentSize = value;
 
-                texQuadsDirty = true;
+                texQuadDirty = true;
             }
         }
 
@@ -158,7 +157,7 @@ namespace CocosSharp
                     if(ContentSize == CCSize.Zero)
                         ContentSize = textureRectInPixels.Size / DefaultTexelToContentSizeRatios;
 
-                    texQuadsDirty = true;
+                    texQuadDirty = true;
                 }
             }
         }
@@ -196,7 +195,7 @@ namespace CocosSharp
 
                     ContentSize = UntrimmedSizeInPixels / DefaultTexelToContentSizeRatios;
 
-                    texQuadsDirty = true;
+                    texQuadDirty = true;
                 }
             }
         }
@@ -236,6 +235,17 @@ namespace CocosSharp
             set { untrimmedSizeInPixels = value; }
         }
 
+        protected internal CCV3F_C4B_T2F_Quad Quad 
+        { 
+            get 
+            { 
+                if(texQuadDirty) 
+                    UpdateSpriteTextureQuads();
+                
+                return quadCommand.Quads[0]; 
+            } 
+        }
+
         #endregion Properties
 
 
@@ -255,7 +265,7 @@ namespace CocosSharp
             opacityModifyRGB = true;
             BlendFunc = CCBlendFunc.AlphaBlend;
 
-            texQuadsDirty = true;
+            texQuadDirty = true;
         }
 
         public CCSprite(CCTexture2D texture=null, CCRect? texRectInPixels=null, bool rotated=false) : this()
@@ -296,7 +306,7 @@ namespace CocosSharp
             if(ContentSize == CCSize.Zero)
                 ContentSize = textureRectInPixels.Size / CCSprite.DefaultTexelToContentSizeRatios;
 
-            texQuadsDirty = true;
+            texQuadDirty = true;
         }
 
         void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
@@ -335,7 +345,7 @@ namespace CocosSharp
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            if(texQuadsDirty)
+            if(texQuadDirty)
                 UpdateSpriteTextureQuads();
 
             quadCommand.GlobalDepth = worldTransform.Tz;
@@ -437,7 +447,7 @@ namespace CocosSharp
         void UpdateSpriteTextureQuads()
         {
             quadCommand.RequestUpdateQuads(UpdateSpriteTextureQuadsCallback);
-            texQuadsDirty = false;
+            texQuadDirty = false;
         }
 
         void UpdateSpriteTextureQuadsCallback(ref CCV3F_C4B_T2F_Quad[] quads)
@@ -570,7 +580,7 @@ namespace CocosSharp
 
         public void UpdateLocalTransformedSpriteTextureQuads()
         {
-            if(texQuadsDirty)
+            if(texQuadDirty)
                 UpdateSpriteTextureQuads();
 
             quadCommand.RequestUpdateQuads(UpdateLocalTransformedSpriteTextureQuadsCallback);

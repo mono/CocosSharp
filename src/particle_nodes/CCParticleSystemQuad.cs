@@ -106,22 +106,29 @@ namespace CocosSharp
         public CCParticleSystemQuad(int numberOfParticles, CCEmitterMode emitterMode=CCEmitterMode.Gravity) 
             : base(numberOfParticles, emitterMode)
         {
+            InitRenderCommand();
         }
 
-        public CCParticleSystemQuad(CCParticleSystemConfig config) : base(config)
-        {}
+        public CCParticleSystemQuad(CCParticleSystemConfig config) 
+            : base(config)
+        {
+            InitRenderCommand();
+        }
 
-        public CCParticleSystemQuad(string plistFile, string directoryName = null) : base(plistFile, directoryName)
+        public CCParticleSystemQuad(string plistFile, string directoryName = null) 
+            : base(plistFile, directoryName)
         {
             int totalPart = TotalParticles;
+            InitRenderCommand();
+        }
+
+        void InitRenderCommand()
+        {
+            quadsCommand = new CCQuadCommand(0);
         }
 
         #endregion Constructors
 
-        protected override void InitialiseRenderCommand()
-        {
-            quadsCommand = new CCQuadCommand(0);
-        }
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {

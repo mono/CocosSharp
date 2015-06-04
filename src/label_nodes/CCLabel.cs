@@ -680,6 +680,8 @@ namespace CocosSharp
         /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
+            quadCommand = new CCQuadCommand(str.Length);
+
             this.labelFormat = (size == 0 && labelFormat.FormatFlags == CCLabelFormatFlags.Unknown) 
                 ? CCLabelFormat.BitMapFont 
                 : labelFormat;
@@ -1449,11 +1451,6 @@ namespace CocosSharp
                 TextureAtlas.Capacity, quantity));
 
             TextureAtlas.ResizeCapacity(quantity);
-        }
-
-        protected override void InitialiseRenderCommand()
-        {
-            quadCommand = new CCQuadCommand(0);
         }
 
         public override void Visit(ref CCAffineTransform parentWorldTransform)
