@@ -29,6 +29,7 @@
     <UseSGen>False</UseSGen>
     <UseMSBuildEngine>False</UseMSBuildEngine>
     <UseRefCounting>false</UseRefCounting>
+    <DocumentationFile>bin\MacOS\Debug\CocosSharp.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -46,6 +47,7 @@
     <UseSGen>False</UseSGen>
     <UseMSBuildEngine>False</UseMSBuildEngine>
     <UseRefCounting>false</UseRefCounting>
+    <DocumentationFile>bin\MacOS\Release\CocosSharp.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|AnyCPU' ">
     <DebugType>none</DebugType>
