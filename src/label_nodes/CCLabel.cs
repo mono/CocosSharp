@@ -407,7 +407,7 @@ namespace CocosSharp
             }
         }
 
-        public virtual CCTexture2D Texture
+        public CCTexture2D Texture
         {
             get { return TextureAtlas.Texture; }
             set
