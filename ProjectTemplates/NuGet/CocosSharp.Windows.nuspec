@@ -19,6 +19,7 @@
 
   <files>
     <file src="..\..\src\bin\Windows\Release\*.dll" target="lib\NET40" />
+    <file src="..\..\src\bin\Windows\Release\*.xml" target="lib\NET40" />
   </files>
 
 </package>

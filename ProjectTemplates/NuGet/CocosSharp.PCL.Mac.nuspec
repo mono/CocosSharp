@@ -25,12 +25,15 @@
 
      <!--Xamarin.Android-->
     <file src="src/bin/Android/Release/*.dll" target="lib/MonoAndroid10" />
+    <file src="src/bin/Android/Release/*.xml" target="lib/MonoAndroid10" />
     
      <!--Xamarin.iOS-->
     <file src="src/bin/iPhone/Release/*.dll" target="lib/Xamarin.iOS10" />
+    <file src="src/bin/iPhone/Release/*.xml" target="lib/Xamarin.iOS10" />
 
      <!--Xamarin.Mac -->
     <file src="src/bin/MacOS/Release/*.dll" target="lib/net40" exclude="src/bin/MacOS/Release/MonoMac.dll;src/bin/MacOS/Release/XamMac.dll" />
+    <file src="src/bin/MacOS/Release/*.xml" target="lib/net40" />
 
   </files>
 

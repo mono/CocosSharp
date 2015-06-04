@@ -19,6 +19,7 @@
 
   <files>
     <file src="src/bin/iPhone/Release/*.dll" target="lib/Xamarin.iOS10" />
+    <file src="src/bin/iPhone/Release/*.xml" target="lib/Xamarin.iOS10" />
   </files>
 
 </package>

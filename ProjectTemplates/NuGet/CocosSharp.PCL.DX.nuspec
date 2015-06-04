@@ -34,21 +34,25 @@
 
      <!--Xamarin.Android-->
     <file src="..\..\src\bin\Android\Release\*.dll" target="lib\MonoAndroid10\" />
+    <file src="..\..\src\bin\Android\Release\*.xml" target="lib\MonoAndroid10\" />
     
      <!--Xamarin.Ouya not supported right now -->
     <!--file src="..\..\src\bin\Ouya\Release\*.dll" target="lib\Ouya\" /-->
+    <!--file src="..\..\src\bin\Ouya\Release\*.xml" target="lib\Ouya\" /-->
 
      <!--Xamarin.iOS-->
     <file src="..\..\src\bin\iPhone\Release\*.dll" target="lib\Xamarin.iOS10\" />
+    <file src="..\..\src\bin\iPhone\Release\*.xml" target="lib\Xamarin.iOS10\" />
 
      <!--Xamarin.Mac this is not supported right now on windows build we need to find a way to reference this build -->
     <!--file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\MonoMac10\" /-->
-
+    <!--file src="..\..\src\bin\MacOS\Release\*.xml" target="lib\MonoMac10\" /-->
 
 	<!-- We need to make a decision on which one will be the default for net40 - XNA, DX, GL-->
 
      <!--Windows normal XNA-->
     <!-- file src="..\..\src\bin\Windows\Release\*.dll" target="lib\net40" /-->
+    <!-- file src="..\..\src\bin\Windows\Release\*.xml" target="lib\net40" /-->
      
      <!--Windows DX-->
     <file src="..\..\src\bin\WindowsDX\Release\*.*" target="lib\net40" exclude="..\..\src\bin\WindowsDX\Release\MonoGame*.*;..\..\src\bin\WindowsDX\Release\Sharp*.*;..\..\src\bin\WindowsDX\Release\Lidgren*.*"/>
@@ -57,24 +61,29 @@
 
      <!--Windows GL-->
     <!--file src="..\..\src\bin\WindowsGL\Release\*.dll" target="lib\net40" /-->
+    <!--file src="..\..\src\bin\WindowsGL\Release\*.xml" target="lib\net40" /-->
     <!--file src="..\..\MonoGame\ThirdParty\GamepadConfig\SDL.dll" target="content\" /-->
 
 
       <!--Windows8-->
       <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.*;..\..\src\bin\Windows8\Release\Sharp*.*"/>
+      <file src="..\..\src\bin\Windows8\Release\*.xml" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.xml;..\..\src\bin\Windows8\Release\Sharp*.xml"/>
       <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\MonoGame*.*" target="lib\netcore"/>
       <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\Themes**\*.*" target="lib\netcore\MonoGame.Framework"/>
       <file src="..\..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
 
     <!--Windows Phone 8-->
 		<file src="..\..\src\bin\WindowsPhone\x86\Release\*.dll" target="build\wp8\x86" exclude="..\..\src\bin\WindowsPhone\x86\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\x86\Release\Sharp*.*" />
+		<file src="..\..\src\bin\WindowsPhone\x86\Release\*.xml" target="build\wp8\x86" exclude="..\..\src\bin\WindowsPhone\x86\Release\MonoGame*.xml;..\..\src\bin\WindowsPhone\x86\Release\Sharp*.xml" />
 		<file src="..\..\MonoGame\MonoGame.Framework\bin\WindowsPhone\x86\Release\*.*" target="build\wp8\x86" />
 		<file src="..\..\src\bin\WindowsPhone\ARM\Release\*.dll" target="build\wp8\ARM" exclude="..\..\src\bin\WindowsPhone\ARM\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\ARM\Release\Sharp*.*" />
+		<file src="..\..\src\bin\WindowsPhone\ARM\Release\*.xml" target="build\wp8\ARM" exclude="..\..\src\bin\WindowsPhone\ARM\Release\MonoGame*.xml;..\..\src\bin\WindowsPhone\ARM\Release\Sharp*.xml" />
 		<file src="..\..\MonoGame\MonoGame.Framework\bin\WindowsPhone\ARM\Release\*.*" target="build\wp8\ARM" />
         <file src="build\wp8\CocosSharp.targets" target="build\wp8\CocosSharp.WindowsPhone8.targets" />
 
     <!--Windows Phone 8.1-->
     <file src="..\..\src\bin\WindowsPhone81\AnyCPU\Release\*.dll" target="lib\wpa81" />
+    <file src="..\..\src\bin\WindowsPhone81\AnyCPU\Release\*.xml" target="lib\wpa81" />
 
   </files>
 

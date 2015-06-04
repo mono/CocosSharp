@@ -19,6 +19,7 @@
 
   <files>
     <file src="src/bin/MacOS/Release/*.dll" target="lib/net40" exclude="src/bin/MacOS/Release/MonoMac.dll;src/bin/MacOS/Release/XamMac.dll" />
+    <file src="src/bin/MacOS/Release/*.xml" target="lib/net40" />
   </files>
 
 </package>

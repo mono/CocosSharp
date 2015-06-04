@@ -19,6 +19,7 @@
 
   <files>
     <file src="src/bin/Android/Release/*.dll" target="lib/MonoAndroid10" />
+    <file src="src/bin/Android/Release/*.xml" target="lib/MonoAndroid10" />
   </files>
 
 </package>
