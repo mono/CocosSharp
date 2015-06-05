@@ -1,0 +1,44 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+	<TemplateData>
+		<Name>Empty Game - Mobile</Name>
+		<Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for iOS.</Description>
+		<ProjectType>CSharp</ProjectType>
+		<ProjectSubType>
+		</ProjectSubType>
+		<SortOrder>1003</SortOrder>
+		<CreateNewFolder>true</CreateNewFolder>
+		<CreateInPlace>true</CreateInPlace>
+		<DefaultName>CocosSharpGame</DefaultName>
+		<ProvideDefaultName>true</ProvideDefaultName>
+		<LocationField>Enabled</LocationField>
+		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+		<Icon>__TemplateIcon.ico</Icon>
+		<PreviewImage>__PreviewImage.png</PreviewImage>
+	</TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="EmptyProject.iOS.csproj" File="EmptyProject.iOS.csproj" ReplaceParameters="true">
+      <Folder Name="Content" TargetFolderName="Content">
+        <Folder Name="fonts" TargetFolderName="fonts">
+          <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-22.xnb">MarkerFelt-22.xnb</ProjectItem>
+        </Folder>
+      </Folder>
+      <ProjectItem ReplaceParameters="false" TargetFileName="Game.ico">Game.ico</ProjectItem>
+      <ProjectItem ReplaceParameters="false" TargetFileName="GameThumbnail.png">GameThumbnail.png</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Info.plist">Info.plist</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+	<WizardExtension>
+		<Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+		<FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+	</WizardExtension>
+	<WizardData>
+		<packages repository="extension"
+			  repositoryId="Xamarin.CocosSharpTemplates">
+			<package id="CocosSharp.PCL.Shared" version="1.4.0.0" />
+		</packages>
+	</WizardData>
+</VSTemplate>

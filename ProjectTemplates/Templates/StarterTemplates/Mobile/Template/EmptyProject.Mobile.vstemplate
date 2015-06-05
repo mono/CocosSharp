@@ -1,0 +1,38 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
+  <TemplateData>
+    <Name>Empty Game - Mobile</Name>
+    <Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for a PCL project containing Windows Phone 8.1, iOS and Android.</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>CocosSharpGame</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <Icon>__TemplateIcon.ico</Icon>
+    <PreviewImage>__PreviewImage.png</PreviewImage>
+  </TemplateData>
+  <TemplateContent>
+    <ProjectCollection>
+        <!-- CopyParameters="true" are need
+		see the following links for more information:
+		 http://stackoverflow.com/questions/19662836/using-customparamter-with-visual-studio-multi-project-template 
+		 https://msdn.microsoft.com/en-us/library/ms171398.aspx
+	-->
+        <ProjectTemplateLink ProjectName="$projectname$.Shared" CopyParameters="true">
+            Shared\EmptyProject.Shared.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="$projectname$.WP81" CopyParameters="true">
+            WP81\EmptyProject.WP81.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="$projectname$.Droid" CopyParameters="true">
+            Android\EmptyProject.Android.vstemplate
+        </ProjectTemplateLink>
+        <ProjectTemplateLink ProjectName="$projectname$.iOS" CopyParameters="true">
+            iOS\EmptyProject.iOS.vstemplate
+        </ProjectTemplateLink>
+    </ProjectCollection>
+  </TemplateContent>
+</VSTemplate>

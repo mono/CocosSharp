@@ -112,6 +112,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="..\Mobile\Template\bin\EmptyProject.Mobile.zip">
+      <Link>ProjectTemplates\CocosSharp\Mobile\EmptyProject.Mobile.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="..\..\..\NuGet\bin\CocosSharp.Android.1.4.0.0.nupkg">
       <Link>Packages\CocosSharp.Android.1.4.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
