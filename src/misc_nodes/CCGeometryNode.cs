@@ -14,11 +14,15 @@ namespace CocosSharp
         CCRawList<CCGeometryInstance> batchItemList;
         BasicEffect basicEffect;
 
+        CCCustomCommand geomRenderCommand;
+
 
         #region Constructors
 
         public CCGeometryNode(int bufferSize=DefaultBufferSize)
         {
+            geomRenderCommand = new CCCustomCommand(RenderBatch);
+
             indicesArray = new CCRawList<short>(bufferSize * 2);
             verticesArray = new CCRawList<CCV3F_C4B_T2F>(bufferSize);
             batchItemList = new CCRawList<CCGeometryInstance>(bufferSize);
@@ -34,6 +38,7 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
 
         #region Creating/removing geometry
 
@@ -73,8 +78,9 @@ namespace CocosSharp
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            Renderer.AddCommand(
-                new CCCustomCommand(worldTransform.Tz, worldTransform, RenderBatch));
+            geomRenderCommand.GlobalDepth = worldTransform.Tz;
+            geomRenderCommand.WorldTransform = worldTransform;
+            Renderer.AddCommand(geomRenderCommand);
         }
 
         void RenderBatch()

@@ -407,7 +407,7 @@ namespace CocosSharp
             }
         }
 
-        public virtual CCTexture2D Texture
+        public CCTexture2D Texture
         {
             get { return TextureAtlas.Texture; }
             set
@@ -664,10 +664,8 @@ namespace CocosSharp
         /// <param name="imageOffset">Image offset.</param>
         /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
+            : this (str, fntFile, 0.0f, dimensions, labelFormat, imageOffset, texture)
         {
-            this.labelFormat = labelFormat;
-            // First we try loading BitMapFont
-            InitBMFont(str, fntFile, dimensions, labelFormat.Alignment, labelFormat.LineAlignment, imageOffset, texture);
         }
 
         /// <summary>
@@ -682,6 +680,8 @@ namespace CocosSharp
         /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
+            quadCommand = new CCQuadCommand(str.Length);
+
             this.labelFormat = (size == 0 && labelFormat.FormatFlags == CCLabelFormatFlags.Unknown) 
                 ? CCLabelFormat.BitMapFont 
                 : labelFormat;
@@ -1451,11 +1451,6 @@ namespace CocosSharp
                 TextureAtlas.Capacity, quantity));
 
             TextureAtlas.ResizeCapacity(quantity);
-        }
-
-        protected override void InitialiseRenderCommand()
-        {
-            quadCommand = new CCQuadCommand(0);
         }
 
         public override void Visit(ref CCAffineTransform parentWorldTransform)
