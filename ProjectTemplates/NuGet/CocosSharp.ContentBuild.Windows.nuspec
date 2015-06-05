@@ -18,10 +18,10 @@
   </metadata>
 
   <files>
-    <file src="..\..\MonoGame\Tools\Pipeline\bin\Windows\AnyCPU\Release\**\*.*" target="tools\Pipeline" />
-    <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll" target="tools\CocosSharp.Importers" />
-    <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.dll" target="tools\CocosSharp.Importers" />
-    <file src="..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\BitMiracle.LibTiff.NET.dll" target="tools\CocosSharp.Importers" />
+    <file src="MonoGame\Tools\Pipeline\bin\Windows\AnyCPU\Release\**\*.*" target="tools\Pipeline" />
+    <file src="CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll" target="tools\CocosSharp.Importers" />
+    <file src="CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.dll" target="tools\CocosSharp.Importers" />
+    <file src="CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\BitMiracle.LibTiff.NET.dll" target="tools\CocosSharp.Importers" />
   </files>
 
 </package>

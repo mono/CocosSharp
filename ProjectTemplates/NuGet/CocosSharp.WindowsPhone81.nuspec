@@ -28,7 +28,7 @@
 
   <files>
     <!--Windows Phone 8.1-->
-    <file src="..\..\src\bin\WindowsPhone81\AnyCPU\Release\*.dll" target="lib\wpa81" />
-    <file src="..\..\src\bin\WindowsPhone81\AnyCPU\Release\*.xml" target="lib\wpa81" />
+    <file src="src\bin\WindowsPhone81\AnyCPU\Release\*.dll" target="lib\wpa81" />
+    <file src="src\bin\WindowsPhone81\AnyCPU\Release\*.xml" target="lib\wpa81" />
   </files>
 </package>

@@ -28,10 +28,10 @@
 
   <files>
     <!--Windows8-->
-    <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.*;..\..\src\bin\Windows8\Release\Sharp*.*"/>
-    <file src="..\..\src\bin\Windows8\Release\*.xml" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.xml;..\..\src\bin\Windows8\Release\Sharp*.xml"/>
-    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\MonoGame*.*" target="lib\netcore"/>
-    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\Themes**\*.*" target="lib\netcore\MonoGame.Framework"/>
-    <file src="..\..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
+    <file src="src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="src\bin\Windows8\Release\MonoGame*.*;src\bin\Windows8\Release\Sharp*.*"/>
+    <file src="src\bin\Windows8\Release\*.xml" target="lib\netcore" exclude="src\bin\Windows8\Release\MonoGame*.xml;src\bin\Windows8\Release\Sharp*.xml"/>
+    <file src="MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\MonoGame*.*" target="lib\netcore"/>
+    <file src="MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\Themes**\*.*" target="lib\netcore\MonoGame.Framework"/>
+    <file src="MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
   </files>
 </package>
