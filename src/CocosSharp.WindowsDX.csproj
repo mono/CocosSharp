@@ -199,10 +199,8 @@
     <Compile Include="physics\chipmunk\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="physics\extensions\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="platform\CCArrayPool.cs" />
-    <Compile Include="Renderer\CCPrimitive.cs" />
     <Compile Include="Renderer\CCRenderer.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
-    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />

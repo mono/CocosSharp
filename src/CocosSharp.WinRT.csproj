@@ -146,10 +146,8 @@
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="platform\CCArrayPool.cs" />
-    <Compile Include="Renderer\CCPrimitive.cs" />
     <Compile Include="Renderer\CCRenderer.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
-    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
