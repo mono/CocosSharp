@@ -77,19 +77,6 @@ namespace CocosSharp
                 }
             }
         }
-//
-//        public CCSize ContentSize
-//        {
-//            get { return contentSize; }
-//            set 
-//            {
-//                if (contentSize != value) 
-//                {
-//                    contentSize = value;
-//                    Step = new CCPoint (contentSize.Width / GridSize.X, contentSize.Height / GridSize.Y);
-//                }
-//            }
-//        }
 
         #endregion Properties
 
@@ -140,6 +127,8 @@ namespace CocosSharp
 
         public virtual void Blit()
         {
+            CCDrawManager drawManager = Scene.Window.DrawManager;
+            drawManager.BindTexture(Texture);
         }
 
         public virtual void BeforeDraw()
@@ -150,8 +139,6 @@ namespace CocosSharp
         public virtual void AfterDraw(CCNode target)
         {
             Grabber.AfterRender(Texture);
-
-            Scene.Window.DrawManager.BindTexture(Texture);
         }
 
         public ulong NextPOT(ulong x)

@@ -6,6 +6,9 @@ namespace CocosSharp
     public class CCNodeGrid : CCNode
     {
         CCGridBase grid;
+        CCCustomCommand renderGrid;
+        CCCustomCommand renderBeginGrid;
+        CCCustomCommand renderEndGrid;
 
 
         #region Properties
@@ -34,11 +37,16 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCNodeGrid () : base ()
+        public CCNodeGrid () 
+            : base ()
         {
+            renderGrid = new CCCustomCommand(RenderGrid);
+            renderBeginGrid = new CCCustomCommand(float.MinValue, OnGridBeginDraw);
+            renderEndGrid = new CCCustomCommand(float.MaxValue, OnGridEndDraw);
         }
 
-        public CCNodeGrid (CCSize contentSize) : base (contentSize)
+        public CCNodeGrid (CCSize contentSize) 
+            : base (contentSize)
         {
         }
 
@@ -57,9 +65,13 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                CCCustomCommand command = new CCCustomCommand(float.MinValue, worldTransform, OnGridBeginDraw);
+                renderGrid.GlobalDepth = worldTransform.Tz;
+                Renderer.AddCommand(renderGrid);
+
+                renderBeginGrid.WorldTransform = worldTransform;
+
                 Renderer.PushGroup();
-                Renderer.AddCommand(command);
+                Renderer.AddCommand(renderBeginGrid);
             }
 
             SortAllChildren();
@@ -79,29 +91,28 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                CCCustomCommand command = new CCCustomCommand(float.MaxValue, worldTransform, OnGridEndDraw);
-                Renderer.AddCommand(command);
+                renderEndGrid.GlobalDepth = worldTransform.Tz;
+                Renderer.AddCommand(renderEndGrid);
                 Renderer.PopGroup();
             }
         }
 
-        protected void OnGridBeginDraw ()
+        void OnGridBeginDraw ()
         {
             if (Grid != null && Grid.Active)
-            {
                 Grid.BeforeDraw();
-            }
         }
 
-        protected void OnGridEndDraw ()
+        void OnGridEndDraw ()
         {
             if (Grid != null && Grid.Active)
-            {
                 Grid.AfterDraw(this);
-                DrawManager.SetIdentityMatrix();
-                Grid.Blit();
-            }
+        }
 
+        void RenderGrid ()
+        {
+            if (Grid != null && Grid.Active)
+                Grid.Blit();
         }
     }
 }
