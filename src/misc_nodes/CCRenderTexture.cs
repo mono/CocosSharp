@@ -36,6 +36,9 @@ namespace CocosSharp
         Matrix renderProjMatrix;
         Viewport renderViewport;
 
+        CCCustomCommand beginCommand;
+        CCCustomCommand endCommand;
+
 
         #region Properties
 
@@ -61,6 +64,9 @@ namespace CocosSharp
 
         public CCRenderTexture()
         {
+            beginCommand = new CCCustomCommand(float.MinValue, OnBegin);
+            endCommand = new CCCustomCommand(float.MaxValue, OnEnd);
+
             PixelFormat = CCSurfaceFormat.Color;
             drawManager = CCDrawManager.SharedDrawManager;
             renderer = drawManager.Renderer;
@@ -107,8 +113,6 @@ namespace CocosSharp
             renderer.PushGroup();
             renderer.PushViewportGroup(ref renderViewport);
             renderer.PushLayerGroup(ref renderViewMatrix, ref renderProjMatrix);
-            var beginCommand = new CCCustomCommand(float.MinValue);
-            beginCommand.Action = OnBegin;
             drawManager.Renderer.AddCommand(beginCommand);
 
         }
@@ -139,9 +143,6 @@ namespace CocosSharp
 
         public void End()
         {
-            var endCommand = new CCCustomCommand(float.MaxValue);
-            endCommand.Action = OnEnd;
-
             renderer.AddCommand(endCommand);
             renderer.PopLayerGroup();
             renderer.PopViewportGroup();

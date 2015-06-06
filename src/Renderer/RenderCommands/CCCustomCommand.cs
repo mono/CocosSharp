@@ -10,6 +10,7 @@ namespace CocosSharp
     {
         public Action Action { get; internal set; }
 
+
         #region Constructors
 
         public CCCustomCommand(float globalZOrder, CCAffineTransform worldTransform, Action action) 
@@ -18,18 +19,8 @@ namespace CocosSharp
             Action = action;
         }
 
-        public CCCustomCommand(float globalZOrder, CCAffineTransform worldTransform) 
-            : this(globalZOrder, worldTransform, null)
-        {
-        }
-
-        public CCCustomCommand(CCAffineTransform worldTransform) 
-            : this(worldTransform.Tz, worldTransform)
-        {
-        }
-
-        public CCCustomCommand(float vertexZ) 
-            : this(vertexZ, CCAffineTransform.Identity)
+        public CCCustomCommand(float globalZOrder, Action action)
+            : this(globalZOrder, CCAffineTransform.Identity, action)
         {
         }
 

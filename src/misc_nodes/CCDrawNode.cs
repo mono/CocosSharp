@@ -19,7 +19,10 @@ namespace CocosSharp
 
         bool dirty;
 
-        /** draw a polygon with a fill color and line color */
+        CCCustomCommand renderTriangles;
+        CCCustomCommand renderLines;
+        CCCustomCommand renderStrings;
+
 
         struct ExtrudeVerts
         {
@@ -54,6 +57,10 @@ namespace CocosSharp
 
         public CCDrawNode()
         {
+            renderTriangles = new CCCustomCommand(FlushTriangles);
+            renderLines = new CCCustomCommand(FlushLines);
+            renderStrings = new CCCustomCommand(DrawStrings);
+
             BlendFunc = CCBlendFunc.AlphaBlend;
             triangleVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
             lineVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
@@ -846,23 +853,23 @@ namespace CocosSharp
 
                 if (triangleVertices.Count > 0)
                 {
-                    var customCommandTriangles = new CCCustomCommand(worldTransform);
-                    customCommandTriangles.Action = FlushTriangles;
-                    AddCustomCommandOnDraw(customCommandTriangles);
+                    renderTriangles.GlobalDepth = worldTransform.Tz;
+                    renderTriangles.WorldTransform = worldTransform;
+                    AddCustomCommandOnDraw(renderTriangles);
                 }
 
                 if (lineVertices.Count > 0)
                 {
-                    var customCommandLines = new CCCustomCommand(worldTransform);
-                    customCommandLines.Action = FlushLines;
-                    AddCustomCommandOnDraw(customCommandLines);
+                    renderLines.GlobalDepth = worldTransform.Tz;
+                    renderLines.WorldTransform = worldTransform;
+                    AddCustomCommandOnDraw(renderLines);
                 }
 
                 if (spriteFont != null && stringData != null && stringData.Count > 0)
                 {
-                    var customCommandStrings = new CCCustomCommand(worldTransform);
-                    customCommandStrings.Action = DrawStrings;
-                    AddCustomCommandOnDraw(customCommandStrings);
+                    renderStrings.GlobalDepth = worldTransform.Tz;
+                    renderStrings.WorldTransform = worldTransform;
+                    AddCustomCommandOnDraw(renderStrings);
                 }
 
             }
