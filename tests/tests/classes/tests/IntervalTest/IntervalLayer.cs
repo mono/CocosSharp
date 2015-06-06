@@ -21,11 +21,11 @@ namespace tests
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // sun
-			CCParticleSystem sun = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));
+			var sun = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));
             sun.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             sun.Position = (new CCPoint(s.Width - 32, s.Height - 32));
 
-            sun.TotalParticles = 130;
+            sun.ResizeTotalParticles(130);
             sun.Life = (0.6f);
             AddChild(sun);
 

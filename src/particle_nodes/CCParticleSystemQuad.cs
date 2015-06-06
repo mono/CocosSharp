@@ -8,66 +8,60 @@ namespace CocosSharp
     public class CCParticleSystemQuad : CCParticleSystem
     {
         // ivars
-        CCRawList<CCV3F_C4B_T2F_Quad> quads;
         CCPoint currentPosition;
 
         CCQuadCommand quadsCommand;
 
         #region Properties
 
-        public override int TotalParticles
+        public bool BlendAdditive
         {
+            get { return BlendFunc == CCBlendFunc.Additive; }
             set
             {
-                // If we are setting the total numer of particles to a number higher
-                // than what is allocated, we need to allocate new arrays
-                if (value > AllocatedParticles)
+                if (value)
                 {
-                    if (EmitterMode == CCEmitterMode.Gravity) 
-                    {
-                        GravityParticles = new CCParticleGravity[value];
-                    } 
-                    else 
-                    {
-                        RadialParticles = new CCParticleRadial[value];
-                    }
-
-                    if (Quads == null) 
-                    {
-                        Quads = new CCRawList<CCV3F_C4B_T2F_Quad> (value); 
-                    } 
-                    else 
-                    {
-                        Quads.Capacity = value;
-                    }
-
-                    AllocatedParticles = value;
-                    base.TotalParticles = value;
+                    BlendFunc = CCBlendFunc.Additive;
                 }
                 else
                 {
-                    base.TotalParticles = value;
+                    if (Texture != null && !Texture.HasPremultipliedAlpha)
+                    {
+                        BlendFunc = CCBlendFunc.NonPremultiplied;
+                    }
+                    else
+                    {
+                        BlendFunc = CCBlendFunc.AlphaBlend;
+                    }
                 }
             }
         }
 
-        public override CCTexture2D Texture
+        public CCBlendFunc BlendFunc
         {
+            get { return quadsCommand.BlendType; }
+            set
+            {
+                quadsCommand.BlendType = value;
+            }
+        }
+
+        public CCTexture2D Texture
+        {
+            get { return quadsCommand.Texture; }
             set
             {
                 if (value == null)
                     return;
 
                 // Only update the texture if is different from the current one
-                if (Texture == null || value.Name != Texture.Name)
+                if (value != Texture)
                 {
-                    base.Texture = value;
-
+                    quadsCommand.Texture = value;
                     CCSize s = value.ContentSizeInPixels;
                     TextureRect = new CCRect (0, 0, s.Width, s.Height);
+                    UpdateBlendFunc();
                 }
-
-                quadsCommand.Texture = value;
             }
         }
 
@@ -78,14 +72,11 @@ namespace CocosSharp
 
         CCRawList<CCV3F_C4B_T2F_Quad> Quads
         {
-            get { return quads; }
             set 
             {
-                CCRawList<CCV3F_C4B_T2F_Quad> oldQuads = quads;
-                quads = value;
-
-                if (Texture!= null && quads != null && quads != oldQuads && Window != null) 
+                if (Texture!= null && value != null && value.Elements != quadsCommand.Quads && Window != null) 
                 {
+                    quadsCommand.Quads = value.Elements;
                     CCSize texSize = Texture.ContentSizeInPixels;
 
                     // Load the quads with tex coords
@@ -99,11 +90,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        internal CCParticleSystemQuad()
-        {  
-        }
-
-        public CCParticleSystemQuad(int numberOfParticles, CCEmitterMode emitterMode=CCEmitterMode.Gravity) 
+        public CCParticleSystemQuad(int numberOfParticles = 0, CCEmitterMode emitterMode=CCEmitterMode.Gravity) 
             : base(numberOfParticles, emitterMode)
         {
             InitRenderCommand();
@@ -113,6 +100,13 @@ namespace CocosSharp
             : base(config)
         {
             InitRenderCommand();
+
+            Texture = config.Texture;
+
+            CCBlendFunc blendFunc = new CCBlendFunc();
+            blendFunc.Source = config.BlendFunc.Source;
+            blendFunc.Destination = config.BlendFunc.Destination;
+            BlendFunc = blendFunc;
         }
 
         public CCParticleSystemQuad(string plistFile, string directoryName = null) 
@@ -124,7 +118,8 @@ namespace CocosSharp
 
         void InitRenderCommand()
         {
-            quadsCommand = new CCQuadCommand(0);
+            quadsCommand = new CCQuadCommand(TotalParticles);
+            quadsCommand.BlendType = CCBlendFunc.AlphaBlend;
         }
 
         #endregion Constructors
@@ -144,6 +139,31 @@ namespace CocosSharp
         }
 
         #region Updating quads
+
+        public void ResizeTotalParticles(int newSize)
+        {
+            if(newSize == TotalParticles)
+                return;
+
+            if (newSize > AllocatedParticles)
+            {
+                if (EmitterMode == CCEmitterMode.Gravity) 
+                    GravityParticles = new CCParticleGravity[newSize];
+                else 
+                    RadialParticles = new CCParticleRadial[newSize];
+
+                var oldQuads = quadsCommand.Quads;
+                var newQuads = new CCV3F_C4B_T2F_Quad[newSize];
+                Array.Copy(oldQuads, newQuads, AllocatedParticles);
+
+                quadsCommand.Quads = newQuads;
+
+                AllocatedParticles = newSize;
+            }
+
+            base.TotalParticles = newSize;
+            quadsCommand.QuadCount = newSize;
+        }
 
         // pointRect should be in Texture coordinates, not pixel coordinates
         void ResetTexCoords(CCRect texRectInPixels)
@@ -179,7 +199,7 @@ namespace CocosSharp
             CCV3F_C4B_T2F_Quad[] rawQuads;
             int start, end;
 
-            rawQuads = Quads.Elements;
+            rawQuads = quadsCommand.Quads;
             start = 0;
             end = TotalParticles;
 
@@ -195,7 +215,6 @@ namespace CocosSharp
                 rawQuads[i].TopRight.TexCoords.V = top;
             }
 
-            quadsCommand.Quads = rawQuads;
             quadsCommand.QuadCount = end;
         }
 
@@ -314,7 +333,7 @@ namespace CocosSharp
                 currentPosition = Position;
             }
 
-            CCV3F_C4B_T2F_Quad[] rawQuads = Quads.Elements;
+            CCV3F_C4B_T2F_Quad[] rawQuads = quadsCommand.Quads;
 
             if (EmitterMode == CCEmitterMode.Gravity) 
             {
@@ -324,7 +343,7 @@ namespace CocosSharp
             {
                 UpdateRadialParticleQuads(rawQuads);
             }
-            quadsCommand.Quads = rawQuads;
+
             quadsCommand.QuadCount = ParticleCount;
         }
 
@@ -403,6 +422,25 @@ namespace CocosSharp
             p.AutoRemoveOnFinish = AutoRemoveOnFinish;
 
             return p;
+        }
+
+
+        void UpdateBlendFunc()
+        {
+            if (Texture != null)
+            {
+                bool premultiplied = Texture.HasPremultipliedAlpha;
+
+                OpacityModifyRGB = false;
+
+                if (BlendFunc == CCBlendFunc.AlphaBlend)
+                {
+                    if (premultiplied)
+                        OpacityModifyRGB = true;
+                    else
+                        BlendFunc = CCBlendFunc.NonPremultiplied;
+                }
+            }
         }
 
     }

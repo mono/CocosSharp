@@ -104,7 +104,6 @@ namespace tests
 
         public void createParticleSystem()
         {
-            CCParticleSystem particleSystem = null;
 
             /*
             * Tests:
@@ -124,7 +123,7 @@ namespace tests
             CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             CCTextureCache.SharedTextureCache.RemoveTexture(texture);
 
-            particleSystem = new CCParticleSystemQuad(quantityParticles);
+            var particleSystem = new CCParticleSystemQuad(quantityParticles);
 
             switch (subtestNumber)
             {

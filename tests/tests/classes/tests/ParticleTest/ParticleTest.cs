@@ -136,7 +136,7 @@ namespace tests
         const int labelTag = 9000;
 
         protected CCPoint MidWindowPoint;
-        protected CCParticleSystem Emitter;
+        protected CCParticleSystemQuad Emitter;
         protected CCSprite Background;
 
         CCLabelAtlas particleCounter;
@@ -1750,7 +1750,7 @@ namespace tests
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
 
                 particleSystem.PositionType = CCPositionType.Grouped;
-                particleSystem.TotalParticles = (200);
+                particleSystem.ResizeTotalParticles(200);
 
                 particleSystem.Position = (new CCPoint(i * 15 + 100, i * 15 + 100));
 

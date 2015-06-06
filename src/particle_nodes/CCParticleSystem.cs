@@ -39,16 +39,13 @@ namespace CocosSharp
     }
 
 
-    public class CCParticleSystem : CCNode, ICCTexture
+    public abstract class CCParticleSystem : CCNode
     {
         public const int ParticleDurationInfinity = -1;           
         public const int ParticleStartSizeEqualToEndSize = -1;   
         public const int ParticleStartRadiusEqualToEndRadius = -1;
 
         // ivars
-        int totalParticles;
-        CCTexture2D texture;
-        CCBlendFunc blendFunc = CCBlendFunc.AlphaBlend;
         GravityMoveMode gravityMode;
         RadialMoveMode radialMode;
 
@@ -124,6 +121,7 @@ namespace CocosSharp
         public bool AutoRemoveOnFinish { get; set; }
         public bool OpacityModifyRGB { get; set; }
 
+        public int TotalParticles { get; protected set; }
         protected int AllocatedParticles { get; set; }
         public int ParticleCount { get; private set; }
         public int AtlasIndex { get; set; }
@@ -163,66 +161,7 @@ namespace CocosSharp
 
         public bool IsFull
         {
-            get { return (ParticleCount == totalParticles); }
-        }
-
-        public virtual int TotalParticles
-        {
-            get { return totalParticles; }
-            set
-            {
-                Debug.Assert(value <= AllocatedParticles, "Particle: resizing particle array only supported for quads");
-                totalParticles = value;
-            }
-        }
-
-        public CCBlendFunc BlendFunc
-        {
-            get { return blendFunc; }
-            set
-            {
-                if (blendFunc.Source != value.Source || blendFunc.Destination != value.Destination)
-                {
-                    blendFunc = value;
-                    UpdateBlendFunc();
-                }
-            }
-        }
-
-        public bool BlendAdditive
-        {
-            get { return blendFunc == CCBlendFunc.Additive; }
-            set
-            {
-                if (value)
-                {
-                    blendFunc = CCBlendFunc.Additive;
-                }
-                else
-                {
-                    if (Texture != null && !Texture.HasPremultipliedAlpha)
-                    {
-                        blendFunc = CCBlendFunc.NonPremultiplied;
-                    }
-                    else
-                    {
-                        blendFunc = CCBlendFunc.AlphaBlend;
-                    }
-                }
-            }
-        }
-
-        public virtual CCTexture2D Texture
-        {
-            get { return texture; }
-            set
-            {
-                if (Texture != value)
-                {
-                    texture = value;
-                    UpdateBlendFunc();
-                }
-            }
+            get { return (ParticleCount == TotalParticles); }
         }
 
         protected GravityMoveMode GravityMode 
@@ -339,10 +278,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        internal CCParticleSystem()
-        {  
-        }
-
         public CCParticleSystem(string plistFile, string directoryName = null) 
             : this(new CCParticleSystemConfig(plistFile, directoryName))
         {  }
@@ -356,8 +291,6 @@ namespace CocosSharp
         {
             TotalParticles = numberOfParticles;
             AllocatedParticles = numberOfParticles;
-
-            BlendFunc = CCBlendFunc.AlphaBlend;
             PositionType = CCPositionType.Free;
             EmitterMode = emitterMode;
 
@@ -386,11 +319,6 @@ namespace CocosSharp
 
             Angle = particleConfig.Angle;
             AngleVar = particleConfig.AngleVar;
-
-            CCBlendFunc blendFunc = new CCBlendFunc();
-            blendFunc.Source = particleConfig.BlendFunc.Source;
-            blendFunc.Destination = particleConfig.BlendFunc.Destination;
-            BlendFunc = blendFunc;
 
             CCColor4F startColor = new CCColor4F();
             startColor.R = particleConfig.StartColor.R;
@@ -483,8 +411,6 @@ namespace CocosSharp
                 Debug.Assert(false, "Invalid emitterType in config file");
                 return;
             }
-
-            Texture = particleConfig.Texture;
         }
 
         #endregion Constructors
@@ -893,28 +819,6 @@ namespace CocosSharp
                             Parent.RemoveChild(this, true);
                             return;
                         }
-                    }
-                }
-            }
-        }
-
-        void UpdateBlendFunc()
-        {
-            if (Texture != null)
-            {
-                bool premultiplied = Texture.HasPremultipliedAlpha;
-
-                OpacityModifyRGB = false;
-
-                if (blendFunc == CCBlendFunc.AlphaBlend)
-                {
-                    if (premultiplied)
-                    {
-                        OpacityModifyRGB = true;
-                    }
-                    else
-                    {
-                        blendFunc = CCBlendFunc.NonPremultiplied;
                     }
                 }
             }
