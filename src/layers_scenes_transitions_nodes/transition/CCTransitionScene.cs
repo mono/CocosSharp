@@ -66,14 +66,6 @@ namespace CocosSharp
             AddChild(OutSceneNodeContainer);
 
         }
-
-
-        public override void Visit(ref CCAffineTransform parentWorldTransform)
-        {
-            Renderer.PushGroup();
-            base.Visit(ref parentWorldTransform);
-            Renderer.PopGroup();
-        }
     }
 
     public class CCTransitionScene : CCScene
