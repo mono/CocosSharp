@@ -92,7 +92,11 @@ namespace CocosSharp
         // and then package any remaining traits for comparison (e.g. Material) into the RenderFlags
         public int CompareTo(CCRenderCommand otherCommand)
         {
-            int compare = Group.CompareTo(otherCommand.Group);
+            // Sort groups in descending order
+            // This is because the typical use case is to group nodes into a render texture
+            // Then the render texture's corresponding sprite is then rendered to the scene
+            // So the render texture needs to be filled beforehand or else we will have a corrupted sprite
+            int compare = Group.CompareTo(otherCommand.Group) * -1;
 
             if(compare == 0)
             {

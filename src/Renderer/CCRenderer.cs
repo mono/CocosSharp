@@ -108,13 +108,13 @@ namespace CocosSharp
             currentLayerGroupId = layerGroupIdStack[--currentLayerGroupIdIndex];
         }
 
-        public void PushGroup()
+        internal void PushGroup()
         {
             currentGroupId = ++maxGroupId;
             groupIdStack[++currentGroupIdIndex] = currentGroupId;
         }
 
-        public void PopGroup()
+        internal void PopGroup()
         {
             currentGroupId = groupIdStack[--currentGroupIdIndex];
         }
