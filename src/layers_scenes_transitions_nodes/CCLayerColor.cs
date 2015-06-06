@@ -39,6 +39,9 @@ namespace CocosSharp
 
         internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
+        CCCustomCommand layerRenderCommand;
+
+
         #region Properties
 
         public virtual CCBlendFunc BlendFunc { get; set; }
@@ -111,6 +114,8 @@ namespace CocosSharp
 
         void SetupCCLayerColor(CCColor4B? color = null)
         {
+            layerRenderCommand = new CCCustomCommand(RenderLayer);
+
             var setupColor = (color.HasValue) ? color.Value : CCColor4B.Transparent;
             DisplayedColor = RealColor = new CCColor3B(setupColor.R, setupColor.G, setupColor.B);
             DisplayedOpacity = RealOpacity = setupColor.A;
@@ -144,7 +149,11 @@ namespace CocosSharp
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
             if(Camera != null)
-                Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderLayer));
+            {
+                layerRenderCommand.GlobalDepth = worldTransform.Tz;
+                layerRenderCommand.WorldTransform = worldTransform;
+                Renderer.AddCommand(layerRenderCommand);
+            }
         }
 
         void RenderLayer()

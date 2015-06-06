@@ -31,6 +31,7 @@ namespace CocosSharp
         CCV3F_C4B_T2F[] vertexData;
         short[] vertexIndices;
 
+        CCCustomCommand timerRenderCommand;
 
         #region Properties
 
@@ -142,6 +143,8 @@ namespace CocosSharp
 
         public CCProgressTimer(CCSprite sp)
         {
+            timerRenderCommand = new CCCustomCommand(RenderProgress);
+
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             Type = CCProgressTimerType.Radial;
             Midpoint = new CCPoint(0.5f, 0.5f);
@@ -162,7 +165,9 @@ namespace CocosSharp
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderProgress));
+            timerRenderCommand.GlobalDepth = worldTransform.Tz;
+            timerRenderCommand.WorldTransform = worldTransform;
+            Renderer.AddCommand(timerRenderCommand);
         }
 
         void RenderProgress()
