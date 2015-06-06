@@ -417,8 +417,6 @@
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
-    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
-    <Compile Include="Renderer\CCPrimitive.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -442,8 +440,5 @@
       <Project>{1294038B-66C2-4359-AFE9-EA06A758CA94}</Project>
       <Name>MonoGame.Framework.Net.MacOS</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Renderer\RenderCommands\CCBatchCommand.cs" />
   </ItemGroup>
 </Project>

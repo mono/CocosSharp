@@ -396,8 +396,6 @@
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
-    <Compile Include="Renderer\RenderCommands\CCPrimitiveCommand.cs" />
-    <Compile Include="Renderer\CCPrimitive.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
   </ItemGroup>
   <ItemGroup />

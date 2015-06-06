@@ -15,7 +15,6 @@ namespace CocosSharp
             None = 0x0,
             Quad = 0x1,
             Custom = 0x2,
-            Primitive = 0x4,
         }
 
         int currentViewportIdIndex, currentLayerGroupIdIndex, currentGroupIdIndex;
@@ -204,24 +203,6 @@ namespace CocosSharp
                 Flush();
 
             currentCommandType = CCCommandType.Quad;
-        }
-
-        internal void ProcessPrimitiveRenderCommand <T, T2> (CCPrimitiveCommand <T, T2> primitiveCommand)
-            where T : struct, IVertexType
-            where T2 : struct
-           
-        {
-            var worldTransform = primitiveCommand.WorldTransform;
-
-            // We're changing command types so render any pending sequence of commands
-            // e.g. Batched quad commands
-            if((currentCommandType & CCCommandType.Primitive) == CCCommandType.None)
-                Flush();
-
-            primitiveCommand.RenderPrimitive(drawManager);
-
-            currentCommandType = CCCommandType.Primitive;
-
         }
 
         internal void ProcessCustomRenderCommand(CCCustomCommand customCommand)
