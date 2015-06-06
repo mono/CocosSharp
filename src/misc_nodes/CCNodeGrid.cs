@@ -37,17 +37,17 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCNodeGrid () 
-            : base ()
+        public CCNodeGrid() 
+            : this(CCSize.Zero)
+        {
+        }
+
+        public CCNodeGrid(CCSize contentSize) 
+            : base(contentSize)
         {
             renderGrid = new CCCustomCommand(RenderGrid);
             renderBeginGrid = new CCCustomCommand(float.MinValue, OnGridBeginDraw);
-            renderEndGrid = new CCCustomCommand(float.MaxValue, OnGridEndDraw);
-        }
-
-        public CCNodeGrid (CCSize contentSize) 
-            : base (contentSize)
-        {
+            renderEndGrid = new CCCustomCommand(float.MaxValue, OnGridEndDraw); 
         }
 
         #endregion Constructors
