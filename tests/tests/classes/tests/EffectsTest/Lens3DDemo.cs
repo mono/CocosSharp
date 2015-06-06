@@ -11,7 +11,7 @@ namespace tests
         static readonly CCSize contentSize = TextLayer.VisibleBounds.Size;
 
         public Lens3DDemo(float t)
-            : base(t, new CCGridSize(15, 10), contentSize.Center, contentSize.Height)
+            : base(t, new CCGridSize(15, 10), contentSize.Center, 300.0f)
         {
 			//Concave = true;
         }
