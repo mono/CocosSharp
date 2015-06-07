@@ -78,6 +78,9 @@ namespace CocosSharp
 
             VisitRenderer(ref worldTransform);
 
+            if (Target != null)
+                Target.Visit (ref worldTransform);
+            
             if(Children != null)
             {
                 var elements = Children.Elements;
