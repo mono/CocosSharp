@@ -223,15 +223,9 @@ namespace CocosSharp
 			dirty = true;
 		}
 
-        // See http://slabode.exofire.net/circle_draw.shtml
-        // An Efficient Way to Draw Approximate Circles in OpenGL
-        // Try to keep from calculating Cos and Sin of values everytime and just use
-        // add and subtract where possible to calculate the values.
-        public void DrawCircle(CCPoint pos, float radius, CCColor4B color)
+        public void DrawCircle(CCPoint center, float radius, int segments, CCColor4B color)
         {
             var cl = color;
-
-            int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
             float theta = MathHelper.Pi * 2.0f / segments;
             float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
@@ -241,7 +235,6 @@ namespace CocosSharp
             float x = radius;  //we start at angle = 0 
             float y = 0;
 
-            var verticeCenter = new CCV3F_C4B(pos, cl);
             var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
             float tx = 0;
             float ty = 0;
@@ -249,8 +242,8 @@ namespace CocosSharp
             for (int i = 0; i < segments; i++)
             {
 
-                vert1.Vertices.X = x + pos.X;
-                vert1.Vertices.Y = y + pos.Y;
+                vert1.Vertices.X = x + center.X;
+                vert1.Vertices.Y = y + center.Y;
                 AddLineVertex(vert1); // output vertex
 
                 //calculate the tangential vector 
@@ -267,8 +260,61 @@ namespace CocosSharp
                 x *= radial_factor;
                 y *= radial_factor;
 
-                vert1.Vertices.X = x + pos.X;
-                vert1.Vertices.Y = y + pos.Y;
+                vert1.Vertices.X = x + center.X;
+                vert1.Vertices.Y = y + center.Y;
+                AddLineVertex(vert1); // output vertex
+
+            }
+
+            dirty = true;
+
+        }
+
+        // See http://slabode.exofire.net/circle_draw.shtml
+        // An Efficient Way to Draw Approximate Circles in OpenGL
+        // Try to keep from calculating Cos and Sin of values everytime and just use
+        // add and subtract where possible to calculate the values.
+        public void DrawCircle(CCPoint center, float radius, CCColor4B color)
+        {
+            var cl = color;
+
+            int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
+
+            float theta = MathHelper.Pi * 2.0f / segments;
+            float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
+
+            float radial_factor = (float)Math.Cos(theta);   //calculate the radial factor 
+
+            float x = radius;  //we start at angle = 0 
+            float y = 0;
+
+            var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
+            float tx = 0;
+            float ty = 0;
+
+            for (int i = 0; i < segments; i++)
+            {
+
+                vert1.Vertices.X = x + center.X;
+                vert1.Vertices.Y = y + center.Y;
+                AddLineVertex(vert1); // output vertex
+
+                //calculate the tangential vector 
+                //remember, the radial vector is (x, y) 
+                //to get the tangential vector we flip those coordinates and negate one of them 
+                tx = -y;
+                ty = x;
+
+                //add the tangential vector 
+                x += tx * tangetial_factor;
+                y += ty * tangetial_factor;
+
+                //correct using the radial factor 
+                x *= radial_factor;
+                y *= radial_factor;
+
+                vert1.Vertices.X = x + center.X;
+                vert1.Vertices.Y = y + center.Y;
                 AddLineVertex(vert1); // output vertex
 
             }
@@ -451,26 +497,6 @@ namespace CocosSharp
             AddTriangleVertex(new CCV3F_C4B(v3, cl));
 
             dirty = true;
-        }
-
-
-        public void DrawCircle(CCPoint center, float radius, float angle, int segments, CCColor4B color)
-        {
-            float increment = MathHelper.Pi * 2.0f / segments;
-            double theta = 0.0;
-
-            CCPoint v1;
-            List<CCPoint> verts = new List<CCPoint>();
-
-            for (int i = 0; i < segments; i++)
-            {
-                v1 = center + new CCPoint((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
-                verts.Add(v1);
-                theta += increment;
-            }
-
-            CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
-            DrawPolygon(verts.ToArray(), verts.Count, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
         }
 
         public void DrawRect(CCPoint p, float size)
