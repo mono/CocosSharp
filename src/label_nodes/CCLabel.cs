@@ -943,7 +943,7 @@ namespace CocosSharp
 
         public override void UpdateColor()
         {
-            if (TextureAtlas != null)
+            if (TextureAtlas != null && !string.IsNullOrEmpty(labelText))
             {
                 quadCommand.RequestUpdateQuads(UpdateColorCallback);
             }
