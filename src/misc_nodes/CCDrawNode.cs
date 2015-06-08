@@ -23,6 +23,7 @@ namespace CocosSharp
         CCCustomCommand renderLines;
         CCCustomCommand renderStrings;
 
+        CCRect verticeBounds;
 
         struct ExtrudeVerts
         {
@@ -64,6 +65,8 @@ namespace CocosSharp
             BlendFunc = CCBlendFunc.AlphaBlend;
             triangleVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
             lineVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
+
+            verticeBounds = CCRect.Zero;
         }
 
         #endregion Constructors
@@ -112,11 +115,28 @@ namespace CocosSharp
             }
         }
 
+        /// <summary>
+        /// Gets the bounding rectangle of the vertices to be drawn.
+        /// </summary>
+        /// <value>The bounding rectangle</value>
+        public CCRect BoundingRect
+        {
+            get
+            {
+                UpdateContextSize();
+                return verticeBounds;
+            }
+        }
 
         // TODO: Look into adding dynamic update of ContentSize on each Vertex addition.
         // Calculating on each Vertex addtion may be faster than this.
         private void UpdateContextSize()
         {
+            if (!dirty)
+                return;
+
+            dirty = false;
+
             var numTVerts = triangleVertices.Count;
             var numLVerts = lineVertices.Count;
 
@@ -142,7 +162,7 @@ namespace CocosSharp
                 minX = Math.Min (x, minX);
                 minY = Math.Min (y, minY);
                 maxX = Math.Max(x, maxX);
-                maxY = Math.Max(x, maxY);
+                maxY = Math.Max(y, maxY);
             }
 
             for (int v = 0; v < numLVerts; v++)
@@ -153,10 +173,14 @@ namespace CocosSharp
                 minX = Math.Min (x, minX);
                 minY = Math.Min (y, minY);
                 maxX = Math.Max(x, maxX);
-                maxY = Math.Max(x, maxY);
+                maxY = Math.Max(y, maxY);
             }
 
-            base.ContentSize = new CCSize(maxX - minX, maxY - minY);
+            verticeBounds.Origin.X = minX;
+            verticeBounds.Origin.Y = minY;
+            verticeBounds.Size.Width = maxX - minX;
+            verticeBounds.Size.Height = maxY - minY;
+            base.ContentSize = verticeBounds.Size;
         }
 
         public void AddTriangleVertex (CCV3F_C4B triangleVertex)
@@ -546,12 +570,13 @@ namespace CocosSharp
         public void DrawEllipse (CCRect rect, float lineWidth, CCColor4B color)
         {
             DrawEllipticalArc(rect, 0, 360, false, lineWidth, color);
+            dirty = true;
         }
 
         public void DrawEllipse (int x, int y, int width, int height, float lineWidth, CCColor4B color)
         {
             DrawEllipticalArc(x,y,width,height,0,360,false, lineWidth, color);
-
+            dirty = true;
         }
 
         internal void DrawEllipticalArc(CCRect arcRect, double lambda1, double lambda2,
@@ -853,6 +878,9 @@ namespace CocosSharp
             lineVertices.Clear();
             if (stringData != null)
                 stringData.Clear();
+
+            dirty = false;
+            base.ContentSize = CCSize.Zero;
         }
 
         void AddCustomCommandOnDraw(CCCustomCommand customCommandOnDraw)
@@ -866,11 +894,6 @@ namespace CocosSharp
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            if (dirty)
-            {
-                //TODO: Set vertices to buffer
-                dirty = false;
-            }
 
             if (triangleVertices.Count > 0
                 || lineVertices.Count > 0 
