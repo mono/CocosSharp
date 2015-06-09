@@ -1,7 +1,7 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>Empty Game - Mobile</Name>
-    <Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for a project containing Windows Phone 8.1, iOS and Android that uses a shared common project.</Description>
+    <Name>Empty Game - Mobile Portable</Name>
+    <Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for a PCL project containing Windows Phone 8.1, iOS and Android.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
     </ProjectSubType>
@@ -21,10 +21,10 @@
 		 http://stackoverflow.com/questions/19662836/using-customparamter-with-visual-studio-multi-project-template 
 		 https://msdn.microsoft.com/en-us/library/ms171398.aspx
 	-->
-        <ProjectTemplateLink ProjectName="$projectname$.Shared" CopyParameters="true">
-            Shared\EmptyProject.Shared.vstemplate
+        <ProjectTemplateLink ProjectName="$projectname$" CopyParameters="true">
+            Portable\EmptyProject.Portable.vstemplate
         </ProjectTemplateLink>
-        <ProjectTemplateLink ProjectName="$projectname$.WP81" CopyParameters="true">
+        <ProjectTemplateLink ProjectName="$projectname$.WinPhone" CopyParameters="true">
             WP81\EmptyProject.WP81.vstemplate
         </ProjectTemplateLink>
         <ProjectTemplateLink ProjectName="$projectname$.Droid" CopyParameters="true">

@@ -113,7 +113,12 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\Mobile\Template\bin\EmptyProject.Mobile.zip">
-      <Link>ProjectTemplates\CocosSharp\Mobile\EmptyProject.Mobile.zip</Link>
+      <Link>ProjectTemplates\CocosSharp\Mobile\Shared\EmptyProject.Mobile.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MobilePortable\Template\bin\EmptyProject.Portable.zip">
+      <Link>ProjectTemplates\CocosSharp\Mobile\Portable\EmptyProject.Portable.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
