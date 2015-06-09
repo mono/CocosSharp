@@ -139,7 +139,6 @@
     <!-- Mobile project templates -->
     <Module>
         <Dependencies>
-            <Addin id="IPhone" version="5.0"/>
             <Addin id="MonoAndroid" version="5.0"/>
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
