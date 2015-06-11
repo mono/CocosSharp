@@ -28,7 +28,7 @@ namespace CocosSharp
             Initialise();
         }
 
-        void Initialise()
+        void PlatformInitialise()
         {
             RenderOnUIThread = false;
             FocusableInTouchMode = true;
@@ -74,10 +74,7 @@ namespace CocosSharp
             if (!GraphicsContext.IsCurrent)
                 MakeCurrent();
 
-            // GraphicsDevice.Clear(Color.Black);
-            // Testing frame rendering
-            GL.ClearColor(Color4.AliceBlue);
-            GL.Clear(ClearBufferMask.ColorBufferBit);
+            graphicsDevice.Clear(Microsoft.Xna.Framework.Color.AliceBlue);
 
             PlatformPresent();
         }
@@ -86,8 +83,8 @@ namespace CocosSharp
         {
             try
             {
-                if (GraphicsDevice != null)
-                    GraphicsDevice.Present();
+                if (graphicsDevice != null)
+                    graphicsDevice.Present();
 
                 SwapBuffers();
             }
