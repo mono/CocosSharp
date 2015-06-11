@@ -31,6 +31,10 @@ namespace CocosSharp
 
         public override void Update (float time)
         {
+
+            if (Target == null)
+                return; 
+            
             float angle = (float)Math.PI * time; // 180 degrees
             var mz = (float)Math.Sin (angle);
             angle = angle / 2.0f; // x calculates degrees from 0 to 90
