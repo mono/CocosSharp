@@ -8,11 +8,11 @@ namespace ${SolutionName}
     {
         CCParticleSystem galaxySystem;
 
-        CCSprite monkeySprite1;
-        CCSprite monkeySprite2;
+        CCNodeGrid monkeySprite1;
+        CCNodeGrid monkeySprite2;
 
         CCRepeatForever repeatedAction;
-        CCSpawn dreamAction;
+        CCFiniteTimeAction dreamAction;
 
         int redColorIncrement = 10;
 
@@ -23,11 +23,16 @@ namespace ${SolutionName}
             this.Vector = new CCPoint(0.5f, 0.5f);
 
             // Create and add sprites
-            monkeySprite1 = new CCSprite("monkey");
-            AddChild(monkeySprite1, 1);
+            // We will later be applying a wave action to these sprites
+            // These type of actions can only be applied to CCNodeGrid instances
+            // Therefore, wrap our sprites in a CCNodeGrid parent
+            monkeySprite1 = new CCNodeGrid();
+            monkeySprite1.AddChild(new CCSprite("monkey"));
+            AddChild(monkeySprite1);
 
-            monkeySprite2 = new CCSprite("monkey");
-            AddChild(monkeySprite2, 1);
+            monkeySprite2 = new CCNodeGrid();
+            monkeySprite2.AddChild(new CCSprite("monkey"));
+            AddChild(monkeySprite2);
 
             // Define actions
             var moveUp = new CCMoveBy(1.0f, new CCPoint(0.0f, 50.0f));
