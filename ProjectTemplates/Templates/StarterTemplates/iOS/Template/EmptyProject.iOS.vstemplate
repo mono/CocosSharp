@@ -39,7 +39,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="Xamarin.CocosSharpTemplates">
-			<package id="CocosSharp.iOS" version="1.4.0.0" />
+			<package id="CocosSharp.iOS" version="1.5.0.0" />
 		</packages>
 	</WizardData>
 </VSTemplate>
