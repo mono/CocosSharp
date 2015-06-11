@@ -21,7 +21,7 @@
 
 <!--Core-->
 
-     <file src="PCL/CocosSharpPCLShared/bin/Release/*.dll" target="lib/portable-net40+sl50+win8+wp8+MonoAndroid10+Xamarin.iOS10" />
+     <file src="PCL/CocosSharpPCLShared/bin/Release/*.dll" target="lib/portable-net40+sl50+win8+wp8" />
 
      <!--Xamarin.Android-->
     <file src="src/bin/Android/Release/*.dll" target="lib/MonoAndroid10" />
