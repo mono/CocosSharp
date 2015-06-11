@@ -74,9 +74,6 @@ namespace CocosSharp
                 Renderer.AddCommand(renderBeginGrid);
             }
 
-            if (Grid == null || !Grid.Active)
-                Console.WriteLine();
-
             SortAllChildren();
 
             VisitRenderer(ref worldTransform);
