@@ -41,7 +41,7 @@
             </Files>
 
             <Packages>
-                <Package Id="CocosSharp.iOS" /> 
+                <Package Id="CocosSharp.PCL.Shared" /> 
             </Packages>
         </Project>
 
@@ -91,7 +91,7 @@
             </Files>
 
             <Packages>
-                <Package Id="CocosSharp.Android" /> 
+                <Package Id="CocosSharp.PCL.Shared" /> 
             </Packages>
         </Project>
 

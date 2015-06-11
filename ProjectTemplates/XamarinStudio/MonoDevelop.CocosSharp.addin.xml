@@ -55,9 +55,6 @@
         <Import file    ="Common/GameLayer.cs" />
 
         <!-- NuGet packages -->
-        <Import file    ="Packages/CocosSharp.Android.1.5.0.0.nupkg" />
-        <Import file    ="Packages/CocosSharp.iOS.1.5.0.0.nupkg" />
-        <Import file    ="Packages/CocosSharp.MacOS.1.5.0.0.nupkg" />
         <Import file    ="Packages/CocosSharp.PCL.Shared.1.5.0.0.nupkg" />
     </Runtime>
 
@@ -80,7 +77,8 @@
     </Extension>
 
     <!--- Mac project templates -->
-    <Module>
+    <!--- We no longer supply a NuGet package for Mac as of version 1.5.0.0 -->
+    <!-- Module>
         <Dependencies>
             <Addin id="MonoMac" version="5.0"/>
         </Dependencies>
@@ -92,7 +90,7 @@
                             id      ="MonoDevelop.CocosSharp.Mac.MacProject.Empty" 
                             file    ="MonoDevelop.CocosSharp.Mac/Empty.Mac/MonoDevelop.CocosSharp.Mac.EmptyProject.xpt.xml" />
         </Extension>
-    </Module>
+    </Module -->
 
     <!-- Android project templates -->
     <Module>

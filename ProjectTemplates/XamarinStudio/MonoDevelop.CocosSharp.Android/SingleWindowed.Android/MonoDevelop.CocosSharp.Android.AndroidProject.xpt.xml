@@ -65,7 +65,7 @@
             </Files>
 
             <Packages>
-                <Package id="CocosSharp.Android" />
+                <Package id="CocosSharp.PCL.Shared" />
             </Packages>
         </Project>
     </Combine>
