@@ -21,21 +21,30 @@ namespace tests
             IDC_RESTART
         }
         public static int sceneIdx = -1;
-        public static int MAX_LAYER = 6;
+        public static int MAX_LAYER = 0;
 
-        public static CCLayer createEffectAdvanceLayer(int nIndex)
+        public EffectAdvanceScene() : base()
         {
-            switch (nIndex)
-            {
-                case 0: return new Effect3();
-                case 1: return new Effect2();
-                case 2: return new Effect1();
-                case 3: return new Effect4();
-                case 4: return new Effect5();
-                case 5: return new Issue631();
-            }
-            return null;
+            MAX_LAYER = createEffectAdvanceLayerFunctions.Length;
         }
+
+        static Func<CCLayer>[] createEffectAdvanceLayerFunctions =
+            { 
+                () => new Effect6(),
+                () => new Effect3(),
+                () => new Effect2(),
+                () => new Effect1(),
+                () => new Effect4(),
+                () => new Effect5(),
+                () => new Issue631(),
+            };
+        
+
+        public static CCLayer createEffectAdvanceLayer(int index)
+        {
+            return createEffectAdvanceLayerFunctions[index]();
+        }
+
         protected override void NextTestCase()
         {
             nextEffectAdvanceAction();
