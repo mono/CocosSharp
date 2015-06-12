@@ -23,7 +23,7 @@ namespace tests
             application.PreferMultiSampling = false;
             application.ContentRootDirectory = "Content";
 
-            application.ContentSearchResolutionOrder = new List<string>() { "images", "fonts" };
+            application.ContentSearchResolutionOrder = new List<string>() { "", "images", "fonts" };
 
             sharedWindow = mainWindow;
 
