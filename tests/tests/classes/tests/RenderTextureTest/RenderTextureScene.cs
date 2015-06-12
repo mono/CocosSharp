@@ -9,20 +9,28 @@ namespace tests
     public class RenderTextureScene : TestScene
     {
         public static int sceneIdx = -1;
-        public static int MAX_LAYER = 5;
+        public static int MAX_LAYER = 0;
 
-        public static CCLayer CreateTestCase(int nIndex)
+        static Func<CCLayer>[] rendertextureCreateFunctions =
         {
-            switch (nIndex)
-            {
-                case 0: return new RenderTextureSave();
-                case 1: return new RenderTextureIssue937();
-                case 2: return new RenderTextureZbuffer();
-                case 3: return new RenderTextureTestDepthStencil();
-                case 4: return new RenderTextureCompositeTest();
-            }
+                () => new RenderTextureSave(),
+                () => new RenderTextureDrawNode(),
+                () => new RenderTextureIssue937(),
+                () => new RenderTextureZbuffer(),
+                () => new RenderTextureTestDepthStencil(),
+                () => new RenderTextureCompositeTest(),
 
-            return null;
+        };
+
+        public RenderTextureScene ()
+        {
+            MAX_LAYER = rendertextureCreateFunctions.Length; 
+        }
+
+
+        public static CCLayer CreateTestCase(int index)
+        {
+            return rendertextureCreateFunctions[index]();
         }
 
         protected override void NextTestCase()
