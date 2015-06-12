@@ -415,7 +415,7 @@ namespace CocosSharp
             {
                 if (spriteFrames.ContainsKey(pair.Key))
                 {
-                    keysToRemove.Remove(pair.Key);
+                    keysToRemove.Add(pair.Key);
                 }
             }
 
