@@ -15,6 +15,7 @@ namespace tests
         {
                 () => new RenderTextureSave(),
                 () => new RenderTextureDrawNode(),
+                () => new RenderTextureDrawNodeVisit(),
                 () => new RenderTextureIssue937(),
                 () => new RenderTextureZbuffer(),
                 () => new RenderTextureTestDepthStencil(),
