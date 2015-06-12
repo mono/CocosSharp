@@ -27,7 +27,11 @@ namespace tests
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80));
 
             layer.IgnoreAnchorPointForPosition = false;
-			layer.Position = s.Center;
+			layer.Position = s.Center / 2;
+
+            layer.ScaleX = (s.Width / 2) / s.Width;
+            layer.ScaleY = (s.Height / 2) / s.Height;
+
             AddChild(layer, 1, kTagLayer);
         }
 
@@ -41,11 +45,13 @@ namespace tests
 
         public void updateSize(CCPoint touchLocation)
         {
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
-            CCSize newSize = new CCSize(Math.Abs(touchLocation.X - s.Width / 2) * 2, Math.Abs(touchLocation.Y - s.Height / 2) * 2);
-            CCLayerColor l = (CCLayerColor)GetChildByTag(kTagLayer);
-            l.ContentSize = newSize;
+            var newSize = new CCSize(Math.Abs(touchLocation.X - s.Width / 2) * 2, Math.Abs(touchLocation.Y - s.Height / 2) * 2);
+            var l = (CCLayerColor)GetChildByTag(kTagLayer);
+            l.ScaleX = newSize.Width / s.Width;
+            l.ScaleY = newSize.Height / s.Height;
+            l.Position = touchLocation;
         }
 
 		void onTouchesBegan (List<CCTouch> touches, CCEvent touchEvent)
@@ -54,7 +60,7 @@ namespace tests
 		}
 		void onTouchesMoved (List<CCTouch> touches, CCEvent touchEvent)
 		{
-			var touchLocation = touches[0].LocationOnScreen;
+			var touchLocation = touches[0].Location;
 			updateSize (touchLocation);
 		}
 		void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
@@ -78,7 +84,7 @@ namespace tests
 
 			var sister1 = new CCSprite("Images/grossinis_sister1.png");
 			var sister2 = new CCSprite("Images/grossinis_sister2.png");
-            var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+            var label = new CCLabel("Test", "fonts/bitmapFontTest.fnt");
 			// by default a CCLabelBMFont has IsColorModifiedByOpacity on by default if the 
 			// texture atlas is PreMultipliedAlpha.  Label as used by Cocos2d-x by default has
 			// this set to false.  Maybe this is a bug in Cocos2d-x?
@@ -145,7 +151,7 @@ namespace tests
 
 			var sister1 = new CCSprite("Images/grossinis_sister1.png");
 			var sister2 = new CCSprite("Images/grossinis_sister2.png");
-            var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+            var label = new CCLabel("Test", "fonts/bitmapFontTest.fnt");
 			// by default a CCLabelBMFont has IsColorModifiedByOpacity on by default if the 
 			// texture atlas is PreMultipliedAlpha.  Label as used by Cocos2d-x by default has
 			// this set to false.  Maybe this is a bug in Cocos2d-x?
@@ -212,7 +218,7 @@ namespace tests
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
             var sister2 = new CCSprite("Images/grossinis_sister2.png");
-            var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+            var label = new CCLabel("Test", "fonts/bitmapFontTest.fnt");
 
             layer1.AddChild(sister1);
             layer1.AddChild(sister2);
@@ -267,7 +273,7 @@ namespace tests
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
             var sister2 = new CCSprite("Images/grossinis_sister2.png");
-            var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+            var label = new CCLabel("Test", "fonts/bitmapFontTest.fnt");
 
             layer1.AddChild(sister1);
             layer1.AddChild(sister2);
@@ -327,7 +333,7 @@ namespace tests
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
             var sister2 = new CCSprite("Images/grossinis_sister2.png");
-            var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+            var label = new CCLabel("Test", "fonts/bitmapFontTest.fnt");
 
             layer1.AddChild(sister1);
             layer1.AddChild(sister2);
@@ -387,7 +393,7 @@ namespace tests
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
             var sister2 = new CCSprite("Images/grossinis_sister2.png");
-            var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+            var label = new CCLabel("Test", "fonts/bitmapFontTest.fnt");
 
             layer1.AddChild(sister1);
             layer1.AddChild(sister2);
