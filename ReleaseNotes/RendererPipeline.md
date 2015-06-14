@@ -1,12 +1,12 @@
 
 ## What is it?
 
-In CocosSharp v.1.5.0.0, we have overhauled the way we perform rendering, with a focus on improved performance. Our implementation was inspired by cocos2d-x v.3's renderer [pipeline](http://www.cocos2d-x.org/docs/manual/framework/native/v3/new-renderer/en), but is by no means a one-for-one port as described below.
+In CocosSharp v.1.5.0.0 we have overhauled the way we perform rendering, with a focus on improved performance. Our implementation was inspired by cocos2d-x v.3's renderer [pipeline](http://www.cocos2d-x.org/docs/manual/framework/native/v3/new-renderer/en), but is by no means a one-for-one port as described below.
 
 
 ## Background
 
-A CocosSharp game comprises of a root <code>CCScene</code> object along with a subsequent chain of <code>CCNode</code> children &mdash; the so-called <em>scene graph</em>. Starting a game initialises a run-loop that periodically calls the scene's <code>Visit</code> method, that in-turn traverses through the entire scene-graph, calling <code>Visit</code> on all node children as in the diagram below.
+A CocosSharp game comprises of a root <code>CCScene</code> object along with a subsequent chain of <code>CCNode</code> children &mdash; the so-called <em>scene graph</em>. Starting a game initialises a run-loop that periodically calls the scene's <code>Visit</code> method, that in-turn traverses through the entire scene-graph, calling <code>Visit</code> on all node children as represented schematically in the diagram below.
 
 ![Scene traversal](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/SceneTraversal.png "Scene traversal")
 
@@ -18,9 +18,9 @@ Previously, rendering was performed within a node's <code>Visit</code> method an
 
 ![SpriteBatch scene breaking](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/SpriteBatchSceneBreaking.png "SpriteBatch scene breaking")
 
-The problem is that because the grouped sprites will all be drawn together, we have now broken the ordering of the scene-graph. Ultimately <code>CCSpriteBatchNode</code> is not in and of itself truly a renderable object and has no place being part of scene-graph.
+The problem is that because the grouped sprites will all be drawn together, we have now broken the ordering of the scene-graph. Ultimately <code>CCSpriteBatchNode</code> is not in and of itself truly a renderable object and has no place being part of the scene-graph.
 
-* No support for sorting by depth. Virtually all sprites will contain some amount of transparency and so correct ordering when using depth-testing is critically important to avoid any rendering artefacts as seen in the example below
+* No support for sorting by depth. Virtually all sprites will contain some amount of transparency and so correct ordering when using depth-testing is critically important to avoid any rendering artefacts (see the upcoming "Depth testing and changes to z-ordering" section for an example of this).
 
 * Clunky code under the hood. Supporting <code>CCSpriteBatchNode</code> made the code-base, particularly, <code>CCSprite</code>, quite clumsy as it had to support this dual role of being in charge of its own rendering or potentially delegating that responsibility to its parent <code>CCSpriteBatchNode</code>.
 
@@ -133,7 +133,7 @@ renderTexture.End();
 // Alternatively, our render texture dimensions may not correspond with the entire scene
 // and we may wish to supply an alternate parent transform 
 
-// Create a transform that simply translates by 20
+// Create a transform that simply translates by 20 along the x-axis
 CCAffineTransform transform2 = CCAffineTransform.Identity;
 transform2.Tx = 20.0f;
 
@@ -153,7 +153,7 @@ Remember, the <em>local</em> transform is relative to a node's parent, while the
 
 ## Depth testing and changes to z-ordering
 
-Finally, we have overhauled the usage of <code>CCNode</code> z-ordering to more cleanly integrate with our renderer's sorting of render commands. Previously, <code>CCNode</code> contained a suite of z-ordering properties - namely, <code>ZOrder</code>, <code>LocalZOrder</code>, <code>GlobalZOrder</code> along with the internal <code>COrderOfArrival</code>. Aside from adding confusion, the new renderer pipeline has made all these different flavors of ordering obsolete. Instead, we know have the single property <code>int:ZOrder</code>, that simply orders node siblings by ascending order. In this way, the sibling with lowest <code>ZOrder</code> will be processed before all others. 
+Finally, we have overhauled the usage of <code>CCNode</code> z-ordering to more cleanly integrate with our renderer's sorting of render commands. Previously, <code>CCNode</code> contained a suite of z-ordering properties &mdash; namely, <code>ZOrder</code>, <code>LocalZOrder</code>, <code>GlobalZOrder</code> along with the internal <code>COrderOfArrival</code>. Aside from adding confusion, the new renderer pipeline has made all these different flavors of ordering obsolete. Instead, we know have the single property <code>int:ZOrder</code>, that simply orders node siblings by ascending order. In this way, the sibling with lowest <code>ZOrder</code> will be processed before all others. 
 
 __Warning:__ Remember, <code>ZOrder</code> has nothing to do with the geometric depth of a node. It's simply an ordering amongst siblings. If you want to actually alter the z-position of node, then use the <code>VertexZ</code> property.
 
@@ -161,7 +161,7 @@ __Warning:__ The one caveat when ordering is when we have a collection of siblin
 
 ![ZOrdering vs depth ordering](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/ZOrderVsDepthOrder.png "ZOrdering vs depth ordering")
 
-At this point, there is a disagreement between the depth and z-ordering, so the Renderer has to make the choice. In particular, for our implementation, __depth-ordering is prioritised over z-ordering__. The motivation is that a geometric ordering is the more appropriate choice to dynamically alter the render ordering of nodes that may be moving around in world. Below is a video showcasing this idea
+At this point, there is a disagreement between the depth and z-ordering, so the Renderer has to make a choice. In particular, for our implementation, __depth-ordering is prioritised over z-ordering__. The motivation is that a geometric ordering is the more appropriate choice to dynamically alter the render ordering of nodes that may be moving around in world. Below is a video showcasing this idea
 
 <script src="http://vjs.zencdn.net/4.0/video.js"></script>
 
@@ -170,5 +170,12 @@ preload="auto" width="683" height="384"
 data-setup="{}">
 <source src="https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/DynamicDepthOrdering.mp4" type='video/mp4'>
 </video>
+
+
+## Conclusion
+
+Ultimately, the aim of the new renderer pipeline is to help lessen the developer's burden of optimising and to spend more time on game content. Nonetheless, developers do need do need to be mindful of how to structure their scenes to maximise these performance gains &mdash; particularly to understand when the renderer will automatically batch a collection of sprites. Hopefully this article has helped to equip developers with precisely this information.
+
+
 
 
