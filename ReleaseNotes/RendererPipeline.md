@@ -171,11 +171,12 @@ data-setup="{}">
 <source src="https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/DynamicDepthOrdering.mp4" type='video/mp4'>
 </video>
 
-
 ## Conclusion
 
 Ultimately, the aim of the new renderer pipeline is to help lessen the developer's burden of optimising and to spend more time on game content. Nonetheless, developers do need do need to be mindful of how to structure their scenes to maximise these performance gains &mdash; particularly to understand when the renderer will automatically batch a collection of sprites. Hopefully this article has helped to equip developers with precisely this information.
 
+## Examples
+![MenuBeforeAfter](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/MenuBeforeAfter.png "MenuBeforeAfter")
 
-
+![LabelBeforeAfter](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/LabelBeforeAfter.png "LabelBeforeAfter")
 
