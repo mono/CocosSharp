@@ -11,6 +11,19 @@ namespace CocosSharp
         bool gameStarted;
         GraphicsDevice graphicsDevice;
 
+
+        #region Properties
+
+        public CCScene RootScene { get; set; }
+        public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
+        public CCScheduler Scheduler { get; private set; }
+        public CCActionManager ActionManager { get; private set; }
+
+        CCDrawManager DrawManager { get; set; }
+
+        #endregion Properties
+
+
         public void StartGame()
         {
             if(!gameStarted)
@@ -19,7 +32,7 @@ namespace CocosSharp
                 gameStarted = true;
             }
         }
-
+            
         void Initialise()
         {
             var graphicsProfile = GraphicsProfile.HiDef;
@@ -31,6 +44,10 @@ namespace CocosSharp
             presParams.RenderTargetUsage = RenderTargetUsage.PreserveContents;
 
             graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, graphicsProfile, presParams);
+            DrawManager = new CCDrawManager(graphicsDevice);
+
+            Scheduler = new CCScheduler();
+            ActionManager = new CCActionManager();
 
             PlatformInitialise();
         }
@@ -39,6 +56,16 @@ namespace CocosSharp
         {
             PlatformPresent();
         }
+
+        void DrawScene()
+        {
+            if(RootScene != null)
+            {
+                RootScene.Visit();
+                Renderer.VisitRenderQueue();
+            }
+        }
+    
     }
 }
 

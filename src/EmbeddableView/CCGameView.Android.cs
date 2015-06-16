@@ -65,6 +65,10 @@ namespace CocosSharp
 
             if (!GraphicsContext.IsCurrent)
                 MakeCurrent();
+
+            DrawScene();
+
+            PlatformPresent();
         }
 
         protected override void OnUpdateFrame(FrameEventArgs e)
@@ -73,10 +77,6 @@ namespace CocosSharp
 
             if (!GraphicsContext.IsCurrent)
                 MakeCurrent();
-
-            graphicsDevice.Clear(Microsoft.Xna.Framework.Color.AliceBlue);
-
-            PlatformPresent();
         }
 
         void PlatformPresent()
