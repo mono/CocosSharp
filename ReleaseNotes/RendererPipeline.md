@@ -153,7 +153,7 @@ Remember, the <em>local</em> transform is relative to a node's parent, while the
 
 ## Depth testing and changes to z-ordering
 
-Finally, we have overhauled the usage of <code>CCNode</code> z-ordering to more cleanly integrate with our renderer's sorting of render commands. Previously, <code>CCNode</code> contained a suite of z-ordering properties &mdash; namely, <code>ZOrder</code>, <code>LocalZOrder</code>, <code>GlobalZOrder</code> along with the internal <code>COrderOfArrival</code>. Aside from adding confusion, the new renderer pipeline has made all these different flavors of ordering obsolete. Instead, we know have the single property <code>int:ZOrder</code>, that simply orders node siblings by ascending order. In this way, the sibling with lowest <code>ZOrder</code> will be processed before all others. 
+Finally, we have overhauled the usage of <code>CCNode</code> z-ordering to more cleanly integrate with our renderer's sorting of render commands. Previously, <code>CCNode</code> contained a suite of z-ordering properties &mdash; namely, <code>ZOrder</code>, <code>LocalZOrder</code>, <code>GlobalZOrder</code> along with the internal <code>COrderOfArrival</code>. Aside from adding confusion, the new renderer pipeline has made all these different flavors of ordering obsolete. Instead, we now have the single property <code>int:ZOrder</code>, that simply orders node siblings by ascending order. In this way, the sibling with lowest <code>ZOrder</code> will be processed before all others. 
 
 __Warning:__ Remember, <code>ZOrder</code> has nothing to do with the geometric depth of a node. It's simply an ordering amongst siblings. If you want to actually alter the z-position of node, then use the <code>VertexZ</code> property.
 
@@ -176,6 +176,9 @@ data-setup="{}">
 Ultimately, the aim of the new renderer pipeline is to help lessen the developer's burden of optimising and to spend more time on game content. Nonetheless, developers do need do need to be mindful of how to structure their scenes to maximise these performance gains &mdash; particularly to understand when the renderer will automatically batch a collection of sprites. Hopefully this article has helped to equip developers with precisely this information.
 
 ## Examples
+
+Below are some sample screenshots showcasing the observed performance gains. In particular, the highlighted statistics show the change in the number of draw counts before and after the integration of the renderer pipeline.
+
 ![MainMenuBeforeAfter](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/MainMenuBeforeAfter.png "MainMenuBeforeAfter")
 
 ![LabelBeforeAfter](https://raw.githubusercontent.com/mono/CocosSharp/develop/ReleaseNotes/RendererPipelineNotesContent/LabelBeforeAfter.png "LabelBeforeAfter")
