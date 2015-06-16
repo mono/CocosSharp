@@ -48,6 +48,7 @@ namespace CocosSharp
 
         CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         CCViewport viewport;
+        CCGameView gameView;
         CCWindow window;
         CCSize designResolutionSize = CCSize.Zero;
 
@@ -119,6 +120,12 @@ namespace CocosSharp
         public override CCScene Scene
         {
             get { return this; }
+        }
+            
+        public override CCGameView GameView
+        {
+            get { return gameView; }
+            set { gameView = value; }
         }
 
         public override CCWindow Window 
@@ -276,6 +283,15 @@ namespace CocosSharp
         {
         }
 
+        public CCScene(CCSize worldDimensions)
+        {
+            IgnoreAnchorPointForPosition = true;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            Viewport = new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f));
+            DesignResolutionSize = worldDimensions;
+            UpdateResolutionRatios();
+        }
+
         #endregion Constructors
 
 
@@ -306,7 +322,7 @@ namespace CocosSharp
 
         void UpdateResolutionRatios()
         {
-            if (Window != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
+            if (GameView != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
             {
                 bool dirtyViewport = false;
                 CCSize designSize = DesignResolutionSize;
