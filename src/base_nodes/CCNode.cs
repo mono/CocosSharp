@@ -765,9 +765,10 @@ namespace CocosSharp
             }
         }
 
-        public virtual CCApplication Application
+        public virtual CCGameView GameView
         {
-            get { return Window != null ? Window.Application : null; }
+            get { return Scene != null ? Scene.GameView : null; }
+            set { Scene.GameView = value; }
         }
 
         public virtual CCDirector Director
@@ -864,12 +865,12 @@ namespace CocosSharp
 
         CCScheduler Scheduler
         {
-            get { return Application != null ? Application.Scheduler : null; }
+            get { return GameView != null ? GameView.Scheduler : null; }
         }
 
         CCActionManager ActionManager
         {
-            get { return Application != null ? Application.ActionManager : null; }
+            get { return GameView != null ? GameView.ActionManager : null; }
         }
 
         #endregion Properties
