@@ -576,8 +576,8 @@ namespace CocosSharp
 
             if (CCDrawManager.SharedDrawManager == null)
             {
-                CCDrawManager.SharedDrawManager 
-                    = new CCDrawManager(xnaDeviceManager, windowSizeInPixels, PlatformSupportedOrientations());
+//                CCDrawManager.SharedDrawManager 
+//                    = new CCDrawManager(xnaDeviceManager, windowSizeInPixels, PlatformSupportedOrientations());
             }
         }
 

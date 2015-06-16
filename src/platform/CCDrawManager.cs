@@ -54,10 +54,6 @@ namespace CocosSharp
         int stackIndex;
         int maskLayer = -1;
 
-        CCDisplayOrientation currentDisplayOrientation;
-
-        CCSize initialProposedScreenSizeInPixels;
-
 
         CCBlendFunc currBlend;
         CCDepthFormat platformDepthFormat;
@@ -92,7 +88,6 @@ namespace CocosSharp
         Texture2D currentTexture;
 
         GraphicsDevice graphicsDevice;
-        GraphicsDeviceManager graphicsDeviceMgr;
 
         List<RasterizerState> rasterizerStatesCache;
 
@@ -168,25 +163,14 @@ namespace CocosSharp
 
         internal CCDisplayOrientation SupportedDisplayOrientations
         {
-            get { return (CCDisplayOrientation)graphicsDeviceMgr.SupportedOrientations; }
-            set 
-            {
-                graphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)value;
-                graphicsDeviceMgr.ApplyChanges();
-                UpdateDisplayOrientation();
-            }
+            get ;
+            set ;
+
         }
 
         internal CCDisplayOrientation CurrentDisplayOrientation
         {
-            set 
-            {
-                if(currentDisplayOrientation != value) 
-                {
-                    currentDisplayOrientation = value;
-                    UpdateDisplayOrientation();
-                }
-            }
+            get; set ;
         }
 
         internal BlendState BlendState
@@ -261,11 +245,6 @@ namespace CocosSharp
             get { return graphicsDevice; }
         }
 
-        internal GraphicsDeviceManager XnaGraphicsDeviceManager
-        {
-            get { return graphicsDeviceMgr; }
-        }
-
         internal RenderTarget2D CurrentRenderTarget 
         { 
             get { return currentRenderTarget; }
@@ -286,12 +265,9 @@ namespace CocosSharp
 
         #region Constructors
 
-        internal CCDrawManager(GraphicsDeviceManager deviceManager, CCSize proposedScreenSize, 
-            CCDisplayOrientation supportedOrientations)
+        internal CCDrawManager(GraphicsDevice device)
         {
             Renderer = new CCRenderer(this);
-
-            graphicsDeviceMgr = deviceManager;
 
             depthTest = true;
             allowNonPower2Textures = true;
@@ -307,23 +283,9 @@ namespace CocosSharp
 
             rasterizerStatesCache = new List<RasterizerState>();
         
-            hasStencilBuffer = (deviceManager.PreferredDepthStencilFormat == DepthFormat.Depth24Stencil8);
+            hasStencilBuffer = true;
 
-
-            if (deviceManager.GraphicsDevice == null)
-            {
-                initialProposedScreenSizeInPixels = proposedScreenSize;
-                graphicsDeviceMgr.PreferredBackBufferWidth = (int)initialProposedScreenSizeInPixels.Width;
-                graphicsDeviceMgr.PreferredBackBufferHeight = (int)initialProposedScreenSizeInPixels.Height;
-                graphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)supportedOrientations;
-                graphicsDeviceMgr.DeviceCreated += GraphicsDeviceCreated;
-                graphicsDeviceMgr.PreparingDeviceSettings += PreparingDeviceSettings;
-            }
-        }
-
-        void GraphicsDeviceCreated(object sender, EventArgs e)
-        {
-            graphicsDevice = graphicsDeviceMgr.GraphicsDevice;
+            graphicsDevice = device;
             InitializeGraphicsDevice();
         }
 
@@ -342,9 +304,6 @@ namespace CocosSharp
             gdipp.DepthStencilFormat = presParams.DepthStencilFormat;
             gdipp.BackBufferFormat = presParams.BackBufferFormat;
             gdipp.RenderTargetUsage = presParams.RenderTargetUsage;
-
-            gdipp.BackBufferWidth = (int)initialProposedScreenSizeInPixels.Width; 
-            gdipp.BackBufferHeight = (int)initialProposedScreenSizeInPixels.Height;
         }
 
         void InitializeGraphicsDevice()
@@ -402,9 +361,6 @@ namespace CocosSharp
 
             worldMatrixChanged = viewMatrixChanged = projectionMatrixChanged = true;
 
-            // Need to change DrawPrim to no longer be static !!!
-            CCDrawingPrimitives.Initialize(graphicsDevice, this);
-
             graphicsDevice.Disposing += GraphicsDeviceDisposing;
             graphicsDevice.DeviceLost += GraphicsDeviceDeviceLost;
             graphicsDevice.DeviceReset += GraphicsDeviceDeviceReset;
@@ -417,19 +373,6 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
-        #region Updating view
-
-        void UpdateDisplayOrientation()
-        {
-            // Make sure chosen orientation is supported
-            if((currentDisplayOrientation & SupportedDisplayOrientations) != currentDisplayOrientation) 
-            {
-                currentDisplayOrientation = CCDisplayOrientation.Default;
-            }
-        }
-
-        #endregion Updating view
 
 
         RasterizerState GetScissorRasterizerState(bool scissorEnabled)
