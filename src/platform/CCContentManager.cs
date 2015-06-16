@@ -73,7 +73,7 @@ namespace CocosSharp
 		#endregion Asset entry private class
 
 
-		public static CCContentManager SharedContentManager;
+        public static CCContentManager SharedContentManager = new CCContentManager(new GameServiceContainer());
 
 		Dictionary<string, AssetEntry> loadedAssets;
 		Dictionary<string, string> assetLookupDict = new Dictionary<string, string>();
@@ -100,7 +100,7 @@ namespace CocosSharp
 
         internal static void Initialize(IServiceProvider serviceProvider, string rootDirectory)
         {
-            SharedContentManager = new CCContentManager(serviceProvider, rootDirectory);
+            SharedContentManager = new CCContentManager(new GameServiceContainer(), rootDirectory);
         }
 
 		string GetRealName(string assetName)
