@@ -86,6 +86,7 @@ CCGeometryInstance geomInstance = geoBatch.CreateGeometryInstance(3, 3);
   *  Windows Phone 8.0 - __Note:__ Windows Phone 8.0 will be obsolete in the the next release.
 
 * __Effects:__ During the Renderer Pipeline modifications we made changes to all the effects that use a GridBase, examples being <code>CCLiquid</code>, <code>CCShaky</code> etc.  Any of these GridBase effects will need to target a <code>CCNodeGrid</code>.  To do that add the <code>CCNode</code> that will be targeted to an instance of a <code>CCNodeGrid</code>.  This breaking change greatly simplifies the rendering code and our source code base.  Every rendering loop there were checks for Grid usage even when not being used which resulted in unnessasary processing cycles and making the rendering source hard to manage. The following demonstrates how to run an <code>Effect</code> targeting a <code>CCSprite</code> that is wrapped in a <code>CCNodeGrid</code>.
+
 <code>
 
 // Define our Effect Action
