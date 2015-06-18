@@ -87,6 +87,7 @@ CCGeometryInstance geomInstance = geoBatch.CreateGeometryInstance(3, 3);
 
 * __Effects:__ During the Renderer Pipeline modifications we made changes to all the effects that use a GridBase, examples being <code>CCLiquid</code>, <code>CCShaky</code> etc.  Any of these GridBase effects will need to target a <code>CCNodeGrid</code>.  To do that add the <code>CCNode</code> that will be targeted to an instance of a <code>CCNodeGrid</code>.  This breaking change greatly simplifies the rendering code and our source code base.  Every rendering loop there were checks for Grid usage even when not being used which resulted in unnessasary processing cycles and making the rendering source hard to manage. The following demonstrates how to run an <code>Effect</code> targeting a <code>CCSprite</code> that is wrapped in a <code>CCNodeGrid</code>.
 
+<pre>
 <code>
 
 // Define our Effect Action
@@ -106,6 +107,7 @@ targetNode.AddChild(sprite);
 // Run the action against the wrapping CCNodeGrid targetNode 
 targetNode.RunAction (fadeOut);
 </code>
+</pre>
 
 * __v.1.4.0.0 reminder__: Usage of the obsolete <code>CCLabelBMFont</code> and <code>CCLabelTtf</code> classes should be replaced with unified label class <code>CCLabel</code> (see [here](http://forums.xamarin.com/discussion/37873/cocossharp-v1-4-0-0-release)). These obsolete classes will be removed in future releases!
 
