@@ -64,7 +64,7 @@ namespace CocosSharp
             }
         }
 
-        public CCBlendFunc BlendFunc
+        public override CCBlendFunc BlendFunc
         {
             get { return blendFunc; }
             set
