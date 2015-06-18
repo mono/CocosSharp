@@ -121,7 +121,7 @@ namespace CocosSharp
         public bool AutoRemoveOnFinish { get; set; }
         public bool OpacityModifyRGB { get; set; }
 
-        public int TotalParticles { get; protected set; }
+        public virtual int TotalParticles { get; set; }
         protected int AllocatedParticles { get; set; }
         public int ParticleCount { get; private set; }
         public int AtlasIndex { get; set; }
@@ -151,6 +151,8 @@ namespace CocosSharp
         public CCColor4F StartColorVar { get; set; }
         public CCColor4F EndColor { get; set; }
         public CCColor4F EndColorVar { get; set; }
+
+        public virtual CCBlendFunc BlendFunc { get; set; }
 
         // We only want this to be set when system initialised
         public CCEmitterMode EmitterMode { get; private set; }
@@ -301,11 +303,11 @@ namespace CocosSharp
             {
                 if (emitterMode == CCEmitterMode.Gravity) 
                 {
-                    GravityParticles = new CCParticleGravity[TotalParticles];
+                    GravityParticles = new CCParticleGravity[numberOfParticles];
                 } 
                 else 
                 {
-                    RadialParticles = new CCParticleRadial[TotalParticles];
+                    RadialParticles = new CCParticleRadial[numberOfParticles];
                 }
             }
         }
@@ -316,6 +318,8 @@ namespace CocosSharp
             Life = particleConfig.Life;
             LifeVar = particleConfig.LifeVar;
             EmissionRate = TotalParticles / Life;
+
+            BlendFunc = particleConfig.BlendFunc;
 
             Angle = particleConfig.Angle;
             AngleVar = particleConfig.AngleVar;

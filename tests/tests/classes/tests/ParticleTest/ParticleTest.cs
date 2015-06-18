@@ -1750,7 +1750,7 @@ namespace tests
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
 
                 particleSystem.PositionType = CCPositionType.Grouped;
-                particleSystem.ResizeTotalParticles(200);
+                particleSystem.TotalParticles = 200;
 
                 particleSystem.Position = (new CCPoint(i * 15 + 100, i * 15 + 100));
 

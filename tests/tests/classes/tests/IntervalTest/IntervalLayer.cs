@@ -25,7 +25,7 @@ namespace tests
             sun.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             sun.Position = (new CCPoint(s.Width - 32, s.Height - 32));
 
-            sun.ResizeTotalParticles(130);
+            sun.TotalParticles = 130;
             sun.Life = (0.6f);
             AddChild(sun);
 
