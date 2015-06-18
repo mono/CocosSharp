@@ -3,15 +3,21 @@
 ## Key new features
  ---
 
-### Signed and simplified assemblies
-
-* TBA
-
-
 ### Renderer pipeline
 
 We have overhauled the way CocosSharp performs rendering, with a focus on improved performance. Please check out this article [here](link_to_forum_post) for an in-depth discussion on the design of our renderer pipeline and what it means for developers.
 
+### Templates
+
+Xamarin Studio and Visual Studio templates have been updated with the latest PCL package for this release.
+
+Visual Studio templates now have three new templates.
+* Windows Phone 8.1
+* Mobile
+ - Portable - Android, iOS and Windows Phone 8.1
+   - This template will create a portable PCL project solution.  
+ - Shared - Android, iOS and Windows Phone 8,1
+   - This template will create a shared project solution 
 
 ## Breaking changes
  ---
@@ -71,10 +77,15 @@ CCGeometryInstance geomInstance = geoBatch.CreateGeometryInstance(3, 3);
 
 * __<code>CCDrawPrimitives</code>__ has now been marked obsolete. Users should instead make use of the pre-existing <code>CCDrawNode</code> class which integrates with the new renderer pipeline, or alternatively use <code>CCGeometryNode</code> to construct more customisable primitives.
 
+* __NuGet packages__: To cut down on the confusion of which NuGet package to include in your projects we will only be delivering one NuGet package that includes only the PCL assemblies for the following platforms.  Developers will need to update their projects to use this new package to obtain the updates.  __CococsSharp.PCL.Shared.nupkg__
+  *  Android
+  *  iOS
+  *  Windows DX
+  *  Windows 8
+  *  Windows Phone 8.1
+  *  Windows Phone 8.0 - __Note:__ Windows Phone 8.0 will be obsolete in the the next release.
+
 * __v.1.4.0.0 reminder__: Usage of the obsolete <code>CCLabelBMFont</code> and <code>CCLabelTtf</code> classes should be replaced with unified label class <code>CCLabel</code> (see [here](http://forums.xamarin.com/discussion/37873/cocossharp-v1-4-0-0-release)). These obsolete classes will be removed in future releases!
-
-
-
 
 ## Fixes and enhancements 
  ---
