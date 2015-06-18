@@ -3,26 +3,44 @@
 ## Key new features
  ---
 
+### Unified PCL NuGet
+
+We have removed the confusion of offering multiple NuGet packages for each distinct platform. Instead, from this release onwards we will simply provide a single PCL NuGet &mdash; namely, __CococsSharp.PCL.Shared.nupkg__, which, aside from other PCL's, can be referenced within the following platform-specific projects:
+
+*  iOS
+*  Android
+*  Windows DX
+*  Windows 8
+*  Windows Phone 8.1
+*  Windows Phone 8.0 
+
+
+
+__Note__: If you're migrating from an existing CocosSharp project that references a platform-specific NuGet (e.g. CocosSharp.iOS.1.4.0.0.nupkg), then you'll need to explicitly remove the old package and then subsequently add CococsSharp.PCL.Shared.1.5.0.0.nupkg.
+
+
 ### Renderer pipeline
 
 We have overhauled the way CocosSharp performs rendering, with a focus on improved performance. Please check out this article [here](link_to_forum_post) for an in-depth discussion on the design of our renderer pipeline and what it means for developers.
 
 ### Templates
 
-Xamarin Studio and Visual Studio templates have been updated with the latest PCL package for this release.
+Xamarin Studio and Visual Studio (VS) templates have been updated with the latest PCL package for this release. In particular, we now have VS project templates for:
 
-Visual Studio templates now have three new templates.
 * Windows Phone 8.1
 * Mobile
- - Portable - Android, iOS and Windows Phone 8.1
-   - This template will create a portable PCL project solution.  
- - Shared - Android, iOS and Windows Phone 8,1
-   - This template will create a shared project solution 
+  * Portable (PCL) - Android, iOS and Windows Phone 8.1
+  * Shared project - Android, iOS and Windows Phone 8.1
+
+Details on how to access project templates for Xamarin Studio or Visual Studio can be found [here](https://forums.xamarin.com/discussion/26822/cocossharp-project-templates-for-xamarin-studio) and [here](http://forums.xamarin.com/discussion/30701/cocossharp-project-templates-for-visual-studio) respectively.
 
 ## Breaking changes
  ---
 
-* Due to the inclusion of the new renderer pipeline, __<code>CCSpriteBatchNode</code> has been marked obsolete__, however to avoid confusion will me omitted entirely in future releases. Please see the article [here](link_to_forum_post) for details on how to migrate away from this class.
+* Unfortunately, while offering a single unified PCL package simplify things greatly, there are some technical limitations and trade-offs. Specifically, our offering is currently unable to target __classic Mac and Windows GL projects__. However, in the future, CocosSharp packages will support Unified Mac projects so please keep that in mind.
+
+
+* Due to the inclusion of the new renderer pipeline, __<code>CCSpriteBatchNode</code> has been marked obsolete__, however to avoid confusion will be omitted entirely in future releases. Please see the article [here](link_to_forum_post) for details on how to migrate away from this class.
 
 
 * __<code>CCRenderTexture</code> is longer derived from <code>CCNode</code>__. Previously, <code>CCRenderTexture</code> served a dual role where it could both be attached to the scene-graph or used externally, with the corresponding <code>Sprite</code> instead added to a scene. For example
@@ -76,14 +94,6 @@ CCGeometryInstance geomInstance = geoBatch.CreateGeometryInstance(3, 3);
 
 
 * __<code>CCDrawPrimitives</code>__ has now been marked obsolete. Users should instead make use of the pre-existing <code>CCDrawNode</code> class which integrates with the new renderer pipeline, or alternatively use <code>CCGeometryNode</code> to construct more customisable primitives.
-
-* __NuGet packages__: To cut down on the confusion of which NuGet package to include in your projects we will only be delivering one NuGet package that includes only the PCL assemblies for the following platforms.  Developers will need to update their projects to use this new package to obtain the updates.  __CococsSharp.PCL.Shared.nupkg__
-  *  Android
-  *  iOS
-  *  Windows DX
-  *  Windows 8
-  *  Windows Phone 8.1
-  *  Windows Phone 8.0 - __Note:__ Windows Phone 8.0 will be obsolete in the the next release.
 
 * __Effects:__ During the Renderer Pipeline modifications we made changes to all the effects that use a GridBase, examples being <code>CCLiquid</code>, <code>CCShaky</code> etc.  Any of these GridBase effects will need to target a <code>CCNodeGrid</code>.  To do that add the <code>CCNode</code> that will be targeted to an instance of a <code>CCNodeGrid</code>.  This breaking change greatly simplifies the rendering code and our source code base.  Every rendering loop there were checks for Grid usage even when not being used which resulted in unnessasary processing cycles and making the rendering source hard to manage. The following demonstrates how to run an <code>Effect</code> targeting a <code>CCSprite</code> that is wrapped in a <code>CCNodeGrid</code>.
 
