@@ -121,7 +121,7 @@ namespace CocosSharp
         public bool AutoRemoveOnFinish { get; set; }
         public bool OpacityModifyRGB { get; set; }
 
-        public int TotalParticles { get; protected set; }
+        public virtual int TotalParticles { get; set; }
         protected int AllocatedParticles { get; set; }
         public int ParticleCount { get; private set; }
         public int AtlasIndex { get; set; }
@@ -301,11 +301,11 @@ namespace CocosSharp
             {
                 if (emitterMode == CCEmitterMode.Gravity) 
                 {
-                    GravityParticles = new CCParticleGravity[TotalParticles];
+                    GravityParticles = new CCParticleGravity[numberOfParticles];
                 } 
                 else 
                 {
-                    RadialParticles = new CCParticleRadial[TotalParticles];
+                    RadialParticles = new CCParticleRadial[numberOfParticles];
                 }
             }
         }

@@ -81,7 +81,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_TOTALPARTICLES)
             {
-                ((CCParticleSystemQuad) node).ResizeTotalParticles(pInteger);
+                ((CCParticleSystemQuad) node).TotalParticles = pInteger;
             }
             else
             {

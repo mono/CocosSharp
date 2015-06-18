@@ -24,19 +24,43 @@ namespace CocosSharp
             {
                 if (value)
                 {
-                    BlendFunc = CCBlendFunc.Additive;
+                    blendFunc = CCBlendFunc.Additive;
                 }
                 else
                 {
                     if (Texture != null && !Texture.HasPremultipliedAlpha)
                     {
-                        BlendFunc = CCBlendFunc.NonPremultiplied;
+                        blendFunc = CCBlendFunc.NonPremultiplied;
                     }
                     else
                     {
-                        BlendFunc = CCBlendFunc.AlphaBlend;
+                        blendFunc = CCBlendFunc.AlphaBlend;
                     }
                 }
+            }
+        }
+
+        public override int TotalParticles
+        {
+            set
+            {
+                if(value == TotalParticles)
+                    return;
+
+                if (value > AllocatedParticles)
+                {
+                    if (EmitterMode == CCEmitterMode.Gravity) 
+                        GravityParticles = new CCParticleGravity[value];
+                    else 
+                        RadialParticles = new CCParticleRadial[value];
+
+                    if(quads != null)
+                        quads.Capacity = value;
+
+                    AllocatedParticles = value;
+                }
+
+                base.TotalParticles = value;
             }
         }
 
@@ -45,8 +69,11 @@ namespace CocosSharp
             get { return blendFunc; }
             set
             {
-                blendFunc = value;
-                UpdateBlendFunc();
+                if (blendFunc.Source != value.Source || blendFunc.Destination != value.Destination)
+                {
+                    blendFunc = value;
+                    UpdateBlendFunc();
+                }
             }
         }
 
@@ -116,7 +143,6 @@ namespace CocosSharp
         public CCParticleSystemQuad(string plistFile, string directoryName = null) 
             : base(plistFile, directoryName)
         {
-            int totalPart = TotalParticles;
             InitRenderCommand();
         }
 
@@ -148,26 +174,6 @@ namespace CocosSharp
         }
 
         #region Updating quads
-
-        public void ResizeTotalParticles(int newSize)
-        {
-            if(newSize == TotalParticles)
-                return;
-
-            if (newSize > AllocatedParticles)
-            {
-                if (EmitterMode == CCEmitterMode.Gravity) 
-                    GravityParticles = new CCParticleGravity[newSize];
-                else 
-                    RadialParticles = new CCParticleRadial[newSize];
-
-                quads.Capacity = newSize;
-
-                AllocatedParticles = newSize;
-            }
-
-            base.TotalParticles = newSize;
-        }
 
         // pointRect should be in Texture coordinates, not pixel coordinates
         void ResetTexCoords(CCRect texRectInPixels)
