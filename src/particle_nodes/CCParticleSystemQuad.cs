@@ -64,7 +64,7 @@ namespace CocosSharp
             }
         }
 
-        public override CCBlendFunc BlendFunc
+        public CCBlendFunc BlendFunc
         {
             get { return blendFunc; }
             set
@@ -140,11 +140,9 @@ namespace CocosSharp
             BlendFunc = blendFunc;
         }
 
-        public CCParticleSystemQuad(string plistFile, string directoryName = null) 
-            : base(plistFile, directoryName)
-        {
-            InitRenderCommand();
-        }
+        public CCParticleSystemQuad (string plistFile, string directoryName = null)
+            : this (new CCParticleSystemConfig (plistFile, directoryName))
+        { }
 
         void InitRenderCommand()
         {
