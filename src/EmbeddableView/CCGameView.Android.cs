@@ -19,26 +19,32 @@ namespace CocosSharp
         public CCGameView(Context context) 
             : base(context)
         {
-            Initialise();
+            RenderOnUIThread = false;
+            FocusableInTouchMode = true;
         }
 
         public CCGameView(Context context, IAttributeSet attrs) 
             : base(context, attrs)
         {
-            Initialise();
+            RenderOnUIThread = false;
+            FocusableInTouchMode = true;
         }
 
         void PlatformInitialise()
         {
-            RenderOnUIThread = false;
-            FocusableInTouchMode = true;
-
             RequestFocus();
         }
 
         void PlatformStartGame()
         {
             Run();
+        }
+
+        protected override void OnContextSet(EventArgs e)
+        {
+            base.OnContextSet(e);
+
+            Initialise();
         }
 
         protected override void CreateFrameBuffer()
@@ -62,9 +68,6 @@ namespace CocosSharp
 
             if (GraphicsContext == null || GraphicsContext.IsDisposed)
                 return;
-
-            if (!GraphicsContext.IsCurrent)
-                MakeCurrent();
 
             DrawScene();
 
