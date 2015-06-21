@@ -152,8 +152,6 @@ namespace CocosSharp
         public CCColor4F EndColor { get; set; }
         public CCColor4F EndColorVar { get; set; }
 
-        public virtual CCBlendFunc BlendFunc { get; set; }
-
         // We only want this to be set when system initialised
         public CCEmitterMode EmitterMode { get; private set; }
 
@@ -318,8 +316,6 @@ namespace CocosSharp
             Life = particleConfig.Life;
             LifeVar = particleConfig.LifeVar;
             EmissionRate = TotalParticles / Life;
-
-            BlendFunc = particleConfig.BlendFunc;
 
             Angle = particleConfig.Angle;
             AngleVar = particleConfig.AngleVar;
