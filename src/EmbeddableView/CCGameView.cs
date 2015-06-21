@@ -33,14 +33,39 @@ namespace CocosSharp
 
         #region Properties
 
-        public CCScene RootScene { get; set; }
+        #if !NETFX_CORE
+        public CCAccelerometer Accelerometer { get; set; }
+        #endif
+
+        public CCDirector Director { get; private set; }
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
         public CCActionManager ActionManager { get; private set; }
 
+        public bool DepthTesting
+        {
+            get { return Renderer.UsingDepthTest; }
+            set { Renderer.UsingDepthTest = value; }
+        }
+
+        public bool DisplayStats 
+        {
+            get { return Stats.IsEnabled; }
+            set { Stats.IsEnabled = value; }
+        }
+
+        public int StatsScale
+        {
+            get { return Stats.Scale; }
+            set { Stats.Scale = value; }
+        }
+
+        internal CCEventDispatcher EventDispatcher { get; private set; }
         internal CCDrawManager DrawManager { get; private set; }
 
-        #endregion Properties
+        CCStats Stats { get; set; }
 
+
+        #endregion Properties
 
         public void StartGame()
         {
@@ -49,6 +74,11 @@ namespace CocosSharp
                 PlatformStartGame();
                 gameStarted = true;
             }
+        }
+
+        public void RunWithScene(CCScene scene)
+        {
+            Director.RunWithScene(scene);
         }
             
         void Initialise()
@@ -73,6 +103,9 @@ namespace CocosSharp
             serviceProvider.AddService(typeof(IGraphicsDeviceService), graphicsDeviceService);
 
             ActionManager = new CCActionManager();
+            Director = new CCDirector();
+
+            Stats.Initialize();
 
             ViewCreated(this, null);
         }
@@ -86,9 +119,12 @@ namespace CocosSharp
         {
             DrawManager.BeginDraw();
 
-            if(RootScene != null)
+            CCScene runningScene = Director.RunningScene;
+
+            if (runningScene != null) 
             {
-                RootScene.Visit();
+                runningScene.Visit();
+
                 Renderer.VisitRenderQueue();
             }
 
