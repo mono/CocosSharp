@@ -275,10 +275,8 @@ namespace CocosSharp
 
         public override void Visit(ref CCAffineTransform parentWorldTransfrom)
         {
-            if (!Visible || Window == null)
-            {
+            if (!Visible || GameView == null)
                 return;
-            }
 
             // Set camera view/proj matrix even if ChildClippingMode is None
             if(Camera != null)
@@ -330,21 +328,21 @@ namespace CocosSharp
             noDrawChildren = false;
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
-            CCDrawManager drawManager = Window.DrawManager;
+            CCDrawManager drawManager = DrawManager;
 
-            if (ChildClippingMode == CCClipMode.Bounds && Window != null)
+            if (ChildClippingMode == CCClipMode.Bounds && GameView != null)
             {
                 drawManager.ScissorRectInPixels = viewportRect;
             }
 
             else if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
             {
-                restoreScissor = Window.DrawManager.ScissorRectEnabled;
+                restoreScissor = DrawManager.ScissorRectEnabled;
 
-                Window.DrawManager.ScissorRectEnabled = false;
+                DrawManager.ScissorRectEnabled = false;
 
-                Window.DrawManager.PushMatrix();
-                Window.DrawManager.WorldMatrix = Matrix.Identity;
+                DrawManager.PushMatrix();
+                DrawManager.WorldMatrix = Matrix.Identity;
 
                 renderTexture.BeginWithClear(0, 0, 0, 0);
             }
@@ -358,17 +356,17 @@ namespace CocosSharp
                 {
                     renderTexture.End();
 
-                    Window.DrawManager.PopMatrix();
+                    DrawManager.PopMatrix();
                 }
 
                 if (restoreScissor)
                 {
-                    Window.DrawManager.ScissorRectEnabled = true;
+                    DrawManager.ScissorRectEnabled = true;
                     restoreScissor = false;
                 }
                 else
                 {
-                    Window.DrawManager.ScissorRectEnabled = false;
+                    DrawManager.ScissorRectEnabled = false;
                 }
 
                 if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)

@@ -158,7 +158,7 @@ namespace CocosSharp
 	/// </summary>
     public class CCScheduler
     {
-		static HashTimeEntry[] tmpHashSelectorArray = new HashTimeEntry[128];
+        static HashTimeEntry[] tmpHashSelectorArray = new HashTimeEntry[128];
 		static ICCUpdatable[] tmpSelectorArray = new ICCUpdatable[128];
 
 		readonly Dictionary<ICCUpdatable, HashTimeEntry> hashForTimers = new Dictionary<ICCUpdatable, HashTimeEntry>();
@@ -204,10 +204,18 @@ namespace CocosSharp
 			}
 		}
 
+
+        internal static CCScheduler SharedScheduler { get; private set; }
+
 		#endregion Properties
 
 
 		#region Constructors
+
+        static CCScheduler()
+        {
+            SharedScheduler = new CCScheduler();
+        }
 
         internal CCScheduler(CCActionManager actionManager = null)
 		{

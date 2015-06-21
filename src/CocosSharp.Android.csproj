@@ -239,7 +239,6 @@
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCAccelerometer.cs" />
-    <Compile Include="platform\CCApplication.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCDictMaker.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
@@ -333,7 +332,6 @@
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="CCViewport.cs" />
-    <Compile Include="CCWindow.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMap.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapInfo.cs" />
@@ -385,5 +383,9 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="EmbeddableView\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CCWindow.cs" />
+    <None Include="platform\CCApplication.cs" />
   </ItemGroup>
 </Project>

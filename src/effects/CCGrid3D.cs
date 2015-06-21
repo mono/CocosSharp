@@ -123,7 +123,7 @@ namespace CocosSharp
 
             base.Blit();
 
-            CCDrawManager drawManager = Scene.Window.DrawManager;
+            CCDrawManager drawManager = Scene.GameView.DrawManager;
 
             bool save = drawManager.VertexColorEnabled;
 

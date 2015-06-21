@@ -102,19 +102,19 @@ namespace CocosSharp
                 return;
             }
 
-            if (Window.DrawManager.BeginDrawMask(Viewport.ViewportInPixels, Inverted, AlphaThreshold))
+            if (DrawManager.BeginDrawMask(Viewport.ViewportInPixels, Inverted, AlphaThreshold))
             {
-                Window.DrawManager.PushMatrix();;
+                DrawManager.PushMatrix();;
 
                 Stencil.Visit(ref parentWorldTransform);
 
-                Window.DrawManager.PopMatrix();
+                DrawManager.PopMatrix();
 
-                Window.DrawManager.EndDrawMask();
+                DrawManager.EndDrawMask();
 
                 base.Visit(ref parentWorldTransform);
 
-                Window.DrawManager.EndMask();
+                DrawManager.EndMask();
             }
             else
             {

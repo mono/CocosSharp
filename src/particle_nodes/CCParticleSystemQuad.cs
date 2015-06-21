@@ -78,7 +78,7 @@ namespace CocosSharp
         {
             set 
             {
-                if (Texture!= null && value != null && value != quads && Window != null) 
+                if (Texture!= null && value != null && value != quads && GameView != null) 
                 {
                     quads = value;
                     CCSize texSize = Texture.ContentSizeInPixels;

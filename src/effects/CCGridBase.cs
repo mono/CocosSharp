@@ -39,7 +39,7 @@ namespace CocosSharp
 
                     if (scene != null && Texture != null) 
                     {
-                        Grabber = new CCGrabber(scene.Window.DrawManager);
+                        Grabber = new CCGrabber(scene.GameView.DrawManager);
                         if (Grabber != null && Texture != null)
                         {
                             Grabber.Grab(Texture);
@@ -127,7 +127,7 @@ namespace CocosSharp
 
         public virtual void Blit()
         {
-            CCDrawManager drawManager = Scene.Window.DrawManager;
+            CCDrawManager drawManager = Scene.GameView.DrawManager;
             drawManager.BindTexture(Texture);
         }
 

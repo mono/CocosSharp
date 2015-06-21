@@ -378,7 +378,7 @@ namespace CocosSharp
             if (tileAnimationsDirty)
                 UpdateTileAnimations();
 
-            CCDrawManager drawManager = Window.DrawManager;
+            CCDrawManager drawManager = DrawManager;
 
             var alphaTest = drawManager.AlphaTestEffect;
 

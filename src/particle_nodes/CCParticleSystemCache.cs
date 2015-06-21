@@ -91,8 +91,8 @@ namespace CocosSharp
 
 		#region Constructors
 
-		public CCParticleSystemCache(CCApplication application)
-			: this(application.Scheduler)
+		public CCParticleSystemCache()
+            : this(CCScheduler.SharedScheduler)
 		{
 		}
 

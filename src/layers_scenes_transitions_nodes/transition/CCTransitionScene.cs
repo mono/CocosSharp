@@ -126,7 +126,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTransitionScene (float duration, CCScene scene) : base(scene.Window, scene.Viewport)
+        public CCTransitionScene (float duration, CCScene scene) : base(scene.GameView, scene.Viewport)
         {
             InitCCTransitionScene(duration, scene);
         }
@@ -143,7 +143,7 @@ namespace CocosSharp
             if (outScene == null)
             {
                 // Creating an empty scene.
-                outScene = new CCScene(Window, Viewport, Director);
+                outScene = new CCScene(GameView, Viewport);
             }
 
             Debug.Assert(InScene != outScene, "Incoming scene must be different from the outgoing scene");

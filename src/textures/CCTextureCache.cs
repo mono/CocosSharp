@@ -83,7 +83,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTextureCache(CCApplication application) : this(application.Scheduler)
+        public CCTextureCache() : this(CCScheduler.SharedScheduler)
         {
         }
 

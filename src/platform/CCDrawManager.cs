@@ -161,18 +161,6 @@ namespace CocosSharp
             }
         }
 
-        internal CCDisplayOrientation SupportedDisplayOrientations
-        {
-            get ;
-            set ;
-
-        }
-
-        internal CCDisplayOrientation CurrentDisplayOrientation
-        {
-            get; set ;
-        }
-
         internal BlendState BlendState
         {
             get { return graphicsDevice.BlendState; }
@@ -369,6 +357,8 @@ namespace CocosSharp
             graphicsDevice.ResourceDestroyed += GraphicsDeviceResourceDestroyed;
 
             DepthTest = false;
+
+            ResetDevice ();
         }
 
         #endregion Constructors

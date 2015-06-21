@@ -8,15 +8,13 @@ namespace CocosSharp
     {
         internal event EventHandler OnViewportChanged;
 
-        CCDisplayOrientation displayOrientation;
-
         internal CCRect exactFitLandscapeRatio;
         internal CCRect exactFitPortraitRatio;
-        CCRect viewportInPixels;
+        CCRect viewportInPixels = new CCRect(0,0, 450, 500);
 
         CCSize landscapeScreenSizeInPixels;
 
-        Viewport xnaViewport;
+        Viewport xnaViewport = new Viewport(0,0, 450, 500);
 
 
         #region Properties
@@ -69,19 +67,6 @@ namespace CocosSharp
             get { return viewportInPixels; }
         }
 
-        internal CCDisplayOrientation DisplayOrientation
-        {
-            get { return displayOrientation; }
-            set 
-            {
-                if(displayOrientation != value) 
-                {
-                    displayOrientation = value;
-                    UpdateViewport();
-                }
-            }
-        }
-
         internal CCSize LandscapeScreenSizeInPixels
         {
             set 
@@ -105,32 +90,23 @@ namespace CocosSharp
         #region Constructors
 
         public CCViewport(
-            CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn, 
-            CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
+            CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn)
         {
             if(exactFitPortraitRatioIn == default(CCRect))
             {
                 exactFitPortraitRatioIn = exactFitLandscapeRatioIn;
             }
 
-            displayOrientation = displayOrientationIn;
             exactFitLandscapeRatio = exactFitLandscapeRatioIn;
             exactFitPortraitRatio = exactFitPortraitRatioIn;
+
+            UpdateViewport();
         }
 
         public CCViewport(
-            CCRect exactFitLandscapeRatioIn, 
-            CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
-            : this (exactFitLandscapeRatioIn, exactFitLandscapeRatioIn, displayOrientationIn)
+            CCRect exactFitLandscapeRatioIn)
+            : this (exactFitLandscapeRatioIn, exactFitLandscapeRatioIn)
         {   }
-
-        internal CCViewport(
-            CCRect exactFitLandscapeRatioIn,
-            CCDisplayOrientation supportedDisplayOrientationIn,
-            CCDisplayOrientation currentDisplayOrientationIn)
-            : this(exactFitLandscapeRatioIn, currentDisplayOrientationIn)
-        {
-        }
 
         #endregion Constructors
 
@@ -140,7 +116,7 @@ namespace CocosSharp
             if(landscapeScreenSizeInPixels == CCSize.Zero)
                 return;
 
-            bool isPortrat = DisplayOrientation.IsPortrait();
+            bool isPortrat = false; // DisplayOrientation.IsPortrait();
 
             CCRect exactFitRectRatio = isPortrat ? ExactFitPortraitRatio : ExactFitLandscapeRatio;
             CCSize portraitScreenSize = landscapeScreenSizeInPixels.Inverted;

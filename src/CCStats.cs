@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Diagnostics;
 
 #if IOS
@@ -218,7 +218,7 @@ namespace CocosSharp
 		}
 
 
-		public void Draw (CCWindow window)
+        public void Draw (CCGameView gameView)
 		{
 			if (isEnabled) {
 				totalFrames++;
@@ -235,7 +235,7 @@ namespace CocosSharp
 						fpsLabel.Text = (String.Format ("{0:00.0}", totalDrawCount / deltaAll));
 						updateTimeLabel.Text = (String.Format ("{0:0.000}", totalUpdateTime / updateCount));
 						drawTimeLabel.Text = (String.Format ("{0:0.000}", totalDrawTime / totalDrawCount));
-						drawCallLabel.Text = (String.Format ("{0:000}", window.DrawManager.DrawCount));
+                        drawCallLabel.Text = (String.Format ("{0:000}", gameView.DrawManager.DrawCount));
                         
 						deltaAll = totalDrawTime = totalUpdateTime = 0;
 						totalDrawCount = updateCount = 0;
@@ -244,7 +244,7 @@ namespace CocosSharp
 						gcLabel.Text = String.Format ("{0}", gcCounter);
 					}
 
-					var scene = window.DefaultDirector.RunningScene;
+                    var scene = gameView.Director.RunningScene;
 					drawCallLabel.Scene = scene;
 					fpsLabel.Scene = scene;
 					updateTimeLabel.Scene = scene;

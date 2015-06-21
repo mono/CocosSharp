@@ -160,7 +160,7 @@ namespace CocosSharp
         {
             if(Camera != null)
             {
-                var drawManager = Window.DrawManager;
+                var drawManager = DrawManager;
 
                 bool depthTest = drawManager.DepthTest;
 

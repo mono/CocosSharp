@@ -49,7 +49,6 @@ namespace CocosSharp
         CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         CCViewport viewport;
         CCGameView gameView;
-        CCWindow window;
         CCSize designResolutionSize = CCSize.Zero;
 
         // A delegate type for hooking up SceneViewport change notifications.
@@ -75,7 +74,7 @@ namespace CocosSharp
                 if (value != resolutionPolicy)
                 {
                     resolutionPolicy = value;
-                    UpdateResolutionRatios();
+                    //UpdateResolutionRatios();
                     Viewport.UpdateViewport();
                 }
             }
@@ -125,23 +124,10 @@ namespace CocosSharp
         public override CCGameView GameView
         {
             get { return gameView; }
-            set { gameView = value; }
-        }
-
-        public override CCWindow Window 
-        { 
-            get { return window; }
             set 
-            {
-                if(window != value) 
-                {
-                    window = value;
-                    viewport.LandscapeScreenSizeInPixels = Window.LandscapeWindowSizeInPixels;
-                }
-                if (window != null)
-                {
+            { 
+                if(gameView != null)
                     InitializeLazySceneGraph(Children);
-                }
             }
         }
 
@@ -206,7 +192,7 @@ namespace CocosSharp
 
         internal override CCEventDispatcher EventDispatcher 
         { 
-            get { return Window != null ? Window.EventDispatcher : null; }
+            get { return GameView != null ? GameView.EventDispatcher : null; }
         }
 
         public override CCAffineTransform AffineLocalTransform
@@ -226,60 +212,22 @@ namespace CocosSharp
         {
             DefaultDesignResolutionPolicy = CCSceneResolutionPolicy.ShowAll;
         }
-
-#if USE_PHYSICS
-		public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null, bool physics = false)
-#else
-		public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null)
-#endif
+ 
+		public CCScene(CCGameView gameView, CCViewport viewport)
         {
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             Viewport = viewport;
-            Window = window;
-            Director = (director == null) ? window.DefaultDirector : director;
+            GameView = gameView;
 
-            if (window != null && director != null)
-                window.AddSceneDirector(director);
-
-#if USE_PHYSICS
-			_physicsWorld = physics ? new CCPhysicsWorld(this) : null;
-#endif
             resolutionPolicy = DefaultDesignResolutionPolicy;
             DesignResolutionSize = DefaultDesignResolutionSize;
 
-            UpdateResolutionRatios();
+            //UpdateResolutionRatios();
         }
 
-#if USE_PHYSICS
-		public CCScene(CCWindow window, CCDirector director, bool physics = false)
-			: this(window, new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f)), director, physics)
-#else
-        public CCScene(CCWindow window, CCDirector director)
-            : this(window, 
-                new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f), window.SupportedDisplayOrientations, window.CurrentDisplayOrientation), 
-                director)
-#endif
-        {
-        }
-
-#if USE_PHYSICS
-		public CCScene(CCWindow window, bool physics = false)
-			: this(window, window.DefaultDirector, physics)
-#else
-		public CCScene(CCWindow window)
-			: this(window, window.DefaultDirector)
-#endif
-        {
-        }
-
-#if USE_PHYSICS
-		public CCScene(CCScene scene, bool physics = false)
-			: this(scene.Window, scene.Viewport, scene.Director, physics)
-#else
-		public CCScene(CCScene scene)
-			: this(scene.Window, scene.Viewport, scene.Director)
-#endif
+        public CCScene(CCScene scene)
+            : this(scene.GameView, scene.Viewport)
         {
         }
 
@@ -289,7 +237,7 @@ namespace CocosSharp
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             Viewport = new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f));
             DesignResolutionSize = worldDimensions;
-            UpdateResolutionRatios();
+            //UpdateResolutionRatios();
         }
 
         #endregion Constructors
@@ -303,7 +251,7 @@ namespace CocosSharp
 
             if(viewport != null && viewport == Viewport) 
             {
-                UpdateResolutionRatios();
+                //UpdateResolutionRatios();
                 if (SceneViewportChanged != null)
                     SceneViewportChanged(this, null);
             }
@@ -319,7 +267,7 @@ namespace CocosSharp
             CCScene.DefaultDesignResolutionSize = new CCSize (width, height);
             CCScene.DefaultDesignResolutionPolicy = resPolicy;
         }
-
+        /*
         void UpdateResolutionRatios()
         {
             if (GameView != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
@@ -409,7 +357,7 @@ namespace CocosSharp
             return viewportRatio;
 
         }
-
+*/
         #endregion
 
 		#region Physics

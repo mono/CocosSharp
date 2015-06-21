@@ -768,7 +768,7 @@ namespace CocosSharp
         public virtual CCGameView GameView
         {
             get { return Scene != null ? Scene.GameView : null; }
-            set { Scene.GameView = value; }
+            set { }
         }
 
         public virtual CCDirector Director
@@ -787,12 +787,6 @@ namespace CocosSharp
             }
         }
 
-        public virtual CCWindow Window 
-        { 
-            get { return Scene != null ? Scene.Window : null; }
-            set { Scene.Window = value; }
-        }
-
         public virtual CCViewport Viewport
         {
             get { return Scene != null ? Scene.Viewport : null; }
@@ -801,12 +795,12 @@ namespace CocosSharp
 
         public CCRenderer Renderer
         {
-            get { return Window != null ? Window.Renderer : DrawManager.Renderer; }
+            get { return GameView != null ? GameView.Renderer : null; }
         }
 
         internal CCDrawManager DrawManager 
         {
-            get  { return Window != null ? Window.DrawManager : CCDrawManager.SharedDrawManager; }
+            get { return GameView != null ? GameView.DrawManager : null; }
         }
 
         internal virtual CCEventDispatcher EventDispatcher 
@@ -865,7 +859,7 @@ namespace CocosSharp
 
         CCScheduler Scheduler
         {
-            get { return GameView != null ? GameView.Scheduler : null; }
+            get { return CCScheduler.SharedScheduler; }
         }
 
         CCActionManager ActionManager
@@ -1130,7 +1124,7 @@ namespace CocosSharp
 
         void OnSceneViewportChanged (object sender, EventArgs e)
         {
-            if (Scene != null && Window != null && Viewport != null && Camera != null) 
+            if (Scene != null && GameView != null && Viewport != null && Camera != null) 
             {
                 ViewportChanged ();
                 VisibleBoundsChanged ();
@@ -1426,6 +1420,7 @@ namespace CocosSharp
             // Set this before we call child.OnEnter
             child.Layer = this.Layer;
             child.Scene = this.Scene;
+            child.GameView = this.GameView;
 
 #if USE_PHYSICS
 			// Recursive add children with which have physics body.

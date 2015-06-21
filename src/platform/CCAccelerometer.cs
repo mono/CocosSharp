@@ -31,7 +31,7 @@ namespace CocosSharp
 
         #region Properties
 
-        public CCWindow Window { get; set; }
+        public CCGameView GameView { get; set; }
 
         bool Active { get; set; }
         bool Emulating { get; set; }
@@ -101,9 +101,9 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCAccelerometer(CCWindow window)
+        public CCAccelerometer(CCGameView gameView)
         {
-            Window = window;
+            GameView = gameView;
 
             #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
             try
@@ -193,7 +193,7 @@ namespace CocosSharp
 
         public void Update()
         {
-            var dispatcher = Window.EventDispatcher;
+                var dispatcher = GameView.EventDispatcher;
             if (dispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
             {
                 if (Emulating)
