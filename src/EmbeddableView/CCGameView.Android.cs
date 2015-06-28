@@ -37,7 +37,7 @@ namespace CocosSharp
 
         void PlatformStartGame()
         {
-            Run();
+            Resume();
         }
 
         protected override void OnContextSet(EventArgs e)
@@ -56,13 +56,19 @@ namespace CocosSharp
 
             try {
                 base.CreateFrameBuffer();
+                // Kick start the render loop
+                // In particular, graphics context is lazily created, so we need to start this up 
+                // here so that the view is initialised correctly
+                Run();
                 return;
-            } catch (Exception ex) {
+            } catch (Exception ex) {      
             }
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
         {
+            // Context is already set for us in AndroidGameView, so no need to set it again
+
             base.OnRenderFrame(e);
 
             if (GraphicsContext == null || GraphicsContext.IsDisposed)
@@ -76,9 +82,6 @@ namespace CocosSharp
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             base.OnUpdateFrame(e);
-
-            if (!GraphicsContext.IsCurrent)
-                MakeCurrent();
         }
 
         void PlatformPresent()
