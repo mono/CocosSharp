@@ -126,8 +126,13 @@ namespace CocosSharp
 
         internal Viewport Viewport 
         {
-            get { return viewport; }
-            set 
+            get 
+            { 
+                if(viewportDirty) 
+                    UpdateViewport(); 
+                return viewport; 
+            }
+            private set 
             {
                 viewport = value;
                 ViewportChanged(this);
@@ -212,12 +217,11 @@ namespace CocosSharp
 
             CCScene runningScene = Director.NextScene;
 
-            if(viewportDirty)
-                UpdateViewport();
+            var vp = Viewport;
 
             if (runningScene != null) 
             {
-                Renderer.PushViewportGroup(ref viewport);
+                Renderer.PushViewportGroup(ref vp);
 
                 runningScene.Visit();
 
@@ -281,10 +285,10 @@ namespace CocosSharp
                 );
             }
 
+            viewportDirty = false;
+
             Viewport = new Viewport((int)(width * viewportRatio.Origin.X), (int)(height * viewportRatio.Origin.Y), 
                 (int)(width * viewportRatio.Size.Width), (int)(height * viewportRatio.Size.Height));
-            
-            viewportDirty = false;
         }
 
     }
