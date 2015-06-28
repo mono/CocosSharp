@@ -31,6 +31,10 @@ namespace CocosSharp
 
         public override void Update (float time)
         {
+
+            if (Target == null)
+                return;
+            
             float tt = Math.Max (0, time - 0.25f);
             float deltaAy = (tt * tt * 500);
             float ay = -100 - deltaAy;

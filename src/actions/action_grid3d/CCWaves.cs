@@ -43,6 +43,9 @@ namespace CocosSharp
 
         public override void Update (float time)
         {
+            if (Target == null)
+                return;
+            
             int i, j;
             float ampRate = AmplitudeRate;
 

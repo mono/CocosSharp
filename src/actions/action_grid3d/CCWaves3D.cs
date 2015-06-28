@@ -31,6 +31,9 @@ namespace CocosSharp
 
         public override void Update (float time)
         {
+            if (Target == null)
+                return;
+            
             int i, j;
 
             for (i = 0; i < GridSize.X + 1; ++i)

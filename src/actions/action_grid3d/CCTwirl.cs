@@ -48,6 +48,9 @@ namespace CocosSharp
 
         public override void Update (float time)
         {
+            if (Target == null)
+                return;
+            
             int i, j;
             CCPoint avg = CCPoint.Zero;
             CCPoint c = PositionInPixels;

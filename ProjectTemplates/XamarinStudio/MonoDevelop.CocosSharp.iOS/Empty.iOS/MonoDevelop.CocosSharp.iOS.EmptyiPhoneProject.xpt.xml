@@ -44,7 +44,7 @@
             </Files>
 
             <Packages>
-                <Package id="CocosSharp.iOS" />
+                <Package id="CocosSharp.PCL.Shared" />
             </Packages>
         </Project>
     </Combine>

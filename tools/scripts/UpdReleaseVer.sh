@@ -38,6 +38,21 @@ sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../..
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
 sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
+# Update Mobile Shared project NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Mobile/Template/EmptyProject.Mobile.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Mobile/Template/Android/EmptyProject.Android.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Mobile/Template/iOS/EmptyProject.iOS.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Mobile/Template/WP81/EmptyProject.WP81.vstemplate 
+
+# Update Mobile Portable project NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/EmptyProject.Portable.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/Android/EmptyProject.Android.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/iOS/EmptyProject.iOS.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/WP81/EmptyProject.WP81.vstemplate 
+
+sed -i '' "s/CocosSharp.PCL.Shared\..*.nupkg/CocosSharp.PCL.Shared.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
+
 # Update CocosSharpTemplates PCL NuGet version to be included in built Template
 sed -i '' "s/CocosSharp.PCL.Shared.[0-9]*.[0-9]*.[0-9]*.[0-9]*.nupkg/CocosSharp.PCL.Shared.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 sed -i '' "s/CocosSharp.PCL.Shared.DX.*.nupkg/CocosSharp.PCL.Shared.DX.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj

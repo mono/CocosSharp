@@ -19,27 +19,22 @@ namespace tests
         static int sceneIdx = -1;
         static int MAX_LAYER = 8;
 
-        public static CCLayer createTestLayer(int nIndex)
+        static Func<CCLayer>[] layerTestCreateFunctions =
+{
+                () => new LayerTest1(),
+                () => new LayerTest2(),
+                () => new LayerTestBlend(),
+                () => new LayerGradient(),
+                () => new LayerScaleTest(),
+                () => new LayerClipScissor(),
+                () => new LayerClippingTexture(),
+                () => new LayerMultiplexTest(),
+
+        };
+
+        public static CCLayer createTestLayer(int index)
         {
-            switch (nIndex)
-            {
-                // These are not applicable anymore
-//                case 0: return new LayerTestCascadingOpacityA();
-//                case 1: return new LayerTestCascadingOpacityB();
-//                case 2: return new LayerTestCascadingOpacityC();
-//                case 3: return new LayerTestCascadingColorA();
-//                case 4: return new LayerTestCascadingColorB();
-//                case 5: return new LayerTestCascadingColorC();
-                case 0: return new LayerTest1();
-                case 1: return new LayerTest2();
-                case 2: return new LayerTestBlend();
-                case 3: return new LayerGradient();
-                case 4: return new LayerScaleTest();
-                case 5: return new LayerClipScissor();
-                case 6: return new LayerClippingTexture();
-                case 7: return new LayerMultiplexTest(); // In layertest.cs
-            }
-            return null;
+            return layerTestCreateFunctions[index]();
         }
         protected override void NextTestCase()
         {

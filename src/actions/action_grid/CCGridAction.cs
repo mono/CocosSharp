@@ -70,6 +70,7 @@ namespace CocosSharp
             var gridNodeTarget = Target as CCNodeGrid;
             if (gridNodeTarget == null)
             {
+                Debug.Assert(false, "Grid Actions only target CCNodeGrids.");
                 CCLog.Log("Grid Actions only target CCNodeGrids.");
                 return;
             }

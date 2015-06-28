@@ -279,7 +279,7 @@ namespace CocosSharp
 
         #region Visiting and drawing
 
-        public override void Visit(ref CCAffineTransform parentWorldTransfrom)
+        public override void Visit(ref CCAffineTransform parentWorldTransform)
         {
             if (!Visible || GameView == null)
                 return;
@@ -295,7 +295,7 @@ namespace CocosSharp
 
             if (ChildClippingMode == CCClipMode.None)
             {
-                base.Visit(ref parentWorldTransfrom);
+                base.Visit(ref parentWorldTransform);
 
                 if(Camera != null)
                     Renderer.PopLayerGroup();
@@ -304,10 +304,10 @@ namespace CocosSharp
             }
 
             beforeDrawCommand.GlobalDepth = float.MinValue;
-            beforeDrawCommand.WorldTransform = parentWorldTransfrom;
+            beforeDrawCommand.WorldTransform = parentWorldTransform;
             Renderer.AddCommand(beforeDrawCommand);
 
-            VisitRenderer(ref parentWorldTransfrom);
+            VisitRenderer(ref parentWorldTransform);
 
             if(!noDrawChildren && Children != null)
             {
@@ -317,12 +317,12 @@ namespace CocosSharp
                 {
                     var child = elements[i];
                     if (child.Visible)
-                        child.Visit(ref parentWorldTransfrom);
+                        child.Visit(ref parentWorldTransform);
                 }
             }
 
             afterDrawCommand.GlobalDepth = float.MaxValue;
-            afterDrawCommand.WorldTransform = parentWorldTransfrom;
+            afterDrawCommand.WorldTransform = parentWorldTransform;
             Renderer.AddCommand(afterDrawCommand);
 
             if(Camera != null)

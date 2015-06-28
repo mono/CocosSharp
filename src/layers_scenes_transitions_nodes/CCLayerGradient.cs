@@ -159,6 +159,8 @@ namespace CocosSharp
             IsCompressedInterpolation = true;
 
             alongVector = gradientDirection;
+
+            UpdateColor();
         }
 
         #endregion Constructors

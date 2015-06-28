@@ -253,9 +253,6 @@
         <delete dir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/Packages" />
         <copy todir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/Packages" >
         <fileset basedir="${project::get-base-directory()}/ProjectTemplates/NuGet/bin">
-            <include name="CocosSharp.iOS.*.nupkg" />
-            <include name="CocosSharp.Android.*.nupkg" />
-            <include name="CocosSharp.MacOS.*.nupkg" />
             <include name="CocosSharp.PCL.Shared.*.nupkg" />
         </fileset>
         </copy>

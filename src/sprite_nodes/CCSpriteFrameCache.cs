@@ -383,7 +383,8 @@ namespace CocosSharp
             }
 
             // Is this an alias ?
-            string key = spriteFramesAliases[frameName];
+            string key = string.Empty;
+            spriteFramesAliases.TryGetValue(frameName, out key);
 
             if (!string.IsNullOrEmpty(key))
             {
@@ -414,7 +415,7 @@ namespace CocosSharp
             {
                 if (spriteFrames.ContainsKey(pair.Key))
                 {
-                    keysToRemove.Remove(pair.Key);
+                    keysToRemove.Add(pair.Key);
                 }
             }
 

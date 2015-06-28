@@ -48,7 +48,7 @@ namespace tests
             #if NETFX_CORE
             versionLabel = new CCLabel("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 30);
             #else
-            versionLabel = new CCLabel("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 24, CCLabelFormat.SpriteFont);
+            versionLabel = new CCLabel("v" + this.GetType().Assembly.GetName().Version.ToString(), "fonts/arial", 24, CCLabelFormat.SpriteFont);
             #endif
             AddChild(versionLabel, 20000);
             #endif
@@ -59,7 +59,7 @@ namespace tests
             var i = 0;
             foreach (var test in testCases.Keys)
             {
-                var label = new CCLabel(test, "arial", 24, CCLabelFormat.SpriteFont);
+                var label = new CCLabel(test, "fonts/arial", 24, CCLabelFormat.SpriteFont);
                 var menuItem = new CCMenuItemLabel(label, MenuCallback);
 
                 testListMenu.AddChild(menuItem, i++ + MENU_ITEM_Z_ORDER);
