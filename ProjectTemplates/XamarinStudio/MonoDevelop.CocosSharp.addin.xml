@@ -7,7 +7,7 @@
         url             ="https://github.com/mono/CocosSharp" 
         description     ="Setup CocosSharp projects for either mobile (iOS/Android) or Mac targets"
         category        ="CocosSharp"
-        version         ="1.5.0.0">
+        version         ="1.5.0.1">
 
     <Runtime>
         <!---iOS files -->
@@ -55,7 +55,7 @@
         <Import file    ="Common/GameLayer.cs" />
 
         <!-- NuGet packages -->
-        <Import file    ="Packages/CocosSharp.PCL.Shared.1.5.0.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.PCL.Shared.1.5.0.1.nupkg" />
     </Runtime>
 
     <!--- Common dependencies -->
