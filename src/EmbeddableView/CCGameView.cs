@@ -157,6 +157,7 @@ namespace CocosSharp
 
         public void RunWithScene(CCScene scene)
         {
+            StartGame();
             Director.RunWithScene(scene);
         }
             
@@ -233,8 +234,13 @@ namespace CocosSharp
 
         void UpdateViewport()
         {
-            float width = Size.Width;
-            float height = Size.Height;
+            int width = Size.Width;
+            int height = Size.Height;
+
+            // GraphicsDevice backBuffer dimensions used by MonoGame when laying out viewport
+            // so make sure they're updated
+            graphicsDevice.PresentationParameters.BackBufferWidth = width;
+            graphicsDevice.PresentationParameters.BackBufferHeight = height;
 
             if(resolutionPolicy != CCViewResolutionPolicy.Custom)
             {
