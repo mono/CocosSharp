@@ -5,6 +5,65 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpTemplates", "CocosSharpTemplates.csproj", "{6CE6388D-DD88-4EB9-9566-91081FA29D82}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{735CF19E-552A-450B-BDE4-FAC0A23EE13A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{C885F3F2-2856-4FCB-BE12-CCD6D7B3D990}"
+	ProjectSection(SolutionItems) = preProject
+		..\Android\Template\EmptyProject.Android.vstemplate = ..\Android\Template\EmptyProject.Android.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{9675B596-43D2-4F44-BEB8-4A32B6B8D0F8}"
+	ProjectSection(SolutionItems) = preProject
+		..\iOS\Template\EmptyProject.iOS.vstemplate = ..\iOS\Template\EmptyProject.iOS.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobileShared", "MobileShared", "{78D8EB41-27CC-46ED-88BB-1C5E40ED28BF}"
+	ProjectSection(SolutionItems) = preProject
+		..\Mobile\Template\Android\EmptyProject.Android.vstemplate = ..\Mobile\Template\Android\EmptyProject.Android.vstemplate
+		..\Mobile\Template\iOS\EmptyProject.iOS.vstemplate = ..\Mobile\Template\iOS\EmptyProject.iOS.vstemplate
+		..\Mobile\Template\EmptyProject.Mobile.vstemplate = ..\Mobile\Template\EmptyProject.Mobile.vstemplate
+		..\Mobile\Template\WP81\EmptyProject.WP81.vstemplate = ..\Mobile\Template\WP81\EmptyProject.WP81.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MobilePortable", "MobilePortable", "{A401811C-F531-4D62-A78F-7346997F9AB8}"
+	ProjectSection(SolutionItems) = preProject
+		..\MobilePortable\Template\Android\EmptyProject.Android.vstemplate = ..\MobilePortable\Template\Android\EmptyProject.Android.vstemplate
+		..\MobilePortable\Template\iOS\EmptyProject.iOS.vstemplate = ..\MobilePortable\Template\iOS\EmptyProject.iOS.vstemplate
+		..\MobilePortable\Template\EmptyProject.Portable.vstemplate = ..\MobilePortable\Template\EmptyProject.Portable.vstemplate
+		..\MobilePortable\Template\Portable\EmptyProject.Portable.vstemplate = ..\MobilePortable\Template\Portable\EmptyProject.Portable.vstemplate
+		..\MobilePortable\Template\WP81\EmptyProject.WP81.vstemplate = ..\MobilePortable\Template\WP81\EmptyProject.WP81.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win8XAML", "Win8XAML", "{E954FFD9-5808-494A-B66E-09A770DEACB1}"
+	ProjectSection(SolutionItems) = preProject
+		..\Win8XAML\Template\EmptyProject.Win8XAML.vstemplate = ..\Win8XAML\Template\EmptyProject.Win8XAML.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows8", "Windows8", "{C3992C61-1DB4-4D7B-8714-C4708250A3AC}"
+	ProjectSection(SolutionItems) = preProject
+		..\Windows8\Template\EmptyProject.Windows8.vstemplate = ..\Windows8\Template\EmptyProject.Windows8.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsDX", "WindowsDX", "{2E637AF2-1E9C-4A2A-886D-648C3ECA09DB}"
+	ProjectSection(SolutionItems) = preProject
+		..\WindowsDX\Template\EmptyProject.WindowsDX.vstemplate = ..\WindowsDX\Template\EmptyProject.WindowsDX.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsGL", "WindowsGL", "{2805EA7C-3D88-4A63-AD74-54304378BC3E}"
+	ProjectSection(SolutionItems) = preProject
+		..\WindowsGL\Template\EmptyProject.WindowsGL.vstemplate = ..\WindowsGL\Template\EmptyProject.WindowsGL.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WP8", "WP8", "{6BAA23EE-B28D-4373-B020-D98C33DAE314}"
+	ProjectSection(SolutionItems) = preProject
+		..\WP8\Template\EmptyProject.WP8.vstemplate = ..\WP8\Template\EmptyProject.WP8.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WP81", "WP81", "{B2817662-2E31-4ED3-A8D4-147DE2F1519D}"
+	ProjectSection(SolutionItems) = preProject
+		..\WP81\Template\EmptyProject.WP81.vstemplate = ..\WP81\Template\EmptyProject.WP81.vstemplate
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +77,17 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C885F3F2-2856-4FCB-BE12-CCD6D7B3D990} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{9675B596-43D2-4F44-BEB8-4A32B6B8D0F8} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{78D8EB41-27CC-46ED-88BB-1C5E40ED28BF} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{A401811C-F531-4D62-A78F-7346997F9AB8} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{E954FFD9-5808-494A-B66E-09A770DEACB1} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{C3992C61-1DB4-4D7B-8714-C4708250A3AC} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{2E637AF2-1E9C-4A2A-886D-648C3ECA09DB} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{2805EA7C-3D88-4A63-AD74-54304378BC3E} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{6BAA23EE-B28D-4373-B020-D98C33DAE314} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{B2817662-2E31-4ED3-A8D4-147DE2F1519D} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 	EndGlobalSection
 EndGlobal
