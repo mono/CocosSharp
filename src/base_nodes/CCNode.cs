@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 using System.Threading.Tasks;
 #if USE_PHYSICS
 using ChipmunkSharp;
@@ -679,12 +680,7 @@ namespace CocosSharp
             {
                 if(scene != value) 
                 {
-                    if(scene != null) 
-                    {
-                        scene.SceneViewportChanged -= 
-                            new CocosSharp.CCScene.SceneViewportChangedEventHandler(OnSceneViewportChanged);
-                    }
-
+                    
                     scene = value;
 
                     // All the children should belong to same scene
@@ -698,9 +694,7 @@ namespace CocosSharp
 
                     if (scene != null) 
                     {
-                        scene.SceneViewportChanged += 
-                            new CocosSharp.CCScene.SceneViewportChangedEventHandler(OnSceneViewportChanged);
-
+                        
                         OnSceneViewportChanged(this, null);
 
                         AddedToScene();
@@ -768,7 +762,7 @@ namespace CocosSharp
         public virtual CCGameView GameView
         {
             get { return Scene != null ? Scene.GameView : null; }
-            set { }
+            protected set { }
         }
 
         public virtual CCDirector Director
@@ -787,10 +781,9 @@ namespace CocosSharp
             }
         }
 
-        public virtual CCViewport Viewport
+        internal Viewport Viewport
         {
-            get { return Scene != null ? Scene.Viewport : null; }
-            set { Scene.Viewport = value; }
+            get { return GameView.Viewport; }
         }
 
         public CCRenderer Renderer
@@ -1124,7 +1117,7 @@ namespace CocosSharp
 
         void OnSceneViewportChanged (object sender, EventArgs e)
         {
-            if (Scene != null && GameView != null && Viewport != null && Camera != null) 
+            if (Scene != null && GameView != null && Camera != null) 
             {
                 ViewportChanged ();
                 VisibleBoundsChanged ();
@@ -1133,7 +1126,7 @@ namespace CocosSharp
 
         void OnLayerVisibleBoundsChanged (object sender, EventArgs e)
         {
-            if (Scene != null && Viewport != null && Camera != null)
+            if (Scene != null && Camera != null)
                 VisibleBoundsChanged();
         }
 

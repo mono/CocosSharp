@@ -56,7 +56,6 @@ namespace CocosSharp
 
             try {
                 base.CreateFrameBuffer();
-                PlatformStartGame();
                 return;
             } catch (Exception ex) {
             }
@@ -69,7 +68,7 @@ namespace CocosSharp
             if (GraphicsContext == null || GraphicsContext.IsDisposed)
                 return;
 
-            DrawScene();
+            Draw();
 
             PlatformPresent();
         }

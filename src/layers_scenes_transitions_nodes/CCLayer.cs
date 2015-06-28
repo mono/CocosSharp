@@ -52,6 +52,7 @@ namespace CocosSharp
         CCRenderCommand beforeDrawCommand;
         CCRenderCommand afterDrawCommand;
 
+
         #region Properties
 
         public override CCLayer Layer 
@@ -107,11 +108,6 @@ namespace CocosSharp
         public new CCRect VisibleBoundsWorldspace
         {
             get { return visibleBoundsWorldspace; }
-        }
-
-        public CCSize LayerSizeInPixels
-        {
-            get { return Viewport != null ? Viewport.ViewportInPixels.Size : CCSize.Zero; }
         }
 
         // Layer should have fixed size of content
@@ -177,7 +173,7 @@ namespace CocosSharp
             if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget && Scene !=null)
             {
                 CCRect bounds = VisibleBoundsWorldspace;
-                CCRect viewportRect = Viewport.ViewportInPixels;
+                CCRect viewportRect = new CCRect(Viewport.Bounds);
 
                 renderTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
                 renderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
@@ -199,7 +195,7 @@ namespace CocosSharp
 
             if(Camera == null)
             {
-                Camera = new CCCamera (initCameraProjection, Scene.DesignResolutionSize);
+                Camera = new CCCamera (initCameraProjection, GameView.DesignResolution);
             }
         }
 
@@ -214,6 +210,16 @@ namespace CocosSharp
                     LayerVisibleBoundsChanged(this, null);
             }
         }
+
+        internal void OnViewportChanged (CCGameView gameView)
+        {
+            if (Scene != null && Camera != null) 
+            {
+                ViewportChanged ();
+                VisibleBoundsChanged ();
+            }
+        }
+
 
         protected override void VisibleBoundsChanged()
         {
@@ -231,32 +237,32 @@ namespace CocosSharp
             UpdateClipping();
         }
 
-        internal void UpdateVisibleBoundsRect()
+        void UpdateVisibleBoundsRect()
         {
-            if(Viewport == null || Camera == null || Viewport.ViewportInPixels == CCRect.Zero)
+            if(Camera == null)
                 return;
 
             if (Camera.Projection == CCCameraProjection.Projection2D && Camera.OrthographicViewSizeWorldspace == CCSize.Zero)
                 return;
 
-            var viewportRectInPixels = Viewport.ViewportInPixels;
+
 
             // Want to determine worldspace bounds relative to camera target
             // Need to first find z screenspace coord of target
             CCPoint3 target = Camera.TargetInWorldspace;
             Vector3 targetVec = new Vector3(0.0f, 0.0f, target.Z);
-            targetVec = Viewport.XnaViewport.Project(targetVec, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
+            targetVec = Viewport.Project(targetVec, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
 
-            Vector3 topLeft = new Vector3(viewportRectInPixels.Origin.X, viewportRectInPixels.Origin.Y, targetVec.Z);
-            Vector3 topRight = new Vector3(viewportRectInPixels.Origin.X + viewportRectInPixels.Size.Width, viewportRectInPixels.Origin.Y, targetVec.Z);
-            Vector3 bottomLeft = new Vector3(viewportRectInPixels.Origin.X, viewportRectInPixels.Origin.Y + viewportRectInPixels.Size.Height, targetVec.Z);
-            Vector3 bottomRight = new Vector3(viewportRectInPixels.Origin.X + viewportRectInPixels.Size.Width, viewportRectInPixels.Origin.Y + viewportRectInPixels.Size.Height, targetVec.Z);
+            Vector3 topLeft = new Vector3(Viewport.X, Viewport.Y, targetVec.Z);
+            Vector3 topRight = new Vector3(Viewport.X + Viewport.Width, Viewport.Y, targetVec.Z);
+            Vector3 bottomLeft = new Vector3(Viewport.X, Viewport.Y + Viewport.Height, targetVec.Z);
+            Vector3 bottomRight = new Vector3(Viewport.X + Viewport.Width, Viewport.Y + Viewport.Height, targetVec.Z);
 
             // Convert screen space to worldspace. Note screenspace origin is in topleft part of viewport
-            topLeft = Viewport.XnaViewport.Unproject(topLeft, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
-            topRight = Viewport.XnaViewport.Unproject(topRight, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
-            bottomLeft = Viewport.XnaViewport.Unproject(bottomLeft, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
-            bottomRight = Viewport.XnaViewport.Unproject(bottomRight, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
+            topLeft = Viewport.Unproject(topLeft, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
+            topRight = Viewport.Unproject(topRight, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
+            bottomLeft = Viewport.Unproject(bottomLeft, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
+            bottomRight = Viewport.Unproject(bottomRight, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
 
             CCPoint topLeftPoint = new CCPoint(topLeft.X, topLeft.Y);
             CCPoint bottomLeftPoint = new CCPoint(bottomLeft.X, bottomLeft.Y);
@@ -327,7 +333,7 @@ namespace CocosSharp
         {
             noDrawChildren = false;
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
-            CCRect viewportRect = Viewport.ViewportInPixels;
+            CCRect viewportRect = new CCRect(Viewport.Bounds);
             CCDrawManager drawManager = DrawManager;
 
             if (ChildClippingMode == CCClipMode.Bounds && GameView != null)
@@ -383,7 +389,7 @@ namespace CocosSharp
 
         public CCPoint ScreenToWorldspace(CCPoint point)
         {
-            CCRect viewportRectInPixels = Viewport.ViewportInPixels;
+            CCRect viewportRectInPixels = new CCRect(Viewport.Bounds);
             CCRect worldBounds = Layer.VisibleBoundsWorldspace;
 
             point -= viewportRectInPixels.Origin;
@@ -401,7 +407,7 @@ namespace CocosSharp
 
         public CCSize ScreenToWorldspace(CCSize size)
         {
-            CCRect viewportRectInPixels = Viewport.ViewportInPixels;
+            CCRect viewportRectInPixels = new CCRect(Viewport.Bounds);
             CCRect worldBounds = Layer.VisibleBoundsWorldspace;
 
             CCPoint worldSizeRatio = new CCPoint(size.Width / viewportRectInPixels.Size.Width, size.Height / viewportRectInPixels.Size.Height);
@@ -412,7 +418,7 @@ namespace CocosSharp
         public CCSize WorldToScreenspace(CCSize size)
         {
             CCRect visibleBounds = VisibleBoundsWorldspace;
-            CCRect viewportInPixels = Viewport.ViewportInPixels;
+            CCRect viewportInPixels = new CCRect(Viewport.Bounds);
 
             CCPoint worldSizeRatio = new CCPoint(size.Width / visibleBounds.Size.Width, size.Height / visibleBounds.Size.Height);
 
@@ -422,7 +428,7 @@ namespace CocosSharp
         public CCPoint WorldToScreenspace(CCPoint point)
         {
             CCRect worldBounds = VisibleBoundsWorldspace;
-            CCRect viewportRectInPixels = Viewport.ViewportInPixels;
+            CCRect viewportRectInPixels = new CCRect(Viewport.Bounds);
 
             point -= worldBounds.Origin;
 
