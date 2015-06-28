@@ -21,7 +21,7 @@ namespace CocosSharp
 
         protected override void InitialiseScenes()
         {
-            if (Layer == null || Viewport == null)
+            if (Layer == null)
                 return;
 
             base.InitialiseScenes();
@@ -31,7 +31,7 @@ namespace CocosSharp
             // create a transparent color layer
             // in which we are going to add our rendertextures
             var bounds = Layer.VisibleBoundsWorldspace;
-            CCRect viewportRect = Viewport.ViewportInPixels;
+            CCRect viewportRect = new CCRect(Viewport.Bounds);
 
             // create the second render texture for outScene
             CCRenderTexture texture = new CCRenderTexture(bounds.Size, viewportRect.Size);

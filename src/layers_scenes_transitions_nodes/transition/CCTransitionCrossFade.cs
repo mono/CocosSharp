@@ -42,7 +42,7 @@ namespace CocosSharp
             base.InitialiseScenes();
 
             var bounds = Layer.VisibleBoundsWorldspace;
-            CCRect viewportRect = Viewport.ViewportInPixels;
+            CCRect viewportRect = new CCRect(Viewport.Bounds);
 
             CCRenderTexture outTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
             CCSprite outTexSprite = outTexture.Sprite;

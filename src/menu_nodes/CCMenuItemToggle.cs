@@ -122,8 +122,6 @@ namespace CocosSharp
             foreach(CCMenuItem item in items) 
             {
                 subItems.Add(item);
-                if (GameView != null)
-                    item.GameView = GameView;
             }
         }
 
