@@ -14,7 +14,7 @@ using OpenTK.Graphics.ES20;
 
 namespace CocosSharp
 {
-    public partial class CCGameView : AndroidGameView
+    public partial class CCGameView : AndroidGameView, ISurfaceHolderCallback
     {
         public CCGameView(Context context) 
             : base(context)
@@ -97,6 +97,12 @@ namespace CocosSharp
             {
                 Android.Util.Log.Error("Error in swap buffers", ex.ToString());
             }
+        }
+
+        void ISurfaceHolderCallback.SurfaceChanged(ISurfaceHolder holder, Android.Graphics.Format format, int width, int height)
+        {
+            ViewSize = new CCSizeI(width, height);
+            viewportDirty = true;
         }
     }
 }

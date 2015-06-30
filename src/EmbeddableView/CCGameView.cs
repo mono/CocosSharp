@@ -110,6 +110,12 @@ namespace CocosSharp
             }
         }
 
+
+        public CCSizeI ViewSize
+        {
+            get; private set;
+        }
+
         public CCRect ViewportRectRatio
         {
             get { return viewportRatio; }
@@ -238,8 +244,8 @@ namespace CocosSharp
 
         void UpdateViewport()
         {
-            int width = Size.Width;
-            int height = Size.Height;
+            int width = ViewSize.Width;
+            int height = ViewSize.Height;
 
             // GraphicsDevice backBuffer dimensions used by MonoGame when laying out viewport
             // so make sure they're updated
