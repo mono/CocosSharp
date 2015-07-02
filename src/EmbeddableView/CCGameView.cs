@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -19,6 +20,10 @@ namespace CocosSharp
 
     public partial class CCGameView
     {
+        // (10 mill ticks per second / 60 fps) (rounded up)
+        const int numOfTicksPerUpdate = 166667; 
+        const int maxUpdateTimeMilliseconds = 500;
+
         static readonly CCRect exactFitViewportRatio = new CCRect(0,0,1,1);
 
         class CCGraphicsDeviceService : IGraphicsDeviceService
@@ -53,6 +58,12 @@ namespace CocosSharp
         CCGraphicsDeviceService graphicsDeviceService;
         GameServiceContainer servicesContainer;
 
+        GameTime gameTime;
+        TimeSpan accumulatedElapsedTime;
+        TimeSpan targetElapsedTime;
+        TimeSpan maxElapsedTime;
+        Stopwatch gameTimer;
+        long previousTicks;
 
         #region Properties
 
@@ -195,6 +206,14 @@ namespace CocosSharp
             var serviceProvider = CCContentManager.SharedContentManager.ServiceProvider as GameServiceContainer;
             serviceProvider.AddService(typeof(IGraphicsDeviceService), graphicsDeviceService);
 
+            gameTimer = Stopwatch.StartNew();
+            gameTime = new GameTime();
+
+            accumulatedElapsedTime = TimeSpan.Zero;
+            targetElapsedTime = TimeSpan.FromTicks(numOfTicksPerUpdate); 
+            maxElapsedTime = TimeSpan.FromMilliseconds(maxUpdateTimeMilliseconds);
+            previousTicks = 0;
+
             ActionManager = new CCActionManager();
             Director = new CCDirector();
 
@@ -217,47 +236,22 @@ namespace CocosSharp
             PlatformPresent();
         }
 
-        void Draw()
-        {
-            DrawManager.BeginDraw();
-
-            CCScene runningScene = Director.NextScene;
-
-            var vp = Viewport;
-
-            if (runningScene != null) 
-            {
-                Renderer.PushViewportGroup(ref vp);
-
-                runningScene.Visit();
-
-                Renderer.PopViewportGroup();
-
-                Renderer.VisitRenderQueue();
-            }
-
-            DrawManager.EndDraw();
-        }
-
-        #endregion Drawing
-
-
         void UpdateViewport()
         {
             int width = ViewSize.Width;
             int height = ViewSize.Height;
 
-            // GraphicsDevice backBuffer dimensions used by MonoGame when laying out viewport
+            // The GraphicsDevice BackBuffer dimensions are used by MonoGame when laying out the viewport
             // so make sure they're updated
             graphicsDevice.PresentationParameters.BackBufferWidth = width;
             graphicsDevice.PresentationParameters.BackBufferHeight = height;
 
-            if(resolutionPolicy != CCViewResolutionPolicy.Custom)
+            if (resolutionPolicy != CCViewResolutionPolicy.Custom)
             {
                 float resolutionScaleX = width / DesignResolution.Width;
                 float resolutionScaleY = height / DesignResolution.Height;
 
-                switch(resolutionPolicy)
+                switch (resolutionPolicy)
                 {
                     case CCViewResolutionPolicy.NoBorder:
                         resolutionScaleX = resolutionScaleY = Math.Max(resolutionScaleX, resolutionScaleY);
@@ -296,6 +290,80 @@ namespace CocosSharp
             Viewport = new Viewport((int)(width * viewportRatio.Origin.X), (int)(height * viewportRatio.Origin.Y), 
                 (int)(width * viewportRatio.Size.Width), (int)(height * viewportRatio.Size.Height));
         }
+
+        void Draw()
+        {
+            DrawManager.BeginDraw();
+
+            CCScene runningScene = Director.RunningScene;
+
+            var vp = Viewport;
+
+            if (runningScene != null) 
+            {
+                Renderer.PushViewportGroup(ref vp);
+
+                runningScene.Visit();
+
+                Renderer.PopViewportGroup();
+
+                Renderer.VisitRenderQueue();
+            }
+
+            DrawManager.EndDraw();
+        }
+
+        #endregion Drawing
+
+
+        #region Run loop
+
+        void Tick()
+        {
+            RetryTick:
+
+            var currentTicks = gameTimer.Elapsed.Ticks;
+            accumulatedElapsedTime += TimeSpan.FromTicks(currentTicks - previousTicks);
+            previousTicks = currentTicks;
+
+            if (accumulatedElapsedTime < targetElapsedTime)
+            {
+                var sleepTime = (int)(targetElapsedTime - accumulatedElapsedTime).TotalMilliseconds;
+
+                System.Threading.Thread.Sleep(sleepTime);
+                goto RetryTick;
+            }
+
+            if (accumulatedElapsedTime > maxElapsedTime)
+                accumulatedElapsedTime = maxElapsedTime;
+
+            gameTime.ElapsedGameTime = targetElapsedTime;
+            var stepCount = 0;
+
+            while (accumulatedElapsedTime >= targetElapsedTime)
+            {
+                gameTime.TotalGameTime += targetElapsedTime;
+                accumulatedElapsedTime -= targetElapsedTime;
+                ++stepCount;
+
+                Update(gameTime);
+            }
+
+            gameTime.ElapsedGameTime = TimeSpan.FromTicks(targetElapsedTime.Ticks * stepCount);
+        }
+
+        void Update(GameTime time)
+        {
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (Director.NextScene != null)
+                Director.SetNextScene();
+
+            CCScheduler.SharedScheduler.Update(deltaTime);
+            ActionManager.Update(deltaTime);
+        }
+
+        #endregion Run loop
 
     }
 }

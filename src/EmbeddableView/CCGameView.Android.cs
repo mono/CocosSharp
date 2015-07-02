@@ -82,6 +82,8 @@ namespace CocosSharp
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             base.OnUpdateFrame(e);
+
+            Tick();
         }
 
         void PlatformPresent()
