@@ -73,6 +73,11 @@ namespace CocosSharp
             startPoint = point;
         }
 
+        internal CCTouch(int id, CCPoint pos) 
+            : this(id, pos.X, pos.Y)
+        {
+        }
+
         #endregion Constructors
 
 
