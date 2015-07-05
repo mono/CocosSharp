@@ -8,9 +8,10 @@ namespace CocosSharp
 
     public class CCTouch
     {
+        readonly CCPoint startPoint;
         CCPoint point;
         CCPoint prevPoint;
-        readonly CCPoint startPoint;
+
 
         internal CCNode Target { get; set; }
 
@@ -60,33 +61,37 @@ namespace CocosSharp
             get { return Location - PreviousLocation; }
         }
 
+        internal TimeSpan TimeStamp { get; private set; }
+
         #endregion Properties
 
 
         #region Constructors
 
-        internal CCTouch(int id, float x, float y)
+        internal CCTouch(int id, float x, float y, TimeSpan timeStamp)
         {
             Id = id;
+            TimeStamp = timeStamp;
             point = new CCPoint(x, y);
             prevPoint = point;
             startPoint = point;
         }
 
-        internal CCTouch(int id, CCPoint pos) 
-            : this(id, pos.X, pos.Y)
+        internal CCTouch(int id, CCPoint pos, TimeSpan timeStamp) 
+            : this(id, pos.X, pos.Y, timeStamp)
         {
         }
 
         #endregion Constructors
 
 
-        internal void SetTouchInfo(int id, float x, float y)
+        internal void UpdateTouchInfo(int id, float x, float y, TimeSpan timeStamp)
         {
             Id = id;
             prevPoint = point;
             point.X = x;
             point.Y = y;
+            TimeStamp = timeStamp;
         }
     }
 }
