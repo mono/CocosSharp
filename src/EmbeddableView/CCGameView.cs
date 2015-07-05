@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input.Touch;
 
 namespace CocosSharp
 {
@@ -46,6 +48,7 @@ namespace CocosSharp
         internal delegate void ViewportChangedEventHandler(CCGameView sender);
         internal event ViewportChangedEventHandler ViewportChanged;
 
+        bool touchEnabled;
         bool gameStarted;
         bool viewportDirty;
 
@@ -64,6 +67,13 @@ namespace CocosSharp
         TimeSpan maxElapsedTime;
         Stopwatch gameTimer;
         long previousTicks;
+
+        // Touch handling
+        Dictionary<int, CCTouch> touchMap;
+        List<CCTouch> incomingNewTouches;
+        List<CCTouch> incomingMoveTouches;
+        List<CCTouch> incomingReleaseTouches;
+
 
         #region Properties
 
@@ -89,6 +99,16 @@ namespace CocosSharp
         {
             get { return Stats.IsEnabled; }
             set { Stats.IsEnabled = value; }
+        }
+
+        public bool TouchEnabled
+        {
+            get { return touchEnabled; }
+            set
+            {
+                touchEnabled = value;
+                PlatformUpdateTouchEnabled();
+            }
         }
 
         public int StatsScale
@@ -120,7 +140,6 @@ namespace CocosSharp
                 viewportDirty = true;
             }
         }
-
 
         public CCSizeI ViewSize
         {
@@ -187,6 +206,27 @@ namespace CocosSharp
         {
             PlatformInitialise();
 
+            ActionManager = new CCActionManager();
+            Director = new CCDirector();
+            EventDispatcher = new CCEventDispatcher(this);
+
+            DesignResolution = DefaultDesignResolution;
+            ViewportRectRatio = exactFitViewportRatio;
+            ResolutionPolicy = CCViewResolutionPolicy.ShowAll;
+
+            //Stats.Initialize();
+
+            InitialiseGraphicsDevice();
+
+            InitialiseRunLoop();
+
+            InitialiseTouchHandling();
+
+            ViewCreated(this, null);
+        }
+
+        void InitialiseGraphicsDevice()
+        {
             var graphicsProfile = GraphicsProfile.HiDef;
 
             var presParams = new PresentationParameters();
@@ -205,7 +245,10 @@ namespace CocosSharp
 
             var serviceProvider = CCContentManager.SharedContentManager.ServiceProvider as GameServiceContainer;
             serviceProvider.AddService(typeof(IGraphicsDeviceService), graphicsDeviceService);
+        }
 
+        void InitialiseRunLoop()
+        {
             gameTimer = Stopwatch.StartNew();
             gameTime = new GameTime();
 
@@ -213,17 +256,16 @@ namespace CocosSharp
             targetElapsedTime = TimeSpan.FromTicks(numOfTicksPerUpdate); 
             maxElapsedTime = TimeSpan.FromMilliseconds(maxUpdateTimeMilliseconds);
             previousTicks = 0;
+        }
 
-            ActionManager = new CCActionManager();
-            Director = new CCDirector();
+        void InitialiseTouchHandling()
+        {
+            touchMap = new Dictionary<int, CCTouch>();
+            incomingNewTouches = new List<CCTouch>();
+            incomingMoveTouches = new List<CCTouch>();
+            incomingReleaseTouches = new List<CCTouch>();
 
-            DesignResolution = DefaultDesignResolution;
-            ViewportRectRatio = exactFitViewportRatio;
-            ResolutionPolicy = CCViewResolutionPolicy.ShowAll;
-
-            //Stats.Initialize();
-
-            ViewCreated(this, null);
+            TouchEnabled = true;
         }
 
         #endregion Initialisation
@@ -361,9 +403,84 @@ namespace CocosSharp
 
             CCScheduler.SharedScheduler.Update(deltaTime);
             ActionManager.Update(deltaTime);
+
+            ProcessTouches();
         }
 
         #endregion Run loop
+
+
+        #region Touch handling
+
+        void AddIncomingNewTouch(int touchId, ref CCPoint position)
+        {
+            if (!touchMap.ContainsKey(touchId))
+            {
+                var touch = new CCTouch(touchId, position);
+                touchMap.Add(touchId, touch);
+                incomingNewTouches.Add(touch);
+            }
+        }
+
+        void UpdateIncomingMoveTouch(int touchId, ref CCPoint position)
+        {
+            CCTouch existingTouch;
+            if (touchMap.TryGetValue(touchId, out existingTouch))
+            {
+                var delta = existingTouch.LocationOnScreen - position;
+                if (delta.LengthSquared > 1.0f)
+                {
+                    incomingMoveTouches.Add(existingTouch);
+                    existingTouch.SetTouchInfo(touchId, position.X, position.Y);
+                }
+            }
+        }
+
+        void UpdateIncomingReleaseTouch(int touchId)
+        {
+            CCTouch existingTouch;
+            if (touchMap.TryGetValue(touchId, out existingTouch))
+            {
+                incomingReleaseTouches.Add(existingTouch);
+                touchMap.Remove(touchId);
+            }
+        }
+
+        void ProcessTouches()
+        {
+            if (EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
+                || EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
+            {
+                var touchEvent = new CCEventTouch(CCEventCode.BEGAN);
+
+                if (incomingNewTouches.Count > 0)
+                {
+                    touchEvent.EventCode = CCEventCode.BEGAN;
+                    touchEvent.Touches = incomingNewTouches;
+                    EventDispatcher.DispatchEvent(touchEvent);
+                }
+
+                if (incomingMoveTouches.Count > 0)
+                {
+                    touchEvent.EventCode = CCEventCode.MOVED;
+                    touchEvent.Touches = incomingMoveTouches;
+                    EventDispatcher.DispatchEvent(touchEvent);
+                }
+
+                if (incomingReleaseTouches.Count > 0)
+                {
+                    touchEvent.EventCode = CCEventCode.ENDED;
+                    touchEvent.Touches = incomingReleaseTouches;
+                    EventDispatcher.DispatchEvent(touchEvent);
+                }
+
+                incomingNewTouches.Clear();
+                incomingMoveTouches.Clear();
+                incomingReleaseTouches.Clear();
+            }
+        }
+
+        #endregion Touch handling
 
     }
 }

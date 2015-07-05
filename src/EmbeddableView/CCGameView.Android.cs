@@ -14,7 +14,7 @@ using OpenTK.Graphics.ES20;
 
 namespace CocosSharp
 {
-    public partial class CCGameView : AndroidGameView, ISurfaceHolderCallback
+    public partial class CCGameView : AndroidGameView, View.IOnTouchListener, ISurfaceHolderCallback
     {
         public CCGameView(Context context) 
             : base(context)
@@ -105,6 +105,51 @@ namespace CocosSharp
         {
             ViewSize = new CCSizeI(width, height);
             viewportDirty = true;
+        }
+
+        void PlatformUpdateTouchEnabled()
+        {
+            SetOnTouchListener(touchEnabled ? this : null);
+        }
+
+        bool IOnTouchListener.OnTouch(View v, MotionEvent e)
+        {
+            if (!TouchEnabled)
+                return true;
+
+            CCPoint position = new CCPoint(e.GetX(e.ActionIndex), e.GetY(e.ActionIndex));
+            int id = e.GetPointerId(e.ActionIndex);
+            switch (e.ActionMasked)
+            {              
+                case MotionEventActions.Down:
+                case MotionEventActions.PointerDown:
+                    AddIncomingNewTouch(id, ref position);
+                    break;              
+                case MotionEventActions.Up:
+                case MotionEventActions.PointerUp:
+                    UpdateIncomingReleaseTouch(id);
+                    break;             
+                case MotionEventActions.Move:
+                    for (int i = 0; i < e.PointerCount; i++)
+                    {
+                        id = e.GetPointerId(i);
+                        position.X = e.GetX(i);
+                        position.Y = e.GetY(i);
+                        UpdateIncomingMoveTouch(id, ref position);
+                    }
+                    break;               
+                case MotionEventActions.Cancel:
+                case MotionEventActions.Outside:
+                    for (int i = 0; i < e.PointerCount; i++)
+                    {
+                        id = e.GetPointerId(i);
+                        UpdateIncomingReleaseTouch(id);
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return true;
         }
     }
 }
