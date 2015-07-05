@@ -5,6 +5,8 @@ namespace CocosSharp
 {
     public partial class CCGameView
     {
+        static readonly TimeSpan TouchTimeLimit = TimeSpan.FromMilliseconds(1000);
+
         bool touchEnabled;
 
         Dictionary<int, CCTouch> touchMap;
@@ -86,6 +88,8 @@ namespace CocosSharp
             {
                 var touchEvent = new CCEventTouch(CCEventCode.BEGAN);
 
+                RemoveOldTouches();
+
                 if (incomingNewTouches.Count > 0)
                 {
                     touchEvent.EventCode = CCEventCode.BEGAN;
@@ -113,9 +117,22 @@ namespace CocosSharp
             }
         }
 
+        // Prevent memory leaks by removing stale touches
+        // In particular, in the case of the game entering the background
+        // a release touch event may not have been triggered within the view
         void RemoveOldTouches()
         {
+            var currentTime = gameTime.ElapsedGameTime;
 
+            foreach (CCTouch touch in touchMap.Values)
+            {
+                if (!incomingReleaseTouches.Contains(touch) 
+                    && (currentTime - touch.TimeStamp) > TouchTimeLimit)
+                {
+                    incomingReleaseTouches.Add(touch);
+                    touchMap.Remove(touch.Id);
+                }
+            }
         }
 
         #endregion Touch handling
