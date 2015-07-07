@@ -36,6 +36,8 @@
      <!--Xamarin.Android-->
     <file src="src\bin\Android\Release\*.dll" target="lib\MonoAndroid10\" />
     <file src="src\bin\Android\Release\*.xml" target="lib\MonoAndroid10\" />
+    <file src="MonoGame\MonoGame.Framework\bin\Android\AnyCPU\Release\MonoGame.Framework.Net.dll" target="lib\MonoAndroid10\"/>
+    <file src="MonoGame\MonoGame.Framework\bin\Android\AnyCPU\Release\MonoGame.Framework.Net.xml" target="lib\MonoAndroid10\"/>
     
      <!--Xamarin.iOS-->
     <file src="src\bin\iPhone\Release\*.dll" target="lib\Xamarin.iOS10\" />
