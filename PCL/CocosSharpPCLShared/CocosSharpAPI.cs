@@ -2593,7 +2593,6 @@ namespace CocosSharp {
         public float AngleVar { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int AtlasIndex { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool AutoRemoveOnFinish { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public virtual CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public float Duration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected float Elapsed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
         public float EmissionRate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -2736,7 +2735,7 @@ namespace CocosSharp {
         public CCParticleSystemQuad(int numberOfParticles=0, CocosSharp.CCEmitterMode emitterMode=(CocosSharp.CCEmitterMode)(0)) : base (default(string), default(string)) { }
         public CCParticleSystemQuad(string plistFile, string directoryName=null) : base (default(string), default(string)) { }
         public bool BlendAdditive { get { return default(bool); } set { } }
-        public override CocosSharp.CCBlendFunc BlendFunc { get { return default(CocosSharp.CCBlendFunc); } set { } }
+        public CocosSharp.CCBlendFunc BlendFunc { get { return default(CocosSharp.CCBlendFunc); } set { } }
         public CocosSharp.CCTexture2D Texture { get { return default(CocosSharp.CCTexture2D); } set { } }
         public CocosSharp.CCRect TextureRect { set { } }
         public override int TotalParticles { set { } }
@@ -3068,8 +3067,10 @@ namespace CocosSharp {
         public CCRenderCommand() { }
         protected CCRenderCommand(CocosSharp.CCRenderCommand copy) { }
         public CCRenderCommand(float gobalDepth, CocosSharp.CCAffineTransform worldTransform) { }
+        public float GlobalDepth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected internal long RenderFlags { get { return default(long); } }
         protected bool RenderFlagsDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public CocosSharp.CCAffineTransform WorldTransform { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAffineTransform); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int CompareTo(CocosSharp.CCRenderCommand otherCommand) { return default(int); }
         public abstract CocosSharp.CCRenderCommand Copy();
         protected virtual void GenerateFlags(ref long renderFlags) { }
