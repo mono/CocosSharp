@@ -68,22 +68,21 @@ namespace CocosSharp
 				return UserDefault;
 			}
 		}
-			
-		#endregion Properties
 
-
+        #endregion Properties
+        
     #if NETFX_CORE
         private StorageDevice CheckStorageDevice() {
             if(myDevice != null) {
                 return(myDevice);
             }
-            IAsyncResult result = StorageDevice.BeginShowSelector(null, null);
+            var result = StorageDevice.BeginShowSelector(null, null);
             // Wait for the WaitHandle to become signaled.
             result.AsyncWaitHandle.WaitOne();
             myDevice = StorageDevice.EndShowSelector(result);
             if(myDevice != null) {
                 result =
-                    myDevice.BeginOpenContainer("Save Your Game...", null, null);
+                    myDevice.BeginOpenContainer(XML_FILE_NAME, null, null);
                 // Wait for the WaitHandle to become signaled.
                 result.AsyncWaitHandle.WaitOne();
                 myIsolatedStorage = myDevice.EndOpenContainer(result);
@@ -114,7 +113,7 @@ namespace CocosSharp
                     ParseXMLFile(s);
                 }
             }
-    #elif WINDOWS || MACOS || LINUX
+    #elif WINDOWS || MACOS || LINUX || WINDOWSGL
     		// only create xml file once if it doesnt exist
     		if ((!IsXMLFileExist())) {
 				CreateXMLFile();
@@ -311,7 +310,7 @@ namespace CocosSharp
             {
                 bRet = true;
             }
-    #elif WINDOWS || LINUX || MACOS
+    #elif WINDOWS || LINUX || MACOS || WINDOWSGL
     		if (new FileInfo(XML_FILE_NAME).Exists) 
     		{
     			bRet = true;
@@ -331,7 +330,7 @@ namespace CocosSharp
 
     #if NETFX_CORE
             using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
-    #elif WINDOWS || LINUX || MACOS
+    #elif WINDOWS || LINUX || MACOS || WINDOWSGL
     		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
     #else
             using (StreamWriter writeFile = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage)))
@@ -349,7 +348,7 @@ namespace CocosSharp
     	{
     #if NETFX_CORE
             using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
-    #elif WINDOWS || LINUX || MACOS
+    #elif WINDOWS || LINUX || MACOS || WINDOWSGL
     		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
     #else
     		using (StreamWriter stream = new StreamWriter(new IsolatedStorageFileStream(XML_FILE_NAME, FileMode.Create, FileAccess.Write, myIsolatedStorage))) 
