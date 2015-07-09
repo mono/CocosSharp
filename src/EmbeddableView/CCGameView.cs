@@ -43,11 +43,11 @@ namespace CocosSharp
             public event EventHandler<EventArgs> DeviceResetting;
         }
 
-        public event EventHandler<EventArgs> ViewCreated;
-
         internal delegate void ViewportChangedEventHandler(CCGameView sender);
         internal event ViewportChangedEventHandler ViewportChanged;
+        EventHandler<EventArgs> viewCreated;
 
+        bool gameInitialised;
         bool gameStarted;
         bool viewportDirty;
 
@@ -69,6 +69,12 @@ namespace CocosSharp
 
 
         #region Properties
+
+        public event EventHandler<EventArgs> ViewCreated 
+        { 
+            add { viewCreated += value; if (gameInitialised) viewCreated(this, null); }
+            remove { viewCreated -= value; }
+        }
 
         public static CCViewResolutionPolicy DefaultResolutionPolicy { get; set; }
         public static CCSize DefaultDesignResolution { get; set; }
@@ -187,6 +193,9 @@ namespace CocosSharp
             
         void Initialise()
         {
+            if (gameInitialised)
+                return;
+
             PlatformInitialise();
 
             ActionManager = new CCActionManager();
@@ -205,7 +214,10 @@ namespace CocosSharp
 
             InitialiseInputHandling();
 
-            ViewCreated(this, null);
+            if (viewCreated != null)
+                viewCreated(this, null);
+
+            gameInitialised = true;
         }
 
         void InitialiseGraphicsDevice()
