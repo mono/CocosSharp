@@ -186,11 +186,13 @@ namespace CocosSharp
         public void AddTriangleVertex (CCV3F_C4B triangleVertex)
         {
             triangleVertices.Add (triangleVertex);
+            dirty = true;
         }
 
         public void AddLineVertex (CCV3F_C4B lineVertex)
         {
             lineVertices.Add(lineVertex);
+            dirty = true;
         }
 
 		// See http://slabode.exofire.net/circle_draw.shtml
