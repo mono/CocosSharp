@@ -741,4 +741,77 @@ namespace tests
         #endregion Setup content
     }
 
+    public class DrawNodeTestBlend : BaseDrawNodeTest
+    {
+        #region Setup content
+        CCDrawNode triangleList1;
+        CCDrawNode triangleList2;
+
+        public DrawNodeTestBlend()
+        {
+            triangleList1 = new CCDrawNode();
+            triangleList1.BlendFunc = CCBlendFunc.NonPremultiplied;
+
+            AddChild(triangleList1, 10);
+
+            triangleList2 = new CCDrawNode();
+            // The default BlendFunc is CCBlendFunc.AlphaBlend
+            //triangleList2.BlendFunc = CCBlendFunc.AlphaBlend;
+
+            AddChild(triangleList2, 10);
+
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Using DrawTriangleList With BlendFunc";
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+
+            var line = new CCDrawNode();
+            line.DrawLine(new CCPoint(0, windowSize.Height / 2), new CCPoint(windowSize.Width, windowSize.Height / 2), 10);
+            AddChild(line, 0);
+
+            byte alpha = 100; // 255 is full opacity
+
+            var green = new CCColor4B(0, 255, 0, alpha);
+
+            CCV3F_C4B[] verts = new CCV3F_C4B[] {
+                new CCV3F_C4B( new CCPoint(0,0), green),
+                new CCV3F_C4B( new CCPoint(30,60), green),
+                new CCV3F_C4B( new CCPoint(60,0), green)
+            };
+
+            triangleList1.DrawTriangleList (verts);
+
+            triangleList1.Position = windowSize.Center;
+            triangleList1.PositionX -= windowSize.Width / 4;
+            triangleList1.PositionY -= triangleList1.ContentSize.Center.Y;
+
+            // Because the default BlendFunc of our DrawNode is AlphaBlend we need
+            // to pass the colors as pre multiplied alpha.
+            var greenPreMultiplied = green;
+            greenPreMultiplied.G = (byte)(greenPreMultiplied.G * alpha / 255.0f);
+
+            verts[0].Colors = greenPreMultiplied;
+            verts[1].Colors = greenPreMultiplied;
+            verts[2].Colors = greenPreMultiplied;
+
+            triangleList2.DrawTriangleList (verts);
+
+            triangleList2.Position = windowSize.Center;
+            triangleList2.PositionX += windowSize.Width / 4;
+            triangleList2.PositionY -= triangleList2.BoundingRect.Size.Height / 2;
+        }
+
+        #endregion Setup content
+    }
 }
