@@ -23,6 +23,10 @@ using MonoGame.Framework.WindowsPhone;
 using Microsoft.Phone.Controls;
 #endif
 
+#if WINDOWS_PHONE81
+using Windows.Graphics.Display;
+#endif
+
 #if NETFX_CORE
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -621,6 +625,25 @@ namespace CocosSharp
                     supportedOrientations = CCDisplayOrientation.LandscapeLeft | CCDisplayOrientation.LandscapeRight |
                     CCDisplayOrientation.Portrait | CCDisplayOrientation.PortraitDown;
                     break;
+            }
+            #elif WINDOWS_PHONE81
+            var preferences = DisplayInformation.AutoRotationPreferences;
+            supportedOrientations = CCDisplayOrientation.Default;
+            if ((preferences & DisplayOrientations.Portrait) == DisplayOrientations.Portrait)
+            {
+                supportedOrientations |= CCDisplayOrientation.Portrait;
+            }
+            if ((preferences & DisplayOrientations.Landscape) == DisplayOrientations.Landscape)
+            {
+                supportedOrientations |= CCDisplayOrientation.LandscapeLeft;
+            }
+            if ((preferences & DisplayOrientations.LandscapeFlipped) == DisplayOrientations.LandscapeFlipped)
+            {
+                supportedOrientations |= CCDisplayOrientation.LandscapeRight;
+            }
+            if ((preferences & DisplayOrientations.PortraitFlipped) == DisplayOrientations.PortraitFlipped)
+            {
+                supportedOrientations |= CCDisplayOrientation.PortraitDown;
             }
             #else
             supportedOrientations = CCDisplayOrientation.LandscapeLeft;
