@@ -452,23 +452,24 @@ namespace CocosSharp
             dirty = true;
         }
 
-        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
+
+        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4B color)
         {
-			var cl = color;
+            var cl = color;
 
-			var a = from;
-			var b = to;
+            var a = from;
+            var b = to;
 
-			var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
+            var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
 
-			var lww = radius;
-			var nw = n * lww;
-			var v0 = b - nw;
-			var v1 = b + nw;
-			var v2 = a - nw;
-			var v3 = a + nw;
+            var lww = radius;
+            var nw = n * lww;
+            var v0 = b - nw;
+            var v1 = b + nw;
+            var v2 = a - nw;
+            var v3 = a + nw;
 
-			// Triangles from beginning to end
+            // Triangles from beginning to end
             AddTriangleVertex(new CCV3F_C4B(v1, cl));
             AddTriangleVertex(new CCV3F_C4B(v2, cl));
             AddTriangleVertex(new CCV3F_C4B(v0, cl));
@@ -485,6 +486,11 @@ namespace CocosSharp
             DrawSolidArc(b, radius, mb, MathHelper.Pi, color);
 
             dirty = true;
+        }
+
+        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
+        {
+            DrawSegment(from, to, radius, (CCColor4B)color);
         }
 
         public void DrawLine(CCPoint from, CCPoint to, float lineWidth = 1)
