@@ -633,6 +633,18 @@ namespace tests
 
             // draw an ellipse within rectangular region
             draw.DrawEllipse(new CCRect(100, 300, 100, 200), 8, CCColor4B.AliceBlue);
+
+            var splinePoints = new List<CCPoint>();
+            splinePoints.Add(new CCPoint(0, 0));
+            splinePoints.Add(new CCPoint(50, 70));
+            splinePoints.Add(new CCPoint(0, 140));
+            splinePoints.Add(new CCPoint(100, 210));
+            splinePoints.Add(new CCPoint(0, 280));
+            splinePoints.Add(new CCPoint(150, 350));
+
+            int numberOfSegments = 64;
+            float tension = .05f;
+            draw.DrawCardinalSpline(splinePoints, tension, numberOfSegments);
         }
 
         #endregion Setup content
