@@ -199,6 +199,7 @@ namespace CocosSharp
 		// An Efficient Way to Draw Approximate Circles in OpenGL
 		// Try to keep from calculating Cos and Sin of values everytime and just use
 		// add and subtract where possible to calculate the values.
+        [Obsolete("DrawDot is obsolete: Use DrawSolidCircle")]
 		public void DrawDot(CCPoint pos, float radius, CCColor4B color)
 		{
 			var cl = color;
@@ -302,50 +303,8 @@ namespace CocosSharp
         // add and subtract where possible to calculate the values.
         public void DrawCircle(CCPoint center, float radius, CCColor4B color)
         {
-            var cl = color;
-
             int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
-
-            float theta = MathHelper.Pi * 2.0f / segments;
-            float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
-
-            float radial_factor = (float)Math.Cos(theta);   //calculate the radial factor 
-
-            float x = radius;  //we start at angle = 0 
-            float y = 0;
-
-            var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
-            float tx = 0;
-            float ty = 0;
-
-            for (int i = 0; i < segments; i++)
-            {
-
-                vert1.Vertices.X = x + center.X;
-                vert1.Vertices.Y = y + center.Y;
-                AddLineVertex(vert1); // output vertex
-
-                //calculate the tangential vector 
-                //remember, the radial vector is (x, y) 
-                //to get the tangential vector we flip those coordinates and negate one of them 
-                tx = -y;
-                ty = x;
-
-                //add the tangential vector 
-                x += tx * tangetial_factor;
-                y += ty * tangetial_factor;
-
-                //correct using the radial factor 
-                x *= radial_factor;
-                y *= radial_factor;
-
-                vert1.Vertices.X = x + center.X;
-                vert1.Vertices.Y = y + center.Y;
-                AddLineVertex(vert1); // output vertex
-
-            }
-
-            dirty = true;
+            DrawCircle(center, radius, segments, color);
         }
 
         // See http://slabode.exofire.net/circle_draw.shtml
@@ -452,73 +411,50 @@ namespace CocosSharp
             dirty = true;
         }
 
-
-        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4B color)
+        [Obsolete("DrawSegment is obsolete: Use DrawLine")]
+        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4B color, CCLineCap lineCap = CCLineCap.Round)
         {
-
-            System.Diagnostics.Debug.Assert(radius >= 0, "Invalid value specified for radius : value is negative");
-            if (radius <= 0)
-                return;
-            
-            var cl = color;
-
-            var a = from;
-            var b = to;
-
-            var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
-
-            var lww = radius;
-            var nw = n * lww;
-            var v0 = b - nw;
-            var v1 = b + nw;
-            var v2 = a - nw;
-            var v3 = a + nw;
-
-            // Triangles from beginning to end
-            AddTriangleVertex(new CCV3F_C4B(v1, cl));
-            AddTriangleVertex(new CCV3F_C4B(v2, cl));
-            AddTriangleVertex(new CCV3F_C4B(v0, cl));
-
-            AddTriangleVertex(new CCV3F_C4B(v1, cl));
-            AddTriangleVertex(new CCV3F_C4B(v2, cl));
-            AddTriangleVertex(new CCV3F_C4B(v3, cl));
-
-            var mb = (float)Math.Atan2(v1.Y - b.Y, v1.X - b.X);
-            var ma = (float)Math.Atan2(v2.Y - a.Y, v2.X - a.X);
-
-            // Draw rounded line caps
-            DrawSolidArc(a, radius, ma, MathHelper.Pi, color);
-            DrawSolidArc(b, radius, mb, MathHelper.Pi, color);
-
-            dirty = true;
+            DrawLine(from, to, radius, color, lineCap);
         }
 
-        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
+        [Obsolete("DrawSegment is obsolete: Use DrawLine")]
+        public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color, CCLineCap lineCap = CCLineCap.Round)
         {
-            DrawSegment(from, to, radius, (CCColor4B)color);
+            DrawLine(from, to, radius, (CCColor4B)color, lineCap);
         }
 
-        public void DrawLine(CCPoint from, CCPoint to, float lineWidth = 1)
+        public void DrawLine(CCPoint from, CCPoint to, float lineWidth = 1, CCLineCap lineCap = CCLineCap.Butt)
         {
             DrawLine(from, to, lineWidth, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
         }
 
-        public void DrawLine(CCPoint from, CCPoint to, CCColor4B color)
+        public void DrawLine(CCPoint from, CCPoint to, CCColor4B color, CCLineCap lineCap = CCLineCap.Butt)
         {
             DrawLine(from, to, 1, color);
         }
 
-        public void DrawLine(CCPoint from, CCPoint to, float lineWidth, CCColor4B color)
+        public void DrawLine(CCPoint from, CCPoint to, float lineWidth, CCColor4B color, CCLineCap lineCap = CCLineCap.Butt)
         {
+            System.Diagnostics.Debug.Assert(lineWidth >= 0, "Invalid value specified for lineWidth : value is negative");
+            if (lineWidth <= 0)
+                return;
+
             var cl = color;
 
             var a = from;
             var b = to;
 
-            var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
+            var normal = CCPoint.Normalize(a - b);
+            if (lineCap == CCLineCap.Square)
+            {
+                var nr = normal * lineWidth;
+                a += nr;
+                b -= nr;
+            }
 
-            var lww = lineWidth;
-            var nw = n * lww;
+            var n = CCPoint.PerpendicularCCW(normal);
+
+            var nw = n * lineWidth;
             var v0 = b - nw;
             var v1 = b + nw;
             var v2 = a - nw;
@@ -532,6 +468,16 @@ namespace CocosSharp
             AddTriangleVertex(new CCV3F_C4B(v1, cl));
             AddTriangleVertex(new CCV3F_C4B(v2, cl));
             AddTriangleVertex(new CCV3F_C4B(v3, cl));
+
+            if (lineCap == CCLineCap.Round)
+            {
+                var mb = (float)Math.Atan2(v1.Y - b.Y, v1.X - b.X);
+                var ma = (float)Math.Atan2(v2.Y - a.Y, v2.X - a.X);
+
+                // Draw rounded line caps
+                DrawSolidArc(a, lineWidth, ma, MathHelper.Pi, color);
+                DrawSolidArc(b, lineWidth, mb, MathHelper.Pi, color);
+            }
 
             dirty = true;
         }
@@ -691,7 +637,7 @@ namespace CocosSharp
 
             for (int i = 0; i < vertices.Length - 1; i++)
             {
-                DrawLine(vertices[i], vertices[i + 1], lineWidth, color);
+                DrawLine(vertices[i], vertices[i + 1], lineWidth, color, CCLineCap.Square);
             }
 
             //DrawPolygon(vertices, vertices.Length, color, lineWidth, color);
@@ -781,18 +727,6 @@ namespace CocosSharp
                 AddTriangleVertex(new CCV3F_C4B(v1, colorFill)); //__t(v2fzero)
                 AddTriangleVertex(new CCV3F_C4B(v2, colorFill)); //__t(v2fzero)
             }
-
-            //if (closePolygon)
-            //{
-            //    var i = polycount - 3;
-            //    var v0 = verts[0] - (extrude[0].offset * inset);
-            //    var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
-            //    var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
-
-            //    AddTriangleVertex(new CCV3F_C4B(v0, colorFill)); //__t(v2fzero)
-            //    AddTriangleVertex(new CCV3F_C4B(v1, colorFill)); //__t(v2fzero)
-            //    AddTriangleVertex(new CCV3F_C4B(v2, colorFill)); //__t(v2fzero)
-            //}
 
             for (int i = 0; i < polycount - 1; i++)
             {

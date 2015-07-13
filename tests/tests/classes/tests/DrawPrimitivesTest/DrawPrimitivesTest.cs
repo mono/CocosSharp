@@ -564,7 +564,7 @@ namespace tests
             // Draw 10 circles
             for (int i = 0; i < 10; i++)
             {
-				draw.DrawDot(s.Center, 10 * (10 - i),
+				draw.DrawSolidCircle(s.Center, 10 * (10 - i),
                     new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
             }
 
@@ -609,10 +609,10 @@ namespace tests
 
 
             // Draw segment
-            draw.DrawSegment(new CCPoint(20, windowSize.Height), new CCPoint(20, windowSize.Height / 2), 10, new CCColor4F(0, 1, 0, 1));
+            draw.DrawLine(new CCPoint(20, windowSize.Height), new CCPoint(20, windowSize.Height / 2), 10, new CCColor4F(0, 1, 0, 1), CCLineCap.Round);
 
-            draw.DrawSegment(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
-                new CCColor4F(1, 0, 1, 0.5f));
+            draw.DrawLine(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
+                new CCColor4F(1, 0, 1, 0.5f), CCLineCap.Round);
 
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -632,7 +632,7 @@ namespace tests
                 new CCPoint(size.Width, size.Height / 2), 100, 2, CCColor4B.Green);
 
             // draw an ellipse within rectangular region
-            draw.DrawEllipse(new CCRect(100, 300, 100, 200), 2, CCColor4B.AliceBlue);
+            draw.DrawEllipse(new CCRect(100, 300, 100, 200), 8, CCColor4B.AliceBlue);
         }
 
         #endregion Setup content
@@ -673,7 +673,7 @@ namespace tests
             // Draw 10 circles
             for (int i = 0; i < 10; i++)
             {
-                draw.DrawDot(s.Center, 10 * (10 - i),
+                draw.DrawSolidCircle(s.Center, 10 * (10 - i),
                     new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
             }
 

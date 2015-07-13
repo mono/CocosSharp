@@ -47,6 +47,19 @@ namespace CocosSharp
         Bottom
     }
 
+    /// <summary>
+    /// Style of the end caps for a line.
+    /// 
+    /// Butt - Default.  Flat edge
+    /// Round - A round cap is added to ends of each line
+    /// Square - A square cap is added to the ends of each line
+    /// </summary>
+    public enum CCLineCap
+    {
+        Butt,
+        Round,
+        Square,
+    }
     #endregion Enums
 
 
