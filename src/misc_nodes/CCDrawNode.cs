@@ -455,6 +455,11 @@ namespace CocosSharp
 
         public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4B color)
         {
+
+            System.Diagnostics.Debug.Assert(radius >= 0, "Invalid value specified for radius : value is negative");
+            if (radius <= 0)
+                return;
+            
             var cl = color;
 
             var a = from;
