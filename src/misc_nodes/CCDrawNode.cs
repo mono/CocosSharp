@@ -368,13 +368,13 @@ namespace CocosSharp
 
             int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
-            float theta = sweepAngle / (segments - 1);// MathHelper.Pi * 2.0f / segments;
+            float theta = -sweepAngle / (segments - 1);// MathHelper.Pi * 2.0f / segments;
             float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
 
             float radial_factor = (float)Math.Cos(theta);   //calculate the radial factor 
 
-            float x = radius * (float)Math.Cos(startAngle);   //we now start at the start angle
-            float y = radius * (float)Math.Sin(startAngle); 
+            float x = radius * (float)Math.Cos(-startAngle);   //we now start at the start angle
+            float y = radius * (float)Math.Sin(-startAngle); 
 
             var verticeCenter = new CCV3F_C4B(pos, cl);
             var vert1 = new CCV3F_C4B(CCVertex3F.Zero, cl);
@@ -475,8 +475,8 @@ namespace CocosSharp
                 var ma = (float)Math.Atan2(v2.Y - a.Y, v2.X - a.X);
 
                 // Draw rounded line caps
-                DrawSolidArc(a, lineWidth, ma, MathHelper.Pi, color);
-                DrawSolidArc(b, lineWidth, mb, MathHelper.Pi, color);
+                DrawSolidArc(a, lineWidth, -ma, -MathHelper.Pi, color);
+                DrawSolidArc(b, lineWidth, -mb, -MathHelper.Pi, color);
             }
 
             dirty = true;

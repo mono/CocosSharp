@@ -1379,7 +1379,7 @@ namespace tests
                 int x = int.Parse(dict["x"]);
                 int y = int.Parse(dict["y"]);
 ;
-                drawNode.DrawDot(new CCPoint (x, y), 10.0f, new CCColor4F (CCColor4B.Magenta));
+                drawNode.DrawSolidCircle(new CCPoint (x, y), 10.0f, new CCColor4F (CCColor4B.Magenta));
             }
         }
 

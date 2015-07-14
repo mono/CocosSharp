@@ -645,6 +645,15 @@ namespace tests
             int numberOfSegments = 64;
             float tension = .05f;
             draw.DrawCardinalSpline(splinePoints, tension, numberOfSegments);
+
+            draw.DrawSolidArc(
+                pos: new CCPoint(350, windowSize.Height * 0.75f),
+                radius: 100,
+                startAngle: CCMathHelper.ToRadians(45),
+                sweepAngle: CCMathHelper.Pi / 2, // this is in radians, clockwise
+                color: CCColor4B.Aquamarine);
+
+
         }
 
         #endregion Setup content
