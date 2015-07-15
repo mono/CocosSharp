@@ -11,12 +11,8 @@
 
     <Runtime>
         <!---iOS files -->
-        <Import file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPhoneProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPadProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.UniversalProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPhoneProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPadProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyUniversalProject.xpt.xml" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.Project.xpt.xml" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyProject.xpt.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPhone.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPad.plist.xml" />
@@ -99,11 +95,11 @@
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.Android.AndroidProject.SW" 
-                            file    ="MonoDevelop.CocosSharp.Android/SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
-            <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.Android.AndroidProject.Empty" 
+                            id      ="MonoDevelop.CocosSharp.Android.AndroidProject.Empty"
                             file    ="MonoDevelop.CocosSharp.Android/Empty.Android/MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml" />
+            <ProjectTemplate
+                            id      ="MonoDevelop.CocosSharp.Android.AndroidProject.SW"
+                            file    ="MonoDevelop.CocosSharp.Android/SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
         </Extension>
     </Module>
     
@@ -114,23 +110,11 @@
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.iOS.iPhoneProject.SW" 
-                            file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPhoneProject.xpt.xml" />
+                            id      ="MonoDevelop.CocosSharp.iOS.Project.Empty"
+                            file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyProject.xpt.xml" />
             <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.iOS.iPadProject.SW" 
-                            file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.iPadProject.xpt.xml" />
-            <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.iOS.UniversalProject.SW" 
-                            file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.UniversalProject.xpt.xml" />
-            <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.iOS.iPhoneProject.Empty" 
-                            file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPhoneProject.xpt.xml" />
-            <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.iOS.iPadProject.Empty" 
-                            file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyiPadProject.xpt.xml" />
-            <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.iOS.UniversalProject.Empty" 
-                            file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyUniversalProject.xpt.xml" />
+                            id      ="MonoDevelop.CocosSharp.iOS.UniversalProject.SW"
+                            file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.Project.xpt.xml" />
         </Extension>
     </Module>
     
@@ -141,12 +125,11 @@
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.SW" 
-                            file    ="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
-
-            <ProjectTemplate
-                            id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.Empty" 
+                            id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.Empty"
                             file    ="MonoDevelop.CocosSharp.Mobile/Empty.Mobile/MonoDevelop.CocosSharp.Mobile.EmptyProject.xpt.xml" />
+            <ProjectTemplate
+                            id      ="MonoDevelop.CocosSharp.Mobile.MobileProject.SW"
+                            file    ="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
         </Extension>
     </Module>
 

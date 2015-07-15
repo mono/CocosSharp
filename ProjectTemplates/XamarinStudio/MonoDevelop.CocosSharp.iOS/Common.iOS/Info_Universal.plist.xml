@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>${ProjectName}</string>
+	<string>${AppName}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.your-company.${Namespace}</string>
+	<string>${AppIdentifier}</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -13,7 +13,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>7.0</string>
+	<string>${MinimumOSVersion}</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
