@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <Template>
     <TemplateConfiguration>
-        <_Name>CocosSharp empty project</_Name>
-        <_Category>C#/iOS/Unified API/iPad</_Category>
+        <_Name>CocosSharp Game Showcase</_Name>
+        <_Category>ios/app/games</_Category>
         <Icon>md-project-iphone</Icon>
+        <Image id="md-ios-empty-project"/>
         <LanguageName>C#</LanguageName>
-        <_Description>An empty CocosSharp project for iPad.</_Description>
+        <Wizard>MonoDevelop.IPhone.ProjectTemplateWizard</Wizard>
+        <DefaultParameters>MinimumOSVersion=7.0,ShowTestCloudOption=false</DefaultParameters>
+        <_Description>A CocosSharp showcase.</_Description>
     </TemplateConfiguration>
     
     <Actions>
@@ -25,7 +28,6 @@
                 <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
                 <Reference type="Gac" refto="Xamarin.iOS" />
             </References>
-
             <Files>
                 <Directory name="Resources">
                     <RawFile name="Default-568h@2x.png" src="../Common.iOS/Default-568h.png" />
@@ -34,16 +36,18 @@
                     <Directory name="animations"></Directory>
                     <Directory name="fonts"></Directory>
                     <Directory name="images">
-                        <Directory name="hd" />
-                        <Directory name="ld" />
+                        <Directory name="ld"><RawFile name="monkey.png" src="../../Common/monkey.png" /></Directory>
+                        <Directory name="hd"><RawFile name="monkey.png" src="../../Common/monkey_hd.png" /></Directory>
                     </Directory>
                     <Directory name="sounds"></Directory>
                 </Directory>
-                <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_iPad.plist.xml" />
+                <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_Universal.plist.xml" if="UseUniversal"/>
+                <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_iPhone.plist.xml" if="UseIPhone"/>
+                <File name="Info.plist" AddStandardHeader="False" src="../Common.iOS/Info_iPad.plist.xml" if="UseIPad"/>
                 <File name="Entitlements.plist" AddStandardHeader="False" src="../Common.iOS/Entitlements.plist.xml" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../Common.iOS/AppDelegate.cs" />
                 <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.cs" />
-                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
             </Files>
 
             <Packages>
