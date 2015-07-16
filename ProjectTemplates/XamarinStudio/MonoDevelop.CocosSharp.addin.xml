@@ -17,6 +17,7 @@
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPhone.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPad.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal_Old.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Default-568h.png" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
 

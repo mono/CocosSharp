@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <Template>
     <TemplateConfiguration>
-        <_Name>CocosSharp empty project</_Name>
-        <_Category>C#/Mobile Apps</_Category>
+        <_Name>CocosSharp Game</_Name>
+        <Category>crossplat/app/games</Category>
+        <Image id="md-xamarin-forms-project" />
         <LanguageName>C#</LanguageName>
         <_Description>An empty CocosSharp project for iOS and Android with a PCL for shared code</_Description>
     </TemplateConfiguration>
@@ -35,7 +36,7 @@
                     </Directory>
                     <Directory name="sounds"></Directory>
                 </Directory>
-                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
+                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal_Old.plist.xml" />
                 <File name="Entitlements.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
             </Files>
