@@ -164,6 +164,11 @@ namespace CocosSharp
                 CCScene.DefaultDesignResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
             }
 
+            // Make sure we initialize the Cache's so that the correct Scheduler is used.
+            // This needs to be looked at further for multiple windows.
+            new CCTextureCache(application);
+            new CCParticleSystemCache(application);
+
             Stats.Initialize();
 
             CCPoint center = screenSizeInPixels.Center;

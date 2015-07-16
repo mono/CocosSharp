@@ -85,6 +85,7 @@ namespace CocosSharp
 
         public CCTextureCache(CCApplication application) : this(application.Scheduler)
         {
+            sharedTextureCache = this;
         }
 
         CCTextureCache(CCScheduler scheduler)
@@ -116,7 +117,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded texture: {0}", image.FileName);
                             if (image.Action != null)
                             {
-                                scheduler.Schedule (
+                                Scheduler.Schedule (
                                     f => image.Action(texture), this, 0, 0, 0, false
                                 );
                             }
@@ -154,7 +155,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded texture: {0}", imageData.AssetName);
                             if (imageData.Action != null)
                             {
-                                scheduler.Schedule (
+                                Scheduler.Schedule (
                                     f => imageData.Action(texture), this, 0, 0, 0, false
                                 );
                             }
