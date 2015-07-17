@@ -79,9 +79,9 @@ namespace CocosSharp
                         driverType,
                         deviceFlags);
 
-#endif
-            }
 
+            }
+#endif
             return device;
         }
 
