@@ -100,10 +100,14 @@
     <Reference Include="SharpDX.Direct2D1">
       <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows Phone 8.1\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX.Direct3D11">
+      <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows Phone 8.1\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=2.6.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="label_nodes\CCLabel-FontUtilities-Win8.cs" />
-    <Compile Include="label_nodes\CCLabel-Windows.cs" />
+    <Compile Include="label_nodes\CCLabel-WindowsPhone81.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="events\CCEvent.cs" />
     <Compile Include="events\CCEventAccelerate.cs" />
@@ -131,6 +135,7 @@
     <Compile Include="label_nodes\CCFontAtlasCache.cs" />
     <Compile Include="label_nodes\CCFontFNT.cs" />
     <Compile Include="label_nodes\CCFontSpriteFont.cs" />
+    <Compile Include="label_nodes\CCLabel-Renderer81.cs" />
     <Compile Include="label_nodes\CCTextLayout.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
