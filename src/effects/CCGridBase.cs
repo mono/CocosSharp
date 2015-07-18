@@ -23,8 +23,7 @@ namespace CocosSharp
         public int ReuseGrid { get; set; }                                  // number of times that the grid will be reused 
         public bool Active { get; set; }
         public CCGridSize GridSize { get; private set; }
-        protected CCGrabber Grabber { get; set; }
-        protected CCTexture2D Texture { get; set; }
+        protected CCRenderTexture RenderTexture { get; private set; }
 
         internal CCLayer Layer { get; set; }
 
@@ -37,16 +36,8 @@ namespace CocosSharp
                 {
                     scene = value;
 
-                    if (scene != null && Texture != null) 
-                    {
-                        Grabber = new CCGrabber(scene.GameView.DrawManager);
-                        if (Grabber != null && Texture != null)
-                        {
-                            Grabber.Grab(Texture);
-                        }
-
+                    if (scene != null && RenderTexture != null) 
                         CalculateVertexPoints();
-                    }
                 }
             }
         }
@@ -83,12 +74,12 @@ namespace CocosSharp
 
         #region Constructors
 
-        protected CCGridBase(CCGridSize gridSize, CCTexture2D texture, bool flipped=false)
+        protected CCGridBase(CCGridSize gridSize, CCRenderTexture renderTexture, bool flipped=false)
         {
             GridSize = gridSize;
-            Texture = texture;
+            RenderTexture = renderTexture;
             textureFlipped = flipped;
-            CCSize texSize = texture.ContentSizeInPixels;
+            CCSize texSize = renderTexture.Texture.ContentSizeInPixels;
             Step = new CCPoint ((float)Math.Ceiling(texSize.Width / GridSize.X), (float)Math.Ceiling(texSize.Height / GridSize.Y));
         }
 
@@ -113,12 +104,9 @@ namespace CocosSharp
             if(disposing) 
             {
                 // Dispose of managed resources
-                Texture.Dispose();
-                Grabber = null;
             }
-
-
         }
+
         #endregion
 
 
@@ -127,18 +115,23 @@ namespace CocosSharp
 
         public virtual void Blit()
         {
-            CCDrawManager drawManager = Scene.GameView.DrawManager;
-            drawManager.BindTexture(Texture);
+            if(RenderTexture != null) 
+            {
+                CCDrawManager drawManager = Scene.GameView.DrawManager;
+                drawManager.BindTexture(RenderTexture.Texture);
+            }
         }
 
         public virtual void BeforeDraw()
         {
-            Grabber.BeforeRender(Texture);
+            if(RenderTexture != null)
+                RenderTexture.BeginWithClear(CCColor4B.Transparent);
         }
 
         public virtual void AfterDraw(CCNode target)
         {
-            Grabber.AfterRender(Texture);
+            if(RenderTexture != null)
+                RenderTexture.End();
         }
 
         public ulong NextPOT(ulong x)

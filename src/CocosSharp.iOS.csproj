@@ -196,7 +196,6 @@
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
     <Compile Include="CCCamera.cs" />
-    <Compile Include="CCWindow.cs" />
     <Compile Include="CCViewport.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCContent.cs" />
@@ -206,7 +205,6 @@
     <Compile Include="CCScheduler.cs" />
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
-    <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCGridBase.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
@@ -267,7 +265,6 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCAccelerometer.cs" />
-    <Compile Include="Platform\CCApplication.cs" />
     <Compile Include="Platform\CCDevice.cs" />
     <Compile Include="Platform\CCDictMaker.cs" />
     <Compile Include="Platform\CCFileUtils.cs" />
@@ -397,6 +394,9 @@
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
+    <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
+    <Compile Include="EmbeddableView\CCGameView.cs" />
+    <Compile Include="EmbeddableView\CCGameView.iOS.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
@@ -421,4 +421,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="EmbeddableView\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CCWindow.cs" />
+    <None Include="Platform\CCApplication.cs" />
+  </ItemGroup>
 </Project>

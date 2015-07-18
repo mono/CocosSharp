@@ -47,7 +47,8 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped=false) : base(gridSize, texture, flipped)
+        public CCTiledGrid3D(CCGridSize gridSize, CCRenderTexture renderTexture, bool flipped=false) 
+            : base(gridSize, renderTexture, flipped)
         {
         }
 
@@ -153,9 +154,14 @@ namespace CocosSharp
 
         public override void CalculateVertexPoints()
         {
-            float width = Texture.PixelsWide;
-            float height = Texture.PixelsHigh;
-            float imageH = Texture.ContentSizeInPixels.Height;
+            if(RenderTexture == null || RenderTexture.Texture == null)
+                return;
+
+            var texture = RenderTexture.Texture;
+
+            float width = texture.PixelsWide;
+            float height = texture.PixelsHigh;
+            float imageH = texture.ContentSizeInPixels.Height;
 
             int numQuads = GridSize.X * GridSize.Y;
 

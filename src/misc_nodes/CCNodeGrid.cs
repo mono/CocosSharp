@@ -7,8 +7,6 @@ namespace CocosSharp
     {
         CCGridBase grid;
         CCCustomCommand renderGrid;
-        CCCustomCommand renderBeginGrid;
-        CCCustomCommand renderEndGrid;
 
 
         #region Properties
@@ -46,8 +44,6 @@ namespace CocosSharp
             : base(contentSize)
         {
             renderGrid = new CCCustomCommand(RenderGrid);
-            renderBeginGrid = new CCCustomCommand(float.MinValue, OnGridBeginDraw);
-            renderEndGrid = new CCCustomCommand(float.MaxValue, OnGridEndDraw); 
         }
 
         #endregion Constructors
@@ -64,15 +60,7 @@ namespace CocosSharp
 
 
             if (Grid != null && Grid.Active)
-            {
-                renderGrid.GlobalDepth = worldTransform.Tz;
-                Renderer.AddCommand(renderGrid);
-
-                renderBeginGrid.WorldTransform = worldTransform;
-
-                Renderer.PushGroup();
-                Renderer.AddCommand(renderBeginGrid);
-            }
+                Grid.BeforeDraw();
 
             SortAllChildren();
 
@@ -94,24 +82,11 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
-                renderEndGrid.GlobalDepth = worldTransform.Tz;
-                Renderer.AddCommand(renderEndGrid);
-                Renderer.PopGroup();
+                Grid.AfterDraw(this);
+                Renderer.AddCommand(renderGrid);
             }
         }
-
-        void OnGridBeginDraw ()
-        {
-            if (Grid != null && Grid.Active)
-                Grid.BeforeDraw();
-        }
-
-        void OnGridEndDraw ()
-        {
-            if (Grid != null && Grid.Active)
-                Grid.AfterDraw(this);
-        }
-
+            
         void RenderGrid ()
         {
             if (Grid != null && Grid.Active)

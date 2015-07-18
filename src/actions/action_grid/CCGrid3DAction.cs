@@ -36,7 +36,6 @@ namespace CocosSharp
     public class CCGrid3DActionState : CCGridActionState
     {
         CCRenderTexture gridRenderTexture;
-        CCTexture2D gridTexture;
         CCGrid3D grid3D;
         CCSize gridTextureSizeInPixels;
 
@@ -55,12 +54,10 @@ namespace CocosSharp
                     gridTextureSizeInPixels = new CCSize(GridSize.X, GridSize.Y);
                 }
 
-                gridTexture = new CCTexture2D(
-                    (int)(gridTextureSizeInPixels.Width), 
-                    (int)(gridTextureSizeInPixels.Height), 
-                    CCSurfaceFormat.Color, 
-                    true, 
-                    false);
+                var gridTexture = new CCRenderTexture(
+                    gridTextureSizeInPixels,
+                    gridTextureSizeInPixels,
+                    CCSurfaceFormat.Color);
                 grid3D = new CCGrid3D(GridSize, gridTexture);
 
                 grid3D.Scene = Scene;
