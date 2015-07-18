@@ -94,6 +94,7 @@ namespace CocosSharp
 		public CCParticleSystemCache()
             : this(CCScheduler.SharedScheduler)
 		{
+            sharedParticleSystemCache = this;
 		}
 
 		CCParticleSystemCache(CCScheduler scheduler)

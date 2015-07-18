@@ -564,7 +564,7 @@ namespace tests
             // Draw 10 circles
             for (int i = 0; i < 10; i++)
             {
-				draw.DrawDot(s.Center, 10 * (10 - i),
+				draw.DrawSolidCircle(s.Center, 10 * (10 - i),
                     new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
             }
 
@@ -609,10 +609,10 @@ namespace tests
 
 
             // Draw segment
-            draw.DrawSegment(new CCPoint(20, windowSize.Height), new CCPoint(20, windowSize.Height / 2), 10, new CCColor4F(0, 1, 0, 1));
+            draw.DrawLine(new CCPoint(20, windowSize.Height), new CCPoint(20, windowSize.Height / 2), 10, new CCColor4F(0, 1, 0, 1), CCLineCap.Round);
 
-            draw.DrawSegment(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
-                new CCColor4F(1, 0, 1, 0.5f));
+            draw.DrawLine(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
+                new CCColor4F(1, 0, 1, 0.5f), CCLineCap.Round);
 
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -632,7 +632,28 @@ namespace tests
                 new CCPoint(size.Width, size.Height / 2), 100, 2, CCColor4B.Green);
 
             // draw an ellipse within rectangular region
-            draw.DrawEllipse(new CCRect(100, 300, 100, 200), 2, CCColor4B.AliceBlue);
+            draw.DrawEllipse(new CCRect(100, 300, 100, 200), 8, CCColor4B.AliceBlue);
+
+            var splinePoints = new List<CCPoint>();
+            splinePoints.Add(new CCPoint(0, 0));
+            splinePoints.Add(new CCPoint(50, 70));
+            splinePoints.Add(new CCPoint(0, 140));
+            splinePoints.Add(new CCPoint(100, 210));
+            splinePoints.Add(new CCPoint(0, 280));
+            splinePoints.Add(new CCPoint(150, 350));
+
+            int numberOfSegments = 64;
+            float tension = .05f;
+            draw.DrawCardinalSpline(splinePoints, tension, numberOfSegments);
+
+            draw.DrawSolidArc(
+                pos: new CCPoint(350, windowSize.Height * 0.75f),
+                radius: 100,
+                startAngle: CCMathHelper.ToRadians(45),
+                sweepAngle: CCMathHelper.Pi / 2, // this is in radians, clockwise
+                color: CCColor4B.Aquamarine);
+
+
         }
 
         #endregion Setup content
@@ -673,7 +694,7 @@ namespace tests
             // Draw 10 circles
             for (int i = 0; i < 10; i++)
             {
-                draw.DrawDot(s.Center, 10 * (10 - i),
+                draw.DrawSolidCircle(s.Center, 10 * (10 - i),
                     new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
             }
 
@@ -741,4 +762,77 @@ namespace tests
         #endregion Setup content
     }
 
+    public class DrawNodeTestBlend : BaseDrawNodeTest
+    {
+        #region Setup content
+        CCDrawNode triangleList1;
+        CCDrawNode triangleList2;
+
+        public DrawNodeTestBlend()
+        {
+            triangleList1 = new CCDrawNode();
+            triangleList1.BlendFunc = CCBlendFunc.NonPremultiplied;
+
+            AddChild(triangleList1, 10);
+
+            triangleList2 = new CCDrawNode();
+            // The default BlendFunc is CCBlendFunc.AlphaBlend
+            //triangleList2.BlendFunc = CCBlendFunc.AlphaBlend;
+
+            AddChild(triangleList2, 10);
+
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Using DrawTriangleList With BlendFunc";
+            }
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter(); 
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+
+            var line = new CCDrawNode();
+            line.DrawLine(new CCPoint(0, windowSize.Height / 2), new CCPoint(windowSize.Width, windowSize.Height / 2), 10);
+            AddChild(line, 0);
+
+            byte alpha = 100; // 255 is full opacity
+
+            var green = new CCColor4B(0, 255, 0, alpha);
+
+            CCV3F_C4B[] verts = new CCV3F_C4B[] {
+                new CCV3F_C4B( new CCPoint(0,0), green),
+                new CCV3F_C4B( new CCPoint(30,60), green),
+                new CCV3F_C4B( new CCPoint(60,0), green)
+            };
+
+            triangleList1.DrawTriangleList (verts);
+
+            triangleList1.Position = windowSize.Center;
+            triangleList1.PositionX -= windowSize.Width / 4;
+            triangleList1.PositionY -= triangleList1.ContentSize.Center.Y;
+
+            // Because the default BlendFunc of our DrawNode is AlphaBlend we need
+            // to pass the colors as pre multiplied alpha.
+            var greenPreMultiplied = green;
+            greenPreMultiplied.G = (byte)(greenPreMultiplied.G * alpha / 255.0f);
+
+            verts[0].Colors = greenPreMultiplied;
+            verts[1].Colors = greenPreMultiplied;
+            verts[2].Colors = greenPreMultiplied;
+
+            triangleList2.DrawTriangleList (verts);
+
+            triangleList2.Position = windowSize.Center;
+            triangleList2.PositionX += windowSize.Width / 4;
+            triangleList2.PositionY -= triangleList2.BoundingRect.Size.Height / 2;
+        }
+
+        #endregion Setup content
+    }
 }

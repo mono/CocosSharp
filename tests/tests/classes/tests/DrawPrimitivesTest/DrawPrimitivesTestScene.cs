@@ -33,6 +33,7 @@ namespace tests
                 () => new DrawPrimitivesTest(),
                 () => new DrawNodeTest(),
                 () => new DrawNodeTest1(),
+                () => new DrawNodeTestBlend(),
                 () => new DrawPrimitivesWithRenderTextureTest(),
                 () => new DrawPrimitivesWithRenderTextureTest1(),
                 () => new DrawPrimitivesWithRenderTextureTest2(),

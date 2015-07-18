@@ -1389,14 +1389,14 @@ namespace tests
 		}
     }
 
-	public class LoadingLabel : CCLabelTtf 
+	public class LoadingLabel : CCLabel 
 	{
 
 		static CCScaleBy scale = new CCScaleBy(0.3f, 2);
 		static CCSequence textThrob = new CCSequence(scale, scale.Reverse());
 		static CCSequence delayedShow = new CCSequence(new CCDelayTime (2.0f), new CCShow ());
 
-		public LoadingLabel() : base ("Loading...", "Marker Felt", 32)
+		public LoadingLabel() : base ("Loading...", "Marker Felt", 32, CCLabelFormat.SpriteFont)
 		{
 			Visible = false;
 		}
@@ -1436,10 +1436,8 @@ namespace tests
 
             label.Position = MidWindowPoint;
 
-            //ScheduleOnce(LoadParticleSystem, 0.0f);
-            // Async not working right now.
-            var config = CCParticleSystemCache.SharedParticleSystemCache.AddParticleSystem("Particles/SmallSun");
-            ParticleSystemLoaded(config);
+            // Load the particle system asynchronously
+            ScheduleOnce(LoadParticleSystem, 0.0f);
         }
 
         void LoadParticleSystem(float dt)

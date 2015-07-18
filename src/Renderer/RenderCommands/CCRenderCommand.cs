@@ -32,8 +32,8 @@ namespace CocosSharp
         internal byte ViewportGroup { get; set; }
         internal byte LayerGroup { get; set; }
         internal byte Group { get; set; }
-        internal float GlobalDepth { get; set; }
-        internal CCAffineTransform WorldTransform { get; set; }
+        public float GlobalDepth { get; set; }
+        public CCAffineTransform WorldTransform { get; set; }
 
         internal string DebugDisplayString
         {
