@@ -3,27 +3,27 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public class CCGridAction : CCAmplitudeAction
-	{
-		protected internal CCGridSize GridSize { get; private set; }
+    public class CCGridAction : CCAmplitudeAction
+    {
+        protected internal CCGridSize GridSize { get; private set; }
 
 
-		#region Constructors
+        #region Constructors
 
-		public CCGridAction (float duration) : base (duration)
-		{
-		}
+        public CCGridAction (float duration) : base (duration)
+        {
+        }
 
-		public CCGridAction (float duration, CCGridSize gridSize) : this (duration, gridSize, 0)
-		{
-		}
+        public CCGridAction (float duration, CCGridSize gridSize) : this (duration, gridSize, 0)
+        {
+        }
 
-		protected CCGridAction (float duration, CCGridSize gridSize, float amplitude) : base (duration, amplitude)
-		{
-			GridSize = gridSize;
-		}
+        protected CCGridAction (float duration, CCGridSize gridSize, float amplitude) : base (duration, amplitude)
+        {
+            GridSize = gridSize;
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
         protected CCNodeGrid GridNode(CCNode target)
@@ -38,32 +38,32 @@ namespace CocosSharp
             return gridNodeTarget;
         }
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
+        protected internal override CCActionState StartAction(CCNode target)
+        {
             return new CCGridActionState (this, GridNode(target));
-		}
+        }
 
-		public override CCFiniteTimeAction Reverse ()
-		{
-			return new CCReverseTime (this);
-		}
-	}
+        public override CCFiniteTimeAction Reverse ()
+        {
+            return new CCReverseTime (this);
+        }
+    }
 
 
-	#region Action state
+    #region Action state
 
     public class CCGridActionState : CCAmplitudeActionState
-	{
-		protected CCGridSize GridSize { get; private set; }
+    {
+        protected CCGridSize GridSize { get; private set; }
 
-		public virtual CCGridBase Grid { 
-			get { return null; } 
-			protected set { } 
-		}
+        public virtual CCGridBase Grid { 
+            get { return null; } 
+            protected set { } 
+        }
 
         public CCGridActionState (CCGridAction action, CCNodeGrid target) : base (action, target)
-		{
-			GridSize = action.GridSize;
+        {
+            GridSize = action.GridSize;
 
             // If target is not a CCNodeGrid we will want to emmit a message and 
             // return or there can be possible NRE's later on.
@@ -77,34 +77,34 @@ namespace CocosSharp
 
             CCGridBase targetGrid = target.Grid;
 
-			if (targetGrid != null && targetGrid.ReuseGrid > 0)
-			{
-				Grid = targetGrid;
+            if (targetGrid != null && targetGrid.ReuseGrid > 0)
+            {
+                Grid = targetGrid;
 
-				if (targetGrid.Active && targetGrid.GridSize.X == GridSize.X && targetGrid.GridSize.Y == GridSize.Y)
-				{
-					targetGrid.Reuse ();
-				}
-				else
-				{
-					Debug.Assert (false);
-				}
-			}
-			else
-			{
-				if (targetGrid != null && targetGrid.Active)
-				{
-					targetGrid.Active = false;
-				}
+                if (targetGrid.Active && targetGrid.GridSize.X == GridSize.X && targetGrid.GridSize.Y == GridSize.Y)
+                {
+                    targetGrid.Reuse ();
+                }
+                else
+                {
+                    Debug.Assert (false);
+                }
+            }
+            else
+            {
+                if (targetGrid != null && targetGrid.Active)
+                {
+                    targetGrid.Active = false;
+                }
 
-				CCGridBase newgrid = Grid;
+                CCGridBase newgrid = Grid;
                 if (target != null)
                 {
                     target.Grid = newgrid;
                     target.Grid.Active = true;
                 }
-			}
-		}
+            }
+        }
 
         protected internal override void Stop ()
         {
@@ -115,7 +115,7 @@ namespace CocosSharp
 
             base.Stop();
         }
-	}
+    }
 
-	#endregion Action state
+    #endregion Action state
 }
