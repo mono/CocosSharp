@@ -105,6 +105,16 @@ namespace CocosSharp
                 }
 			}
 		}
+
+        protected internal override void Stop ()
+        {
+            var gridNodeTarget = Target as CCNodeGrid;
+
+            if(gridNodeTarget != null && gridNodeTarget.Grid != null)
+                gridNodeTarget.Grid.Active = false;
+
+            base.Stop();
+        }
 	}
 
 	#endregion Action state
