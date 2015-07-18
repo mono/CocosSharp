@@ -87,6 +87,9 @@ namespace CocosSharp
 
             Initialise();
 
+            // For iOS, MonoGame's GraphicsDevice needs to maintain reference to default framebuffer
+            graphicsDevice.glFramebuffer = Framebuffer;
+
             bufferCreated = true;
         }
 
@@ -131,7 +134,7 @@ namespace CocosSharp
 
             Draw();
 
-            PlatformPresent();
+            Present();
         }
 
         void PlatformPresent()
