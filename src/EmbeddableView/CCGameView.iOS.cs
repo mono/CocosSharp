@@ -153,10 +153,68 @@ namespace CocosSharp
         }
 
 
+        #region Touch handling
+
         void PlatformUpdateTouchEnabled()
         {
-            
+            UserInteractionEnabled = TouchEnabled;
         }
+
+        public override void TouchesBegan(NSSet touches, UIEvent evt)
+        {
+            base.TouchesBegan (touches, evt);
+            FillTouchCollection (touches);
+        }
+
+        public override void TouchesEnded(NSSet touches, UIEvent evt)
+        {
+            base.TouchesEnded (touches, evt);
+            FillTouchCollection (touches);
+        }
+
+        public override void TouchesMoved(NSSet touches, UIEvent evt)
+        {
+            base.TouchesMoved (touches, evt);
+            FillTouchCollection (touches);
+        }
+
+        public override void TouchesCancelled(NSSet touches, UIEvent evt)
+        {
+            base.TouchesCancelled (touches, evt);
+            FillTouchCollection (touches);
+        }
+
+        void FillTouchCollection(NSSet touches)
+        {
+            if (touches.Count == 0)
+                return;
+
+            foreach (UITouch touch in touches) 
+            {
+                var location = touch.LocationInView(touch.View);
+                var position = new CCPoint((float)location.X, (float)location.Y);
+
+                var id = touch.Handle.ToInt32();
+
+                switch (touch.Phase) 
+                {
+                    case UITouchPhase.Moved:
+                        UpdateIncomingMoveTouch(id, ref position);                   
+                        break;
+                    case UITouchPhase.Began:
+                        AddIncomingNewTouch(id, ref position);
+                        break;
+                    case UITouchPhase.Ended :
+                    case UITouchPhase.Cancelled :
+                        UpdateIncomingReleaseTouch(id);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        #endregion Touch handling
     }
 }
 
