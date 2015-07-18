@@ -329,7 +329,7 @@ namespace CocosSharp
                 Texture2D tex = null;
 
                 using (var pngStream = labelRenderer.RenderLabelToStream(imageWidth, imageHeight, foregroundColor,
-                    new Vector2(boundingRect.X, yOffset), textLayout))
+                    new Vector2(boundingRect.X, yOffset), textLayout).Result)
                 {
                     // Create the Texture2D from the png stream
                     tex = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, pngStream);
