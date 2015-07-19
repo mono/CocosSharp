@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using UIKit;
 using Foundation;
 using ObjCRuntime;
@@ -18,6 +19,8 @@ using OpenGLES;
 
 namespace CocosSharp
 {
+
+    [Register("CCGameView"), DesignTimeVisible(true)]
     public partial class CCGameView : iPhoneOSGameView
     {
         bool bufferCreated;
@@ -25,17 +28,20 @@ namespace CocosSharp
 
         #region Constructors
 
+        [Export("initWithCoder:")]
         public CCGameView(NSCoder coder) 
             : base(coder)
         {
-            LayerRetainsBacking = true;
-            LayerColorFormat = EAGLColorFormat.RGBA8;
-            ContextRenderingApi = EAGLRenderingAPI.OpenGLES2;
-            CreateFrameBuffer();
+            BeginInitiliase();
         }
 
         public CCGameView(RectangleF frame)
             : base(frame)
+        {
+            BeginInitiliase();
+        }
+
+        void BeginInitiliase()
         {
             LayerRetainsBacking = true;
             LayerColorFormat = EAGLColorFormat.RGBA8;
@@ -55,7 +61,7 @@ namespace CocosSharp
 
         void PlatformStartGame()
         {
-            Run();
+            Run(60.0);
         }
 
         protected override void CreateFrameBuffer()
