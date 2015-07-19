@@ -50,6 +50,7 @@ namespace CocosSharp
 
         void PlatformInitialise()
         {
+            AutoResize = true;
         }
 
         void PlatformStartGame()
@@ -80,8 +81,7 @@ namespace CocosSharp
             GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferInternalFormat.DepthComponent16, newSize.Width, newSize.Height);
             GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferSlot.DepthAttachment, RenderbufferTarget.Renderbuffer, depthbuffer);
 
-            if (Threading.BackgroundContext == null)
-                Threading.BackgroundContext = new OpenGLES.EAGLContext(EAGLContext.API, EAGLContext.ShareGroup);
+            Threading.BackgroundContext = new OpenGLES.EAGLContext(EAGLContext.API, EAGLContext.ShareGroup);
 
             Size = newSize;
 
@@ -101,6 +101,37 @@ namespace CocosSharp
             viewportDirty = true;
         }
 
+        public override void LayoutSubviews()
+        {
+            // Called when the dimensions of our view change
+            // E.g. When rotating the device and autoresizing
+
+            if((Framebuffer + depthbuffer + Renderbuffer == 0) || EAGLContext == null)
+                return;
+
+            var newSize = new System.Drawing.Size(
+                (int) Math.Round(Layer.Bounds.Size.Width), 
+                (int) Math.Round(Layer.Bounds.Size.Height));
+
+            Size = newSize;
+
+            var eaglLayer = Layer as CAEAGLLayer;
+
+            // Do not call base because iPhoneOSGameView:LayoutSubviews
+            // destroys our graphics context
+            // Instead we will manually rejig our buffer storage
+
+            MakeCurrent();
+
+            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, Renderbuffer);
+            EAGLContext.RenderBufferStorage((uint) All.Renderbuffer, eaglLayer);
+            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferSlot.ColorAttachment0, RenderbufferTarget.Renderbuffer, Renderbuffer);
+
+            GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, depthbuffer);
+            GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferInternalFormat.DepthComponent16, newSize.Width, newSize.Height);
+            GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferSlot.DepthAttachment, RenderbufferTarget.Renderbuffer, depthbuffer);
+        }
+
         #endregion Initialisation
 
 
@@ -108,12 +139,12 @@ namespace CocosSharp
 
         protected override void DestroyFrameBuffer()
         {
-            base.DestroyFrameBuffer();
-
             MakeCurrent();
 
             GL.DeleteRenderbuffers (1, ref depthbuffer);
             depthbuffer = 0;
+
+            base.DestroyFrameBuffer();
 
             bufferCreated = false;
         }
