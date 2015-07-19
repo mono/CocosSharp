@@ -91,7 +91,7 @@ namespace tests.Extensions
 		}
 
 
-        public new static CCScene sceneWithTitle(string title)
+        public static CCScene sceneWithTitle(string title)
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
@@ -182,7 +182,7 @@ namespace tests.Extensions
             return button;
         }
 
-        public new static CCScene sceneWithTitle(string title)
+        public static CCScene sceneWithTitle(string title)
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlButtonTest_Inset();
@@ -194,100 +194,99 @@ namespace tests.Extensions
 
 	class CCControlButtonTest_Event : CCControlScene
 	{
+
+        private CCLabel DisplayValueLabel { get; set; }
+
         public CCControlButtonTest_Event()
 		{
-			CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
-
-			// Add a label in which the button events will be displayed
-			setDisplayValueLabel(new CCLabel("No Event", "Arial", 32, CCLabelFormat.SpriteFont));
-			m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1);
-			m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-			AddChild(m_pDisplayValueLabel, 1);
-    
-			// Add the button
-			var backgroundButton = new CCScale9SpriteFile("extensions/button");
-			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
-    
-			var titleButton = new CCLabel("Touch Me!", "Arial", 30, CCLabelFormat.SpriteFont);
-
-			titleButton.Color = new CCColor3B(159, 168, 176);
-
-            var controlButton = new CCControlButton(titleButton, backgroundButton);
-			controlButton.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
-			controlButton.SetTitleColorForState(CCColor3B.White, CCControlState.Highlighted);
-    
-			controlButton.AnchorPoint = new CCPoint(0.5f, 1);
-			controlButton.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-			AddChild(controlButton, 1);
-
-			// Add the black background
-			var background = new CCScale9SpriteFile("extensions/buttonBackground");
-			background.ContentSize = new CCSize(300, 170);
-			background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-			AddChild(background);
-    
-			// Sets up event handlers
-			controlButton.AddTargetWithActionForControlEvent(this, touchDownAction, CCControlEvent.TouchDown);
-			controlButton.AddTargetWithActionForControlEvent(this, touchDragInsideAction, CCControlEvent.TouchDragInside);
-			controlButton.AddTargetWithActionForControlEvent(this, touchDragOutsideAction, CCControlEvent.TouchDragOutside);
-			controlButton.AddTargetWithActionForControlEvent(this, touchDragEnterAction, CCControlEvent.TouchDragEnter);
-			controlButton.AddTargetWithActionForControlEvent(this, touchDragExitAction, CCControlEvent.TouchDragExit);
-			controlButton.AddTargetWithActionForControlEvent(this, touchUpInsideAction, CCControlEvent.TouchUpInside);
-			controlButton.AddTargetWithActionForControlEvent(this, touchUpOutsideAction, CCControlEvent.TouchUpOutside);
-			controlButton.AddTargetWithActionForControlEvent(this, touchCancelAction, CCControlEvent.TouchCancel);
 		}
 
-	
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
+
+            // Add a label in which the button events will be displayed
+            DisplayValueLabel = new CCLabel("No Event", "Arial", 28, CCLabelFormat.SpriteFont);
+            DisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -0.5f);
+            DisplayValueLabel.Position = screenSize.Center;
+            AddChild(DisplayValueLabel, 1);
+
+            // Add the button
+            var backgroundButton = new CCScale9SpriteFile("extensions/button");
+            var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
+
+            var titleButton = new CCLabel("Touch Me!", "Arial", 30, CCLabelFormat.SpriteFont);
+
+            titleButton.Color = new CCColor3B(159, 168, 176);
+
+            var controlButton = new CCControlButton(titleButton, backgroundButton);
+            controlButton.SetBackgroundSpriteForState(backgroundHighlightedButton, CCControlState.Highlighted);
+            controlButton.SetTitleColorForState(CCColor3B.White, CCControlState.Highlighted);
+
+            controlButton.AnchorPoint = CCPoint.AnchorMiddleTop;
+            controlButton.Position = screenSize.Center;
+            AddChild(controlButton, 1);
+
+            // Add the black background
+            var background = new CCScale9SpriteFile("extensions/buttonBackground");
+            background.ContentSize = new CCSize(300, 170);
+            background.Position = screenSize.Center;
+            AddChild(background);
+
+            // Sets up event handlers
+            controlButton.AddTargetWithActionForControlEvent(this, touchDownAction, CCControlEvent.TouchDown);
+            controlButton.AddTargetWithActionForControlEvent(this, touchDragInsideAction, CCControlEvent.TouchDragInside);
+            controlButton.AddTargetWithActionForControlEvent(this, touchDragOutsideAction, CCControlEvent.TouchDragOutside);
+            controlButton.AddTargetWithActionForControlEvent(this, touchDragEnterAction, CCControlEvent.TouchDragEnter);
+            controlButton.AddTargetWithActionForControlEvent(this, touchDragExitAction, CCControlEvent.TouchDragExit);
+            controlButton.AddTargetWithActionForControlEvent(this, touchUpInsideAction, CCControlEvent.TouchUpInside);
+            controlButton.AddTargetWithActionForControlEvent(this, touchUpOutsideAction, CCControlEvent.TouchUpOutside);
+            controlButton.AddTargetWithActionForControlEvent(this, touchCancelAction, CCControlEvent.TouchCancel);
+
+        }
+
 		public void touchDownAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Touch Down");
+			DisplayValueLabel.Text = ("Touch Down");
 		}
 		public void touchDragInsideAction(object sender, CCControlEvent controlEvent)
 		{
-			    m_pDisplayValueLabel.Text = ("Drag Inside");
+			DisplayValueLabel.Text = ("Drag Inside");
 		}
 
 		public void touchDragOutsideAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Drag Outside");
+			DisplayValueLabel.Text = ("Drag Outside");
 		}
 
 		public void touchDragEnterAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Drag Enter");
+			DisplayValueLabel.Text = ("Drag Enter");
 		}
 
 		public void touchDragExitAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Drag Exit");
+			DisplayValueLabel.Text = ("Drag Exit");
 		}
 		
 		public void touchUpInsideAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Touch Up Inside.");
+			DisplayValueLabel.Text = ("Touch Up Inside.");
 		}
 		
 		public void touchUpOutsideAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Touch Up Outside.");
+			DisplayValueLabel.Text = ("Touch Up Outside.");
 		}
 
 		public void touchCancelAction(object sender, CCControlEvent controlEvent)
 		{
-			m_pDisplayValueLabel.Text = ("Touch Cancel");
+			DisplayValueLabel.Text = ("Touch Cancel");
 		}
 	
-		private CCLabel m_pDisplayValueLabel; 
-		public virtual CCLabel getDisplayValueLabel() { return m_pDisplayValueLabel; } 
-		public virtual void setDisplayValueLabel(CCLabel var)   
-		{ 
-			if (m_pDisplayValueLabel != var) 
-			{ 
-				m_pDisplayValueLabel = var; 
-			} 
-		} 
-		
-        public new static CCScene sceneWithTitle(string title)
+        public static CCScene sceneWithTitle(string title)
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_Event();
@@ -359,7 +358,7 @@ namespace tests.Extensions
 			return button;
 		}
 
-        public new static CCScene sceneWithTitle(string title)
+        public static CCScene sceneWithTitle(string title)
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_Styling();
