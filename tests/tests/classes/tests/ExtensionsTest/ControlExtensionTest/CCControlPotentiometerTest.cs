@@ -5,20 +5,20 @@ namespace tests.Extensions
 {
     internal class CCControlPotentiometerTest : CCControlScene
     {
-        private CCLabelTtf _displayValueLabel;
-
-        public CCLabelTtf DisplayValueLabel
-        {
-            get { return _displayValueLabel; }
-            set { _displayValueLabel = value; }
-        }
+        private CCLabel DisplayValueLabel { get; set; }
 
         public CCControlPotentiometerTest()
         {
-            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             var layer = new CCNode();
-            layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
+            layer.Position = screenSize.Center;
             AddChild(layer, 1);
 
             double layer_width = 0;
@@ -31,16 +31,16 @@ namespace tests.Extensions
 
             layer_width += background.ContentSize.Width;
 
-            DisplayValueLabel = new CCLabelTtf("", "Arial", 30);
+            DisplayValueLabel = new CCLabel("", "Arial", 30);
 
-            _displayValueLabel.Position = background.Position;
-            layer.AddChild(_displayValueLabel);
+            DisplayValueLabel.Position = background.Position;
+            layer.AddChild(DisplayValueLabel);
 
             // Add the slider
             var potentiometer = new CCControlPotentiometer("extensions/potentiometerTrack.png"
-                                                           ,
-                                                           "extensions/potentiometerProgress.png"
-                                                           , "extensions/potentiometerButton.png");
+                ,
+                "extensions/potentiometerProgress.png"
+                , "extensions/potentiometerButton.png");
             potentiometer.Position = new CCPoint((float) layer_width + 10 + potentiometer.ContentSize.Width / 2, 0);
 
             // When the value of the slider will change, the given selector will be call
@@ -52,17 +52,17 @@ namespace tests.Extensions
 
             // Set the layer size
             layer.ContentSize = new CCSize((float) layer_width, 0);
-            layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            layer.AnchorPoint = CCPoint.AnchorMiddle;
 
             // Update the value label
             ValueChanged(potentiometer, CCControlEvent.ValueChanged);
-        }
 
+        }
         public void ValueChanged(Object sender, CCControlEvent controlEvent)
         {
             var pControl = (CCControlPotentiometer) sender;
             // Change value of label.
-            _displayValueLabel.Text = string.Format("{0:0.00}", pControl.Value);
+            DisplayValueLabel.Text = string.Format("{0:0.00}", pControl.Value);
         }
 
         public static CCScene sceneWithTitle(string title)
