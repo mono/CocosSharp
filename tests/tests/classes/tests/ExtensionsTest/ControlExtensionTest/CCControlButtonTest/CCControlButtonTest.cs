@@ -24,7 +24,6 @@ namespace tests.Extensions
 			float total_width = 0, height = 0;
     
 			// For each title in the array
-			object pObj = null;
 		    int i = 0;
 			foreach(var title in stringArray)
 			{
@@ -74,7 +73,7 @@ namespace tests.Extensions
 			var backgroundButton = new CCScale9SpriteFile("extensions/button");
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
     
-			var titleButton = new CCLabelTtf(title, "Arial", 30);
+			var titleButton = new CCLabel(title, "Arial", 30, CCLabelFormat.SpriteFont);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -90,7 +89,7 @@ namespace tests.Extensions
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
-    		controlLayer.getSceneTitleLabel().Text = (title);
+    		controlLayer.SceneTitleLabel.Text = (title);
 			pScene.AddChild(controlLayer);
 			return pScene;
 		}
@@ -147,7 +146,7 @@ namespace tests.Extensions
             var backgroundButton = new CCScale9SpriteFile("extensions/button");
             var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 
-            var titleButton = new CCLabelTtf(title, "Arial", 30);
+            var titleButton = new CCLabel(title, "Arial", 30, CCLabelFormat.SpriteFont);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -166,7 +165,7 @@ namespace tests.Extensions
             backgroundButton.CapInsets = inset;
             backgroundHighlightedButton.CapInsets = inset;
 
-            var titleButton = new CCLabelTtf(title, "Arial", 30);
+            var titleButton = new CCLabel(title, "Arial", 30, CCLabelFormat.SpriteFont);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -181,7 +180,7 @@ namespace tests.Extensions
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlButtonTest_Inset();
-            controlLayer.getSceneTitleLabel().Text = (title);
+            controlLayer.SceneTitleLabel.Text = (title);
             pScene.AddChild(controlLayer);
             return pScene;
         }
@@ -194,7 +193,7 @@ namespace tests.Extensions
 			CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
 			// Add a label in which the button events will be displayed
-			setDisplayValueLabel(new CCLabelTtf("No Event", "Arial", 32));
+			setDisplayValueLabel(new CCLabel("No Event", "Arial", 32, CCLabelFormat.SpriteFont));
 			m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1);
 			m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 			AddChild(m_pDisplayValueLabel, 1);
@@ -203,7 +202,7 @@ namespace tests.Extensions
 			var backgroundButton = new CCScale9SpriteFile("extensions/button");
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
     
-			var titleButton = new CCLabelTtf("Touch Me!", "Arial", 30);
+			var titleButton = new CCLabel("Touch Me!", "Arial", 30, CCLabelFormat.SpriteFont);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -272,9 +271,9 @@ namespace tests.Extensions
 			m_pDisplayValueLabel.Text = ("Touch Cancel");
 		}
 	
-		private CCLabelTtf m_pDisplayValueLabel; 
-		public virtual CCLabelTtf getDisplayValueLabel() { return m_pDisplayValueLabel; } 
-		public virtual void setDisplayValueLabel(CCLabelTtf var)   
+		private CCLabel m_pDisplayValueLabel; 
+		public virtual CCLabel getDisplayValueLabel() { return m_pDisplayValueLabel; } 
+		public virtual void setDisplayValueLabel(CCLabel var)   
 		{ 
 			if (m_pDisplayValueLabel != var) 
 			{ 
@@ -288,7 +287,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlButtonTest_Event();
 			if (controlLayer != null)
 			{
-				controlLayer.getSceneTitleLabel().Text = (title);
+				controlLayer.SceneTitleLabel.Text = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;
@@ -311,8 +310,6 @@ namespace tests.Extensions
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					
-					
 					// Add the buttons
 					var button = standardButtonWithTitle(CCRandom.Next(30).ToString());
 					button.SetAdjustBackgroundImage(false);  // Tells the button that the background image must not be adjust
@@ -345,7 +342,7 @@ namespace tests.Extensions
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 			backgroundHighlightedButton.PreferredSize = new CCSize(55, 55);  // Set the prefered size
     
-			var titleButton = new CCLabelTtf(title, "Arial", 30);
+			var titleButton = new CCLabel(title, "Arial", 30, CCLabelFormat.SpriteFont);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -362,7 +359,7 @@ namespace tests.Extensions
 			var controlLayer = new CCControlButtonTest_Styling();
 			if (controlLayer != null)
 			{
-				controlLayer.getSceneTitleLabel().Text = (title);
+				controlLayer.SceneTitleLabel.Text = (title);
 				pScene.AddChild(controlLayer);
 			}
 			return pScene;

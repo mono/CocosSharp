@@ -72,7 +72,7 @@ namespace CocosSharp
      * To use the CCControl you have to subclass it.
      */
 
-    public class CCControl : CCLayer
+    public class CCControl : CCNode
     {
         const int ControlEventTotalNumber = 9; 			// Number of different possible control events.
 

@@ -8,8 +8,8 @@ namespace tests.Extensions
         {
             base.OnEnter();
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
-            getSceneTitleLabel().Text = Title();
-            getSceneSubtitleLabel().Text = Subtitle();
+            SceneTitleLabel.Text = Title();
+            SceneSubtitleLabel.Text = Subtitle();
         }
 
         public virtual string Title()

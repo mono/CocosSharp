@@ -71,7 +71,7 @@ namespace tests.Extensions
             var controlLayer = new CCControlPotentiometerTest();
             if (controlLayer != null)
             {
-                controlLayer.getSceneTitleLabel().Text = (title);
+                controlLayer.SceneTitleLabel.Text = (title);
                 pScene.AddChild(controlLayer);
             }
             return pScene;
