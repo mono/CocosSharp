@@ -63,15 +63,15 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_TITLETTF_NORMAL)
             {
-                ((CCControlButton) node).SetTitleTtfForState(fontTTF, CCControlState.Normal);
+                ((CCControlButton) node).SetTitleForState(fontTTF, CCControlState.Normal);
             }
             else if (propertyName == PROPERTY_TITLETTF_HIGHLIGHTED)
             {
-                ((CCControlButton) node).SetTitleTtfForState(fontTTF, CCControlState.Highlighted);
+                ((CCControlButton) node).SetTitleForState(fontTTF, CCControlState.Highlighted);
             }
             else if (propertyName == PROPERTY_TITLETTF_DISABLED)
             {
-                ((CCControlButton) node).SetTitleTtfForState(fontTTF, CCControlState.Disabled);
+                ((CCControlButton) node).SetTitleForState(fontTTF, CCControlState.Disabled);
             }
             else
             {
@@ -81,22 +81,22 @@ namespace CocosSharp
 
         protected override void OnHandlePropTypeFloatScale(CCNode node, CCNode parent, string propertyName, float floatScale, CCBReader reader)
         {
-            if (propertyName == PROPERTY_TITLETTFSIZE_NORMAL)
-            {
-                ((CCControlButton) node).SetTitleTtfSizeForState(floatScale, CCControlState.Normal);
-            }
-            else if (propertyName == PROPERTY_TITLETTFSIZE_HIGHLIGHTED)
-            {
-                ((CCControlButton) node).SetTitleTtfSizeForState(floatScale, CCControlState.Highlighted);
-            }
-            else if (propertyName == PROPERTY_TITLETTFSIZE_DISABLED)
-            {
-                ((CCControlButton) node).SetTitleTtfSizeForState(floatScale, CCControlState.Disabled);
-            }
-            else
-            {
-                base.OnHandlePropTypeFloatScale(node, parent, propertyName, floatScale, reader);
-            }
+//            if (propertyName == PROPERTY_TITLETTFSIZE_NORMAL)
+//            {
+//                ((CCControlButton) node).SetTitleTtfSizeForState(floatScale, CCControlState.Normal);
+//            }
+//            else if (propertyName == PROPERTY_TITLETTFSIZE_HIGHLIGHTED)
+//            {
+//                ((CCControlButton) node).SetTitleTtfSizeForState(floatScale, CCControlState.Highlighted);
+//            }
+//            else if (propertyName == PROPERTY_TITLETTFSIZE_DISABLED)
+//            {
+//                ((CCControlButton) node).SetTitleTtfSizeForState(floatScale, CCControlState.Disabled);
+//            }
+//            else
+//            {
+//                base.OnHandlePropTypeFloatScale(node, parent, propertyName, floatScale, reader);
+//            }
         }
 
         protected override void OnHandlePropTypePoint(CCNode node, CCNode parent, string propertyName, CCPoint point, CCBReader reader)

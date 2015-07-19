@@ -8,32 +8,39 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_HelloVariableSize()
 		{
-			CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
-    
-			// Defines an array of title to create buttons dynamically
-			var stringArray = new[] {
-				"Hello",
-				"Variable",
-				"Size",
-				"!"
-			};
-    
-			CCNode layer = new CCNode ();
-			AddChild(layer, 1);
-    
-			float total_width = 0, height = 0;
-    
-			// For each title in the array
-		    int i = 0;
-			foreach(var title in stringArray)
-			{
-				// Creates a button with this string as title
-				var button = standardButtonWithTitle(title);
-			    if (i == 0)
-			    {
-			        button.Opacity = 50;
+
+		}
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
+
+            // Defines an array of title to create buttons dynamically
+            var stringArray = new[] {
+                "Hello",
+                "Variable",
+                "Size",
+                "!"
+            };
+
+            CCNode layer = new CCNode ();
+            AddChild(layer, 1);
+
+            float total_width = 0, height = 0;
+
+            // For each title in the array
+            int i = 0;
+            foreach(var title in stringArray)
+            {
+                // Creates a button with this string as title
+                var button = standardButtonWithTitle(title);
+                if (i == 0)
+                {
+                    button.Opacity = 50;
                     button.Color = new CCColor3B(0, 255, 0);
-			    }
+                }
                 else if (i == 1)
                 {
                     button.Opacity = 200;
@@ -45,26 +52,25 @@ namespace tests.Extensions
                     button.Color = new CCColor3B(0, 0, 255);
                 }
 
-			    button.Position = new CCPoint (total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
-				layer.AddChild(button);
-        
-				// Compute the size of the layer
-				height = button.ContentSize.Height;
-				total_width += button.ContentSize.Width;
-			    i++;
-			}
+                button.Position = new CCPoint (total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
+                layer.AddChild(button);
 
-			layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
-			layer.ContentSize = new CCSize(total_width, height);
-			layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-    
-			// Add the black background
-			var background = new CCScale9SpriteFile("extensions/buttonBackground");
-			background.ContentSize = new CCSize(total_width + 14, height + 14);
-			background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-			AddChild(background);
-		}
+                // Compute the size of the layer
+                height = button.ContentSize.Height;
+                total_width += button.ContentSize.Width;
+                i++;
+            }
 
+            layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            layer.ContentSize = new CCSize(total_width, height);
+            layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
+
+            // Add the black background
+            var background = new CCScale9SpriteFile("extensions/buttonBackground");
+            background.ContentSize = new CCSize(total_width + 14, height + 14);
+            background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
+            AddChild(background);
+        }
 		
 		/** Creates and return a button with a default background and title color. */
 		public CCControlButton standardButtonWithTitle(string title)
