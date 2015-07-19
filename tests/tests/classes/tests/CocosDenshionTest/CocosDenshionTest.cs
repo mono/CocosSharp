@@ -51,8 +51,8 @@ namespace tests
 
             for(int i=0; i < testItems.Count(); ++i)
             {
-                CCLabelTtf label = new CCLabelTtf(testItems[i], "arial", 24);
-                CCMenuItemLabelTTF menuItem = new CCMenuItemLabelTTF(label, MenuCallback);
+                CCLabel label = new CCLabel(testItems[i], "arial", 24, CCLabelFormat.SpriteFont);
+                CCMenuItemLabel menuItem = new CCMenuItemLabel(label, MenuCallback);
                 testMenu.AddChild(menuItem, i + 10000);
                 testMenuItems.Add(menuItem);
             }
