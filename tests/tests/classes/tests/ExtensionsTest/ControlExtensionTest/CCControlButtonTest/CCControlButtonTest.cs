@@ -303,41 +303,48 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_Styling()
 		{
-			CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
+		}
 
-			var layer = new CCNode ();
-			AddChild(layer, 1);
-    
-			int space = 10; // px
-    
-			float max_w = 0, max_h = 0;
-			for (int i = 0; i < 3; i++)
-			{
-				for (int j = 0; j < 3; j++)
-				{
-					// Add the buttons
-					var button = standardButtonWithTitle(CCRandom.Next(30).ToString());
-					button.SetAdjustBackgroundImage(false);  // Tells the button that the background image must not be adjust
-														// It'll use the prefered size of the background image
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
+
+            var layer = new CCNode ();
+            AddChild(layer, 1);
+
+            int space = 10; // px
+
+            float max_w = 0, max_h = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    // Add the buttons
+                    var button = standardButtonWithTitle(CCRandom.Next(30).ToString());
+                    button.IsAdjustBackgroundImage = false;  // Tells the button that the background image must not be adjust
+                    // It'll use the prefered size of the background image
                     button.Position = new CCPoint(button.ContentSize.Width / 2 + (button.ContentSize.Width + space) * i,
-                                           button.ContentSize.Height / 2 + (button.ContentSize.Height + space) * j);
-					layer.AddChild(button);
+                        button.ContentSize.Height / 2 + (button.ContentSize.Height + space) * j);
+                    layer.AddChild(button);
 
                     max_w = Math.Max(button.ContentSize.Width * (i + 1) + space * i, max_w);
                     max_h = Math.Max(button.ContentSize.Height * (j + 1) + space * j, max_h);
-				}
-			}
-    
-			layer.AnchorPoint = new CCPoint (0.5f, 0.5f);
-			layer.ContentSize = new CCSize(max_w, max_h);
-			layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-    
-			// Add the black background
-			var backgroundButton = new CCScale9SpriteFile("extensions/buttonBackground");
-			backgroundButton.ContentSize = new CCSize(max_w + 14, max_h + 14);
-			backgroundButton.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
-			AddChild(backgroundButton);
-		}
+                }
+            }
+
+            layer.AnchorPoint = CCPoint.AnchorMiddle;
+            layer.ContentSize = new CCSize(max_w, max_h);
+            layer.Position = screenSize.Center;
+
+            // Add the black background
+            var backgroundButton = new CCScale9SpriteFile("extensions/buttonBackground");
+            backgroundButton.ContentSize = new CCSize(max_w + 14, max_h + 14);
+            backgroundButton.Position = screenSize.Center;
+            AddChild(backgroundButton);
+
+        }
 
 		public CCControlButton standardButtonWithTitle(string title)
 		{

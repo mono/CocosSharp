@@ -24,7 +24,7 @@ namespace CocosSharp
 
 		/** The current color used to display the title. */
 		protected CCColor3B currentTitleColor;
-		protected bool doesAdjustBackgroundImage;
+		protected bool isAdjustBackgroundImage;
 		protected bool isPushed;
 		protected CCPoint labelAnchorPoint;
 		protected int _marginH = CCControlButtonMarginLR;
@@ -152,11 +152,11 @@ namespace CocosSharp
 			{
 				if (value.Width == 0 && value.Height == 0)
 				{
-					doesAdjustBackgroundImage = true;
+					isAdjustBackgroundImage = true;
 				}
 				else
 				{
-					doesAdjustBackgroundImage = false;
+					isAdjustBackgroundImage = false;
 					foreach (var item in backgroundSpriteDispatchTable)
 					{
 						var sprite = item.Value as CCScale9Sprite;
@@ -242,7 +242,7 @@ namespace CocosSharp
 			currentTitle = null;
 
 			// Adjust the background image by default
-			SetAdjustBackgroundImage(true);
+			IsAdjustBackgroundImage = true;
 			PreferredSize = CCSize.Zero;
 			// Zooming button by default
 			zoomOnTouchDown = true;
@@ -333,7 +333,7 @@ namespace CocosSharp
 			}
 
 			// Adjust the background image if necessary
-			if (doesAdjustBackgroundImage)
+			if (isAdjustBackgroundImage)
 			{
 				// Add the margins
 				if (_backgroundSprite != null)
@@ -392,19 +392,16 @@ namespace CocosSharp
 
 		/** Adjust the background image. YES by default. If the property is set to NO, the 
         background will use the prefered size of the background image. */
+        public bool IsAdjustBackgroundImage
+        {
+            get { return isAdjustBackgroundImage; }
+            set 
+            {
+                isAdjustBackgroundImage = value;
+                NeedsLayout();
 
-		public void SetAdjustBackgroundImage(bool adjustBackgroundImage)
-		{
-			doesAdjustBackgroundImage = adjustBackgroundImage;
-			NeedsLayout();
-		}
-
-		public bool DoesAdjustBackgroundImage()
-		{
-			return doesAdjustBackgroundImage;
-		}
-
-
+            }
+        }
 
 		/** The current title that is displayed on the button. */
 
