@@ -35,7 +35,7 @@ namespace tests
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // Title
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 38);
+            var label = new CCLabel(title(), "arial", 38, CCLabelFormat.SpriteFont);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new CCColor3B(255, 255, 40);
@@ -44,7 +44,7 @@ namespace tests
             string strSubTitle = subtitle();
             if (strSubTitle.Length > 0)
             {
-                CCLabelTtf l = new CCLabelTtf(strSubTitle, "Thonburi", 16);
+                var l = new CCLabel(strSubTitle, "Thonburi", 16, CCLabelFormat.SpriteFont);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }

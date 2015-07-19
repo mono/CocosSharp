@@ -42,7 +42,7 @@ namespace tests
             menu.Position = new CCPoint(s.Width / 2, s.Height - 65);
             AddChild(menu, 1);
 
-            CCLabelTtf infoLabel = new CCLabelTtf("0 nodes", "Marker Felt", 30);
+            var infoLabel = new CCLabel("0 nodes", "Marker Felt", 30, CCLabelFormat.SpriteFont);
             infoLabel.Color = new CCColor3B(0, 200, 20);
             infoLabel.Position = new CCPoint(s.Width / 2, s.Height - 90);
             AddChild(infoLabel, 1, PerformanceSpriteTest.kTagInfoLayer);
@@ -76,7 +76,7 @@ namespace tests
             AddChild(pSubMenu, 2);
 
             // add title label
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 38);
+            var label = new CCLabel(title(), "arial", 38, CCLabelFormat.SpriteFont);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new CCColor3B(255, 255, 40);
@@ -89,7 +89,7 @@ namespace tests
         {
             if (quantityNodes != lastRenderedCount)
             {
-                CCLabelTtf infoLabel = (CCLabelTtf)GetChildByTag(PerformanceSpriteTest.kTagInfoLayer);
+                var infoLabel = (CCLabel)GetChildByTag(PerformanceSpriteTest.kTagInfoLayer);
                 var str = string.Format("{0} nodes", quantityNodes);
                 infoLabel.Text = (str);
 

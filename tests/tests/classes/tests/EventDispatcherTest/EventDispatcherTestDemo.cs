@@ -193,10 +193,10 @@ namespace tests
 	public class MouseEventTest : EventDispatcherTest
 	{
 
-		CCLabelTtf mousePosition;
-		CCLabelTtf mouseButtonDown;
-		CCLabelTtf mouseButtonUp;
-		CCLabelTtf scrollWheel;
+		CCLabel mousePosition;
+		CCLabel mouseButtonDown;
+		CCLabel mouseButtonUp;
+		CCLabel scrollWheel;
 
 		public override void OnEnter ()
 		{
@@ -206,22 +206,22 @@ namespace tests
 
             int line = (int)(visibleBounds.Size.Height / 2);
 
-			mousePosition = new CCLabelTtf ("Mouse Position: ", "arial", 20);
+            mousePosition = new CCLabel ("Mouse Position: ", "arial", 20, CCLabelFormat.SpriteFont);
             mousePosition.Position = new CCPoint (130, line + 60);
 			mousePosition.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (mousePosition);
 
-			mouseButtonDown = new CCLabelTtf ("Mouse Button Down: ", "arial", 20);
+            mouseButtonDown = new CCLabel ("Mouse Button Down: ", "arial", 20, CCLabelFormat.SpriteFont);
             mouseButtonDown.Position = new CCPoint (130, line + 20);
 			mouseButtonDown.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (mouseButtonDown);
 
-			mouseButtonUp = new CCLabelTtf ("Mouse Button Up: ", "arial", 20);
+            mouseButtonUp = new CCLabel ("Mouse Button Up: ", "arial", 20, CCLabelFormat.SpriteFont);
             mouseButtonUp.Position = new CCPoint (130, line - 20);
 			mouseButtonUp.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (mouseButtonUp);
 
-			scrollWheel = new CCLabelTtf ("Scroll Wheel Delta: ", "arial", 20);
+            scrollWheel = new CCLabel ("Scroll Wheel Delta: ", "arial", 20, CCLabelFormat.SpriteFont);
             scrollWheel.Position = new CCPoint (130, line - 60);
 			scrollWheel.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (scrollWheel);
@@ -280,7 +280,7 @@ namespace tests
 			var origin = Layer.VisibleBoundsWorldspace.Origin;
 			var size = Layer.VisibleBoundsWorldspace.Size;
 
-			var statusLabel = new CCLabelTtf("No keyboard event received!", "arial", 20);
+            var statusLabel = new CCLabel("No keyboard event received!", "arial", 20, CCLabelFormat.SpriteFont);
 			statusLabel.Position = origin + size.Center;
 			AddChild(statusLabel);
 
@@ -645,7 +645,7 @@ namespace tests
 
 			//MenuItemFont::setFontSize(20);
 
-			var statusLabel = new CCLabelTtf("No custom event 1 received!", "", 20);
+            var statusLabel = new CCLabel("No custom event 1 received!", "arial", 20, CCLabelFormat.SpriteFont);
 			statusLabel.Position = origin + new CCPoint(size.Width/2, size.Height-90);
 			AddChild(statusLabel);
 
@@ -669,7 +669,7 @@ namespace tests
 
 			sendItem.Position = origin + size.Center;
 
-			var statusLabel2 = new CCLabelTtf("No custom event 2 received!", "", 20);
+            var statusLabel2 = new CCLabel("No custom event 2 received!", "arial", 20, CCLabelFormat.SpriteFont);
 			statusLabel2.Position = origin + new CCPoint(size.Width/2, size.Height-120);
 			AddChild(statusLabel2);
 
@@ -913,7 +913,7 @@ namespace tests
 
 		int count1, count2, count3, count4;
 
-		CCLabelTtf label1, label2, label3, label4;
+		CCLabel label1, label2, label3, label4;
 		CCEventListenerCustom event1, event2, event3, event4;
 
 		public override void OnEnter ()
@@ -924,22 +924,22 @@ namespace tests
 			var origin = Layer.VisibleBoundsWorldspace.Origin;
 			var s = Layer.VisibleBoundsWorldspace.Size;
 
-			label1 = new CCLabelTtf("Update: 0", "arial", 20);
+            label1 = new CCLabel("Update: 0", "arial", 20, CCLabelFormat.SpriteFont);
 			label1.AnchorPoint = CCPoint.AnchorUpperLeft;
 			label1.Position = new CCPoint(30,s.Height/2 + 60);
 			AddChild(label1);
 
-			label2 = new CCLabelTtf("Visit: 0", "arial", 20);
+            label2 = new CCLabel("Visit: 0", "arial", 20, CCLabelFormat.SpriteFont);
 			label2.AnchorPoint = CCPoint.AnchorUpperLeft;
 			label2.Position = new CCPoint(30,s.Height/2 + 20);
 			AddChild(label2);
 
-			label3 = new CCLabelTtf("Draw: 0", "arial", 20);
+            label3 = new CCLabel("Draw: 0", "arial", 20, CCLabelFormat.SpriteFont);
 			label3.AnchorPoint = CCPoint.AnchorUpperLeft;
 			label3.Position = new CCPoint(30,s.Height/2 - 20);
 			AddChild(label3);
 
-			label4 = new CCLabelTtf("Projection: 0", "arial", 20);
+            label4 = new CCLabel("Projection: 0", "arial", 20, CCLabelFormat.SpriteFont);
 			label4.AnchorPoint = CCPoint.AnchorUpperLeft;
 			label4.Position = new CCPoint(30,s.Height/2 - 60);
 			AddChild(label4);
@@ -1273,7 +1273,7 @@ namespace tests
 			customlistener = AddCustomEventListener(CCEvent.EVENT_COME_TO_BACKGROUND, (customEvent) => 
 				{
 
-					var label = new CCLabelTtf("Yeah, this issue was fixed.", "", 20);
+                    var label = new CCLabel("Yeah, this issue was fixed.", "", 20, CCLabelFormat.SpriteFont);
 					label.AnchorPoint = CCPoint.AnchorMiddleLeft;
                     label.Position = new CCPoint(visibleBounds.Origin.X, visibleBounds.Origin.Y + visibleBounds.Size.Height / 2);
 

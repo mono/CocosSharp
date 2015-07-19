@@ -8,7 +8,7 @@ namespace tests.Extensions
 {
     internal class TimelineCallbackTestLayer : BaseLayer
     {
-        public CCLabelTtf helloLabel;
+        public CCLabel helloLabel;
 
         public void onCallback1(CCNode sender)
         {

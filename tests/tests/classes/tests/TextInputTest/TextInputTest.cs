@@ -45,14 +45,14 @@ namespace CocosSharp
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 24);
+            var label = new CCLabel(title(), "arial", 24, CCLabelFormat.SpriteFont);
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string subTitle = m_pNotificationLayer.subtitle();
             if (subTitle != null)
             {
-                CCLabelTtf l = new CCLabelTtf(subTitle, subtitle(), 16);
+                var l = new CCLabel(subTitle, subtitle(), 16, CCLabelFormat.SpriteFont);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
@@ -259,7 +259,7 @@ namespace CocosSharp
             }
 
             // create a insert text sprite and do some action
-            CCLabelTtf label = new CCLabelTtf(text, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            var label = new CCLabel(text, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE, CCLabelFormat.SpriteFont);
             this.AddChild(label);
             CCColor3B color = new CCColor3B { R = 226, G = 121, B = 7 };
             label.Color = color;
@@ -290,7 +290,7 @@ namespace CocosSharp
         public virtual bool onTextFieldDeleteBackward(CCTextFieldTTF pSender, string delText, int nLen)
         {
             // create a delete text sprite and do some action
-            CCLabelTtf label = new CCLabelTtf(delText, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+            var label = new CCLabel(delText, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE, CCLabelFormat.SpriteFont);
             this.AddChild(label);
 
             // move the sprite to fly out

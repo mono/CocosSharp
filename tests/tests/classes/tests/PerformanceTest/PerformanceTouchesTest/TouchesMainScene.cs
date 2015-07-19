@@ -44,7 +44,7 @@ namespace tests
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // add title
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
+            var label = new CCLabel(title(), "arial", 32, CCLabelFormat.SpriteFont);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
