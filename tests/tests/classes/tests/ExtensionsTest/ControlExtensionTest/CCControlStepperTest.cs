@@ -5,16 +5,17 @@ namespace tests.Extensions
 {
     public class CCControlStepperTest : CCControlScene
     {
-        protected CCLabelTtf _displayValueLabel;
+        protected CCLabel DisplayValueLabel { get; set; }
 
-        public CCLabelTtf DisplayValueLabel
-        {
-            get { return _displayValueLabel; }
-            set { _displayValueLabel = value; }
-        }
 
         public CCControlStepperTest()
         {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
             CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             var layer = new CCNode();
@@ -29,29 +30,29 @@ namespace tests.Extensions
             background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
             layer.AddChild(background);
 
-            DisplayValueLabel = new CCLabelTtf("0", "Arial", 26);
+            DisplayValueLabel = new CCLabel("0", "Arial", 26, CCLabelFormat.SpriteFont);
 
-            _displayValueLabel.Position = background.Position;
-            layer.AddChild(_displayValueLabel);
+            DisplayValueLabel.Position = background.Position;
+            layer.AddChild(DisplayValueLabel);
 
             layer_width += background.ContentSize.Width;
 
             CCControlStepper stepper = MakeControlStepper();
             stepper.Position = new CCPoint(layer_width + 10 + stepper.ContentSize.Width / 2, 0);
             stepper.AddTargetWithActionForControlEvents(this, ValueChanged,
-                                                        CCControlEvent.ValueChanged);
+                CCControlEvent.ValueChanged);
             layer.AddChild(stepper);
 
             layer_width += stepper.ContentSize.Width;
 
             // Set the layer size
             layer.ContentSize = new CCSize(layer_width, 0);
-            layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            layer.AnchorPoint = CCPoint.AnchorMiddle;
 
             // Update the value label
             ValueChanged(stepper, CCControlEvent.ValueChanged);
-        }
 
+        }
         /** Creates and returns a new ControlStepper. */
 
         public CCControlStepper MakeControlStepper()
@@ -68,7 +69,7 @@ namespace tests.Extensions
         {
             var pControl = (CCControlStepper) sender;
             // Change value of label.
-            _displayValueLabel.Text = String.Format("{0:0.00}", pControl.Value);
+            DisplayValueLabel.Text = String.Format("{0:0.00}", pControl.Value);
         }
 
         public static CCScene sceneWithTitle(string title)
