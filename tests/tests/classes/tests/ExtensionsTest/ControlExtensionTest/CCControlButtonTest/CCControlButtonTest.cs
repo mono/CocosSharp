@@ -105,26 +105,32 @@ namespace tests.Extensions
     {
         public CCControlButtonTest_Inset()
         {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
             CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             // Defines an array of title to create buttons dynamically
             var stringArray = new[] {
-				"Inset",
-				"Inset",
-				"Inset"
-			};
+                "Inset",
+                "Inset",
+                "Inset"
+            };
 
             CCNode layer = new CCNode ();
             AddChild(layer, 1);
 
             float total_width = 0, height = 0;
 
+            var insetRect = new CCRect(5, 5, 5, 5);
             // For each title in the array
-            object pObj = null;
             foreach (var title in stringArray)
             {
                 // Creates a button with this string as title
-                CCControlButton button = insetButtonWithTitle(title, new CCRect(5, 5, 5, 5));
+                CCControlButton button = insetButtonWithTitle(title, insetRect);
                 button.Position = new CCPoint(total_width + button.ContentSize.Width / 2, button.ContentSize.Height / 2);
                 layer.AddChild(button);
 
@@ -133,22 +139,22 @@ namespace tests.Extensions
                 total_width += button.ContentSize.Width;
             }
 
-            layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            layer.AnchorPoint = CCPoint.AnchorMiddle;
             layer.ContentSize = new CCSize(total_width, height);
-            layer.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
+            layer.Position = screenSize.Center;
 
             // Add the black background
             var background = new CCScale9SpriteFile("extensions/buttonBackground");
             background.ContentSize = new CCSize(total_width + 14, height + 14);
-            background.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
+            background.Position = screenSize.Center;
             AddChild(background);
+
         }
 
-
-        /** Creates and return a button with a default background and title color. */
+        // Creates and return a button with a default background and title color. 
         public CCControlButton standardButtonWithTitle(string title)
         {
-            /** Creates and return a button with a default background and title color. */
+            // Creates and return a button with a default background and title color. 
             var backgroundButton = new CCScale9SpriteFile("extensions/button");
             var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 
