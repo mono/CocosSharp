@@ -325,7 +325,6 @@ namespace CocosSharp
             set 
             {
                 CCSprite.DefaultTexelToContentSizeRatios = value;
-                CCLabelBMFont.DefaultTexelToContentSizeRatios = value;
                 CCTileMapLayer.DefaultTexelToContentSizeRatios = value;
                 CCLabel.DefaultTexelToContentSizeRatios = value;
             }
@@ -679,7 +678,7 @@ namespace CocosSharp
 
         public void PurgeAllCachedData()
         {
-            CCLabelBMFont.PurgeCachedData();
+            
         }
         
         protected override void Dispose(bool disposing)

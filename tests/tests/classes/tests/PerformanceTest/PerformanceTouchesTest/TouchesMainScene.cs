@@ -50,7 +50,7 @@ namespace tests
 
 			Schedule ();
 
-            m_plabel = new CCLabelBMFont("00.0", "fonts/arial16.fnt");
+            m_plabel = new CCLabel("00.0", "fonts/arial16.fnt");
             m_plabel.Position = new CCPoint(s.Width / 2, s.Height / 2);
             AddChild(m_plabel);
 
@@ -83,7 +83,7 @@ namespace tests
             }
         }
 
-        protected CCLabelBMFont m_plabel;
+        protected CCLabel m_plabel;
         protected int numberOfTouchesB;
         protected int numberOfTouchesM;
         protected int numberOfTouchesE;
