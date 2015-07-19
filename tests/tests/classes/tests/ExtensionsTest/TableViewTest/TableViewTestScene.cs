@@ -9,6 +9,13 @@ namespace tests.Extensions
         public TableViewTestLayer()
         {
 
+
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
             InitTableViewTestLayer();
         }
 
