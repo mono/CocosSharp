@@ -1395,12 +1395,9 @@ namespace tests
 
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
 
-            var label = new CCLabel("Loading...", "Marker Felt", 32, CCLabelFormat.SpriteFont);
+            var label = new LoadingLabel();
             label.Position = size.Center;
             AddChild(label, 10);
-
-			var scale = new CCScaleBy(0.3f, 2);
-			label.RepeatForever(scale, scale.Reverse());
 
             ScheduleOnce(LoadImages, 1.0f);
         }

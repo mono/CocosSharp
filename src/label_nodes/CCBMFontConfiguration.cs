@@ -301,7 +301,13 @@ namespace CocosSharp
 
             var directory = string.Empty;
             if (!CCFileUtils.GetDirectoryName(value, out directory))
-                AtlasName = CCFileUtils.FullPathFromRelativeFile(value, fntFile);
+            {
+                try
+                {
+                    AtlasName = CCFileUtils.FullPathFromRelativeFile(value, fntFile);
+                }
+                catch { }
+            }
         }
 
         private void parseKerningEntry(string line)
