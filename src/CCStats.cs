@@ -5,6 +5,7 @@ using System.Diagnostics;
 using ObjCRuntime;
 #endif
 
+
 namespace CocosSharp
 {
 
@@ -50,7 +51,7 @@ namespace CocosSharp
 	{
 
 
-		bool isCheckGC = true;
+		bool isGCEnabled;
 		bool isInitialized, isEnabled;
 		uint totalFrames = 0;
 		uint updateCount;
@@ -74,7 +75,176 @@ namespace CocosSharp
 		CCLabelAtlas gcLabel;
 
 
-		#region Properties
+		#region Constructor
+
+
+		#endregion
+
+
+		#region Public
+
+
+		/// <summary>
+		/// Initialize CCStats.
+		/// </summary>
+		public void Initialize ()
+		{
+			if (!isInitialized) {
+				// There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
+				// garbage collection themselves on the simulator. This should not affect the devices though.
+				// So we check if we are running on a Device and only update the counters if we are.
+				#if IOS
+				isGCEnabled = (Runtime.Arch == Arch.DEVICE);
+				#else
+				isGCEnabled = true;
+				#endif
+
+				CCTexture2D texture;
+				CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
+
+				stopwatch = new Stopwatch ();
+
+				try {
+					var surfaceFormat = CCSurfaceFormat.Bgra4444;
+
+					#if WINDOWS_PHONE81
+					surfaceFormat = CCSurfaceFormat.Color;
+					#endif
+
+					texture = !textureCache.Contains ("cc_fps_images") ? textureCache.AddImage (CCFPSImage.PngData, "cc_fps_images", surfaceFormat) : textureCache ["cc_fps_images"];
+
+					// analysis disable CompareOfFloatsByEqualityOperator
+					if (texture == null || (texture.ContentSizeInPixels.Width == 0 && texture.ContentSizeInPixels.Height == 0)) {
+						CCLog.Log ("CCStats2: Failed to create stats texture");
+						return;
+					}
+				} catch (Exception ex) {
+					// MonoGame may not allow texture.fromstream,
+					// so catch this exception here and disable the stats
+					if (ex != null)
+						CCLog.Log ("CCStats2: Failed to create stats texture: {0}", ex);
+					else
+						CCLog.Log ("CCStats2: Failed to create stats texture");
+					return;
+				}
+
+				// we will remove the texture cc_fps_images from our cache to fix a problem of loosing the texture
+				// when the cache is purged.  If not then the statistics no longer show because it has been Disposed of.
+				textureCache.RemoveTextureForKey ("cc_fps_images");
+
+				try {
+					texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
+
+					fpsLabel = new CCLabelAtlas ("00.0", texture, 4, 8, '.');
+					updateTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
+					drawTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
+					drawCallLabel = new CCLabelAtlas ("000", texture, 4, 8, '.');
+					memoryLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
+					gcLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
+
+					memoryLabel.Color = new CCColor3B (35, 185, 255);
+					gcLabel.Color = new CCColor3B (255, 196, 54);
+				} catch (Exception ex) {
+					if (ex != null)
+						CCLog.Log ("CCStats: Failed to create stats labels: {0}", ex);
+					else
+						CCLog.Log ("CCStats: Failed to create stats labels");
+					return;
+				}
+
+				isInitialized = true;
+				Scale = 1;
+			}
+		}
+
+
+		public void UpdateStart ()
+		{
+			if (isEnabled) {
+				startTime = (float)stopwatch.Elapsed.TotalMilliseconds;
+			}
+		}
+
+
+		public void UpdateEnd (float delta)
+		{
+			if (isEnabled) {
+				deltaAll += delta;
+				updateCount++;
+				totalUpdateTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
+			}
+		}
+
+
+		public void Draw (CCWindow window)
+		{
+			if (isEnabled) {
+				totalFrames++;
+				totalDrawCount++;
+				totalDrawTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
+
+				if (isGCEnabled && !gcWeakRef.IsAlive) {
+					gcCounter++;
+					gcWeakRef = new WeakReference (new object ());
+				}
+
+				if (isInitialized) {
+					if (deltaAll > 0.5f) {
+						fpsLabel.Text = (String.Format ("{0:00.0}", totalDrawCount / deltaAll));
+						updateTimeLabel.Text = (String.Format ("{0:0.000}", totalUpdateTime / updateCount));
+						drawTimeLabel.Text = (String.Format ("{0:0.000}", totalDrawTime / totalDrawCount));
+						drawCallLabel.Text = (String.Format ("{0:000}", window.DrawManager.DrawCount));
+
+						deltaAll = totalDrawTime = totalUpdateTime = 0;
+						totalDrawCount = updateCount = 0;
+
+						memoryLabel.Text = String.Format ("{0}", GC.GetTotalMemory (false));
+						gcLabel.Text = String.Format ("{0}", gcCounter);
+					}
+
+					var scene = window.DefaultDirector.RunningScene;
+					drawCallLabel.Scene = scene;
+					fpsLabel.Scene = scene;
+					updateTimeLabel.Scene = scene;
+					drawTimeLabel.Scene = scene;
+					memoryLabel.Scene = scene;
+					gcLabel.Scene = scene;
+
+					drawCallLabel.Visit ();
+					fpsLabel.Visit ();
+					updateTimeLabel.Visit ();
+					drawTimeLabel.Visit ();
+					memoryLabel.Visit ();
+					gcLabel.Visit ();
+				}
+			}
+		}
+
+
+		public int Scale {
+			get { return scale; }
+			set {
+				var pos = CCPoint.Zero;
+
+				scale = value;
+
+				if (isInitialized) {
+					fpsLabel.Scale = scale;
+					updateTimeLabel.Scale = scale;
+					drawTimeLabel.Scale = scale;
+					drawCallLabel.Scale = scale;
+					memoryLabel.Scale = scale;
+					gcLabel.Scale = scale;
+
+					memoryLabel.Position = new CCPoint (4 * scale, 44 * scale) + pos;
+					gcLabel.Position = new CCPoint (4 * scale, 36 * scale) + pos;
+					drawCallLabel.Position = new CCPoint (4 * scale, 28 * scale) + pos;
+					updateTimeLabel.Position = new CCPoint (4 * scale, 20 * scale) + pos;
+					drawTimeLabel.Position = new CCPoint (4 * scale, 12 * scale) + pos;
+					fpsLabel.Position = new CCPoint (4 * scale, 4 * scale) + pos;
+				}
+			}
+		}
 
 
 		public bool IsInitialized {
@@ -95,176 +265,7 @@ namespace CocosSharp
 		}
 
 
-		public int Scale {
-			get { return scale; }
-			set {
-				var pos = CCPoint.Zero;
-
-				scale = value;
-
-                if (isInitialized)
-                {
-                    fpsLabel.Scale = scale;
-                    updateTimeLabel.Scale = scale;
-                    drawTimeLabel.Scale = scale;
-                    drawCallLabel.Scale = scale;
-                    memoryLabel.Scale = scale;
-                    gcLabel.Scale = scale;
-
-                    memoryLabel.Position = new CCPoint(4 * scale, 44 * scale) + pos;
-                    gcLabel.Position = new CCPoint(4 * scale, 36 * scale) + pos;
-                    drawCallLabel.Position = new CCPoint(4 * scale, 28 * scale) + pos;
-                    updateTimeLabel.Position = new CCPoint(4 * scale, 20 * scale) + pos;
-                    drawTimeLabel.Position = new CCPoint(4 * scale, 12 * scale) + pos;
-                    fpsLabel.Position = new CCPoint(4 * scale, 4 * scale) + pos;
-                }
-			}
-		}
-
-
 		#endregion Properties
-
-
-		/// <summary>
-		/// Initialize CCStats.
-		/// </summary>
-		public void Initialize ()
-		{
-			if (!isInitialized) {
-				// There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
-				// garbage collection themselves on the simulator. This should not affect the devices though.
-				// So we check if we are running on a Device and only update the counters if we are.
-				#if IOS
-                if (Runtime.Arch != Arch.DEVICE)
-                    isCheckGC = false;
-				#endif
-
-				CCTexture2D texture;
-				CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
-
-				stopwatch = new Stopwatch ();
-
-				try {
-                    var surfaceFormat = CCSurfaceFormat.Bgra4444;
-#if WINDOWS_PHONE81
-                    surfaceFormat = CCSurfaceFormat.Color;
-#endif
-					texture = !textureCache.Contains ("cc_fps_images") ? textureCache.AddImage (CCFPSImage.PngData, "cc_fps_images", surfaceFormat) : textureCache ["cc_fps_images"];
-
-					// Analysis disable CompareOfFloatsByEqualityOperator
-					if (texture == null || (texture.ContentSizeInPixels.Width == 0 && texture.ContentSizeInPixels.Height == 0)) {
-						CCLog.Log ("CCStats: Failed to create stats texture");
-
-						return;
-					}
-				} catch (Exception ex) {
-					// MonoGame may not allow texture.fromstream,
-					// so catch this exception here and disable the stats
-					CCLog.Log ("CCStats: Failed to create stats texture:");
-					if (ex != null)
-						CCLog.Log (ex.ToString ());
-
-					return;
-				}
-
-				// We will remove the texture cc_fps_images from our cache to fix a problem of loosing the texture
-				// when the cache is purged.  If not then the statistics no longer show because it has been Disposed of.
-				textureCache.RemoveTextureForKey ("cc_fps_images");
-
-				try {
-					texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
-
-					fpsLabel = new CCLabelAtlas ("00.0", texture, 4, 8, '.');
-
-					updateTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
-
-					drawTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
-
-					drawCallLabel = new CCLabelAtlas ("000", texture, 4, 8, '.');
-
-					memoryLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
-					memoryLabel.Color = new CCColor3B (35, 185, 255);
-
-					gcLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
-					gcLabel.Color = new CCColor3B (255, 196, 54);
-				} catch (Exception ex) {
-					CCLog.Log ("CCStats: Failed to create stats labels:");
-					if (ex != null)
-						CCLog.Log (ex.ToString ());
-
-					return;
-				}
-			}
-
-			isInitialized = true;
-
-			Scale = 1;
-		}
-
-
-		public void UpdateStart ()
-		{
-			if (isEnabled)
-				startTime = (float)stopwatch.Elapsed.TotalMilliseconds;
-		}
-
-
-		public void UpdateEnd (float delta)
-		{
-			if (isEnabled) {
-				deltaAll += delta;
-
-				if (isEnabled) {
-					updateCount++;
-					totalUpdateTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
-				}
-			}
-		}
-
-
-		public void Draw (CCWindow window)
-		{
-			if (isEnabled) {
-				totalFrames++;
-				totalDrawCount++;
-				totalDrawTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
-
-				if (isCheckGC && !gcWeakRef.IsAlive) {
-					gcCounter++;
-					gcWeakRef = new WeakReference (new object ());
-				}
-
-				if (isInitialized) {
-					if (deltaAll > CCMacros.CCDirectorStatsUpdateIntervalInSeconds) {
-						fpsLabel.Text = (String.Format ("{0:00.0}", totalDrawCount / deltaAll));
-						updateTimeLabel.Text = (String.Format ("{0:0.000}", totalUpdateTime / updateCount));
-						drawTimeLabel.Text = (String.Format ("{0:0.000}", totalDrawTime / totalDrawCount));
-						drawCallLabel.Text = (String.Format ("{0:000}", window.DrawManager.DrawCount));
-                        
-						deltaAll = totalDrawTime = totalUpdateTime = 0;
-						totalDrawCount = updateCount = 0;
-                        
-						memoryLabel.Text = String.Format ("{0}", GC.GetTotalMemory (false));
-						gcLabel.Text = String.Format ("{0}", gcCounter);
-					}
-
-					var scene = window.DefaultDirector.RunningScene;
-					drawCallLabel.Scene = scene;
-					fpsLabel.Scene = scene;
-					updateTimeLabel.Scene = scene;
-					drawTimeLabel.Scene = scene;
-					memoryLabel.Scene = scene;
-					gcLabel.Scene = scene;
-
-					drawCallLabel.Visit ();
-					fpsLabel.Visit ();
-					updateTimeLabel.Visit ();
-					drawTimeLabel.Visit ();
-					memoryLabel.Visit ();
-					gcLabel.Visit ();
-				}
-			}    
-		}
 
 
 	}
