@@ -22,7 +22,7 @@ namespace CocosSharp
     {
 
         public string FontName;
-        public int FontSize;
+        public float FontSize;
         public CCTextAlignment Alignment;
         public CCVerticalTextAlignment LineAlignment;
         public CCSize Dimensions;
@@ -1095,7 +1095,7 @@ namespace CocosSharp
                     var fontDefinition = new CCFontDefinition();
 
                     fontDefinition.FontName = systemFont;
-                    fontDefinition.FontSize = (int)systemFontSize;
+                    fontDefinition.FontSize = systemFontSize;
 
                     fontDefinition.Alignment = labelFormat.Alignment;
                     fontDefinition.LineAlignment = labelFormat.LineAlignment;
