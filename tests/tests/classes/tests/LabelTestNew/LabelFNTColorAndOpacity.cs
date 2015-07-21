@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using CocosSharp;
 
+#if !WINDOWS_PHONE8
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Net.Http;
+#endif
 
 namespace tests
 {
@@ -96,6 +98,7 @@ namespace tests
 
     }
 
+    #if !WINDOWS_PHONE8
     public class LabelFNTFromHTTP : AtlasDemoNew
     {
         float m_time;
@@ -258,5 +261,5 @@ namespace tests
         }
 
     }
-
+#endif
 }
