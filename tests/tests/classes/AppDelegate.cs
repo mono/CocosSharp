@@ -56,7 +56,7 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
             mainWindow.DisplayStats = true;
-            mainWindow.StatsScale = 2;
+            mainWindow.StatsScale = 1;
             
 //            if (mainWindow.WindowSizeInPixels.Height > 320)
 //            {
