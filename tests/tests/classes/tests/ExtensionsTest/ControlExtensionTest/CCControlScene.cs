@@ -32,14 +32,14 @@ namespace tests.Extensions
 
             // Add the generated background
             var background = new CCSprite("extensions/background");
-            background.Position = new CCPoint(screensize.Width / 2, screensize.Height / 2);
+            background.Position = screensize.Center;
             AddChild(background);
 
             // Add the ribbon
-            var ribbon = new CCScale9SpriteFile("extensions/ribbon", new CCRect(1, 1, 48, 55));
-            ribbon.ContentSize = new CCSize(screensize.Width, 57);
-            ribbon.Position = new CCPoint(screensize.Width / 2.0f, screensize.Height - ribbon.ContentSize.Height / 2.0f);
-            AddChild(ribbon);
+            //var ribbon = new CCScale9SpriteFile("extensions/ribbon", new CCRect(1, 1, 48, 55));
+            //ribbon.ContentSize = new CCSize(screensize.Width, 57);
+            //ribbon.Position = new CCPoint(screensize.Width / 2.0f, screensize.Height - ribbon.ContentSize.Height / 2.0f);
+            //AddChild(ribbon);
 
             // Add the title
             SceneTitleLabel.Position = new CCPoint(screensize.Width / 2, screensize.Height - SceneTitleLabel.ContentSize.Height / 2 - 5);

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
@@ -1168,6 +1168,8 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\animationbuttonnormal.xnb" />
+    <Content Include="Content\Images\animationbuttonpressed.xnb" />
     <None Include="Info.iOS.plist">
       <Link>Info.plist</Link>
     </None>
@@ -1775,7 +1777,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -1801,10 +1802,5 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Content\hd\" />
-    <Folder Include="classes\tests\EventDispatcherTest\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="classes\tests\LabelTestNew\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -56,8 +56,8 @@ namespace tests.Extensions
 					TableViewTestLayer.runTableViewTest();
 					break;
                 case ExtensionsTestScene.TEST_Scale9Sprite:
-                    var Manager = Scale9SpriteSceneManager.sharedSprite9SceneManager();
-				    Scene.Director.ReplaceScene(Manager.currentControlScene());
+                    var Manager = Scale9SpriteSceneManager.SharedSprite9SceneManager;
+				    Scene.Director.ReplaceScene(Manager.CurrentControlScene);
 			        break;
 				default:
 					break;
