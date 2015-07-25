@@ -170,25 +170,25 @@ namespace CocosSharp
 
 		protected float ValueForLocation(CCPoint location)
 		{
-            var world = BackgroundSprite.BoundingBoxTransformedToWorld;
-            float percent = (location.X - world.MinX) / BackgroundSprite.ContentSize.Width;
+            float percent = location.X / BackgroundSprite.ContentSize.Width;
 			return Math.Max(Math.Min(minimumValue + percent * (MaximumValue - MinimumValue), MaximumAllowedValue), MinimumAllowedValue);
 		}
 
 		protected virtual CCPoint LocationFromTouch(CCTouch touch)
 		{
 			CCPoint touchLocation = touch.Location; // Get the touch position
+            touchLocation = BackgroundSprite.WorldToParentspace(touchLocation);
 
-            var world = BackgroundSprite.BoundingBoxTransformedToWorld;
+            var size = BackgroundSprite.ContentSize;
 
             if (touchLocation.X < 0)
 			{
 				touchLocation.X = 0;
 			}
-            else if (touchLocation.X > world.MaxX)
-			{
-                touchLocation.X = world.MaxX;
-			}
+            else if (touchLocation.X > size.Width)
+            {
+                touchLocation.X = size.Width;
+            }
 			return touchLocation;
 		}
 
@@ -222,7 +222,7 @@ namespace CocosSharp
         {
             if (Selected)
             {
-                Value = ValueForLocation(ThumbSprite.PositionWorldspace);
+                Value = ValueForLocation(ThumbSprite.Position);
             }
             ThumbSprite.Color = CCColor3B.White;
             Selected = false;
