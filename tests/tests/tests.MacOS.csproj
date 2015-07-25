@@ -2642,6 +2642,8 @@
     <Content Include="Content\TileMaps\desert-palace-tiles.xnb" />
     <Content Include="Content\TileMaps\desert-palace-multi-tileset.xnb" />
     <Content Include="Content\TileMaps\people.xnb" />
+    <Content Include="Content\Images\animationbuttonnormal.xnb" />
+    <Content Include="Content\Images\animationbuttonpressed.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

@@ -1314,6 +1314,24 @@
     <Content Include="..\testsContent\fonts\Marker Felt.ttf">
       <Link>Content\fonts\Marker Felt.ttf</Link>
     </Content>
+    <Content Include="..\iOSContent\Content\Images\blocks9ss.plist.xnb">
+      <Link>Content\Images\blocks9ss.plist.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\Images\blocks9.xnb">
+      <Link>Content\Images\blocks9.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\Images\blocks9r.xnb">
+      <Link>Content\Images\blocks9r.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\Images\blocks9ss.xnb">
+      <Link>Content\Images\blocks9ss.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\Images\ui.plist.xnb">
+      <Link>Content\Images\ui.plist.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\Images\ui.xnb">
+      <Link>Content\Images\ui.xnb</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />
