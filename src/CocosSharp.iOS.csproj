@@ -376,7 +376,6 @@
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
-    <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMap.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapInfo.cs" />
@@ -397,6 +396,7 @@
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

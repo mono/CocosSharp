@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
 using CocosSharp;
 
@@ -8,6 +9,8 @@ namespace CocosDenshion
 	{
 		SoundEffect effect;
 		SoundEffectInstance sfxInstance;
+
+        List<SoundEffectInstance> sfxInstances = new List<SoundEffectInstance>();
 
 
 		#region Properties
@@ -44,6 +47,7 @@ namespace CocosDenshion
 			if (effect != null)
 				effect.Dispose();
 
+
 			if (sfxInstance != null)
 				sfxInstance.Dispose();
 		}
@@ -59,13 +63,14 @@ namespace CocosDenshion
 			{
 				return;
 			}
-			if (loop)
-			{
+//			if (loop)
+//			{
 				// If looping, then get an instance of this sound effect so that it can be
 				// stopped.
 				sfxInstance = effect.CreateInstance();
-				sfxInstance.IsLooped = true;
-			}
+				sfxInstance.IsLooped = loop;
+            sfxInstances.Add(sfxInstance);
+//			}
 			if (sfxInstance != null)
 			{
 				sfxInstance.Play();
@@ -78,26 +83,64 @@ namespace CocosDenshion
 
 		public override void Pause()
 		{
-			if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Playing)
-			{
-				sfxInstance.Pause();
-			}
+            if (sfxInstances.Count > 0)
+            {
+                for (var x = 0; x < sfxInstances.Count; x++)
+                {
+                    var instance = sfxInstances[x];
+
+                    if (instance.IsDisposed)
+                        sfxInstances.RemoveAt(x);
+                    
+                    if (instance.State == SoundState.Playing)
+                        instance.Pause();
+                }
+            }
 		}
 
 		public override void Resume()
 		{
-			if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Paused)
-			{
-				sfxInstance.Play();
-			}
+//			if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Paused)
+//			{
+//				sfxInstance.Resume();
+//			}
+
+            if (sfxInstances.Count > 0)
+            {
+                for (var x = 0; x < sfxInstances.Count; x++)
+                {
+                    var instance = sfxInstances[x];
+
+                    if (instance.IsDisposed)
+                        sfxInstances.RemoveAt(x);
+                    
+                    if (instance.State == SoundState.Paused)
+                        instance.Resume();
+                }
+            }
+
 		}
 
 		public override void Stop()
 		{
-			if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Playing)
-			{
-				sfxInstance.Stop();
-			}
+//			if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Playing)
+//			{
+//				sfxInstance.Stop();
+//			}
+
+            if (sfxInstances.Count > 0)
+            {
+                for (var x = 0; x < sfxInstances.Count; x++)
+                {
+                    var instance = sfxInstances[x];
+
+                    if (instance.IsDisposed)
+                        sfxInstances.RemoveAt(x);
+
+                    if (instance.State == SoundState.Playing)
+                        instance.Stop();
+                }
+            }
 		}
 
 		public override void Rewind()

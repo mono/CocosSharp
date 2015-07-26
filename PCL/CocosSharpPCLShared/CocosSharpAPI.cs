@@ -7,7 +7,7 @@ namespace CocosDenshion {
         public void Dispose() { }
         protected virtual void Dispose(bool disposing) { }
         protected override void DisposeManagedResources() { }
-        public override void Open(string fileName, int soundId) { }
+        public override void Open(string filename, int uid) { }
         public override void Pause() { }
         public override void Play(bool loop=false) { }
         public override void Resume() { }
@@ -70,6 +70,7 @@ namespace CocosDenshion {
         public static CocosDenshion.CCSimpleAudioEngine SharedEngine { get { return default(CocosDenshion.CCSimpleAudioEngine); } }
         public void End() { }
         public static string FullPath(string path) { return default(string); }
+        public void PauseAllEffects() { }
         public void PauseBackgroundMusic() { }
         public void PauseEffect(int fxid) { }
         public void PlayBackgroundMusic(string filename, bool loop=false) { }
@@ -79,7 +80,9 @@ namespace CocosDenshion {
         public void PreloadBackgroundMusic(string filename) { }
         public void PreloadEffect(string filename) { }
         public void RestoreMediaState() { }
+        public void ResumeAllEffects() { }
         public void ResumeBackgroundMusic() { }
+        public void ResumeEffect(int fxid) { }
         public void RewindBackgroundMusic() { }
         public void SaveMediaState() { }
         public void StopAllEffects() { }
@@ -837,12 +840,13 @@ namespace CocosSharp {
         public void DrawCircle(CocosSharp.CCPoint center, float radius, CocosSharp.CCColor4B color) { }
         public void DrawCircle(CocosSharp.CCPoint center, float radius, int segments, CocosSharp.CCColor4B color) { }
         public void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments, float lineWidth, CocosSharp.CCColor4B color) { }
+        [System.ObsoleteAttribute("DrawDot is obsolete: Use DrawSolidCircle")]
         public void DrawDot(CocosSharp.CCPoint pos, float radius, CocosSharp.CCColor4B color) { }
         public void DrawEllipse(CocosSharp.CCRect rect, float lineWidth, CocosSharp.CCColor4B color) { }
         public void DrawEllipse(int x, int y, int width, int height, float lineWidth, CocosSharp.CCColor4B color) { }
-        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, CocosSharp.CCColor4B color) { }
-        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float lineWidth=1f) { }
-        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float lineWidth, CocosSharp.CCColor4B color) { }
+        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, CocosSharp.CCColor4B color, CocosSharp.CCLineCap lineCap=(CocosSharp.CCLineCap)(0)) { }
+        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float lineWidth, CocosSharp.CCColor4B color, CocosSharp.CCLineCap lineCap=(CocosSharp.CCLineCap)(0)) { }
+        public void DrawLine(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float lineWidth=1f, CocosSharp.CCLineCap lineCap=(CocosSharp.CCLineCap)(0)) { }
         public void DrawLineList(CocosSharp.CCV3F_C4B[] verts) { }
         public void DrawPolygon(CocosSharp.CCPoint[] verts, int count, CocosSharp.CCColor4B fillColor, float borderWidth, CocosSharp.CCColor4B borderColor, bool closePolygon=true) { }
         public void DrawPolygon(CocosSharp.CCPoint[] verts, int count, CocosSharp.CCColor4F fillColor, float borderWidth, CocosSharp.CCColor4F borderColor, bool closePolygon=true) { }
@@ -852,7 +856,10 @@ namespace CocosSharp {
         public void DrawRect(CocosSharp.CCRect rect) { }
         public void DrawRect(CocosSharp.CCRect rect, CocosSharp.CCColor4B fillColor) { }
         public void DrawRect(CocosSharp.CCRect rect, CocosSharp.CCColor4B fillColor, float borderWidth, CocosSharp.CCColor4B borderColor) { }
-        public void DrawSegment(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float radius, CocosSharp.CCColor4F color) { }
+        [System.ObsoleteAttribute("DrawSegment is obsolete: Use DrawLine")]
+        public void DrawSegment(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float radius, CocosSharp.CCColor4B color, CocosSharp.CCLineCap lineCap=(CocosSharp.CCLineCap)(1)) { }
+        [System.ObsoleteAttribute("DrawSegment is obsolete: Use DrawLine")]
+        public void DrawSegment(CocosSharp.CCPoint from, CocosSharp.CCPoint to, float radius, CocosSharp.CCColor4F color, CocosSharp.CCLineCap lineCap=(CocosSharp.CCLineCap)(1)) { }
         public void DrawSolidArc(CocosSharp.CCPoint pos, float radius, float startAngle, float sweepAngle, CocosSharp.CCColor4B color) { }
         public void DrawSolidCircle(CocosSharp.CCPoint pos, float radius, CocosSharp.CCColor4B color) { }
         public void DrawString(int x, int y, string format, params System.Object[] objects) { }
@@ -1417,6 +1424,8 @@ namespace CocosSharp {
         public virtual void SetCurrentGlyphCollection(CocosSharp.GlyphCollection glyphs, string customGlyphs) { }
     }
     public partial class CCFontFNT : CocosSharp.CCFont {
+        public CCFontFNT(string configInfo, CocosSharp.CCTexture2D atlasTexture, System.Nullable<CocosSharp.CCVector2> imageOffset=null) { }
+        public CCFontFNT(string configInfo, System.IO.Stream atlasStream, System.Nullable<CocosSharp.CCVector2> imageOffset=null) { }
         public CCFontFNT(string fntFilePath, System.Nullable<CocosSharp.CCVector2> imageOffset=null) { }
         public bool IsFontConfigValid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
         public override System.Int32[] HorizontalKerningForText(string text, out int numLetters) { numLetters = default(int); return default(System.Int32[]); }
@@ -1835,6 +1844,7 @@ namespace CocosSharp {
         protected CocosSharp.CCLabelLineBreak lineBreak;
         protected CocosSharp.CCVerticalTextAlignment vertAlignment;
         public CCLabel() { }
+        public CCLabel(CocosSharp.CCFontFNT fntFontConfig, string str, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat) { }
         public CCLabel(string str, string fntFile) { }
         public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions) { }
         public CCLabel(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat) { }
@@ -2088,6 +2098,11 @@ namespace CocosSharp {
         public float Radius { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void Update(float time) { }
     }
+    public enum CCLineCap {
+        Butt = 0,
+        Round = 1,
+        Square = 2,
+    }
     public partial class CCLiquid : CocosSharp.CCGrid3DAction {
         public CCLiquid(float duration, CocosSharp.CCGridSize gridSize, int waves=0, float amplitude=0f) : base (default(float)) { }
         public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
@@ -2209,24 +2224,6 @@ namespace CocosSharp {
         public override bool Selected { set { } }
         public override void Activate() { }
         protected void LabelWillChange(CocosSharp.CCNode oldValue, CocosSharp.CCNode newValue) { }
-    }
-    [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
-    public partial class CCMenuItemLabelBMFont : CocosSharp.CCMenuItemLabelBase {
-        [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
-        public CCMenuItemLabelBMFont(CocosSharp.CCLabelBMFont labelBMFont, System.Action<System.Object> target=null) : base (default(System.Action<System.Object>)) { }
-        public override bool Enabled { get { return default(bool); } set { } }
-        public CocosSharp.CCLabelBMFont LabelBMFont { get { return default(CocosSharp.CCLabelBMFont); } set { } }
-        public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
-    }
-    [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
-    public partial class CCMenuItemLabelTTF : CocosSharp.CCMenuItemLabelBase {
-        [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
-        public CCMenuItemLabelTTF(CocosSharp.CCLabelTtf labelTTF, System.Action<System.Object> target=null) : base (default(System.Action<System.Object>)) { }
-        [System.ObsoleteAttribute("Use CCMenuItemLabel instead.")]
-        public CCMenuItemLabelTTF(System.Action<System.Object> target=null) : base (default(System.Action<System.Object>)) { }
-        public override bool Enabled { get { return default(bool); } set { } }
-        public CocosSharp.CCLabelTtf LabelTTF { get { return default(CocosSharp.CCLabelTtf); } set { } }
-        public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
     }
     public partial class CCMenuItemToggle : CocosSharp.CCMenuItem {
         public CCMenuItemToggle(params CocosSharp.CCMenuItem[] items) { }
@@ -3679,7 +3676,7 @@ namespace CocosSharp {
         Left = 0,
         Right = 2,
     }
-    public partial class CCTextFieldTTF : CocosSharp.CCLabelTtf {
+    public partial class CCTextFieldTTF : CocosSharp.CCLabel {
         public CCTextFieldTTF(string text, string fontName, float fontSize) { }
         public CCTextFieldTTF(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment) { }
         public CCTextFieldTTF(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment) { }

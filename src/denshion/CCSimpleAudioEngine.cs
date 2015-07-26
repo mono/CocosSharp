@@ -157,6 +157,68 @@ namespace CocosDenshion
             }
         }
 
+        public void PauseAllEffects()
+        {
+            List<CCEffectPlayer> l = new List<CCEffectPlayer>();
+
+            lock (list)
+            {
+                try
+                {
+                    l.AddRange(list.Values);
+                }
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while pausing all effects.");
+                    CCLog.Log(ex.ToString());
+                }
+            }
+            foreach (CCEffectPlayer p in l)
+            {
+                PauseEffect(p.SoundID);
+            }
+        }
+
+        public void ResumeEffect(int fxid)
+        {
+            try
+            {
+                if (list.ContainsKey(fxid))
+                {
+                    list[fxid].Resume();
+                }
+            }
+            catch (Exception ex)
+            {
+                CCLog.Log("Unexpected exception while resuming a SoundEffect: {0}", fxid);
+                CCLog.Log(ex.ToString());
+            }
+        }
+
+        public void ResumeAllEffects()
+        {
+
+            List<CCEffectPlayer> l = new List<CCEffectPlayer>();
+
+            lock (list)
+            {
+                try
+                {
+                    l.AddRange(list.Values);
+                }
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while resuming all effects.");
+                    CCLog.Log(ex.ToString());
+                }
+            }
+            foreach (CCEffectPlayer p in l)
+            {
+                p.Resume();
+            }
+
+        }
+
         public void StopAllEffects()
         {
             List<CCEffectPlayer> l = new List<CCEffectPlayer>();
@@ -166,17 +228,19 @@ namespace CocosDenshion
                 try
                 {
                     l.AddRange(list.Values);
-                    list.Clear();
                 }
                 catch (Exception ex)
                 {
                     CCLog.Log("Unexpected exception while stopping all effects.");
                     CCLog.Log(ex.ToString());
                 }
-            }
-            foreach (CCEffectPlayer p in l)
-            {
-                p.Stop();
+
+                foreach (CCEffectPlayer p in l)
+                {
+                    StopEffect(p.SoundID);
+                }
+
+                list.Clear();
             }
 
         }

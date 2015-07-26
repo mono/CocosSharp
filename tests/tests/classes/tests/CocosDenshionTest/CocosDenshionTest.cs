@@ -14,7 +14,6 @@ namespace tests
         static readonly string EFFECT_FILE = "Sounds/effect1";
         static readonly string MUSIC_FILE = "Sounds/background";
 
-        CCPoint beginPos;
         int soundId;
 
 
@@ -237,21 +236,24 @@ namespace tests
 
         void AddButtons()
         {
+
+            var audio = CCSimpleAudioEngine.SharedEngine;
+
             var lblMusic = new CCLabel("Control Music", "fonts/arial", 24, CCLabelFormat.SpriteFont);
             AddChildAt(lblMusic, 0.25f, 0.9f);
 
             var btnPlay = new Button("play");
             btnPlay.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume = sliderMusicVolume.Value;
-                CCSimpleAudioEngine.SharedEngine.PlayBackgroundMusic(MUSIC_FILE, true);
+                audio.BackgroundMusicVolume = sliderMusicVolume.Value;
+                audio.PlayBackgroundMusic(MUSIC_FILE, true);
             };
             AddChildAt(btnPlay, 0.1f, 0.75f);
 
             var btnStop = new Button("stop");
             btnStop.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.StopBackgroundMusic();
+                audio.StopBackgroundMusic();
             };
             
             AddChildAt(btnStop, 0.25f, 0.75f);
@@ -259,7 +261,7 @@ namespace tests
             var btnRewindMusic = new Button("rewind");
             btnRewindMusic.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.RewindBackgroundMusic();
+                audio.RewindBackgroundMusic();
             };
             
             AddChildAt(btnRewindMusic, 0.4f, 0.75f);
@@ -267,21 +269,21 @@ namespace tests
             var btnPause = new Button("pause");
             btnPause.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic();
+                audio.PauseBackgroundMusic();
             };
             AddChildAt(btnPause, 0.1f, 0.65f);
 
             var btnResumeMusic = new Button("resume");
             btnResumeMusic.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.ResumeBackgroundMusic();
+                audio.ResumeBackgroundMusic();
             };
             AddChildAt(btnResumeMusic, 0.25f, 0.65f);
 
             var btnIsPlayingMusic = new Button("is playing");
             btnIsPlayingMusic.Triggered += (sender, e) =>
             {
-                if (CCSimpleAudioEngine.SharedEngine.BackgroundMusicPlaying)
+                if (audio.BackgroundMusicPlaying)
                     CCLog.Log("background music is playing");
                 else
                     CCLog.Log("background music is not playing");
@@ -297,7 +299,7 @@ namespace tests
                 var pitch = sliderPitch.Value;
                 var pan = sliderPan.Value;
                 var gain = sliderGain.Value;
-                soundId = CCSimpleAudioEngine.SharedEngine.PlayEffect(EFFECT_FILE, false);//, pitch, pan, gain);
+                soundId = audio.PlayEffect(EFFECT_FILE, false);//, pitch, pan, gain);
             };
             AddChildAt(btnPlayEffect, 0.6f, 0.8f);
 
@@ -307,56 +309,56 @@ namespace tests
                 var pitch = sliderPitch.Value;
                 var pan = sliderPan.Value;
                 var gain = sliderGain.Value;
-                soundId = CCSimpleAudioEngine.SharedEngine.PlayEffect(EFFECT_FILE, true);//, pitch, pan, gain);
+                soundId = audio.PlayEffect(EFFECT_FILE, true);//, pitch, pan, gain);
             };
             AddChildAt(btnPlayEffectInLoop, 0.75f, 0.8f);
 
             var btnStopEffect = new Button("stop");
             btnStopEffect.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.StopEffect(soundId);
+                audio.StopEffect(soundId);
             };
             AddChildAt(btnStopEffect, 0.9f, 0.8f);
 
             var btnUnloadEffect = new Button("unload");
             btnUnloadEffect.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.UnloadEffect(EFFECT_FILE);
+                audio.UnloadEffect(EFFECT_FILE);
             };
             AddChildAt(btnUnloadEffect, 0.6f, 0.7f);
 
             var btnPauseEffect = new Button("pause");
             btnPauseEffect.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.PauseEffect(soundId);
+                audio.PauseEffect(soundId);
             };
             AddChildAt(btnPauseEffect, 0.75f, 0.7f);
 
             var btnResumeEffect = new Button("resume");
             btnResumeEffect.Triggered += (sender, e) =>
             {
-                //CCSimpleAudioEngine.SharedEngine.resumeEffect(_soundId);
+                audio.ResumeEffect(soundId);
             };
             AddChildAt(btnResumeEffect, 0.9f, 0.7f);
 
             var btnPauseAll = new Button("pause all");
             btnPauseAll.Triggered += (sender, e) =>
             {
-                //CCSimpleAudioEngine.SharedEngine.pauseAllEffects();
+                audio.PauseAllEffects();
             };
             AddChildAt(btnPauseAll, 0.6f, 0.6f);
 
             var btnResumeAll = new Button("resume all");
             btnResumeAll.Triggered += (sender, e) =>
             {
-                //CCSimpleAudioEngine.SharedEngine.resumeAllEffects();
+                audio.ResumeAllEffects();
             };
             AddChildAt(btnResumeAll, 0.75f, 0.6f);
 
             var btnStopAll = new Button("stop all");
             btnStopAll.Triggered += (sender, e) =>
             {
-                CCSimpleAudioEngine.SharedEngine.StopAllEffects();
+                audio.StopAllEffects();
             };
             AddChildAt(btnStopAll, 0.9f, 0.6f);
         }

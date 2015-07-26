@@ -391,7 +391,6 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
-    <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
     <Compile Include="CCWindow.cs" />
     <Compile Include="CCViewport.cs" />
     <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
@@ -418,6 +417,7 @@
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
