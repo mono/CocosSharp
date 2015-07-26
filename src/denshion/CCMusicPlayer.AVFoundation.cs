@@ -18,19 +18,21 @@ namespace CocosDenshion
 
 		AVAudioPlayer music;
 
-
+        float volume = 0;
 		#region Properties
 
 		public override float Volume
 		{
-			get { return music != null ? music.Volume : 0.0f; }
+			get { return music != null ? music.Volume : volume; }
 
 			set
 			{
-				if (music == null)
-					return;
+                value = CCMathHelper.Clamp(value, 0.0f, 1.0f);
 
-				value = CCMathHelper.Clamp(value, 0.0f, 1.0f);
+                volume = value;
+
+                if (music == null)
+					return;
 
 				if(music != null) music.Volume = value;
 			}
