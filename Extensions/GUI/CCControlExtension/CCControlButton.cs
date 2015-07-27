@@ -4,7 +4,6 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public delegate void CCButtonTapDelegate(object sender);
 
 	public class CCControlButton : CCControl
 	{
@@ -36,7 +35,7 @@ namespace CocosSharp
 		protected Dictionary<CCControlState, CCNode> titleLabelDispatchTable;
 		protected bool zoomOnTouchDown;
 
-		public event CCButtonTapDelegate OnButtonTap;
+        public event EventHandler Clicked;
 
 
 		public CCNode BackgroundSprite
@@ -424,7 +423,7 @@ namespace CocosSharp
 			State = CCControlState.Highlighted;
 			isPushed = true;
 			Highlighted = true;
-			SendActionsForControlEvents(CCControlEvent.TouchDown);
+			OnTouchDown();
 			return true;
 		}
 
@@ -444,22 +443,22 @@ namespace CocosSharp
 			{
 				State = CCControlState.Highlighted;
 				Highlighted = true;
-				SendActionsForControlEvents(CCControlEvent.TouchDragEnter);
+                OnTouchDragEnter();
 			}
 			else if (isTouchMoveInside && Highlighted)
 			{
-				SendActionsForControlEvents(CCControlEvent.TouchDragInside);
+                OnTouchDragInside();
 			}
 			else if (!isTouchMoveInside && Highlighted)
 			{
 				State = CCControlState.Normal;
 				Highlighted = false;
 
-				SendActionsForControlEvents(CCControlEvent.TouchDragExit);
+                OnTouchDragExit();
 			}
 			else if (!isTouchMoveInside && !Highlighted)
 			{
-				SendActionsForControlEvents(CCControlEvent.TouchDragOutside);
+                OnTouchDragOutside();
 			}
 		}
 
@@ -472,24 +471,34 @@ namespace CocosSharp
 
 			if (IsTouchInside(pTouch))
 			{
-				if (OnButtonTap != null)
+				if (Clicked != null)
 				{
-					OnButtonTap(this);
+					OnClicked();
 				}
-				SendActionsForControlEvents(CCControlEvent.TouchUpInside);
+			    OnTouchUpInside();
 			}
 			else
 			{
-				SendActionsForControlEvents(CCControlEvent.TouchUpOutside);
+                OnTouchUpOutside();
 			}
 		}
 
-		void onTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
+        protected virtual void OnClicked()
+        {
+            EventHandler handler = Clicked;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
+        }
+
+
+        void onTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
 		{
 			State = CCControlState.Normal;
 			isPushed = false;
 			Highlighted = false;
-			SendActionsForControlEvents(CCControlEvent.TouchCancel);
+            OnTouchCancel();
 		}
 
 		/**

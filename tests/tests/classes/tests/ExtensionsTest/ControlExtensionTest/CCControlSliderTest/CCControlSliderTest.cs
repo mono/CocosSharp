@@ -35,7 +35,7 @@ namespace tests.Extensions
             slider.Tag = 1;
 
             // When the value of the slider will change, the given selector will be call
-            slider.AddTargetWithActionForControlEvents(this, valueChanged, CCControlEvent.ValueChanged);
+            slider.ValueChanged += SliderValueChanged;
 
             var restrictSlider = new CCControlSlider("extensions/sliderTrack", "extensions/sliderProgress",
                 "extensions/sliderThumb");
@@ -50,24 +50,24 @@ namespace tests.Extensions
             restrictSlider.Tag = 2;
 
             //same with restricted
-            restrictSlider.AddTargetWithActionForControlEvents(this, valueChanged, CCControlEvent.ValueChanged);
+            restrictSlider.ValueChanged += SliderValueChanged;
 
             AddChild(slider);
             AddChild(restrictSlider);
         }
 
-        public void valueChanged(object sender, CCControlEvent controlEvent)
+        private void SliderValueChanged(object sender, CCControl.CCControlEventArgs e)
         {
-            var slider = (CCControlSlider) sender;
+            var slider = (CCControlSlider)sender;
             // Change value of label.
             if (slider.Tag == 1)
                 DisplayValueLabel.Text = (String.Format("Upper slider value = {0:0.00}", slider.Value));
             if (slider.Tag == 2)
                 DisplayValueLabel.Text = (String.Format("Lower slider value = {0:0.00}", slider.Value));
+
         }
 
-
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var scene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlSliderTest();

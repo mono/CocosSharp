@@ -690,32 +690,31 @@ namespace tests.Extensions
             
             toggleFlipXButton.Position = flipXSprite.Position +
                 new CCPoint(0, -20 - flipXSprite.ScaledContentSize.Height / 2);
-            toggleFlipXButton.AddTargetWithActionForControlEvents(this, (obj, cevent) =>
+
+
+            toggleFlipXButton.Clicked += (obj, cevent) =>
             {
                 flipXSprite.IsFlippedX = !flipXSprite.IsFlippedX;
                 if (flipXSprite.IsFlippedX)
                     flipXLabel.Text = "sprite is flipped";
                 else
                     flipXLabel.Text = "sprite is not flipped";
-            }
+            };
 
-            , CCControlEvent.TouchUpInside | CCControlEvent.TouchUpOutside);
             AddChild(toggleFlipXButton);
 
             var toggleFlipYButton = new CCControlButton("Toggle FlipY", "arial", 12);
             toggleFlipYButton.Position = flipYSprite.Position + 
                 new CCPoint(0, -20 - flipYSprite.ScaledContentSize.Height / 2);
 
-            toggleFlipYButton.AddTargetWithActionForControlEvents(this, (obj, cevent) =>
+            toggleFlipYButton.Clicked += (obj, cevent) =>
             {
                 flipYSprite.IsFlippedY = !flipYSprite.IsFlippedY;
                 if (flipYSprite.IsFlippedY)
                     flipYLabel.Text = "sprite is flipped";
                 else
                     flipYLabel.Text = "sprite is not flipped";
-            }
-
-            , CCControlEvent.TouchUpInside | CCControlEvent.TouchUpOutside);
+            };
 
             AddChild(toggleFlipYButton);
 
@@ -723,7 +722,7 @@ namespace tests.Extensions
             toggleScale9Button.Position = normalSprite.Position + 
                 new CCPoint(0, -20 - normalSprite.ContentSize.Height / 2);
 
-            toggleScale9Button.AddTargetWithActionForControlEvents(this, (obj, cevent) =>
+            toggleScale9Button.Clicked += (obj, cevent) =>
             {
                 flipXSprite.IsScale9Enabled = !flipXSprite.IsScale9Enabled;
                 flipYSprite.IsScale9Enabled = !flipYSprite.IsScale9Enabled;
@@ -742,9 +741,7 @@ namespace tests.Extensions
                     flipYLabel.Text = "sprite is flipped";
                 else
                     flipYLabel.Text = "sprite is not flipped";
-            }
-
-            , CCControlEvent.TouchUpInside | CCControlEvent.TouchUpOutside);
+            };
 
             AddChild(toggleScale9Button);
         }

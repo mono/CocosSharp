@@ -146,7 +146,7 @@ namespace CocosSharp
             // use the position / Slider width to determin the percentage the dragger is at
             Hue = angleDeg;
 
-            SendActionsForControlEvents(CCControlEvent.ValueChanged);
+            OnValueChanged();
         }
 
         protected bool CheckSliderPosition(CCPoint location)

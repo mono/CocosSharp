@@ -91,7 +91,7 @@ namespace tests.Extensions
 		}
 
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
@@ -188,7 +188,7 @@ namespace tests.Extensions
             return button;
         }
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlButtonTest_Inset();
@@ -242,57 +242,71 @@ namespace tests.Extensions
             AddChild(background);
 
             // Sets up event handlers
-            controlButton.AddTargetWithActionForControlEvent(this, touchDownAction, CCControlEvent.TouchDown);
-            controlButton.AddTargetWithActionForControlEvent(this, touchDragInsideAction, CCControlEvent.TouchDragInside);
-            controlButton.AddTargetWithActionForControlEvent(this, touchDragOutsideAction, CCControlEvent.TouchDragOutside);
-            controlButton.AddTargetWithActionForControlEvent(this, touchDragEnterAction, CCControlEvent.TouchDragEnter);
-            controlButton.AddTargetWithActionForControlEvent(this, touchDragExitAction, CCControlEvent.TouchDragExit);
-            controlButton.AddTargetWithActionForControlEvent(this, touchUpInsideAction, CCControlEvent.TouchUpInside);
-            controlButton.AddTargetWithActionForControlEvent(this, touchUpOutsideAction, CCControlEvent.TouchUpOutside);
-            controlButton.AddTargetWithActionForControlEvent(this, touchCancelAction, CCControlEvent.TouchCancel);
+            controlButton.TouchDown += ControlButton_TouchDown;
+            controlButton.TouchDragInside += ControlButton_TouchDragInside;
+            controlButton.TouchDragOutside += ControlButton_TouchDragOutside;
+            controlButton.TouchDragEnter += ControlButton_TouchDragEnter;
+            controlButton.TouchDragExit += ControlButton_TouchDragExit;
+            //controlButton.TouchUpInside += ControlButton_TouchUpInside;
+            controlButton.TouchUpOutside += ControlButton_TouchUpOutside;
+            controlButton.TouchCancel += ControlButton_TouchCancel;
 
+            // To see clicked events your will need comment out TouchUpInside events
+            controlButton.Clicked += ControlButton_Clicked;
         }
 
-		public void touchDownAction(object sender, CCControlEvent controlEvent)
+        private void ControlButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayValueLabel.Text = ("Clicked");
+        }
+
+        private void ControlButton_TouchDown(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Touch Down");
+        }
+
+        public void touchDownAction(object sender, CCControlEvent controlEvent)
 		{
 			DisplayValueLabel.Text = ("Touch Down");
 		}
-		public void touchDragInsideAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Drag Inside");
-		}
 
-		public void touchDragOutsideAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Drag Outside");
-		}
+        private void ControlButton_TouchDragInside(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Drag Inside");
+        }
 
-		public void touchDragEnterAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Drag Enter");
-		}
+        private void ControlButton_TouchDragOutside(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Drag Outside");
+        }
 
-		public void touchDragExitAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Drag Exit");
-		}
-		
-		public void touchUpInsideAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Touch Up Inside.");
-		}
-		
-		public void touchUpOutsideAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Touch Up Outside.");
-		}
+        private void ControlButton_TouchDragEnter(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Drag Enter");
+        }
 
-		public void touchCancelAction(object sender, CCControlEvent controlEvent)
-		{
-			DisplayValueLabel.Text = ("Touch Cancel");
-		}
-	
-        public static CCScene sceneWithTitle(string title)
+        private void ControlButton_TouchDragExit(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Drag Exit");
+        }
+
+        private void ControlButton_TouchUpInside(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Touch Up Inside.");
+        }
+
+
+        private void ControlButton_TouchUpOutside(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Touch Up Outside.");
+        }
+
+        private void ControlButton_TouchCancel(object sender, CCControl.CCControlEventArgs e)
+        {
+            DisplayValueLabel.Text = ("Touch Cancel");
+        }
+
+        public static CCScene SceneWithTitle(string title)
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_Event();
@@ -371,7 +385,7 @@ namespace tests.Extensions
 			return button;
 		}
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
 		{
             var pScene = new CCScene (AppDelegate.SharedWindow);
 			var controlLayer = new CCControlButtonTest_Styling();

@@ -58,7 +58,7 @@ namespace CocosSharp
 
                     NeedsLayout();
 
-                    SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                    OnValueChanged();
                 }
             }
         }
@@ -109,7 +109,6 @@ namespace CocosSharp
         }
 
 		#endregion Properties
-
 
         #region Constructors
 

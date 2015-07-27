@@ -49,18 +49,44 @@ namespace tests.Extensions
             switchControl.Position = new CCPoint(layerWidth + 10 + switchControl.ContentSize.Width / 2, 0);
             layer.AddChild(switchControl);
 
-            switchControl.AddTargetWithActionForControlEvents(this, valueChanged, CCControlEvent.ValueChanged);
+            // Subscribe to the switches StateChanged event
+            switchControl.StateChanged += SwitchControl_StateChanged;
+
+            // --------------- OR ---------------------
+            // we can subscribe to the ValueChanged event.
+            //switchControl.ValueChanged += SwitchControl_ValueChanged;
+
+
 
             // Set the layer size
             layer.ContentSize = new CCSize(layerWidth, 0);
             layer.AnchorPoint = CCPoint.AnchorMiddle;
 
             // Update the value label
-            valueChanged(switchControl, CCControlEvent.ValueChanged);
+            ValueChanged(switchControl, CCControlEvent.ValueChanged);
         }
+
+        private void SwitchControl_StateChanged(object sender, CCControlSwitch.CCSwitchStateEventArgs e)
+        {
+            if (e.State)
+            {
+                DisplayValueLabel.Text = ("On");
+            }
+            else
+            {
+                DisplayValueLabel.Text = ("Off");
+            }
+
+        }
+
+        private void SwitchControl_ValueChanged(object sender, CCControl.CCControlEventArgs e)
+        {
+            ValueChanged(sender, e.ControlEvent);
+        }
+
         /* Callback for the change value. */
 
-        public void valueChanged(object sender, CCControlEvent controlEvent)
+        public void ValueChanged(object sender, CCControlEvent controlEvent)
         {
             var controlSwitch = (CCControlSwitch) sender;
 			if (controlSwitch.On)
@@ -74,7 +100,7 @@ namespace tests.Extensions
         }
 
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlSwitchTest();

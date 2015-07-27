@@ -187,7 +187,7 @@ namespace CocosSharp
 
             if (send)
             {
-                SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                OnValueChanged();
             }
         }
 
@@ -250,9 +250,16 @@ namespace CocosSharp
 		}
 
 
-		#region Event handling
+        #region Event handling
 
-		bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
+        public override CCPoint GetTouchLocation(CCTouch touch)
+        {
+            CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
+            touchLocation = MinusSprite.WorldToParentspace(touchLocation);  // Convert to the node space of this class
+            return touchLocation;
+        }
+
+        bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!IsTouchInside(pTouch) || !Enabled || !Visible)
             {

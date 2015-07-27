@@ -73,17 +73,17 @@ namespace tests.Extensions
 
 		public virtual void previousCallback(object sender)
 		{
-			Scene.Director.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
+			Scene.Director.ReplaceScene(CCControlSceneManager.SharedControlSceneManager.PreviousControlScene);
 		}
 
 		public virtual void restartCallback(object sender)
 		{
-			Scene.Director.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
+			Scene.Director.ReplaceScene(CCControlSceneManager.SharedControlSceneManager.CurrentControlScene);
 		}
 		
 		public virtual void nextCallback(object sender)
 		{
-			Scene.Director.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
+			Scene.Director.ReplaceScene(CCControlSceneManager.SharedControlSceneManager.NextControlScene);
 		}
 
 //        private CCLabel sceneSubtitleLabel;

@@ -7,7 +7,6 @@ namespace tests.Extensions
     {
         protected CCLabel DisplayValueLabel { get; set; }
 
-
         public CCControlStepperTest()
         {
         }
@@ -39,8 +38,7 @@ namespace tests.Extensions
 
             CCControlStepper stepper = MakeControlStepper();
             stepper.Position = new CCPoint(layer_width + 10 + stepper.ContentSize.Width / 2, 0);
-            stepper.AddTargetWithActionForControlEvents(this, ValueChanged,
-                CCControlEvent.ValueChanged);
+            stepper.ValueChanged += Stepper_ValueChanged;
             layer.AddChild(stepper);
 
             layer_width += stepper.ContentSize.Width;
@@ -53,6 +51,12 @@ namespace tests.Extensions
             ValueChanged(stepper, CCControlEvent.ValueChanged);
 
         }
+
+        private void Stepper_ValueChanged(object sender, CCControl.CCControlEventArgs e)
+        {
+            ValueChanged(sender, e.ControlEvent);
+        }
+
         /** Creates and returns a new ControlStepper. */
 
         public CCControlStepper MakeControlStepper()
@@ -72,7 +76,7 @@ namespace tests.Extensions
             DisplayValueLabel.Text = String.Format("{0:0.00}", pControl.Value);
         }
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlStepperTest();

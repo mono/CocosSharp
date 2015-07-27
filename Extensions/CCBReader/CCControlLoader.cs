@@ -27,8 +27,8 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_CCCONTROL)
             {
-                ((CCControl) node).AddTargetWithActionForControlEvents(blockControlData.mTarget, blockControlData.mSELCCControlHandler,
-                                                                       blockControlData.mControlEvents);
+                //((CCControl) node).AddTargetWithActionForControlEvents(blockControlData.mTarget, blockControlData.mSELCCControlHandler,
+                //                                                       blockControlData.mControlEvents);
             }
             else
             {

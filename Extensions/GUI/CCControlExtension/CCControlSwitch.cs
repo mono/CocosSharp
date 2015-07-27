@@ -24,7 +24,8 @@
  *
  */
 
-
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -40,12 +41,26 @@ namespace CocosSharp
         float initialTouchXPosition;
         CCControlSwitchSprite switchSprite;
 
-		public event CCSwitchValueChangedDelegate OnValueChanged;
+        #region Events and Handlers
+
+        public class CCSwitchStateEventArgs : CCControlEventArgs
+        {
+            public CCSwitchStateEventArgs(bool state) : base(CCControlEvent.ValueChanged)
+            {
+                State = state;
+            }
+
+            public bool State { get; protected internal set; }
+        }
+
+        public event EventHandler<CCSwitchStateEventArgs> StateChanged;
+
+        #endregion
 
 
-		#region Properties
+        #region Properties
 
-		public bool HasMoved { get; private set; }
+        public bool HasMoved { get; private set; }
 
         public override bool Enabled
         {
@@ -83,21 +98,28 @@ namespace CocosSharp
 
 				if(notify) 
 				{
-					SendActionsForControlEvents(CCControlEvent.ValueChanged);
-					if (OnValueChanged != null) 
-					{
-						OnValueChanged(this, on);
-					}
+                    OnValueChanged();
+                    OnStateChanged(on);
 				}
 			}
 		}
 
-		#endregion Properties
+
+        protected virtual void OnStateChanged(bool switchState)
+        {
+            var handler = StateChanged;
+            if (handler != null)
+            {
+                handler(this, new CCSwitchStateEventArgs(switchState));
+            }
+        }
+
+        #endregion Properties
 
 
         #region Constructors
 
-		public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite) 
+        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite) 
 			: this(maskSprite, onSprite, offSprite, thumbSprite, null, null)
 		{
 		}

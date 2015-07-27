@@ -44,7 +44,7 @@ namespace tests.Extensions
             potentiometer.Position = new CCPoint((float) layer_width + 10 + potentiometer.ContentSize.Width / 2, 0);
 
             // When the value of the slider will change, the given selector will be call
-            potentiometer.AddTargetWithActionForControlEvents(this, ValueChanged, CCControlEvent.ValueChanged);
+            potentiometer.ValueChanged += Potentiometer_ValueChanged;
 
             layer.AddChild(potentiometer);
 
@@ -58,6 +58,12 @@ namespace tests.Extensions
             ValueChanged(potentiometer, CCControlEvent.ValueChanged);
 
         }
+
+        private void Potentiometer_ValueChanged(object sender, CCControl.CCControlEventArgs e)
+        {
+            ValueChanged(sender, e.ControlEvent);
+        }
+
         public void ValueChanged(Object sender, CCControlEvent controlEvent)
         {
             var pControl = (CCControlPotentiometer) sender;
@@ -65,7 +71,7 @@ namespace tests.Extensions
             DisplayValueLabel.Text = string.Format("{0:0.00}", pControl.Value);
         }
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlPotentiometerTest();

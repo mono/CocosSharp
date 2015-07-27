@@ -36,8 +36,8 @@ namespace tests.Extensions
 				//    runNotificationCenterTest();
 				//    break;
 				case ExtensionsTestScene.TEST_CCCONTROLBUTTON:
-				    var pManager = CCControlSceneManager.sharedControlSceneManager();
-				    Scene.Director.ReplaceScene(pManager.currentControlScene());
+				    var pManager = CCControlSceneManager.SharedControlSceneManager;
+				    Scene.Director.ReplaceScene(pManager.CurrentControlScene);
 				    break;
 				case ExtensionsTestScene.TEST_COCOSBUILDER:
 					var pScene = new CocosBuilderTest();

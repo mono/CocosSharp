@@ -87,8 +87,8 @@ namespace CocosSharp
             ColourPicker = new CCControlSaturationBrightnessPicker(spriteSheet, colourPickerPos);
 
             // Setup events
-			HuePicker.AddTargetWithActionForControlEvents(this, HueSliderValueChanged, CCControlEvent.ValueChanged);
-			ColourPicker.AddTargetWithActionForControlEvents(this, ColourSliderValueChanged, CCControlEvent.ValueChanged);
+            HuePicker.ValueChanged += HuePicker_ValueChanged;
+            ColourPicker.ValueChanged += ColourPicker_ValueChanged;
 
             UpdateHueAndControlPicker();
             AddChild(HuePicker);
@@ -97,10 +97,20 @@ namespace CocosSharp
             ContentSize = Background.ContentSize;
         }
 
+        private void ColourPicker_ValueChanged(object sender, CCControlEventArgs e)
+        {
+            ColourSliderValueChanged(sender, e.ControlEvent);
+        }
+
+        private void HuePicker_ValueChanged(object sender, CCControlEventArgs e)
+        {
+            HueSliderValueChanged(sender, e.ControlEvent);
+        }
+
         #endregion Constructors
 
 
-		bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+        bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
 		{
 			return false;
 		}
@@ -114,7 +124,7 @@ namespace CocosSharp
             base.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f), (byte) (rgb.B * 255.0f));
 
             // Send Control callback
-            SendActionsForControlEvents(CCControlEvent.ValueChanged);
+            OnValueChanged();
             UpdateControlPicker();
         }
 
@@ -128,7 +138,7 @@ namespace CocosSharp
             base.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f), (byte) (rgb.B * 255.0f));
 
             // Send Control callback
-            SendActionsForControlEvents(CCControlEvent.ValueChanged);
+            OnValueChanged();
         }
 
         protected void UpdateControlPicker()

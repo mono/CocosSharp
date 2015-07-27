@@ -35,9 +35,7 @@ namespace tests.Extensions
             layer.AddChild(colourPicker);
 
             // Add the target-action pair
-            colourPicker.AddTargetWithActionForControlEvents(this, ColourValueChanged,
-                CCControlEvent.ValueChanged);
-
+            colourPicker.ValueChanged += ColourValueChanged; 
 
             layer_width += colourPicker.ContentSize.Width;
 
@@ -63,6 +61,12 @@ namespace tests.Extensions
 
         }
 
+        private void ColourValueChanged(object sender, CCControl.CCControlEventArgs e)
+        {
+            ColourValueChanged(sender, e.ControlEvent);
+        }
+
+
         /** Callback for the change value. */
 
         public void ColourValueChanged(Object sender, CCControlEvent controlEvent)
@@ -71,7 +75,7 @@ namespace tests.Extensions
             ColorLabel.Text = string.Format("#{0:X00}{1:X00}{2:X00}", pPicker.Color.R, pPicker.Color.G, pPicker.Color.B);
         }
 
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene(AppDelegate.SharedWindow);
             var controlLayer = new CCControlColourPickerTest();
