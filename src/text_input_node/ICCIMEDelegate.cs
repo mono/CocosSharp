@@ -44,17 +44,14 @@ namespace CocosSharp
         /**
         @brief	Called by CCIMEDispatcher for get text which delegate already has.
         */
-        string GetContentText();
+        string ContentText { get; set; }
 
         //////////////////////////////////////////////////////////////////////////
         // keyboard show/hide notification
         //////////////////////////////////////////////////////////////////////////
-        void KeyboardWillShow(CCIMEKeyboardNotificationInfo info);
-
-        void KeyboardDidShow(CCIMEKeyboardNotificationInfo info);
-
-        void KeyboardWillHide(CCIMEKeyboardNotificationInfo info);
-
-        void KeyboardDidHide(CCIMEKeyboardNotificationInfo info);
+        event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardWillShow;
+        event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardDidShow;
+        event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardWillHide;
+        event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardDidHide;
     }
 }

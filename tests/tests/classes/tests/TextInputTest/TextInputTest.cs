@@ -1,36 +1,32 @@
 using System;
+using CocosSharp;
 
-namespace CocosSharp
+namespace tests
 {
-    public class TextInputTest : CCLayer
+    public class TextInputTest : TestNavigationLayer
     {
         KeyboardNotificationLayer m_pNotificationLayer;
         TextInputTestScene textinputTestScene = new TextInputTestScene();
 
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.restartTextInputTest());
             Scene.Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.nextTextInputTest());
             Scene.Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.backTextInputTest());
             Scene.Director.ReplaceScene(s);
-        }
-
-        public virtual string title()
-        {
-            return "text input test";
         }
 
         public void addKeyboardNotificationLayer(KeyboardNotificationLayer pLayer)
@@ -39,41 +35,22 @@ namespace CocosSharp
             AddChild(pLayer);
         }
 
-        public override void OnEnter()
+        public override string Title
         {
-            base.OnEnter();
-
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            var label = new CCLabel(title(), "arial", 24, CCLabelFormat.SpriteFont);
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
-
-            string subTitle = m_pNotificationLayer.subtitle();
-            if (subTitle != null)
+            get
             {
-                var l = new CCLabel(subTitle, subtitle(), 16, CCLabelFormat.SpriteFont);
-                AddChild(l, 1);
-                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
+                return "text input test";
             }
-
-            CCMenuItemImage item1 = new CCMenuItemImage("Images/b1.png", "Images/b2.png", backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage("Images/r1.png", "Images/r2.png", restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage("Images/f1.png", "Images/f2.png", nextCallback);
-
-            CCMenu menu = new CCMenu(item1, item2, item3);
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-
-            AddChild(menu, 1);
         }
 
-        public virtual string subtitle()
+        public override string Subtitle
         {
-            return String.Empty;
+            get
+            {
+                return base.Subtitle;
+            }
         }
+
     }
 
     public class KeyboardNotificationLayer : CCLayer
@@ -100,13 +77,13 @@ namespace CocosSharp
             throw new NotFiniteNumberException();
         }
 
-		bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
+        bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             m_beginPos = pTouch.LocationOnScreen;
             return true;
         }
 
-		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
+        void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             if (m_pTrackNode == null)
             {
@@ -125,7 +102,7 @@ namespace CocosSharp
             }
         }
 
-        protected CCTextFieldTTF m_pTrackNode;
+        protected CCTextField m_pTrackNode;
         protected CCPoint m_beginPos;
     }
 
@@ -145,7 +122,7 @@ namespace CocosSharp
 
             var s = Layer.VisibleBoundsWorldspace.Size;
 
-            var pTextField = new CCTextFieldTTF(
+            var pTextField = new CCTextField(
                 "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
                 );
 
@@ -155,7 +132,7 @@ namespace CocosSharp
 
             AddChild(pTextField);
 
-            //m_pTrackNode = pTextField;
+            m_pTrackNode = pTextField;
         }
 
         public override string subtitle()
@@ -170,7 +147,7 @@ namespace CocosSharp
 
     public class TextFieldTTFActionTest : KeyboardNotificationLayer
     {
-        CCTextFieldTTF m_pTextField;
+        CCTextField m_pTextField;
         CCAction m_pTextFieldAction;
         bool m_bAction;
         int m_nCharLimit;       // the textfield max char limit
@@ -206,7 +183,7 @@ namespace CocosSharp
             m_nCharLimit = 12;
 
             m_pTextFieldAction = new CCRepeatForever(
-                (CCFiniteTimeAction) new CCSequence(
+                (CCFiniteTimeAction)new CCSequence(
                                        new CCFadeOut(0.25f),
                                        new CCFadeIn(0.25f)));
             //m_pTextFieldAction->retain();
@@ -215,7 +192,7 @@ namespace CocosSharp
             // add CCTextFieldTTF
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            m_pTextField = new CCTextFieldTTF("<click here for input>",
+            m_pTextField = new CCTextField("<click here for input>",
                                               TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
             AddChild(m_pTextField);
 
@@ -225,22 +202,22 @@ namespace CocosSharp
         // CCTextFieldDelegate
         public virtual bool onTextFieldAttachWithIME(CCTextFieldTTF pSender)
         {
-//            if (m_bAction != null)
-//            {
-//                m_pTextField.RunAction(m_pTextFieldAction);
-//                m_bAction = true;
-//            }
+            //            if (m_bAction != null)
+            //            {
+            //                m_pTextField.RunAction(m_pTextFieldAction);
+            //                m_bAction = true;
+            //            }
             return false;
         }
 
         public virtual bool onTextFieldDetachWithIME(CCTextFieldTTF pSender)
         {
-//            if (m_bAction != null)
-//            {
-//                m_pTextField.StopAction(m_pTextFieldAction);
-//                m_pTextField.Opacity = 255;
-//                m_bAction = false;
-//            }
+            //            if (m_bAction != null)
+            //            {
+            //                m_pTextField.StopAction(m_pTextFieldAction);
+            //                m_pTextField.Opacity = 255;
+            //                m_bAction = false;
+            //            }
             return false;
         }
 
@@ -279,9 +256,9 @@ namespace CocosSharp
 
             CCAction seq = new CCSequence(
                 new CCSpawn(
-                    new CCMoveTo (duration, endPos),
+                    new CCMoveTo(duration, endPos),
                     new CCScaleTo(duration, 1),
-                    new CCFadeOut  (duration)),
+                    new CCFadeOut(duration)),
                 new CCCallFuncN(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;
@@ -311,11 +288,11 @@ namespace CocosSharp
 
             CCAction seq = new CCSequence(
                 new CCSpawn(
-                    new CCMoveTo (duration, endPos),
-                    new CCRepeat (
-                        new CCRotateBy (rotateDuration, (CCRandom.Next() % 2 > 0) ? 360 : -360),
+                    new CCMoveTo(duration, endPos),
+                    new CCRepeat(
+                        new CCRotateBy(rotateDuration, (CCRandom.Next() % 2 > 0) ? 360 : -360),
                         (uint)repeatTime),
-                    new CCFadeOut  (duration)),
+                    new CCFadeOut(duration)),
                 new CCCallFuncN(callbackRemoveNodeWhenDidAction));
             label.RunAction(seq);
             return false;

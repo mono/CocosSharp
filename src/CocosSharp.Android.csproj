@@ -354,6 +354,8 @@
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
+    <Compile Include="text_input_node\Android\IMEKeyboardImpl.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -385,4 +387,7 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="text_input_node\Android\" />
+  </ItemGroup>
 </Project>

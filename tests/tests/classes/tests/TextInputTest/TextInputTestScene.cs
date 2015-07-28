@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CocosSharp;
-using tests;
 
-namespace CocosSharp
+namespace tests
 {
     public class TextInputTestScene : TestScene
     {
@@ -97,7 +96,7 @@ namespace CocosSharp
             rc.Size = node.ContentSize;
             rc.Origin.X -= rc.Size.Width * node.AnchorPoint.X;
             rc.Origin.Y -= rc.Size.Height * node.AnchorPoint.Y;
-            
+
             return rc;
         }
     }
