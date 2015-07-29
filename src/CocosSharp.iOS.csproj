@@ -397,6 +397,8 @@
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
+    <Compile Include="text_input_node\IOS\IMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
@@ -421,4 +423,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="text_input_node\IOS\" />
+  </ItemGroup>
 </Project>
