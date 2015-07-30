@@ -5,7 +5,7 @@ namespace tests
 {
     public class TextInputTest : TestNavigationLayer
     {
-        KeyboardNotificationLayer m_pNotificationLayer;
+        KeyboardNotificationLayer notificationLayer;
         TextInputTestScene textinputTestScene = new TextInputTestScene();
 
         public override void RestartCallback(object sender)
@@ -29,10 +29,10 @@ namespace tests
             Scene.Director.ReplaceScene(s);
         }
 
-        public void addKeyboardNotificationLayer(KeyboardNotificationLayer pLayer)
+        public void addKeyboardNotificationLayer(KeyboardNotificationLayer layer)
         {
-            m_pNotificationLayer = pLayer;
-            AddChild(pLayer);
+            notificationLayer = layer;
+            AddChild(layer);
         }
 
         public override string Title
@@ -53,7 +53,7 @@ namespace tests
 
     }
 
-    public class KeyboardNotificationLayer : CCLayer
+    public class KeyboardNotificationLayer : CCNode
     {
         public KeyboardNotificationLayer()
         {
@@ -85,14 +85,14 @@ namespace tests
 
         void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
-            if (m_pTrackNode == null)
+            if (trackNode == null)
             {
                 return;
             }
 
             var endPos = pTouch.LocationOnScreen;
 
-            if (m_pTrackNode.BoundingBox.ContainsPoint(m_beginPos) && m_pTrackNode.BoundingBox.ContainsPoint(endPos))
+            if (trackNode.BoundingBox.ContainsPoint(m_beginPos) && trackNode.BoundingBox.ContainsPoint(endPos))
             {
                 onClickTrackNode(true);
             }
@@ -102,50 +102,98 @@ namespace tests
             }
         }
 
-        protected CCTextField m_pTrackNode;
+        protected CCTextField trackNode;
         protected CCPoint m_beginPos;
     }
 
-    public class TextFieldTTFDefaultTest : KeyboardNotificationLayer
+    public class TextFieldDefaultTest : KeyboardNotificationLayer
     {
         public override void onClickTrackNode(bool bClicked)
         {
-            if (bClicked && m_pTrackNode != null)
+            if (bClicked && trackNode != null)
             {
-                m_pTrackNode.Edit("CCTextFieldTTF test", "Enter text");
+                trackNode.Edit();
             }
+            else
+            {
+                if (trackNode != null && trackNode != null)
+                {
+                    trackNode.EndEdit();
+                }
+            }
+            
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
 
-            var s = Layer.VisibleBoundsWorldspace.Size;
+            var s = VisibleBoundsWorldspace.Size;
 
-            var pTextField = new CCTextField(
-                "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
-                );
+            var textField = new CCTextField("<click here for input>", 
+                TextInputTestScene.FONT_NAME, 
+                TextInputTestScene.FONT_SIZE, 
+                CCLabelFormat.SpriteFont);
 
-            pTextField.Position = Layer.VisibleBoundsWorldspace.Size.Center;
+            var imeImplementation = textField.TextFieldIMEImplementation;
+            imeImplementation.KeyboardDidHide += ImeImplementation_KeyboardDidHide;
+            imeImplementation.KeyboardDidShow += ImeImplementation_KeyboardDidShow;
+            imeImplementation.KeyboardWillHide += ImeImplementation_KeyboardWillHide;
+            imeImplementation.KeyboardWillShow += ImeImplementation_KeyboardWillShow;
 
-            pTextField.AutoEdit = true;
+            textField.Position = s.Center;
 
-            AddChild(pTextField);
+            textField.AutoEdit = true;
 
-            m_pTrackNode = pTextField;
+            AddChild(textField);
+
+            trackNode = textField;
         }
+
+        private void ImeImplementation_KeyboardWillShow(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard will show");
+        }
+
+        private void ImeImplementation_KeyboardWillHide(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard will Hide");
+        }
+
+        private void ImeImplementation_KeyboardDidShow(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard did show");
+        }
+
+        private void ImeImplementation_KeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard did hide");
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            // Remember to remove our event listeners.
+            var imeImplementation = trackNode.TextFieldIMEImplementation;
+            imeImplementation.KeyboardDidHide -= ImeImplementation_KeyboardDidHide;
+            imeImplementation.KeyboardDidShow -= ImeImplementation_KeyboardDidShow;
+            imeImplementation.KeyboardWillHide -= ImeImplementation_KeyboardWillHide;
+            imeImplementation.KeyboardWillShow -= ImeImplementation_KeyboardWillShow;
+        }
+
 
         public override string subtitle()
         {
-            return "TextFieldTTF with default behavior test";
+            return "TextField with default behavior test";
         }
     }
 
     //////////////////////////////////////////////////////////////////////////
-    // TextFieldTTFActionTest
+    // TextFieldActionTest
     //////////////////////////////////////////////////////////////////////////
 
-    public class TextFieldTTFActionTest : KeyboardNotificationLayer
+    public class TextFieldActionTest : KeyboardNotificationLayer
     {
         CCTextField m_pTextField;
         CCAction m_pTextFieldAction;
@@ -167,11 +215,11 @@ namespace tests
         {
             if (bClicked)
             {
-                m_pTrackNode.Edit();
+                trackNode.Edit();
             }
             else
             {
-                m_pTrackNode.EndEdit();
+                trackNode.EndEdit();
             }
         }
 
@@ -186,21 +234,22 @@ namespace tests
                 (CCFiniteTimeAction)new CCSequence(
                                        new CCFadeOut(0.25f),
                                        new CCFadeIn(0.25f)));
-            //m_pTextFieldAction->retain();
             m_bAction = false;
 
             // add CCTextFieldTTF
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             m_pTextField = new CCTextField("<click here for input>",
-                                              TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
+                                              TextInputTestScene.FONT_NAME, 
+                                              TextInputTestScene.FONT_SIZE,
+                                              CCLabelFormat.SpriteFont);
             AddChild(m_pTextField);
 
-            m_pTrackNode = m_pTextField;
+            trackNode = m_pTextField;
         }
 
         // CCTextFieldDelegate
-        public virtual bool onTextFieldAttachWithIME(CCTextFieldTTF pSender)
+        public virtual bool onTextFieldAttachWithIME(CCTextField pSender)
         {
             //            if (m_bAction != null)
             //            {
@@ -210,7 +259,7 @@ namespace tests
             return false;
         }
 
-        public virtual bool onTextFieldDetachWithIME(CCTextFieldTTF pSender)
+        public virtual bool onTextFieldDetachWithIME(CCTextField pSender)
         {
             //            if (m_bAction != null)
             //            {
@@ -221,7 +270,7 @@ namespace tests
             return false;
         }
 
-        public virtual bool onTextFieldInsertText(CCTextFieldTTF pSender, string text, int nLen)
+        public virtual bool onTextFieldInsertText(CCTextField pSender, string text, int nLen)
         {
             // if insert enter, treat as default to detach with ime
             if ("\n" == text)
@@ -298,7 +347,7 @@ namespace tests
             return false;
         }
 
-        public virtual bool onDraw(CCTextFieldTTF pSender)
+        public virtual bool onDraw(CCTextField pSender)
         {
             return false;
         }

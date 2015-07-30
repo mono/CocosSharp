@@ -37,9 +37,9 @@ namespace tests
                 //default: return 0;
 
                 case 0:
-                    return new TextFieldTTFDefaultTest();
+                    return new TextFieldDefaultTest();
                 case 1:
-                    return new TextFieldTTFActionTest();
+                    return new TextFieldActionTest();
                 default: break;
             }
 

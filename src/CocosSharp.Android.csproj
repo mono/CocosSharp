@@ -298,6 +298,7 @@
     <Compile Include="textures\CCTexture2D.cs" />
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
     <Compile Include="text_input_node\CCTextFieldTTF.cs" />
     <Compile Include="text_input_node\ICCIMEDelegate.cs" />
@@ -387,7 +388,5 @@
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="text_input_node\Android\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

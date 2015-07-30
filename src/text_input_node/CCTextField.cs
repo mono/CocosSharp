@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework.Input;
 
 namespace CocosSharp
 {
@@ -11,11 +12,11 @@ namespace CocosSharp
         bool touchHandled;
 
 
+
         public ICCIMEDelegate TextFieldIMEImplementation { get; set; }
 
         public event CCTextFieldDelegate BeginEditing;
         public event CCTextFieldDelegate EndEditing;
-
 
         #region Properties
 
@@ -35,9 +36,6 @@ namespace CocosSharp
             }
         }
 
-        public string EditTitle { get; set; }
-        public string EditDescription { get; set; }
-
         public bool AutoEdit
         {
             get { return autoEdit; }
@@ -47,6 +45,8 @@ namespace CocosSharp
                 CheckTouchState();
             }
         }
+
+        public bool AutoRepeat { get; set; }
 
         #endregion Properties
 
@@ -76,27 +76,20 @@ namespace CocosSharp
 
         public CCTextField(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
             : this(text, fontName, fontSize, dimensions, hAlignment, vAlignment, new CCLabelFormat(CCLabelFormatFlags.Unknown))
-        {  }
+        { }
 
         public CCTextField(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, CCLabelFormat labelFormat)
             : base(text, fontName, fontSize, dimensions, labelFormat)
         {
             this.HorizontalAlignment = hAlignment;
             this.VerticalAlignment = vAlignment;
+            AutoRepeat = true;
             TextFieldIMEImplementation = IMEKeyboardImpl.SharedInstance;
-            EditTitle = "Input";
-            EditDescription = "Please provide input";
         }
 
         #endregion Constructors
 
-
         public void Edit()
-        {
-            Edit(EditTitle, EditDescription);
-        }
-
-        public void Edit(string title, string defaultText)
         {
 #if !WINDOWS_PHONE
 
@@ -109,11 +102,34 @@ namespace CocosSharp
 
                 if (!canceled)
                 {
+                    TextFieldIMEImplementation.TextFieldInFocus = this;
                     TextFieldIMEImplementation.ContentText = Text;
-                    TextFieldIMEImplementation.AttachWithIME();
+                    var attached = TextFieldIMEImplementation.AttachWithIME();
+                    if (attached)
+                    {
+                        TextFieldIMEImplementation.DeleteBackward += TextFieldIMEImplementation_DeleteBackward;
+                        TextFieldIMEImplementation.InsertText += TextFieldIMEImplementation_InsertText;
+                        TextFieldIMEImplementation.ReplaceText += TextFieldIMEImplementation_ReplaceText;
+                    }
+
                 }
             }
 #endif
+        }
+
+        private void TextFieldIMEImplementation_ReplaceText(object sender, CCIMEKeybardEventArgs e)
+        {
+            ReplaceText(e.Text, e.Length);
+        }
+
+        private void TextFieldIMEImplementation_InsertText(object sender, CCIMEKeybardEventArgs e)
+        {
+            InsertText(e.Text, e.Length);
+        }
+
+        private void TextFieldIMEImplementation_DeleteBackward(object sender, CCIMEKeybardEventArgs e)
+        {
+            DeleteBackwards();
         }
 
         protected virtual void DoBeginEditing(ref string newText, ref bool canceled)
@@ -136,8 +152,68 @@ namespace CocosSharp
         {
 #if !WINDOWS_PHONE
             if (TextFieldIMEImplementation != null && TextFieldIMEImplementation.CanDetachWithIME())
+            {
                 TextFieldIMEImplementation.DetachWithIME();
+                
+            }
+
 #endif
+        }
+
+        protected virtual void DeleteBackwards()
+        {
+            var text = Text;
+            if (string.IsNullOrEmpty(text) || text.Length == 1)
+            {
+                Text = string.Empty;
+            }
+            else
+            {
+                Text = text.Remove(text.Length - 1);
+            }
+        }
+
+        protected virtual void InsertText(string text, int len)
+        {
+
+            var insert = new System.Text.StringBuilder(text, len);
+
+            // if we have a new line then we end editing
+            int pos = text.IndexOf('\n');
+            if (pos >= 0 && insert.Length != pos)
+            {
+                len = pos;
+                insert.Length = pos;
+            }
+
+            if (len > 0)
+            {
+                Text += insert.ToString();
+                return;
+            }
+
+            EndEdit();
+        }
+
+        protected virtual void ReplaceText(string text, int len)
+        {
+            var insert = new System.Text.StringBuilder(text, len);
+
+            // if we have a new line then we end editing
+            int pos = text.IndexOf('\n');
+            if (pos >= 0 && insert.Length != pos)
+            {
+                len = pos;
+                insert.Length = pos;
+            }
+
+            if (len > 0)
+            {
+                Text = insert.ToString();
+            }
+
+            EndEdit();
+
         }
 
         void CheckTouchState()
@@ -166,14 +242,14 @@ namespace CocosSharp
         {
             base.OnEnter();
             CheckTouchState();
-            if (TextFieldIMEImplementation != null)
-                TextFieldIMEImplementation.KeyboardDidHide += IMEImplementation_KeyboardDidHide;
         }
 
         private void IMEImplementation_KeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
         {
             if (TextFieldIMEImplementation != null)
             {
+                TextFieldIMEImplementation.DeleteBackward -= TextFieldIMEImplementation_DeleteBackward;
+                TextFieldIMEImplementation.InsertText -= TextFieldIMEImplementation_InsertText;
                 var newText = TextFieldIMEImplementation.ContentText;
                 if (newText != null && Text != newText)
                 {
@@ -200,7 +276,9 @@ namespace CocosSharp
             base.OnExit();
             CheckTouchState();
             if (TextFieldIMEImplementation != null)
+            {
                 TextFieldIMEImplementation.KeyboardDidHide -= IMEImplementation_KeyboardDidHide;
+            }
         }
 
         public bool TouchBegan(CCTouch touch)
@@ -231,5 +309,6 @@ namespace CocosSharp
         {
             //nothing
         }
+
     }
 }

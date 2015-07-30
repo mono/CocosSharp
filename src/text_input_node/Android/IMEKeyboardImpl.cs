@@ -30,6 +30,8 @@ namespace CocosSharp
 
         private static IMEKeyboardImpl instance;
 
+        public CCTextField TextFieldInFocus { get; set; }
+
         /// <summary>
         /// Returns a shared instance of the platform keyboard implemenation
         /// </summary>
@@ -95,7 +97,7 @@ namespace CocosSharp
 
             });
             waitHandle.WaitOne();
-
+            
             if (alertDialog != null)
             {
                 alertDialog.Dismiss();
@@ -103,6 +105,7 @@ namespace CocosSharp
                 alertDialog = null;
             }
 
+            OnReplaceText(new CCIMEKeybardEventArgs(contentText, contentText.Length));
             IsVisible = false;
 
             return contentText;
@@ -148,12 +151,6 @@ namespace CocosSharp
             }
         }
 
-        [CLSCompliant(false)]
-        public AndroidGameWindow Window
-        {
-            get;
-            set;
-        }
         #endregion
 
         #region IMEDelegate implementation
@@ -183,13 +180,6 @@ namespace CocosSharp
             return true;
         }
 
-        //friend class CCIMEDispatcher;
-
-        /**
-        @brief	Decide the delegate instance is ready for receive ime message or not.
-
-        Called by CCIMEDispatcher.
-        */
         public bool CanAttachWithIME()
         {
             if (!IsVisible)
@@ -197,17 +187,12 @@ namespace CocosSharp
 
             return false;
         }
-        /**
-        @brief	When the delegate detach with IME, this method call by CCIMEDispatcher.
-        */
+
         public bool DidAttachWithIME()
         {
             return IsVisible;
         }
 
-        /**
-        @brief	Decide the delegate instance can stop receive ime message or not.
-        */
         public bool CanDetachWithIME()
         {
             if (IsVisible && alertDialog != null && alertDialog.IsShowing)
@@ -227,25 +212,75 @@ namespace CocosSharp
             return false;
         }
 
-        /**
-        @brief	Called by CCIMEDispatcher when some text input from IME.
-        */
-        public void InsertText(string text, int len)
-        {
+        public event EventHandler<CCIMEKeybardEventArgs> InsertText;
 
+        bool OnInsertText(CCIMEKeybardEventArgs eventArgs)
+        {
+            var handler = InsertText;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, eventArgs);
+            }
+
+            return false;
         }
 
-        /**
-        @brief	Called by CCIMEDispatcher when user clicked the backward key.
-        */
-        public void DeleteBackward()
-        {
+        public event EventHandler<CCIMEKeybardEventArgs> ReplaceText;
 
+        bool OnReplaceText(CCIMEKeybardEventArgs eventArgs)
+        {
+            var handler = ReplaceText;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, eventArgs);
+            }
+
+            return false;
         }
 
-        /**
-        @brief	Called by CCIMEDispatcher for get text which delegate already has.
-        */
+
+        public event EventHandler<CCIMEKeybardEventArgs> DeleteBackward;
+
+        bool OnDeleteBackward()
+        {
+            var handler = DeleteBackward;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, new CCIMEKeybardEventArgs(string.Empty, 0));
+            }
+
+            return false;
+        }
+
+        private bool ProcessCancelableEvent(EventHandler<CCIMEKeybardEventArgs> handler, CCIMEKeybardEventArgs eventArgs)
+        {
+            var canceled = false;
+            Delegate inFocusDelegate = null;
+            var sender = TextFieldInFocus;
+            foreach (var instantHandler in handler.GetInvocationList())
+            {
+                if (eventArgs.Cancel)
+                {
+                    break;
+                }
+
+                // Make sure we process all event handlers except for our focused text field
+                // We need to process it at the end to give the other event handlers a chance 
+                // to cancel the event from propogating to our focused text field.
+                if (instantHandler.Target == sender)
+                    inFocusDelegate = instantHandler;
+                else
+                    instantHandler.DynamicInvoke(sender, eventArgs);
+            }
+
+            canceled = eventArgs.Cancel;
+
+            if (inFocusDelegate != null && !canceled)
+                inFocusDelegate.DynamicInvoke(sender, eventArgs);
+
+            return canceled;
+        }
+
         public string ContentText
         {
             get
