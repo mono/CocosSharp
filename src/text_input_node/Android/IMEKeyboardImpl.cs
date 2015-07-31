@@ -201,9 +201,6 @@ namespace CocosSharp
             return false;
         }
 
-        /**
-        @brief	When the delegate detach with IME, this method call by CCIMEDispatcher.
-        */
         public bool DidDetachWithIME()
         {
             if (!IsVisible && alertDialog == null)

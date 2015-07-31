@@ -36,6 +36,8 @@ namespace CocosSharp
 
         private static IMEKeyboardImpl instance;
 
+        public CCTextField TextFieldInFocus { get; set; }
+
         private static KeyboardInputViewController keyboardViewController;
         private static UIViewController gameViewController;
         private static UIWindow keyWindow;
@@ -102,6 +104,7 @@ namespace CocosSharp
                 });
             waitHandle.WaitOne();
 
+            OnReplaceText(new CCIMEKeybardEventArgs(contentText, contentText.Length));
             IsVisible = false;
             return contentText;
         }
@@ -205,14 +208,73 @@ namespace CocosSharp
             return false;
         }
 
-        public void InsertText(string text, int len)
-        {
+        public event EventHandler<CCIMEKeybardEventArgs> InsertText;
 
+        bool OnInsertText(CCIMEKeybardEventArgs eventArgs)
+        {
+            var handler = InsertText;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, eventArgs);
+            }
+
+            return false;
         }
 
-        public void DeleteBackward()
-        {
+        public event EventHandler<CCIMEKeybardEventArgs> ReplaceText;
 
+        bool OnReplaceText(CCIMEKeybardEventArgs eventArgs)
+        {
+            var handler = ReplaceText;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, eventArgs);
+            }
+
+            return false;
+        }
+
+
+        public event EventHandler<CCIMEKeybardEventArgs> DeleteBackward;
+
+        bool OnDeleteBackward()
+        {
+            var handler = DeleteBackward;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, new CCIMEKeybardEventArgs(string.Empty, 0));
+            }
+
+            return false;
+        }
+
+        private bool ProcessCancelableEvent(EventHandler<CCIMEKeybardEventArgs> handler, CCIMEKeybardEventArgs eventArgs)
+        {
+            var canceled = false;
+            Delegate inFocusDelegate = null;
+            var sender = TextFieldInFocus;
+            foreach (var instantHandler in handler.GetInvocationList())
+            {
+                if (eventArgs.Cancel)
+                {
+                    break;
+                }
+
+                // Make sure we process all event handlers except for our focused text field
+                // We need to process it at the end to give the other event handlers a chance 
+                // to cancel the event from propogating to our focused text field.
+                if (instantHandler.Target == sender)
+                    inFocusDelegate = instantHandler;
+                else
+                    instantHandler.DynamicInvoke(sender, eventArgs);
+            }
+
+            canceled = eventArgs.Cancel;
+
+            if (inFocusDelegate != null && !canceled)
+                inFocusDelegate.DynamicInvoke(sender, eventArgs);
+
+            return canceled;
         }
 
         public string ContentText

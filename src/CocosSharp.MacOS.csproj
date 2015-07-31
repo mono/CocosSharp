@@ -418,6 +418,9 @@
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="text_input_node\MacOSX\IMEKeyboardImpl.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
@@ -426,6 +429,7 @@
     <Folder Include="physics\" />
     <Folder Include="Renderer\" />
     <Folder Include="Renderer\RenderCommands\" />
+    <Folder Include="text_input_node\MacOSX\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">

@@ -399,6 +399,7 @@
     <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="text_input_node\CCTextField.cs" />
     <Compile Include="text_input_node\IOS\IMEKeyboardImpl.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
