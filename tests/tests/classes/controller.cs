@@ -375,6 +375,7 @@ namespace tests
 #if USE_PHYSICS
             {"Physics", () => new PhysicsTestScene()},
 #endif
+            {"RendererTest", () => new RendererTestScene() },
             {"RenderTextureTest", () => new RenderTextureScene()},
             {"RotateWorldTest", () => new RotateWorldTestScene()},
             {"SceneTest", () => new SceneTestScene()},

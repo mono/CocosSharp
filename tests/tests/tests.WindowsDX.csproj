@@ -348,6 +348,7 @@
     <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest2.cs" />
     <Compile Include="classes\tests\PerformanceTest\PerformBasicLayer.cs" />
     <Compile Include="classes\tests\Physics\PhysicsTest.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs" />

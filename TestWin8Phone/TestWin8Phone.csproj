@@ -974,6 +974,9 @@
     <Compile Include="..\tests\tests\classes\tests\PerformanceTest\PerformBasicLayer.cs">
       <Link>classes\tests\PerformanceTest\PerformBasicLayer</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\RendererTest\RendererTestDemo.cs">
+      <Link>classes\tests\Renderer\RendererTestDemo.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs">
       <Link>classes\tests\RenderTextureTest\RenderTextureCompositeTest</Link>
     </Compile>

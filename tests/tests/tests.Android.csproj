@@ -256,6 +256,7 @@
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToRadialMidpointChanged.cs" />
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToVertical.cs" />
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressWithSpriteFrame.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs" />
