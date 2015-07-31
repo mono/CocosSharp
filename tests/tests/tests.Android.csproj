@@ -2146,10 +2146,6 @@
       <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
       <Name>CocosSharp.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
-      <Project>{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}</Project>
-      <Name>MonoGame.Framework.Net.Android</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sounds\background.wma">

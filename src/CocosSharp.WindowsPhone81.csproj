@@ -61,7 +61,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_PHONE_APP</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_PHONE_APP;WINDOWS_PHONE81</DefineConstants>
     <NoWarn>;2008</NoWarn>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -103,7 +103,9 @@
     <Reference Include="SharpDX.Direct3D11">
       <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows Phone 8.1\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.DXGI, Version=2.6.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1" />
+    <Reference Include="SharpDX.DXGI">
+      <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows Phone 8.1\SharpDX.DXGI.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="label_nodes\CCLabel-FontUtilities-Win8.cs" />
