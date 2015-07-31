@@ -59,10 +59,12 @@ namespace tests
 
         static Func<CCLayer>[] rendererCreateFunctions =
         {
+            () => new RendererSpriteLabelTest(),
                 () => new NewSpriteTest(),
                 () => new NewDrawNodeTest(),
                 () => new RendererBufferOverflowTest(),
                 () => new CaptureScreenTest(),
+                () => new RendererSpriteLabelTest(),
         };
 
         public static CCLayer CreateRendererLayer(int index)
@@ -418,5 +420,175 @@ namespace tests
         }
 
     }
+
+    public class RendererSpriteLabelTest : RendererDemo
+    {
+
+
+        class Button : CCNode
+        {
+
+            CCSprite buttonSprite;
+
+            public event TriggeredHandler Triggered;
+            // A delegate type for hooking up button triggered events
+            public delegate void TriggeredHandler(object sender, EventArgs e);
+
+
+            private Button()
+            {
+                AttachListener();
+            }
+
+            public Button(CCSprite sprite, CCLabel label)
+                : this()
+            {
+                this.ContentSize = sprite.ScaledContentSize;
+                sprite.AnchorPoint = CCPoint.AnchorLowerLeft;
+                label.Position = sprite.ContentSize.Center;
+                var render = new CCRenderTexture(sprite.ContentSize, sprite.ContentSize);
+                render.BeginWithClear(CCColor4B.Transparent);
+                sprite.Visit();
+                label.Visit();
+                render.End();
+
+                
+                buttonSprite = render.Sprite;
+                buttonSprite.AnchorPoint = CCPoint.AnchorMiddle;
+                AddChild(this.buttonSprite);
+            }
+
+            void AttachListener()
+            {
+                // Register Touch Event
+                var listener = new CCEventListenerTouchOneByOne();
+                listener.IsSwallowTouches = true;
+
+                listener.OnTouchBegan = OnTouchBegan;
+                listener.OnTouchEnded = OnTouchEnded;
+                listener.OnTouchCancelled = OnTouchCancelled;
+
+                AddEventListener(listener, this);
+            }
+
+            bool touchHits(CCTouch touch)
+            {
+                var location = touch.Location;
+                
+                var area = buttonSprite.BoundingBox;
+                return area.ContainsPoint(buttonSprite.WorldToParentspace(location));
+                
+            }
+
+            bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+            {
+                bool hits = touchHits(touch);
+                if (hits)
+                {
+                    // undo the rotation that was applied by the action attached.
+                    Rotation = 0;
+                    scaleButtonTo(0.9f);
+                }
+
+                return hits;
+            }
+
+            void OnTouchEnded(CCTouch touch, CCEvent touchEvent)
+            {
+                bool hits = touchHits(touch);
+                if (hits && Triggered != null)
+                    Triggered(this, EventArgs.Empty);
+                scaleButtonTo(1);
+            }
+
+            void OnTouchCancelled(CCTouch touch, CCEvent touchEvent)
+            {
+                scaleButtonTo(1);
+            }
+
+            void scaleButtonTo(float scale)
+            {
+                var action = new CCScaleTo(0.1f, scale);
+                action.Tag = 900;
+                StopAction(900);
+                RunAction(action);
+            }
+        }
+
+        public RendererSpriteLabelTest()
+        {
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            var winSize = VisibleBoundsWorldspace.Size;
+
+            var moveTo = new CCMoveBy(1.0f, new CCPoint(30, 0));
+            var moveBack = moveTo.Reverse();
+            var rotateBy = new CCRotateBy(1.0f, 180);
+            var scaleBy = new CCScaleTo(1.0f, -2.0f);
+            var action = new CCSequence(moveTo, moveBack, rotateBy, scaleBy);
+
+            var buttonNormal = new CCSprite("Images/animationbuttonnormal.png");
+            var button1 = new Button(buttonNormal,
+                new CCLabel("Click", "fonts/arial", 20, CCLabelFormat.SpriteFont));
+            
+            button1.Position = winSize.Center;
+            button1.PositionX -= 100;
+            button1.PositionY += 100;
+
+            AddChild(button1);
+            button1.RunAction(action);
+
+            var button2 = new Button(buttonNormal,
+                new CCLabel("Me", "fonts/arial", 20, CCLabelFormat.SpriteFont));
+            button2.Position = winSize.Center;
+            button2.PositionX += 100;
+            button2.PositionY += 100;
+
+            AddChild(button2);
+            button2.RunAction(action);
+
+            var button3 = new Button(buttonNormal,
+                new CCLabel("Ple", "fonts/arial", 20, CCLabelFormat.SpriteFont));
+            button3.Position = winSize.Center;
+            button3.PositionX -= 100;
+            button3.PositionY -= 100;
+
+            AddChild(button3);
+            button3.RunAction(action);
+
+            var button4 = new Button(buttonNormal,
+                new CCLabel("ase", "fonts/arial", 20, CCLabelFormat.SpriteFont));
+            button4.Position = winSize.Center;
+            button4.PositionX += 100;
+            button4.PositionY -= 100;
+
+            AddChild(button4);
+            button4.RunAction(action);
+
+        }
+
+
+        public override string Title
+        {
+            get
+            {
+                return "Renderer";
+            }
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Render Sprite Label Test";
+            }
+        }
+
+    }
+
 
 }
