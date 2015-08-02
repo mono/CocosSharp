@@ -327,6 +327,12 @@ namespace CocosSharp
         {
             var insert = new System.Text.StringBuilder(text, len);
 
+            if (len == 0)
+            {
+                Text = placeHolderText;
+                return;
+            }
+
             // if we have a new line then we end editing
             int pos = text.IndexOf('\n');
             if (pos >= 0 && insert.Length != pos)

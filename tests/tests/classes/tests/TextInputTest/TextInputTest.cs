@@ -293,6 +293,7 @@ namespace tests
             imeImplementation.KeyboardDidHide += OnKeyboardDidHide;
             imeImplementation.KeyboardDidShow += OnKeyboardDidShow;
             imeImplementation.InsertText += OnInsertText;
+            imeImplementation.ReplaceText += OnReplaceText;
             imeImplementation.DeleteBackward += OnDeleteBackward;
 
             textField.Position = VisibleBoundsWorldspace.Center;
@@ -311,6 +312,7 @@ namespace tests
             imeImplementation.KeyboardDidHide -= OnKeyboardDidHide;
             imeImplementation.KeyboardDidShow -= OnKeyboardDidShow;
             imeImplementation.InsertText -= OnInsertText;
+            imeImplementation.ReplaceText -= OnReplaceText;
             imeImplementation.DeleteBackward -= OnDeleteBackward;
 
         }
@@ -425,6 +427,13 @@ namespace tests
             label.RunAction(seq);
         }
 
+        void OnReplaceText (object sender, CCIMEKeybardEventArgs e)
+        {
+            var focusedTextField = sender as CCTextField;
+
+            if (e.Length > charLimit)
+                e.Text = e.Text.Substring (0, charLimit - 1);
+        }
 
         void OnKeyboardDidShow(object sender, CCIMEKeyboardNotificationInfo e)
         {
@@ -479,6 +488,9 @@ namespace tests
 
             var imeImplementation = textField.TextFieldIMEImplementation;
             imeImplementation.InsertText += OnInsertText;
+            imeImplementation.ReplaceText += OnReplaceText;
+
+
             textField.Position = s.Center;
 
             textField.AutoEdit = true;
@@ -494,6 +506,7 @@ namespace tests
             // Remember to remove our event listeners.
             var imeImplementation = TrackNode.TextFieldIMEImplementation;
             imeImplementation.InsertText -= OnInsertText;
+            imeImplementation.ReplaceText -= OnReplaceText;
 
         }
 
@@ -504,6 +517,15 @@ namespace tests
             e.Text = e.Text.ToUpper();
 
         }
+
+        void OnReplaceText (object sender, CCIMEKeybardEventArgs e)
+        {
+            var focusedTextField = sender as CCTextField;
+
+            e.Text = e.Text.ToUpper();
+
+        }
+
 
         public override string Subtitle
         {
