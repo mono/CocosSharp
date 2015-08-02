@@ -242,7 +242,7 @@ namespace CocosSharp
                 }
             }
 
-            CCLog.Log("On Pressed " + lastPressedKey);
+            //CCLog.Log("On Pressed " + lastPressedKey);
             if (AutoRepeat && lastPressedKey != CCKeys.None)
             {
                 StartAutorepeat();
@@ -251,7 +251,7 @@ namespace CocosSharp
 
         void OnKeyReleased(CCEventKeyboard eventKeyboard)
         {
-            CCLog.Log("On Released " + eventKeyboard.Keys);
+            //CCLog.Log("On Released " + eventKeyboard.Keys);
             if (eventKeyboard.Keys == CCKeys.Back)
                 OnDeleteBackward();
             else

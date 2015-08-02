@@ -39,7 +39,7 @@ namespace tests
         {
             get
             {
-                return "text input test";
+                return "CCTextField Text Input Test";
             }
         }
 
@@ -47,7 +47,7 @@ namespace tests
         {
             get
             {
-                return base.Subtitle;
+                return (notificationLayer != null) ? notificationLayer.Subtitle : string.Empty;
             }
         }
 
@@ -55,35 +55,39 @@ namespace tests
 
     public class KeyboardNotificationLayer : CCNode
     {
+
+        CCTextField trackNode;
+        protected CCPoint beginPosition;
+
         public KeyboardNotificationLayer()
         {
             // Register Touch Event
             var touchListener = new CCEventListenerTouchOneByOne();
             touchListener.IsSwallowTouches = true;
 
-            touchListener.OnTouchBegan = onTouchBegan;
-            touchListener.OnTouchEnded = onTouchEnded;
+            touchListener.OnTouchBegan = OnTouchBegan;
+            touchListener.OnTouchEnded = OnTouchEnded;
 
             AddEventListener(touchListener);
         }
 
-        public virtual string subtitle()
+        public virtual string Subtitle
+        {
+            get { return string.Empty; }
+        }
+
+        public virtual void OnClickTrackNode(bool bClicked)
         {
             throw new NotFiniteNumberException();
         }
 
-        public virtual void onClickTrackNode(bool bClicked)
+        bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
-            throw new NotFiniteNumberException();
-        }
-
-        bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
-        {
-            m_beginPos = pTouch.LocationOnScreen;
+            beginPosition = pTouch.LocationOnScreen;
             return true;
         }
 
-        void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
+        void OnTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             if (trackNode == null)
             {
@@ -92,33 +96,110 @@ namespace tests
 
             var endPos = pTouch.LocationOnScreen;
 
-            if (trackNode.BoundingBox.ContainsPoint(m_beginPos) && trackNode.BoundingBox.ContainsPoint(endPos))
+            if (trackNode.BoundingBox.ContainsPoint(beginPosition) && trackNode.BoundingBox.ContainsPoint(endPos))
             {
-                onClickTrackNode(true);
+                OnClickTrackNode(true);
             }
             else
             {
-                onClickTrackNode(false);
+                OnClickTrackNode(false);
             }
         }
 
-        protected CCTextField trackNode;
-        protected CCPoint m_beginPos;
+        public override void OnExit()
+        {
+            base.OnExit();
+            if (trackNode != null)
+            {
+                trackNode.EndEdit();
+                DetachListeners();
+            }
+        }
+
+        protected CCTextField TrackNode 
+        {
+            get { return trackNode; }
+            set 
+            {
+                if (value == null)
+                {
+                    if (trackNode != null)
+                    {
+                        DetachListeners();
+                        trackNode = value;
+                        return;
+                    }
+                }
+
+                if (trackNode != value)
+                {
+                    DetachListeners();
+                }
+
+                trackNode = value;
+                AttachListeners();
+            }
+        }
+
+        void AttachListeners ()
+        {
+            // Remember to remove our event listeners.
+            var imeImplementation = trackNode.TextFieldIMEImplementation;
+            imeImplementation.KeyboardDidHide += OnKeyboardDidHide;
+            imeImplementation.KeyboardDidShow += OnKeyboardDidShow;
+            imeImplementation.KeyboardWillHide += OnKeyboardWillHide;
+            imeImplementation.KeyboardWillShow += OnKeyboardWillShow;
+
+        }
+
+        void DetachListeners ()
+        {
+            if (TrackNode != null)
+            {
+                // Remember to remove our event listeners.
+                var imeImplementation = TrackNode.TextFieldIMEImplementation;
+                imeImplementation.KeyboardDidHide -= OnKeyboardDidHide;
+                imeImplementation.KeyboardDidShow -= OnKeyboardDidShow;
+                imeImplementation.KeyboardWillHide -= OnKeyboardWillHide;
+                imeImplementation.KeyboardWillShow -= OnKeyboardWillShow;
+            }
+        }
+
+        void OnKeyboardWillShow(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard will show");
+        }
+
+        void OnKeyboardWillHide(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard will Hide");
+        }
+
+        void OnKeyboardDidShow(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard did show");
+        }
+
+        void OnKeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
+        {
+            CCLog.Log("Keyboard did hide");
+        }
+
     }
 
     public class TextFieldDefaultTest : KeyboardNotificationLayer
     {
-        public override void onClickTrackNode(bool bClicked)
+        public override void OnClickTrackNode(bool bClicked)
         {
-            if (bClicked && trackNode != null)
+            if (bClicked && TrackNode != null)
             {
-                trackNode.Edit();
+                TrackNode.Edit();
             }
             else
             {
-                if (trackNode != null && trackNode != null)
+                if (TrackNode != null && TrackNode != null)
                 {
-                    trackNode.EndEdit();
+                    TrackNode.EndEdit();
                 }
             }
             
@@ -135,57 +216,20 @@ namespace tests
                 TextInputTestScene.FONT_SIZE, 
                 CCLabelFormat.SpriteFont);
 
-            var imeImplementation = textField.TextFieldIMEImplementation;
-            imeImplementation.KeyboardDidHide += ImeImplementation_KeyboardDidHide;
-            imeImplementation.KeyboardDidShow += ImeImplementation_KeyboardDidShow;
-            imeImplementation.KeyboardWillHide += ImeImplementation_KeyboardWillHide;
-            imeImplementation.KeyboardWillShow += ImeImplementation_KeyboardWillShow;
-
             textField.Position = s.Center;
 
             textField.AutoEdit = true;
 
             AddChild(textField);
 
-            trackNode = textField;
+            TrackNode = textField;
         }
 
-        private void ImeImplementation_KeyboardWillShow(object sender, CCIMEKeyboardNotificationInfo e)
+        public override string Subtitle
         {
-            CCLog.Log("Keyboard will show");
-        }
-
-        private void ImeImplementation_KeyboardWillHide(object sender, CCIMEKeyboardNotificationInfo e)
-        {
-            CCLog.Log("Keyboard will Hide");
-        }
-
-        private void ImeImplementation_KeyboardDidShow(object sender, CCIMEKeyboardNotificationInfo e)
-        {
-            CCLog.Log("Keyboard did show");
-        }
-
-        private void ImeImplementation_KeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
-        {
-            CCLog.Log("Keyboard did hide");
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-
-            // Remember to remove our event listeners.
-            var imeImplementation = trackNode.TextFieldIMEImplementation;
-            imeImplementation.KeyboardDidHide -= ImeImplementation_KeyboardDidHide;
-            imeImplementation.KeyboardDidShow -= ImeImplementation_KeyboardDidShow;
-            imeImplementation.KeyboardWillHide -= ImeImplementation_KeyboardWillHide;
-            imeImplementation.KeyboardWillShow -= ImeImplementation_KeyboardWillShow;
-        }
-
-
-        public override string subtitle()
-        {
-            return "TextField with default behavior test";
+            get {
+                return "TextField with default behavior test";
+            }
         }
     }
 
@@ -195,31 +239,35 @@ namespace tests
 
     public class TextFieldActionTest : KeyboardNotificationLayer
     {
-        CCTextField m_pTextField;
-        CCAction m_pTextFieldAction;
-        bool m_bAction;
-        int m_nCharLimit;       // the textfield max char limit
+        CCTextField textField;
+        CCAction textFieldAction;
+        CCActionState textFieldActionState;
+        bool action;
+        int charLimit;       // the textfield max char limit
+
+        const int RANDOM_MAX = 32767;
 
         public void callbackRemoveNodeWhenDidAction(CCNode node)
         {
             this.RemoveChild(node, true);
         }
 
-        // KeyboardNotificationLayer
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "CCTextFieldTTF with action and char limit test";
+            get {
+                return "CCTextField with action and char limit test";
+            }
         }
 
-        public override void onClickTrackNode(bool bClicked)
+        public override void OnClickTrackNode(bool bClicked)
         {
             if (bClicked)
             {
-                trackNode.Edit();
+                TrackNode.Edit();
             }
             else
             {
-                trackNode.EndEdit();
+                TrackNode.EndEdit();
             }
         }
 
@@ -228,78 +276,143 @@ namespace tests
         {
             base.OnEnter();
 
-            m_nCharLimit = 12;
+            charLimit = 12;
 
-            m_pTextFieldAction = new CCRepeatForever(
+            textFieldAction = new CCRepeatForever(
                 (CCFiniteTimeAction)new CCSequence(
                                        new CCFadeOut(0.25f),
                                        new CCFadeIn(0.25f)));
-            m_bAction = false;
+            action = false;
 
-            // add CCTextFieldTTF
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
-            m_pTextField = new CCTextField("<click here for input>",
+            textField = new CCTextField("<click here for input>",
                                               TextInputTestScene.FONT_NAME, 
                                               TextInputTestScene.FONT_SIZE,
                                               CCLabelFormat.SpriteFont);
-            AddChild(m_pTextField);
 
-            trackNode = m_pTextField;
+            var imeImplementation = textField.TextFieldIMEImplementation;
+            imeImplementation.KeyboardDidHide += OnKeyboardDidHide;
+            imeImplementation.KeyboardDidShow += OnKeyboardDidShow;
+            imeImplementation.InsertText += OnInsertText;
+            imeImplementation.DeleteBackward += OnDeleteBackward;
+
+            textField.Position = VisibleBoundsWorldspace.Center;
+
+            AddChild(textField);
+
+            TrackNode = textField;
         }
 
-        // CCTextFieldDelegate
-        public virtual bool onTextFieldAttachWithIME(CCTextField pSender)
+        public override void OnExit()
         {
-            //            if (m_bAction != null)
-            //            {
-            //                m_pTextField.RunAction(m_pTextFieldAction);
-            //                m_bAction = true;
-            //            }
-            return false;
+            base.OnExit();
+
+            // Remember to remove our event listeners.
+            var imeImplementation = TrackNode.TextFieldIMEImplementation;
+            imeImplementation.KeyboardDidHide -= OnKeyboardDidHide;
+            imeImplementation.KeyboardDidShow -= OnKeyboardDidShow;
+            imeImplementation.InsertText -= OnInsertText;
+            imeImplementation.DeleteBackward -= OnDeleteBackward;
+
         }
 
-        public virtual bool onTextFieldDetachWithIME(CCTextField pSender)
+        void OnDeleteBackward (object sender, CCIMEKeybardEventArgs e)
         {
-            //            if (m_bAction != null)
-            //            {
-            //                m_pTextField.StopAction(m_pTextFieldAction);
-            //                m_pTextField.Opacity = 255;
-            //                m_bAction = false;
-            //            }
-            return false;
+            var focusedTextField = sender as CCTextField;
+
+            if (focusedTextField == null || string.IsNullOrEmpty(focusedTextField.Text))
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            // Just cancel this if we would backspace over the PlaceHolderText as it would just be
+            // replaced anyway and the Action below should not be executed.
+            var delText = focusedTextField.Text;
+            if (delText == focusedTextField.PlaceHolderText)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            delText = delText.Substring(delText.Length - 1);
+
+            // create a delete text sprite and do some action
+            var label = new CCLabel(delText, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE + 3, CCLabelFormat.SpriteFont);
+            this.AddChild(label);
+
+            // move the sprite to fly out
+            CCPoint beginPos = focusedTextField.Position;
+            CCSize textfieldSize = focusedTextField.ContentSize;
+            CCSize labelSize = label.ContentSize;
+            beginPos.X += (textfieldSize.Width - labelSize.Width) / 2.0f;
+
+            var nextRandom = (float)CCRandom.Next(RANDOM_MAX);
+
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+            CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + nextRandom / (2.0f * RANDOM_MAX)));
+
+            float duration = 1;
+            float rotateDuration = 0.2f;
+            int repeatTime = 5;
+            label.Position = beginPos;
+
+            var delAction = new CCSpawn(new CCMoveTo(duration, endPos),
+                new CCRepeat(
+                        new CCRotateBy(rotateDuration, (CCRandom.Next() % 2 > 0) ? 360 : -360),
+                        (uint)repeatTime),
+                        new CCFadeOut(duration)
+                );
+
+            label.RunActionsAsync(delAction, new CCRemoveSelf(true));
+
         }
 
-        public virtual bool onTextFieldInsertText(CCTextField pSender, string text, int nLen)
+        void OnInsertText (object sender, CCIMEKeybardEventArgs e)
         {
+            var focusedTextField = sender as CCTextField;
+
+            if (focusedTextField == null)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            var text = e.Text;
+            var currentText = focusedTextField.Text;
+
             // if insert enter, treat as default to detach with ime
             if ("\n" == text)
             {
-                return false;
+                return;
             }
 
-            // if the textfield's char count more than m_nCharLimit, doesn't insert text anymore.
-            if (pSender.Text.Length >= m_nCharLimit)
+            // if the textfield's char count is more than charLimit, don't insert text anymore.
+            if (focusedTextField.CharacterCount >= charLimit)
             {
-                return true;
+                e.Cancel = true;
+                return;
             }
 
             // create a insert text sprite and do some action
             var label = new CCLabel(text, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE, CCLabelFormat.SpriteFont);
             this.AddChild(label);
-            CCColor3B color = new CCColor3B { R = 226, G = 121, B = 7 };
+            var color = new CCColor3B { R = 226, G = 121, B = 7 };
             label.Color = color;
 
-            // move the sprite from top to position
-            CCPoint endPos = pSender.Position;
-            if (pSender.Text.Length > 0)
-            {
-                endPos.X += pSender.ContentSize.Width / 2;
-            }
-            CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.X, Layer.VisibleBoundsWorldspace.Size.Height - inputTextSize.Height * 2);
+            var inputTextSize = focusedTextField.CharacterCount == 0 ? CCSize.Zero : focusedTextField.ContentSize;
 
-            float duration = 0.5f;
+            // move the sprite from top to position
+            var endPos = focusedTextField.Position;
+            endPos.Y -= inputTextSize.Height;
+
+            if (currentText.Length > 0)
+            {
+                endPos.X += inputTextSize.Width / 2;
+            }
+
+            var beginPos = new CCPoint(endPos.X, VisibleBoundsWorldspace.Size.Height - inputTextSize.Height * 2);
+
+            var duration = 0.5f;
             label.Position = beginPos;
             label.Scale = 8;
 
@@ -308,48 +421,95 @@ namespace tests
                     new CCMoveTo(duration, endPos),
                     new CCScaleTo(duration, 1),
                     new CCFadeOut(duration)),
-                new CCCallFuncN(callbackRemoveNodeWhenDidAction));
+                new CCRemoveSelf(true));
             label.RunAction(seq);
-            return false;
         }
 
-        public virtual bool onTextFieldDeleteBackward(CCTextFieldTTF pSender, string delText, int nLen)
+
+        void OnKeyboardDidShow(object sender, CCIMEKeyboardNotificationInfo e)
         {
-            // create a delete text sprite and do some action
-            var label = new CCLabel(delText, TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE, CCLabelFormat.SpriteFont);
-            this.AddChild(label);
-
-            // move the sprite to fly out
-            CCPoint beginPos = pSender.Position;
-            CCSize textfieldSize = pSender.ContentSize;
-            CCSize labelSize = label.ContentSize;
-            beginPos.X += (textfieldSize.Width - labelSize.Width) / 2.0f;
-
-            int RAND_MAX = 32767;
-            CCRandom rand = new CCRandom();
-
-            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
-            CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)CCRandom.Next() / (2.0f * RAND_MAX)));
-            float duration = 1;
-            float rotateDuration = 0.2f;
-            int repeatTime = 5;
-            label.Position = beginPos;
-
-            CCAction seq = new CCSequence(
-                new CCSpawn(
-                    new CCMoveTo(duration, endPos),
-                    new CCRepeat(
-                        new CCRotateBy(rotateDuration, (CCRandom.Next() % 2 > 0) ? 360 : -360),
-                        (uint)repeatTime),
-                    new CCFadeOut(duration)),
-                new CCCallFuncN(callbackRemoveNodeWhenDidAction));
-            label.RunAction(seq);
-            return false;
+            if (!action)
+            {
+                textFieldActionState = textField.RunAction(textFieldAction);
+                action = true;
+            }
         }
 
-        public virtual bool onDraw(CCTextField pSender)
+        void OnKeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
         {
-            return false;
+            if (action)
+            {
+                textField.StopAction(textFieldActionState);
+                textField.Opacity = 255;
+                action = false;
+            }
+
+        }
+
+    }
+
+    public class TextFieldUpperCaseTest : KeyboardNotificationLayer
+    {
+        public override void OnClickTrackNode(bool bClicked)
+        {
+            if (bClicked && TrackNode != null)
+            {
+                TrackNode.Edit();
+            }
+            else
+            {
+                if (TrackNode != null && TrackNode != null)
+                {
+                    TrackNode.EndEdit();
+                }
+            }
+
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var s = VisibleBoundsWorldspace.Size;
+
+            var textField = new CCTextField("<CLICK HERE FOR INPUT>", 
+                TextInputTestScene.FONT_NAME, 
+                TextInputTestScene.FONT_SIZE, 
+                CCLabelFormat.SpriteFont);
+
+            var imeImplementation = textField.TextFieldIMEImplementation;
+            imeImplementation.InsertText += OnInsertText;
+            textField.Position = s.Center;
+
+            textField.AutoEdit = true;
+
+            AddChild(textField);
+
+            TrackNode = textField;
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            // Remember to remove our event listeners.
+            var imeImplementation = TrackNode.TextFieldIMEImplementation;
+            imeImplementation.InsertText -= OnInsertText;
+
+        }
+
+        void OnInsertText (object sender, CCIMEKeybardEventArgs e)
+        {
+            var focusedTextField = sender as CCTextField;
+
+            e.Text = e.Text.ToUpper();
+
+        }
+
+        public override string Subtitle
+        {
+            get {
+                return "TextField Uppercase test";
+            }
         }
     }
 }

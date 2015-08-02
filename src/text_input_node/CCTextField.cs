@@ -11,15 +11,21 @@ namespace CocosSharp
         bool autoEdit;
         bool touchHandled;
 
-
-
         public ICCIMEDelegate TextFieldIMEImplementation { get; set; }
+        string placeHolderText = string.Empty;
+
+        CCColor4B defaultTextColor = CCColor4B.White;
+        CCColor4B placeholderTextColor = CCColor4B.Gray;
 
         public event CCTextFieldDelegate BeginEditing;
         public event CCTextFieldDelegate EndEditing;
 
         #region Properties
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="CocosSharp.CCTextField"/> read only.
+        /// </summary>
+        /// <value><c>true</c> if read only; otherwise, <c>false</c>.</value>
         public bool ReadOnly
         {
             get { return readOnly; }
@@ -36,6 +42,10 @@ namespace CocosSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="CocosSharp.CCTextField"/> auto edits.
+        /// </summary>
+        /// <value><c>true</c> if auto edit; otherwise, <c>false</c>.</value>
         public bool AutoEdit
         {
             get { return autoEdit; }
@@ -46,7 +56,103 @@ namespace CocosSharp
             }
         }
 
+        /// <summary>
+        /// Gets or sets the place holder text when the Text is empty.
+        /// </summary>
+        /// <value>The place holder text.</value>
+        public string PlaceHolderText 
+        {
+            get { return placeHolderText; }
+            set 
+            {
+                if (placeHolderText == value)
+                    return;
+                
+                placeHolderText = value;
+
+                if (string.IsNullOrEmpty(Text))
+                    Text = placeHolderText;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the color of the place holder text.
+        /// </summary>
+        /// <value>The color of the place holder text.</value>
+        public CCColor4B PlaceHolderTextColor
+        {
+            get { return placeholderTextColor; }
+            set {
+                placeholderTextColor = value;
+                updateColors();
+            }
+        }
+
+        void updateColors()
+        {
+            if (Text == placeHolderText)
+            {
+                if (Color.R != PlaceHolderTextColor.R ||
+                    Color.G != PlaceHolderTextColor.G ||
+                    Color.B != PlaceHolderTextColor.B ||
+                    Opacity != PlaceHolderTextColor.A)
+                {
+                    Color = new CCColor3B(placeholderTextColor);
+                    Opacity = placeholderTextColor.A;
+                }
+            }
+            else
+            {
+                if (Color.R != defaultTextColor.R ||
+                    Color.G != defaultTextColor.G ||
+                    Color.B != defaultTextColor.B ||
+                    Opacity != defaultTextColor.A)
+                {
+                    Color = new CCColor3B(defaultTextColor);
+                    Opacity = defaultTextColor.A;
+                }
+            }
+        }
+
+        public override string Text
+        {
+            get
+            {
+                return base.Text;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    base.Text = placeHolderText;
+                    updateColors();
+                }
+                else
+                {
+                    base.Text = value;
+                    updateColors();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="CocosSharp.CCTextField"/> auto repeats.
+        /// </summary>
+        /// <value><c>true</c> if auto repeat; otherwise, <c>false</c>.</value>
         public bool AutoRepeat { get; set; }
+
+        /// <summary>
+        /// Gets the character count.
+        /// </summary>
+        /// <value>The character count.  Returns 0 if current text is equal to PlaceHolderText</value>
+        public int CharacterCount 
+        {
+            get 
+            { 
+                var currentText = Text;
+                return currentText == placeHolderText ? 0 : currentText.Length; 
+            }
+        }
 
         #endregion Properties
 
@@ -84,7 +190,10 @@ namespace CocosSharp
             this.HorizontalAlignment = hAlignment;
             this.VerticalAlignment = vAlignment;
             AutoRepeat = true;
+            placeHolderText = text;
+            updateColors();
             TextFieldIMEImplementation = IMEKeyboardImpl.SharedInstance;
+
         }
 
         #endregion Constructors
@@ -160,9 +269,15 @@ namespace CocosSharp
 #endif
         }
 
+        /// <summary>
+        /// Deletes a character from the end of TextField.
+        /// </summary>
         protected virtual void DeleteBackwards()
         {
             var text = Text;
+            if (text == placeHolderText)
+                return;
+            
             if (string.IsNullOrEmpty(text) || text.Length == 1)
             {
                 Text = string.Empty;
@@ -173,6 +288,11 @@ namespace CocosSharp
             }
         }
 
+        /// <summary>
+        /// Inserts the text at the end of the TextField
+        /// </summary>
+        /// <param name="text">Text.</param>
+        /// <param name="len">Length.</param>
         protected virtual void InsertText(string text, int len)
         {
 
@@ -188,13 +308,21 @@ namespace CocosSharp
 
             if (len > 0)
             {
-                Text += insert.ToString();
+                if (Text == placeHolderText)
+                    Text = text;
+                else
+                    Text += insert.ToString();
                 return;
             }
 
             EndEdit();
         }
 
+        /// <summary>
+        /// Replaces the current text of the field
+        /// </summary>
+        /// <param name="text">Text.</param>
+        /// <param name="len">Length.</param>
         protected virtual void ReplaceText(string text, int len)
         {
             var insert = new System.Text.StringBuilder(text, len);
@@ -244,7 +372,7 @@ namespace CocosSharp
             CheckTouchState();
         }
 
-        private void IMEImplementation_KeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
+        void OnKeyboardDidHide(object sender, CCIMEKeyboardNotificationInfo e)
         {
             if (TextFieldIMEImplementation != null)
             {
@@ -277,7 +405,7 @@ namespace CocosSharp
             CheckTouchState();
             if (TextFieldIMEImplementation != null)
             {
-                TextFieldIMEImplementation.KeyboardDidHide -= IMEImplementation_KeyboardDidHide;
+                TextFieldIMEImplementation.KeyboardDidHide -= OnKeyboardDidHide;
             }
         }
 

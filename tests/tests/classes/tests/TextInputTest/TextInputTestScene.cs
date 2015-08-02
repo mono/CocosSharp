@@ -9,14 +9,17 @@ namespace tests
     public class TextInputTestScene : TestScene
     {
 
-        int kTextFieldTTFDefaultTest = 0;
-        int kTextFieldTTFActionTest = 1;
-        int kTextInputTestsCount = 2;
+        public static int MAX_TESTS = 0;
 
         public static string FONT_NAME = "Thonburi";
         public static int FONT_SIZE = 36;
 
         public static int testIdx = -1;
+
+        public TextInputTestScene() : base()
+        {
+            MAX_TESTS = textinputCreateFunctions.Length;
+        }
 
         public override void runThisTest()
         {
@@ -26,24 +29,17 @@ namespace tests
             Scene.Director.ReplaceScene(this);
         }
 
+        static Func<KeyboardNotificationLayer>[] textinputCreateFunctions =
+            {
+                () => new TextFieldDefaultTest(),
+                () => new TextFieldActionTest(),
+                () => new TextFieldUpperCaseTest(),
+
+            };
+        
         public KeyboardNotificationLayer createTextInputTest(int nIndex)
         {
-            switch (nIndex)
-            {
-                //case kTextFieldTTFDefaultTest:
-                //    return new TextFieldTTFDefaultTest();
-                //case kTextFieldTTFActionTest:
-                //    return new TextFieldTTFActionTest();
-                //default: return 0;
-
-                case 0:
-                    return new TextFieldDefaultTest();
-                case 1:
-                    return new TextFieldActionTest();
-                default: break;
-            }
-
-            return null;
+            return textinputCreateFunctions[nIndex]();
         }
 
         protected override void NextTestCase()
@@ -61,10 +57,8 @@ namespace tests
         public CCLayer restartTextInputTest()
         {
             TextInputTest pContainerLayer = new TextInputTest();
-            //pContainerLayer->autorelease();
 
             KeyboardNotificationLayer pTestLayer = createTextInputTest(testIdx);
-            //pTestLayer->autorelease();
             pContainerLayer.addKeyboardNotificationLayer(pTestLayer);
 
             return pContainerLayer;
@@ -73,7 +67,7 @@ namespace tests
         public CCLayer nextTextInputTest()
         {
             testIdx++;
-            testIdx = testIdx % kTextInputTestsCount;
+            testIdx = testIdx % MAX_TESTS;
 
             return restartTextInputTest();
         }
@@ -81,7 +75,7 @@ namespace tests
         public CCLayer backTextInputTest()
         {
             testIdx--;
-            int total = kTextInputTestsCount;
+            int total = MAX_TESTS;
             if (testIdx < 0)
                 testIdx += total;
 
