@@ -623,27 +623,16 @@ namespace CocosSharp
                 Clear(CCColor4B.Transparent);
             }
 
-            #if !MACOS
             DrawCount = 0;
             DrawPrimitivesCount = 0;
-            #endif
         }
 
         internal void UpdateStats()
         {
             var metrics = graphicsDevice.Metrics;
 
-            #if !MACOS
             DrawCount += metrics.DrawCount;
             DrawPrimitivesCount += metrics.PrimitiveCount;
-            #else
-            // bug https://github.com/mono/MonoGame/issues/3904
-            // We will do a small workaround for Mac OSX for now
-            DrawCount = metrics.DrawCount - lastDrawCount - 1;
-            DrawPrimitivesCount = metrics.PrimitiveCount - lastDrawPrimitivesCount - 1;
-            lastDrawCount = metrics.DrawCount;
-            lastDrawPrimitivesCount = metrics.PrimitiveCount;
-            #endif
         }
 
         internal void EndDraw()

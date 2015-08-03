@@ -1240,6 +1240,7 @@
     </Compile>
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
     <Compile Include="classes\tests\TextInputTest\CustomIME\UppercaseIMEKeyboardImpl.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2703,6 +2704,7 @@
     <Folder Include="classes\tests\Physics\" />
     <Folder Include="classes\tests\LabelTestNew\" />
     <Folder Include="classes\tests\TextInputTest\CustomIME\" />
+    <Folder Include="classes\tests\RendererTest\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="..\testsContent\fonts\boundsTestFont_0.png">

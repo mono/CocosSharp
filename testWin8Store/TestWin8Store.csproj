@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>TestWin8Store_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>ARM</PlatformTarget>
@@ -999,6 +1000,9 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\PerformanceTest\PerformBasicLayer.cs">
       <Link>classes\tests\PerformanceTest\PerformBasicLayer</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\tests\RendererTest\RendererTestDemo.cs">
+      <Link>classes\tests\Renderer\RendererTestDemo.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs">
       <Link>classes\tests\RenderTextureTest\RenderTextureCompositeTest</Link>

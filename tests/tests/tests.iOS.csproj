@@ -619,6 +619,7 @@
     <Compile Include="classes\tests\PerformanceTest\PerformBasicLayer.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -107,6 +107,9 @@
     <Compile Include="..\classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs">
       <Link>classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs</Link>
     </Compile>
+    <Compile Include="..\classes\tests\RendererTest\RendererTestDemo.cs">
+      <Link>classes\tests\Renderer\RendererTestDemo.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

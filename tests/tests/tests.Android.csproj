@@ -256,6 +256,7 @@
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToRadialMidpointChanged.cs" />
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToVertical.cs" />
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressWithSpriteFrame.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs" />
@@ -2146,10 +2147,6 @@
     <ProjectReference Include="..\..\src\CocosSharp.Android.csproj">
       <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
       <Name>CocosSharp.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
-      <Project>{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}</Project>
-      <Name>MonoGame.Framework.Net.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

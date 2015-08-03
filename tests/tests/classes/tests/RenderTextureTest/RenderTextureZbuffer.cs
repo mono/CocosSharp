@@ -5,8 +5,6 @@ namespace tests
 {
     public class RenderTextureZbuffer : RenderTextureTestDemo
     {
-        readonly CCSpriteBatchNode mgr;
-
         readonly CCSprite sp1;
         readonly CCSprite sp2;
         readonly CCSprite sp3;
