@@ -34,6 +34,7 @@ namespace tests
                 () => new TextFieldDefaultTest(),
                 () => new TextFieldActionTest(),
                 () => new TextFieldUpperCaseTest(),
+                () => new TextFieldCustomIMETest(),
 
             };
         

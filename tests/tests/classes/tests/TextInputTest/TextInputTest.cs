@@ -534,4 +534,54 @@ namespace tests
             }
         }
     }
+
+    public class TextFieldCustomIMETest : KeyboardNotificationLayer
+    {
+        public override void OnClickTrackNode(bool bClicked)
+        {
+            if (bClicked && TrackNode != null)
+            {
+                TrackNode.Edit();
+            }
+            else
+            {
+                if (TrackNode != null && TrackNode != null)
+                {
+                    TrackNode.EndEdit();
+                }
+            }
+
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var s = VisibleBoundsWorldspace.Size;
+
+            var textField = new CCTextField("<CLICK HERE FOR INPUT>", 
+                TextInputTestScene.FONT_NAME, 
+                TextInputTestScene.FONT_SIZE, 
+                CCLabelFormat.SpriteFont);
+
+            // Override the default implementation
+            textField.TextFieldIMEImplementation = UppercaseIMEKeyboardImpl.SharedInstance;
+
+            textField.Position = s.Center;
+
+            textField.AutoEdit = true;
+
+            AddChild(textField);
+
+            TrackNode = textField;
+        }
+
+        public override string Subtitle
+        {
+            get {
+                return "TextField Custom Uppercase IME implementation";
+            }
+        }
+    }
+
 }
