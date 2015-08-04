@@ -213,6 +213,8 @@ namespace CocosSharp
                 {
                     TextFieldIMEImplementation.TextFieldInFocus = this;
                     TextFieldIMEImplementation.ContentText = Text;
+                    TextFieldIMEImplementation.KeyboardDidHide += OnKeyboardDidHide;
+
                     var attached = TextFieldIMEImplementation.AttachWithIME();
                     if (attached)
                     {
@@ -316,6 +318,7 @@ namespace CocosSharp
             }
 
             EndEdit();
+
         }
 
         /// <summary>
@@ -384,9 +387,14 @@ namespace CocosSharp
             {
                 TextFieldIMEImplementation.DeleteBackward -= TextFieldIMEImplementation_DeleteBackward;
                 TextFieldIMEImplementation.InsertText -= TextFieldIMEImplementation_InsertText;
-                var newText = TextFieldIMEImplementation.ContentText;
-                if (newText != null && Text != newText)
-                {
+                TextFieldIMEImplementation.ReplaceText -= TextFieldIMEImplementation_ReplaceText;
+                TextFieldIMEImplementation.KeyboardDidHide -= OnKeyboardDidHide;
+
+                var newText = Text;
+
+                //if (newText != null && Text != newText)
+                //{
+
                     bool canceled = false;
 
                     ScheduleOnce(
@@ -401,7 +409,7 @@ namespace CocosSharp
                         },
                         0
                     );
-                }
+//                }
             }
         }
 

@@ -25,11 +25,12 @@ namespace tests
 
             application.ContentSearchResolutionOrder = new List<string>() { "", "images", "fonts" };
 
+            application.AnimationInterval = 1.0f / 30f;
             sharedWindow = mainWindow;
 
             CCSize winSize = mainWindow.WindowSizeInPixels;
-            CCScene.SetDefaultDesignResolution(winSize.Width, winSize.Height, CCSceneResolutionPolicy.ShowAll);
-            //CCScene.SetDefaultDesignResolution(winSize.Width/2, winSize.Height/2, CCSceneResolutionPolicy.ShowAll);
+            //CCScene.SetDefaultDesignResolution(winSize.Width, winSize.Height, CCSceneResolutionPolicy.ShowAll);
+            CCScene.SetDefaultDesignResolution(winSize.Width/2, winSize.Height/2, CCSceneResolutionPolicy.ShowAll);
 
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
@@ -56,7 +57,7 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
             mainWindow.DisplayStats = true;
-            mainWindow.StatsScale = 1;
+            mainWindow.StatsScale = 3;
             
 //            if (mainWindow.WindowSizeInPixels.Height > 320)
 //            {

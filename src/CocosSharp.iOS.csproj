@@ -307,9 +307,7 @@
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
-    <Compile Include="text_input_node\CCTextFieldTTF.cs" />
     <Compile Include="text_input_node\ICCIMEDelegate.cs" />
-    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
@@ -398,7 +396,7 @@
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="text_input_node\CCTextField.cs" />
-    <Compile Include="text_input_node\IOS\IMEKeyboardImpl.cs" />
+    <Compile Include="Platform\Keyboard\IOS\IMEKeyboardImpl.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
   </ItemGroup>
   <ItemGroup />
@@ -424,7 +422,5 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="text_input_node\IOS\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -83,7 +83,7 @@ namespace tests
 
         bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
-            beginPosition = pTouch.LocationOnScreen;
+            beginPosition = pTouch.Location;
             return true;
         }
 
@@ -94,7 +94,7 @@ namespace tests
                 return;
             }
 
-            var endPos = pTouch.LocationOnScreen;
+            var endPos = pTouch.Location;
 
             if (trackNode.BoundingBox.ContainsPoint(beginPosition) && trackNode.BoundingBox.ContainsPoint(endPos))
             {
@@ -189,6 +189,9 @@ namespace tests
 
     public class TextFieldDefaultTest : KeyboardNotificationLayer
     {
+        CCMoveTo scrollUp;
+        CCMoveTo scrollDown;
+
         public override void OnClickTrackNode(bool bClicked)
         {
             if (bClicked && TrackNode != null)
@@ -216,6 +219,8 @@ namespace tests
                 TextInputTestScene.FONT_SIZE, 
                 CCLabelFormat.SpriteFont);
 
+            textField.BeginEditing += OnBeginEditing;
+            textField.EndEditing += OnEndEditing;
             textField.Position = s.Center;
 
             textField.AutoEdit = true;
@@ -223,6 +228,19 @@ namespace tests
             AddChild(textField);
 
             TrackNode = textField;
+
+            scrollUp = new CCMoveTo(0.5f, VisibleBoundsWorldspace.Top() - new CCPoint(0, s.Height / 4));
+            scrollDown = new CCMoveTo(0.5f, textField.Position);
+        }
+
+        private void OnEndEditing(object sender, ref string text, ref bool canceled)
+        {
+            ((CCNode)sender).RunAction(scrollDown);
+        }
+
+        private void OnBeginEditing(object sender, ref string text, ref bool canceled)
+        {
+            ((CCNode)sender).RunAction(scrollUp);
         }
 
         public override string Subtitle
@@ -240,7 +258,10 @@ namespace tests
     public class TextFieldActionTest : KeyboardNotificationLayer
     {
         CCTextField textField;
-        CCAction textFieldAction;
+        static CCFiniteTimeAction textFieldAction = new CCSequence(
+                                       new CCFadeOut(0.25f),
+                                       new CCFadeIn(0.25f));
+
         CCActionState textFieldActionState;
         bool action;
         int charLimit;       // the textfield max char limit
@@ -278,10 +299,6 @@ namespace tests
 
             charLimit = 12;
 
-            textFieldAction = new CCRepeatForever(
-                (CCFiniteTimeAction)new CCSequence(
-                                       new CCFadeOut(0.25f),
-                                       new CCFadeIn(0.25f)));
             action = false;
 
             textField = new CCTextField("<click here for input>",
@@ -297,6 +314,7 @@ namespace tests
             imeImplementation.DeleteBackward += OnDeleteBackward;
 
             textField.Position = VisibleBoundsWorldspace.Center;
+            textField.PositionY += VisibleBoundsWorldspace.Size.Height / 4;
 
             AddChild(textField);
 
@@ -439,7 +457,7 @@ namespace tests
         {
             if (!action)
             {
-                textFieldActionState = textField.RunAction(textFieldAction);
+                textFieldActionState = textField.RepeatForever(textFieldAction);
                 action = true;
             }
         }

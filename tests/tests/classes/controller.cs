@@ -342,6 +342,7 @@ namespace tests
 
         public static Dictionary<string, Func<TestScene>> testCases = new Dictionary<string, Func<TestScene>> 
             {
+                        {"TextInputTest", () => new TextInputTestScene()},
 
             {"Accelerometer", () => new AccelerometerTestScene()}, 
             {"ActionManagerTest", () => new ActionManagerTestScene()},
@@ -382,7 +383,7 @@ namespace tests
             {"SchedulerTest", () => new SchedulerTestScene()},
             {"SpriteTest", () => new SpriteTestScene()},
             {"SystemFontTest", () => new SystemFontTestScene()},
-            {"TextInputTest", () => new TextInputTestScene()},
+            //{"TextInputTest", () => new TextInputTestScene()},
             {"Texture2DTest", () => new TextureTestScene()},
             {"TileMapTest",  () => new TileMapTestScene()},
             {"TouchesTest",  () => new PongScene()},
