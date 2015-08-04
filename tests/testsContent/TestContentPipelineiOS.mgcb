@@ -1,16 +1,15 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin
+/outputDir:..\iOSContent\Content
 /intermediateDir:obj
-/platform:Windows
+/platform:iOS
 /config:
 /profile:Reach
 /compress:False
 
 #-------------------------------- References --------------------------------#
 
-/reference:C:\Xamarin\kjpgit\CocosSharp\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll
 /reference:..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll
 
 #---------------------------------- Content ---------------------------------#
