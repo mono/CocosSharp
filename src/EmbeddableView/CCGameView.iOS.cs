@@ -19,12 +19,59 @@ using OpenGLES;
 
 namespace CocosSharp
 {
+    class GameViewTimeSource  
+    {
+        TimeSpan timeout;
+        NSTimer timer;
+
+        CCGameView view;
+
+        public GameViewTimeSource(CCGameView view, double updatesPerSecond)
+        {
+            this.view = view;
+
+            // Can't use TimeSpan.FromSeconds() as that only has 1ms
+            // resolution, and we need better (e.g. 60fps doesn't fit nicely
+            // in 1ms resolution, but does in ticks).
+            timeout = new TimeSpan((long) (((1.0 * TimeSpan.TicksPerSecond) / updatesPerSecond) + 0.5));
+        }
+
+        public void Suspend()
+        {
+            if (timer != null) {
+                timer.Invalidate();
+                timer = null;
+            }
+        }
+
+        public void Resume()
+        {
+            if (timeout != new TimeSpan (-1)) 
+            {
+                timer = NSTimer.CreateRepeatingTimer(timeout, view.RunIteration);
+                NSRunLoop.Main.AddTimer(timer, NSRunLoopMode.Common);
+            }
+        }
+
+        public void Invalidate()
+        {
+            if (timer != null) 
+            {
+                timer.Invalidate();
+                timer = null;
+            }
+        }
+    }
+
 
     [Register("CCGameView"), DesignTimeVisible(true)]
     public partial class CCGameView : iPhoneOSGameView
     {
         bool bufferCreated;
         uint depthbuffer;
+
+        GameViewTimeSource timeSource;
+
 
         #region Constructors
 
@@ -61,7 +108,14 @@ namespace CocosSharp
 
         void PlatformStartGame()
         {
-            Run(60.0);
+            if (timeSource !=null)
+                timeSource.Invalidate();
+
+            timeSource = new GameViewTimeSource(this, 60.0f);
+
+            CreateFrameBuffer();
+
+            timeSource.Resume();
         }
 
         protected override void CreateFrameBuffer()
@@ -158,6 +212,17 @@ namespace CocosSharp
         #endregion Cleaning up 
 
 
+        #region Run loop
+
+        internal void RunIteration(NSTimer timer)
+        {
+            OnUpdateFrame(null);
+
+            GL.BindFramebuffer(FramebufferTarget.Framebuffer, Framebuffer);
+
+            OnRenderFrame(null);
+        }
+
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
@@ -188,6 +253,8 @@ namespace CocosSharp
 
             Tick();
         }
+
+        #endregion Run loop
 
 
         #region Touch handling
