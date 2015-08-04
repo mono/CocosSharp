@@ -446,13 +446,23 @@ namespace tests
                 this.ContentSize = sprite.ScaledContentSize;
                 sprite.AnchorPoint = CCPoint.AnchorLowerLeft;
                 label.Position = sprite.ContentSize.Center;
+
+                // Create the render texture to draw to.  It will be the size of the button background sprite
                 var render = new CCRenderTexture(sprite.ContentSize, sprite.ContentSize);
+
+                // Clear it to any background color you want
                 render.BeginWithClear(CCColor4B.Transparent);
+
+                // Render the background sprite to the render texture
                 sprite.Visit();
+
+                // Render the label to the render texture
                 label.Visit();
+
+                // End the rendering
                 render.End();
 
-                
+                // Add the button sprite to this node so it can be rendered
                 buttonSprite = render.Sprite;
                 buttonSprite.AnchorPoint = CCPoint.AnchorMiddle;
                 AddChild(this.buttonSprite);
