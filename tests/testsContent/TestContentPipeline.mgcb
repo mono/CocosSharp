@@ -1,7 +1,7 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin
+/outputDir:..\tests\Content
 /intermediateDir:obj
 /platform:Windows
 /config:
@@ -10,7 +10,6 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:C:\Xamarin\kjpgit\CocosSharp\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll
 /reference:..\..\CocosSharp.Content.Pipeline.Importers\bin\Release\Any CPU\CocosSharp.Content.Pipeline.Importers.dll
 
 #---------------------------------- Content ---------------------------------#
@@ -54,4 +53,22 @@
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
 /build:fonts/arial-24.spritefont
+
+#begin fonts/arial-20.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:fonts/arial-20.spritefont
+
+#begin fonts/debugcompressed.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:fonts/debugcompressed.spritefont
+
+#begin fonts/debuguncompressed.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Color
+/build:fonts/debuguncompressed.spritefont
 
