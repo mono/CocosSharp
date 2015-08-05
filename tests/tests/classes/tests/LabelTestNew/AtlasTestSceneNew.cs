@@ -91,9 +91,11 @@ namespace tests
                 () => new LabelSFContentSizeRatios(),
                 () => new LabelSystemFont168(),
                 () => new LabelSystemFontRenderTexture(),
+
 #if !WINDOWS_PHONE8
                 () => new LabelFNTFromHTTP(),
 #endif
+                () => new LabelSFTextureView(),
         };
 
         public static CCLayer createAtlasLayer(int index)
