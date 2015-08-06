@@ -48,6 +48,7 @@ namespace tests
 
         static Func<CCLayer>[] createSpriteTestLayerFunctions =
             {
+                () => new SpriteUntrimmedSizeInPixels(),
                 () => new Sprite1(),
                 () => new SpriteBatchNode1(),
                 () => new SpriteFrameTest(),
