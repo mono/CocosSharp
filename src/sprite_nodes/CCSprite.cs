@@ -232,7 +232,14 @@ namespace CocosSharp
                 return untrimmedSizeInPixels;
             }
 
-            set { untrimmedSizeInPixels = value; }
+            set 
+            { 
+                if (untrimmedSizeInPixels != value)
+                {
+                    untrimmedSizeInPixels = value; 
+                    texQuadDirty = true; 
+                }
+            }
         }
 
         protected internal CCV3F_C4B_T2F_Quad Quad 
