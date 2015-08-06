@@ -221,6 +221,7 @@ namespace CocosSharp
             }
         }
 
+        #region Keyboard Event Listeners
 
         CCKeys lastPressedKey = CCKeys.None;
         void OnKeyPressed(CCEventKeyboard eventKeyboard)
@@ -299,6 +300,7 @@ namespace CocosSharp
                     OnInsertText(new CCIMEKeybardEventArgs(charKey.ToString(), 1));
             }
         }
+
 
         #region Keyboard event conversion helpers.
 
@@ -420,6 +422,8 @@ namespace CocosSharp
         }
 
         #endregion
+
+#endregion
 
         #region keyboard show/hide notification
 
