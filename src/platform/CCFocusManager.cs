@@ -142,14 +142,15 @@ namespace CocosSharp
             else if (current != null)
             {
                 ICCFocusable lostItem = current.Value;
-                LinkedListNode<ICCFocusable> nextItem = null;
-                for (LinkedListNode<ICCFocusable> p = current.Previous; p != null; p = p.Previous)
-                {
-                    if (p.Value.CanReceiveFocus)
-                    {
-                        nextItem = p;
-                    }
-                }
+                // TODO: take a look at the commented out code it does not seem to do anything.
+//                LinkedListNode<ICCFocusable> nextItem = null;
+//                for (LinkedListNode<ICCFocusable> p = current.Previous; p != null; p = p.Previous)
+//                {
+//                    if (p.Value.CanReceiveFocus)
+//                    {
+//                        nextItem = p;
+//                    }
+//                }
                 if (current.Previous != null)
                 {
                     current = current.Previous;

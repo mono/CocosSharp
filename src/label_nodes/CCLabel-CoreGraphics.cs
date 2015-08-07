@@ -103,7 +103,7 @@ namespace CocosSharp
 //            stream.CopyTo(fileStream);
 //            fileStream.Dispose();
 //        }
-        static new Dictionary<string, string> nativeFontDescriptors;
+        static Dictionary<string, string> nativeFontDescriptors;
 
         string LoadFontFile (string fileName)
         {
@@ -186,7 +186,7 @@ namespace CocosSharp
             textDef.Dimensions.Width *= contentScaleFactorWidth;
             textDef.Dimensions.Height *= contentScaleFactorHeight;
 
-            bool hasPremultipliedAlpha;
+            //bool hasPremultipliedAlpha;
 
             // font
             NSFont font = null;
@@ -199,7 +199,7 @@ namespace CocosSharp
                     textDef.FontName = LoadFontFile(textDef.FontName);
                     font = NSFont.FromFontName(textDef.FontName, textDef.FontSize);
                 }
-                catch (Exception exc)
+                catch
                 {
                     CCLog.Log(".ttf {0} file not found or can not be loaded.", textDef.FontName);
                 }

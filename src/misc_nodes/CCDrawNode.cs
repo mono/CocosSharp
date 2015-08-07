@@ -734,8 +734,6 @@ namespace CocosSharp
                 var v0 = verts[i];
                 var v1 = verts[j];
 
-                var n0 = extrude[i].n;
-
                 var offset0 = extrude[i].offset;
                 var offset1 = extrude[j].offset;
 
@@ -778,8 +776,6 @@ namespace CocosSharp
                     int j = (i + 1) % polycount;
                     var v0 = verts[i];
                     var v1 = verts[j];
-
-                    var n0 = extrude[i].n;
 
                     var offset0 = extrude[i].offset;
                     var offset1 = extrude[j].offset;

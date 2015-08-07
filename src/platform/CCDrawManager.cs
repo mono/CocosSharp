@@ -106,12 +106,6 @@ namespace CocosSharp
         internal ulong DrawCount { get; set; }
         internal ulong DrawPrimitivesCount { get; set; }
 
-
-        #if MACOS
-        // Bug https://github.com/mono/MonoGame/issues/3904
-        ulong lastDrawCount;
-        ulong lastDrawPrimitivesCount;
-        #endif
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }

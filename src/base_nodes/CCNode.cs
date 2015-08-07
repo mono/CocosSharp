@@ -1904,9 +1904,10 @@ namespace CocosSharp
         }
 
         /// <summary>
-        /// Convenience method to dispatch a custom event
+        /// Dispatchs a custom event.
         /// </summary>
-        /// <param name="eventToDispatch"></param>
+        /// <param name="customEvent">Custom event.</param>
+        /// <param name="userData">User data.</param>
         public void DispatchEvent(string customEvent, object userData = null)
         {
             if (EventDispatcherIsEnabled)

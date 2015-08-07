@@ -35,7 +35,6 @@ namespace CocosSharp
 
     public class CCGrid3DActionState : CCGridActionState
     {
-        CCRenderTexture gridRenderTexture;
         CCTexture2D gridTexture;
         CCGrid3D grid3D;
         CCSize gridTextureSizeInPixels;
@@ -46,7 +45,6 @@ namespace CocosSharp
             {
                 if (Target != null && Target.Scene.DesignResolutionSize != CCSize.Zero)
                 {
-                    var texelToContentSizeRatios = CCSize.One;
                     gridTextureSizeInPixels = Target.Scene.DesignResolutionSize;
                 }
                 else

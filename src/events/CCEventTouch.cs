@@ -14,8 +14,6 @@ namespace CocosSharp
 
 	public class CCEventTouch : CCEvent
 	{
-		static int MAX_TOUCHES = 5;
-
 		public CCEventCode EventCode { get; internal set; }
 
 		public List<CCTouch> Touches { get; internal set; }
@@ -24,7 +22,7 @@ namespace CocosSharp
 			: base (CCEventType.TOUCH)
 		{
 			EventCode = touchCode;
-			Touches = new List<CCTouch> (5);
+            Touches = new List<CCTouch> (5);
 		}
 	}
 }

@@ -126,7 +126,8 @@ namespace CocosSharp
         private int GetHorizontalKerningForChars(char firstChar, char secondChar)
         {
             int ret = 0;
-            int key = (firstChar << 16) | (secondChar & 0xffff);
+            // TODO: Look at this as it seems to not do anything
+            //int key = (firstChar << 16) | (secondChar & 0xffff);
 
             return ret;
         }

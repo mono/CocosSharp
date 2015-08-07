@@ -283,11 +283,9 @@ namespace CocosSharp
             int index = line.IndexOf('=') + 1;
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            try
-            {
-                int ivalue = int.Parse(value);
-            }
-            catch (Exception)
+
+            int ivalue;
+            if (!int.TryParse(value, out ivalue))
             {
                 throw (new ContentLoadException("Invalid page ID for FNT descriptor. Line=" + line + ", value=" + value + ", indices=" + index + "," + index2));
             }
