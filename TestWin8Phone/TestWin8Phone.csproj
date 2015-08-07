@@ -617,6 +617,9 @@
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelFSTextureView.cs">
+      <Link>classes\tests\LabelTestNew\LabelFSTextureView.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\LabelTestNew\LabelSFAlignmentTest.cs">
       <Link>classes\tests\LabelTestNew\LabelSFAlignmentTest.cs</Link>
     </Compile>

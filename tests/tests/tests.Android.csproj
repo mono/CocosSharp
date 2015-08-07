@@ -86,6 +86,7 @@
     <Compile Include="classes\tests\ClippingNodeTest\ClippingNodeTestScene.cs" />
     <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs" />
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
     <Compile Include="classes\tests\MultiTouchTest\MultiTouchTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraCenterTest.cs" />
@@ -2067,6 +2068,8 @@
     <AndroidAsset Include="Assets\Content\Images\animationbuttonpressed.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\debugcompressed.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\debuguncompressed.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

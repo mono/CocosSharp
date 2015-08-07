@@ -1168,6 +1168,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
     <Compile Include="classes\tests\TextInputTest\CustomIME\IOS\UppercaseIMEKeyboardImpl.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\animationbuttonnormal.xnb" />
@@ -1175,11 +1176,6 @@
     <None Include="Info.iOS.plist">
       <Link>Info.plist</Link>
     </None>
-    <Content Include="Content\fonts\MarkerFelt-22.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-18.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-16.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-Thin-12.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-Thin-18.xnb" />
     <Content Include="Content\hd\Images\Icon.xnb" />
     <Content Include="Content\hd\Images\arrows.xnb" />
     <Content Include="Content\hd\Images\arrowsBar.xnb" />
@@ -1262,7 +1258,6 @@
     <Content Include="Content\hd\extensions\stepper-plus.xnb" />
     <Content Include="Content\hd\ccb\burst.xnb" />
     <Content Include="Content\hd\animations\dragon_animation.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-32.xnb" />
     <Content Include="..\testsContent\Sounds\effect1.wav">
       <Link>Content\Sounds\effect1.wav</Link>
     </Content>
@@ -1333,6 +1328,96 @@
     </Content>
     <Content Include="..\iOSContent\Content\Images\ui.xnb">
       <Link>Content\Images\ui.xnb</Link>
+    </Content>
+    <None Include="..\iOSContent\Content\fonts\debugfont.xnb">
+      <Link>Content\fonts\debugfont.xnb</Link>
+    </None>
+    <Content Include="..\iOSContent\Content\fonts\MarkerFelt-16.xnb">
+      <Link>Content\fonts\MarkerFelt-16.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\MarkerFelt-18.xnb">
+      <Link>Content\fonts\MarkerFelt-18.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\MarkerFelt-22.xnb">
+      <Link>Content\fonts\MarkerFelt-22.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\MarkerFelt-32.xnb">
+      <Link>Content\fonts\MarkerFelt-32.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\MarkerFelt-Thin-12.xnb">
+      <Link>Content\fonts\MarkerFelt-Thin-12.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\MarkerFelt-Thin-18.xnb">
+      <Link>Content\fonts\MarkerFelt-Thin-18.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\A Damn Mess-26.xnb">
+      <Link>Content\fonts\A Damn Mess-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\Abberancy-26.xnb">
+      <Link>Content\fonts\Abberancy-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\Abduction-26.xnb">
+      <Link>Content\fonts\Abduction-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-12.xnb">
+      <Link>Content\fonts\arial-12.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-16.xnb">
+      <Link>Content\fonts\arial-16.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-18.xnb">
+      <Link>Content\fonts\arial-18.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-20.xnb">
+      <Link>Content\fonts\arial-20.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-22.xnb">
+      <Link>Content\fonts\arial-22.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-26.xnb">
+      <Link>Content\fonts\arial-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-28.xnb">
+      <Link>Content\fonts\arial-28.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-30.xnb">
+      <Link>Content\fonts\arial-30.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-32.xnb">
+      <Link>Content\fonts\arial-32.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-34.xnb">
+      <Link>Content\fonts\arial-34.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-38.xnb">
+      <Link>Content\fonts\arial-38.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-50.xnb">
+      <Link>Content\fonts\arial-50.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-64.xnb">
+      <Link>Content\fonts\arial-64.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\Arial.xnb">
+      <Link>Content\fonts\Arial.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\arial-24.xnb">
+      <Link>Content\fonts\arial-24.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\Paint Boy-26.xnb">
+      <Link>Content\fonts\Paint Boy-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\Schwarzwald Regular-26.xnb">
+      <Link>Content\fonts\Schwarzwald Regular-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\Scissor Cuts-26.xnb">
+      <Link>Content\fonts\Scissor Cuts-26.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\debugcompressed.xnb">
+      <Link>Content\fonts\debugcompressed.xnb</Link>
+    </Content>
+    <Content Include="..\iOSContent\Content\fonts\debuguncompressed.xnb">
+      <Link>Content\fonts\debuguncompressed.xnb</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -1424,28 +1509,8 @@
     <Content Include="Content\extensions\switch-on.xnb" />
     <Content Include="Content\extensions\switch-thumb.xnb" />
     <Content Include="Content\extensions\yellow_edit.xnb" />
-    <Content Include="Content\fonts\A Damn Mess-26.xnb" />
-    <Content Include="Content\fonts\Abberancy-26.xnb" />
-    <Content Include="Content\fonts\Abduction-26.xnb" />
-    <Content Include="Content\fonts\arial-12.xnb" />
-    <Content Include="Content\fonts\arial-16.xnb" />
-    <Content Include="Content\fonts\arial-18.xnb" />
-    <Content Include="Content\fonts\arial-20.xnb" />
-    <Content Include="Content\fonts\arial-22.xnb" />
-    <Content Include="Content\fonts\arial-24.xnb" />
-    <Content Include="Content\fonts\arial-26.xnb" />
-    <Content Include="Content\fonts\arial-28.xnb" />
-    <Content Include="Content\fonts\arial-30.xnb" />
-    <Content Include="Content\fonts\arial-32.xnb" />
-    <Content Include="Content\fonts\arial-34.xnb" />
-    <Content Include="Content\fonts\arial-38.xnb" />
-    <Content Include="Content\fonts\arial-50.xnb" />
-    <Content Include="Content\fonts\arial-64.xnb" />
     <Content Include="Content\fonts\arial-unicode-26.fnt.xnb" />
     <Content Include="Content\fonts\arial-unicode-26.xnb" />
-    <Content Include="Content\fonts\Arial.xnb" />
-    <Content Include="Content\fonts\arial16.fnt.xnb" />
-    <Content Include="Content\fonts\arial16.xnb" />
     <Content Include="Content\fonts\bitmapFontChinese.fnt.xnb" />
     <Content Include="Content\fonts\bitmapFontChinese.xnb" />
     <Content Include="Content\fonts\bitmapFontTest.fnt.xnb" />
@@ -1458,7 +1523,6 @@
     <Content Include="Content\fonts\bitmapFontTest4.xnb" />
     <Content Include="Content\fonts\bitmapFontTest5.fnt.xnb" />
     <Content Include="Content\fonts\bitmapFontTest5.xnb" />
-    <Content Include="Content\fonts\debugfont.xnb" />
     <Content Include="Content\fonts\font-issue1343-hd.fnt.xnb" />
     <Content Include="Content\fonts\font-issue1343-hd.xnb" />
     <Content Include="Content\fonts\font-issue1343.fnt.xnb" />
@@ -1475,9 +1539,6 @@
     <Content Include="Content\fonts\larabie-16.xnb" />
     <Content Include="Content\fonts\markerFelt.fnt.xnb" />
     <Content Include="Content\fonts\markerFelt.xnb" />
-    <Content Include="Content\fonts\Paint Boy-26.xnb" />
-    <Content Include="Content\fonts\Schwarzwald Regular-26.xnb" />
-    <Content Include="Content\fonts\Scissor Cuts-26.xnb" />
     <Content Include="Content\fonts\strings.plist.xnb" />
     <Content Include="Content\fonts\tuffy_bold_italic-charmap.plist.xnb" />
     <Content Include="Content\fonts\tuffy_bold_italic-charmap.xnb" />

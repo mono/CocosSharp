@@ -228,6 +228,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelFNTRetina.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTSpriteActions.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTUNICODELanguages.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFAlignmentTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSFContentSizeRatios.cs" />
