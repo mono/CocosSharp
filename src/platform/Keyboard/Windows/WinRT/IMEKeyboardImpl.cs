@@ -1,0 +1,669 @@
+﻿
+#region Using clause
+using System;
+using System.Threading.Tasks;
+
+using Windows.UI.Core;
+using Windows.Foundation;
+//using Windows.Phone.UI.Input;
+using Windows.System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Media;
+
+#endregion Using clause
+
+
+namespace CocosSharp
+{
+    /// <summary>
+    /// IME keyboard implementaion for WinRT, Windows Store App etc...  
+    /// 
+    /// </summary>
+    internal class IMEKeyboardImpl : ICCIMEDelegate
+    {
+        private bool isVisible;
+        private string contentText;
+
+        private static IMEKeyboardImpl instance;
+
+        public CCTextField TextFieldInFocus { get; set; }
+
+        private static CoreDispatcher dispatcher;
+        static Windows.UI.Xaml.Controls.TextBox hiddenKeyInput;
+        static SwapChainBackgroundPanel content;
+
+        static bool IsXAML = false;
+
+        CCEventListenerKeyboard keyboardListener;
+
+        bool AutoRepeat { get; set; }
+
+        /// <summary>
+        /// Returns a shared instance of the platform keyboard implemenation
+        /// </summary>
+        /// <value>The shared instance.</value>
+        public static IMEKeyboardImpl SharedInstance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new IMEKeyboardImpl();
+
+                    // Get our Current SwapChainPanel.  This is for our WP8 implementation.  If we have one
+                    // and it is of type Windows.UI.Xaml.Controls.SwapChainBackgroundPanel then we are in 
+                    // XAML territory so we can do some soft keyboarding 
+                    content = Window.Current != null ?
+                        Window.Current.Content as SwapChainBackgroundPanel
+                        : null;
+
+                    if (content != null)
+                    {
+                        IsXAML = true;
+
+                        // Obtain the CoreWindow of the current thread because we are going to need
+                        // to execute all of this on the UI thread
+                        var coreWindow = Windows.ApplicationModel.Core.CoreApplication.MainView;
+
+                        // Dispatcher needed to run on UI Thread
+                        dispatcher = coreWindow.CoreWindow.Dispatcher;
+                    }
+                }
+
+                return instance;
+            }
+        }
+
+        public bool ShowKeyboardInput()
+        {
+
+            if (IsXAML)
+            {
+                // RunAsync all of the UI info.
+                dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                    {
+
+                        // Create a TextBox that will be added to our view but hidden
+                        hiddenKeyInput = new Windows.UI.Xaml.Controls.TextBox();
+                        hiddenKeyInput.Opacity = 0;
+
+                        // We will only be generating one character at a time and does not
+                        // matter about the font.  All we need is the text.
+                        hiddenKeyInput.Width = 1;
+                        hiddenKeyInput.Height = 1;
+                        hiddenKeyInput.MaxWidth = 1;
+
+                        // Create an input scope for us.  Probably not needed
+                        var scope = new Windows.UI.Xaml.Input.InputScope();
+                        var name = new Windows.UI.Xaml.Input.InputScopeName();
+
+                        name.NameValue = Windows.UI.Xaml.Input.InputScopeNameValue.Default;
+                        scope.Names.Add(name);
+
+                        hiddenKeyInput.InputScope = scope;
+
+                        // Set spell checking off.
+                        hiddenKeyInput.IsSpellCheckEnabled = false;
+
+                        // Add our hidden TextBox to our panel
+                        content.Children.Add(hiddenKeyInput);
+
+
+                        // InputPane does not work in this scenario
+                        // We need to listen to GotFocus and LostFocus Events
+                        hiddenKeyInput.GotFocus += OnGotFocus;
+                        hiddenKeyInput.LostFocus += OnLostFocuc;
+
+
+                        // Hook up our key delegates
+                        hiddenKeyInput.KeyDown += OnKeyDown;
+                        hiddenKeyInput.KeyUp += OnKeyUp;
+
+                        // enable us and set focus
+                        hiddenKeyInput.IsEnabled = true;
+                        hiddenKeyInput.Focus(Windows.UI.Xaml.FocusState.Programmatic);
+                    }
+                );
+            }
+            else
+            {
+
+            }
+            return true;
+        }
+
+        #region XAML implementation event handlers
+        void OnLostFocuc(object sender, RoutedEventArgs e)
+        {
+            OnKeyboardWillHide();
+
+            IsVisible = false;
+
+            // Get our Current SwapChainPanel
+            var content = Windows.UI.Xaml.Window.Current.Content as Windows.UI.Xaml.Controls.SwapChainBackgroundPanel;
+            if (content == null)
+            {
+                // Do our detach stuff
+                return;
+            }
+
+            hiddenKeyInput.KeyDown -= OnKeyDown;
+            hiddenKeyInput.KeyUp -= OnKeyUp;
+            hiddenKeyInput.GotFocus -= OnGotFocus;
+            hiddenKeyInput.LostFocus -= OnLostFocuc;
+
+            // Let's try to get rid of the soft keyboard.  Really weird workaround finally found to keep
+            // the keyboard hidden without adding a Button control as well and switching focus to it.
+            // Found solution here:
+            // http://stackoverflow.com/questions/10714431/how-to-hide-on-edittext-soft-keyboard-windows-8-metro-application
+            // When the textbox that showed the virtual keyboard has it’s propery IsEnabled set to false, the virtual keyboard
+            // disappears. We can immediately set is to true after that and the virtual keyboard will remain hidden.
+            hiddenKeyInput.IsEnabled = false;
+            hiddenKeyInput.IsEnabled = true;
+
+            // Let's do the ReadOnly = true just to make sure
+            hiddenKeyInput.IsReadOnly = true;
+
+            content.Children.Remove(hiddenKeyInput);
+
+            hiddenKeyInput = null;
+
+            OnKeyboardDidHide();
+
+        }
+
+        void OnGotFocus(object sender, RoutedEventArgs e)
+        {
+            OnKeyboardWillShow();
+            IsVisible = true;
+            OnKeyboardDidShow();
+            
+        }
+
+
+        private void OnKeyUp(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            //CCLog.Log("Key Up" + e.Key.ToString());
+            var textBox = sender as Windows.UI.Xaml.Controls.TextBox;
+            switch (e.Key)
+            {
+                // We do not want to handle the escape key here because we already detached
+                // on the OnKeyDown
+                //case VirtualKey.Escape:
+                //    e.Handled = true;
+                //    break;
+                case VirtualKey.Back:
+                    OnDeleteBackward();
+                    break;
+                case VirtualKey.Enter:
+                    OnInsertText(new CCIMEKeybardEventArgs("\n", 1));
+                    break;
+                default:
+                    var text = textBox.Text;
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                        var charToSend = text.Substring(text.Length - 1);
+                        OnInsertText(new CCIMEKeybardEventArgs(charToSend, 1));
+                    }
+                    break;
+
+            }
+            textBox.Text = string.Empty;
+        }
+
+        private void OnKeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            // With windows XAML appliction we can catch the Escape key unlike in Windows Phone 8.1
+            switch (e.Key)
+            {
+                case VirtualKey.Escape:
+                    e.Handled = true;
+                    DetachWithIME();
+                    break;
+            }
+        }
+        #endregion
+
+        #region Physical Keyboard event handlers
+
+        CCKeys lastPressedKey = CCKeys.None;
+        void OnKeyPressed(CCEventKeyboard eventKeyboard)
+        {
+
+            lastPressedKey = CCKeys.None;
+
+            if (eventKeyboard.Keys == CCKeys.Back)
+            {
+                lastPressedKey = eventKeyboard.Keys;
+            }
+            else
+            {
+                keyState = eventKeyboard.KeyboardState;
+                var charKey = ConvertKey(eventKeyboard.Keys, ShiftDown, false, false);
+                if (charKey != (int)CCKeys.None)
+                {
+                    lastPressedKey = eventKeyboard.Keys;
+                }
+            }
+
+            //CCLog.Log("On Pressed " + lastPressedKey);
+            if (AutoRepeat && lastPressedKey != CCKeys.None)
+            {
+                StartAutorepeat();
+            }
+        }
+
+        void OnKeyReleased(CCEventKeyboard eventKeyboard)
+        {
+            //CCLog.Log("On Released " + eventKeyboard.Keys);
+            if (eventKeyboard.Keys == CCKeys.Back)
+                OnDeleteBackward();
+            else
+            {
+                keyState = eventKeyboard.KeyboardState;
+                var charKey = ConvertKey(eventKeyboard.Keys, ShiftDown, false, false);
+                if (charKey != (int)CCKeys.None)
+                    OnInsertText(new CCIMEKeybardEventArgs(charKey.ToString(), 1));
+            }
+
+            lastPressedKey = CCKeys.None;
+            if (AutoRepeat)
+                StopAutorepeat();
+        }
+
+        const float AutorepeatDeltaTime = 0.15f;
+        const int AutorepeatIncreaseTimeIncrement = 12;
+        int autorepeatCount;
+
+        protected void StartAutorepeat()
+        {
+            autorepeatCount--;
+
+            TextFieldInFocus.Schedule(Repeater, AutorepeatDeltaTime, CCSchedulePriority.RepeatForever, AutorepeatDeltaTime * 3);
+        }
+
+        protected void StopAutorepeat()
+        {
+            TextFieldInFocus.Unschedule(Repeater);
+        }
+
+        public void Repeater(float dt)
+        {
+            autorepeatCount++;
+
+            if ((autorepeatCount < AutorepeatIncreaseTimeIncrement) && (autorepeatCount % 3) != 0)
+                return;
+
+            if (lastPressedKey == CCKeys.Back)
+                OnDeleteBackward();
+            else
+            {
+                var charKey = ConvertKey(lastPressedKey, ShiftDown, false, false);
+                if (charKey != (int)CCKeys.None)
+                    OnInsertText(new CCIMEKeybardEventArgs(charKey.ToString(), 1));
+            }
+        }
+
+        #region Keyboard event conversion helpers.
+
+        // The following code is something that was in an old MonoGame test project I had lying around 
+        // and originated from the following discussion:  http://www.gamedev.net/topic/457783-xna-getting-text-from-keyboard/
+        // it was modified slightly then and just slapped it in here with small modifications to make
+        // it work with CocosSharp.
+
+        // This will be better to served to break it out into it's own routine so it can be easily modified
+        // by users.
+
+        CCKeyboardState keyState;
+        bool capsLock;
+        bool numLock;
+        bool scrollLock;
+
+        public bool AltDown
+        {
+            get { return keyState.IsKeyDown(CCKeys.LeftAlt) || keyState.IsKeyDown(CCKeys.RightAlt); }
+        }
+
+        public bool CtrlDown
+        {
+            get { return keyState.IsKeyDown(CCKeys.LeftControl) || keyState.IsKeyDown(CCKeys.RightControl); }
+        }
+
+        public bool ShiftDown
+        {
+            get { return keyState.IsKeyDown(CCKeys.LeftShift) || keyState.IsKeyDown(CCKeys.RightShift); }
+        }
+
+        public bool CapsLock { get { return capsLock; } }
+        public bool NumLock { get { return numLock; } }
+        public bool ScrollLock { get { return scrollLock; } }
+
+        public static char ConvertKey(CCKeys key, bool shift, bool capsLock, bool numLock)
+        {
+
+            switch (key)
+            {
+
+                case CCKeys.A: return ConvertToChar('a', shift, capsLock);
+                case CCKeys.B: return ConvertToChar('b', shift, capsLock);
+                case CCKeys.C: return ConvertToChar('c', shift, capsLock);
+                case CCKeys.D: return ConvertToChar('d', shift, capsLock);
+                case CCKeys.E: return ConvertToChar('e', shift, capsLock);
+                case CCKeys.F: return ConvertToChar('f', shift, capsLock);
+                case CCKeys.G: return ConvertToChar('g', shift, capsLock);
+                case CCKeys.H: return ConvertToChar('h', shift, capsLock);
+                case CCKeys.I: return ConvertToChar('i', shift, capsLock);
+                case CCKeys.J: return ConvertToChar('j', shift, capsLock);
+                case CCKeys.K: return ConvertToChar('k', shift, capsLock);
+                case CCKeys.L: return ConvertToChar('l', shift, capsLock);
+                case CCKeys.M: return ConvertToChar('m', shift, capsLock);
+                case CCKeys.N: return ConvertToChar('n', shift, capsLock);
+                case CCKeys.O: return ConvertToChar('o', shift, capsLock);
+                case CCKeys.P: return ConvertToChar('p', shift, capsLock);
+                case CCKeys.Q: return ConvertToChar('q', shift, capsLock);
+                case CCKeys.R: return ConvertToChar('r', shift, capsLock);
+                case CCKeys.S: return ConvertToChar('s', shift, capsLock);
+                case CCKeys.T: return ConvertToChar('t', shift, capsLock);
+                case CCKeys.U: return ConvertToChar('u', shift, capsLock);
+                case CCKeys.V: return ConvertToChar('v', shift, capsLock);
+                case CCKeys.W: return ConvertToChar('w', shift, capsLock);
+                case CCKeys.X: return ConvertToChar('x', shift, capsLock);
+                case CCKeys.Y: return ConvertToChar('y', shift, capsLock);
+                case CCKeys.Z: return ConvertToChar('z', shift, capsLock);
+
+                case CCKeys.D0: return (shift) ? ')' : '0';
+                case CCKeys.D1: return (shift) ? '!' : '1';
+                case CCKeys.D2: return (shift) ? '@' : '2';
+                case CCKeys.D3: return (shift) ? '#' : '3';
+                case CCKeys.D4: return (shift) ? '$' : '4';
+                case CCKeys.D5: return (shift) ? '%' : '5';
+                case CCKeys.D6: return (shift) ? '^' : '6';
+                case CCKeys.D7: return (shift) ? '&' : '7';
+                case CCKeys.D8: return (shift) ? '*' : '8';
+                case CCKeys.D9: return (shift) ? '(' : '9';
+
+                case CCKeys.Add: return '+';
+                case CCKeys.Divide: return '/';
+                case CCKeys.Multiply: return '*';
+                case CCKeys.Subtract: return '-';
+
+                case CCKeys.Space: return ' ';
+                case CCKeys.Enter: return '\n';
+
+                case CCKeys.Decimal: if (numLock && !shift) return '.'; break;
+                case CCKeys.NumPad0: if (numLock && !shift) return '0'; break;
+                case CCKeys.NumPad1: if (numLock && !shift) return '1'; break;
+                case CCKeys.NumPad2: if (numLock && !shift) return '2'; break;
+                case CCKeys.NumPad3: if (numLock && !shift) return '3'; break;
+                case CCKeys.NumPad4: if (numLock && !shift) return '4'; break;
+                case CCKeys.NumPad5: if (numLock && !shift) return '5'; break;
+                case CCKeys.NumPad6: if (numLock && !shift) return '6'; break;
+                case CCKeys.NumPad7: if (numLock && !shift) return '7'; break;
+                case CCKeys.NumPad8: if (numLock && !shift) return '8'; break;
+                case CCKeys.NumPad9: if (numLock && !shift) return '9'; break;
+
+                case CCKeys.OemBackslash: return shift ? '|' : '\\';
+                case CCKeys.OemCloseBrackets: return shift ? '}' : ']';
+                case CCKeys.OemComma: return shift ? '<' : ',';
+                case CCKeys.OemMinus: return shift ? '_' : '-';
+                case CCKeys.OemOpenBrackets: return shift ? '{' : '[';
+                case CCKeys.OemPeriod: return shift ? '>' : '.';
+                case CCKeys.OemPipe: return shift ? '|' : '\\';
+                case CCKeys.OemPlus: return shift ? '+' : '=';
+                case CCKeys.OemQuestion: return shift ? '?' : '/';
+                case CCKeys.OemQuotes: return shift ? '"' : '\'';
+                case CCKeys.OemSemicolon: return shift ? ':' : ';';
+                case CCKeys.OemTilde: return shift ? '~' : '`';
+            }
+            return (char)0;
+        }
+
+        public static char ConvertToChar(char baseChar, bool shift, bool capsLock)
+        {
+            return (capsLock ^ shift) ? char.ToUpper(baseChar) : baseChar;
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Properties
+
+        public bool IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            internal set
+            {
+                isVisible = value;
+            }
+        }
+
+        #endregion
+
+        #region IMEDelegate implementation
+
+        public bool AttachWithIME()
+        {
+            if (IsXAML)
+            {
+                return ShowKeyboardInput();
+            }
+            else
+            {
+
+                if (TextFieldInFocus != null)
+                {
+
+                    OnKeyboardWillShow();
+
+                    IsVisible = true;
+
+                    OnKeyboardDidShow();
+
+                    AutoRepeat = TextFieldInFocus.AutoRepeat;
+                    keyboardListener = new CCEventListenerKeyboard();
+                    keyboardListener.OnKeyPressed = OnKeyPressed;
+                    keyboardListener.OnKeyReleased = OnKeyReleased;
+
+                    TextFieldInFocus.AddEventListener(keyboardListener);
+
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        public bool DetachWithIME()
+        {
+            if (CanDetachWithIME())
+            {
+                if (IsVisible)
+                {
+                    if (IsXAML)
+                    {
+                        // Let's try to get rid of the soft keyboard.  Really weird workaround finally found to keep
+                        // the keyboard hidden without adding a Button control as well and switching focus to it.
+                        // Found solution here:
+                        // http://stackoverflow.com/questions/10714431/how-to-hide-on-edittext-soft-keyboard-windows-8-metro-application
+                        // When the textbox that showed the virtual keyboard has it’s propery IsEnabled set to false, the virtual keyboard
+                        // disappears. We can immediately set is to true after that and the virtual keyboard will remain hidden.
+                        hiddenKeyInput.IsEnabled = false;
+                        hiddenKeyInput.IsEnabled = true;
+
+                        // Let's do the ReadOnly = true just to make sure
+                        hiddenKeyInput.IsReadOnly = true;
+                    }
+                    else
+                    {
+                        IsVisible = false;
+                        OnKeyboardWillHide();
+                        TextFieldInFocus.RemoveEventListener(keyboardListener);
+                        OnKeyboardDidHide();
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool CanAttachWithIME()
+        {
+            if (!IsVisible)
+                return true;
+
+            return false;
+        }
+
+        public bool DidAttachWithIME()
+        {
+ 
+            return IsVisible;
+        }
+
+        public bool CanDetachWithIME()
+        {
+            if (IsVisible)
+                return true;
+
+            return false;
+        }
+
+        public bool DidDetachWithIME()
+        {
+            if (!IsVisible)
+            {
+                TextFieldInFocus = null;
+                return true;
+            }
+
+            return false;
+        }
+
+        public event EventHandler<CCIMEKeybardEventArgs> InsertText;
+
+        bool OnInsertText(CCIMEKeybardEventArgs eventArgs)
+        {
+            var handler = InsertText;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, eventArgs);
+            }
+
+            return false;
+        }
+
+        public event EventHandler<CCIMEKeybardEventArgs> ReplaceText;
+
+        bool OnReplaceText(CCIMEKeybardEventArgs eventArgs)
+        {
+            var handler = ReplaceText;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent(handler, eventArgs);
+            }
+
+            return false;
+        }
+
+
+        public event EventHandler<CCIMEKeybardEventArgs> DeleteBackward;
+
+        bool OnDeleteBackward()
+        {
+            var handler = DeleteBackward;
+            if (handler != null)
+            {
+                return ProcessCancelableEvent (handler, new CCIMEKeybardEventArgs(string.Empty, 0));
+            }
+
+            return false;
+        }
+
+        private bool ProcessCancelableEvent(EventHandler<CCIMEKeybardEventArgs> handler, CCIMEKeybardEventArgs eventArgs)
+        {
+            var canceled = false;
+            Delegate inFocusDelegate = null;
+            var sender = TextFieldInFocus;
+            foreach (var instantHandler in handler.GetInvocationList())
+            {
+                if (eventArgs.Cancel)
+                {
+                    break;
+                }
+
+                // Make sure we process all event handlers except for our focused text field
+                // We need to process it at the end to give the other event handlers a chance 
+                // to cancel the event from propogating to our focused text field.
+                if (instantHandler.Target == sender)
+                    inFocusDelegate = instantHandler;
+                else
+                    instantHandler.DynamicInvoke(sender, eventArgs);
+            }
+
+            canceled = eventArgs.Cancel;
+
+            if (inFocusDelegate != null && !canceled)
+                inFocusDelegate.DynamicInvoke(sender, eventArgs);
+
+            return canceled;
+        }
+
+        public string ContentText
+        {
+            get
+            {
+                return contentText;
+            }
+            set
+            {
+                contentText = value;
+            }
+        }
+
+        #region keyboard show/hide notification
+
+        public event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardWillShow;
+
+        void OnKeyboardWillShow()
+        {
+            var handler = KeyboardWillShow;
+            if (handler != null)
+                handler(this, new CCIMEKeyboardNotificationInfo());
+        }
+
+        public event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardDidShow;
+
+        void OnKeyboardDidShow()
+        {
+            var handler = KeyboardDidShow;
+            if (handler != null)
+                handler(this, new CCIMEKeyboardNotificationInfo());
+        }
+
+        public event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardWillHide;
+
+        void OnKeyboardWillHide()
+        {
+            var handler = KeyboardWillHide;
+            if (handler != null)
+                handler(this, new CCIMEKeyboardNotificationInfo());
+        }
+
+        public event EventHandler<CCIMEKeyboardNotificationInfo> KeyboardDidHide;
+
+        void OnKeyboardDidHide()
+        {
+            var handler = KeyboardDidHide;
+            if (handler != null)
+                handler(this, new CCIMEKeyboardNotificationInfo());
+        }
+        #endregion
+    }
+    #endregion
+
+}

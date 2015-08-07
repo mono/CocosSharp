@@ -111,6 +111,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="platform\Keyboard\Windows\WinRT\IMEKeyboardImpl.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
     <None Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="actions\action\CCAmplitudeAction.cs" />
     <Compile Include="events\CCEvent.cs" />
@@ -888,14 +891,8 @@
     <Compile Include=".\text_input_node\CCIMEKeyboardNotificationInfo.cs">
       <LogicalName>text_input_node\CCIMEKeyboardNotificationInfo</LogicalName>
     </Compile>
-    <Compile Include=".\text_input_node\CCTextFieldTTF.cs">
-      <LogicalName>text_input_node\CCTextFieldTTF </LogicalName>
-    </Compile>
     <Compile Include=".\text_input_node\ICCIMEDelegate.cs">
       <LogicalName>text_input_node\ICCIMEDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\text_input_node\ICCTextFieldDelegate.cs">
-      <LogicalName>text_input_node\ICCTextFieldDelegate</LogicalName>
     </Compile>
     <Compile Include=".\tileMap_parallax_nodes\CCParallaxNode.cs">
       <LogicalName>tileMap_parallax_nodes\CCParallaxNode</LogicalName>

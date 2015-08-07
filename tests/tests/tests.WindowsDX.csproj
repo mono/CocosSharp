@@ -426,6 +426,7 @@
     <Compile Include="classes\tests\SpriteTest\SpriteTestScene.cs" />
     <Compile Include="classes\tests\SpriteTest\SpriteZOrder.cs" />
     <Compile Include="classes\tests\SpriteTest\SpriteZVertex.cs" />
+    <Compile Include="classes\tests\TextInputTest\CustomIME\UppercaseIMEKeyboardImpl.cs" />
     <Compile Include="classes\tests\TextInputTest\TextInputTest.cs" />
     <Compile Include="classes\tests\TextInputTest\TextInputTestScene.cs" />
     <Compile Include="classes\tests\Texture2dTest\Texture2dTest.cs" />

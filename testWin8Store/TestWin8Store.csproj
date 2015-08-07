@@ -1235,6 +1235,9 @@
     <Compile Include="..\tests\tests\classes\tests\SpriteTest\SpriteZVertex.cs">
       <Link>classes\tests\SpriteTest\SpriteZVertex</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\tests\TextInputTest\CustomIME\UppercaseIMEKeyboardImpl.cs">
+      <Link>classes\tests\TextInputTest\UppercaseIMEKeyboardImpl.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\tests\TextInputTest\TextInputTest.cs">
       <Link>classes\tests\TextInputTest\TextInputTest</Link>
     </Compile>

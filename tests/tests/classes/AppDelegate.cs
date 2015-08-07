@@ -33,8 +33,8 @@ namespace tests
 
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
-			//application.PreferredBackBufferWidth = 1024;
-			//application.PreferredBackBufferHeight = 768;
+            //application.PreferredBackBufferWidth = 1024;
+            //application.PreferredBackBufferHeight = 768;
             #elif MACOS
             //application.PreferredBackBufferWidth = 960;
             //application.PreferredBackBufferHeight = 640;
@@ -57,11 +57,11 @@ namespace tests
 
             mainWindow.DisplayStats = true;
             mainWindow.StatsScale = 1;
-            
-//            if (mainWindow.WindowSizeInPixels.Height > 320)
-//            {
-//                application.ContentSearchPaths.Insert(0,"HD");
-//            }
+
+            //            if (mainWindow.WindowSizeInPixels.Height > 320)
+            //            {
+            //                application.ContentSearchPaths.Insert(0,"HD");
+            //            }
             //CCApplication.DefaultTexelToContentSizeRatio = 2f;
             CCScene scene = new CCScene(sharedWindow);
             CCLayer layer = new TestController();

@@ -1239,6 +1239,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
+    <Compile Include="classes\tests\TextInputTest\CustomIME\UppercaseIMEKeyboardImpl.cs" />
     <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
   </ItemGroup>
@@ -2709,6 +2710,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="classes\tests\Physics\" />
     <Folder Include="classes\tests\LabelTestNew\" />
+    <Folder Include="classes\tests\TextInputTest\CustomIME\" />
     <Folder Include="classes\tests\RendererTest\" />
   </ItemGroup>
   <ItemGroup>

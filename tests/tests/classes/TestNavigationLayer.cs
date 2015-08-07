@@ -71,8 +71,18 @@ namespace tests
 
             TitleLabel.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 30);
 
-			if (!string.IsNullOrEmpty(Subtitle))
-				SubtitleLabel.Text = Subtitle;
+            string subtitleStr = Subtitle;
+
+            if (!string.IsNullOrEmpty(subtitleStr) && SubtitleLabel == null)
+            {
+                SubtitleLabel = new CCLabel(subtitleStr, "arial", 16, CCLabelFormat.SpriteFont);
+                SubtitleLabel.AnchorPoint = CCPoint.AnchorMiddleTop;
+                SubtitleLabel.HorizontalAlignment = CCTextAlignment.Center;
+                AddChild(SubtitleLabel, TestScene.TITLE_LEVEL);
+            }
+            else 
+    			if (!string.IsNullOrEmpty(Subtitle))
+    				SubtitleLabel.Text = Subtitle;
 
             if(SubtitleLabel != null)
                 SubtitleLabel.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 60);
