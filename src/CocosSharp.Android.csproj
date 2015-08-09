@@ -170,7 +170,6 @@
     <Compile Include="denshion\CCMusicPlayer.cs" />
     <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
-    <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCGridBase.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
@@ -354,6 +353,7 @@
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="EmbeddableView\CCGameView.cs" />
     <Compile Include="EmbeddableView\CCGameView.Android.cs" />
+    <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -376,10 +376,6 @@
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
       <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
       <Name>MonoGame.Framework.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
-      <Project>{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}</Project>
-      <Name>MonoGame.Framework.Net.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
