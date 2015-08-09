@@ -43,6 +43,7 @@ namespace CocosSharp
         bool noDrawChildren;
 
         CCCameraProjection initCameraProjection;
+        bool visibleBoundsDirty;
         CCRect visibleBoundsWorldspace;
 
         CCRenderTexture renderTexture;
@@ -107,7 +108,13 @@ namespace CocosSharp
 
         public new CCRect VisibleBoundsWorldspace
         {
-            get { return visibleBoundsWorldspace; }
+            get 
+            { 
+                if (visibleBoundsDirty) 
+                    UpdateVisibleBoundsRect(); 
+                
+                return visibleBoundsWorldspace; 
+            }
         }
 
         // Layer should have fixed size of content
@@ -196,6 +203,7 @@ namespace CocosSharp
             if(Camera == null)
             {
                 Camera = new CCCamera (initCameraProjection, GameView.DesignResolution);
+                visibleBoundsDirty = true;
             }
         }
 
@@ -205,7 +213,7 @@ namespace CocosSharp
 
             if(camera != null && camera == Camera && Scene != null) 
             {
-                VisibleBoundsChanged();
+                visibleBoundsDirty = true;
                 if (LayerVisibleBoundsChanged != null)
                     LayerVisibleBoundsChanged(this, null);
             }
@@ -216,7 +224,7 @@ namespace CocosSharp
             if (Scene != null && Camera != null) 
             {
                 ViewportChanged ();
-                VisibleBoundsChanged ();
+                visibleBoundsDirty = true;
             }
         }
 
@@ -233,7 +241,7 @@ namespace CocosSharp
         {
             base.ViewportChanged();
 
-            UpdateVisibleBoundsRect();
+            visibleBoundsDirty = true;
             UpdateClipping();
         }
 
@@ -272,6 +280,8 @@ namespace CocosSharp
                 (float)Math.Round(bottomLeftPoint.X), (float)Math.Round(bottomLeftPoint.Y), 
                 (float)Math.Round(bottomRightPoint.X - bottomLeftPoint.X), 
                 (float)Math.Round(topLeftPoint.Y - bottomLeftPoint.Y));
+
+            visibleBoundsDirty = false;
         }
 
         #endregion Content layout

@@ -36,7 +36,7 @@ namespace CocosSharp
     /// </summary>
     public class CCLayerColor : CCLayer, ICCBlendable
     {
-
+        bool verticesPositionDirty;
         internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
         CCCustomCommand layerRenderCommand;
@@ -129,21 +129,21 @@ namespace CocosSharp
         {
             base.AddedToScene();
 
-            UpdateVerticesPosition();
+            verticesPositionDirty = true;
         }
 
         protected override void VisibleBoundsChanged()
         {
             base.VisibleBoundsChanged();
 
-            UpdateVerticesPosition();
+            verticesPositionDirty = true;
         }
 
         protected override void ViewportChanged()
         {
             base.ViewportChanged();
 
-            UpdateVerticesPosition();
+            verticesPositionDirty = true;
         }
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
@@ -160,6 +160,9 @@ namespace CocosSharp
         {
             if(Camera != null)
             {
+                if (verticesPositionDirty)
+                    UpdateVerticesPosition();
+                
                 var drawManager = DrawManager;
 
                 bool depthTest = drawManager.DepthTest;
@@ -200,6 +203,8 @@ namespace CocosSharp
 
             SquareVertices[3].Position.X = SquareVertices[0].Position.X + visibleBounds.Size.Width;
             SquareVertices[3].Position.Y = SquareVertices[0].Position.Y + visibleBounds.Size.Height;
+
+            verticesPositionDirty = false;
         }
     }
 
