@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -160,7 +161,8 @@ namespace CocosSharp
             private set 
             {
                 viewport = value;
-                ViewportChanged(this);
+                if(ViewportChanged != null)
+                    ViewportChanged(this);
             }
         }
 
@@ -229,6 +231,7 @@ namespace CocosSharp
             presParams.DepthStencilFormat = DepthFormat.Depth24Stencil8;
             presParams.BackBufferFormat = XnaSurfaceFormat.Color;
             presParams.RenderTargetUsage = RenderTargetUsage.PreserveContents;
+            PlatformInitialiseGraphicsDevice(ref presParams);
 
             graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, graphicsProfile, presParams);
             DrawManager = new CCDrawManager(graphicsDevice);
@@ -345,7 +348,7 @@ namespace CocosSharp
 
         #region Run loop
 
-        void Tick()
+        async void Tick()
         {
             RetryTick:
 
@@ -357,7 +360,8 @@ namespace CocosSharp
             {
                 var sleepTime = (int)(targetElapsedTime - accumulatedElapsedTime).TotalMilliseconds;
 
-                System.Threading.Thread.Sleep(sleepTime);
+                await Task.Delay(TimeSpan.FromSeconds(sleepTime));
+
                 goto RetryTick;
             }
 

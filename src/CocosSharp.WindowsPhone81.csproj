@@ -106,6 +106,9 @@
     <Reference Include="SharpDX.DXGI, Version=2.6.2.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmbeddableView\CCGameView.cs" />
+    <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
+    <Compile Include="EmbeddableView\CCGameView.WindowsPhone.cs" />
     <Compile Include="label_nodes\CCLabel-FontUtilities-Win8.cs" />
     <Compile Include="label_nodes\CCLabel-WindowsPhone81.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
@@ -258,15 +261,14 @@
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
-    <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="actions\action_instants\CCActionInstant.cs" />
     <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
     <Compile Include="actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
     <Compile Include="CCCamera.cs" />
-    <Compile Include="CCWindow.cs" />
-    <Compile Include="CCViewport.cs" />
+    <None Include="CCWindow.cs" />
+    <None Include="CCViewport.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCScheduler.cs" />
@@ -336,7 +338,7 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCAccelerometer.cs" />
-    <Compile Include="platform\CCApplication.cs" />
+    <None Include="platform\CCApplication.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCDictMaker.cs" />
     <Compile Include="platform\CCFileUtils.cs" />
