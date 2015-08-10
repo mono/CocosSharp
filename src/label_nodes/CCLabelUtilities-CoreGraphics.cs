@@ -129,120 +129,120 @@ namespace CocosSharp
 		}
 
         #if IOS
-        internal static void NativeDrawString (CGBitmapContext bitmapContext, string s, CTFont font, CCColor4B brush, CGRect layoutRectangle)
-        {
-            if (font == null)
-                throw new ArgumentNullException ("font");
-
-            if (s == null || s.Length == 0)
-                return;
-
-            bitmapContext.ConcatCTM (bitmapContext.GetCTM().Invert());
-
-            // This is not needed here since the color is set in the attributed string.
-            //bitmapContext.SetFillColor(brush.R/255f, brush.G/255f, brush.B/255f, brush.A/255f);
-
-            // I think we only Fill the text with no Stroke surrounding
-            //bitmapContext.SetTextDrawingMode(CGTextDrawingMode.Fill);
-
-            var attributedString = buildAttributedString(s, font, brush);
-
-            // Work out the geometry
-            var insetBounds = layoutRectangle;
-
-            var textPosition = new CGPoint(insetBounds.X,
-                insetBounds.Y);
-
-            var boundsWidth = insetBounds.Width;
-
-            // Calculate the lines
-            var start = 0;
-            var length = attributedString.Length;
-
-            var typesetter = new CTTypesetter(attributedString);
-
-            float baselineOffset = 0;
-
-            // First we need to calculate the offset for Vertical Alignment if we 
-            // are using anything but Top
-            if (vertical != CCVerticalTextAlignment.Top) {
-                while (start < length) {
-                    var count = typesetter.SuggestLineBreak (start, boundsWidth);
-                    var line = typesetter.GetLine (new NSRange(start, count));
-
-                    // Create and initialize some values from the bounds.
-        #if IOS
-                    nfloat ascent = 0.0f;
-                    nfloat descent = 0.0f;
-                    nfloat leading = 0.0f;
-        #else
-                    var ascent = 0.0f;
-                    var descent = 0.0f;
-                    var leading = 0.0f;
-        #endif
-                    line.GetTypographicBounds (out ascent, out descent, out leading);
-                    baselineOffset += (float)Math.Ceiling (ascent + descent + leading + 1); // +1 matches best to CTFramesetter's behavior  
-                    line.Dispose ();
-                    start += (int)count;
-                }
-            }
-
-            start = 0;
-
-            while (start < length && textPosition.Y < insetBounds.Bottom)
-            {
-
-                // Now we ask the typesetter to break off a line for us.
-                // This also will take into account line feeds embedded in the text.
-                //  Example: "This is text \n with a line feed embedded inside it"
-                var count = typesetter.SuggestLineBreak(start, boundsWidth);
-                var line = typesetter.GetLine(new NSRange(start, count));
-
-                // Create and initialize some values from the bounds.
-        #if IOS
-                nfloat ascent = 0.0f;
-                nfloat descent = 0.0f;
-                nfloat leading = 0.0f;
-        #else
-                var ascent = 0.0f;
-                var descent = 0.0f;
-                var leading = 0.0f;
-        #endif
-
-                line.GetTypographicBounds(out ascent, out descent, out leading);
-
-                // Calculate the string format if need be
-                var penFlushness = 0.0f;
-
-                if (horizontal == CCTextAlignment.Right)
-                    penFlushness = (float)line.GetPenOffsetForFlush(1.0f, boundsWidth);
-                else if (horizontal == CCTextAlignment.Center)
-                    penFlushness = (float)line.GetPenOffsetForFlush(0.5f, boundsWidth);
-
-                // initialize our Text Matrix or we could get trash in here
-                var textMatrix = CGAffineTransform.MakeIdentity();
-
-                if (vertical == CCVerticalTextAlignment.Top)
-                    textMatrix.Translate(penFlushness, insetBounds.Height - textPosition.Y -(float)Math.Floor(ascent - 1));
-                if (vertical == CCVerticalTextAlignment.Center)
-                    textMatrix.Translate(penFlushness, ((insetBounds.Height / 2) + (baselineOffset / 2)) - textPosition.Y -(float)Math.Floor(ascent - 1));
-                if (vertical == CCVerticalTextAlignment.Bottom)
-                    textMatrix.Translate(penFlushness, baselineOffset - textPosition.Y -(float)Math.Floor(ascent - 1));
-
-                // Set our matrix
-                bitmapContext.TextMatrix = textMatrix;
-
-                // and draw the line
-                line.Draw(bitmapContext);
-
-                // Move the index beyond the line break.
-                start += (int)count;
-                textPosition.Y += (float)Math.Ceiling(ascent + descent + leading + 1); // +1 matches best to CTFramesetter's behavior  
-                line.Dispose();
-
-            }
-
-        }   
+//        internal static void NativeDrawString (CGBitmapContext bitmapContext, string s, CTFont font, CCColor4B brush, CGRect layoutRectangle)
+//        {
+//            if (font == null)
+//                throw new ArgumentNullException ("font");
+//
+//            if (s == null || s.Length == 0)
+//                return;
+//
+//            bitmapContext.ConcatCTM (bitmapContext.GetCTM().Invert());
+//
+//            // This is not needed here since the color is set in the attributed string.
+//            //bitmapContext.SetFillColor(brush.R/255f, brush.G/255f, brush.B/255f, brush.A/255f);
+//
+//            // I think we only Fill the text with no Stroke surrounding
+//            //bitmapContext.SetTextDrawingMode(CGTextDrawingMode.Fill);
+//
+//            var attributedString = buildAttributedString(s, font, brush);
+//
+//            // Work out the geometry
+//            var insetBounds = layoutRectangle;
+//
+//            var textPosition = new CGPoint(insetBounds.X,
+//                insetBounds.Y);
+//
+//            var boundsWidth = insetBounds.Width;
+//
+//            // Calculate the lines
+//            var start = 0;
+//            var length = attributedString.Length;
+//
+//            var typesetter = new CTTypesetter(attributedString);
+//
+//            float baselineOffset = 0;
+//
+//            // First we need to calculate the offset for Vertical Alignment if we 
+//            // are using anything but Top
+//            if (vertical != CCVerticalTextAlignment.Top) {
+//                while (start < length) {
+//                    var count = typesetter.SuggestLineBreak (start, boundsWidth);
+//                    var line = typesetter.GetLine (new NSRange(start, count));
+//
+//                    // Create and initialize some values from the bounds.
+//        #if IOS
+//                    nfloat ascent = 0.0f;
+//                    nfloat descent = 0.0f;
+//                    nfloat leading = 0.0f;
+//        #else
+//                    var ascent = 0.0f;
+//                    var descent = 0.0f;
+//                    var leading = 0.0f;
+//        #endif
+//                    line.GetTypographicBounds (out ascent, out descent, out leading);
+//                    baselineOffset += (float)Math.Ceiling (ascent + descent + leading + 1); // +1 matches best to CTFramesetter's behavior  
+//                    line.Dispose ();
+//                    start += (int)count;
+//                }
+//            }
+//
+//            start = 0;
+//
+//            while (start < length && textPosition.Y < insetBounds.Bottom)
+//            {
+//
+//                // Now we ask the typesetter to break off a line for us.
+//                // This also will take into account line feeds embedded in the text.
+//                //  Example: "This is text \n with a line feed embedded inside it"
+//                var count = typesetter.SuggestLineBreak(start, boundsWidth);
+//                var line = typesetter.GetLine(new NSRange(start, count));
+//
+//                // Create and initialize some values from the bounds.
+//        #if IOS
+//                nfloat ascent = 0.0f;
+//                nfloat descent = 0.0f;
+//                nfloat leading = 0.0f;
+//        #else
+//                var ascent = 0.0f;
+//                var descent = 0.0f;
+//                var leading = 0.0f;
+//        #endif
+//
+//                line.GetTypographicBounds(out ascent, out descent, out leading);
+//
+//                // Calculate the string format if need be
+//                var penFlushness = 0.0f;
+//
+//                if (horizontal == CCTextAlignment.Right)
+//                    penFlushness = (float)line.GetPenOffsetForFlush(1.0f, boundsWidth);
+//                else if (horizontal == CCTextAlignment.Center)
+//                    penFlushness = (float)line.GetPenOffsetForFlush(0.5f, boundsWidth);
+//
+//                // initialize our Text Matrix or we could get trash in here
+//                var textMatrix = CGAffineTransform.MakeIdentity();
+//
+//                if (vertical == CCVerticalTextAlignment.Top)
+//                    textMatrix.Translate(penFlushness, insetBounds.Height - textPosition.Y -(float)Math.Floor(ascent - 1));
+//                if (vertical == CCVerticalTextAlignment.Center)
+//                    textMatrix.Translate(penFlushness, ((insetBounds.Height / 2) + (baselineOffset / 2)) - textPosition.Y -(float)Math.Floor(ascent - 1));
+//                if (vertical == CCVerticalTextAlignment.Bottom)
+//                    textMatrix.Translate(penFlushness, baselineOffset - textPosition.Y -(float)Math.Floor(ascent - 1));
+//
+//                // Set our matrix
+//                bitmapContext.TextMatrix = textMatrix;
+//
+//                // and draw the line
+//                line.Draw(bitmapContext);
+//
+//                // Move the index beyond the line break.
+//                start += (int)count;
+//                textPosition.Y += (float)Math.Ceiling(ascent + descent + leading + 1); // +1 matches best to CTFramesetter's behavior  
+//                line.Dispose();
+//
+//            }
+//
+//        }   
         #else
 //		internal static void NativeDrawString (CGBitmapContext bitmapContext, string s, CTFont font, CCColor4B brush, RectangleF layoutRectangle)
 //		{
