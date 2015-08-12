@@ -320,11 +320,10 @@ namespace CocosSharp
             {
                 if(zOrder != value)
                 {
-                    zOrder = value;
                     if (Parent != null)
-                    {
                         Parent.ReorderChild(this, value);
-                    }
+                    
+                    zOrder = value;
 
                     if(EventDispatcher != null)
                         EventDispatcher.MarkDirty = this;

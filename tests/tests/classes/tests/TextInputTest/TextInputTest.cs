@@ -368,7 +368,7 @@ namespace tests
 
             var nextRandom = (float)CCRandom.Next(RANDOM_MAX);
 
-            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+            CCSize winSize = VisibleBoundsWorldspace.Size;
             CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + nextRandom / (2.0f * RANDOM_MAX)));
 
             float duration = 1;

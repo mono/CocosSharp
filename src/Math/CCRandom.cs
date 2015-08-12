@@ -6,7 +6,11 @@ namespace CocosSharp
     public class CCRandom
     {
         // random seed 
+        #if IOS
+        private static System.Random _random = new System.Random(unchecked((int)DateTime.UtcNow.Ticks));
+        #else
         private static System.Random _random = new System.Random((int)DateTime.UtcNow.Ticks);
+        #endif
 
         public static void Randomize(int seed)
         {
