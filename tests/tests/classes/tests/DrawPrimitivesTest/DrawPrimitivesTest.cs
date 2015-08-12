@@ -835,4 +835,119 @@ namespace tests
 
         #endregion Setup content
     }
+
+    // Forum Post https://forums.xamarin.com/discussion/comment/145878/#Comment_145878
+    public class DrawNodeTriangleVertex : BaseDrawNodeTest
+    {
+        
+        CCDrawNode drawTriangles;
+        CCDrawNode backGround;
+
+        public DrawNodeTriangleVertex()
+        {
+            Color = new CCColor3B(127, 127, 127);
+            Opacity = 255;
+            drawTriangles = new CCDrawNode();
+            drawTriangles.BlendFunc = CCBlendFunc.NonPremultiplied;
+
+            AddChild(drawTriangles, 10);
+
+            backGround = new CCDrawNode();
+
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Using AddTriangleVertex for Custom Geometry";
+            }
+        }
+
+        #region Setup content
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            var move = new CCMoveBy(4, new CCPoint(windowSize.Width / 2, 0));
+            backGround.Position = VisibleBoundsWorldspace.Left();
+            backGround.PositionX += windowSize.Width / 4;
+
+            // Run background animation
+            backGround.RepeatForever(move, move.Reverse());
+
+            backGround.DrawSolidCircle(CCPoint.Zero, 220, CCColor4B.White);
+            AddChild(backGround);
+
+
+            var color = CCColor4B.Red;
+            color.A = (byte)(255 * 0.3f);
+
+            // Draw polygons
+            //P1: 380:-160 P2: 200:-240 P3: 160:-420
+            CCPoint[] points = new CCPoint[]
+            {
+                //P1: 380:-160 P2: 200:-240 P3: 160:-420
+                new CCPoint(380,-160),
+                new CCPoint(200,-240),
+                new CCPoint(160,-420),
+            };
+
+            //P1: 160:-420 P2: 200:-520 P3: 360:-540
+            CCPoint[] pointss = new CCPoint[]
+            {
+                new CCPoint(160,-420),
+                new CCPoint(200,-520),
+                new CCPoint(360,-540)
+            };
+            //P1: 360:-540 P2: 420:-600 P3: 520:-520
+            CCPoint[] pointss2 = new CCPoint[]
+            {
+                new CCPoint(360,-540),
+                new CCPoint(420,-600),
+                new CCPoint(530,-520)
+            };
+            //P1: 520:-520 P2: 380:-160 P3: 160:-420
+            CCPoint[] pointss3 = new CCPoint[]
+            {
+                new CCPoint(520,-520),
+                new CCPoint(380,-160),
+                new CCPoint(160,-420)
+            };
+
+            // P1: 160:-420 P2: 360:-540 P3: 520:-520
+            CCPoint[] pointss4 = new CCPoint[]
+            {
+                new CCPoint(160,-420),
+                new CCPoint(360,-540),
+                new CCPoint(520,-520)
+            };
+
+            DrawSolidPolygon(points, color);
+            DrawSolidPolygon(pointss, color);
+            DrawSolidPolygon(pointss2, color);
+            DrawSolidPolygon(pointss3, color);
+            DrawSolidPolygon(pointss4, color);
+
+            drawTriangles.Position = windowSize.Center;
+            // Offset by the bounds of the polygons to more or less center it
+            drawTriangles.PositionX -= 370;
+            drawTriangles.PositionY += 440;
+        }
+        #endregion Setup content
+
+        void DrawSolidPolygon(CCPoint[] points, CCColor4B color)
+        {
+            for (int i = 0; i < points.Length - 2; i++)
+            {
+                drawTriangles.AddTriangleVertex(new CCV3F_C4B(points[0], color)); 
+                drawTriangles.AddTriangleVertex(new CCV3F_C4B(points[i + 1], color)); 
+                drawTriangles.AddTriangleVertex(new CCV3F_C4B(points[i + 2], color)); 
+            }
+
+        }
+
+    }
 }
