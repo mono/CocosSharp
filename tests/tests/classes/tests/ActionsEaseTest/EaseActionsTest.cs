@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CocosSharp;
 using Random = CocosSharp.CCRandom;
 
@@ -246,9 +247,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Layer.VisibleBoundsWorldspace.Size;
-
-            var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
+            var move = new CCMoveBy (3, new CCPoint(VisibleBoundsWorldspace.Right().X - 130, 0));
             var move_back = move.Reverse();
 
             var move_ease_in = new CCEaseSineIn(move);
@@ -264,9 +263,9 @@ namespace tests
             var seq3 = new CCSequence(move_ease_out, delay, move_ease_out_back,
                                                 delay);
 
-            m_grossini.RunAction(new CCRepeatForever (seq1));
-            m_tamara.RunAction(new CCRepeatForever (seq2));
-            m_kathia.RunAction(new CCRepeatForever (seq3));
+            m_grossini.RepeatForever(seq1);
+            m_tamara.RepeatForever(seq2);
+            m_kathia.RepeatForever(seq3);
         }
 
 		public override string Title
@@ -595,44 +594,40 @@ namespace tests
 
     public static class EaseTest
     {
-        public const int MAX_LAYER = 13;
+
+        public static int MAX_LAYER = 0;
         public const int kTagAction1 = 1;
         public const int kTagAction2 = 2;
         public const int kTagSlider = 1;
         private static int sceneIdx = -1;
 
-        public static CCLayer createEaseLayer(int nIndex)
+        static EaseTest ()
         {
-            switch (nIndex)
+            MAX_LAYER = easeTestFunctions.Count;
+
+        }
+
+        static List<Func<CCLayer>> easeTestFunctions = new List<Func<CCLayer>> ()
             {
-                case 0:
-                    return new SpriteEase();
-				case 1:
-                    return new SpriteEaseInOut();
-                case 2:
-                    return new SpriteEaseExponential();
-                case 3:
-                    return new SpriteEaseExponentialInOut();
-                case 4:
-                    return new SpriteEaseSine();
-                case 5:
-                    return new SpriteEaseSineInOut();
-                case 6:
-                    return new SpriteEaseElastic();
-                case 7:
-                    return new SpriteEaseElasticInOut();
-                case 8:
-                    return new SpriteEaseBounce();
-                case 9:
-                    return new SpriteEaseBounceInOut();
-                case 10:
-                    return new SpriteEaseBack();
-                case 11:
-                    return new SpriteEaseBackInOut();
-				case 12:
-                    return new SpeedTest();
-            }
-            return null;
+
+                () => new SpriteEase(),
+                () => new SpriteEaseInOut(),
+                () => new SpriteEaseExponential(),
+                () => new SpriteEaseExponentialInOut(),
+                () => new SpriteEaseSine(),
+                () => new SpriteEaseSineInOut(),
+                () => new SpriteEaseElastic(),
+                () => new SpriteEaseElasticInOut(),
+                () => new SpriteEaseBounce(),
+                () => new SpriteEaseBounceInOut(),
+                () => new SpriteEaseBack(),
+                () => new SpriteEaseBackInOut(),
+                () => new SpeedTest(),
+            };
+
+        public static CCLayer createEaseLayer(int index)
+        {
+            return easeTestFunctions[index]();
         }
 
         public static CCLayer nextEaseAction()
