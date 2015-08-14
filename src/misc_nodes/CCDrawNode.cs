@@ -693,85 +693,66 @@ namespace CocosSharp
         public void DrawPolygon(CCPoint[] verts, int count, CCColor4F fillColor, float borderWidth,
                                 CCColor4F borderColor, bool closePolygon = true)
         {
+
             var polycount = count;
-
-            var extrude = new ExtrudeVerts[polycount];
-
-            for (int i = 0; i < polycount; i++)
-            {
-                var v0 = verts[(i - 1 + polycount) % polycount];
-                var v1 = verts[i];
-                var v2 = verts[(i + 1) % polycount];
-
-                var n1 = CCPoint.Normalize(CCPoint.PerpendicularCCW(v1 - v0));
-                var n2 = CCPoint.Normalize(CCPoint.PerpendicularCCW(v2 - v1));
-
-                var offset = (n1 + n2) * (1.0f / (CCPoint.Dot(n1, n2) + 1.0f));
-                extrude[i] = new ExtrudeVerts() {offset = offset, n = n2};
-            }
-
-            bool outline = (borderColor.A > 0.0f && borderWidth > 0.0f);
 
             var colorFill = new CCColor4B(fillColor);
             var borderFill = new CCColor4B(borderColor);
-            
-            float inset = (!outline ? 0.5f : 0.0f);
-            
-            for (int i = 0; i < polycount - 2; i++)
+
+            bool outline = (borderColor.A > 0.0f && borderWidth > 0.0f);
+            bool fill = fillColor.A > 0.0f;
+
+            var numberOfTriangles = outline ? (3 * polycount - 2) : (polycount - 2);
+
+            if (numberOfTriangles > 0 && fill && closePolygon)
             {
-                var v0 = verts[0] - (extrude[0].offset * inset);
-                var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
-                var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
-
-                AddTriangleVertex(new CCV3F_C4B(v0, colorFill)); //__t(v2fzero)
-                AddTriangleVertex(new CCV3F_C4B(v1, colorFill)); //__t(v2fzero)
-                AddTriangleVertex(new CCV3F_C4B(v2, colorFill)); //__t(v2fzero)
-            }
-
-            for (int i = 0; i < polycount - 1; i++)
-            {
-                int j = (i + 1) % polycount;
-                var v0 = verts[i];
-                var v1 = verts[j];
-
-                var offset0 = extrude[i].offset;
-                var offset1 = extrude[j].offset;
-
-                if (outline)
+                for (int i = 1; i < polycount - 1; i++)
                 {
-                    var inner0 = (v0 - (offset0 * borderWidth));
-                    var inner1 = (v1 - (offset1 * borderWidth));
-                    var outer0 = (v0 + (offset0 * borderWidth));
-                    var outer1 = (v1 + (offset1 * borderWidth));
-
-                    AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); //__t(v2fneg(n0))
-                    AddTriangleVertex(new CCV3F_C4B(inner1, borderFill)); //__t(v2fneg(n0))
-                    AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); //__t(n0)
-
-                    AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); //__t(v2fneg(n0))
-                    AddTriangleVertex(new CCV3F_C4B(outer0, borderFill)); //__t(n0)
-                    AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); //__t(n0)
-                }
-                else
-                {
-                    var inner0 = (v0 - (offset0 * 0.5f));
-                    var inner1 = (v1 - (offset1 * 0.5f));
-                    var outer0 = (v0 + (offset0 * 0.5f));
-                    var outer1 = (v1 + (offset1 * 0.5f));
-
-                    AddTriangleVertex(new CCV3F_C4B(inner0, colorFill)); //__t(v2fzero)
-                    AddTriangleVertex(new CCV3F_C4B(inner1, colorFill)); //__t(v2fzero)
-                    AddTriangleVertex(new CCV3F_C4B(outer1, colorFill)); //__t(n0)
-
-                    AddTriangleVertex(new CCV3F_C4B(inner0, colorFill)); //__t(v2fzero)
-                    AddTriangleVertex(new CCV3F_C4B(outer0, colorFill)); //__t(n0)
-                    AddTriangleVertex(new CCV3F_C4B(outer1, colorFill)); //__t(n0)
+                    AddTriangleVertex(new CCV3F_C4B(verts[0], colorFill));
+                    AddTriangleVertex(new CCV3F_C4B(verts[i], colorFill));
+                    AddTriangleVertex(new CCV3F_C4B(verts[i + 1], colorFill));
                 }
             }
-
-            if (closePolygon)
+            else
             {
-                for (int i = polycount - 1; i < polycount; i++)
+                for (int i = 0; i < polycount - 1; i++)
+                {
+                    DrawLine(verts[i], verts[i + 1], borderWidth, colorFill);
+                }
+
+            }
+
+            if (outline)
+            {
+                var extrude = new ExtrudeVerts[polycount];
+
+                for (int i = 0; i < polycount; i++)
+                {
+                    var v0 = verts[(i - 1 + polycount) % polycount];
+                    var v1 = verts[i];
+                    var v2 = verts[(i + 1) % polycount];
+
+                    var n1 = CCPoint.Normalize(CCPoint.PerpendicularCCW(v1 - v0));
+                    var n2 = CCPoint.Normalize(CCPoint.PerpendicularCCW(v2 - v1));
+
+                    var offset = (n1 + n2) * (1.0f / (CCPoint.Dot(n1, n2) + 1.0f));
+                    extrude[i] = new ExtrudeVerts() { offset = offset, n = n2 };
+                }
+
+                float inset = (!outline ? 0.5f : 0.0f);
+
+                for (int i = 0; i < polycount - 2; i++)
+                {
+                    var v0 = verts[0] - (extrude[0].offset * inset);
+                    var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
+                    var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
+
+                    AddTriangleVertex(new CCV3F_C4B(v0, colorFill)); //__t(v2fzero)
+                    AddTriangleVertex(new CCV3F_C4B(v1, colorFill)); //__t(v2fzero)
+                    AddTriangleVertex(new CCV3F_C4B(v2, colorFill)); //__t(v2fzero)
+                }
+
+                for (int i = 0; i < polycount - 1; i++)
                 {
                     int j = (i + 1) % polycount;
                     var v0 = verts[i];
@@ -780,38 +761,47 @@ namespace CocosSharp
                     var offset0 = extrude[i].offset;
                     var offset1 = extrude[j].offset;
 
-                    if (outline)
+                    var inner0 = (v0 - (offset0 * borderWidth));
+                    var inner1 = (v1 - (offset1 * borderWidth));
+                    var outer0 = (v0 + (offset0 * borderWidth));
+                    var outer1 = (v1 + (offset1 * borderWidth));
+
+                    AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); 
+                    AddTriangleVertex(new CCV3F_C4B(inner1, borderFill)); 
+                    AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); 
+
+                    AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); 
+                    AddTriangleVertex(new CCV3F_C4B(outer0, borderFill)); 
+                    AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); 
+                }
+
+                if (closePolygon)
+                {
+                    for (int i = polycount - 1; i < polycount; i++)
                     {
+                        int j = (i + 1) % polycount;
+                        var v0 = verts[i];
+                        var v1 = verts[j];
+
+                        var offset0 = extrude[i].offset;
+                        var offset1 = extrude[j].offset;
+
                         var inner0 = (v0 - (offset0 * borderWidth));
                         var inner1 = (v1 - (offset1 * borderWidth));
                         var outer0 = (v0 + (offset0 * borderWidth));
                         var outer1 = (v1 + (offset1 * borderWidth));
 
-                        AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); //__t(v2fneg(n0))
-                        AddTriangleVertex(new CCV3F_C4B(inner1, borderFill)); //__t(v2fneg(n0))
-                        AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); //__t(n0)
+                        AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); 
+                        AddTriangleVertex(new CCV3F_C4B(inner1, borderFill)); 
+                        AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); 
 
-                        AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); //__t(v2fneg(n0))
-                        AddTriangleVertex(new CCV3F_C4B(outer0, borderFill)); //__t(n0)
-                        AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); //__t(n0)
-                    }
-                    else
-                    {
-                        var inner0 = (v0 - (offset0 * 0.5f));
-                        var inner1 = (v1 - (offset1 * 0.5f));
-                        var outer0 = (v0 + (offset0 * 0.5f));
-                        var outer1 = (v1 + (offset1 * 0.5f));
-
-                        AddTriangleVertex(new CCV3F_C4B(inner0, colorFill)); //__t(v2fzero)
-                        AddTriangleVertex(new CCV3F_C4B(inner1, colorFill)); //__t(v2fzero)
-                        AddTriangleVertex(new CCV3F_C4B(outer1, colorFill)); //__t(n0)
-
-                        AddTriangleVertex(new CCV3F_C4B(inner0, colorFill)); //__t(v2fzero)
-                        AddTriangleVertex(new CCV3F_C4B(outer0, colorFill)); //__t(n0)
-                        AddTriangleVertex(new CCV3F_C4B(outer1, colorFill)); //__t(n0)
+                        AddTriangleVertex(new CCV3F_C4B(inner0, borderFill)); 
+                        AddTriangleVertex(new CCV3F_C4B(outer0, borderFill)); 
+                        AddTriangleVertex(new CCV3F_C4B(outer1, borderFill)); 
                     }
                 }
             }
+        
             dirty = true;
         }
 

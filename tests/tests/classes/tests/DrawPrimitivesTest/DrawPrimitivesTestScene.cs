@@ -30,17 +30,17 @@ namespace tests
 
         static Func<CCLayer>[] createPrimitiveLayerFunctions =
             {
-            
                 () => new DrawPrimitivesTest(),
                 () => new DrawNodeTest(),
                 () => new DrawNodeTest1(),
                 () => new DrawNodeTestBlend(),
                 () => new DrawNodeTriangleVertex(),
+                () => new DrawNodeDrawPolygon(),
 
-                () => new DrawPrimitivesWithRenderTextureTest(),
-                () => new DrawPrimitivesWithRenderTextureTest1(),
-                () => new DrawPrimitivesWithRenderTextureTest2(),
-                () => new DrawPrimitivesWithRenderTextureTest3(),
+                () => new DrawNodeWithRenderTextureTest(),
+                () => new DrawNodeWithRenderTextureTest1(),
+                () => new DrawNodeWithRenderTextureTest2(),
+                () => new DrawNodeWithRenderTextureTest3(),
                 () => new GeometryBatchTest1 (),
                 () => new GeometryBatchTest2(),
 

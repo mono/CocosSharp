@@ -62,7 +62,7 @@ namespace tests
         #endregion Callbacks
     }
 
-    public class DrawPrimitivesWithRenderTextureTest : BaseDrawNodeTest
+    public class DrawNodeWithRenderTextureTest : BaseDrawNodeTest
     {
         #region Setup content
 
@@ -103,7 +103,7 @@ namespace tests
         #endregion Setup content
     }
 
-    public class DrawPrimitivesWithRenderTextureTest1 : BaseDrawNodeTest
+    public class DrawNodeWithRenderTextureTest1 : BaseDrawNodeTest
     {
         #region Setup content
 
@@ -140,7 +140,7 @@ namespace tests
         #endregion Setup content
     }
 
-    public class DrawPrimitivesWithRenderTextureTest2 : BaseDrawNodeTest
+    public class DrawNodeWithRenderTextureTest2 : BaseDrawNodeTest
     {
         #region Setup content
 
@@ -179,7 +179,7 @@ namespace tests
     }
 
 
-    public class DrawPrimitivesWithRenderTextureTest3 : BaseDrawNodeTest
+    public class DrawNodeWithRenderTextureTest3 : BaseDrawNodeTest
     {
         #region Setup content
 
@@ -366,7 +366,6 @@ namespace tests
 
     public class GeometryBatchTest1 : BaseDrawNodeTest
     {
-        CCAffineTransform currentWorldTransform;
         CCTexture2D texture;
         CCGeometryNode geoBatch;
 
@@ -950,4 +949,110 @@ namespace tests
         }
 
     }
+
+    // Forum Post https://forums.xamarin.com/discussion/comment/145878/#Comment_145878
+    // Issue #287 : https://github.com/mono/CocosSharp/issues/287
+    public class DrawNodeDrawPolygon : BaseDrawNodeTest
+    {
+
+        CCDrawNode drawTriangles;
+        CCDrawNode backGround;
+
+        public DrawNodeDrawPolygon()
+        {
+            Color = new CCColor3B(127, 127, 127);
+            Opacity = 255;
+            drawTriangles = new CCDrawNode();
+
+            AddChild(drawTriangles, 10);
+
+            backGround = new CCDrawNode();
+
+        }
+
+        public override string Subtitle
+        {
+            get
+            {
+                return "Using DrawPolygon - Issue #287";
+            }
+        }
+
+        #region Setup content
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            var move = new CCMoveBy(4, new CCPoint(windowSize.Width / 2, 0));
+            backGround.Position = VisibleBoundsWorldspace.Left();
+            backGround.PositionX += windowSize.Width / 4;
+
+            // Run background animation
+            backGround.RepeatForever(move, move.Reverse());
+
+            backGround.DrawSolidCircle(CCPoint.Zero, 220, CCColor4B.White);
+            AddChild(backGround);
+
+
+            var color = CCColor4B.Red;
+            var alpha = (byte)(255 * 0.3f);
+            color.A = alpha;
+
+            // Draw polygons
+            //P1: 380:-160 P2: 200:-240 P3: 160:-420
+            CCPoint[] points = new CCPoint[]
+            {
+                //P1: 380:-160 P2: 200:-240 P3: 160:-420
+                new CCPoint(380,-160),
+                new CCPoint(200,-240),
+                new CCPoint(160,-420),
+
+            };
+
+            DrawSolidPolygon(points, color);
+
+            //P1: 160:-420 P2: 200:-520 P3: 360:-540
+            points[0] = new CCPoint(160, -420);
+            points[1] = new CCPoint(200, -520);
+            points[2] = new CCPoint(360, -540);
+
+            DrawSolidPolygon(points, color);
+
+            //P1: 360:-540 P2: 420:-600 P3: 520:-520
+            points[0] = new CCPoint(360, -540);
+            points[1] = new CCPoint(420, -600);
+            points[2] = new CCPoint(530, -520);
+
+            DrawSolidPolygon(points, color);
+
+            //P1: 520:-520 P2: 380:-160 P3: 160:-420
+            points[0] = new CCPoint(520, -520);
+            points[1] = new CCPoint(380, -160);
+            points[2] = new CCPoint(160, -420);
+
+            DrawSolidPolygon(points, color);
+
+            // P1: 160:-420 P2: 360:-540 P3: 520:-520
+            points[0] = new CCPoint(160, -420);
+            points[1] = new CCPoint(360, -540);
+            points[2] = new CCPoint(520, -520);
+
+            DrawSolidPolygon(points, color);
+
+            drawTriangles.Position = windowSize.Center;
+            // Offset by the bounds of the polygons to more or less center it
+            drawTriangles.PositionX -= 370;
+            drawTriangles.PositionY += 440;
+        }
+        #endregion Setup content
+
+        void DrawSolidPolygon(CCPoint[] points, CCColor4B color)
+        {
+            drawTriangles.DrawPolygon(points, points.Length, color, 0, CCColor4B.Transparent);
+        }
+
+    }
+
 }
