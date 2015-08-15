@@ -81,7 +81,7 @@ namespace CocosSharp
         // Static properties
 
         public static CCViewResolutionPolicy DefaultResolutionPolicy { get; set; }
-        public static CCSize DefaultDesignResolution { get; set; }
+        public static CCSizeI DefaultDesignResolution { get; set; }
 
 
         // Instance properties
