@@ -17,6 +17,8 @@ namespace CocosSharp
 
         #region Properties
 
+        public CCAccelerometer Accelerometer { get; set; }
+
         public bool TouchEnabled
         {
             get { return touchEnabled; }
