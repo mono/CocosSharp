@@ -18,6 +18,9 @@ namespace CocosSharp
 {
     public partial class CCGameView : AndroidGameView, View.IOnTouchListener, ISurfaceHolderCallback
     {
+        bool startedRunning;
+
+
         #region Constructors
 
         public CCGameView(Context context) 
@@ -36,6 +39,7 @@ namespace CocosSharp
         {
             RenderOnUIThread = false;
             FocusableInTouchMode = true;
+            ContextRenderingApi = GLVersion.ES2;
         }
 
         #endregion Constructors
@@ -66,8 +70,6 @@ namespace CocosSharp
 
         protected override void CreateFrameBuffer()
         {
-            ContextRenderingApi = GLVersion.ES2;
-
             // Fetch desired depth / stencil size
             // Need to more robustly handle
 
@@ -76,7 +78,11 @@ namespace CocosSharp
                 // Kick start the render loop
                 // In particular, graphics context is lazily created, so we need to start this up 
                 // here so that the view is initialised correctly
-                Run();
+                if (!startedRunning)
+                {
+                    Run();
+                    startedRunning = true;
+                }
                 return;
             } catch (Exception ex) {      
             }
@@ -86,6 +92,26 @@ namespace CocosSharp
 
 
         #region Cleaning up
+
+        protected override void OnContextLost(EventArgs e)
+        {
+            base.OnContextLost(e);
+
+            if (graphicsDevice!= null)
+                graphicsDevice.OnDeviceResetting();
+        }
+
+        void ISurfaceHolderCallback.SurfaceDestroyed(ISurfaceHolder holder)
+        {
+            Paused = true;
+            SurfaceDestroyed(holder);
+        }
+
+        void ISurfaceHolderCallback.SurfaceCreated(ISurfaceHolder holder)
+        {
+            SurfaceCreated(holder);
+            Paused = false;
+        }
 
         void PlatformDispose(bool disposing)
         {
@@ -98,10 +124,18 @@ namespace CocosSharp
 
         public void PlatformUpdatePaused()
         {
-            if(Paused)
+            if (Paused)
+            {
                 Pause();
+                ClearFocus();
+            }
             else
+            {
                 Resume();
+
+                if (!IsFocused)
+                    RequestFocus();
+            }
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
@@ -132,6 +166,9 @@ namespace CocosSharp
 
         void PlatformPresent()
         {
+            if (Paused)
+                return;
+
             try
             {
                 if (graphicsDevice != null)
