@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Xna.Framework;
@@ -85,13 +86,55 @@ namespace CocosSharp
 
         #region Touch handling
 
-        void PlatformUpdateTouchHandling()
-        {
-
-        }
-
         void PlatformUpdateTouchEnabled()
         {
+            if (TouchEnabled)
+            {
+                PointerPressed += TouchesBegan;
+                PointerReleased += TouchesEnded;
+                PointerCanceled += TouchesEnded;
+                PointerMoved += TouchesMoved;
+            }
+            else
+            {
+                PointerPressed -= TouchesBegan;
+                PointerReleased -= TouchesEnded;
+                PointerCanceled -= TouchesEnded;
+                PointerMoved -= TouchesMoved;
+            }
+        }
+
+        void TouchesBegan(object sender, PointerRoutedEventArgs args)
+        {
+            ((UIElement)sender).CapturePointer(args.Pointer);
+
+            var pointerPoint = args.GetCurrentPoint(this);
+            var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+
+            AddIncomingNewTouch((int)pointerPoint.PointerId, ref pos);
+
+            args.Handled = true;
+        }
+
+        void TouchesMoved(object sender, PointerRoutedEventArgs args)
+        {
+            var pointerPoint = args.GetCurrentPoint(this);
+            var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+
+            UpdateIncomingMoveTouch((int)pointerPoint.PointerId, ref pos);
+
+            args.Handled = true;
+        }
+
+        void TouchesEnded(object sender, PointerRoutedEventArgs args)
+        {
+            ((UIElement)sender).ReleasePointerCapture(args.Pointer);
+
+            var pointerPoint = args.GetCurrentPoint(this);
+
+            UpdateIncomingReleaseTouch((int)pointerPoint.PointerId);
+
+            args.Handled = true;
         }
 
         #endregion Touch handling
