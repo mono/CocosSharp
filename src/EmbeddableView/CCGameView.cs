@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
@@ -402,7 +403,7 @@ namespace CocosSharp
 
         #region Run loop
 
-        async void Tick()
+        void Tick()
         {
             RetryTick:
 
@@ -414,7 +415,7 @@ namespace CocosSharp
             {
                 var sleepTime = (int)(targetElapsedTime - accumulatedElapsedTime).TotalMilliseconds;
 
-                await Task.Delay(TimeSpan.FromSeconds(sleepTime));
+                Task.Delay(sleepTime).Wait();
 
                 goto RetryTick;
             }
