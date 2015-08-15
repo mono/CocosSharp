@@ -48,6 +48,7 @@ namespace CocosSharp
         internal event ViewportChangedEventHandler ViewportChanged;
         EventHandler<EventArgs> viewCreated;
 
+        bool paused;
         bool gameInitialised;
         bool gameStarted;
         bool viewportDirty;
@@ -77,13 +78,13 @@ namespace CocosSharp
             remove { viewCreated -= value; }
         }
 
+        // Static properties
+
         public static CCViewResolutionPolicy DefaultResolutionPolicy { get; set; }
         public static CCSize DefaultDesignResolution { get; set; }
 
 
-        #if !NETFX_CORE
-        public CCAccelerometer Accelerometer { get; set; }
-        #endif
+        // Instance properties
 
         public CCDirector Director { get; private set; }
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
@@ -93,6 +94,21 @@ namespace CocosSharp
         {
             get { return Renderer.UsingDepthTest; }
             set { Renderer.UsingDepthTest = value; }
+        }
+
+        public bool Paused
+        {
+            get { return paused; }
+            set 
+            {
+                if (paused != value)
+                {
+                    paused = value;
+                    previousTicks = gameTimer.Elapsed.Ticks;
+
+                    PlatformUpdatePaused();
+                }
+            }
         }
 
         public bool DisplayStats 
