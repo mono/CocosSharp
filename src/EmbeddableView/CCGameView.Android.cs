@@ -11,11 +11,15 @@ using OpenTK.Platform.Android;
 using OpenTK.Graphics;
 using OpenTK.Graphics.ES20;
 
+using Microsoft.Xna.Framework.Graphics;
+
 
 namespace CocosSharp
 {
     public partial class CCGameView : AndroidGameView, View.IOnTouchListener, ISurfaceHolderCallback
     {
+        #region Constructors
+
         public CCGameView(Context context) 
             : base(context)
         {
@@ -30,9 +34,18 @@ namespace CocosSharp
             FocusableInTouchMode = true;
         }
 
+        #endregion Constructors
+
+
+        #region Initialisation
+
         void PlatformInitialise()
         {
             RequestFocus();
+        }
+
+        void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
+        {
         }
 
         void PlatformStartGame()
@@ -65,6 +78,19 @@ namespace CocosSharp
             }
         }
 
+        #endregion Initialisation
+
+
+        #region Run loop
+
+        public void PlatformUpdatePaused()
+        {
+            if(Paused)
+                Pause();
+            else
+                Resume();
+        }
+
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             // Context is already set for us in AndroidGameView, so no need to set it again
@@ -85,6 +111,11 @@ namespace CocosSharp
 
             Tick();
         }
+
+        #endregion Run loop
+
+
+        #region Rendering
 
         void PlatformPresent()
         {
@@ -107,6 +138,11 @@ namespace CocosSharp
             viewportDirty = true;
         }
 
+        #endregion Rendering
+
+
+        #region Touch handling
+
         void PlatformUpdateTouchEnabled()
         {
             SetOnTouchListener(touchEnabled ? this : null);
@@ -114,7 +150,7 @@ namespace CocosSharp
 
         bool IOnTouchListener.OnTouch(View v, MotionEvent e)
         {
-            if (!TouchEnabled)
+            if (!TouchEnabled || Paused)
                 return true;
 
             CCPoint position = new CCPoint(e.GetX(e.ActionIndex), e.GetY(e.ActionIndex));
@@ -151,6 +187,8 @@ namespace CocosSharp
             }
             return true;
         }
+
+        #endregion Touch handling
     }
 }
 
