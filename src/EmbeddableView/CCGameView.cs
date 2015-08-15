@@ -21,7 +21,7 @@ namespace CocosSharp
 
     }
 
-    public partial class CCGameView
+    public partial class CCGameView: IDisposable
     {
         // (10 mill ticks per second / 60 fps) (rounded up)
         const int numOfTicksPerUpdate = 166667; 
@@ -48,6 +48,7 @@ namespace CocosSharp
         internal event ViewportChangedEventHandler ViewportChanged;
         EventHandler<EventArgs> viewCreated;
 
+        bool disposed;
         bool paused;
         bool gameInitialised;
         bool gameStarted;
@@ -273,6 +274,43 @@ namespace CocosSharp
         }
 
         #endregion Initialisation
+
+
+        #region Cleaning up
+
+        ~CCGameView() 
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if(disposed)
+                return;
+
+            PlatformDispose(disposing);
+
+            if (disposing) 
+            {
+                if (graphicsDevice != null)
+                {
+                    graphicsDevice.Dispose();
+                    graphicsDevice = null;
+                }
+            }
+
+            disposed = true;
+
+            base.Dispose(disposing);
+        }
+
+        #endregion Cleaning up
 
 
         #region Drawing

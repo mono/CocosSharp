@@ -23,12 +23,16 @@ namespace CocosSharp
         public CCGameView(Context context) 
             : base(context)
         {
-            RenderOnUIThread = false;
-            FocusableInTouchMode = true;
+            ViewInit();
         }
 
         public CCGameView(Context context, IAttributeSet attrs) 
             : base(context, attrs)
+        {
+            ViewInit();
+        }
+
+        void ViewInit()
         {
             RenderOnUIThread = false;
             FocusableInTouchMode = true;
@@ -79,6 +83,15 @@ namespace CocosSharp
         }
 
         #endregion Initialisation
+
+
+        #region Cleaning up
+
+        void PlatformDispose(bool disposing)
+        {
+        }
+
+        #endregion Cleaning up
 
 
         #region Run loop
