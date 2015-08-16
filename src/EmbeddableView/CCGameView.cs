@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Audio;
 
 namespace CocosSharp
 {
@@ -441,6 +442,8 @@ namespace CocosSharp
         void Update(GameTime time)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            SoundEffectInstancePool.Update();
 
             if (Director.NextScene != null)
                 Director.SetNextScene();

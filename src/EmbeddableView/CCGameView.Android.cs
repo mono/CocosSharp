@@ -12,6 +12,7 @@ using OpenTK.Graphics;
 using OpenTK.Graphics.ES20;
 
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 
 namespace CocosSharp
@@ -49,6 +50,7 @@ namespace CocosSharp
 
         void PlatformInitialise()
         {
+            MediaLibrary.Context = Android.App.Application.Context;
             RequestFocus();
         }
 
