@@ -1612,7 +1612,13 @@ namespace CocosSharp {
         UnKnown = 6,
         Webp = 3,
     }
-    public partial class CCIMEKeyboardNotificationInfo {
+    public partial class CCIMEKeybardEventArgs : System.EventArgs {
+        public CCIMEKeybardEventArgs(string textToInsert, int length) { }
+        public bool Cancel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int Length { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public string Text { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+    }
+    public partial class CCIMEKeyboardNotificationInfo : System.EventArgs {
         public CocosSharp.CCRect Begin;
         public float Duration;
         public CocosSharp.CCRect End;
@@ -2135,6 +2141,8 @@ namespace CocosSharp {
     }
     public static partial class CCMathHelper {
         public const float Pi = 3.14159274f;
+        public const float Pi_2 = 1.57079637f;
+        public const float Pi_4 = 0.7853982f;
         public const float TwoPi = 6.28318548f;
         public static int Clamp(int value, int min, int max) { return default(int); }
         public static float Clamp(float value, float min, float max) { return default(float); }
@@ -3676,6 +3684,38 @@ namespace CocosSharp {
         Left = 0,
         Right = 2,
     }
+    public partial class CCTextField : CocosSharp.CCLabel {
+        public CCTextField(string text, string fontName, float fontSize) { }
+        public CCTextField(string text, string fontName, float fontSize, CocosSharp.CCLabelFormat labelFormat) { }
+        public CCTextField(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment) { }
+        public CCTextField(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCLabelFormat labelFormat) { }
+        public CCTextField(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment) { }
+        public CCTextField(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCLabelFormat labelFormat) { }
+        public bool AutoEdit { get { return default(bool); } set { } }
+        public bool AutoRepeat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public int CharacterCount { get { return default(int); } }
+        public string PlaceHolderText { get { return default(string); } set { } }
+        public CocosSharp.CCColor4B PlaceHolderTextColor { get { return default(CocosSharp.CCColor4B); } set { } }
+        public bool ReadOnly { get { return default(bool); } set { } }
+        public override string Text { get { return default(string); } set { } }
+        public CocosSharp.ICCIMEDelegate TextFieldIMEImplementation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.ICCIMEDelegate); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public event CocosSharp.CCTextFieldDelegate BeginEditing { add { } remove { } }
+        public event CocosSharp.CCTextFieldDelegate EndEditing { add { } remove { } }
+        protected virtual void DeleteBackwards() { }
+        protected virtual void DoBeginEditing(ref string newText, ref bool canceled) { }
+        protected virtual void DoEndEditing(ref string newText, ref bool canceled) { }
+        public void Edit() { }
+        public void EndEdit() { }
+        protected virtual void InsertText(string text, int len) { }
+        public override void OnEnter() { }
+        public override void OnExit() { }
+        protected virtual void ReplaceText(string text, int len) { }
+        public bool TouchBegan(CocosSharp.CCTouch touch) { return default(bool); }
+        public void TouchCancelled(CocosSharp.CCTouch pTouch) { }
+        public void TouchEnded(CocosSharp.CCTouch touch) { }
+        public void TouchMoved(CocosSharp.CCTouch touch) { }
+    }
+    public delegate void CCTextFieldDelegate(object sender, ref string text, ref bool canceled);
     public partial class CCTextFieldTTF : CocosSharp.CCLabel {
         public CCTextFieldTTF(string text, string fontName, float fontSize) { }
         public CCTextFieldTTF(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment) { }
@@ -4538,19 +4578,21 @@ namespace CocosSharp {
         bool HasFocus { get; set; }
     }
     public partial interface ICCIMEDelegate {
+        string ContentText { get; set; }
+        CocosSharp.CCTextField TextFieldInFocus { get; set; }
+        event System.EventHandler<CocosSharp.CCIMEKeybardEventArgs> DeleteBackward;
+        event System.EventHandler<CocosSharp.CCIMEKeybardEventArgs> InsertText;
+        event System.EventHandler<CocosSharp.CCIMEKeyboardNotificationInfo> KeyboardDidHide;
+        event System.EventHandler<CocosSharp.CCIMEKeyboardNotificationInfo> KeyboardDidShow;
+        event System.EventHandler<CocosSharp.CCIMEKeyboardNotificationInfo> KeyboardWillHide;
+        event System.EventHandler<CocosSharp.CCIMEKeyboardNotificationInfo> KeyboardWillShow;
+        event System.EventHandler<CocosSharp.CCIMEKeybardEventArgs> ReplaceText;
         bool AttachWithIME();
         bool CanAttachWithIME();
         bool CanDetachWithIME();
-        void DeleteBackward();
         bool DetachWithIME();
         bool DidAttachWithIME();
         bool DidDetachWithIME();
-        string GetContentText();
-        void InsertText(string text, int len);
-        void KeyboardDidHide(CocosSharp.CCIMEKeyboardNotificationInfo info);
-        void KeyboardDidShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
-        void KeyboardWillHide(CocosSharp.CCIMEKeyboardNotificationInfo info);
-        void KeyboardWillShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
     }
     public partial class ICCScriptingEngine {
         public ICCScriptingEngine() { }
