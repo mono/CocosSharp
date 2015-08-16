@@ -8,6 +8,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Audio;
 
+using CocosDenshion;
+
 namespace CocosSharp
 {
     using XnaSurfaceFormat = Microsoft.Xna.Framework.Graphics.SurfaceFormat;
@@ -91,6 +93,7 @@ namespace CocosSharp
 
         public CCDirector Director { get; private set; }
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
+        public CCSimpleAudioEngine AudioEngine { get; private set; }
         public CCActionManager ActionManager { get; private set; }
 
         public bool DepthTesting
@@ -109,6 +112,9 @@ namespace CocosSharp
                     paused = value;
                     previousTicks = gameTimer.Elapsed.Ticks;
 
+                    // TODO: Pause/resume both background music AND sound effects
+                    paused ? AudioEngine.PauseBackgroundMusic() : AudioEngine.ResumeBackgroundMusic();
+                    
                     PlatformUpdatePaused();
                 }
             }
@@ -222,6 +228,7 @@ namespace CocosSharp
             ActionManager = new CCActionManager();
             Director = new CCDirector();
             EventDispatcher = new CCEventDispatcher(this);
+            AudioEngine = new CCSimpleAudioEngine();
 
             DesignResolution = DefaultDesignResolution;
             ViewportRectRatio = exactFitViewportRatio;
