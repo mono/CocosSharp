@@ -170,7 +170,7 @@ namespace CocosSharp
         void PlatformDispose(bool disposing)
         {
             var context = Android.App.Application.Context;
-            context.UnregisterReceiver(screenReceiver);
+            context.UnregisterReceiver(screenLockHandler);
         }
 
         #endregion Cleaning up

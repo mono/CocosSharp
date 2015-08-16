@@ -113,7 +113,10 @@ namespace CocosSharp
                     previousTicks = gameTimer.Elapsed.Ticks;
 
                     // TODO: Pause/resume both background music AND sound effects
-                    paused ? AudioEngine.PauseBackgroundMusic() : AudioEngine.ResumeBackgroundMusic();
+                    if (paused) 
+                        AudioEngine.PauseBackgroundMusic();
+                    else
+                        AudioEngine.ResumeBackgroundMusic();
                     
                     PlatformUpdatePaused();
                 }
@@ -307,6 +310,13 @@ namespace CocosSharp
 
             if (disposing) 
             {
+                if (AudioEngine != null)
+                {
+                    //TODO: Implement IDisposable for Audio engine
+                    //AudioEngine.Dispose();
+                    AudioEngine = null;
+                }
+
                 if (graphicsDevice != null)
                 {
                     graphicsDevice.Dispose();
