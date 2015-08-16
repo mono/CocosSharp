@@ -20,6 +20,48 @@ namespace CocosSharp
     public partial class CCGameView : AndroidGameView, View.IOnTouchListener, ISurfaceHolderCallback
     {
         bool startedRunning;
+        CCAndroidScreenReceiver screenLockHandler;
+
+
+        #region Android screen lock handling inner class
+
+        class CCAndroidScreenReceiver : BroadcastReceiver
+        {   
+            bool previousPausedState;
+            CCGameView gameView;
+
+            public CCAndroidScreenReceiver(CCGameView view)
+            {
+                gameView = view;
+            }
+
+            public override void OnReceive(Context context, Intent intent)
+            {
+                if(intent.Action == Intent.ActionScreenOff)
+                    OnLocked();
+                else if(intent.Action == Intent.ActionScreenOn)
+                {
+                    KeyguardManager keyguard = (KeyguardManager)context.GetSystemService(Context.KeyguardService);
+                    if (!keyguard.InKeyguardRestrictedInputMode())
+                        OnUnlocked();
+                }
+                else if(intent.Action == Intent.ActionUserPresent)
+                    OnUnlocked();
+            }
+
+            void OnLocked()
+            {
+                previousPausedState = gameView.Paused;
+                gameView.Paused = true;
+            }
+
+            void OnUnlocked()
+            {
+                gameView.Paused = previousPausedState;
+            }
+        }
+
+        #endregion Android screen lock handling inner class
 
 
         #region Constructors
@@ -50,7 +92,17 @@ namespace CocosSharp
 
         void PlatformInitialise()
         {
-            MediaLibrary.Context = Android.App.Application.Context;
+            var context = Android.App.Application.Context;
+            MediaLibrary.Context = context;
+
+            IntentFilter filter = new IntentFilter();
+            filter.AddAction(Intent.ActionScreenOff);
+            filter.AddAction(Intent.ActionScreenOn);
+            filter.AddAction(Intent.ActionUserPresent);
+
+            screenLockHandler = new CCAndroidScreenReceiver(this);
+            context.RegisterReceiver(screenLockHandler, filter);
+
             RequestFocus();
         }
 
@@ -117,6 +169,8 @@ namespace CocosSharp
 
         void PlatformDispose(bool disposing)
         {
+            var context = Android.App.Application.Context;
+            context.UnregisterReceiver(screenReceiver);
         }
 
         #endregion Cleaning up
