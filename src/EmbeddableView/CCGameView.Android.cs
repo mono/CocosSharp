@@ -81,6 +81,8 @@ namespace CocosSharp
         void ViewInit()
         {
             RenderOnUIThread = false;
+            AutoSetContextOnRenderFrame = false;
+            RenderThreadRestartRetries = 100;
             FocusableInTouchMode = true;
             ContextRenderingApi = GLVersion.ES2;
         }
@@ -154,19 +156,7 @@ namespace CocosSharp
             if (graphicsDevice!= null)
                 graphicsDevice.OnDeviceResetting();
         }
-
-        void ISurfaceHolderCallback.SurfaceDestroyed(ISurfaceHolder holder)
-        {
-            Paused = true;
-            SurfaceDestroyed(holder);
-        }
-
-        void ISurfaceHolderCallback.SurfaceCreated(ISurfaceHolder holder)
-        {
-            SurfaceCreated(holder);
-            Paused = false;
-        }
-
+            
         void PlatformDispose(bool disposing)
         {
             var context = Android.App.Application.Context;
@@ -200,7 +190,7 @@ namespace CocosSharp
 
             base.OnRenderFrame(e);
 
-            if (GraphicsContext == null || GraphicsContext.IsDisposed)
+            if (Paused || GraphicsContext == null || GraphicsContext.IsDisposed)
                 return;
 
             Draw();
@@ -238,8 +228,21 @@ namespace CocosSharp
             }
         }
 
+        void ISurfaceHolderCallback.SurfaceDestroyed(ISurfaceHolder holder)
+        {
+            Paused = true;
+            SurfaceDestroyed(holder);
+        }
+
+        void ISurfaceHolderCallback.SurfaceCreated(ISurfaceHolder holder)
+        {
+            SurfaceCreated(holder);
+            Paused = false;
+        }
+
         void ISurfaceHolderCallback.SurfaceChanged(ISurfaceHolder holder, Android.Graphics.Format format, int width, int height)
         {
+            SurfaceChanged(holder, format, width, height);
             ViewSize = new CCSizeI(width, height);
             viewportDirty = true;
         }

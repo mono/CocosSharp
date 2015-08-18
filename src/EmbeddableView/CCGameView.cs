@@ -107,7 +107,7 @@ namespace CocosSharp
             get { return paused; }
             set 
             {
-                if (paused != value)
+                if (gameStarted && paused != value)
                 {
                     paused = value;
                     previousTicks = gameTimer.Elapsed.Ticks;
