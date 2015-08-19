@@ -36,6 +36,7 @@
     <call target="buildmac"/>
     <call target="buildandroid"/>
     <call target="buildwindows8"/>
+    <call target="buildwindows81"/>
     <call target="buildnugets"/>
     <call target="buildXStemplates" />
 
@@ -106,6 +107,14 @@
       <nant buildfile="MonoGame/default.build" target="buildwindows8" />
       <exec program="msbuild " commandline="CocosSharp.Windows8.sln /t:Clean /p:Configuration=${configuration}" />
       <exec program="msbuild " commandline="CocosSharp.Windows8.sln /t:Rebuild /p:Configuration=${configuration}" />
+    </if>
+  </target>
+
+  <target name="buildwindows81" description="Build Windows 8.1" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <nant buildfile="MonoGame/default.build" target="buildwindows81" />
+      <exec program="msbuild " commandline="CocosSharp.Windows81.sln /t:Clean /p:Configuration=${configuration}" />
+      <exec program="msbuild " commandline="CocosSharp.Windows81.sln /t:Rebuild /p:Configuration=${configuration}" />
     </if>
   </target>
 
@@ -206,6 +215,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows8.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows81.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone8.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone81.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
