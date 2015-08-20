@@ -12,6 +12,7 @@ using OpenTK.Platform;
 using OpenTK.Platform.iPhoneOS;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using RectangleF=CoreGraphics.CGRect;
 using SizeF=CoreGraphics.CGSize;
@@ -106,6 +107,10 @@ namespace CocosSharp
             AutoResize = true;
         }
 
+        void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
+        {
+        }
+
         void PlatformStartGame()
         {
             if (timeSource !=null)
@@ -197,6 +202,18 @@ namespace CocosSharp
 
         #region Cleaning up
 
+        void PlatformDispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (timeSource != null)
+                {
+                    timeSource.Invalidate();
+                    timeSource = null;
+                }
+            }
+        }
+
         protected override void DestroyFrameBuffer()
         {
             MakeCurrent();
@@ -213,6 +230,14 @@ namespace CocosSharp
 
 
         #region Run loop
+
+        public void PlatformUpdatePaused()
+        {
+            if (Paused)
+                timeSource.Suspend();
+            else
+                timeSource.Resume();
+        }
 
         internal void RunIteration(NSTimer timer)
         {
