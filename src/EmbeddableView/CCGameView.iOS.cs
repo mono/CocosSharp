@@ -105,6 +105,8 @@ namespace CocosSharp
         void PlatformInitialise()
         {
             AutoResize = true;
+            NSNotificationCenter.DefaultCenter.AddObserver(UIApplication.DidEnterBackgroundNotification, (n)=> Paused = true);
+            NSNotificationCenter.DefaultCenter.AddObserver(UIApplication.WillEnterForegroundNotification, (n)=> Paused = false);
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -212,6 +214,9 @@ namespace CocosSharp
                     timeSource = null;
                 }
             }
+
+            NSNotificationCenter.DefaultCenter.RemoveObserver(this, UIApplication.DidEnterBackgroundNotification);
+            NSNotificationCenter.DefaultCenter.RemoveObserver(this, UIApplication.WillEnterForegroundNotification);
         }
 
         protected override void DestroyFrameBuffer()
