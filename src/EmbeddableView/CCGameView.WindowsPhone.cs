@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Xaml;
+using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
@@ -24,7 +25,7 @@ namespace CocosSharp
 
         public CCGameView()
         {
-            Initialise();           
+            Initialise();
         }
 
         #endregion Constructors
@@ -35,6 +36,7 @@ namespace CocosSharp
         void PlatformInitialise()
         {
             SizeChanged += ViewSizeChanged;
+            Window.Current.Activated += ViewStateChanged;
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -55,6 +57,7 @@ namespace CocosSharp
 
         void PlatformDispose(bool disposing)
         {
+            Window.Current.Activated -= ViewStateChanged;
         }
 
         #endregion Cleaning up
@@ -90,6 +93,11 @@ namespace CocosSharp
                 CompositionTarget.Rendering -= OnUpdateFrame;
             else
                 CompositionTarget.Rendering += OnUpdateFrame;
+        }
+
+        void ViewStateChanged(object sender, WindowActivatedEventArgs e)
+        {
+            Paused = (e.WindowActivationState == CoreWindowActivationState.Deactivated);
         }
 
         void OnUpdateFrame(object sender, object e)
