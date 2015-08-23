@@ -20,13 +20,11 @@ namespace CocosSharp
 
     public partial class CCGameView : GameSwapChainPanel
     {
-        bool firstTimeSizeChanged;
-        
         #region Constructors
 
         public CCGameView()
         {
-            SizeChanged += ViewSizeChanged;           
+            Initialise();           
         }
 
         #endregion Constructors
@@ -36,6 +34,7 @@ namespace CocosSharp
 
         void PlatformInitialise()
         {
+            SizeChanged += ViewSizeChanged;
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -60,16 +59,11 @@ namespace CocosSharp
 
         #endregion Cleaning up
 
+
         #region Rendering
 
         void ViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (!firstTimeSizeChanged)
-            {
-                Initialise();
-                firstTimeSizeChanged = true;
-            }
-            
             ViewSize = new CCSizeI((int)e.NewSize.Width, (int)e.NewSize.Height);
             
             // We need to ask the graphics device to resize the underlying swapchain/buffers
@@ -77,8 +71,12 @@ namespace CocosSharp
             graphicsDevice.PresentationParameters.BackBufferHeight = ViewSize.Height;
             graphicsDevice.CreateSizeDependentResources();
             graphicsDevice.ApplyRenderTargets(null);
-            
-            viewportDirty = true;
+
+            UpdateViewport();
+
+            platformInitialised = true;
+
+            LoadGame();
         }
 
         #endregion Rendering
