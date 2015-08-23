@@ -11,13 +11,22 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public partial class CCGameView : SwapChainPanel
-    {        
+    public class GameSwapChainPanel : SwapChainPanel
+    {
+        protected virtual void Dispose(bool disposing)
+        {
+        }
+    }
+
+    public partial class CCGameView : GameSwapChainPanel
+    {
+        bool firstTimeSizeChanged;
+        
         #region Constructors
 
         public CCGameView()
         {
-            Initialise();
+            SizeChanged += ViewSizeChanged;           
         }
 
         #endregion Constructors
@@ -27,7 +36,6 @@ namespace CocosSharp
 
         void PlatformInitialise()
         {
-            SizeChanged += ViewSizeChanged;
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -44,10 +52,24 @@ namespace CocosSharp
         #endregion Initialisation
 
 
+        #region Cleaning up
+
+        void PlatformDispose(bool disposing)
+        {
+        }
+
+        #endregion Cleaning up
+
         #region Rendering
 
         void ViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
+            if (!firstTimeSizeChanged)
+            {
+                Initialise();
+                firstTimeSizeChanged = true;
+            }
+            
             ViewSize = new CCSizeI((int)e.NewSize.Width, (int)e.NewSize.Height);
             
             // We need to ask the graphics device to resize the underlying swapchain/buffers
@@ -63,6 +85,14 @@ namespace CocosSharp
 
 
         #region Run loop
+
+        void PlatformUpdatePaused()
+        {
+            if (Paused)
+                CompositionTarget.Rendering -= OnUpdateFrame;
+            else
+                CompositionTarget.Rendering += OnUpdateFrame;
+        }
 
         void OnUpdateFrame(object sender, object e)
         {
