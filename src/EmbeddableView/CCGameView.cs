@@ -54,7 +54,9 @@ namespace CocosSharp
 
         bool disposed;
         bool paused;
-        bool gameInitialised;
+        bool viewInitialised;
+        bool platformInitialised;
+        bool gameLoaded;
         bool gameStarted;
         bool viewportDirty;
 
@@ -79,7 +81,7 @@ namespace CocosSharp
 
         public event EventHandler<EventArgs> ViewCreated 
         { 
-            add { viewCreated += value; if (gameInitialised) viewCreated(this, null); }
+            add { viewCreated += value; LoadGame(); }
             remove { viewCreated -= value; }
         }
 
@@ -223,7 +225,7 @@ namespace CocosSharp
             
         void Initialise()
         {
-            if (gameInitialised)
+            if (viewInitialised)
                 return;
 
             PlatformInitialise();
@@ -245,10 +247,7 @@ namespace CocosSharp
 
             InitialiseInputHandling();
 
-            if (viewCreated != null)
-                viewCreated(this, null);
-
-            gameInitialised = true;
+            viewInitialised = true;
         }
 
         void InitialiseGraphicsDevice()
@@ -283,6 +282,15 @@ namespace CocosSharp
             targetElapsedTime = TimeSpan.FromTicks(numOfTicksPerUpdate); 
             maxElapsedTime = TimeSpan.FromMilliseconds(maxUpdateTimeMilliseconds);
             previousTicks = 0;
+        }
+
+        void LoadGame()
+        {
+            if (viewInitialised && platformInitialised && !gameLoaded && viewCreated != null)
+            {
+                viewCreated(this, null);
+                gameLoaded = true;
+            }
         }
 
         #endregion Initialisation
