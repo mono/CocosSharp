@@ -82,13 +82,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\Win8XAML\Template\bin\EmptyProject.Win8XAML.zip">
-      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.Win8XAML.zip</Link>
+    <Content Include="..\Win81XAML\Template\bin\EmptyProject.Win81XAML.zip">
+      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.Win81XAML.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\Windows8\Template\bin\EmptyProject.Windows8.zip">
-      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.Windows8.zip</Link>
+    <Content Include="..\Windows81\Template\bin\EmptyProject.Windows81.zip">
+      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.Windows81.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
@@ -117,8 +117,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.1.5.0.1.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.1.5.0.1.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.1.6.0.0.nupkg">
+      <Link>Packages\CocosSharp.PCL.Shared.1.6.0.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
