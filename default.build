@@ -211,6 +211,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.DX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.GL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.Wrench.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
 
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
