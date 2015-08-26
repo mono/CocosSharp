@@ -12,6 +12,7 @@ namespace CocosSharp
         bool isTextureRectRotated;
         bool opacityModifyRGB;
         bool texQuadDirty;
+        bool halfTexelOffset;
 
         CCPoint unflippedOffsetPositionFromCenter;
         CCSize untrimmedSizeInPixels;
@@ -25,6 +26,8 @@ namespace CocosSharp
 
         // Static properties
 
+        public static bool DefaultHalfTexelOffset { get; set; }
+
         public static float DefaultTexelToContentSizeRatio
         {
             set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
@@ -37,6 +40,20 @@ namespace CocosSharp
 
         public int AtlasIndex { get ; internal set; }
         internal CCTextureAtlas TextureAtlas { get; set; }
+
+
+        public bool HalfTexelOffset
+        {
+            get { return halfTexelOffset; }
+            set
+            {
+                if (halfTexelOffset != value)
+                {
+                    halfTexelOffset = value;
+                    texQuadDirty = true;
+                }
+            }
+        }
 
         public bool IsAntialiased
         {
@@ -268,6 +285,7 @@ namespace CocosSharp
             quadCommand = new CCQuadCommand(1);
 
             IsTextureRectRotated = false;
+            HalfTexelOffset = DefaultHalfTexelOffset;
 
             opacityModifyRGB = true;
             BlendFunc = CCBlendFunc.AlphaBlend;
@@ -514,20 +532,15 @@ namespace CocosSharp
                 float atlasHeight = Texture.PixelsHigh;
 
                 float left, right, top, bottom;
+                float offsetW = HalfTexelOffset ? 0.5f / atlasWidth : 0.0f;
+                float offsetH = HalfTexelOffset ? 0.5f / atlasHeight : 0.0f;
 
                 if (IsTextureRectRotated)
                 {
-                    #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
-                    left = (2 * textureRectInPixels.Origin.X + 1) / (2 * atlasWidth);
-                    right = left + (textureRectInPixels.Size.Height * 2 - 2) / (2 * atlasWidth);
-                    top = (2 * textureRectInPixels.Origin.Y + 1) / (2 * atlasHeight);
-                    bottom = top + (textureRectInPixels.Size.Width * 2 - 2) / (2 * atlasHeight);
-                    #else
-                    left = textureRectInPixels.Origin.X / atlasWidth;
-                    right = (textureRectInPixels.Origin.X + textureRectInPixels.Size.Height) / atlasWidth;
-                    top = textureRectInPixels.Origin.Y / atlasHeight;
-                    bottom = (textureRectInPixels.Origin.Y + textureRectInPixels.Size.Width) / atlasHeight;
-                    #endif
+                    left = textureRectInPixels.Origin.X / atlasWidth + offsetW;
+                    right = (textureRectInPixels.Origin.X + textureRectInPixels.Size.Height) / atlasWidth - offsetW;
+                    top = textureRectInPixels.Origin.Y / atlasHeight + offsetH;
+                    bottom = (textureRectInPixels.Origin.Y + textureRectInPixels.Size.Width) / atlasHeight - offsetH;
 
                     if (flipX)
                     {
@@ -550,17 +563,10 @@ namespace CocosSharp
                 }
                 else
                 {
-                    #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
-                    left = (2 * textureRectInPixels.Origin.X + 1) / (2 * atlasWidth);
-                    right = left + (textureRectInPixels.Size.Width * 2 - 2) / (2 * atlasWidth);
-                    top = (2 * textureRectInPixels.Origin.Y + 1) / (2 * atlasHeight);
-                    bottom = top + (textureRectInPixels.Size.Height * 2 - 2) / (2 * atlasHeight);
-                    #else
-                    left = textureRectInPixels.Origin.X / atlasWidth;
-                    right = (textureRectInPixels.Origin.X + textureRectInPixels.Size.Width) / atlasWidth;
-                    top = textureRectInPixels.Origin.Y / atlasHeight;
-                    bottom = (textureRectInPixels.Origin.Y + textureRectInPixels.Size.Height) / atlasHeight;
-                    #endif
+                    left = textureRectInPixels.Origin.X / atlasWidth + offsetW;
+                    right = (textureRectInPixels.Origin.X + textureRectInPixels.Size.Width) / atlasWidth - offsetW;
+                    top = textureRectInPixels.Origin.Y / atlasHeight + offsetH;
+                    bottom = (textureRectInPixels.Origin.Y + textureRectInPixels.Size.Height) / atlasHeight - offsetH;
 
                     if (flipX)
                     {
