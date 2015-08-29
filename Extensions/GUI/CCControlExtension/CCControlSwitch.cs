@@ -24,7 +24,8 @@
  *
  */
 
-
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -40,12 +41,26 @@ namespace CocosSharp
         float initialTouchXPosition;
         CCControlSwitchSprite switchSprite;
 
-		public event CCSwitchValueChangedDelegate OnValueChanged;
+        #region Events and Handlers
+
+        public class CCSwitchStateEventArgs : CCControlEventArgs
+        {
+            public CCSwitchStateEventArgs(bool state) : base(CCControlEvent.ValueChanged)
+            {
+                State = state;
+            }
+
+            public bool State { get; protected internal set; }
+        }
+
+        public event EventHandler<CCSwitchStateEventArgs> StateChanged;
+
+        #endregion
 
 
-		#region Properties
+        #region Properties
 
-		public bool HasMoved { get; private set; }
+        public bool HasMoved { get; private set; }
 
         public override bool Enabled
         {
@@ -83,27 +98,34 @@ namespace CocosSharp
 
 				if(notify) 
 				{
-					SendActionsForControlEvents(CCControlEvent.ValueChanged);
-					if (OnValueChanged != null) 
-					{
-						OnValueChanged(this, on);
-					}
+                    OnValueChanged();
+                    OnStateChanged(on);
 				}
 			}
 		}
 
-		#endregion Properties
+
+        protected virtual void OnStateChanged(bool switchState)
+        {
+            var handler = StateChanged;
+            if (handler != null)
+            {
+                handler(this, new CCSwitchStateEventArgs(switchState));
+            }
+        }
+
+        #endregion Properties
 
 
         #region Constructors
 
-		public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite) 
+        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite) 
 			: this(maskSprite, onSprite, offSprite, thumbSprite, null, null)
 		{
 		}
 
-        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTtf onLabel,
-            CCLabelTtf offLabel)
+        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabel onLabel,
+            CCLabel offLabel)
         {
             Debug.Assert(maskSprite != null, "Mask must not be nil.");
             Debug.Assert(onSprite != null, "onSprite must not be nil.");
@@ -225,8 +247,8 @@ namespace CocosSharp
 		public CCSprite OffSprite { get; set; }
 		public CCSprite ThumbSprite { get; set; }
 
-		public CCLabelTtf OnLabel { get; set; }
-		public CCLabelTtf OffLabel { get; set; }
+		public CCLabel OnLabel { get; set; }
+		public CCLabel OffLabel { get; set; }
 
 
 		public float OnSideWidth
@@ -267,7 +289,7 @@ namespace CocosSharp
         #region Constructors
 
 		public CCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-			CCLabelTtf onLabel, CCLabelTtf offLabel) 
+			CCLabel onLabel, CCLabel offLabel) 
 			: base((CCTexture2D)null, new CCRect(0.0f, 0.0f, maskSprite.TextureRectInPixels.Size.Width, maskSprite.TextureRectInPixels.Size.Height))
         {
             OnPosition = 0;

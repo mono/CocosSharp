@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,6 +47,7 @@
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -85,6 +86,7 @@
     <Compile Include="classes\tests\ClippingNodeTest\ClippingNodeTestScene.cs" />
     <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs" />
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
     <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
     <Compile Include="classes\tests\MultiTouchTest\MultiTouchTest.cs" />
     <Compile Include="classes\tests\NodeTest\CameraCenterTest.cs" />
@@ -255,6 +257,7 @@
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToRadialMidpointChanged.cs" />
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressToVertical.cs" />
     <Compile Include="classes\tests\ActionsProgressTest\SpriteProgressWithSpriteFrame.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs" />
@@ -592,6 +595,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
+    <Compile Include="classes\tests\TextInputTest\CustomIME\Android\UppercaseIMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2058,6 +2062,14 @@
     <AndroidAsset Include="Assets\Content\Images\ui.plist.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\animationbuttonnormal.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\Images\animationbuttonpressed.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </AndroidAsset>
+    <AndroidAsset Include="Assets\Content\fonts\debugcompressed.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\debuguncompressed.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -2139,10 +2151,6 @@
       <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
       <Name>CocosSharp.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
-      <Project>{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}</Project>
-      <Name>MonoGame.Framework.Net.Android</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\Sounds\background.wma">
@@ -2167,9 +2175,9 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="classes\tests\EventDispatcherTest\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="classes\tests\LabelTestNew\" />
+    <Folder Include="classes\tests\TextInputTest\CustomIME\" />
+    <Folder Include="classes\tests\TextInputTest\CustomIME\Android\" />
   </ItemGroup>
 </Project>

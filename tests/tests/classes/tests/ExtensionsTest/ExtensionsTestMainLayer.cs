@@ -36,8 +36,8 @@ namespace tests.Extensions
 				//    runNotificationCenterTest();
 				//    break;
 				case ExtensionsTestScene.TEST_CCCONTROLBUTTON:
-				    var pManager = CCControlSceneManager.sharedControlSceneManager();
-				    Scene.Director.ReplaceScene(pManager.currentControlScene());
+				    var pManager = CCControlSceneManager.SharedControlSceneManager;
+				    Scene.Director.ReplaceScene(pManager.CurrentControlScene);
 				    break;
 				case ExtensionsTestScene.TEST_COCOSBUILDER:
 					var pScene = new CocosBuilderTest();
@@ -56,8 +56,8 @@ namespace tests.Extensions
 					TableViewTestLayer.runTableViewTest();
 					break;
                 case ExtensionsTestScene.TEST_Scale9Sprite:
-                    var Manager = Scale9SpriteSceneManager.sharedSprite9SceneManager();
-				    Scene.Director.ReplaceScene(Manager.currentControlScene());
+                    var Manager = Scale9SpriteSceneManager.SharedSprite9SceneManager;
+				    Scene.Director.ReplaceScene(Manager.CurrentControlScene);
 			        break;
 				default:
 					break;

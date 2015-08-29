@@ -51,7 +51,7 @@ namespace CocosSharp
                 ProgressTimer.Percentage = percent * 100.0f;
                 ThumbSprite.Rotation = percent * 360.0f;
 
-                SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                OnValueChanged();
             }
         }
 

@@ -62,33 +62,30 @@ namespace CocosSharp
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("extensions/CCControlColourPickerSpriteSheet.plist");
 
-            var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");
-            AddChild(spriteSheet);
-
             Hsv.H = 0;
             Hsv.S = 0;
             Hsv.V = 0;
 
             // Add image
 			Background 
-				= CCControlUtils.AddSpriteToTargetWithPosAndAnchor("menuColourPanelBackground.png", spriteSheet, CCPoint.Zero, new CCPoint(0.5f, 0.5f));
+				= CCControlUtils.AddSpriteToTargetWithPosAndAnchor("menuColourPanelBackground.png", this, CCPoint.Zero, CCPoint.AnchorMiddle);
 
 			CCPoint backgroundPointZero 
-				= Background.Position - new CCPoint(Background.ContentSize.Width / 2, Background.ContentSize.Height / 2);
+				= Background.Position - Background.ContentSize.Center;
 
             // Setup panels
             float hueShift = 8;
             float colourShift = 28;
 
             CCPoint huePickerPos = new CCPoint(backgroundPointZero.X + hueShift, backgroundPointZero.Y + hueShift);
-            HuePicker = new CCControlHuePicker(spriteSheet, huePickerPos);
+            HuePicker = new CCControlHuePicker(this, huePickerPos);
 
             CCPoint colourPickerPos = new CCPoint(backgroundPointZero.X + colourShift, backgroundPointZero.Y + colourShift);
-            ColourPicker = new CCControlSaturationBrightnessPicker(spriteSheet, colourPickerPos);
+            ColourPicker = new CCControlSaturationBrightnessPicker(this, colourPickerPos);
 
             // Setup events
-			HuePicker.AddTargetWithActionForControlEvents(this, HueSliderValueChanged, CCControlEvent.ValueChanged);
-			ColourPicker.AddTargetWithActionForControlEvents(this, ColourSliderValueChanged, CCControlEvent.ValueChanged);
+            HuePicker.ValueChanged += HuePicker_ValueChanged;
+            ColourPicker.ValueChanged += ColourPicker_ValueChanged;
 
             UpdateHueAndControlPicker();
             AddChild(HuePicker);
@@ -97,10 +94,20 @@ namespace CocosSharp
             ContentSize = Background.ContentSize;
         }
 
+        private void ColourPicker_ValueChanged(object sender, CCControlEventArgs e)
+        {
+            ColourSliderValueChanged(sender, e.ControlEvent);
+        }
+
+        private void HuePicker_ValueChanged(object sender, CCControlEventArgs e)
+        {
+            HueSliderValueChanged(sender, e.ControlEvent);
+        }
+
         #endregion Constructors
 
 
-		bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+        bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
 		{
 			return false;
 		}
@@ -114,7 +121,7 @@ namespace CocosSharp
             base.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f), (byte) (rgb.B * 255.0f));
 
             // Send Control callback
-            SendActionsForControlEvents(CCControlEvent.ValueChanged);
+            OnValueChanged();
             UpdateControlPicker();
         }
 
@@ -128,7 +135,7 @@ namespace CocosSharp
             base.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f), (byte) (rgb.B * 255.0f));
 
             // Send Control callback
-            SendActionsForControlEvents(CCControlEvent.ValueChanged);
+            OnValueChanged();
         }
 
         protected void UpdateControlPicker()

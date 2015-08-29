@@ -29,6 +29,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -39,6 +40,7 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DefineConstants>IPHONE;IOS;GLES;OPENGL;MONOGAME</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>True</DebugSymbols>
@@ -53,6 +55,7 @@
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <DocumentationFile>bin\iPhone\Debug\CocosSharp.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -64,6 +67,7 @@
     <DefineConstants>IPHONE;IOS;GLES;OPENGL;MONOGAME</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <DocumentationFile>bin\iPhone\Release\CocosSharp.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -304,9 +308,7 @@
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
-    <Compile Include="text_input_node\CCTextFieldTTF.cs" />
     <Compile Include="text_input_node\ICCIMEDelegate.cs" />
-    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
     <Compile Include="Platform\CCFocusManager.cs" />
@@ -373,7 +375,6 @@
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
-    <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMap.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileMapInfo.cs" />
@@ -397,6 +398,10 @@
     <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
     <Compile Include="EmbeddableView\CCGameView.cs" />
     <Compile Include="EmbeddableView\CCGameView.iOS.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
+    <Compile Include="Platform\Keyboard\IOS\IMEKeyboardImpl.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />
@@ -428,4 +433,5 @@
     <None Include="CCWindow.cs" />
     <None Include="Platform\CCApplication.cs" />
   </ItemGroup>
+  <ItemGroup />
 </Project>

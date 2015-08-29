@@ -23,7 +23,7 @@ namespace CocosSharp
             var contentScaleFactorWidth = CCLabel.DefaultTexelToContentSizeRatios.Width;
             var contentScaleFactorHeight = CCLabel.DefaultTexelToContentSizeRatios.Height;
 
-            textDef.FontSize *= (int)contentScaleFactorWidth;
+            textDef.FontSize *= contentScaleFactorWidth;
             textDef.Dimensions.Width *= contentScaleFactorWidth;
             textDef.Dimensions.Height *= contentScaleFactorHeight;
 

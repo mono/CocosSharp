@@ -22,7 +22,7 @@ namespace CocosSharp
     {
 
         public string FontName;
-        public int FontSize;
+        public float FontSize;
         public CCTextAlignment Alignment;
         public CCVerticalTextAlignment LineAlignment;
         public CCSize Dimensions;
@@ -678,6 +678,76 @@ namespace CocosSharp
         /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
         /// <param name="imageOffset">Image offset.</param>
         /// <param name="texture">Texture atlas to be used.</param>
+        public CCLabel(CCFontFNT fntFontConfig, string str, CCSize dimensions, CCLabelFormat labelFormat)
+        {
+            quadCommand = new CCQuadCommand(str.Length);
+
+            labelFormat.FormatFlags = CCLabelFormatFlags.BitmapFont;
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            try
+            {
+                FontAtlas = CCFontAtlasCache.GetFontAtlasFNT(fntFontConfig);
+            }
+            catch { }
+
+            if (FontAtlas == null)
+            {
+                CCLog.Log("Bitmap Font CCLabel: Impossible to create font. Please check CCFontFNT file: ");
+                return;
+            }
+
+            LabelType = CCLabelType.BitMapFont;
+            this.labelFormat = labelFormat;
+
+            if (String.IsNullOrEmpty(str))
+            {
+                str = String.Empty;
+            }
+
+            // Initialize the TextureAtlas along with children.
+            var capacity = str.Length;
+
+            BlendFunc = CCBlendFunc.AlphaBlend;
+
+            if (capacity == 0)
+            {
+                capacity = defaultSpriteBatchCapacity;
+            }
+
+            UpdateBlendFunc();
+
+            // no lazy alloc in this node
+            Children = new CCRawList<CCNode>(capacity);
+            Descendants = new CCRawList<CCSprite>(capacity);
+
+            this.labelDimensions = dimensions;
+
+            horzAlignment = labelFormat.Alignment;
+            vertAlignment = labelFormat.LineAlignment;
+
+            IsOpacityCascaded = true;
+
+            // We use base here so we do not trigger an update internally.
+            base.ContentSize = CCSize.Zero;
+
+            IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
+            AnchorPoint = CCPoint.AnchorMiddle;
+
+            ImageOffset = CCPoint.Zero;
+
+            Text = str;
+        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CocosSharp.CCLabel"/> class.
+        /// </summary>
+        /// <param name="str">Initial text of the label.</param>
+        /// <param name="fntFile">Font definition file to use.</param>
+        /// <param name="size">Font point size.</param>
+        /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
+        /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
+        /// <param name="imageOffset">Image offset.</param>
+        /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(string str, string fntFile, float size, CCSize dimensions, CCLabelFormat labelFormat, CCPoint imageOffset, CCTexture2D texture)
         {
             quadCommand = new CCQuadCommand(str.Length);
@@ -1025,7 +1095,7 @@ namespace CocosSharp
                     var fontDefinition = new CCFontDefinition();
 
                     fontDefinition.FontName = systemFont;
-                    fontDefinition.FontSize = (int)systemFontSize;
+                    fontDefinition.FontSize = systemFontSize;
 
                     fontDefinition.Alignment = labelFormat.Alignment;
                     fontDefinition.LineAlignment = labelFormat.LineAlignment;

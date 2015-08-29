@@ -118,6 +118,7 @@
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
     <Compile Include="misc_nodes\CCNodeGrid.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
+    <Compile Include="platform\Keyboard\Windows\IMEKeyboardImpl.cs" />
     <Compile Include="Renderer\CCRenderer.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
@@ -414,10 +415,10 @@
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
     <Compile Include="textures\CCTexture2D.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
     <Compile Include="text_input_node\ICCIMEDelegate.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
-    <Compile Include="text_input_node\CCTextFieldTTF.cs" />
-    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTileLayerInfo.cs" />

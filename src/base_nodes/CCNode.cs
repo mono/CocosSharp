@@ -321,11 +321,10 @@ namespace CocosSharp
             {
                 if(zOrder != value)
                 {
-                    zOrder = value;
                     if (Parent != null)
-                    {
                         Parent.ReorderChild(this, value);
-                    }
+                    
+                    zOrder = value;
 
                     if(EventDispatcher != null)
                         EventDispatcher.MarkDirty = this;
@@ -1893,9 +1892,10 @@ namespace CocosSharp
         }
 
         /// <summary>
-        /// Convenience method to dispatch a custom event
+        /// Dispatchs a custom event.
         /// </summary>
-        /// <param name="eventToDispatch"></param>
+        /// <param name="customEvent">Custom event.</param>
+        /// <param name="userData">User data.</param>
         public void DispatchEvent(string customEvent, object userData = null)
         {
             if (EventDispatcherIsEnabled)

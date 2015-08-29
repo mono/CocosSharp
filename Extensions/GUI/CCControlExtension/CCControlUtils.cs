@@ -187,8 +187,10 @@ namespace CocosSharp
 			float x2 = Math.Max(src1.MaxX, src2.MaxX);
 			float y2 = Math.Max(src1.MaxY, src2.MaxY);
     
-			result.Origin = new CCPoint(x1,x2);
-			result.Size = new CCSize(x2-x1, y2-y1);
+            result.Origin.X = x1;
+            result.Origin.Y = y1;
+            result.Size.Width = x2 - x1;
+            result.Size.Height = y2 - y1;
 			return result;
 		}
 	}

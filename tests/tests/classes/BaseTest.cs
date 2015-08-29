@@ -12,14 +12,14 @@ namespace tests.classes
             var visibleRect = VisibleBoundsWorldspace;
 
             // add title and subtitle
-            var label = new CCLabelTtf(Title(), "Arial", 32);
+            var label = new CCLabel(Title(), "Arial", 32, CCLabelFormat.SpriteFont);
             AddChild(label, 9999);
             label.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 30);
 
             string strSubtitle = Subtitle();
             if (!string.IsNullOrEmpty(strSubtitle))
             {
-                var l = new CCLabelTtf(strSubtitle, "Thonburi", 16);
+                var l = new CCLabel(strSubtitle, "Thonburi", 16, CCLabelFormat.SpriteFont);
                 AddChild(l, 9999);
                 l.Position = new CCPoint(visibleRect.Center.X, visibleRect.Top().Y - 60);
             }

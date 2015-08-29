@@ -117,6 +117,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="XamMac" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ball-hd.mask" />
@@ -1238,6 +1239,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
+    <Compile Include="classes\tests\TextInputTest\CustomIME\UppercaseIMEKeyboardImpl.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
+    <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2641,6 +2645,14 @@
     <Content Include="Content\TileMaps\desert-palace-tiles.xnb" />
     <Content Include="Content\TileMaps\desert-palace-multi-tileset.xnb" />
     <Content Include="Content\TileMaps\people.xnb" />
+    <Content Include="Content\Images\animationbuttonnormal.xnb" />
+    <Content Include="Content\Images\animationbuttonpressed.xnb" />
+    <Content Include="Assets\Content\fonts\debugcompressed.xnb">
+      <Link>Content\fonts\debugcompressed.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\debuguncompressed.xnb">
+      <Link>Content\fonts\debuguncompressed.xnb</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2698,6 +2710,8 @@
     <Folder Include="Extensions\" />
     <Folder Include="classes\tests\Physics\" />
     <Folder Include="classes\tests\LabelTestNew\" />
+    <Folder Include="classes\tests\TextInputTest\CustomIME\" />
+    <Folder Include="classes\tests\RendererTest\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="..\testsContent\fonts\boundsTestFont_0.png">

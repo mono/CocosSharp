@@ -34,6 +34,7 @@
   <target name="build-windows8" description="Build MonoGame Release" depends="checkos">
 
     <call target="buildwindows8" />
+    <call target="buildwindows81" />
     <call target="buildwindowsphone" />
     <call target="buildwindowsphone81" />
 
@@ -77,6 +78,7 @@
     <call target="buildlinux"/>
     <call target="buildandroid" />
     <call target="buildwindows8" />
+    <call target="buildwindows81" />
     <call target="buildwindowsphone" />
     <call target="buildwindowsphone81" />
     <call target="buildmac" />
@@ -176,6 +178,14 @@
 	<exec program="protobuild.exe" commandline="-generate Windows8"/>
       <exec program="msbuild " commandline="MonoGame.Framework.Windows8.sln /t:Clean /p:Configuration=Release" />
       <exec program="msbuild " commandline="MonoGame.Framework.Windows8.sln /t:Rebuild /p:Configuration=Release" />
+    </if>
+  </target>
+
+  <target name="buildwindows81" description="Build Windows 8.1" depends="clean">
+    <if test="${os == 'Win32NT'}">
+	<exec program="protobuild.exe" commandline="-generate Windows81"/>
+      <exec program="msbuild " commandline="MonoGame.Framework.Windows81.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="MonoGame.Framework.Windows81.sln /t:Rebuild /p:Configuration=Release" />
     </if>
   </target>
 

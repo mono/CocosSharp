@@ -658,11 +658,12 @@ namespace CocosSharp
 
         }
 
-		/// <summary>
-		/// Convenience method to dispatch a custom event
-		/// </summary>
-		/// <param name="eventToDispatch"></param>
-		public void DispatchEvent(string customEvent, object userData = null)
+        /// <summary>
+        /// Dispatchs a custom event.
+        /// </summary>
+        /// <param name="customEvent">Custom event.</param>
+        /// <param name="userData">User data.</param>
+        public void DispatchEvent(string customEvent, object userData = null)
 		{
 			var custom = new CCEventCustom(customEvent, userData);
 			DispatchEvent(custom);
@@ -814,14 +815,6 @@ namespace CocosSharp
 
         }
 
-
-        /// <summary>
-        /// Gets event the listener list for the event listener type.
-        /// </summary>
-        /// <param name="?"></param>
-        /// <returns></returns>
-        //EventListenerVector* getListeners(const EventListener::ListenerID& listenerID);
-
         /// <summary>
         /// Update dirty flag
         /// </summary>
@@ -847,9 +840,9 @@ namespace CocosSharp
 
 
         /// <summary>
-        /// Removes all listeners with the same event listener ID
+        /// Removes the event listeners with the same event listener ID.
         /// </summary>
-        /// <param name="?"></param>
+        /// <param name="listenerID">Listener I.</param>
         void RemoveEventListeners (string listenerID)
         {
             if (listenerMap.ContainsKey(listenerID))
@@ -907,10 +900,11 @@ namespace CocosSharp
 
         }
 
+
         /// <summary>
-        /// Sort event listener
+        /// Sorts the event listeners.
         /// </summary>
-        /// <param name="?"></param>
+        /// <param name="listenerID">Listener ID</param>
         void SortEventListeners(string listenerID)
         {
             DirtyFlag dirtyFlag = DirtyFlag.NONE;
@@ -989,9 +983,9 @@ namespace CocosSharp
         }
 
         /// <summary>
-        /// Sorts the listeners of specified type by fixed priority
+        /// Sorts the event listeners of fixed priority.
         /// </summary>
-        /// <param name="?"></param>
+        /// <param name="listenerID">Listener ID</param>
         void SortEventListenersOfFixedPriority(string listenerID)
         {
             var listeners = GetListeners(listenerID);

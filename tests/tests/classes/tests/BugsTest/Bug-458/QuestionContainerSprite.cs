@@ -12,7 +12,7 @@ namespace tests
         public QuestionContainerSprite()
         {
             //Add label
-            CCLabelTtf label = new CCLabelTtf("Answer 1", "arial", 12);
+            var label = new CCLabel("Answer 1", "arial", 12, CCLabelFormat.SpriteFont);
             label.Tag = 100;
 
             //Add the background

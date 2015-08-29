@@ -64,6 +64,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WP81", "WP81", "{B2817662-2
 		..\WP81\Template\EmptyProject.WP81.vstemplate = ..\WP81\Template\EmptyProject.WP81.vstemplate
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows81", "Windows81", "{E32EC7CC-2B3E-460D-AF16-DC7560267023}"
+	ProjectSection(SolutionItems) = preProject
+		..\Windows81\Template\EmptyProject.Windows81.vstemplate = ..\Windows81\Template\EmptyProject.Windows81.vstemplate
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win81XAML", "Win81XAML", "{2D96DDCA-8EFF-4C4B-983A-877C472C7076}"
+	ProjectSection(SolutionItems) = preProject
+		..\Win81XAML\Template\EmptyProject.Win81XAML.vstemplate = ..\Win81XAML\Template\EmptyProject.Win81XAML.vstemplate
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -89,5 +99,7 @@ Global
 		{2805EA7C-3D88-4A63-AD74-54304378BC3E} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{6BAA23EE-B28D-4373-B020-D98C33DAE314} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{B2817662-2E31-4ED3-A8D4-147DE2F1519D} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{E32EC7CC-2B3E-460D-AF16-DC7560267023} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{2D96DDCA-8EFF-4C4B-983A-877C472C7076} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 	EndGlobalSection
 EndGlobal

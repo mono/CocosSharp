@@ -1394,17 +1394,18 @@ namespace tests
 
 		static CCScaleBy scale = new CCScaleBy(0.3f, 2);
 		static CCSequence textThrob = new CCSequence(scale, scale.Reverse());
-		static CCSequence delayedShow = new CCSequence(new CCDelayTime (2.0f), new CCShow ());
+		static CCSequence delayedShow = new CCSequence(new CCDelayTime (0.0f), new CCShow ());
 
-		public LoadingLabel() : base ("Loading...", "Marker Felt", 32, CCLabelFormat.SpriteFont)
+		public LoadingLabel(float delayTime = 0.0f) : base ("Loading...", "Marker Felt", 32, CCLabelFormat.SpriteFont)
 		{
 			Visible = false;
+            delayedShow.Actions[0].Duration = delayTime;
 		}
 
         protected override void AddedToScene()
         {
             base.AddedToScene();
-            Position = Layer.VisibleBoundsWorldspace.Center;
+            Position = VisibleBoundsWorldspace.Center;
 
 			RunActions (delayedShow);
 			RepeatForever (textThrob);
@@ -1426,7 +1427,7 @@ namespace tests
 			RemoveChild(Background, true);
 			Background = null;
 
-			label = new LoadingLabel();
+			label = new LoadingLabel(2.0f);
 			AddChild(label, 10);
 		}
 

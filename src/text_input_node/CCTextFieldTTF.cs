@@ -6,7 +6,7 @@ namespace CocosSharp
 {
     public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
 
-    public class CCTextFieldTTF : CCLabelTtf
+    public class CCTextFieldTTF : CCLabel
     {
         bool readOnly = false;
         bool autoEdit;
@@ -65,7 +65,8 @@ namespace CocosSharp
         }
 
         public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
-            : base (text, fontName, fontSize, dimensions, hAlignment, vAlignment)
+            : base(text, fontName, fontSize, dimensions, new CCLabelFormat( CCLabelFormatFlags.Unknown ) { Alignment = hAlignment,
+                LineAlignment = vAlignment})
         {
             EditTitle = "Input";
             EditDescription = "Please provide input";

@@ -9,8 +9,8 @@ namespace tests
 {
     public class AccelerometerTest : CCLayer
     {
-        CCLabelTtf titleLabel;
-        CCLabelTtf subtitleLabel;
+        CCLabel titleLabel;
+        CCLabel subtitleLabel;
 
         CCSprite ball;
         double lastTime;
@@ -35,7 +35,7 @@ namespace tests
 
         public AccelerometerTest()
         {
-            titleLabel = new CCLabelTtf(Title, "Arial", 40);
+            titleLabel = new CCLabel(Title, "Arial", 40, CCLabelFormat.SpriteFont);
             titleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
             titleLabel.VerticalAlignment = CCVerticalTextAlignment.Center;
 
@@ -44,7 +44,7 @@ namespace tests
             string subtitleStr = Subtitle;
             if (subtitleStr.Length > 0)
             {
-                subtitleLabel = new CCLabelTtf(subtitleStr, "arial", 20);
+                subtitleLabel = new CCLabel(subtitleStr, "arial", 20, CCLabelFormat.SpriteFont);
                 subtitleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 subtitleLabel.VerticalAlignment = CCVerticalTextAlignment.Center;
                 AddChild(subtitleLabel, 1);

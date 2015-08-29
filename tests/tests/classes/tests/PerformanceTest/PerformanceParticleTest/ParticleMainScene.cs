@@ -36,7 +36,7 @@ namespace tests
             menu.Position = new CCPoint(s.Width / 2, s.Height / 2 + 15);
             AddChild(menu, 1);
 
-            CCLabelTtf infoLabel = new CCLabelTtf("0 nodes", "Marker Felt", 30);
+            CCLabel infoLabel = new CCLabel("0 nodes", "Marker Felt", 30, CCLabelFormat.SpriteFont);
             infoLabel.Color = new CCColor3B(0, 200, 20);
             infoLabel.Position = new CCPoint(s.Width / 2, s.Height - 90);
             AddChild(infoLabel, 1, PerformanceParticleTest.kTagInfoLayer);
@@ -77,7 +77,7 @@ namespace tests
             pSubMenu.Position = new CCPoint(s.Width / 2, 80);
             AddChild(pSubMenu, 2);
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 38);
+            CCLabel label = new CCLabel(title(), "arial", 38, CCLabelFormat.SpriteFont);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new CCColor3B(255, 255, 40);
@@ -206,7 +206,7 @@ namespace tests
         {
             if (quantityParticles != lastRenderedCount)
             {
-                CCLabelTtf infoLabel = (CCLabelTtf)GetChildByTag(PerformanceParticleTest.kTagInfoLayer);
+                var infoLabel = (CCLabel)GetChildByTag(PerformanceParticleTest.kTagInfoLayer);
                 string str = string.Format("{0} particles", quantityParticles);
                 infoLabel.Text = (str);
 

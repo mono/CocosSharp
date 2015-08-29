@@ -176,7 +176,7 @@ namespace CocosSharp
             return renderTarget;
         }
 
-        public System.IO.MemoryStream RenderLabelToStream(
+        public async Task<System.IO.MemoryStream> RenderLabelToStream(
             float imageWidth,
             float imageHeight,
             Color4 foregroundColor,
@@ -187,7 +187,10 @@ namespace CocosSharp
             SharpDX.Direct2D1.AlphaMode alpha = AlphaMode.Premultiplied)
         {
 
-            var renderTarget = RenderLabel(
+            // Get stream
+            var pngStream = new MemoryStream();
+
+            using (var renderTarget = RenderLabel(
                 imageWidth,
                 imageHeight,
                 foregroundColor,
@@ -195,51 +198,50 @@ namespace CocosSharp
                 textLayout,
                 dpi,
                 format,
-                alpha);
-
-            // Get stream
-            var pngStream = new MemoryStream();
-            
-            pngStream.Position = 0;
-
-            // Create a WIC outputstream
-            using (var wicStream = new WICStream(FactoryImaging, pngStream))
+                alpha))
             {
 
-                var size = renderTarget.PixelSize;
+                pngStream.Position = 0;
 
-                // Initialize a Png encoder with this stream
-                using (var wicBitmapEncoder = new PngBitmapEncoder(FactoryImaging, wicStream))
+                // Create a WIC outputstream
+                using (var wicStream = new WICStream(FactoryImaging, pngStream))
                 {
 
-                    // Create a Frame encoder
-                    using (var wicFrameEncoder = new BitmapFrameEncode(wicBitmapEncoder))
+                    var size = renderTarget.PixelSize;
+
+                    // Initialize a Png encoder with this stream
+                    using (var wicBitmapEncoder = new PngBitmapEncoder(FactoryImaging, wicStream))
                     {
-                        wicFrameEncoder.Initialize();
 
-                        // Create image encoder
-                        ImageEncoder wicImageEncoder;
-                        ImagingFactory2 factory2 = new ImagingFactory2();
-                        wicImageEncoder = new ImageEncoder(factory2, D2DDevice);
+                        // Create a Frame encoder
+                        using (var wicFrameEncoder = new BitmapFrameEncode(wicBitmapEncoder))
+                        {
+                            wicFrameEncoder.Initialize();
+
+                            // Create image encoder
+                            ImageEncoder wicImageEncoder;
+                            ImagingFactory2 factory2 = new ImagingFactory2();
+                            wicImageEncoder = new ImageEncoder(factory2, D2DDevice);
 
 
-                        var imgParams = new ImageParameters();
-                        imgParams.PixelFormat =
-                            new SharpDX.Direct2D1.PixelFormat(SharpDX.DXGI.Format.B8G8R8A8_UNorm, 
-                                                                AlphaMode.Premultiplied);
+                            var imgParams = new ImageParameters();
+                            imgParams.PixelFormat =
+                                new SharpDX.Direct2D1.PixelFormat(SharpDX.DXGI.Format.B8G8R8A8_UNorm,
+                                                                    AlphaMode.Premultiplied);
 
-                        imgParams.PixelHeight = (int)size.Height;
-                        imgParams.PixelWidth = (int)size.Width;
+                            imgParams.PixelHeight = (int)size.Height;
+                            imgParams.PixelWidth = (int)size.Width;
 
-                        wicImageEncoder.WriteFrame(renderTarget, wicFrameEncoder, imgParams);
+                            wicImageEncoder.WriteFrame(renderTarget, wicFrameEncoder, imgParams);
 
-                        //// Commit changes
-                        wicFrameEncoder.Commit();
-                        wicBitmapEncoder.Commit();
+                            //// Commit changes
+                            wicFrameEncoder.Commit();
+                            wicBitmapEncoder.Commit();
 
-                        byte[] buffer = new byte[pngStream.Length];
-                        pngStream.Position = 0;
-                        pngStream.Read(buffer, 0, (int)pngStream.Length);
+                            byte[] buffer = new byte[pngStream.Length];
+                            pngStream.Position = 0;
+                            await pngStream.ReadAsync(buffer, 0, (int)pngStream.Length);
+                        }
                     }
                 }
             }

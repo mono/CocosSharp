@@ -14,14 +14,14 @@ namespace tests
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
+            var label = new CCLabel(title(), "arial", 32, CCLabelFormat.SpriteFont);
             AddChild(label);
             label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
 
             string subTitle = subtitle();
             if (!string.IsNullOrEmpty(subTitle))
             {
-                CCLabelTtf l = new CCLabelTtf(subTitle, "arial", 16);
+                var l = new CCLabel(subTitle, "arial", 16, CCLabelFormat.SpriteFont);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }

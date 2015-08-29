@@ -28,12 +28,12 @@ namespace CocosSharp
 
         // Static properties
 
-        public new static float DefaultTexelToContentSizeRatio
+        public static float DefaultTexelToContentSizeRatio
         {
             set { DefaultTexelToContentSizeRatios = new CCSize(value, value); }
         }
 
-        public new static CCSize DefaultTexelToContentSizeRatios { get; set; }
+        public static CCSize DefaultTexelToContentSizeRatios { get; set; }
 
 
         // Instance properties

@@ -29,17 +29,21 @@ namespace tests
         }
 
         static Func<CCLayer>[] createPrimitiveLayerFunctions =
-            { 
+            {
                 () => new DrawPrimitivesTest(),
                 () => new DrawNodeTest(),
                 () => new DrawNodeTest1(),
                 () => new DrawNodeTestBlend(),
-                () => new DrawPrimitivesWithRenderTextureTest(),
-                () => new DrawPrimitivesWithRenderTextureTest1(),
-                () => new DrawPrimitivesWithRenderTextureTest2(),
-                () => new DrawPrimitivesWithRenderTextureTest3(),
+                () => new DrawNodeTriangleVertex(),
+                () => new DrawNodeDrawPolygon(),
+
+                () => new DrawNodeWithRenderTextureTest(),
+                () => new DrawNodeWithRenderTextureTest1(),
+                () => new DrawNodeWithRenderTextureTest2(),
+                () => new DrawNodeWithRenderTextureTest3(),
                 () => new GeometryBatchTest1 (),
                 () => new GeometryBatchTest2(),
+
             };
         
         protected override void NextTestCase()

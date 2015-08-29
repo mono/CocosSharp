@@ -7,6 +7,8 @@ namespace CocosSharp
     {
 		public const float Pi = (float)Math.PI;
 		public const float TwoPi = (float)(Math.PI * 2.0);
+        public const float Pi_2 = (float)(Math.PI / 2.0); // M_PI_2 from Math Constants
+        public const float Pi_4 = (float)(Math.PI / 4.0); // M_PI_4 from Math Constants
 
 		private static float _lastSinAngle = 0f;
         private static float _lastSinValue = (float) Math.Sin(0);

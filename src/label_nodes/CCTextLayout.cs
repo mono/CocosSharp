@@ -276,7 +276,7 @@ namespace CocosSharp
                 // 1) Whitespace.
                 bool isWhiteSpace = Char.IsWhiteSpace(character);
                 // TODO: Handle CJK
-                bool isCJK = false;
+                //bool isCJK = false;
 
                 // Whitespace.
                 if (isWhiteSpace)

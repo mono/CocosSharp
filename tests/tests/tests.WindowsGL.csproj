@@ -337,6 +337,7 @@
     <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest1.cs" />
     <Compile Include="classes\tests\PerformanceTest\PerformanceTouchesTest\TouchesPerformTest2.cs" />
     <Compile Include="classes\tests\PerformanceTest\PerformBasicLayer.cs" />
+    <Compile Include="classes\tests\RendererTest\RendererTestDemo.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureCompositeTest.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureIssue937.cs" />
     <Compile Include="classes\tests\RenderTextureTest\RenderTextureSave.cs" />
@@ -413,6 +414,7 @@
     <Compile Include="classes\tests\SpriteTest\SpriteTestScene.cs" />
     <Compile Include="classes\tests\SpriteTest\SpriteZOrder.cs" />
     <Compile Include="classes\tests\SpriteTest\SpriteZVertex.cs" />
+    <Compile Include="classes\tests\TextInputTest\CustomIME\UppercaseIMEKeyboardImpl.cs" />
     <Compile Include="classes\tests\TextInputTest\TextInputTest.cs" />
     <Compile Include="classes\tests\TextInputTest\TextInputTestScene.cs" />
     <Compile Include="classes\tests\Texture2dTest\Texture2dTest.cs" />
@@ -451,6 +453,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>

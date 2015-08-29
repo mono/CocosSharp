@@ -51,11 +51,15 @@ namespace CocosSharp
 			get { return this.value; }
             set
             {
-				this.value = CCMathHelper.Clamp(value, MinimumValue, MaximumValue);
+                var newValue = CCMathHelper.Clamp(value, MinimumValue, MaximumValue);
+                if (this.value != newValue)
+                {
+                    this.value = CCMathHelper.Clamp(value, MinimumValue, MaximumValue);
 
-                NeedsLayout();
+                    NeedsLayout();
 
-                SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                    OnValueChanged();
+                }
             }
         }
 
@@ -106,19 +110,18 @@ namespace CocosSharp
 
 		#endregion Properties
 
-
         #region Constructors
 
-        public CCControlSlider(string bgFile, string progressFile, string thumbFile) 
-            : this(new CCSprite(bgFile), new CCSprite(progressFile), new CCSprite(thumbFile))
+        public CCControlSlider(string backGroundFile, string progressFile, string thumbFile) 
+            : this(new CCSprite(backGroundFile), new CCSprite(progressFile), new CCSprite(thumbFile))
         {
         }
 
 		public CCControlSlider(CCSprite backgroundSprite, CCSprite progressSprite, CCSprite thumbSprite)
 		{
-            Debug.Assert(backgroundSprite != null, "Background sprite must be not nil");
-            Debug.Assert(progressSprite != null, "Progress sprite must be not nil");
-            Debug.Assert(thumbSprite != null, "Thumb sprite must be not nil");
+            Debug.Assert(backgroundSprite != null, "Background sprite can not be null");
+            Debug.Assert(progressSprite != null, "Progress sprite can not be null");
+            Debug.Assert(thumbSprite != null, "Thumb sprite can not be null");
 
             BackgroundSprite = backgroundSprite;
             ProgressSprite = progressSprite;
@@ -133,17 +136,21 @@ namespace CocosSharp
             ContentSize = new CCSize(maxRect.Size.Width, maxRect.Size.Height);
 
             // Add the slider background
-            BackgroundSprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            BackgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
+            BackgroundSprite.AnchorPoint = CCPoint.AnchorMiddle;
+            BackgroundSprite.Position = ContentSize.Center;
             AddChild(BackgroundSprite);
 
             // Add the progress bar
-            ProgressSprite.AnchorPoint = new CCPoint(0.0f, 0.5f);
-            ProgressSprite.Position = new CCPoint(0.0f, ContentSize.Height / 2);
+            ProgressSprite.AnchorPoint = CCPoint.AnchorMiddleLeft;
+            ProgressSprite.PositionX = 0;
+            ProgressSprite.PositionY = BackgroundSprite.PositionY;
             AddChild(ProgressSprite);
 
             // Add the slider thumb  
             ThumbSprite.Position = new CCPoint(0, ContentSize.Height / 2);
+            ThumbSprite.AnchorPoint = CCPoint.AnchorMiddle;
+            ThumbSprite.PositionX = 0;
+            ThumbSprite.PositionY = BackgroundSprite.PositionY;
             AddChild(ThumbSprite);
 
 			// Register Touch Event
@@ -162,30 +169,31 @@ namespace CocosSharp
 
 		protected float ValueForLocation(CCPoint location)
 		{
-			float percent = location.X / BackgroundSprite.ContentSize.Width;
+            float percent = location.X / BackgroundSprite.ContentSize.Width;
 			return Math.Max(Math.Min(minimumValue + percent * (MaximumValue - MinimumValue), MaximumAllowedValue), MinimumAllowedValue);
 		}
 
 		protected virtual CCPoint LocationFromTouch(CCTouch touch)
 		{
-			CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
-            touchLocation = WorldToParentspace(Layer.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
+			CCPoint touchLocation = touch.Location; // Get the touch position
+            touchLocation = BackgroundSprite.WorldToParentspace(touchLocation);
 
-			if (touchLocation.X < 0)
+            var size = BackgroundSprite.ContentSize;
+
+            if (touchLocation.X < 0)
 			{
 				touchLocation.X = 0;
 			}
-			else if (touchLocation.X > BackgroundSprite.ContentSize.Width)
-			{
-				touchLocation.X = BackgroundSprite.ContentSize.Width;
-			}
+            else if (touchLocation.X > size.Width)
+            {
+                touchLocation.X = size.Width;
+            }
 			return touchLocation;
 		}
 
 		public override bool IsTouchInside(CCTouch touch)
 		{
-			CCPoint touchLocation = touch.LocationOnScreen;
-			touchLocation = Layer.ScreenToWorldspace(touchLocation);
+			CCPoint touchLocation = touch.Location;
 
             CCRect rect = BoundingBoxTransformedToWorld;
 			rect.Size.Width += ThumbSprite.ContentSize.Width;
@@ -249,16 +257,17 @@ namespace CocosSharp
             {
                 return;
             }
+
             // Update thumb position for new value
             float percent = (value - minimumValue) / (maximumValue - minimumValue);
 
-            CCPoint pos = ThumbSprite.Position;
-            pos.X = percent * BackgroundSprite.ContentSize.Width;
-            ThumbSprite.Position = pos;
+            var posX = ThumbSprite.PositionX;
+            posX = percent * BackgroundSprite.ContentSize.Width;
+            ThumbSprite.PositionX = posX;
 
             // Stretches content proportional to newLevel
             CCRect textureRect = ProgressSprite.TextureRectInPixels;
-            textureRect = new CCRect(textureRect.Origin.X, textureRect.Origin.Y, pos.X, textureRect.Size.Height);
+            textureRect.Size.Width = posX;
             ProgressSprite.TextureRectInPixels = textureRect;
             ProgressSprite.ContentSize = textureRect.Size;
         }

@@ -5,8 +5,6 @@ namespace tests
 {
     public class RenderTextureZbuffer : RenderTextureTestDemo
     {
-        readonly CCSpriteBatchNode mgr;
-
         readonly CCSprite sp1;
         readonly CCSprite sp2;
         readonly CCSprite sp3;
@@ -17,9 +15,9 @@ namespace tests
         readonly CCSprite sp8;
         readonly CCSprite sp9;
 
-        CCLabelTtf label;
-        CCLabelTtf label2;
-        CCLabelTtf label3;
+        CCLabel label;
+        CCLabel label2;
+        CCLabel label3;
 
 
         #region Properties
@@ -41,13 +39,13 @@ namespace tests
 
         public RenderTextureZbuffer()
         {
-            label = new CCLabelTtf("vertexZ = 50", "Marker Felt", 32);
+            label = new CCLabel("vertexZ = 50", "Marker Felt", 32, CCLabelFormat.SpriteFont);
             AddChild(label);
 
-            label2 = new CCLabelTtf("vertexZ = 0", "Marker Felt", 32);
+            label2 = new CCLabel("vertexZ = 0", "Marker Felt", 32, CCLabelFormat.SpriteFont);
             AddChild(label2);
 
-            label3 = new CCLabelTtf("vertexZ = -50", "Marker Felt", 32);
+            label3 = new CCLabel("vertexZ = -50", "Marker Felt", 32, CCLabelFormat.SpriteFont);
             AddChild(label3);
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/bugs/circle.plist");

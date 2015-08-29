@@ -180,16 +180,20 @@ namespace tests.FontTest
             RemoveChildByTag(kTagLabel3, true);
             RemoveChildByTag(kTagLabel4, true);
 
-            var top = new CCLabelTtf(pFont, "Arial", 24);
-            var left = new CCLabelTtf("alignment left", pFont, fontSize,
-                                             blockSize, CCTextAlignment.Left,
-                                             FontTestScene.verticalAlignment[FontTestScene.verticalAlignIdx]);
-            var center = new CCLabelTtf("alignment center", pFont, fontSize,
-                                               blockSize, CCTextAlignment.Center,
-                                               FontTestScene.verticalAlignment[FontTestScene.verticalAlignIdx]);
-            var right = new CCLabelTtf("alignment right", pFont, fontSize,
-                                              blockSize, CCTextAlignment.Right,
-                                              FontTestScene.verticalAlignment[FontTestScene.verticalAlignIdx]);
+            var top = new CCLabel(pFont, "Arial", 24);
+            var center = new CCLabel("alignment center", pFont, fontSize,
+                blockSize, new CCLabelFormat( CCLabelFormatFlags.SpriteFont ) { Alignment = CCTextAlignment.Center,
+                LineAlignment = SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]}
+            );
+
+            var left = new CCLabel("alignment left", pFont, fontSize,
+                blockSize, new CCLabelFormat( CCLabelFormatFlags.SpriteFont ) { Alignment = CCTextAlignment.Left,
+                LineAlignment = SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]});
+
+            var right = new CCLabel("alignment right", pFont, fontSize,
+                blockSize, new CCLabelFormat( CCLabelFormatFlags.SpriteFont ) { Alignment = CCTextAlignment.Right,
+                LineAlignment = SystemFontTestScene.verticalAlignment[SystemFontTestScene.verticalAlignIdx]});
+
 
             top.AnchorPoint = CCPoint.AnchorMiddleTop;
             left.AnchorPoint = CCPoint.AnchorMiddleLeft;

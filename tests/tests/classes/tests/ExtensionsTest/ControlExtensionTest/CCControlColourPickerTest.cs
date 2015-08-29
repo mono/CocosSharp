@@ -8,18 +8,20 @@ namespace tests.Extensions
 {
     class CCControlColourPickerTest : CCControlScene
     {
-        public CCLabelTtf ColorLabel
-        {
-            get { return _colorLabel; }
-            set { _colorLabel = value; }
-        }
+        private CCLabel ColorLabel { get; set; }
 
         public CCControlColourPickerTest()
         {
-            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCNode layer = new CCNode();
-            layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
+            layer.Position = screenSize.Center;
             AddChild(layer, 1);
 
             float layer_width = 0;
@@ -33,9 +35,7 @@ namespace tests.Extensions
             layer.AddChild(colourPicker);
 
             // Add the target-action pair
-            colourPicker.AddTargetWithActionForControlEvents(this, ColourValueChanged,
-                                                              CCControlEvent.ValueChanged);
-
+            colourPicker.ValueChanged += ColourValueChanged; 
 
             layer_width += colourPicker.ContentSize.Width;
 
@@ -47,10 +47,10 @@ namespace tests.Extensions
 
             layer_width += background.ContentSize.Width;
 
-            _colorLabel = new CCLabelTtf("#color", "Arial", 26);
+            ColorLabel = new CCLabel("#color", "Arial", 26, CCLabelFormat.SpriteFont);
 
-            _colorLabel.Position = background.Position;
-            layer.AddChild(_colorLabel);
+            ColorLabel.Position = background.Position;
+            layer.AddChild(ColorLabel);
 
             // Set the layer size
             layer.ContentSize = new CCSize(layer_width, 0);
@@ -58,25 +58,30 @@ namespace tests.Extensions
 
             // Update the color text
             ColourValueChanged(colourPicker, CCControlEvent.ValueChanged);
+
         }
+
+        private void ColourValueChanged(object sender, CCControl.CCControlEventArgs e)
+        {
+            ColourValueChanged(sender, e.ControlEvent);
+        }
+
 
         /** Callback for the change value. */
 
         public void ColourValueChanged(Object sender, CCControlEvent controlEvent)
         {
             CCControlColourPicker pPicker = (CCControlColourPicker)sender;
-            _colorLabel.Text = string.Format("#{0:X00}{1:X00}{2:X00}", pPicker.Color.R, pPicker.Color.G, pPicker.Color.B);
+            ColorLabel.Text = string.Format("#{0:X00}{1:X00}{2:X00}", pPicker.Color.R, pPicker.Color.G, pPicker.Color.B);
         }
 
-        private CCLabelTtf _colorLabel;
-
-        public static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene(AppDelegate.SharedWindow);
             var controlLayer = new CCControlColourPickerTest();
             if (controlLayer != null)
             {
-                controlLayer.getSceneTitleLabel().Text = (title);
+                controlLayer.SceneTitleLabel.Text = title;
                 pScene.AddChild(controlLayer);
             }
             return pScene;

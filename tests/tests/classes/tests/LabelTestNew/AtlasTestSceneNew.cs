@@ -58,7 +58,7 @@ namespace tests
         }
 
         static Func<CCLayer>[] labelCreateFunctions =
-        { 
+        {
                 () => new LabelFNTColorAndOpacity(),
                 () => new LabelSystemFontColorAndOpacity(),
                 () => new LabelFNTSpriteActions(),
@@ -92,6 +92,10 @@ namespace tests
                 () => new LabelSystemFont168(),
                 () => new LabelSystemFontRenderTexture(),
 
+#if !WINDOWS_PHONE8
+                () => new LabelFNTFromHTTP(),
+#endif
+                () => new LabelSFTextureView(),
         };
 
         public static CCLayer createAtlasLayer(int index)

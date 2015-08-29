@@ -8,12 +8,12 @@ namespace tests
 {
     public class GitHubIssue5 : AtlasDemo
     {
-        private CCLabelTtf _TestLabel;
+        private CCLabel _TestLabel;
         private int _Index = 0;
 
         public GitHubIssue5()
         {
-            _TestLabel = new CCLabelTtf("", "Arial", 10);
+            _TestLabel = new CCLabel("", "Arial", 10, CCLabelFormat.SpriteFont);
             AddChild(_TestLabel);
         }
 

@@ -73,12 +73,12 @@ namespace CocosSharp
 
 		internal static float SineOut(float time)
         {
-			return (float) Math.Sin(time * CCMathHelper.TwoPi);
+            return (float) Math.Sin(time * CCMathHelper.Pi_2);
         }
 
 		internal static float SineIn(float time)
         {
-			return -1f * (float)Math.Cos(time * CCMathHelper.TwoPi) + 1f;
+			return -1f * (float)Math.Cos(time * CCMathHelper.Pi_2) + 1f;
         }
 
 		internal static float SineInOut(float time)

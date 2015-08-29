@@ -4,30 +4,37 @@ namespace tests.Extensions
 {
     public class CCControlSwitchTest : CCControlScene
     {
-        private CCLabelTtf m_pDisplayValueLabel;
+        private CCLabel DisplayValueLabel { get; set; }
 
         public CCControlSwitchTest()
         {
-            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
-            CCNode layer = new CCNode ();
-            layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            var screenSize = Layer.VisibleBoundsWorldspace.Size;
+
+            var layer = new CCNode ();
+            layer.Position = screenSize.Center;
             AddChild(layer, 1);
 
-            float layer_width = 0.0f;
+            var layerWidth = 0.0f;
 
             // Add the black background for the text
-            CCScale9Sprite background = new CCScale9SpriteFile("extensions/buttonBackground");
+            var background = new CCScale9SpriteFile("extensions/buttonBackground");
             background.ContentSize = new CCSize(80, 50);
-            background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
+            background.Position = new CCPoint(layerWidth + background.ContentSize.Width / 2.0f, 0);
             layer.AddChild(background);
 
-            layer_width += background.ContentSize.Width;
+            layerWidth += background.ContentSize.Width;
 
-            m_pDisplayValueLabel = new CCLabelTtf("#color", "Arial", 30);
+            DisplayValueLabel = new CCLabel("#color", "Arial", 30, CCLabelFormat.SpriteFont);
 
-            m_pDisplayValueLabel.Position = background.Position;
-            layer.AddChild(m_pDisplayValueLabel);
+            DisplayValueLabel.Position = background.Position;
+            layer.AddChild(DisplayValueLabel);
 
             // Create the switch
             CCControlSwitch switchControl = new CCControlSwitch
@@ -36,45 +43,70 @@ namespace tests.Extensions
                     new CCSprite("extensions/switch-on"),
                     new CCSprite("extensions/switch-off"),
                     new CCSprite("extensions/switch-thumb"),
-                    new CCLabelTtf("On", "Arial", 16),
-                    new CCLabelTtf("Off", "Arial", 16)
+                    new CCLabel("On", "Arial", 16, CCLabelFormat.SpriteFont),
+                    new CCLabel("Off", "Arial", 16, CCLabelFormat.SpriteFont)
                 );
-            switchControl.Position = new CCPoint(layer_width + 10 + switchControl.ContentSize.Width / 2, 0);
+            switchControl.Position = new CCPoint(layerWidth + 10 + switchControl.ContentSize.Width / 2, 0);
             layer.AddChild(switchControl);
 
-            switchControl.AddTargetWithActionForControlEvents(this, valueChanged, CCControlEvent.ValueChanged);
+            // Subscribe to the switches StateChanged event
+            switchControl.StateChanged += SwitchControl_StateChanged;
+
+            // --------------- OR ---------------------
+            // we can subscribe to the ValueChanged event.
+            //switchControl.ValueChanged += SwitchControl_ValueChanged;
+
+
 
             // Set the layer size
-            layer.ContentSize = new CCSize(layer_width, 0);
-            layer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            layer.ContentSize = new CCSize(layerWidth, 0);
+            layer.AnchorPoint = CCPoint.AnchorMiddle;
 
             // Update the value label
-            valueChanged(switchControl, CCControlEvent.ValueChanged);
+            ValueChanged(switchControl, CCControlEvent.ValueChanged);
+        }
+
+        private void SwitchControl_StateChanged(object sender, CCControlSwitch.CCSwitchStateEventArgs e)
+        {
+            if (e.State)
+            {
+                DisplayValueLabel.Text = ("On");
+            }
+            else
+            {
+                DisplayValueLabel.Text = ("Off");
+            }
+
+        }
+
+        private void SwitchControl_ValueChanged(object sender, CCControl.CCControlEventArgs e)
+        {
+            ValueChanged(sender, e.ControlEvent);
         }
 
         /* Callback for the change value. */
 
-        public void valueChanged(object sender, CCControlEvent controlEvent)
+        public void ValueChanged(object sender, CCControlEvent controlEvent)
         {
-            var pSwitch = (CCControlSwitch) sender;
-			if (pSwitch.On)
+            var controlSwitch = (CCControlSwitch) sender;
+			if (controlSwitch.On)
             {
-                m_pDisplayValueLabel.Text = ("On");
+                DisplayValueLabel.Text = ("On");
             }
             else
             {
-                m_pDisplayValueLabel.Text = ("Off");
+                DisplayValueLabel.Text = ("Off");
             }
         }
 
 
-        public new static CCScene sceneWithTitle(string title)
+        public static CCScene SceneWithTitle(string title)
         {
             var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlSwitchTest();
             if (controlLayer != null)
             {
-                controlLayer.getSceneTitleLabel().Text = (title);
+                controlLayer.SceneTitleLabel.Text = (title);
                 pScene.AddChild(controlLayer);
             }
             return pScene;

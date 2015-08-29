@@ -296,10 +296,9 @@
     <Compile Include="textures\CCTexture2D.cs" />
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
     <Compile Include="text_input_node\CCIMEKeyboardNotificationInfo.cs" />
-    <Compile Include="text_input_node\CCTextFieldTTF.cs" />
     <Compile Include="text_input_node\ICCIMEDelegate.cs" />
-    <Compile Include="text_input_node\ICCTextFieldDelegate.cs" />
     <Compile Include="tileMap_parallax_nodes\CCParallaxNode.cs" />
     <Compile Include="tileMap_parallax_nodes\CCPointObject.cs" />
     <Compile Include="support\Converters\CCPointConverter.cs" />
@@ -354,6 +353,8 @@
     <Compile Include="EmbeddableView\CCGameView.cs" />
     <Compile Include="EmbeddableView\CCGameView.Android.cs" />
     <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
+    <Compile Include="platform\Keyboard\Android\IMEKeyboardImpl.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -388,4 +389,5 @@
     <None Include="CCWindow.cs" />
     <None Include="platform\CCApplication.cs" />
   </ItemGroup>
+  <ItemGroup />
 </Project>

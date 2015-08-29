@@ -9,14 +9,9 @@ namespace CocosSharp
     /// </summary>
     public abstract class CCGridBase 
     {
-        bool active;
         bool textureFlipped;
-
         CCPoint step;
-        CCSize contentSize;
-
         CCScene scene;
-
 
         #region Properties
 

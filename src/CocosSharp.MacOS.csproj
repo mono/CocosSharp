@@ -30,6 +30,7 @@
     <UseMSBuildEngine>False</UseMSBuildEngine>
     <UseRefCounting>false</UseRefCounting>
     <DocumentationFile>bin\MacOS\Debug\CocosSharp.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -48,6 +49,7 @@
     <UseMSBuildEngine>False</UseMSBuildEngine>
     <UseRefCounting>false</UseRefCounting>
     <DocumentationFile>bin\MacOS\Release\CocosSharp.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Distribution|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -391,7 +393,6 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
-    <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
     <Compile Include="CCWindow.cs" />
     <Compile Include="CCViewport.cs" />
     <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
@@ -418,6 +419,10 @@
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="misc_nodes\CCGeometryNode.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="text_input_node\CCTextField.cs" />
+    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
+    <Compile Include="Platform\Keyboard\MacOSX\IMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
@@ -426,6 +431,7 @@
     <Folder Include="physics\" />
     <Folder Include="Renderer\" />
     <Folder Include="Renderer\RenderCommands\" />
+    <Folder Include="Platform\Keyboard\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">

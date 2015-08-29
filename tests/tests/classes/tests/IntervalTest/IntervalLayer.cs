@@ -4,11 +4,11 @@ namespace tests
 {
     public class IntervalLayer : CCLayer
     {
-        protected CCLabelBMFont m_label0;
-        protected CCLabelBMFont m_label1;
-        protected CCLabelBMFont m_label2;
-        protected CCLabelBMFont m_label3;
-        protected CCLabelBMFont m_label4;
+        protected CCLabel m_label0;
+        protected CCLabel m_label1;
+        protected CCLabel m_label2;
+        protected CCLabel m_label3;
+        protected CCLabel m_label4;
 
         private float m_time0, m_time1, m_time2, m_time3, m_time4;
         
@@ -30,11 +30,11 @@ namespace tests
             AddChild(sun);
 
             // timers
-            m_label0 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
-            m_label1 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
-            m_label2 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
-            m_label3 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
-            m_label4 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
+            m_label0 = new CCLabel("0", "fonts/bitmapFontTest4.fnt");
+            m_label1 = new CCLabel("0", "fonts/bitmapFontTest4.fnt");
+            m_label2 = new CCLabel("0", "fonts/bitmapFontTest4.fnt");
+            m_label3 = new CCLabel("0", "fonts/bitmapFontTest4.fnt");
+            m_label4 = new CCLabel("0", "fonts/bitmapFontTest4.fnt");
 
             Schedule ();
 

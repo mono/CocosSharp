@@ -120,7 +120,7 @@ namespace tests
             // Let's make sure that the two line points are not the same or we will have errors later on
             // with NaN on some platforms when calculating DrawNode's BoundingRect.
             if(lastPoint != touch.Location)
-                canvasNode.DrawSegment(lastPoint, touch.Location, 1, new CCColor4F(CCColor4B.White));
+                canvasNode.DrawLine(lastPoint, touch.Location, 1, new CCColor4F(CCColor4B.White), CCLineCap.Round);
 
             lastPoint = touch.Location;
         }
@@ -245,7 +245,7 @@ namespace tests
             // Let's make sure that the two line points are not the same or we will have errors later on
             // with NaN on some platforms when calculating DrawNode's BoundingRect.
             if (lastPoint != touch.Location)
-                canvasNode.DrawSegment(lastPoint, touch.Location, 1, new CCColor4F(CCColor4B.White));
+                canvasNode.DrawLine(lastPoint, touch.Location, 1, new CCColor4F(CCColor4B.White), CCLineCap.Round);
 
             lastPoint = touch.Location;
         }

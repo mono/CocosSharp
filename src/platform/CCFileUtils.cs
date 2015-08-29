@@ -105,7 +105,7 @@ namespace CocosSharp
         /// @return if success,the pointer of data will be returned,or NULL is returned
         /// @warning If you get the file data succeed,you must delete it after used.
         /// </summary>
-        /// <param name="pszZipFilePath"></param>
+        /// <param name="zipFilePath"></param>
         /// <param name="filename"></param>
         /// <param name="pSize"></param>
         /// <returns></returns>
@@ -145,7 +145,7 @@ namespace CocosSharp
         /// If you have not set the ResourcePath,the function add "/NEWPLUS/TDA_DATA/UserData/" as default.
         /// You can set ResourcePath by function void setResourcePath(const char *pszResourcePath);
         /// </summary>
-        /// <param name="pszRelativePath"></param>
+        /// <param name="relativePath"></param>
         /// <returns></returns>
         public static string FullPathFromRelativePath(string relativePath)
         {
@@ -176,27 +176,22 @@ namespace CocosSharp
         }
 
         /// <summary>
-        /// @brief  Set the ResourcePath,we will find resource in this path
-        /// @param pszResourcePath  The absolute resource path
-        /// @warning Don't call this function in android and iOS, it has not effect.
+        /// Sets the resource path.
+        /// Warning: Don't call this function in android and iOS, it has not effect.
         /// In android, if you want to read file other than apk, you shoud use invoke getFileData(), and pass the 
         /// absolute path.
         /// </summary>
-        /// <param name="?"></param>
+        /// <param name="resourcePath">The absolute resource path.</param>
         public static void SetResourcePath(string resourcePath)
         {
             throw new NotSupportedException ("Not supported in XNA");
         }
 
         /// <summary>
-        /// @brief   Generate a CCDictionary pointer by file
-        /// @param   pFileName  The file name of *.plist file
-        /// @return  The CCDictionary pointer generated from the file
+        /// Generate a CCDictionary from file
         /// </summary>
-        /// <typeparam name="?"></typeparam>
-        /// <typeparam name="?"></typeparam>
-        /// <param name="?"></param>
-        /// <returns></returns>
+        /// <returns>The with contents of file.</returns>
+        /// <param name="filename">Filename.</param>
         public static Dictionary<string, object> DictionaryWithContentsOfFile(string filename)
         {
             CCDictMaker tMaker = new CCDictMaker();

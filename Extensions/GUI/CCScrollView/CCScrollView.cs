@@ -27,7 +27,7 @@ namespace CocosSharp
      * It provides scroll view functionalities to cocos2d projects natively.
      */
 
-    public class CCScrollView : CCLayer
+    public class CCScrollView : CCNode
     {
         const float SCROLL_DEACCEL_RATE = 0.95f;
         const float SCROLL_DEACCEL_DIST = 1.0f;
@@ -69,7 +69,8 @@ namespace CocosSharp
 			set 
 			{ 
 				clippingToBounds = value; 
-				ChildClippingMode = clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
+                if (Layer != null)
+				    Layer.ChildClippingMode = clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
 			}
 		}
 
@@ -592,6 +593,13 @@ namespace CocosSharp
 
 		#endregion Event handling
 
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            // We set our Child Clipping Mode here
+            Layer.ChildClippingMode = clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
+        }
 
         public override void AddChild(CCNode child, int zOrder, int tag)
         {

@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CocosSharp;
-using tests;
 
-namespace CocosSharp
+namespace tests
 {
     public class TextInputTestScene : TestScene
     {
 
-        int kTextFieldTTFDefaultTest = 0;
-        int kTextFieldTTFActionTest = 1;
-        int kTextInputTestsCount = 2;
+        public static int MAX_TESTS = 0;
 
         public static string FONT_NAME = "Thonburi";
         public static int FONT_SIZE = 36;
 
         public static int testIdx = -1;
+
+        public TextInputTestScene() : base()
+        {
+            MAX_TESTS = textinputCreateFunctions.Length;
+        }
 
         public override void runThisTest()
         {
@@ -27,24 +29,18 @@ namespace CocosSharp
             Scene.Director.ReplaceScene(this);
         }
 
+        static Func<KeyboardNotificationLayer>[] textinputCreateFunctions =
+            {
+                () => new TextFieldDefaultTest(),
+                () => new TextFieldActionTest(),
+                () => new TextFieldUpperCaseTest(),
+                () => new TextFieldCustomIMETest(),
+
+            };
+        
         public KeyboardNotificationLayer createTextInputTest(int nIndex)
         {
-            switch (nIndex)
-            {
-                //case kTextFieldTTFDefaultTest:
-                //    return new TextFieldTTFDefaultTest();
-                //case kTextFieldTTFActionTest:
-                //    return new TextFieldTTFActionTest();
-                //default: return 0;
-
-                case 0:
-                    return new TextFieldTTFDefaultTest();
-                case 1:
-                    return new TextFieldTTFActionTest();
-                default: break;
-            }
-
-            return null;
+            return textinputCreateFunctions[nIndex]();
         }
 
         protected override void NextTestCase()
@@ -62,10 +58,8 @@ namespace CocosSharp
         public CCLayer restartTextInputTest()
         {
             TextInputTest pContainerLayer = new TextInputTest();
-            //pContainerLayer->autorelease();
 
             KeyboardNotificationLayer pTestLayer = createTextInputTest(testIdx);
-            //pTestLayer->autorelease();
             pContainerLayer.addKeyboardNotificationLayer(pTestLayer);
 
             return pContainerLayer;
@@ -74,7 +68,7 @@ namespace CocosSharp
         public CCLayer nextTextInputTest()
         {
             testIdx++;
-            testIdx = testIdx % kTextInputTestsCount;
+            testIdx = testIdx % MAX_TESTS;
 
             return restartTextInputTest();
         }
@@ -82,7 +76,7 @@ namespace CocosSharp
         public CCLayer backTextInputTest()
         {
             testIdx--;
-            int total = kTextInputTestsCount;
+            int total = MAX_TESTS;
             if (testIdx < 0)
                 testIdx += total;
 
@@ -97,7 +91,7 @@ namespace CocosSharp
             rc.Size = node.ContentSize;
             rc.Origin.X -= rc.Size.Width * node.AnchorPoint.X;
             rc.Origin.Y -= rc.Size.Height * node.AnchorPoint.Y;
-            
+
             return rc;
         }
     }

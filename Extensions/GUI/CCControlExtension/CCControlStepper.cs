@@ -35,8 +35,8 @@ namespace CocosSharp
 
 		public CCSprite MinusSprite { get; set; }
 		public CCSprite PlusSprite { get; set; }
-		public CCLabelTtf MinusLabel { get; set; }
-		public CCLabelTtf PlusLabel { get; set; }
+		public CCLabel MinusLabel { get; set; }
+		public CCLabel PlusLabel { get; set; }
 		public virtual bool IsContinuous { get; private set; }
 
 
@@ -127,19 +127,19 @@ namespace CocosSharp
             wraps = false;
 
             MinusSprite = minusSprite;
-			MinusSprite.Position = new CCPoint(minusSprite.ContentSize.Width / 2, minusSprite.ContentSize.Height / 2);
+			MinusSprite.Position = minusSprite.ContentSize.Center;
             AddChild(MinusSprite);
 
-            MinusLabel = new CCLabelTtf("-", ControlStepperLabelFont, 38);
+            MinusLabel = new CCLabel("-", ControlStepperLabelFont, 38);
             MinusLabel.Color = ControlStepperLabelColorDisabled;
-			MinusLabel.Position = new CCPoint(MinusSprite.ContentSize.Width / 2, MinusSprite.ContentSize.Height / 2);
+			MinusLabel.Position = MinusSprite.ContentSize.Center;
             MinusSprite.AddChild(MinusLabel);
 
             PlusSprite = plusSprite;
 			PlusSprite.Position = new CCPoint(minusSprite.ContentSize.Width + plusSprite.ContentSize.Width / 2, minusSprite.ContentSize.Height / 2);
             AddChild(PlusSprite);
 
-            PlusLabel = new CCLabelTtf("+", ControlStepperLabelFont, 38);
+            PlusLabel = new CCLabel("+", ControlStepperLabelFont, 38);
             PlusLabel.Color = ControlStepperLabelColorEnabled;
             PlusLabel.Position = PlusSprite.ContentSize.Center;
             PlusSprite.AddChild(PlusLabel);
@@ -187,7 +187,7 @@ namespace CocosSharp
 
             if (send)
             {
-                SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                OnValueChanged();
             }
         }
 
@@ -250,9 +250,16 @@ namespace CocosSharp
 		}
 
 
-		#region Event handling
+        #region Event handling
 
-		bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
+        public override CCPoint GetTouchLocation(CCTouch touch)
+        {
+            CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
+            touchLocation = MinusSprite.WorldToParentspace(touchLocation);  // Convert to the node space of this class
+            return touchLocation;
+        }
+
+        bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!IsTouchInside(pTouch) || !Enabled || !Visible)
             {

@@ -9,6 +9,13 @@ namespace tests.Extensions
         public TableViewTestLayer()
         {
 
+
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
             InitTableViewTestLayer();
         }
 
@@ -105,7 +112,7 @@ namespace tests.Extensions
                 sprite.Position = new CCPoint(0, 0);
                 cell.AddChild(sprite);
 
-                var label = new CCLabelTtf(str, "Helvetica", 20.0f);
+                var label = new CCLabel(str, "Helvetica", 20.0f, CCLabelFormat.SpriteFont);
                 label.Position = CCPoint.Zero;
                 label.AnchorPoint = CCPoint.Zero;
                 label.Tag = 123;
@@ -113,7 +120,7 @@ namespace tests.Extensions
             }
             else
             {
-                var label = (CCLabelTtf) cell.GetChildByTag(123);
+                var label = (CCLabel) cell.GetChildByTag(123);
                 label.Text = (str);
             }
 

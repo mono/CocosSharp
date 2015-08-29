@@ -17,7 +17,7 @@ namespace tests
         private void InitBug624Layer()
         {
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
-            CCLabelTtf label = new CCLabelTtf("Layer1", "MarkerFelt", 22);
+            var label = new CCLabel("Layer1", "MarkerFelt", 22, CCLabelFormat.SpriteFont);
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(label);
@@ -48,7 +48,7 @@ namespace tests
         public Bug624Layer2()
         {
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
-            CCLabelTtf label = new CCLabelTtf("Layer2", "MarkerFelt", 36);
+            var label = new CCLabel("Layer2", "MarkerFelt", 36, CCLabelFormat.SpriteFont);
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(label);

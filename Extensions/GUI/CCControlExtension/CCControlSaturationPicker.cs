@@ -138,7 +138,7 @@ namespace CocosSharp
             if (dist <= Background.BoundingBox.Size.Width * 0.5f)
             {
                 UpdateSliderPosition(location);
-                SendActionsForControlEvents(CCControlEvent.ValueChanged);
+                OnValueChanged();
                 return true;
             }
             return false;

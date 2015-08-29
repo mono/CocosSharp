@@ -5,7 +5,7 @@ namespace tests.Extensions
 {
     public class ButtonTestLayer : BaseLayer
     {
-        public CCLabelBMFont mCCControlEventLabel;
+        public CCLabel mCCControlEventLabel;
 
         public void onCCControlButtonClicked(object obj, CCControlEvent pCCControlEvent)
         {

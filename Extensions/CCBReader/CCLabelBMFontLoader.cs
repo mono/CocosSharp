@@ -10,14 +10,14 @@ namespace CocosSharp
 
         public override CCNode CreateCCNode()
         {
-            return new CCLabelBMFont();
+            return new CCLabel();
         }
 
         protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
         {
             if (propertyName == PROPERTY_COLOR)
             {
-                ((CCLabelBMFont) node).Color = color;
+                ((CCLabel) node).Color = color;
             }
             else
             {
@@ -29,7 +29,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_OPACITY)
             {
-                ((CCLabelBMFont) node).Opacity = pByte;
+                ((CCLabel) node).Opacity = pByte;
             }
             else
             {
@@ -42,7 +42,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_BLENDFUNC)
             {
-                ((CCLabelBMFont) node).BlendFunc = blendFunc;
+                ((CCLabel) node).BlendFunc = blendFunc;
             }
             else
             {
@@ -54,7 +54,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_FNTFILE)
             {
-                ((CCLabelBMFont) node).FntFile = pFntFile;
+                //((CCLabel) node).FntFile = pFntFile;
             }
             else
             {
@@ -66,7 +66,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_STRING)
             {
-                ((CCLabelBMFont) node).Text = (pText);
+                ((CCLabel) node).Text = (pText);
             }
             else
             {

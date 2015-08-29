@@ -4,7 +4,7 @@ namespace tests.Extensions
 {
     internal class MenuTestLayer : BaseLayer
     {
-        public CCLabelBMFont mMenuItemStatusLabelBMFont;
+        public CCLabel mMenuItemStatusLabelBMFont;
 
         public void onMenuItemAClicked(object pSender)
         {

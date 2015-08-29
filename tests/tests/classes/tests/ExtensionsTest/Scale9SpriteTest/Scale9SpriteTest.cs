@@ -8,8 +8,8 @@ namespace tests.Extensions
         {
             base.OnEnter();
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
-            getSceneTitleLabel().Text = Title();
-            getSceneSubtitleLabel().Text = Subtitle();
+            SceneTitleLabel.Text = Title();
+            SceneSubtitleLabel.Text = Subtitle();
         }
 
         public virtual string Title()
@@ -25,21 +25,96 @@ namespace tests.Extensions
         public override void previousCallback(object sender)
         {
             Scene.Director.ReplaceScene(
-                Scale9SpriteSceneManager.sharedSprite9SceneManager().previousControlScene());
+                Scale9SpriteSceneManager.SharedSprite9SceneManager.PreviousControlScene);
         }
 
         public override void restartCallback(object sender)
         {
             Scene.Director.ReplaceScene(
-                Scale9SpriteSceneManager.sharedSprite9SceneManager().currentControlScene());
+                Scale9SpriteSceneManager.SharedSprite9SceneManager.CurrentControlScene);
         }
 
         public override void nextCallback(object sender)
         {
             Scene.Director.ReplaceScene(
-                Scale9SpriteSceneManager.sharedSprite9SceneManager().nextControlScene());
+                Scale9SpriteSceneManager.SharedSprite9SceneManager.NextControlScene);
         }
     }
+
+    // S9BatchNodeBasic
+    public class S9Scale9SpriteTest : S9SpriteTestDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCSize winSize = VisibleBoundsWorldspace.Size;
+            float x = winSize.Center.X;
+            float y = winSize.Center.Y;
+
+            //var widgetSize = _widget->getContentSize();
+
+            var moveTo = new CCMoveBy(1.0f, new CCPoint(30, 0));
+            var moveBack = moveTo.Reverse();
+            var rotateBy = new CCRotateBy(1.0f, 180);
+            var scaleBy = new CCScaleTo(1.0f, -2.0f);
+            var action = new CCSequence(moveTo, moveBack, rotateBy, scaleBy);
+
+
+            var normalSprite1 = new CCSprite("Images/animationbuttonnormal.png");
+            normalSprite1.Position = winSize.Center;
+            normalSprite1.PositionX -= 100;
+            normalSprite1.PositionY += 100;
+            normalSprite1.FlipY = true;
+
+
+            AddChild(normalSprite1);
+            normalSprite1.RunAction(action);
+
+            var normalSprite2 = new CCScale9Sprite("Images/animationbuttonnormal.png");
+            normalSprite2.Position = winSize.Center;
+            normalSprite2.PositionX -= 80;
+            normalSprite2.PositionY += 100;
+            normalSprite2.IsScale9Enabled = false;
+            normalSprite2.Opacity = 100;
+            AddChild(normalSprite2);
+            normalSprite2.Color = CCColor3B.Green;
+            normalSprite2.RunAction(action);
+
+            
+            var sp1 = new CCScale9Sprite("Images/animationbuttonnormal.png");
+            sp1.Position = winSize.Center;
+            sp1.PositionX -= 100;
+            sp1.PositionY -= 50;
+            sp1.Scale = 1.2f;
+            sp1.ContentSize = new CCSize(100, 100);
+            sp1.Color = CCColor3B.Green;
+            AddChild(sp1);
+            sp1.RunAction(action);
+
+            var sp2 = new CCScale9Sprite("Images/animationbuttonnormal.png");
+            sp2.Position = winSize.Center;
+            sp2.PositionX += 100;
+            sp2.PositionY -= 50;
+            sp2.PreferredSize = sp1.ContentSize * 1.2f;
+            sp2.ContentSize = new CCSize(100, 100);
+            sp2.Color = CCColor3B.Green;
+            AddChild(sp2);
+            sp2.RunAction(action);
+
+        }
+
+        public override string Title()
+        {
+            return "Scale9Sprite actions";
+        }
+
+        public override string Subtitle()
+        {
+            return "";
+        }
+    }
+
 
     // S9BatchNodeBasic
     public class S9BatchNodeBasic : S9SpriteTestDemo
@@ -51,35 +126,25 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9BatchNodeBasic ...");
-
-            var batchNode = new CCSpriteBatchNode("Images/blocks9.png");
-            //batchNode.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            CCLog.Log("batchNode created with : Images/blocks9.png");
+            var blocksSprite = new CCSprite("Images/blocks9.png");
 
             var blocks = new CCScale9Sprite();
-            CCLog.Log("... created");
 
-            blocks.UpdateWithBatchNode(batchNode, new CCRect(0, 0, 96, 96), false, new CCRect(0, 0, 96, 96));
-            CCLog.Log("... updateWithBatchNode");
+            blocks.UpdateWithSprite(blocksSprite, new CCRect(0, 0, 96, 96), false, new CCRect(0, 0, 96, 96));
 
             blocks.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
 
             AddChild(blocks);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9BatchNodeBasic done.");
         }
 
         public override string Title()
         {
-            return "Scale9Sprite created empty and updated from SpriteBatchNode";
+            return "Scale9Sprite created empty and updated from Sprite";
         }
 
         public override string Subtitle()
         {
-            return "updateWithBatchNode(); capInsets=full size";
+            return "UpdateWithSprite(); capInsets=full size";
         }
     }
 
@@ -93,18 +158,11 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheet ...");
-
             var blocks = CCScale9Sprite.SpriteWithFrameName("blocks9.png");
-            CCLog.Log("... created");
 
             blocks.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
 
             AddChild(blocks);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheet done.");
         }
 
         public override string Title()
@@ -114,7 +172,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); default cap insets";
+            return "SpriteWithFrameName(); default cap insets";
         }
     }
 
@@ -128,19 +186,12 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetRotated ...");
-
             var blocks = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
 
-            CCLog.Log("... created");
-
             blocks.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
 
             AddChild(blocks);
-            CCLog.Log("AddChild");
 
-            CCLog.Log("... S9FrameNameSpriteSheetRotated done.");
         }
 
         public override string Title()
@@ -150,9 +201,69 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); default cap insets";
+            return "SpriteWithFrameName(); default cap insets";
         }
     }
+
+
+    // S9FrameNameSpriteSheetCropped
+    public class S9FrameNameSpriteSheetCropped : S9SpriteTestDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+            var position = winSize.Center;
+
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
+
+            var blocks = CCScale9Sprite.SpriteWithFrameName("blocks9c.png");
+
+            blocks.Position = position;
+
+            AddChild(blocks);
+        }
+
+        public override string Title()
+        {
+            return "Scale9Sprite from sprite sheet (stored rotated)";
+        }
+
+        public override string Subtitle()
+        {
+            return "SpriteWithFrameName(); default cap insets";
+        }
+    }
+
+    // S9FrameNameSpriteSheetCroppedRotated
+    public class S9FrameNameSpriteSheetCroppedRotated : S9SpriteTestDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+            var position = winSize.Center;
+
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
+
+            var blocks = CCScale9Sprite.SpriteWithFrameName("blocks9cr.png");
+
+            blocks.Position = position;
+
+            AddChild(blocks);
+        }
+
+        public override string Title()
+        {
+            return "Scale9Sprite from sprite sheet (stored rotated)";
+        }
+
+        public override string Subtitle()
+        {
+            return "SpriteWithFrameName(); default cap insets";
+        }
+    }
+
 
     // S9BatchNodeScaledNoInsets
     public class S9BatchNodeScaledNoInsets : S9SpriteTestDemo
@@ -164,38 +275,29 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9BatchNodeScaledNoInsets ...");
-
             // scaled without insets
-            var batchNode_scaled = new CCSpriteBatchNode("Images/blocks9.png");
-            CCLog.Log("batchNode_scaled created with : Images/blocks9.png");
+            var spriteScaled = new CCSprite("Images/blocks9.png");
 
-            var blocks_scaled = new CCScale9Sprite();
-            CCLog.Log("... created");
-            blocks_scaled.UpdateWithBatchNode(batchNode_scaled, new CCRect(0, 0, 96, 96), false,
+            var blocksScaled = new CCScale9Sprite();
+
+            blocksScaled.UpdateWithSprite(spriteScaled, new CCRect(0, 0, 96, 96), false,
                                               new CCRect(0, 0, 96, 96));
-            CCLog.Log("... updateWithBatchNode");
 
-            blocks_scaled.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            blocksScaled.Position = new CCPoint(x, y);
 
-            blocks_scaled.ContentSize = new CCSize(96 * 4, 96 * 2);
-            CCLog.Log("... setContentSize");
+            blocksScaled.ContentSize = new CCSize(96 * 4, 96 * 2);
 
-            AddChild(blocks_scaled);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9BtchNodeScaledNoInsets done.");
+            AddChild(blocksScaled);
         }
 
         public override string Title()
         {
-            return "Scale9Sprite created empty and updated from SpriteBatchNode";
+            return "Scale9Sprite created empty and updated from Sprite";
         }
 
         public override string Subtitle()
         {
-            return "updateWithBatchNode(); capInsets=full size; rendered 4 X Width, 2 X Height";
+            return "UpdateWithSprite(); capInsets=full size; rendered 4 X Width, 2 X Height";
         }
     }
 
@@ -209,22 +311,15 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetScaledNoInsets ...");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
 
-            var blocks_scaled = CCScale9Sprite.SpriteWithFrameName("blocks9.png");
+            var blocksScaled = CCScale9Sprite.SpriteWithFrameName("blocks9.png");
 
-            CCLog.Log("... created");
+            blocksScaled.Position = new CCPoint(x, y);
 
-            blocks_scaled.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            blocksScaled.ContentSize = new CCSize(96 * 4, 96 * 2);
 
-            blocks_scaled.ContentSize = new CCSize(96 * 4, 96 * 2);
-            CCLog.Log("... setContentSize");
-
-            AddChild(blocks_scaled);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheetScaledNoInsets done.");
+            AddChild(blocksScaled);
         }
 
         public override string Title()
@@ -234,7 +329,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); default cap insets; rendered 4 X Width, 2 X Height";
+            return "SpriteWithFrameName(); default cap insets; rendered 4 X Width, 2 X Height";
         }
     }
 
@@ -248,21 +343,13 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetRotatedScaledNoInsets ...");
+            var blocksScaled = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
 
-            var blocks_scaled = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
-            CCLog.Log("... created");
+            blocksScaled.Position = new CCPoint(x, y);
 
-            blocks_scaled.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            blocksScaled.ContentSize = new CCSize(96 * 4, 96 * 2);
 
-            blocks_scaled.ContentSize = new CCSize(96 * 4, 96 * 2);
-            CCLog.Log("... setContentSize");
-
-            AddChild(blocks_scaled);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheetRotatedScaledNoInsets done.");
+            AddChild(blocksScaled);
         }
 
         public override string Title()
@@ -272,7 +359,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); default cap insets; rendered 4 X Width, 2 X Height";
+            return "SpriteWithFrameName(); default cap insets; rendered 4 X Width, 2 X Height";
         }
     }
 
@@ -286,38 +373,28 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9BatchNodeScaleWithCapInsets ...");
+            var spriteScaledWithInsets = new CCSprite("Images/blocks9.png");
 
-            var batchNode_scaled_with_insets = new CCSpriteBatchNode("Images/blocks9.png");
-            CCLog.Log("batchNode_scaled_with_insets created with : Images/blocks9.png");
+            var blocksScaledWithInsets = new CCScale9Sprite();
 
-            var blocks_scaled_with_insets = new CCScale9Sprite();
-            CCLog.Log("... created");
-
-            blocks_scaled_with_insets.UpdateWithBatchNode(batchNode_scaled_with_insets, new CCRect(0, 0, 96, 96), false,
+            blocksScaledWithInsets.UpdateWithSprite(spriteScaledWithInsets, new CCRect(0, 0, 96, 96), false,
                                                           new CCRect(32, 32, 32, 32));
-            CCLog.Log("... updateWithBatchNode");
 
-            blocks_scaled_with_insets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
-            CCLog.Log("... setContentSize");
+            blocksScaledWithInsets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
 
-            blocks_scaled_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            blocksScaledWithInsets.Position = new CCPoint(x, y);
 
-            AddChild(blocks_scaled_with_insets);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9BatchNodeScaleWithCapInsets done.");
+            AddChild(blocksScaledWithInsets);
         }
 
         public override string Title()
         {
-            return "Scale9Sprite created empty and updated from SpriteBatchNode";
+            return "Scale9Sprite created empty and updated from Sprite";
         }
 
         public override string Subtitle()
         {
-            return "updateWithBatchNode(); capInsets=(32, 32, 32, 32)";
+            return "UpdateWithSprite(); capInsets=(32, 32, 32, 32)";
         }
     }
 
@@ -331,18 +408,12 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetInsets ...");
 
-            var blocks_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
-            CCLog.Log("... created");
+            var blocksWithInsets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
 
-            blocks_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            blocksWithInsets.Position = new CCPoint(x, y);
 
-            AddChild(blocks_with_insets);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheetInsets done.");
+            AddChild(blocksWithInsets);
         }
 
         public override string Title()
@@ -352,7 +423,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); cap insets=(32, 32, 32, 32)";
+            return "SpriteWithFrameName(); cap insets=(32, 32, 32, 32)";
         }
     }
 
@@ -366,21 +437,13 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetInsetsScaled ...");
+            var blocksScaledWithInsets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
 
-            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
-            CCLog.Log("... created");
+            blocksScaledWithInsets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
 
-            blocks_scaled_with_insets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
-            CCLog.Log("... setContentSize");
+            blocksScaledWithInsets.Position = new CCPoint(x, y);
 
-            blocks_scaled_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
-
-            AddChild(blocks_scaled_with_insets);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheetInsetsScaled done.");
+            AddChild(blocksScaledWithInsets);
         }
 
         public override string Title()
@@ -390,7 +453,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); default cap insets; rendered scaled 4.5 X Width, 2.5 X Height";
+            return "SpriteWithFrameName(); default cap insets; rendered scaled 4.5 X Width, 2.5 X Height";
         }
     }
 
@@ -404,18 +467,11 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetRotatedInsets ...");
+            var blocksWithInsets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png", new CCRect(32, 32, 32, 32));
 
-            var blocks_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png", new CCRect(32, 32, 32, 32));
-            CCLog.Log("... created");
+            blocksWithInsets.Position = new CCPoint(x, y);
 
-            blocks_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
-
-            AddChild(blocks_with_insets);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheetRotatedInsets done.");
+            AddChild(blocksWithInsets);
         }
 
         public override string Title()
@@ -425,7 +481,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); cap insets=(32, 32, 32, 32)";
+            return "SpriteWithFrameName(); cap insets=(32, 32, 32, 32)";
         }
     }
 
@@ -441,35 +497,24 @@ namespace tests.Extensions
             float x = winSize.Width / 4;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9_TexturePacker ...");
+            var buttonNormal = CCScale9Sprite.SpriteWithFrameName("button_normal.png");
 
-            var s = CCScale9Sprite.SpriteWithFrameName("button_normal.png");
-            CCLog.Log("... created");
+            buttonNormal.Position = new CCPoint(x, y);
 
-            s.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            buttonNormal.ContentSize = new CCSize(14 * 16, 10 * 16);
 
-            s.ContentSize = new CCSize(14 * 16, 10 * 16);
-            CCLog.Log("... setContentSize");
-
-            AddChild(s);
-            CCLog.Log("AddChild");
+            AddChild(buttonNormal);
 
             x = winSize.Width * 3 / 4;
 
-            var s2 = CCScale9Sprite.SpriteWithFrameName("button_actived.png");
-            CCLog.Log("... created");
+            var buttonActivated = CCScale9Sprite.SpriteWithFrameName("button_actived.png");
 
-            s2.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
+            buttonActivated.Position = new CCPoint(x, y);
 
-            s2.ContentSize = new CCSize(14 * 16, 10 * 16);
-            CCLog.Log("... setContentSize");
+            buttonActivated.ContentSize = new CCSize(14 * 16, 10 * 16);
 
-            AddChild(s2);
-            CCLog.Log("AddChild");
+            AddChild(buttonActivated);
 
-            CCLog.Log("... S9_TexturePacker done.");
         }
 
         public override string Title()
@@ -479,7 +524,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName('button_normal.png');createWithSpriteFrameName('button_actived.png');";
+            return "SpriteWithFrameName('button_normal.png'); SpriteWithFrameName('button_actived.png');";
         }
     }
 
@@ -493,21 +538,13 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("S9FrameNameSpriteSheetRotatedInsetsScaled ...");
+            var blocksScaledWithInsets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
 
-            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9.png", new CCRect(32, 32, 32, 32));
-            CCLog.Log("... created");
+            blocksScaledWithInsets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
 
-            blocks_scaled_with_insets.ContentSize = new CCSize(96 * 4.5f, 96 * 2.5f);
-            CCLog.Log("... setContentSize");
+            blocksScaledWithInsets.Position = new CCPoint(x, y);
 
-            blocks_scaled_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
-
-            AddChild(blocks_scaled_with_insets);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... S9FrameNameSpriteSheetRotatedInsetsScaled done.");
+            AddChild(blocksScaledWithInsets);
         }
 
         public override string Title()
@@ -517,7 +554,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); default cap insets; rendered scaled 4.5 X Width, 2.5 X Height";
+            return "SpriteWithFrameName(); default cap insets; rendered scaled 4.5 X Width, 2.5 X Height";
         }
     }
 
@@ -531,22 +568,15 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
-            CCLog.Log("Scale9FrameNameSpriteSheetRotatedSetCapInsetLater ...");
+            var blocksScaledWithInsets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
 
-            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
-            CCLog.Log("... created");
+            blocksScaledWithInsets.InsetLeft = 32;
+            blocksScaledWithInsets.InsetRight = 32;
 
-            blocks_scaled_with_insets.InsetLeft = 32;
-            blocks_scaled_with_insets.InsetRight = 32;
+            blocksScaledWithInsets.PreferredSize = new CCSize(32 * 5.5f, 32 * 4);
+            blocksScaledWithInsets.Position = new CCPoint(x, y);
 
-            blocks_scaled_with_insets.PreferredSize = new CCSize(32 * 5.5f, 32 * 4);
-            blocks_scaled_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
-
-            AddChild(blocks_scaled_with_insets);
-            CCLog.Log("AddChild");
-
-            CCLog.Log("... Scale9FrameNameSpriteSheetRotatedSetCapInsetLater done.");
+            AddChild(blocksScaledWithInsets);
         }
 
         public override string Title()
@@ -556,7 +586,7 @@ namespace tests.Extensions
 
         public override string Subtitle()
         {
-            return "createWithSpriteFrameName(); setInsetLeft(32); setInsetRight(32);";
+            return "SpriteWithFrameName(); setInsetLeft(32); setInsetRight(32);";
         }
     }
 
@@ -574,24 +604,17 @@ namespace tests.Extensions
             rgba.IsOpacityCascaded = true;
             AddChild(rgba);
 
-            CCLog.Log("S9CascadeOpacityAndColor ...");
+            var blocksScaledWithInsets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
 
-            var blocks_scaled_with_insets = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
-            CCLog.Log("... created");
+            blocksScaledWithInsets.Position = new CCPoint(x, y);
 
-            blocks_scaled_with_insets.Position = new CCPoint(x, y);
-            CCLog.Log("... setPosition");
-
-            rgba.AddChild(blocks_scaled_with_insets);
+            rgba.AddChild(blocksScaledWithInsets);
             var actions = new CCSequence(new CCFadeIn(1),
                                          new CCTintTo(1, 0, 255, 0),
                                          new CCTintTo(1, 255, 255, 255),
                                          new CCFadeOut(1));
-            var repeat = new CCRepeatForever(actions);
-            rgba.RunAction(repeat);
-            CCLog.Log("AddChild");
+            rgba.RepeatForever(actions);
 
-            CCLog.Log("... S9CascadeOpacityAndColor done.");
         }
 
         public override string Title()
@@ -605,4 +628,134 @@ namespace tests.Extensions
             return "when parent change color/opacity, Scale9Sprite should also change";
         }
     }
+
+    // S9Flip
+    public class S9Flip : S9SpriteTestDemo
+    {
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
+            float x = winSize.Width / 2;
+            float y = 0 + (winSize.Height / 2);
+
+            var statusLabel = new CCLabel("Scale9Enabled", "arial", 10, CCLabelFormat.SpriteFont);
+            statusLabel.PositionX = x;
+            statusLabel.PositionY = winSize.Height - statusLabel.ContentSize.Height - 100;
+            AddChild(statusLabel);
+
+            var normalSprite = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
+
+            normalSprite.PositionX = x;
+            normalSprite.PositionY = y;
+            AddChild(normalSprite);
+
+
+            var normalLabel = new CCLabel("Normal Sprite", "Arial", 10, CCLabelFormat.SpriteFont);
+            normalLabel.Position += normalSprite.Position +
+                new CCPoint(0, normalSprite.ScaledContentSize.Height / 2 + 10);
+            AddChild(normalLabel);
+
+
+
+            var flipXSprite = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
+
+            flipXSprite.PositionX = x - 150;
+            flipXSprite.PositionY = y;
+            flipXSprite.Scale = 1.2f;
+            AddChild(flipXSprite);
+            flipXSprite.IsFlippedX = false;
+
+            var flipXLabel = new CCLabel("sprite is not flipped!", "Arial", 10, CCLabelFormat.SpriteFont);
+            flipXLabel.Position = flipXSprite.Position +
+                new CCPoint(0, flipXSprite.ScaledContentSize.Height / 2 + 10);
+            AddChild(flipXLabel);
+
+
+            var flipYSprite = CCScale9Sprite.SpriteWithFrameName("blocks9r.png");
+
+            flipYSprite.PositionX = x + 150;
+            flipYSprite.PositionY = y;
+            flipYSprite.Scale = 0.8f;
+            AddChild(flipYSprite);
+            flipYSprite.IsFlippedY = true;
+
+            var flipYLabel = new CCLabel("sprite is flipped!", "Arial", 10, CCLabelFormat.SpriteFont);
+            flipYLabel.Position = flipYSprite.Position + 
+                new CCPoint(0, flipYSprite.ScaledContentSize.Height / 2 + 10);
+            AddChild(flipYLabel);
+
+
+            var toggleFlipXButton = new CCControlButton("Toggle FlipX", "arial", 12);
+            
+            toggleFlipXButton.Position = flipXSprite.Position +
+                new CCPoint(0, -20 - flipXSprite.ScaledContentSize.Height / 2);
+
+
+            toggleFlipXButton.Clicked += (obj, cevent) =>
+            {
+                flipXSprite.IsFlippedX = !flipXSprite.IsFlippedX;
+                if (flipXSprite.IsFlippedX)
+                    flipXLabel.Text = "sprite is flipped";
+                else
+                    flipXLabel.Text = "sprite is not flipped";
+            };
+
+            AddChild(toggleFlipXButton);
+
+            var toggleFlipYButton = new CCControlButton("Toggle FlipY", "arial", 12);
+            toggleFlipYButton.Position = flipYSprite.Position + 
+                new CCPoint(0, -20 - flipYSprite.ScaledContentSize.Height / 2);
+
+            toggleFlipYButton.Clicked += (obj, cevent) =>
+            {
+                flipYSprite.IsFlippedY = !flipYSprite.IsFlippedY;
+                if (flipYSprite.IsFlippedY)
+                    flipYLabel.Text = "sprite is flipped";
+                else
+                    flipYLabel.Text = "sprite is not flipped";
+            };
+
+            AddChild(toggleFlipYButton);
+
+            var toggleScale9Button = new CCControlButton("Toggle Scale9", "arial", 12);
+            toggleScale9Button.Position = normalSprite.Position + 
+                new CCPoint(0, -20 - normalSprite.ContentSize.Height / 2);
+
+            toggleScale9Button.Clicked += (obj, cevent) =>
+            {
+                flipXSprite.IsScale9Enabled = !flipXSprite.IsScale9Enabled;
+                flipYSprite.IsScale9Enabled = !flipYSprite.IsScale9Enabled;
+
+                if (flipXSprite.IsScale9Enabled)
+                    statusLabel.Text = "Scale9Enabled";
+                else
+                    statusLabel.Text = "Scale9Disabled";
+
+                if (flipXSprite.IsFlippedX)
+                    flipXLabel.Text = "sprite is flipped";
+                else
+                    flipXLabel.Text = "sprite is not flipped";
+
+                if (flipYSprite.IsFlippedY)
+                    flipYLabel.Text = "sprite is flipped";
+                else
+                    flipYLabel.Text = "sprite is not flipped";
+            };
+
+            AddChild(toggleScale9Button);
+        }
+
+        public override string Title()
+        {
+            return
+                "Scale9Sprite Flip";
+        }
+
+        public override string Subtitle()
+        {
+            return "FlipX, FlipY and Enable/Disable Scale9Sprite";
+        }
+    }
+
 }
