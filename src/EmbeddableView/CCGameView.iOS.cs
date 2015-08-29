@@ -94,6 +94,7 @@ namespace CocosSharp
             LayerRetainsBacking = true;
             LayerColorFormat = EAGLColorFormat.RGBA8;
             ContextRenderingApi = EAGLRenderingAPI.OpenGLES2;
+
             CreateFrameBuffer();
         }
 
@@ -197,6 +198,9 @@ namespace CocosSharp
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, depthbuffer);
             GL.RenderbufferStorage(RenderbufferTarget.Renderbuffer, RenderbufferInternalFormat.DepthComponent16, newSize.Width, newSize.Height);
             GL.FramebufferRenderbuffer(FramebufferTarget.Framebuffer, FramebufferSlot.DepthAttachment, RenderbufferTarget.Renderbuffer, depthbuffer);
+
+            platformInitialised = true;
+            LoadGame();
         }
 
         #endregion Initialisation
