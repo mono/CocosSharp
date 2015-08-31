@@ -60,8 +60,6 @@
     <file src="MonoGame\MonoGame.Framework\bin\Windows81\AnyCPU\Release\MonoGame*.xml" target="lib\netcore"/>
     <file src="MonoGame\MonoGame.Framework\bin\Windows81\AnyCPU\Release\Themes**\*.*" target="lib\netcore\MonoGame.Framework"/>
     <file src="MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
-  </files>
-
 
       <!--Windows Phone 8-->
 	    <file src="src\bin\WindowsPhone\x86\Release\*.dll" target="build\wp8\x86" exclude="src\bin\WindowsPhone\x86\Release\MonoGame*.*;src\bin\WindowsPhone\x86\Release\Sharp*.*" />
