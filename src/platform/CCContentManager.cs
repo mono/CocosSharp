@@ -385,11 +385,16 @@ namespace CocosSharp
             fileName = string.Empty;
             try
             {
-                using (var memoryStream = new MemoryStream())
-                {
-                    GetAssetStream(assetName, out fileName).CopyTo(memoryStream);
-                    return memoryStream.ToArray();
-                }
+                Stream assetStream = GetAssetStream(assetName);
+
+                // This used to use a MemoryStream, which could hold a length up to an int.
+                int length = (int)assetStream.Length;
+                if (length == 0)
+                    return new byte[0];
+
+                var buffer = new byte[length];
+                assetStream.Read(buffer, 0, length);
+                return buffer;
             }
             catch { return null; }
         }
