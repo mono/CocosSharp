@@ -396,16 +396,8 @@ namespace CocosSharp
 
         public byte[] GetAssetStreamAsBytes(string assetName)
         {
-
-            try
-            {
-                using (var memoryStream = new MemoryStream())
-                {
-                    GetAssetStream(assetName).CopyTo(memoryStream);
-                    return memoryStream.ToArray();
-                }
-            }
-            catch { return null; }
+            string fileName;
+            return GetAssetStreamAsBytes(assetName, out fileName);
         }
 
         public List<string> SearchResolutionsOrder
