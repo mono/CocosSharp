@@ -80,9 +80,9 @@ namespace CocosSharp
 
         private List<int> ParseConfigFile(string pBuffer, string fntFile)
         {
-            long nBufSize = pBuffer.Length;
-
             Debug.Assert(pBuffer != null, "CCBMFontConfiguration::parseConfigFile | Open file error.");
+
+            long nBufSize = pBuffer.Length;
 
             if (string.IsNullOrEmpty(pBuffer))
             {
