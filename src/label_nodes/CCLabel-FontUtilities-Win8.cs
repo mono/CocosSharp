@@ -28,7 +28,7 @@ namespace CocosSharp
         {
             this.factory = factory;
 
-            var fontBytes = Utilities.ReadStream(CCFileUtils.GetFileStream(fontFilePath));
+            var fontBytes = Utilities.ReadStream(CCContentManager.SharedContentManager.GetAssetStream(fontFilePath));
             var stream = new DataStream(fontBytes.Length, true, true);
             stream.Write(fontBytes, 0, fontBytes.Length);
             stream.Position = 0;
