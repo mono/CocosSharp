@@ -1378,6 +1378,9 @@ namespace CocosSharp
             for (int c = 0; c < Children.Count; c++) 
             {
                 letterSprite = (CCSprite)Children[c];
+                if (letterSprite == null)
+                    continue;
+
                 int tag = letterSprite.Tag;
                 if(tag >= length)
                 {
@@ -1385,12 +1388,9 @@ namespace CocosSharp
                 }
                 else if(tag >= 0)
                 {
-                    if (letterSprite != null)
-                    {
-                        uvRect = lettersInfo[tag].Definition.Subrect;
-                        letterSprite.TextureRectInPixels = uvRect;
-                        letterSprite.ContentSize = uvRect.Size;
-                    }
+                    uvRect = lettersInfo[tag].Definition.Subrect;
+                    letterSprite.TextureRectInPixels = uvRect;
+                    letterSprite.ContentSize = uvRect.Size;
                 }
             }
 
