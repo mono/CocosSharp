@@ -143,17 +143,20 @@ namespace CocosDenshion
 
         public void PauseEffect(int fxid) 
         {
-            try
+            lock (list)
             {
-                if (list.ContainsKey(fxid))
+                try
                 {
-                    list[fxid].Pause();
+                    if (list.ContainsKey(fxid))
+                    {
+                        list[fxid].Pause();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
-                CCLog.Log(ex.ToString());
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
+                    CCLog.Log(ex.ToString());
+                }
             }
         }
 
@@ -181,17 +184,20 @@ namespace CocosDenshion
 
         public void ResumeEffect(int fxid)
         {
-            try
+            lock (list)
             {
-                if (list.ContainsKey(fxid))
+                try
                 {
-                    list[fxid].Resume();
+                    if (list.ContainsKey(fxid))
+                    {
+                        list[fxid].Resume();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                CCLog.Log("Unexpected exception while resuming a SoundEffect: {0}", fxid);
-                CCLog.Log(ex.ToString());
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while resuming a SoundEffect: {0}", fxid);
+                    CCLog.Log(ex.ToString());
+                }
             }
         }
 
