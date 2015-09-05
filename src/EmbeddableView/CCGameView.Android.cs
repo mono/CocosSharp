@@ -104,8 +104,6 @@ namespace CocosSharp
 
             screenLockHandler = new CCAndroidScreenReceiver(this);
             context.RegisterReceiver(screenLockHandler, filter);
-
-            RequestFocus();
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -122,6 +120,9 @@ namespace CocosSharp
             base.OnContextSet(e);
 
             Initialise();
+
+            platformInitialised = true;
+            LoadGame();
         }
 
         protected override void CreateFrameBuffer()
