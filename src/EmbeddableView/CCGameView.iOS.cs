@@ -94,8 +94,6 @@ namespace CocosSharp
             LayerRetainsBacking = true;
             LayerColorFormat = EAGLColorFormat.RGBA8;
             ContextRenderingApi = EAGLRenderingAPI.OpenGLES2;
-
-            CreateFrameBuffer();
         }
 
         #endregion Constructors
@@ -173,6 +171,8 @@ namespace CocosSharp
         {
             // Called when the dimensions of our view change
             // E.g. When rotating the device and autoresizing
+
+            CreateFrameBuffer();
 
             if((Framebuffer + depthbuffer + Renderbuffer == 0) || EAGLContext == null)
                 return;
