@@ -365,7 +365,10 @@ namespace CocosDenshion
             CCEffectPlayer eff = new CCEffectPlayer();
             eff.Open(FullPath(filename), nId);
             eff.Volume = effectsVolume;
-            list[nId] = eff;
+            lock (list)
+            {
+                list[nId] = eff;
+            }
         }
 
         public void UnloadEffect(string filename)
