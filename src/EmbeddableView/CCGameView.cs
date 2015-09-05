@@ -60,9 +60,9 @@ namespace CocosSharp
         bool gameStarted;
         bool viewportDirty;
 
-        CCViewResolutionPolicy resolutionPolicy;
-        CCRect viewportRatio;
-        CCSize designResolution;
+        CCViewResolutionPolicy resolutionPolicy = CCViewResolutionPolicy.ShowAll;
+        CCRect viewportRatio = exactFitViewportRatio;
+        CCSizeI designResolution = new CCSizeI(640, 480);
         Viewport viewport;
 
         GraphicsDevice graphicsDevice;
@@ -84,11 +84,6 @@ namespace CocosSharp
             add { viewCreated += value; LoadGame(); }
             remove { viewCreated -= value; }
         }
-
-        // Static properties
-
-        public static CCViewResolutionPolicy DefaultResolutionPolicy { get; set; }
-        public static CCSizeI DefaultDesignResolution { get; set; }
 
 
         // Instance properties
@@ -151,7 +146,7 @@ namespace CocosSharp
             }
         }
 
-        public CCSize DesignResolution
+        public CCSizeI DesignResolution
         {
             get { return designResolution; }
             set
@@ -203,11 +198,6 @@ namespace CocosSharp
 
         #region Initialisation
 
-        static CCGameView()
-        {
-            DefaultResolutionPolicy = CCViewResolutionPolicy.ShowAll;
-        }
-
         public void StartGame()
         {
             if(!gameStarted)
@@ -233,11 +223,7 @@ namespace CocosSharp
             ActionManager = new CCActionManager();
             Director = new CCDirector();
             EventDispatcher = new CCEventDispatcher(this);
-            AudioEngine = new CCSimpleAudioEngine();
-
-            DesignResolution = DefaultDesignResolution;
-            ViewportRectRatio = exactFitViewportRatio;
-            ResolutionPolicy = CCViewResolutionPolicy.ShowAll;
+            AudioEngine = CCSimpleAudioEngine.SharedEngine;
 
             //Stats.Initialize();
 
@@ -359,8 +345,8 @@ namespace CocosSharp
 
             if (resolutionPolicy != CCViewResolutionPolicy.Custom)
             {
-                float resolutionScaleX = width / DesignResolution.Width;
-                float resolutionScaleY = height / DesignResolution.Height;
+                float resolutionScaleX = width / (float)DesignResolution.Width;
+                float resolutionScaleY = height / (float)DesignResolution.Height;
 
                 switch (resolutionPolicy)
                 {
@@ -372,11 +358,11 @@ namespace CocosSharp
                         break;
                     case CCViewResolutionPolicy.FixedHeight:
                         resolutionScaleX = resolutionScaleY;
-                        designResolution.Width = (float)Math.Ceiling(width / resolutionScaleX);
+                        designResolution.Width = (int)Math.Ceiling(width / resolutionScaleX);
                         break;
                     case CCViewResolutionPolicy.FixedWidth:
                         resolutionScaleY = resolutionScaleX;
-                        designResolution.Height = (float)Math.Ceiling(height / resolutionScaleY);
+                        designResolution.Height = (int)Math.Ceiling(height / resolutionScaleY);
                         break;
                     default:
                         break;
