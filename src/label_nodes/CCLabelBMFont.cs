@@ -578,7 +578,7 @@ namespace CocosSharp
             // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
             // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
             // box
-            if (fontDef.XAdvance < fontDef.Subrect.Size.Width)
+            if (fontDef != null && fontDef.XAdvance < fontDef.Subrect.Size.Width)
             {
                 tmpSize.Width = longestLine + fontDef.Subrect.Size.Width - fontDef.XAdvance;
             }
