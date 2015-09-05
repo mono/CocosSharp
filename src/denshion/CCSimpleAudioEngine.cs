@@ -331,7 +331,7 @@ namespace CocosDenshion
 
         public void StopAllLoopingEffects()
         {
-            lock (list)
+            lock (loopedSounds)
             {
                 if (loopedSounds.Count > 0)
                 {
