@@ -42,9 +42,12 @@ namespace CocosDenshion
             { 
                 effectsVolume = CCMathHelper.Clamp(value, 0.0f, 1.0f);
 
-                foreach (CCEffectPlayer soundEffect in list.Values) 
+                lock (list)
                 {
-                    soundEffect.Volume = effectsVolume;
+                    foreach (CCEffectPlayer soundEffect in list.Values)
+                    {
+                        soundEffect.Volume = effectsVolume;
+                    }
                 }
             }
         }
