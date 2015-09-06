@@ -29,9 +29,9 @@ namespace CocosSharp
 
             bool hasPremultipliedAlpha;
 
-            var display = Game.Activity.WindowManager.DefaultDisplay;
-            var metrics = new DisplayMetrics();
-            display.GetMetrics(metrics);
+//            var display = Game.Activity.WindowManager.DefaultDisplay;
+//            var metrics = new DisplayMetrics();
+//            display.GetMetrics(metrics);
 
             // Do not take into account ScaleDensity for now.
 //            var fontScaleFactor = metrics.ScaledDensity;
@@ -57,7 +57,7 @@ namespace CocosSharp
                 
                 CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fontName, out fontName);
 
-                var activity = Game.Activity;
+                var activity = Android.App.Application.Context;
 
                 try
                 {
