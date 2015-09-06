@@ -3502,10 +3502,12 @@ namespace CocosSharp {
         public CocosSharp.CCBlendFunc BlendFunc { get { return default(CocosSharp.CCBlendFunc); } set { } }
         public override CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
+        public static bool DefaultHalfTexelOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public static float DefaultTexelToContentSizeRatio { set { } }
         public static CocosSharp.CCSize DefaultTexelToContentSizeRatios { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool FlipX { get { return default(bool); } set { } }
         public bool FlipY { get { return default(bool); } set { } }
+        public bool HalfTexelOffset { get { return default(bool); } set { } }
         public bool IsAntialiased { get { return default(bool); } set { } }
         public override bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
         public bool IsTextureRectRotated { get { return default(bool); } set { } }

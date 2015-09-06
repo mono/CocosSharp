@@ -974,29 +974,30 @@ namespace CocosSharp
         Texture2D LoadTextureFromTiff(Stream stream)
         {
 #if (WINDOWS && !NETFX_CORE)
-            var tiff = Tiff.ClientOpen("file.tif", "r", stream, new TiffStream());
-
-            var w = tiff.GetField(TiffTag.IMAGEWIDTH)[0].ToInt();
-            var h = tiff.GetField(TiffTag.IMAGELENGTH)[0].ToInt();
-
-            var raster = new int[w * h];
-
-            if (tiff.ReadRGBAImageOriented(w, h, raster, Orientation.LEFTTOP))
+            using (var tiff = Tiff.ClientOpen("file.tif", "r", stream, new TiffStream()))
             {
-                var result = new Texture2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, w, h, false, SurfaceFormat.Color);
-                result.SetData(raster);
-                return result;
-            }
-            else 
-            {
-            return null;
+                var w = tiff.GetField(TiffTag.IMAGEWIDTH)[0].ToInt();
+                var h = tiff.GetField(TiffTag.IMAGELENGTH)[0].ToInt();
+
+                var raster = new int[w * h];
+
+                if (tiff.ReadRGBAImageOriented(w, h, raster, Orientation.LEFTTOP))
+                {
+                    var result = new Texture2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, w, h, false, SurfaceFormat.Color);
+                    result.SetData(raster);
+                    return result;
+                }
+                else
+                {
+                    return null;
+                }
             }
 #elif MACOS || IOS
 
             return Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, stream);
 #else
             return null;
-            #endif
+#endif
         }
 
         #endregion Loading Texture

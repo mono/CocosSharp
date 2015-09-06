@@ -42,9 +42,12 @@ namespace CocosDenshion
             { 
                 effectsVolume = CCMathHelper.Clamp(value, 0.0f, 1.0f);
 
-                foreach (CCEffectPlayer soundEffect in list.Values) 
+                lock (list)
                 {
-                    soundEffect.Volume = effectsVolume;
+                    foreach (CCEffectPlayer soundEffect in list.Values)
+                    {
+                        soundEffect.Volume = effectsVolume;
+                    }
                 }
             }
         }
@@ -143,17 +146,20 @@ namespace CocosDenshion
 
         public void PauseEffect(int fxid) 
         {
-            try
+            lock (list)
             {
-                if (list.ContainsKey(fxid))
+                try
                 {
-                    list[fxid].Pause();
+                    if (list.ContainsKey(fxid))
+                    {
+                        list[fxid].Pause();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
-                CCLog.Log(ex.ToString());
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", fxid);
+                    CCLog.Log(ex.ToString());
+                }
             }
         }
 
@@ -181,17 +187,20 @@ namespace CocosDenshion
 
         public void ResumeEffect(int fxid)
         {
-            try
+            lock (list)
             {
-                if (list.ContainsKey(fxid))
+                try
                 {
-                    list[fxid].Resume();
+                    if (list.ContainsKey(fxid))
+                    {
+                        list[fxid].Resume();
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                CCLog.Log("Unexpected exception while resuming a SoundEffect: {0}", fxid);
-                CCLog.Log(ex.ToString());
+                catch (Exception ex)
+                {
+                    CCLog.Log("Unexpected exception while resuming a SoundEffect: {0}", fxid);
+                    CCLog.Log(ex.ToString());
+                }
             }
         }
 
@@ -325,7 +334,7 @@ namespace CocosDenshion
 
         public void StopAllLoopingEffects()
         {
-            lock (list)
+            lock (loopedSounds)
             {
                 if (loopedSounds.Count > 0)
                 {
@@ -359,7 +368,10 @@ namespace CocosDenshion
             CCEffectPlayer eff = new CCEffectPlayer();
             eff.Open(FullPath(filename), nId);
             eff.Volume = effectsVolume;
-            list[nId] = eff;
+            lock (list)
+            {
+                list[nId] = eff;
+            }
         }
 
         public void UnloadEffect(string filename)

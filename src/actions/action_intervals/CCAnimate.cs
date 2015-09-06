@@ -17,8 +17,8 @@ namespace CocosSharp
 
         private CCAnimate (CCAnimation animation, float totalDuration) : base (totalDuration)
         {
-            Debug.Assert (totalDuration == animation.Duration * animation.Loops);
             Debug.Assert (animation != null);
+            Debug.Assert (totalDuration == animation.Duration * animation.Loops);
 
             Animation = animation;
             SplitTimes = new List<float> ();

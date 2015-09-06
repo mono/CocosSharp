@@ -385,10 +385,16 @@ namespace CocosSharp
             fileName = string.Empty;
             try
             {
-                using (var memoryStream = new MemoryStream())
+                using (Stream assetStream = GetAssetStream(assetName))
                 {
-                    GetAssetStream(assetName, out fileName).CopyTo(memoryStream);
-                    return memoryStream.ToArray();
+                    // This used to use a MemoryStream, which could hold a length up to an int.
+                    int length = (int)assetStream.Length;
+                    if (length == 0)
+                        return new byte[0];
+
+                    var buffer = new byte[length];
+                    assetStream.Read(buffer, 0, length);
+                    return buffer;
                 }
             }
             catch { return null; }
@@ -396,16 +402,8 @@ namespace CocosSharp
 
         public byte[] GetAssetStreamAsBytes(string assetName)
         {
-
-            try
-            {
-                using (var memoryStream = new MemoryStream())
-                {
-                    GetAssetStream(assetName).CopyTo(memoryStream);
-                    return memoryStream.ToArray();
-                }
-            }
-            catch { return null; }
+            string fileName;
+            return GetAssetStreamAsBytes(assetName, out fileName);
         }
 
         public List<string> SearchResolutionsOrder

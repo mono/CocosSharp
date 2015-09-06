@@ -98,7 +98,7 @@
 
         <!---PCL project -->
         <Project name = "${ProjectName}.Common" directory = "${ProjectName}/${ProjectName}.Common" type = "PortableDotNet">
-            <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile78"/>
+            <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile111"/>
             <Files>
                 <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.cs" />
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />

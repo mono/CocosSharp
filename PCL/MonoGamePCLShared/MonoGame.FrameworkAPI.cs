@@ -1,4 +1,5 @@
 namespace Microsoft.Xna.Framework {
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct BoundingBox : System.IEquatable<Microsoft.Xna.Framework.BoundingBox> {
@@ -38,8 +39,10 @@ namespace Microsoft.Xna.Framework {
         public static bool operator !=(Microsoft.Xna.Framework.BoundingBox a, Microsoft.Xna.Framework.BoundingBox b) { return default(bool); }
         public override string ToString() { return default(string); }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     public partial class BoundingFrustum : System.IEquatable<Microsoft.Xna.Framework.BoundingFrustum> {
         public const int CornerCount = 8;
+        public const int PlaneCount = 6;
         public BoundingFrustum(Microsoft.Xna.Framework.Matrix value) { }
         public Microsoft.Xna.Framework.Plane Bottom { get { return default(Microsoft.Xna.Framework.Plane); } }
         public Microsoft.Xna.Framework.Plane Far { get { return default(Microsoft.Xna.Framework.Plane); } }
@@ -50,6 +53,7 @@ namespace Microsoft.Xna.Framework {
         public Microsoft.Xna.Framework.Plane Top { get { return default(Microsoft.Xna.Framework.Plane); } }
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.BoundingBox box) { return default(Microsoft.Xna.Framework.ContainmentType); }
         public void Contains(ref Microsoft.Xna.Framework.BoundingBox box, out Microsoft.Xna.Framework.ContainmentType result) { result = default(Microsoft.Xna.Framework.ContainmentType); }
+        public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.BoundingFrustum frustum) { return default(Microsoft.Xna.Framework.ContainmentType); }
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.BoundingSphere sphere) { return default(Microsoft.Xna.Framework.ContainmentType); }
         public void Contains(ref Microsoft.Xna.Framework.BoundingSphere sphere, out Microsoft.Xna.Framework.ContainmentType result) { result = default(Microsoft.Xna.Framework.ContainmentType); }
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.Vector3 point) { return default(Microsoft.Xna.Framework.ContainmentType); }
@@ -61,12 +65,18 @@ namespace Microsoft.Xna.Framework {
         public override int GetHashCode() { return default(int); }
         public bool Intersects(Microsoft.Xna.Framework.BoundingBox box) { return default(bool); }
         public void Intersects(ref Microsoft.Xna.Framework.BoundingBox box, out bool result) { result = default(bool); }
+        public bool Intersects(Microsoft.Xna.Framework.BoundingFrustum frustum) { return default(bool); }
         public bool Intersects(Microsoft.Xna.Framework.BoundingSphere sphere) { return default(bool); }
         public void Intersects(ref Microsoft.Xna.Framework.BoundingSphere sphere, out bool result) { result = default(bool); }
+        public Microsoft.Xna.Framework.PlaneIntersectionType Intersects(Microsoft.Xna.Framework.Plane plane) { return default(Microsoft.Xna.Framework.PlaneIntersectionType); }
+        public void Intersects(ref Microsoft.Xna.Framework.Plane plane, out Microsoft.Xna.Framework.PlaneIntersectionType result) { result = default(Microsoft.Xna.Framework.PlaneIntersectionType); }
+        public System.Nullable<System.Single> Intersects(Microsoft.Xna.Framework.Ray ray) { return default(System.Nullable<System.Single>); }
+        public void Intersects(ref Microsoft.Xna.Framework.Ray ray, out System.Nullable<System.Single> result) { result = default(System.Nullable<System.Single>); }
         public static bool operator ==(Microsoft.Xna.Framework.BoundingFrustum a, Microsoft.Xna.Framework.BoundingFrustum b) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.BoundingFrustum a, Microsoft.Xna.Framework.BoundingFrustum b) { return default(bool); }
         public override string ToString() { return default(string); }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct BoundingSphere : System.IEquatable<Microsoft.Xna.Framework.BoundingSphere> {
@@ -78,6 +88,7 @@ namespace Microsoft.Xna.Framework {
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.BoundingBox box) { return default(Microsoft.Xna.Framework.ContainmentType); }
         public void Contains(ref Microsoft.Xna.Framework.BoundingBox box, out Microsoft.Xna.Framework.ContainmentType result) { result = default(Microsoft.Xna.Framework.ContainmentType); }
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.BoundingFrustum frustum) { return default(Microsoft.Xna.Framework.ContainmentType); }
+        public void Contains(ref Microsoft.Xna.Framework.BoundingFrustum frustum, out Microsoft.Xna.Framework.ContainmentType result) { result = default(Microsoft.Xna.Framework.ContainmentType); }
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.BoundingSphere sphere) { return default(Microsoft.Xna.Framework.ContainmentType); }
         public void Contains(ref Microsoft.Xna.Framework.BoundingSphere sphere, out Microsoft.Xna.Framework.ContainmentType result) { result = default(Microsoft.Xna.Framework.ContainmentType); }
         public Microsoft.Xna.Framework.ContainmentType Contains(Microsoft.Xna.Framework.Vector3 point) { return default(Microsoft.Xna.Framework.ContainmentType); }
@@ -105,13 +116,7 @@ namespace Microsoft.Xna.Framework {
         public Microsoft.Xna.Framework.BoundingSphere Transform(Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.BoundingSphere); }
         public void Transform(ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.BoundingSphere result) { result = default(Microsoft.Xna.Framework.BoundingSphere); }
     }
-    public partial class ButtonDefinition {
-        public ButtonDefinition() { }
-        public Microsoft.Xna.Framework.Vector2 Position { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Vector2); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.Texture2D Texture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.Texture2D); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Rectangle TextureRect { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Rectangle); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Buttons Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Buttons); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-    }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Color : System.IEquatable<Microsoft.Xna.Framework.Color> {
@@ -223,6 +228,7 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Color MintCream { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
         public static Microsoft.Xna.Framework.Color MistyRose { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
         public static Microsoft.Xna.Framework.Color Moccasin { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
+        public static Microsoft.Xna.Framework.Color MonoGameOrange { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
         public static Microsoft.Xna.Framework.Color NavajoWhite { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
         public static Microsoft.Xna.Framework.Color Navy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
         public static Microsoft.Xna.Framework.Color OldLace { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Color); } }
@@ -318,6 +324,7 @@ namespace Microsoft.Xna.Framework {
     }
     [System.Runtime.Serialization.DataContractAttribute]
     public partial class CurveKey : System.IComparable<Microsoft.Xna.Framework.CurveKey>, System.IEquatable<Microsoft.Xna.Framework.CurveKey> {
+        public CurveKey() { }
         public CurveKey(float position, float value) { }
         public CurveKey(float position, float value, float tangentIn, float tangentOut) { }
         public CurveKey(float position, float value, float tangentIn, float tangentOut, Microsoft.Xna.Framework.CurveContinuity continuity) { }
@@ -336,13 +343,17 @@ namespace Microsoft.Xna.Framework {
         public bool Equals(Microsoft.Xna.Framework.CurveKey other) { return default(bool); }
         public override bool Equals(object obj) { return default(bool); }
         public override int GetHashCode() { return default(int); }
-        public static bool operator ==(Microsoft.Xna.Framework.CurveKey a, Microsoft.Xna.Framework.CurveKey b) { return default(bool); }
-        public static bool operator !=(Microsoft.Xna.Framework.CurveKey a, Microsoft.Xna.Framework.CurveKey b) { return default(bool); }
+        public static bool operator ==(Microsoft.Xna.Framework.CurveKey value1, Microsoft.Xna.Framework.CurveKey value2) { return default(bool); }
+        public static bool operator !=(Microsoft.Xna.Framework.CurveKey value1, Microsoft.Xna.Framework.CurveKey value2) { return default(bool); }
     }
+    [System.Runtime.Serialization.DataContractAttribute]
     public partial class CurveKeyCollection : System.Collections.Generic.ICollection<Microsoft.Xna.Framework.CurveKey>, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.CurveKey>, System.Collections.IEnumerable {
         public CurveKeyCollection() { }
+        [System.Runtime.Serialization.DataMemberAttribute]
         public int Count { get { return default(int); } }
+        [System.Runtime.Serialization.DataMemberAttribute]
         public bool IsReadOnly { get { return default(bool); } }
+        [System.Runtime.Serialization.DataMemberAttribute(Name="Items")]
         public Microsoft.Xna.Framework.CurveKey this[int index] { get { return default(Microsoft.Xna.Framework.CurveKey); } set { } }
         public void Add(Microsoft.Xna.Framework.CurveKey item) { }
         public void Clear() { }
@@ -390,19 +401,17 @@ namespace Microsoft.Xna.Framework {
         protected virtual void OnVisibleChanged(object sender, System.EventArgs args) { }
         protected virtual void UnloadContent() { }
     }
-    public static partial class FrameworkDispatcher {
-        public static void Update() { }
-    }
     public partial class Game : System.IDisposable {
         public Game() { }
         public Microsoft.Xna.Framework.GameComponentCollection Components { get { return default(Microsoft.Xna.Framework.GameComponentCollection); } }
-        public Microsoft.Xna.Framework.Content.ContentManager Content { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Content.ContentManager); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Xna.Framework.Content.ContentManager Content { get { return default(Microsoft.Xna.Framework.Content.ContentManager); } set { } }
         public Microsoft.Xna.Framework.Graphics.GraphicsDevice GraphicsDevice { get { return default(Microsoft.Xna.Framework.Graphics.GraphicsDevice); } }
         public System.TimeSpan InactiveSleepTime { get { return default(System.TimeSpan); } set { } }
         public bool IsActive { get { return default(bool); } }
         public bool IsFixedTimeStep { get { return default(bool); } set { } }
         public bool IsMouseVisible { get { return default(bool); } set { } }
         public Microsoft.Xna.Framework.LaunchParameters LaunchParameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.LaunchParameters); } }
+        public System.TimeSpan MaxElapsedTime { get { return default(System.TimeSpan); } set { } }
         public Microsoft.Xna.Framework.GameServiceContainer Services { get { return default(Microsoft.Xna.Framework.GameServiceContainer); } }
         public System.TimeSpan TargetElapsedTime { get { return default(System.TimeSpan); } set { } }
         [System.CLSCompliantAttribute(false)]
@@ -469,7 +478,9 @@ namespace Microsoft.Xna.Framework {
     public partial class GameServiceContainer : System.IServiceProvider {
         public GameServiceContainer() { }
         public void AddService(System.Type type, object provider) { }
+        public void AddService<T>(T provider) { }
         public object GetService(System.Type type) { return default(object); }
+        public T GetService<T>() where T : class { return default(T); }
         public void RemoveService(System.Type type) { }
     }
     public partial class GameTime {
@@ -495,6 +506,7 @@ namespace Microsoft.Xna.Framework {
         public GraphicsDeviceManager(Microsoft.Xna.Framework.Game game) { }
         public Microsoft.Xna.Framework.Graphics.GraphicsDevice GraphicsDevice { get { return default(Microsoft.Xna.Framework.Graphics.GraphicsDevice); } }
         public Microsoft.Xna.Framework.Graphics.GraphicsProfile GraphicsProfile { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.GraphicsProfile); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool HardwareModeSwitch { get { return default(bool); } set { } }
         public bool IsFullScreen { get { return default(bool); } set { } }
         public bool PreferMultiSampling { get { return default(bool); } set { } }
         public Microsoft.Xna.Framework.Graphics.SurfaceFormat PreferredBackBufferFormat { get { return default(Microsoft.Xna.Framework.Graphics.SurfaceFormat); } set { } }
@@ -558,13 +570,16 @@ namespace Microsoft.Xna.Framework {
         public static float Hermite(float value1, float tangent1, float value2, float tangent2, float amount) { return default(float); }
         public static bool IsPowerOfTwo(int value) { return default(bool); }
         public static float Lerp(float value1, float value2, float amount) { return default(float); }
+        public static int Max(int value1, int value2) { return default(int); }
         public static float Max(float value1, float value2) { return default(float); }
+        public static int Min(int value1, int value2) { return default(int); }
         public static float Min(float value1, float value2) { return default(float); }
         public static float SmoothStep(float value1, float value2, float amount) { return default(float); }
         public static float ToDegrees(float radians) { return default(float); }
         public static float ToRadians(float degrees) { return default(float); }
         public static float WrapAngle(float angle) { return default(float); }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Matrix : System.IEquatable<Microsoft.Xna.Framework.Matrix> {
@@ -600,6 +615,7 @@ namespace Microsoft.Xna.Framework {
         public float M43;
         [System.Runtime.Serialization.DataMemberAttribute]
         public float M44;
+        public Matrix(Microsoft.Xna.Framework.Vector4 row1, Microsoft.Xna.Framework.Vector4 row2, Microsoft.Xna.Framework.Vector4 row3, Microsoft.Xna.Framework.Vector4 row4) { throw new System.NotImplementedException(); }
         public Matrix(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34, float m41, float m42, float m43, float m44) { throw new System.NotImplementedException(); }
         public Microsoft.Xna.Framework.Vector3 Backward { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
         public Microsoft.Xna.Framework.Vector3 Down { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
@@ -609,6 +625,8 @@ namespace Microsoft.Xna.Framework {
         public float this[int row, int column] { get { return default(float); } set { } }
         public Microsoft.Xna.Framework.Vector3 Left { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
         public Microsoft.Xna.Framework.Vector3 Right { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
+        public Microsoft.Xna.Framework.Quaternion Rotation { get { return default(Microsoft.Xna.Framework.Quaternion); } }
+        public Microsoft.Xna.Framework.Vector3 Scale { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
         public Microsoft.Xna.Framework.Vector3 Translation { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
         public Microsoft.Xna.Framework.Vector3 Up { get { return default(Microsoft.Xna.Framework.Vector3); } set { } }
         public static Microsoft.Xna.Framework.Matrix Add(Microsoft.Xna.Framework.Matrix matrix1, Microsoft.Xna.Framework.Matrix matrix2) { return default(Microsoft.Xna.Framework.Matrix); }
@@ -627,12 +645,14 @@ namespace Microsoft.Xna.Framework {
         public static void CreateLookAt(ref Microsoft.Xna.Framework.Vector3 cameraPosition, ref Microsoft.Xna.Framework.Vector3 cameraTarget, ref Microsoft.Xna.Framework.Vector3 cameraUpVector, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix CreateOrthographic(float width, float height, float zNearPlane, float zFarPlane) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void CreateOrthographic(float width, float height, float zNearPlane, float zFarPlane, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
+        public static Microsoft.Xna.Framework.Matrix CreateOrthographicOffCenter(Microsoft.Xna.Framework.Rectangle viewingVolume, float zNearPlane, float zFarPlane) { return default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNearPlane, float zFarPlane) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void CreateOrthographicOffCenter(float left, float right, float bottom, float top, float zNearPlane, float zFarPlane, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix CreatePerspective(float width, float height, float nearPlaneDistance, float farPlaneDistance) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void CreatePerspective(float width, float height, float nearPlaneDistance, float farPlaneDistance, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix CreatePerspectiveFieldOfView(float fieldOfView, float aspectRatio, float nearPlaneDistance, float farPlaneDistance) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void CreatePerspectiveFieldOfView(float fieldOfView, float aspectRatio, float nearPlaneDistance, float farPlaneDistance, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
+        public static Microsoft.Xna.Framework.Matrix CreatePerspectiveOffCenter(Microsoft.Xna.Framework.Rectangle viewingVolume, float nearPlaneDistance, float farPlaneDistance) { return default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float nearPlaneDistance, float farPlaneDistance) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void CreatePerspectiveOffCenter(float left, float right, float bottom, float top, float nearPlaneDistance, float farPlaneDistance, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix CreateReflection(Microsoft.Xna.Framework.Plane value) { return default(Microsoft.Xna.Framework.Matrix); }
@@ -671,9 +691,9 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Matrix Lerp(Microsoft.Xna.Framework.Matrix matrix1, Microsoft.Xna.Framework.Matrix matrix2, float amount) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void Lerp(ref Microsoft.Xna.Framework.Matrix matrix1, ref Microsoft.Xna.Framework.Matrix matrix2, float amount, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix Multiply(Microsoft.Xna.Framework.Matrix matrix1, Microsoft.Xna.Framework.Matrix matrix2) { return default(Microsoft.Xna.Framework.Matrix); }
-        public static Microsoft.Xna.Framework.Matrix Multiply(Microsoft.Xna.Framework.Matrix matrix1, float factor) { return default(Microsoft.Xna.Framework.Matrix); }
+        public static Microsoft.Xna.Framework.Matrix Multiply(Microsoft.Xna.Framework.Matrix matrix1, float scaleFactor) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void Multiply(ref Microsoft.Xna.Framework.Matrix matrix1, ref Microsoft.Xna.Framework.Matrix matrix2, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
-        public static void Multiply(ref Microsoft.Xna.Framework.Matrix matrix1, float factor, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
+        public static void Multiply(ref Microsoft.Xna.Framework.Matrix matrix1, float scaleFactor, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix Negate(Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void Negate(ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix operator +(Microsoft.Xna.Framework.Matrix matrix1, Microsoft.Xna.Framework.Matrix matrix2) { return default(Microsoft.Xna.Framework.Matrix); }
@@ -687,18 +707,12 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Matrix operator -(Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Matrix); }
         public static Microsoft.Xna.Framework.Matrix Subtract(Microsoft.Xna.Framework.Matrix matrix1, Microsoft.Xna.Framework.Matrix matrix2) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void Subtract(ref Microsoft.Xna.Framework.Matrix matrix1, ref Microsoft.Xna.Framework.Matrix matrix2, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
-        public static System.Single[] ToFloatArray(Microsoft.Xna.Framework.Matrix mat) { return default(System.Single[]); }
+        public static System.Single[] ToFloatArray(Microsoft.Xna.Framework.Matrix matrix) { return default(System.Single[]); }
         public override string ToString() { return default(string); }
         public static Microsoft.Xna.Framework.Matrix Transpose(Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Matrix); }
         public static void Transpose(ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Matrix result) { result = default(Microsoft.Xna.Framework.Matrix); }
     }
-    public static partial class PerformanceCounter {
-        public static long ElapsedTime { get { return default(long); } }
-        public static void Begin() { }
-        public static void BeginMensure(string Name) { }
-        public static void Dump() { }
-        public static void EndMensure(string Name) { }
-    }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Plane : System.IEquatable<Microsoft.Xna.Framework.Plane> {
@@ -721,6 +735,7 @@ namespace Microsoft.Xna.Framework {
         public override int GetHashCode() { return default(int); }
         public Microsoft.Xna.Framework.PlaneIntersectionType Intersects(Microsoft.Xna.Framework.BoundingBox box) { return default(Microsoft.Xna.Framework.PlaneIntersectionType); }
         public void Intersects(ref Microsoft.Xna.Framework.BoundingBox box, out Microsoft.Xna.Framework.PlaneIntersectionType result) { result = default(Microsoft.Xna.Framework.PlaneIntersectionType); }
+        public Microsoft.Xna.Framework.PlaneIntersectionType Intersects(Microsoft.Xna.Framework.BoundingFrustum frustum) { return default(Microsoft.Xna.Framework.PlaneIntersectionType); }
         public Microsoft.Xna.Framework.PlaneIntersectionType Intersects(Microsoft.Xna.Framework.BoundingSphere sphere) { return default(Microsoft.Xna.Framework.PlaneIntersectionType); }
         public void Intersects(ref Microsoft.Xna.Framework.BoundingSphere sphere, out Microsoft.Xna.Framework.PlaneIntersectionType result) { result = default(Microsoft.Xna.Framework.PlaneIntersectionType); }
         public void Normalize() { }
@@ -729,6 +744,10 @@ namespace Microsoft.Xna.Framework {
         public static bool operator ==(Microsoft.Xna.Framework.Plane plane1, Microsoft.Xna.Framework.Plane plane2) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Plane plane1, Microsoft.Xna.Framework.Plane plane2) { return default(bool); }
         public override string ToString() { return default(string); }
+        public static Microsoft.Xna.Framework.Plane Transform(Microsoft.Xna.Framework.Plane plane, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Plane); }
+        public static Microsoft.Xna.Framework.Plane Transform(Microsoft.Xna.Framework.Plane plane, Microsoft.Xna.Framework.Quaternion rotation) { return default(Microsoft.Xna.Framework.Plane); }
+        public static void Transform(ref Microsoft.Xna.Framework.Plane plane, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Plane result) { result = default(Microsoft.Xna.Framework.Plane); }
+        public static void Transform(ref Microsoft.Xna.Framework.Plane plane, ref Microsoft.Xna.Framework.Quaternion rotation, out Microsoft.Xna.Framework.Plane result) { result = default(Microsoft.Xna.Framework.Plane); }
     }
     public enum PlaneIntersectionType {
         Back = 1,
@@ -741,6 +760,7 @@ namespace Microsoft.Xna.Framework {
         Three = 2,
         Two = 1,
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Point : System.IEquatable<Microsoft.Xna.Framework.Point> {
@@ -748,23 +768,26 @@ namespace Microsoft.Xna.Framework {
         public int X;
         [System.Runtime.Serialization.DataMemberAttribute]
         public int Y;
+        public Point(int value) { throw new System.NotImplementedException(); }
         public Point(int x, int y) { throw new System.NotImplementedException(); }
         public static Microsoft.Xna.Framework.Point Zero { get { return default(Microsoft.Xna.Framework.Point); } }
         public bool Equals(Microsoft.Xna.Framework.Point other) { return default(bool); }
         public override bool Equals(object obj) { return default(bool); }
         public override int GetHashCode() { return default(int); }
-        public static Microsoft.Xna.Framework.Point operator +(Microsoft.Xna.Framework.Point a, Microsoft.Xna.Framework.Point b) { return default(Microsoft.Xna.Framework.Point); }
-        public static Microsoft.Xna.Framework.Point operator /(Microsoft.Xna.Framework.Point a, Microsoft.Xna.Framework.Point b) { return default(Microsoft.Xna.Framework.Point); }
+        public static Microsoft.Xna.Framework.Point operator +(Microsoft.Xna.Framework.Point value1, Microsoft.Xna.Framework.Point value2) { return default(Microsoft.Xna.Framework.Point); }
+        public static Microsoft.Xna.Framework.Point operator /(Microsoft.Xna.Framework.Point source, Microsoft.Xna.Framework.Point divisor) { return default(Microsoft.Xna.Framework.Point); }
         public static bool operator ==(Microsoft.Xna.Framework.Point a, Microsoft.Xna.Framework.Point b) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Point a, Microsoft.Xna.Framework.Point b) { return default(bool); }
-        public static Microsoft.Xna.Framework.Point operator *(Microsoft.Xna.Framework.Point a, Microsoft.Xna.Framework.Point b) { return default(Microsoft.Xna.Framework.Point); }
-        public static Microsoft.Xna.Framework.Point operator -(Microsoft.Xna.Framework.Point a, Microsoft.Xna.Framework.Point b) { return default(Microsoft.Xna.Framework.Point); }
+        public static Microsoft.Xna.Framework.Point operator *(Microsoft.Xna.Framework.Point value1, Microsoft.Xna.Framework.Point value2) { return default(Microsoft.Xna.Framework.Point); }
+        public static Microsoft.Xna.Framework.Point operator -(Microsoft.Xna.Framework.Point value1, Microsoft.Xna.Framework.Point value2) { return default(Microsoft.Xna.Framework.Point); }
         public override string ToString() { return default(string); }
+        public Microsoft.Xna.Framework.Vector2 ToVector2() { return default(Microsoft.Xna.Framework.Vector2); }
     }
     public partial class PreparingDeviceSettingsEventArgs : System.EventArgs {
         public PreparingDeviceSettingsEventArgs(Microsoft.Xna.Framework.GraphicsDeviceInformation graphicsDeviceInformation) { }
-        public Microsoft.Xna.Framework.GraphicsDeviceInformation GraphicsDeviceInformation { get { return default(Microsoft.Xna.Framework.GraphicsDeviceInformation); } }
+        public Microsoft.Xna.Framework.GraphicsDeviceInformation GraphicsDeviceInformation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.GraphicsDeviceInformation); } }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Quaternion : System.IEquatable<Microsoft.Xna.Framework.Quaternion> {
@@ -776,7 +799,8 @@ namespace Microsoft.Xna.Framework {
         public float Y;
         [System.Runtime.Serialization.DataMemberAttribute]
         public float Z;
-        public Quaternion(Microsoft.Xna.Framework.Vector3 vectorPart, float scalarPart) { throw new System.NotImplementedException(); }
+        public Quaternion(Microsoft.Xna.Framework.Vector3 value, float w) { throw new System.NotImplementedException(); }
+        public Quaternion(Microsoft.Xna.Framework.Vector4 value) { throw new System.NotImplementedException(); }
         public Quaternion(float x, float y, float z, float w) { throw new System.NotImplementedException(); }
         public static Microsoft.Xna.Framework.Quaternion Identity { get { return default(Microsoft.Xna.Framework.Quaternion); } }
         public static Microsoft.Xna.Framework.Quaternion Add(Microsoft.Xna.Framework.Quaternion quaternion1, Microsoft.Xna.Framework.Quaternion quaternion2) { return default(Microsoft.Xna.Framework.Quaternion); }
@@ -827,7 +851,9 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Quaternion Subtract(Microsoft.Xna.Framework.Quaternion quaternion1, Microsoft.Xna.Framework.Quaternion quaternion2) { return default(Microsoft.Xna.Framework.Quaternion); }
         public static void Subtract(ref Microsoft.Xna.Framework.Quaternion quaternion1, ref Microsoft.Xna.Framework.Quaternion quaternion2, out Microsoft.Xna.Framework.Quaternion result) { result = default(Microsoft.Xna.Framework.Quaternion); }
         public override string ToString() { return default(string); }
+        public Microsoft.Xna.Framework.Vector4 ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Ray : System.IEquatable<Microsoft.Xna.Framework.Ray> {
@@ -849,6 +875,7 @@ namespace Microsoft.Xna.Framework {
         public static bool operator !=(Microsoft.Xna.Framework.Ray a, Microsoft.Xna.Framework.Ray b) { return default(bool); }
         public override string ToString() { return default(string); }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Rectangle : System.IEquatable<Microsoft.Xna.Framework.Rectangle> {
@@ -860,6 +887,7 @@ namespace Microsoft.Xna.Framework {
         public int X;
         [System.Runtime.Serialization.DataMemberAttribute]
         public int Y;
+        public Rectangle(Microsoft.Xna.Framework.Point location, Microsoft.Xna.Framework.Point size) { throw new System.NotImplementedException(); }
         public Rectangle(int x, int y, int width, int height) { throw new System.NotImplementedException(); }
         public int Bottom { get { return default(int); } }
         public Microsoft.Xna.Framework.Point Center { get { return default(Microsoft.Xna.Framework.Point); } }
@@ -868,22 +896,29 @@ namespace Microsoft.Xna.Framework {
         public int Left { get { return default(int); } }
         public Microsoft.Xna.Framework.Point Location { get { return default(Microsoft.Xna.Framework.Point); } set { } }
         public int Right { get { return default(int); } }
+        public Microsoft.Xna.Framework.Point Size { get { return default(Microsoft.Xna.Framework.Point); } set { } }
         public int Top { get { return default(int); } }
         public bool Contains(Microsoft.Xna.Framework.Point value) { return default(bool); }
+        public void Contains(ref Microsoft.Xna.Framework.Point value, out bool result) { result = default(bool); }
         public bool Contains(Microsoft.Xna.Framework.Rectangle value) { return default(bool); }
+        public void Contains(ref Microsoft.Xna.Framework.Rectangle value, out bool result) { result = default(bool); }
         public bool Contains(Microsoft.Xna.Framework.Vector2 value) { return default(bool); }
+        public void Contains(ref Microsoft.Xna.Framework.Vector2 value, out bool result) { result = default(bool); }
         public bool Contains(int x, int y) { return default(bool); }
         public bool Contains(float x, float y) { return default(bool); }
         public bool Equals(Microsoft.Xna.Framework.Rectangle other) { return default(bool); }
         public override bool Equals(object obj) { return default(bool); }
         public override int GetHashCode() { return default(int); }
-        public void Inflate(int horizontalValue, int verticalValue) { }
+        public void Inflate(int horizontalAmount, int verticalAmount) { }
+        public void Inflate(float horizontalAmount, float verticalAmount) { }
         public static Microsoft.Xna.Framework.Rectangle Intersect(Microsoft.Xna.Framework.Rectangle value1, Microsoft.Xna.Framework.Rectangle value2) { return default(Microsoft.Xna.Framework.Rectangle); }
         public static void Intersect(ref Microsoft.Xna.Framework.Rectangle value1, ref Microsoft.Xna.Framework.Rectangle value2, out Microsoft.Xna.Framework.Rectangle result) { result = default(Microsoft.Xna.Framework.Rectangle); }
         public bool Intersects(Microsoft.Xna.Framework.Rectangle value) { return default(bool); }
         public void Intersects(ref Microsoft.Xna.Framework.Rectangle value, out bool result) { result = default(bool); }
-        public void Offset(Microsoft.Xna.Framework.Point offset) { }
+        public void Offset(Microsoft.Xna.Framework.Point amount) { }
+        public void Offset(Microsoft.Xna.Framework.Vector2 amount) { }
         public void Offset(int offsetX, int offsetY) { }
+        public void Offset(float offsetX, float offsetY) { }
         public static bool operator ==(Microsoft.Xna.Framework.Rectangle a, Microsoft.Xna.Framework.Rectangle b) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Rectangle a, Microsoft.Xna.Framework.Rectangle b) { return default(bool); }
         public override string ToString() { return default(string); }
@@ -894,15 +929,10 @@ namespace Microsoft.Xna.Framework {
         public TextInputEventArgs(char character) { }
         public char Character { get { return default(char); } }
     }
-    public partial class ThumbStickDefinition {
-        public ThumbStickDefinition() { }
-        public Microsoft.Xna.Framework.Vector2 Position { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Vector2); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.Texture2D Texture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.Texture2D); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Rectangle TextureRect { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Rectangle); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-    }
     public static partial class TitleContainer {
         public static System.IO.Stream OpenStream(string name) { return default(System.IO.Stream); }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Vector2 : System.IEquatable<Microsoft.Xna.Framework.Vector2> {
@@ -972,16 +1002,22 @@ namespace Microsoft.Xna.Framework {
         public static void SmoothStep(ref Microsoft.Xna.Framework.Vector2 value1, ref Microsoft.Xna.Framework.Vector2 value2, float amount, out Microsoft.Xna.Framework.Vector2 result) { result = default(Microsoft.Xna.Framework.Vector2); }
         public static Microsoft.Xna.Framework.Vector2 Subtract(Microsoft.Xna.Framework.Vector2 value1, Microsoft.Xna.Framework.Vector2 value2) { return default(Microsoft.Xna.Framework.Vector2); }
         public static void Subtract(ref Microsoft.Xna.Framework.Vector2 value1, ref Microsoft.Xna.Framework.Vector2 value2, out Microsoft.Xna.Framework.Vector2 result) { result = default(Microsoft.Xna.Framework.Vector2); }
+        public Microsoft.Xna.Framework.Point ToPoint() { return default(Microsoft.Xna.Framework.Point); }
         public override string ToString() { return default(string); }
         public static Microsoft.Xna.Framework.Vector2 Transform(Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector2); }
-        public static Microsoft.Xna.Framework.Vector2 Transform(Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Quaternion quat) { return default(Microsoft.Xna.Framework.Vector2); }
+        public static Microsoft.Xna.Framework.Vector2 Transform(Microsoft.Xna.Framework.Vector2 value, Microsoft.Xna.Framework.Quaternion rotation) { return default(Microsoft.Xna.Framework.Vector2); }
         public static void Transform(ref Microsoft.Xna.Framework.Vector2 position, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector2 result) { result = default(Microsoft.Xna.Framework.Vector2); }
-        public static void Transform(ref Microsoft.Xna.Framework.Vector2 position, ref Microsoft.Xna.Framework.Quaternion quat, out Microsoft.Xna.Framework.Vector2 result) { result = default(Microsoft.Xna.Framework.Vector2); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector2 value, ref Microsoft.Xna.Framework.Quaternion rotation, out Microsoft.Xna.Framework.Vector2 result) { result = default(Microsoft.Xna.Framework.Vector2); }
         public static void Transform(Microsoft.Xna.Framework.Vector2[] sourceArray, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector2[] destinationArray) { }
+        public static void Transform(Microsoft.Xna.Framework.Vector2[] sourceArray, ref Microsoft.Xna.Framework.Quaternion rotation, Microsoft.Xna.Framework.Vector2[] destinationArray) { }
         public static void Transform(Microsoft.Xna.Framework.Vector2[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector2[] destinationArray, int destinationIndex, int length) { }
+        public static void Transform(Microsoft.Xna.Framework.Vector2[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Quaternion rotation, Microsoft.Xna.Framework.Vector2[] destinationArray, int destinationIndex, int length) { }
         public static Microsoft.Xna.Framework.Vector2 TransformNormal(Microsoft.Xna.Framework.Vector2 normal, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector2); }
         public static void TransformNormal(ref Microsoft.Xna.Framework.Vector2 normal, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector2 result) { result = default(Microsoft.Xna.Framework.Vector2); }
+        public static void TransformNormal(Microsoft.Xna.Framework.Vector2[] sourceArray, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector2[] destinationArray) { }
+        public static void TransformNormal(Microsoft.Xna.Framework.Vector2[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector2[] destinationArray, int destinationIndex, int length) { }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Vector3 : System.IEquatable<Microsoft.Xna.Framework.Vector3> {
@@ -1015,16 +1051,16 @@ namespace Microsoft.Xna.Framework {
         public static void Clamp(ref Microsoft.Xna.Framework.Vector3 value1, ref Microsoft.Xna.Framework.Vector3 min, ref Microsoft.Xna.Framework.Vector3 max, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
         public static Microsoft.Xna.Framework.Vector3 Cross(Microsoft.Xna.Framework.Vector3 vector1, Microsoft.Xna.Framework.Vector3 vector2) { return default(Microsoft.Xna.Framework.Vector3); }
         public static void Cross(ref Microsoft.Xna.Framework.Vector3 vector1, ref Microsoft.Xna.Framework.Vector3 vector2, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
-        public static float Distance(Microsoft.Xna.Framework.Vector3 vector1, Microsoft.Xna.Framework.Vector3 vector2) { return default(float); }
+        public static float Distance(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(float); }
         public static void Distance(ref Microsoft.Xna.Framework.Vector3 value1, ref Microsoft.Xna.Framework.Vector3 value2, out float result) { result = default(float); }
         public static float DistanceSquared(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(float); }
         public static void DistanceSquared(ref Microsoft.Xna.Framework.Vector3 value1, ref Microsoft.Xna.Framework.Vector3 value2, out float result) { result = default(float); }
         public static Microsoft.Xna.Framework.Vector3 Divide(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(Microsoft.Xna.Framework.Vector3); }
-        public static Microsoft.Xna.Framework.Vector3 Divide(Microsoft.Xna.Framework.Vector3 value1, float value2) { return default(Microsoft.Xna.Framework.Vector3); }
+        public static Microsoft.Xna.Framework.Vector3 Divide(Microsoft.Xna.Framework.Vector3 value1, float divider) { return default(Microsoft.Xna.Framework.Vector3); }
         public static void Divide(ref Microsoft.Xna.Framework.Vector3 value1, ref Microsoft.Xna.Framework.Vector3 value2, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
-        public static void Divide(ref Microsoft.Xna.Framework.Vector3 value1, float divisor, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
-        public static float Dot(Microsoft.Xna.Framework.Vector3 vector1, Microsoft.Xna.Framework.Vector3 vector2) { return default(float); }
-        public static void Dot(ref Microsoft.Xna.Framework.Vector3 vector1, ref Microsoft.Xna.Framework.Vector3 vector2, out float result) { result = default(float); }
+        public static void Divide(ref Microsoft.Xna.Framework.Vector3 value1, float divider, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
+        public static float Dot(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(float); }
+        public static void Dot(ref Microsoft.Xna.Framework.Vector3 value1, ref Microsoft.Xna.Framework.Vector3 value2, out float result) { result = default(float); }
         public bool Equals(Microsoft.Xna.Framework.Vector3 other) { return default(bool); }
         public override bool Equals(object obj) { return default(bool); }
         public override int GetHashCode() { return default(int); }
@@ -1045,11 +1081,11 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Vector3 Negate(Microsoft.Xna.Framework.Vector3 value) { return default(Microsoft.Xna.Framework.Vector3); }
         public static void Negate(ref Microsoft.Xna.Framework.Vector3 value, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
         public void Normalize() { }
-        public static Microsoft.Xna.Framework.Vector3 Normalize(Microsoft.Xna.Framework.Vector3 vector) { return default(Microsoft.Xna.Framework.Vector3); }
+        public static Microsoft.Xna.Framework.Vector3 Normalize(Microsoft.Xna.Framework.Vector3 value) { return default(Microsoft.Xna.Framework.Vector3); }
         public static void Normalize(ref Microsoft.Xna.Framework.Vector3 value, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
         public static Microsoft.Xna.Framework.Vector3 operator +(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(Microsoft.Xna.Framework.Vector3); }
         public static Microsoft.Xna.Framework.Vector3 operator /(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(Microsoft.Xna.Framework.Vector3); }
-        public static Microsoft.Xna.Framework.Vector3 operator /(Microsoft.Xna.Framework.Vector3 value, float divider) { return default(Microsoft.Xna.Framework.Vector3); }
+        public static Microsoft.Xna.Framework.Vector3 operator /(Microsoft.Xna.Framework.Vector3 value1, float divider) { return default(Microsoft.Xna.Framework.Vector3); }
         public static bool operator ==(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(bool); }
         public static Microsoft.Xna.Framework.Vector3 operator *(Microsoft.Xna.Framework.Vector3 value1, Microsoft.Xna.Framework.Vector3 value2) { return default(Microsoft.Xna.Framework.Vector3); }
@@ -1065,7 +1101,7 @@ namespace Microsoft.Xna.Framework {
         public static void Subtract(ref Microsoft.Xna.Framework.Vector3 value1, ref Microsoft.Xna.Framework.Vector3 value2, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
         public override string ToString() { return default(string); }
         public static Microsoft.Xna.Framework.Vector3 Transform(Microsoft.Xna.Framework.Vector3 position, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector3); }
-        public static Microsoft.Xna.Framework.Vector3 Transform(Microsoft.Xna.Framework.Vector3 vec, Microsoft.Xna.Framework.Quaternion quat) { return default(Microsoft.Xna.Framework.Vector3); }
+        public static Microsoft.Xna.Framework.Vector3 Transform(Microsoft.Xna.Framework.Vector3 value, Microsoft.Xna.Framework.Quaternion rotation) { return default(Microsoft.Xna.Framework.Vector3); }
         public static void Transform(ref Microsoft.Xna.Framework.Vector3 position, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
         public static void Transform(ref Microsoft.Xna.Framework.Vector3 value, ref Microsoft.Xna.Framework.Quaternion rotation, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
         public static void Transform(Microsoft.Xna.Framework.Vector3[] sourceArray, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector3[] destinationArray) { }
@@ -1074,7 +1110,10 @@ namespace Microsoft.Xna.Framework {
         public static void Transform(Microsoft.Xna.Framework.Vector3[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Quaternion rotation, Microsoft.Xna.Framework.Vector3[] destinationArray, int destinationIndex, int length) { }
         public static Microsoft.Xna.Framework.Vector3 TransformNormal(Microsoft.Xna.Framework.Vector3 normal, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector3); }
         public static void TransformNormal(ref Microsoft.Xna.Framework.Vector3 normal, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector3 result) { result = default(Microsoft.Xna.Framework.Vector3); }
+        public static void TransformNormal(Microsoft.Xna.Framework.Vector3[] sourceArray, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector3[] destinationArray) { }
+        public static void TransformNormal(Microsoft.Xna.Framework.Vector3[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector3[] destinationArray, int destinationIndex, int length) { }
     }
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
     [System.Runtime.Serialization.DataContractAttribute]
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Vector4 : System.IEquatable<Microsoft.Xna.Framework.Vector4> {
@@ -1112,8 +1151,8 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Vector4 Divide(Microsoft.Xna.Framework.Vector4 value1, float divider) { return default(Microsoft.Xna.Framework.Vector4); }
         public static void Divide(ref Microsoft.Xna.Framework.Vector4 value1, ref Microsoft.Xna.Framework.Vector4 value2, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
         public static void Divide(ref Microsoft.Xna.Framework.Vector4 value1, float divider, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
-        public static float Dot(Microsoft.Xna.Framework.Vector4 vector1, Microsoft.Xna.Framework.Vector4 vector2) { return default(float); }
-        public static void Dot(ref Microsoft.Xna.Framework.Vector4 vector1, ref Microsoft.Xna.Framework.Vector4 vector2, out float result) { result = default(float); }
+        public static float Dot(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(float); }
+        public static void Dot(ref Microsoft.Xna.Framework.Vector4 value1, ref Microsoft.Xna.Framework.Vector4 value2, out float result) { result = default(float); }
         public bool Equals(Microsoft.Xna.Framework.Vector4 other) { return default(bool); }
         public override bool Equals(object obj) { return default(bool); }
         public override int GetHashCode() { return default(int); }
@@ -1134,16 +1173,16 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Vector4 Negate(Microsoft.Xna.Framework.Vector4 value) { return default(Microsoft.Xna.Framework.Vector4); }
         public static void Negate(ref Microsoft.Xna.Framework.Vector4 value, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
         public void Normalize() { }
-        public static Microsoft.Xna.Framework.Vector4 Normalize(Microsoft.Xna.Framework.Vector4 vector) { return default(Microsoft.Xna.Framework.Vector4); }
-        public static void Normalize(ref Microsoft.Xna.Framework.Vector4 vector, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Normalize(Microsoft.Xna.Framework.Vector4 value) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static void Normalize(ref Microsoft.Xna.Framework.Vector4 value, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
         public static Microsoft.Xna.Framework.Vector4 operator +(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(Microsoft.Xna.Framework.Vector4); }
         public static Microsoft.Xna.Framework.Vector4 operator /(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(Microsoft.Xna.Framework.Vector4); }
         public static Microsoft.Xna.Framework.Vector4 operator /(Microsoft.Xna.Framework.Vector4 value1, float divider) { return default(Microsoft.Xna.Framework.Vector4); }
         public static bool operator ==(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(bool); }
         public static Microsoft.Xna.Framework.Vector4 operator *(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(Microsoft.Xna.Framework.Vector4); }
-        public static Microsoft.Xna.Framework.Vector4 operator *(Microsoft.Xna.Framework.Vector4 value1, float scaleFactor) { return default(Microsoft.Xna.Framework.Vector4); }
-        public static Microsoft.Xna.Framework.Vector4 operator *(float scaleFactor, Microsoft.Xna.Framework.Vector4 value1) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 operator *(Microsoft.Xna.Framework.Vector4 value, float scaleFactor) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 operator *(float scaleFactor, Microsoft.Xna.Framework.Vector4 value) { return default(Microsoft.Xna.Framework.Vector4); }
         public static Microsoft.Xna.Framework.Vector4 operator -(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(Microsoft.Xna.Framework.Vector4); }
         public static Microsoft.Xna.Framework.Vector4 operator -(Microsoft.Xna.Framework.Vector4 value) { return default(Microsoft.Xna.Framework.Vector4); }
         public static Microsoft.Xna.Framework.Vector4 SmoothStep(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2, float amount) { return default(Microsoft.Xna.Framework.Vector4); }
@@ -1151,12 +1190,22 @@ namespace Microsoft.Xna.Framework {
         public static Microsoft.Xna.Framework.Vector4 Subtract(Microsoft.Xna.Framework.Vector4 value1, Microsoft.Xna.Framework.Vector4 value2) { return default(Microsoft.Xna.Framework.Vector4); }
         public static void Subtract(ref Microsoft.Xna.Framework.Vector4 value1, ref Microsoft.Xna.Framework.Vector4 value2, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
         public override string ToString() { return default(string); }
-        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector4); }
-        public static void Transform(ref Microsoft.Xna.Framework.Vector2 position, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
-        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector3 position, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector4); }
-        public static void Transform(ref Microsoft.Xna.Framework.Vector3 position, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
-        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector4 vector, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector4); }
-        public static void Transform(ref Microsoft.Xna.Framework.Vector4 vector, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector2 value, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector2 value, Microsoft.Xna.Framework.Quaternion rotation) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector2 value, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector2 value, ref Microsoft.Xna.Framework.Quaternion rotation, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector3 value, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector3 value, Microsoft.Xna.Framework.Quaternion rotation) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector3 value, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector3 value, ref Microsoft.Xna.Framework.Quaternion rotation, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector4 value, Microsoft.Xna.Framework.Matrix matrix) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static Microsoft.Xna.Framework.Vector4 Transform(Microsoft.Xna.Framework.Vector4 value, Microsoft.Xna.Framework.Quaternion rotation) { return default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector4 value, ref Microsoft.Xna.Framework.Matrix matrix, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(ref Microsoft.Xna.Framework.Vector4 value, ref Microsoft.Xna.Framework.Quaternion rotation, out Microsoft.Xna.Framework.Vector4 result) { result = default(Microsoft.Xna.Framework.Vector4); }
+        public static void Transform(Microsoft.Xna.Framework.Vector4[] sourceArray, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector4[] destinationArray) { }
+        public static void Transform(Microsoft.Xna.Framework.Vector4[] sourceArray, ref Microsoft.Xna.Framework.Quaternion rotation, Microsoft.Xna.Framework.Vector4[] destinationArray) { }
+        public static void Transform(Microsoft.Xna.Framework.Vector4[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Matrix matrix, Microsoft.Xna.Framework.Vector4[] destinationArray, int destinationIndex, int length) { }
+        public static void Transform(Microsoft.Xna.Framework.Vector4[] sourceArray, int sourceIndex, ref Microsoft.Xna.Framework.Quaternion rotation, Microsoft.Xna.Framework.Vector4[] destinationArray, int destinationIndex, int length) { }
     }
 }
 namespace Microsoft.Xna.Framework.Audio {
@@ -1171,7 +1220,7 @@ namespace Microsoft.Xna.Framework.Audio {
         public void Pause() { }
         public void Resume() { }
         public void SetVolume(float volume) { }
-        public void Stop() { }
+        public void Stop(Microsoft.Xna.Framework.Audio.AudioStopOptions options) { }
         public override string ToString() { return default(string); }
     }
     public enum AudioChannels {
@@ -1212,11 +1261,14 @@ namespace Microsoft.Xna.Framework.Audio {
         public bool IsDisposed { get { return default(bool); } }
         public bool IsPaused { get { return default(bool); } }
         public bool IsPlaying { get { return default(bool); } }
+        public bool IsPrepared { get { return default(bool); } }
+        public bool IsPreparing { get { return default(bool); } }
         public bool IsStopped { get { return default(bool); } }
+        public bool IsStopping { get { return default(bool); } }
         public string Name { get { return default(string); } }
         public void Apply3D(Microsoft.Xna.Framework.Audio.AudioListener listener, Microsoft.Xna.Framework.Audio.AudioEmitter emitter) { }
         public void Dispose() { }
-        public float GetVariable(string name, float value) { return default(float); }
+        public float GetVariable(string name) { return default(float); }
         public void Pause() { }
         public void Play() { }
         public void Resume() { }
@@ -1225,9 +1277,11 @@ namespace Microsoft.Xna.Framework.Audio {
     }
     public partial class SoundBank : System.IDisposable {
         public SoundBank(Microsoft.Xna.Framework.Audio.AudioEngine audioEngine, string fileName) { }
+        public bool IsDisposed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
         public void Dispose() { }
         public Microsoft.Xna.Framework.Audio.Cue GetCue(string name) { return default(Microsoft.Xna.Framework.Audio.Cue); }
         public void PlayCue(string name) { }
+        public void PlayCue(string name, Microsoft.Xna.Framework.Audio.AudioListener listener, Microsoft.Xna.Framework.Audio.AudioEmitter emitter) { }
     }
     public sealed partial class SoundEffect : System.IDisposable {
         public SoundEffect(System.Byte[] buffer, int sampleRate, Microsoft.Xna.Framework.Audio.AudioChannels channels) { }
@@ -1241,13 +1295,14 @@ namespace Microsoft.Xna.Framework.Audio {
         public static float SpeedOfSound { get { return default(float); } set { } }
         public Microsoft.Xna.Framework.Audio.SoundEffectInstance CreateInstance() { return default(Microsoft.Xna.Framework.Audio.SoundEffectInstance); }
         public void Dispose() { }
+        ~SoundEffect() { }
         public static Microsoft.Xna.Framework.Audio.SoundEffect FromStream(System.IO.Stream s) { return default(Microsoft.Xna.Framework.Audio.SoundEffect); }
         public static System.TimeSpan GetSampleDuration(int sizeInBytes, int sampleRate, Microsoft.Xna.Framework.Audio.AudioChannels channels) { return default(System.TimeSpan); }
         public static int GetSampleSizeInBytes(System.TimeSpan duration, int sampleRate, Microsoft.Xna.Framework.Audio.AudioChannels channels) { return default(int); }
         public bool Play() { return default(bool); }
         public bool Play(float volume, float pitch, float pan) { return default(bool); }
     }
-    public sealed partial class SoundEffectInstance : System.IDisposable {
+    public partial class SoundEffectInstance : System.IDisposable {
         internal SoundEffectInstance() { }
         public bool IsDisposed { get { return default(bool); } }
         public bool IsLooped { get { return default(bool); } set { } }
@@ -1258,6 +1313,8 @@ namespace Microsoft.Xna.Framework.Audio {
         public void Apply3D(Microsoft.Xna.Framework.Audio.AudioListener listener, Microsoft.Xna.Framework.Audio.AudioEmitter emitter) { }
         public void Apply3D(Microsoft.Xna.Framework.Audio.AudioListener[] listeners, Microsoft.Xna.Framework.Audio.AudioEmitter emitter) { }
         public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        ~SoundEffectInstance() { }
         public void Pause() { }
         public void Play() { }
         public void Resume() { }
@@ -1272,20 +1329,11 @@ namespace Microsoft.Xna.Framework.Audio {
     public partial class WaveBank : System.IDisposable {
         public WaveBank(Microsoft.Xna.Framework.Audio.AudioEngine audioEngine, string nonStreamingWaveBankFilename) { }
         public WaveBank(Microsoft.Xna.Framework.Audio.AudioEngine audioEngine, string streamingWaveBankFilename, int offset, short packetsize) { }
+        public bool IsDisposed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
         public void Dispose() { }
     }
 }
 namespace Microsoft.Xna.Framework.Content {
-    public partial class ArrayReader<T> : Microsoft.Xna.Framework.Content.ContentTypeReader<T[]> {
-        public ArrayReader() { }
-        protected internal override void Initialize(Microsoft.Xna.Framework.Content.ContentTypeReaderManager manager) { }
-        protected internal override T[] Read(Microsoft.Xna.Framework.Content.ContentReader input, T[] existingInstance) { return default(T[]); }
-    }
-    public static partial class ContentExtensions {
-        public static System.Reflection.FieldInfo[] GetAllFields(this System.Type type) { return default(System.Reflection.FieldInfo[]); }
-        public static System.Reflection.PropertyInfo[] GetAllProperties(this System.Type type) { return default(System.Reflection.PropertyInfo[]); }
-        public static System.Reflection.ConstructorInfo GetDefaultConstructor(this System.Type type) { return default(System.Reflection.ConstructorInfo); }
-    }
     public partial class ContentLoadException : System.Exception {
         public ContentLoadException() { }
         public ContentLoadException(string message) { }
@@ -1334,21 +1382,37 @@ namespace Microsoft.Xna.Framework.Content {
     [System.AttributeUsageAttribute((System.AttributeTargets)(384))]
     public sealed partial class ContentSerializerAttribute : System.Attribute {
         public ContentSerializerAttribute() { }
-        public bool AllowNull { get { return default(bool); } set { } }
+        public bool AllowNull { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public string CollectionItemName { get { return default(string); } set { } }
-        public string ElementName { get { return default(string); } set { } }
-        public bool FlattenContent { get { return default(bool); } set { } }
+        public string ElementName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool FlattenContent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool HasCollectionItemName { get { return default(bool); } }
-        public bool Optional { get { return default(bool); } set { } }
-        public bool SharedResource { get { return default(bool); } set { } }
+        public bool Optional { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool SharedResource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public Microsoft.Xna.Framework.Content.ContentSerializerAttribute Clone() { return default(Microsoft.Xna.Framework.Content.ContentSerializerAttribute); }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(4))]
+    public sealed partial class ContentSerializerCollectionItemNameAttribute : System.Attribute {
+        public ContentSerializerCollectionItemNameAttribute(string collectionItemName) { }
+        public string CollectionItemName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
     }
     [System.AttributeUsageAttribute((System.AttributeTargets)(384))]
     public sealed partial class ContentSerializerIgnoreAttribute : System.Attribute {
         public ContentSerializerIgnoreAttribute() { }
     }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(12))]
+    public sealed partial class ContentSerializerRuntimeTypeAttribute : System.Attribute {
+        public ContentSerializerRuntimeTypeAttribute(string runtimeType) { }
+        public string RuntimeType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
+    }
+    [System.AttributeUsageAttribute((System.AttributeTargets)(12))]
+    public sealed partial class ContentSerializerTypeVersionAttribute : System.Attribute {
+        public ContentSerializerTypeVersionAttribute(int typeVersion) { }
+        public int TypeVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+    }
     public abstract partial class ContentTypeReader {
         protected ContentTypeReader(System.Type targetType) { }
+        public virtual bool CanDeserializeIntoExistingObject { get { return default(bool); } }
         public System.Type TargetType { get { return default(System.Type); } }
         public virtual int TypeVersion { get { return default(int); } }
         protected internal virtual void Initialize(Microsoft.Xna.Framework.Content.ContentTypeReaderManager manager) { }
@@ -1361,352 +1425,14 @@ namespace Microsoft.Xna.Framework.Content {
         protected internal override object Read(Microsoft.Xna.Framework.Content.ContentReader input, object existingInstance) { return default(object); }
     }
     public sealed partial class ContentTypeReaderManager {
-        public ContentTypeReaderManager(Microsoft.Xna.Framework.Content.ContentReader reader) { }
+        public ContentTypeReaderManager() { }
         public static void AddTypeCreator(string typeString, System.Func<Microsoft.Xna.Framework.Content.ContentTypeReader> createFunction) { }
         public static void ClearTypeCreators() { }
         public Microsoft.Xna.Framework.Content.ContentTypeReader GetTypeReader(System.Type targetType) { return default(Microsoft.Xna.Framework.Content.ContentTypeReader); }
         public static string PrepareType(string type) { return default(string); }
     }
-    public partial class DictionaryReader<TKey, TValue> : Microsoft.Xna.Framework.Content.ContentTypeReader<System.Collections.Generic.Dictionary<TKey, TValue>> {
-        public DictionaryReader() { }
-        protected internal override void Initialize(Microsoft.Xna.Framework.Content.ContentTypeReaderManager manager) { }
-        protected internal override System.Collections.Generic.Dictionary<TKey, TValue> Read(Microsoft.Xna.Framework.Content.ContentReader input, System.Collections.Generic.Dictionary<TKey, TValue> existingInstance) { return default(System.Collections.Generic.Dictionary<TKey, TValue>); }
-    }
-    public partial class EnumReader<T> : Microsoft.Xna.Framework.Content.ContentTypeReader<T> {
-        public EnumReader() { }
-        protected internal override void Initialize(Microsoft.Xna.Framework.Content.ContentTypeReaderManager manager) { }
-        protected internal override T Read(Microsoft.Xna.Framework.Content.ContentReader input, T existingInstance) { return default(T); }
-    }
-    public partial class ListReader<T> : Microsoft.Xna.Framework.Content.ContentTypeReader<System.Collections.Generic.List<T>> {
-        public ListReader() { }
-        protected internal override void Initialize(Microsoft.Xna.Framework.Content.ContentTypeReaderManager manager) { }
-        protected internal override System.Collections.Generic.List<T> Read(Microsoft.Xna.Framework.Content.ContentReader input, System.Collections.Generic.List<T> existingInstance) { return default(System.Collections.Generic.List<T>); }
-    }
-    public partial class ModelReader : Microsoft.Xna.Framework.Content.ContentTypeReader<Microsoft.Xna.Framework.Graphics.Model> {
-        public ModelReader() { }
-        protected internal override Microsoft.Xna.Framework.Graphics.Model Read(Microsoft.Xna.Framework.Content.ContentReader reader, Microsoft.Xna.Framework.Graphics.Model existingInstance) { return default(Microsoft.Xna.Framework.Graphics.Model); }
-    }
-    public partial class TextureReader : Microsoft.Xna.Framework.Content.ContentTypeReader<Microsoft.Xna.Framework.Graphics.Texture> {
-        public TextureReader() { }
-        protected internal override Microsoft.Xna.Framework.Graphics.Texture Read(Microsoft.Xna.Framework.Content.ContentReader reader, Microsoft.Xna.Framework.Graphics.Texture existingInstance) { return default(Microsoft.Xna.Framework.Graphics.Texture); }
-    }
-    public partial class VertexDeclarationReader : Microsoft.Xna.Framework.Content.ContentTypeReader<Microsoft.Xna.Framework.Graphics.VertexDeclaration> {
-        public VertexDeclarationReader() { }
-        protected internal override Microsoft.Xna.Framework.Graphics.VertexDeclaration Read(Microsoft.Xna.Framework.Content.ContentReader reader, Microsoft.Xna.Framework.Graphics.VertexDeclaration existingInstance) { return default(Microsoft.Xna.Framework.Graphics.VertexDeclaration); }
-    }
 }
-namespace Microsoft.Xna.Framework.GamerServices {
-    [System.Runtime.Serialization.DataContractAttribute]
-    public partial class Achievement {
-        public Achievement() { }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public string Description { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public bool DisplayBeforeEarned { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public System.DateTime EarnedDateTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.DateTime); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public bool EarnedOnline { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public int GamerScore { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public string HowToEarn { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public bool IsEarned { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public string Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
-    }
-    public partial class AchievementCollection : System.Collections.Generic.ICollection<Microsoft.Xna.Framework.GamerServices.Achievement>, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.Achievement>, System.Collections.Generic.IList<Microsoft.Xna.Framework.GamerServices.Achievement>, System.Collections.IEnumerable, System.IDisposable {
-        public AchievementCollection() { }
-        public int Count { get { return default(int); } }
-        public bool IsReadOnly { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.Achievement this[int index] { get { return default(Microsoft.Xna.Framework.GamerServices.Achievement); } set { } }
-        public void Add(Microsoft.Xna.Framework.GamerServices.Achievement item) { }
-        public void Clear() { }
-        public bool Contains(Microsoft.Xna.Framework.GamerServices.Achievement item) { return default(bool); }
-        public void CopyTo(Microsoft.Xna.Framework.GamerServices.Achievement[] array, int arrayIndex) { }
-        public void Dispose() { }
-        protected virtual void Dispose(bool disposing) { }
-        ~AchievementCollection() { }
-        public System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.GamerServices.Achievement> GetEnumerator() { return default(System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.GamerServices.Achievement>); }
-        public int IndexOf(Microsoft.Xna.Framework.GamerServices.Achievement item) { return default(int); }
-        public void Insert(int index, Microsoft.Xna.Framework.GamerServices.Achievement item) { }
-        public bool Remove(Microsoft.Xna.Framework.GamerServices.Achievement item) { return default(bool); }
-        public void RemoveAt(int index) { }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return default(System.Collections.IEnumerator); }
-    }
-    public partial class FriendCollection : System.Collections.Generic.ICollection<Microsoft.Xna.Framework.GamerServices.FriendGamer>, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.FriendGamer>, System.Collections.Generic.IList<Microsoft.Xna.Framework.GamerServices.FriendGamer>, System.Collections.IEnumerable, System.IDisposable {
-        public FriendCollection() { }
-        public int Count { get { return default(int); } }
-        public bool IsReadOnly { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.FriendGamer this[int index] { get { return default(Microsoft.Xna.Framework.GamerServices.FriendGamer); } set { } }
-        public void Add(Microsoft.Xna.Framework.GamerServices.FriendGamer item) { }
-        public void Clear() { }
-        public bool Contains(Microsoft.Xna.Framework.GamerServices.FriendGamer item) { return default(bool); }
-        public void CopyTo(Microsoft.Xna.Framework.GamerServices.FriendGamer[] array, int arrayIndex) { }
-        public void Dispose() { }
-        protected virtual void Dispose(bool disposing) { }
-        ~FriendCollection() { }
-        public System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.GamerServices.FriendGamer> GetEnumerator() { return default(System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.GamerServices.FriendGamer>); }
-        public int IndexOf(Microsoft.Xna.Framework.GamerServices.FriendGamer item) { return default(int); }
-        public void Insert(int index, Microsoft.Xna.Framework.GamerServices.FriendGamer item) { }
-        public bool Remove(Microsoft.Xna.Framework.GamerServices.FriendGamer item) { return default(bool); }
-        public void RemoveAt(int index) { }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return default(System.Collections.IEnumerator); }
-    }
-    public partial class FriendGamer : Microsoft.Xna.Framework.GamerServices.Gamer {
-        public FriendGamer() { }
-    }
-    public sealed partial class GameDefaults {
-        public GameDefaults() { }
-        public bool AccelerateWithButtons { get { return default(bool); } }
-    }
-    [System.Runtime.Serialization.DataContractAttribute]
-    public abstract partial class Gamer {
-        protected Gamer() { }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public string DisplayName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public string Gamertag { get { return default(string); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public bool IsDisposed { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.LeaderboardWriter LeaderboardWriter { get { return default(Microsoft.Xna.Framework.GamerServices.LeaderboardWriter); } }
-        public static Microsoft.Xna.Framework.GamerServices.SignedInGamerCollection SignedInGamers { get { return default(Microsoft.Xna.Framework.GamerServices.SignedInGamerCollection); } }
-        public object Tag { get { return default(object); } set { } }
-        public override string ToString() { return default(string); }
-    }
-    public partial class GamerCollection<T> : System.Collections.ObjectModel.ReadOnlyCollection<T>, System.Collections.Generic.IEnumerable<T>, System.Collections.IEnumerable where T : Microsoft.Xna.Framework.GamerServices.Gamer {
-        internal GamerCollection() : base (default(System.Collections.Generic.IList<T>)) { }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return default(System.Collections.IEnumerator); }
-    }
-    public sealed partial class GamerPresence {
-        public GamerPresence() { }
-        public Microsoft.Xna.Framework.GamerServices.GamerPresenceMode PresenceMode { get { return default(Microsoft.Xna.Framework.GamerServices.GamerPresenceMode); } set { } }
-        public int PresenceValue { get { return default(int); } set { } }
-    }
-    public enum GamerPresenceMode {
-        ArcadeMode = 0,
-        AtMenu = 1,
-        BattlingBoss = 2,
-        CampaignMode = 3,
-        ChallengeMode = 4,
-        ConfiguringSettings = 5,
-        CoOpLevel = 6,
-        CoOpStage = 7,
-        CornflowerBlue = 8,
-        CustomizingPlayer = 9,
-        DifficultyEasy = 10,
-        DifficultyExtreme = 11,
-        DifficultyHard = 12,
-        DifficultyMedium = 13,
-        EditingLevel = 14,
-        ExplorationMode = 15,
-        FoundSecret = 16,
-        FreePlay = 17,
-        GameOver = 18,
-        InCombat = 19,
-        InGameStore = 20,
-        Level = 21,
-        LocalCoOp = 22,
-        LocalVersus = 23,
-        LookingForGames = 24,
-        Losing = 25,
-        Multiplayer = 26,
-        NearlyFinished = 27,
-        None = 28,
-        OnARoll = 29,
-        OnlineCoOp = 30,
-        OnlineVersus = 31,
-        Outnumbered = 32,
-        Paused = 33,
-        PlayingMinigame = 34,
-        PlayingWithFriends = 35,
-        PracticeMode = 36,
-        PuzzleMode = 37,
-        ScenarioMode = 38,
-        Score = 39,
-        ScoreIsTied = 40,
-        SettingUpMatch = 41,
-        SinglePlayer = 42,
-        Stage = 43,
-        StartingGame = 44,
-        StoryMode = 45,
-        StuckOnAHardBit = 46,
-        SurvivalMode = 47,
-        TimeAttack = 48,
-        TryingForRecord = 49,
-        TutorialMode = 50,
-        VersusComputer = 51,
-        VersusScore = 52,
-        WaitingForPlayers = 53,
-        WaitingInLobby = 54,
-        WastingTime = 55,
-        WatchingCredits = 56,
-        WatchingCutscene = 57,
-        Winning = 58,
-        WonTheGame = 59,
-    }
-    public partial class GamerPrivilegeException : System.Exception {
-        public GamerPrivilegeException() { }
-    }
-    public partial class GamerPrivileges {
-        public GamerPrivileges() { }
-        public Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting AllowCommunication { get { return default(Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting); } }
-        public bool AllowOnlineSessions { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting AllowProfileViewing { get { return default(Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting); } }
-        public bool AllowPurchaseContent { get { return default(bool); } }
-        public bool AllowTradeContent { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting AllowUserCreatedContent { get { return default(Microsoft.Xna.Framework.GamerServices.GamerPrivilegeSetting); } }
-    }
-    public enum GamerPrivilegeSetting {
-        Blocked = 0,
-        Everyone = 1,
-        FriendsOnly = 2,
-    }
-    public sealed partial class GamerProfile : System.IDisposable {
-        public GamerProfile() { }
-        public void Dispose() { }
-        ~GamerProfile() { }
-    }
-    public partial class GamerServicesComponent : Microsoft.Xna.Framework.GameComponent {
-        public GamerServicesComponent(Microsoft.Xna.Framework.Game game) : base (default(Microsoft.Xna.Framework.Game)) { }
-        public override void Update(Microsoft.Xna.Framework.GameTime gameTime) { }
-    }
-    public static partial class GamerServicesDispatcher {
-        public static bool IsInitialized { get { return default(bool); } }
-        public static System.IntPtr WindowHandle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.IntPtr); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static event System.EventHandler<System.EventArgs> InstallingTitleUpdate { add { } remove { } }
-        public static void Update() { }
-    }
-    public enum GamerZone {
-        Family = 0,
-        Pro = 1,
-        Recreation = 2,
-        Underground = 3,
-        Unknown = 4,
-    }
-    public static partial class Guide {
-        public static bool IsScreenSaverEnabled { get { return default(bool); } set { } }
-        public static bool IsTrialMode { get { return default(bool); } set { } }
-        public static bool IsVisible { get { return default(bool); } set { } }
-        public static bool SimulateTrialMode { get { return default(bool); } set { } }
-        [System.CLSCompliantAttribute(false)]
-        public static System.IAsyncResult BeginShowKeyboardInput(Microsoft.Xna.Framework.PlayerIndex player, string title, string description, string defaultText, System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginShowKeyboardInput(Microsoft.Xna.Framework.PlayerIndex player, string title, string description, string defaultText, System.AsyncCallback callback, object state, bool usePasswordMode) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginShowMessageBox(Microsoft.Xna.Framework.PlayerIndex player, string title, string text, System.Collections.Generic.IEnumerable<System.String> buttons, int focusButton, Microsoft.Xna.Framework.GamerServices.MessageBoxIcon icon, System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginShowMessageBox(string title, string text, System.Collections.Generic.IEnumerable<System.String> buttons, int focusButton, Microsoft.Xna.Framework.GamerServices.MessageBoxIcon icon, System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginShowStorageDeviceSelector(System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
-        public static string EndShowKeyboardInput(System.IAsyncResult result) { return default(string); }
-        public static System.Nullable<System.Int32> EndShowMessageBox(System.IAsyncResult result) { return default(System.Nullable<System.Int32>); }
-        public static Microsoft.Xna.Framework.Storage.StorageDevice EndShowStorageDeviceSelector(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.Storage.StorageDevice); }
-        public static void Show() { }
-        public static void ShowAchievements() { }
-        public static string ShowKeyboardInput(Microsoft.Xna.Framework.PlayerIndex player, string title, string description, string defaultText, bool usePasswordMode) { return default(string); }
-        public static void ShowLeaderboard() { }
-        public static void ShowMarketplace(Microsoft.Xna.Framework.PlayerIndex player) { }
-        public static System.Nullable<System.Int32> ShowMessageBox(string title, string text, System.Collections.Generic.IEnumerable<System.String> buttons, int focusButton, Microsoft.Xna.Framework.GamerServices.MessageBoxIcon icon) { return default(System.Nullable<System.Int32>); }
-        public static void ShowSignIn(int paneCount, bool onlineOnly) { }
-    }
-    [System.Runtime.Serialization.DataContractAttribute]
-    public partial class GuideAlreadyVisibleException : System.Exception {
-        public GuideAlreadyVisibleException() { }
-        public GuideAlreadyVisibleException(string message) { }
-        public GuideAlreadyVisibleException(string message, System.Exception innerException) { }
-    }
-    [System.Runtime.Serialization.DataContractAttribute]
-    public sealed partial class LeaderboardEntry {
-        public LeaderboardEntry() { }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public Microsoft.Xna.Framework.GamerServices.PropertyDictionary Columns { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.GamerServices.PropertyDictionary); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public Microsoft.Xna.Framework.GamerServices.Gamer Gamer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.GamerServices.Gamer); } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public long Rating { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(long); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-    }
-    [System.Runtime.Serialization.DataContractAttribute]
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
-    public partial struct LeaderboardIdentity {
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public int GameMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        [System.Runtime.Serialization.DataMemberAttribute]
-        public Microsoft.Xna.Framework.GamerServices.LeaderboardKey Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.GamerServices.LeaderboardKey); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.GamerServices.LeaderboardIdentity Create(Microsoft.Xna.Framework.GamerServices.LeaderboardKey aKey) { return default(Microsoft.Xna.Framework.GamerServices.LeaderboardIdentity); }
-        public static Microsoft.Xna.Framework.GamerServices.LeaderboardIdentity Create(Microsoft.Xna.Framework.GamerServices.LeaderboardKey aKey, int aGameMode) { return default(Microsoft.Xna.Framework.GamerServices.LeaderboardIdentity); }
-    }
-    public enum LeaderboardKey {
-        BestScoreLifeTime = 0,
-        BestScoreRecent = 1,
-        BestTimeLifeTime = 2,
-        BestTimeRecent = 3,
-    }
-    public sealed partial class LeaderboardReader : System.IDisposable {
-        public LeaderboardReader() { }
-        public bool CanPageDown { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool CanPageUp { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.LeaderboardEntry> Entries { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.LeaderboardEntry>); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public void Dispose() { }
-    }
-    public sealed partial class LeaderboardWriter : System.IDisposable {
-        public LeaderboardWriter() { }
-        void System.IDisposable.Dispose() { }
-    }
-    public enum MessageBoxIcon {
-        Alert = 0,
-        Error = 1,
-        None = 2,
-        Warning = 3,
-    }
-    public partial class MonoGameGamerServicesComponent : Microsoft.Xna.Framework.GamerServices.GamerServicesComponent {
-        public MonoGameGamerServicesComponent(Microsoft.Xna.Framework.Game game) : base (default(Microsoft.Xna.Framework.Game)) { }
-    }
-    public partial class PropertyDictionary {
-        public PropertyDictionary() { }
-        public System.DateTime GetValueDateTime(string aKey) { return default(System.DateTime); }
-        public int GetValueInt32(string aKey) { return default(int); }
-        public void SetValue(string aKey, System.DateTime aValue) { }
-    }
-    public partial class SignedInEventArgs : System.EventArgs {
-        public SignedInEventArgs(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer) { }
-    }
-    public partial class SignedInGamer : Microsoft.Xna.Framework.GamerServices.Gamer {
-        public SignedInGamer() { }
-        public Microsoft.Xna.Framework.GamerServices.GameDefaults GameDefaults { get { return default(Microsoft.Xna.Framework.GamerServices.GameDefaults); } }
-        public bool IsGuest { get { return default(bool); } }
-        public bool IsSignedInToLive { get { return default(bool); } }
-        public int PartySize { get { return default(int); } set { } }
-        public Microsoft.Xna.Framework.PlayerIndex PlayerIndex { get { return default(Microsoft.Xna.Framework.PlayerIndex); } }
-        public Microsoft.Xna.Framework.GamerServices.GamerPresence Presence { get { return default(Microsoft.Xna.Framework.GamerServices.GamerPresence); } }
-        public Microsoft.Xna.Framework.GamerServices.GamerPrivileges Privileges { get { return default(Microsoft.Xna.Framework.GamerServices.GamerPrivileges); } }
-        public static event System.EventHandler<Microsoft.Xna.Framework.GamerServices.SignedInEventArgs> SignedIn { add { } remove { } }
-        public static event System.EventHandler<Microsoft.Xna.Framework.GamerServices.SignedOutEventArgs> SignedOut { add { } remove { } }
-        public void AwardAchievement(string achievementId) { }
-        public void AwardAchievement(string achievementId, double percentageComplete) { }
-        public System.IAsyncResult BeginAuthentication(System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public System.IAsyncResult BeginAwardAchievement(string achievementId, System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
-        public System.IAsyncResult BeginAwardAchievement(string achievementId, double percentageComplete, System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
-        public System.IAsyncResult BeginGetAchievements(System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public void DoAwardAchievement(string achievementId, double percentageComplete) { }
-        public void EndAuthentication(System.IAsyncResult result) { }
-        public void EndAwardAchievement(System.IAsyncResult result) { }
-        public Microsoft.Xna.Framework.GamerServices.AchievementCollection EndGetAchievements(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.GamerServices.AchievementCollection); }
-        public Microsoft.Xna.Framework.GamerServices.AchievementCollection GetAchievements() { return default(Microsoft.Xna.Framework.GamerServices.AchievementCollection); }
-        public Microsoft.Xna.Framework.GamerServices.FriendCollection GetFriends() { return default(Microsoft.Xna.Framework.GamerServices.FriendCollection); }
-        public bool IsFriend(Microsoft.Xna.Framework.GamerServices.Gamer gamer) { return default(bool); }
-        protected virtual void OnSignedIn(Microsoft.Xna.Framework.GamerServices.SignedInEventArgs e) { }
-        protected virtual void OnSignedOut(Microsoft.Xna.Framework.GamerServices.SignedOutEventArgs e) { }
-        public void ResetAchievements() { }
-        public void UpdateScore(string aCategory, long aScore) { }
-    }
-    public partial class SignedInGamerCollection : System.Collections.Generic.List<Microsoft.Xna.Framework.GamerServices.SignedInGamer> {
-        public SignedInGamerCollection() { }
-        public Microsoft.Xna.Framework.GamerServices.SignedInGamer this[Microsoft.Xna.Framework.PlayerIndex index] { get { return default(Microsoft.Xna.Framework.GamerServices.SignedInGamer); } }
-    }
-    public partial class SignedOutEventArgs : System.EventArgs {
-        public SignedOutEventArgs(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer) { }
-    }
-}
+
 namespace Microsoft.Xna.Framework.Graphics {
     public partial class AlphaTestEffect : Microsoft.Xna.Framework.Graphics.Effect, Microsoft.Xna.Framework.Graphics.IEffectFog, Microsoft.Xna.Framework.Graphics.IEffectMatrices {
         protected AlphaTestEffect(Microsoft.Xna.Framework.Graphics.AlphaTestEffect cloneSource) : base (default(Microsoft.Xna.Framework.Graphics.Effect)) { }
@@ -1772,15 +1498,17 @@ namespace Microsoft.Xna.Framework.Graphics {
     }
     public enum BlendFunction {
         Add = 0,
-        Max = 3,
-        Min = 4,
+        Max = 4,
+        Min = 3,
         ReverseSubtract = 2,
         Subtract = 1,
     }
     public partial class BlendState : Microsoft.Xna.Framework.Graphics.GraphicsResource {
+        public static readonly Microsoft.Xna.Framework.Graphics.BlendState Additive;
+        public static readonly Microsoft.Xna.Framework.Graphics.BlendState AlphaBlend;
+        public static readonly Microsoft.Xna.Framework.Graphics.BlendState NonPremultiplied;
+        public static readonly Microsoft.Xna.Framework.Graphics.BlendState Opaque;
         public BlendState() { }
-        public static Microsoft.Xna.Framework.Graphics.BlendState Additive { get { return default(Microsoft.Xna.Framework.Graphics.BlendState); } }
-        public static Microsoft.Xna.Framework.Graphics.BlendState AlphaBlend { get { return default(Microsoft.Xna.Framework.Graphics.BlendState); } }
         public Microsoft.Xna.Framework.Graphics.BlendFunction AlphaBlendFunction { get { return default(Microsoft.Xna.Framework.Graphics.BlendFunction); } set { } }
         public Microsoft.Xna.Framework.Graphics.Blend AlphaDestinationBlend { get { return default(Microsoft.Xna.Framework.Graphics.Blend); } set { } }
         public Microsoft.Xna.Framework.Graphics.Blend AlphaSourceBlend { get { return default(Microsoft.Xna.Framework.Graphics.Blend); } set { } }
@@ -1795,8 +1523,6 @@ namespace Microsoft.Xna.Framework.Graphics {
         public bool IndependentBlendEnable { get { return default(bool); } set { } }
         public Microsoft.Xna.Framework.Graphics.TargetBlendState this[int index] { get { return default(Microsoft.Xna.Framework.Graphics.TargetBlendState); } }
         public int MultiSampleMask { get { return default(int); } set { } }
-        public static Microsoft.Xna.Framework.Graphics.BlendState NonPremultiplied { get { return default(Microsoft.Xna.Framework.Graphics.BlendState); } }
-        public static Microsoft.Xna.Framework.Graphics.BlendState Opaque { get { return default(Microsoft.Xna.Framework.Graphics.BlendState); } }
     }
     public enum BufferUsage {
         None = 0,
@@ -1841,32 +1567,44 @@ namespace Microsoft.Xna.Framework.Graphics {
         None = 0,
     }
     public enum DepthFormat {
-        Depth16 = 54,
-        Depth24 = 51,
-        Depth24Stencil8 = 48,
-        None = -1,
+        Depth16 = 1,
+        Depth24 = 2,
+        Depth24Stencil8 = 3,
+        None = 0,
     }
     public partial class DepthStencilState : Microsoft.Xna.Framework.Graphics.GraphicsResource {
+        public static readonly Microsoft.Xna.Framework.Graphics.DepthStencilState Default;
+        public static readonly Microsoft.Xna.Framework.Graphics.DepthStencilState DepthRead;
+        public static readonly Microsoft.Xna.Framework.Graphics.DepthStencilState None;
         public DepthStencilState() { }
-        public Microsoft.Xna.Framework.Graphics.StencilOperation CounterClockwiseStencilDepthBufferFail { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.StencilOperation CounterClockwiseStencilFail { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.CompareFunction CounterClockwiseStencilFunction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.StencilOperation CounterClockwiseStencilPass { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.Graphics.DepthStencilState Default { get { return default(Microsoft.Xna.Framework.Graphics.DepthStencilState); } }
-        public bool DepthBufferEnable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.CompareFunction DepthBufferFunction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool DepthBufferWriteEnable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.Graphics.DepthStencilState DepthRead { get { return default(Microsoft.Xna.Framework.Graphics.DepthStencilState); } }
-        public static Microsoft.Xna.Framework.Graphics.DepthStencilState None { get { return default(Microsoft.Xna.Framework.Graphics.DepthStencilState); } }
-        public int ReferenceStencil { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.StencilOperation StencilDepthBufferFail { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool StencilEnable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.StencilOperation StencilFail { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.CompareFunction StencilFunction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int StencilMask { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.StencilOperation StencilPass { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int StencilWriteMask { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool TwoSidedStencilMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Xna.Framework.Graphics.StencilOperation CounterClockwiseStencilDepthBufferFail { get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } set { } }
+        public Microsoft.Xna.Framework.Graphics.StencilOperation CounterClockwiseStencilFail { get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } set { } }
+        public Microsoft.Xna.Framework.Graphics.CompareFunction CounterClockwiseStencilFunction { get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } set { } }
+        public Microsoft.Xna.Framework.Graphics.StencilOperation CounterClockwiseStencilPass { get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } set { } }
+        public bool DepthBufferEnable { get { return default(bool); } set { } }
+        public Microsoft.Xna.Framework.Graphics.CompareFunction DepthBufferFunction { get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } set { } }
+        public bool DepthBufferWriteEnable { get { return default(bool); } set { } }
+        public int ReferenceStencil { get { return default(int); } set { } }
+        public Microsoft.Xna.Framework.Graphics.StencilOperation StencilDepthBufferFail { get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } set { } }
+        public bool StencilEnable { get { return default(bool); } set { } }
+        public Microsoft.Xna.Framework.Graphics.StencilOperation StencilFail { get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } set { } }
+        public Microsoft.Xna.Framework.Graphics.CompareFunction StencilFunction { get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } set { } }
+        public int StencilMask { get { return default(int); } set { } }
+        public Microsoft.Xna.Framework.Graphics.StencilOperation StencilPass { get { return default(Microsoft.Xna.Framework.Graphics.StencilOperation); } set { } }
+        public int StencilWriteMask { get { return default(int); } set { } }
+        public bool TwoSidedStencilMode { get { return default(bool); } set { } }
+    }
+    [System.Runtime.Serialization.DataContractAttribute]
+    public sealed partial class DeviceLostException : System.Exception {
+        public DeviceLostException() { }
+        public DeviceLostException(string message) { }
+        public DeviceLostException(string message, System.Exception inner) { }
+    }
+    [System.Runtime.Serialization.DataContractAttribute]
+    public sealed partial class DeviceNotResetException : System.Exception {
+        public DeviceNotResetException() { }
+        public DeviceNotResetException(string message) { }
+        public DeviceNotResetException(string message, System.Exception inner) { }
     }
     public sealed partial class DirectionalLight {
         public DirectionalLight(Microsoft.Xna.Framework.Graphics.EffectParameter directionParameter, Microsoft.Xna.Framework.Graphics.EffectParameter diffuseColorParameter, Microsoft.Xna.Framework.Graphics.EffectParameter specularColorParameter, Microsoft.Xna.Framework.Graphics.DirectionalLight cloneSource) { }
@@ -1915,15 +1653,15 @@ namespace Microsoft.Xna.Framework.Graphics {
         protected internal override bool OnApply() { return default(bool); }
     }
     public partial class DynamicIndexBuffer : Microsoft.Xna.Framework.Graphics.IndexBuffer {
-        public DynamicIndexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, Microsoft.Xna.Framework.Graphics.IndexElementSize indexElementSize, int indexCount, Microsoft.Xna.Framework.Graphics.BufferUsage usage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(Microsoft.Xna.Framework.Graphics.IndexElementSize), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage)) { }
-        public DynamicIndexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, System.Type indexType, int indexCount, Microsoft.Xna.Framework.Graphics.BufferUsage usage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(Microsoft.Xna.Framework.Graphics.IndexElementSize), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage)) { }
+        public DynamicIndexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, Microsoft.Xna.Framework.Graphics.IndexElementSize indexElementSize, int indexCount, Microsoft.Xna.Framework.Graphics.BufferUsage usage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(System.Type), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage), default(bool)) { }
+        public DynamicIndexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, System.Type indexType, int indexCount, Microsoft.Xna.Framework.Graphics.BufferUsage usage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(System.Type), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage), default(bool)) { }
         public bool IsContentLost { get { return default(bool); } }
         public void SetData<T>(T[] data, int startIndex, int elementCount, Microsoft.Xna.Framework.Graphics.SetDataOptions options) where T : struct { }
         public void SetData<T>(int offsetInBytes, T[] data, int startIndex, int elementCount, Microsoft.Xna.Framework.Graphics.SetDataOptions options) where T : struct { }
     }
     public partial class DynamicVertexBuffer : Microsoft.Xna.Framework.Graphics.VertexBuffer {
-        public DynamicVertexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration, int vertexCount, Microsoft.Xna.Framework.Graphics.BufferUsage bufferUsage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(Microsoft.Xna.Framework.Graphics.VertexDeclaration), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage)) { }
-        public DynamicVertexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, System.Type type, int vertexCount, Microsoft.Xna.Framework.Graphics.BufferUsage bufferUsage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(Microsoft.Xna.Framework.Graphics.VertexDeclaration), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage)) { }
+        public DynamicVertexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration, int vertexCount, Microsoft.Xna.Framework.Graphics.BufferUsage bufferUsage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(Microsoft.Xna.Framework.Graphics.VertexDeclaration), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage), default(bool)) { }
+        public DynamicVertexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, System.Type type, int vertexCount, Microsoft.Xna.Framework.Graphics.BufferUsage bufferUsage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(Microsoft.Xna.Framework.Graphics.VertexDeclaration), default(int), default(Microsoft.Xna.Framework.Graphics.BufferUsage), default(bool)) { }
         public bool IsContentLost { get { return default(bool); } }
         public void SetData<T>(T[] data, int startIndex, int elementCount, Microsoft.Xna.Framework.Graphics.SetDataOptions options) where T : struct { }
         public void SetData<T>(int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride, Microsoft.Xna.Framework.Graphics.SetDataOptions options) where T : struct { }
@@ -1959,7 +1697,7 @@ namespace Microsoft.Xna.Framework.Graphics {
     public partial class EffectMaterial : Microsoft.Xna.Framework.Graphics.Effect {
         public EffectMaterial(Microsoft.Xna.Framework.Graphics.Effect cloneSource) : base (default(Microsoft.Xna.Framework.Graphics.Effect)) { }
     }
-    [System.Diagnostics.DebuggerDisplayAttribute("{ParameterClass} {ParameterType} {Name} : {Semantic}")]
+    [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString}")]
     public partial class EffectParameter {
         internal EffectParameter() { }
         public Microsoft.Xna.Framework.Graphics.EffectAnnotationCollection Annotations { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.EffectAnnotationCollection); } }
@@ -2042,8 +1780,17 @@ namespace Microsoft.Xna.Framework.Graphics {
         public int Count { get { return default(int); } }
         public Microsoft.Xna.Framework.Graphics.EffectPass this[int index] { get { return default(Microsoft.Xna.Framework.Graphics.EffectPass); } }
         public Microsoft.Xna.Framework.Graphics.EffectPass this[string name] { get { return default(Microsoft.Xna.Framework.Graphics.EffectPass); } }
+        public Microsoft.Xna.Framework.Graphics.EffectPassCollection.Enumerator GetEnumerator() { return default(Microsoft.Xna.Framework.Graphics.EffectPassCollection.Enumerator); }
         System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Graphics.EffectPass> System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.Graphics.EffectPass>.GetEnumerator() { return default(System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Graphics.EffectPass>); }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return default(System.Collections.IEnumerator); }
+        [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        public partial struct Enumerator : System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Graphics.EffectPass>, System.Collections.IEnumerator, System.IDisposable {
+            public Microsoft.Xna.Framework.Graphics.EffectPass Current { get { return default(Microsoft.Xna.Framework.Graphics.EffectPass); } }
+            object System.Collections.IEnumerator.Current { get { return default(object); } }
+            public void Dispose() { }
+            public bool MoveNext() { return default(bool); }
+            void System.Collections.IEnumerator.Reset() { }
+        }
     }
     public partial class EffectTechnique {
         internal EffectTechnique() { }
@@ -2095,8 +1842,16 @@ namespace Microsoft.Xna.Framework.Graphics {
         public static System.Collections.ObjectModel.ReadOnlyCollection<Microsoft.Xna.Framework.Graphics.GraphicsAdapter> Adapters { get { return default(System.Collections.ObjectModel.ReadOnlyCollection<Microsoft.Xna.Framework.Graphics.GraphicsAdapter>); } }
         public Microsoft.Xna.Framework.Graphics.DisplayMode CurrentDisplayMode { get { return default(Microsoft.Xna.Framework.Graphics.DisplayMode); } }
         public static Microsoft.Xna.Framework.Graphics.GraphicsAdapter DefaultAdapter { get { return default(Microsoft.Xna.Framework.Graphics.GraphicsAdapter); } }
+        public bool IsWideScreen { get { return default(bool); } }
         public Microsoft.Xna.Framework.Graphics.DisplayModeCollection SupportedDisplayModes { get { return default(Microsoft.Xna.Framework.Graphics.DisplayModeCollection); } }
+        public static Microsoft.Xna.Framework.Graphics.GraphicsAdapter.DriverType UseDriverType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.GraphicsAdapter.DriverType); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public static bool UseReferenceDevice { get { return default(bool); } set { } }
         public void Dispose() { }
+        public enum DriverType {
+            FastSoftware = 2,
+            Hardware = 0,
+            Reference = 1,
+        }
     }
     public partial class GraphicsDevice : System.IDisposable {
         public GraphicsDevice(Microsoft.Xna.Framework.Graphics.GraphicsAdapter adapter, Microsoft.Xna.Framework.Graphics.GraphicsProfile graphicsProfile, Microsoft.Xna.Framework.Graphics.PresentationParameters presentationParameters) { }
@@ -2109,6 +1864,7 @@ namespace Microsoft.Xna.Framework.Graphics {
         public Microsoft.Xna.Framework.Graphics.IndexBuffer Indices { get { return default(Microsoft.Xna.Framework.Graphics.IndexBuffer); } set { } }
         public bool IsContentLost { get { return default(bool); } }
         public bool IsDisposed { get { return default(bool); } }
+        public Microsoft.Xna.Framework.Graphics.GraphicsMetrics Metrics { get { return default(Microsoft.Xna.Framework.Graphics.GraphicsMetrics); } set { } }
         public Microsoft.Xna.Framework.Graphics.PresentationParameters PresentationParameters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.PresentationParameters); } }
         public Microsoft.Xna.Framework.Graphics.RasterizerState RasterizerState { get { return default(Microsoft.Xna.Framework.Graphics.RasterizerState); } set { } }
         public int RenderTargetCount { get { return default(int); } }
@@ -2116,6 +1872,8 @@ namespace Microsoft.Xna.Framework.Graphics {
         public Microsoft.Xna.Framework.Graphics.SamplerStateCollection SamplerStates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.SamplerStateCollection); } }
         public Microsoft.Xna.Framework.Rectangle ScissorRectangle { get { return default(Microsoft.Xna.Framework.Rectangle); } set { } }
         public Microsoft.Xna.Framework.Graphics.TextureCollection Textures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.TextureCollection); } }
+        public Microsoft.Xna.Framework.Graphics.SamplerStateCollection VertexSamplerStates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.SamplerStateCollection); } }
+        public Microsoft.Xna.Framework.Graphics.TextureCollection VertexTextures { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.TextureCollection); } }
         public Microsoft.Xna.Framework.Graphics.Viewport Viewport { get { return default(Microsoft.Xna.Framework.Graphics.Viewport); } set { } }
         public event System.EventHandler<System.EventArgs> DeviceLost { add { } remove { } }
         public event System.EventHandler<System.EventArgs> DeviceReset { add { } remove { } }
@@ -2133,7 +1891,7 @@ namespace Microsoft.Xna.Framework.Graphics {
         public void DrawUserIndexedPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, System.Int16[] indexData, int indexOffset, int primitiveCount) where T : struct, Microsoft.Xna.Framework.Graphics.IVertexType { }
         public void DrawUserIndexedPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, System.Int16[] indexData, int indexOffset, int primitiveCount, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration) where T : struct { }
         public void DrawUserIndexedPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, System.Int32[] indexData, int indexOffset, int primitiveCount) where T : struct, Microsoft.Xna.Framework.Graphics.IVertexType { }
-        public void DrawUserIndexedPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, System.Int32[] indexData, int indexOffset, int primitiveCount, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration) where T : struct, Microsoft.Xna.Framework.Graphics.IVertexType { }
+        public void DrawUserIndexedPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, System.Int32[] indexData, int indexOffset, int primitiveCount, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration) where T : struct { }
         public void DrawUserPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int primitiveCount) where T : struct, Microsoft.Xna.Framework.Graphics.IVertexType { }
         public void DrawUserPrimitives<T>(Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int primitiveCount, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration) where T : struct { }
         ~GraphicsDevice() { }
@@ -2151,6 +1909,14 @@ namespace Microsoft.Xna.Framework.Graphics {
         Lost = 1,
         Normal = 0,
         NotReset = 2,
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct GraphicsMetrics {
+        public ulong DrawCount { get { return default(ulong); } }
+        public ulong PrimitiveCount { get { return default(ulong); } }
+        public ulong SpriteCount { get { return default(ulong); } }
+        public static Microsoft.Xna.Framework.Graphics.GraphicsMetrics operator +(Microsoft.Xna.Framework.Graphics.GraphicsMetrics value1, Microsoft.Xna.Framework.Graphics.GraphicsMetrics value2) { return default(Microsoft.Xna.Framework.Graphics.GraphicsMetrics); }
+        public static Microsoft.Xna.Framework.Graphics.GraphicsMetrics operator -(Microsoft.Xna.Framework.Graphics.GraphicsMetrics value1, Microsoft.Xna.Framework.Graphics.GraphicsMetrics value2) { return default(Microsoft.Xna.Framework.Graphics.GraphicsMetrics); }
     }
     public enum GraphicsProfile {
         HiDef = 1,
@@ -2220,15 +1986,15 @@ namespace Microsoft.Xna.Framework.Graphics {
     public partial interface IVertexType {
         Microsoft.Xna.Framework.Graphics.VertexDeclaration VertexDeclaration { get; }
     }
-    public partial class Model {
-        public Model() { }
+    public sealed partial class Model {
         public Model(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, System.Collections.Generic.List<Microsoft.Xna.Framework.Graphics.ModelBone> bones, System.Collections.Generic.List<Microsoft.Xna.Framework.Graphics.ModelMesh> meshes) { }
         public Microsoft.Xna.Framework.Graphics.ModelBoneCollection Bones { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.ModelBoneCollection); } }
         public Microsoft.Xna.Framework.Graphics.ModelMeshCollection Meshes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.ModelMeshCollection); } }
         public Microsoft.Xna.Framework.Graphics.ModelBone Root { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.ModelBone); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public object Tag { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(object); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public void BuildHierarchy() { }
         public void CopyAbsoluteBoneTransformsTo(Microsoft.Xna.Framework.Matrix[] destinationBoneTransforms) { }
+        public void CopyBoneTransformsFrom(Microsoft.Xna.Framework.Matrix[] sourceBoneTransforms) { }
+        public void CopyBoneTransformsTo(Microsoft.Xna.Framework.Matrix[] destinationBoneTransforms) { }
         public void Draw(Microsoft.Xna.Framework.Matrix world, Microsoft.Xna.Framework.Matrix view, Microsoft.Xna.Framework.Matrix projection) { }
     }
     public sealed partial class ModelBone {
@@ -2307,27 +2073,11 @@ namespace Microsoft.Xna.Framework.Graphics {
     public sealed partial class ModelMeshPartCollection : System.Collections.ObjectModel.ReadOnlyCollection<Microsoft.Xna.Framework.Graphics.ModelMeshPart> {
         public ModelMeshPartCollection(System.Collections.Generic.IList<Microsoft.Xna.Framework.Graphics.ModelMeshPart> list) : base (default(System.Collections.Generic.IList<Microsoft.Xna.Framework.Graphics.ModelMeshPart>)) { }
     }
-    public partial class MonoGameGLException : System.Exception {
-        public MonoGameGLException(string message) { }
-    }
-    public enum MultiSampleType {
-        EightSamples = 8,
-        ElevenSamples = 11,
-        FifteenSamples = 15,
-        FiveSamples = 5,
-        FourSamples = 4,
-        FourteenSamples = 14,
-        NineSamples = 9,
-        None = 0,
-        NonMaskable = 1,
-        SevenSamples = 7,
-        SixSamples = 6,
-        SixteenSamples = 16,
-        TenSamples = 10,
-        ThirteenSamples = 13,
-        ThreeSamples = 3,
-        TwelveSamples = 12,
-        TwoSamples = 2,
+    [System.Runtime.Serialization.DataContractAttribute]
+    public sealed partial class NoSuitableGraphicsDeviceException : System.Exception {
+        public NoSuitableGraphicsDeviceException() { }
+        public NoSuitableGraphicsDeviceException(string message) { }
+        public NoSuitableGraphicsDeviceException(string message, System.Exception inner) { }
     }
     public partial class OcclusionQuery : Microsoft.Xna.Framework.Graphics.GraphicsResource {
         public OcclusionQuery(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice) { }
@@ -2370,16 +2120,17 @@ namespace Microsoft.Xna.Framework.Graphics {
         TriangleStrip = 1,
     }
     public partial class RasterizerState : Microsoft.Xna.Framework.Graphics.GraphicsResource {
+        public static readonly Microsoft.Xna.Framework.Graphics.RasterizerState CullClockwise;
+        public static readonly Microsoft.Xna.Framework.Graphics.RasterizerState CullCounterClockwise;
+        public static readonly Microsoft.Xna.Framework.Graphics.RasterizerState CullNone;
         public RasterizerState() { }
-        public static Microsoft.Xna.Framework.Graphics.RasterizerState CullClockwise { get { return default(Microsoft.Xna.Framework.Graphics.RasterizerState); } }
-        public static Microsoft.Xna.Framework.Graphics.RasterizerState CullCounterClockwise { get { return default(Microsoft.Xna.Framework.Graphics.RasterizerState); } }
-        public Microsoft.Xna.Framework.Graphics.CullMode CullMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.CullMode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.Graphics.RasterizerState CullNone { get { return default(Microsoft.Xna.Framework.Graphics.RasterizerState); } }
-        public float DepthBias { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.FillMode FillMode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.FillMode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool MultiSampleAntiAlias { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool ScissorTestEnable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public float SlopeScaleDepthBias { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Xna.Framework.Graphics.CullMode CullMode { get { return default(Microsoft.Xna.Framework.Graphics.CullMode); } set { } }
+        public float DepthBias { get { return default(float); } set { } }
+        public bool DepthClipEnable { get { return default(bool); } set { } }
+        public Microsoft.Xna.Framework.Graphics.FillMode FillMode { get { return default(Microsoft.Xna.Framework.Graphics.FillMode); } set { } }
+        public bool MultiSampleAntiAlias { get { return default(bool); } set { } }
+        public bool ScissorTestEnable { get { return default(bool); } set { } }
+        public float SlopeScaleDepthBias { get { return default(float); } set { } }
     }
     public partial class RenderTarget2D : Microsoft.Xna.Framework.Graphics.Texture2D {
         public RenderTarget2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(int), default(int)) { }
@@ -2387,6 +2138,7 @@ namespace Microsoft.Xna.Framework.Graphics {
         public RenderTarget2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipMap, Microsoft.Xna.Framework.Graphics.SurfaceFormat preferredFormat, Microsoft.Xna.Framework.Graphics.DepthFormat preferredDepthFormat, int preferredMultiSampleCount, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(int), default(int)) { }
         protected RenderTarget2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipMap, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, Microsoft.Xna.Framework.Graphics.DepthFormat depthFormat, int preferredMultiSampleCount, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage, Microsoft.Xna.Framework.Graphics.Texture2D.SurfaceType surfaceType) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(int), default(int)) { }
         public RenderTarget2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipMap, Microsoft.Xna.Framework.Graphics.SurfaceFormat preferredFormat, Microsoft.Xna.Framework.Graphics.DepthFormat preferredDepthFormat, int preferredMultiSampleCount, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage, bool shared) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(int), default(int)) { }
+        public RenderTarget2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipMap, Microsoft.Xna.Framework.Graphics.SurfaceFormat preferredFormat, Microsoft.Xna.Framework.Graphics.DepthFormat preferredDepthFormat, int preferredMultiSampleCount, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage, bool shared, int arraySize) : base (default(Microsoft.Xna.Framework.Graphics.GraphicsDevice), default(int), default(int)) { }
         public Microsoft.Xna.Framework.Graphics.DepthFormat DepthStencilFormat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.DepthFormat); } }
         public bool IsContentLost { get { return default(bool); } }
         public int MultiSampleCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
@@ -2426,26 +2178,27 @@ namespace Microsoft.Xna.Framework.Graphics {
         public object Tag { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(object); } }
     }
     public partial class SamplerState : Microsoft.Xna.Framework.Graphics.GraphicsResource {
+        public static readonly Microsoft.Xna.Framework.Graphics.SamplerState AnisotropicClamp;
+        public static readonly Microsoft.Xna.Framework.Graphics.SamplerState AnisotropicWrap;
+        public static readonly Microsoft.Xna.Framework.Graphics.SamplerState LinearClamp;
+        public static readonly Microsoft.Xna.Framework.Graphics.SamplerState LinearWrap;
+        public static readonly Microsoft.Xna.Framework.Graphics.SamplerState PointClamp;
+        public static readonly Microsoft.Xna.Framework.Graphics.SamplerState PointWrap;
         public SamplerState() { }
-        public Microsoft.Xna.Framework.Graphics.TextureAddressMode AddressU { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.TextureAddressMode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.TextureAddressMode AddressV { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.TextureAddressMode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.TextureAddressMode AddressW { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.TextureAddressMode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.Graphics.SamplerState AnisotropicClamp { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } }
-        public static Microsoft.Xna.Framework.Graphics.SamplerState AnisotropicWrap { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } }
-        public Microsoft.Xna.Framework.Graphics.TextureFilter Filter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.TextureFilter); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.Graphics.SamplerState LinearClamp { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } }
-        public static Microsoft.Xna.Framework.Graphics.SamplerState LinearWrap { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } }
-        public int MaxAnisotropy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int MaxMipLevel { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public float MipMapLevelOfDetailBias { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static Microsoft.Xna.Framework.Graphics.SamplerState PointClamp { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } }
-        public static Microsoft.Xna.Framework.Graphics.SamplerState PointWrap { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } }
+        public Microsoft.Xna.Framework.Graphics.TextureAddressMode AddressU { get { return default(Microsoft.Xna.Framework.Graphics.TextureAddressMode); } set { } }
+        public Microsoft.Xna.Framework.Graphics.TextureAddressMode AddressV { get { return default(Microsoft.Xna.Framework.Graphics.TextureAddressMode); } set { } }
+        public Microsoft.Xna.Framework.Graphics.TextureAddressMode AddressW { get { return default(Microsoft.Xna.Framework.Graphics.TextureAddressMode); } set { } }
+        public Microsoft.Xna.Framework.Color BorderColor { get { return default(Microsoft.Xna.Framework.Color); } set { } }
+        public Microsoft.Xna.Framework.Graphics.CompareFunction ComparisonFunction { get { return default(Microsoft.Xna.Framework.Graphics.CompareFunction); } set { } }
+        public Microsoft.Xna.Framework.Graphics.TextureFilter Filter { get { return default(Microsoft.Xna.Framework.Graphics.TextureFilter); } set { } }
+        public int MaxAnisotropy { get { return default(int); } set { } }
+        public int MaxMipLevel { get { return default(int); } set { } }
+        public float MipMapLevelOfDetailBias { get { return default(float); } set { } }
     }
     public sealed partial class SamplerStateCollection {
         internal SamplerStateCollection() { }
         public Microsoft.Xna.Framework.Graphics.SamplerState this[int index] { get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } set { } }
     }
-    [System.FlagsAttribute]
     public enum SetDataOptions {
         Discard = 1,
         None = 0,
@@ -2483,33 +2236,23 @@ namespace Microsoft.Xna.Framework.Graphics {
     }
     public partial class SpriteBatch : Microsoft.Xna.Framework.Graphics.GraphicsResource {
         public SpriteBatch(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice) { }
-        public void Begin() { }
-        public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode, Microsoft.Xna.Framework.Graphics.BlendState blendState) { }
-        public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode, Microsoft.Xna.Framework.Graphics.BlendState blendState, Microsoft.Xna.Framework.Graphics.SamplerState samplerState, Microsoft.Xna.Framework.Graphics.DepthStencilState depthStencilState, Microsoft.Xna.Framework.Graphics.RasterizerState rasterizerState) { }
-        public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode, Microsoft.Xna.Framework.Graphics.BlendState blendState, Microsoft.Xna.Framework.Graphics.SamplerState samplerState, Microsoft.Xna.Framework.Graphics.DepthStencilState depthStencilState, Microsoft.Xna.Framework.Graphics.RasterizerState rasterizerState, Microsoft.Xna.Framework.Graphics.Effect effect) { }
-        public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode, Microsoft.Xna.Framework.Graphics.BlendState blendState, Microsoft.Xna.Framework.Graphics.SamplerState samplerState, Microsoft.Xna.Framework.Graphics.DepthStencilState depthStencilState, Microsoft.Xna.Framework.Graphics.RasterizerState rasterizerState, Microsoft.Xna.Framework.Graphics.Effect effect, Microsoft.Xna.Framework.Matrix transformMatrix) { }
+        public void Begin(Microsoft.Xna.Framework.Graphics.SpriteSortMode sortMode=(Microsoft.Xna.Framework.Graphics.SpriteSortMode)(0), Microsoft.Xna.Framework.Graphics.BlendState blendState=null, Microsoft.Xna.Framework.Graphics.SamplerState samplerState=null, Microsoft.Xna.Framework.Graphics.DepthStencilState depthStencilState=null, Microsoft.Xna.Framework.Graphics.RasterizerState rasterizerState=null, Microsoft.Xna.Framework.Graphics.Effect effect=null, System.Nullable<Microsoft.Xna.Framework.Matrix> transformMatrix=null) { }
         protected override void Dispose(bool disposing) { }
-        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Rectangle rectangle, Microsoft.Xna.Framework.Color color) { }
+        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Rectangle destinationRectangle, Microsoft.Xna.Framework.Color color) { }
         public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Rectangle destinationRectangle, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color) { }
-        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Rectangle destinationRectangle, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Graphics.SpriteEffects effect, float depth) { }
+        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Rectangle destinationRectangle, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
         public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color) { }
         public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Vector2 position, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color) { }
-        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Vector2 position, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Vector2 scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effect, float depth) { }
-        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Vector2 position, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, float scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effect, float depth) { }
-        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, System.Nullable<Microsoft.Xna.Framework.Vector2> position=null, System.Nullable<Microsoft.Xna.Framework.Rectangle> drawRectangle=null, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle=null, System.Nullable<Microsoft.Xna.Framework.Vector2> origin=null, float rotation=0f, System.Nullable<Microsoft.Xna.Framework.Vector2> scale=null, System.Nullable<Microsoft.Xna.Framework.Color> color=null, Microsoft.Xna.Framework.Graphics.SpriteEffects effect=(Microsoft.Xna.Framework.Graphics.SpriteEffects)(0), float depth=0f) { }
+        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Vector2 position, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Vector2 scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
+        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, Microsoft.Xna.Framework.Vector2 position, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, float scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
+        public void Draw(Microsoft.Xna.Framework.Graphics.Texture2D texture, System.Nullable<Microsoft.Xna.Framework.Vector2> position=null, System.Nullable<Microsoft.Xna.Framework.Rectangle> destinationRectangle=null, System.Nullable<Microsoft.Xna.Framework.Rectangle> sourceRectangle=null, System.Nullable<Microsoft.Xna.Framework.Vector2> origin=null, float rotation=0f, System.Nullable<Microsoft.Xna.Framework.Vector2> scale=null, System.Nullable<Microsoft.Xna.Framework.Color> color=null, Microsoft.Xna.Framework.Graphics.SpriteEffects effects=(Microsoft.Xna.Framework.Graphics.SpriteEffects)(0), float layerDepth=0f) { }
         public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, string text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color) { }
-        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, string text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Vector2 scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effect, float depth) { }
-        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, string text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, float scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float depth) { }
+        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, string text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Vector2 scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
+        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, string text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, float scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
         public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, System.Text.StringBuilder text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color) { }
-        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, System.Text.StringBuilder text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Vector2 scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effect, float depth) { }
-        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, System.Text.StringBuilder text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, float scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float depth) { }
+        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, System.Text.StringBuilder text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, Microsoft.Xna.Framework.Vector2 scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
+        public void DrawString(Microsoft.Xna.Framework.Graphics.SpriteFont spriteFont, System.Text.StringBuilder text, Microsoft.Xna.Framework.Vector2 position, Microsoft.Xna.Framework.Color color, float rotation, Microsoft.Xna.Framework.Vector2 origin, float scale, Microsoft.Xna.Framework.Graphics.SpriteEffects effects, float layerDepth) { }
         public void End() { }
-    }
-    public partial class SpriteEffect : Microsoft.Xna.Framework.Graphics.Effect {
-        public SpriteEffect(Microsoft.Xna.Framework.Graphics.GraphicsDevice device) : base (default(Microsoft.Xna.Framework.Graphics.Effect)) { }
-        protected SpriteEffect(Microsoft.Xna.Framework.Graphics.SpriteEffect cloneSource) : base (default(Microsoft.Xna.Framework.Graphics.Effect)) { }
-        public override Microsoft.Xna.Framework.Graphics.Effect Clone() { return default(Microsoft.Xna.Framework.Graphics.Effect); }
-        protected internal override bool OnApply() { return default(bool); }
     }
     [System.FlagsAttribute]
     public enum SpriteEffects {
@@ -2519,12 +2262,26 @@ namespace Microsoft.Xna.Framework.Graphics {
     }
     public sealed partial class SpriteFont {
         internal SpriteFont() { }
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.Char> Characters { get { return default(System.Collections.ObjectModel.ReadOnlyCollection<System.Char>); } }
+        public System.Collections.ObjectModel.ReadOnlyCollection<System.Char> Characters { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Collections.ObjectModel.ReadOnlyCollection<System.Char>); } }
         public System.Nullable<System.Char> DefaultCharacter { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Nullable<System.Char>); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int LineSpacing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public float Spacing { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Xna.Framework.Graphics.Texture2D Texture { get { return default(Microsoft.Xna.Framework.Graphics.Texture2D); } }
+        public System.Collections.Generic.Dictionary<System.Char, Microsoft.Xna.Framework.Graphics.SpriteFont.Glyph> GetGlyphs() { return default(System.Collections.Generic.Dictionary<System.Char, Microsoft.Xna.Framework.Graphics.SpriteFont.Glyph>); }
         public Microsoft.Xna.Framework.Vector2 MeasureString(string text) { return default(Microsoft.Xna.Framework.Vector2); }
         public Microsoft.Xna.Framework.Vector2 MeasureString(System.Text.StringBuilder text) { return default(Microsoft.Xna.Framework.Vector2); }
+        [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        public partial struct Glyph {
+            public Microsoft.Xna.Framework.Rectangle BoundsInTexture;
+            public char Character;
+            public Microsoft.Xna.Framework.Rectangle Cropping;
+            public static readonly Microsoft.Xna.Framework.Graphics.SpriteFont.Glyph Empty;
+            public float LeftSideBearing;
+            public float RightSideBearing;
+            public float Width;
+            public float WidthIncludingBearings;
+            public override string ToString() { return default(string); }
+        }
     }
     public enum SpriteSortMode {
         BackToFront = 3,
@@ -2546,15 +2303,21 @@ namespace Microsoft.Xna.Framework.Graphics {
     public enum SurfaceFormat {
         Alpha8 = 12,
         Bgr32 = 20,
+        Bgr32SRgb = 31,
         Bgr565 = 1,
         Bgra32 = 21,
+        Bgra32SRgb = 32,
         Bgra4444 = 3,
         Bgra5551 = 2,
         Color = 0,
+        ColorSRgb = 30,
         Dxt1 = 4,
         Dxt1a = 70,
+        Dxt1SRgb = 33,
         Dxt3 = 5,
+        Dxt3SRgb = 34,
         Dxt5 = 6,
+        Dxt5SRgb = 35,
         HalfSingle = 16,
         HalfVector2 = 17,
         HalfVector4 = 18,
@@ -2564,6 +2327,8 @@ namespace Microsoft.Xna.Framework.Graphics {
         Rg32 = 10,
         Rgba1010102 = 9,
         Rgba64 = 11,
+        RgbaAtcExplicitAlpha = 80,
+        RgbaAtcInterpolatedAlpha = 81,
         RgbaPvrtc2Bpp = 52,
         RgbaPvrtc4Bpp = 53,
         RgbEtc1 = 60,
@@ -2573,72 +2338,15 @@ namespace Microsoft.Xna.Framework.Graphics {
         Vector2 = 14,
         Vector4 = 15,
     }
-    public enum SurfaceFormat_Legacy {
-        Alpha8 = 15,
-        Bgr233 = 16,
-        Bgr24 = 17,
-        Bgr32 = 2,
-        Bgr444 = 13,
-        Bgr555 = 11,
-        Bgr565 = 9,
-        Bgra1010102 = 3,
-        Bgra2338 = 14,
-        Bgra4444 = 12,
-        Bgra5551 = 10,
-        Color = 1,
-        Depth15Stencil1 = 56,
-        Depth16 = 54,
-        Depth24 = 51,
-        Depth24Stencil4 = 50,
-        Depth24Stencil8 = 48,
-        Depth24Stencil8Single = 49,
-        Depth32 = 52,
-        Dxt1 = 28,
-        Dxt2 = 29,
-        Dxt3 = 30,
-        Dxt4 = 31,
-        Dxt5 = 32,
-        HalfSingle = 25,
-        HalfVector2 = 26,
-        HalfVector4 = 27,
-        Luminance16 = 34,
-        Luminance8 = 33,
-        LuminanceAlpha16 = 36,
-        LuminanceAlpha8 = 35,
-        Multi2Bgra32 = 47,
-        NormalizedAlpha1010102 = 41,
-        NormalizedByte2 = 18,
-        NormalizedByte2Computed = 42,
-        NormalizedByte4 = 19,
-        NormalizedLuminance16 = 39,
-        NormalizedLuminance32 = 40,
-        NormalizedShort2 = 20,
-        NormalizedShort4 = 21,
-        Palette8 = 37,
-        PaletteAlpha16 = 38,
-        Rg32 = 7,
-        Rgb32 = 5,
-        Rgba1010102 = 6,
-        Rgba32 = 4,
-        Rgba64 = 8,
-        Single = 22,
-        Unknown = -1,
-        Vector2 = 23,
-        Vector4 = 24,
-        VideoGrGb = 45,
-        VideoRgBg = 46,
-        VideoUyVy = 44,
-        VideoYuYv = 43,
-    }
     public partial class TargetBlendState {
         internal TargetBlendState() { }
-        public Microsoft.Xna.Framework.Graphics.BlendFunction AlphaBlendFunction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.BlendFunction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.Blend AlphaDestinationBlend { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.Blend); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.Blend AlphaSourceBlend { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.Blend); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.BlendFunction ColorBlendFunction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.BlendFunction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.Blend ColorDestinationBlend { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.Blend); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.Blend ColorSourceBlend { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.Blend); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Graphics.ColorWriteChannels ColorWriteChannels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.ColorWriteChannels); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public Microsoft.Xna.Framework.Graphics.BlendFunction AlphaBlendFunction { get { return default(Microsoft.Xna.Framework.Graphics.BlendFunction); } set { } }
+        public Microsoft.Xna.Framework.Graphics.Blend AlphaDestinationBlend { get { return default(Microsoft.Xna.Framework.Graphics.Blend); } set { } }
+        public Microsoft.Xna.Framework.Graphics.Blend AlphaSourceBlend { get { return default(Microsoft.Xna.Framework.Graphics.Blend); } set { } }
+        public Microsoft.Xna.Framework.Graphics.BlendFunction ColorBlendFunction { get { return default(Microsoft.Xna.Framework.Graphics.BlendFunction); } set { } }
+        public Microsoft.Xna.Framework.Graphics.Blend ColorDestinationBlend { get { return default(Microsoft.Xna.Framework.Graphics.Blend); } set { } }
+        public Microsoft.Xna.Framework.Graphics.Blend ColorSourceBlend { get { return default(Microsoft.Xna.Framework.Graphics.Blend); } set { } }
+        public Microsoft.Xna.Framework.Graphics.ColorWriteChannels ColorWriteChannels { get { return default(Microsoft.Xna.Framework.Graphics.ColorWriteChannels); } set { } }
     }
     public abstract partial class Texture : Microsoft.Xna.Framework.Graphics.GraphicsResource {
         protected Texture() { }
@@ -2650,19 +2358,22 @@ namespace Microsoft.Xna.Framework.Graphics {
     public partial class Texture2D : Microsoft.Xna.Framework.Graphics.Texture {
         public Texture2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height) { }
         public Texture2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipmap, Microsoft.Xna.Framework.Graphics.SurfaceFormat format) { }
-        protected Texture2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipmap, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, Microsoft.Xna.Framework.Graphics.Texture2D.SurfaceType type, bool shared) { }
+        protected Texture2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipmap, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, Microsoft.Xna.Framework.Graphics.Texture2D.SurfaceType type, bool shared, int arraySize) { }
+        public Texture2D(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, int width, int height, bool mipmap, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, int arraySize) { }
         public Microsoft.Xna.Framework.Rectangle Bounds { get { return default(Microsoft.Xna.Framework.Rectangle); } }
         public int Height { get { return default(int); } }
         public int Width { get { return default(int); } }
         public static Microsoft.Xna.Framework.Graphics.Texture2D FromStream(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, System.IO.Stream stream) { return default(Microsoft.Xna.Framework.Graphics.Texture2D); }
         public void GetData<T>(T[] data) where T : struct { }
         public void GetData<T>(T[] data, int startIndex, int elementCount) where T : struct { }
+        public void GetData<T>(int level, int arraySlice, System.Nullable<Microsoft.Xna.Framework.Rectangle> rect, T[] data, int startIndex, int elementCount) where T : struct { }
         public void GetData<T>(int level, System.Nullable<Microsoft.Xna.Framework.Rectangle> rect, T[] data, int startIndex, int elementCount) where T : struct { }
         public void Reload(System.IO.Stream textureStream) { }
         public void SaveAsJpeg(System.IO.Stream stream, int width, int height) { }
         public void SaveAsPng(System.IO.Stream stream, int width, int height) { }
         public void SetData<T>(T[] data) where T : struct { }
         public void SetData<T>(T[] data, int startIndex, int elementCount) where T : struct { }
+        public void SetData<T>(int level, int arraySlice, System.Nullable<Microsoft.Xna.Framework.Rectangle> rect, T[] data, int startIndex, int elementCount) where T : struct { }
         public void SetData<T>(int level, System.Nullable<Microsoft.Xna.Framework.Rectangle> rect, T[] data, int startIndex, int elementCount) where T : struct { }
         protected internal enum SurfaceType {
             RenderTarget = 1,
@@ -2684,6 +2395,7 @@ namespace Microsoft.Xna.Framework.Graphics {
         public void SetData<T>(int level, int left, int top, int right, int bottom, int front, int back, T[] data, int startIndex, int elementCount) where T : struct { }
     }
     public enum TextureAddressMode {
+        Border = 3,
         Clamp = 1,
         Mirror = 2,
         Wrap = 0,
@@ -2710,13 +2422,6 @@ namespace Microsoft.Xna.Framework.Graphics {
         MinPointMagLinearMipPoint = 8,
         Point = 1,
         PointMipLinear = 4,
-    }
-    [System.FlagsAttribute]
-    public enum TextureUsage {
-        AutoGenerateMipMap = 1024,
-        Linear = 1073741824,
-        None = 0,
-        Tiled = -2147483648,
     }
     public partial class VertexBuffer : Microsoft.Xna.Framework.Graphics.GraphicsResource {
         public VertexBuffer(Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice, Microsoft.Xna.Framework.Graphics.VertexDeclaration vertexDeclaration, int vertexCount, Microsoft.Xna.Framework.Graphics.BufferUsage bufferUsage) { }
@@ -2845,6 +2550,7 @@ namespace Microsoft.Xna.Framework.Graphics {
     public partial struct Viewport {
         public Viewport(Microsoft.Xna.Framework.Rectangle bounds) { throw new System.NotImplementedException(); }
         public Viewport(int x, int y, int width, int height) { throw new System.NotImplementedException(); }
+        public Viewport(int x, int y, int width, int height, float minDepth, float maxDepth) { throw new System.NotImplementedException(); }
         public float AspectRatio { get { return default(float); } }
         public Microsoft.Xna.Framework.Rectangle Bounds { get { return default(Microsoft.Xna.Framework.Rectangle); } set { } }
         [System.Runtime.Serialization.DataMemberAttribute]
@@ -2866,6 +2572,21 @@ namespace Microsoft.Xna.Framework.Graphics {
     }
 }
 namespace Microsoft.Xna.Framework.Graphics.PackedVector {
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Alpha8 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.Byte>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Alpha8> {
+        public Alpha8(float alpha) { throw new System.NotImplementedException(); }
+        [System.CLSCompliantAttribute(false)]
+        public byte PackedValue { get { return default(byte); } set { } }
+        public bool Equals(Microsoft.Xna.Framework.Graphics.PackedVector.Alpha8 other) { return default(bool); }
+        public override bool Equals(object obj) { return default(bool); }
+        public override int GetHashCode() { return default(int); }
+        void Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.PackFromVector4(Microsoft.Xna.Framework.Vector4 vector) { }
+        Microsoft.Xna.Framework.Vector4 Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
+        public static bool operator ==(Microsoft.Xna.Framework.Graphics.PackedVector.Alpha8 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Alpha8 rhs) { return default(bool); }
+        public static bool operator !=(Microsoft.Xna.Framework.Graphics.PackedVector.Alpha8 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Alpha8 rhs) { return default(bool); }
+        public float ToAlpha() { return default(float); }
+        public override string ToString() { return default(string); }
+    }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Bgr565 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.UInt16>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Bgr565> {
         public Bgr565(Microsoft.Xna.Framework.Vector3 vector) { throw new System.NotImplementedException(); }
@@ -2894,6 +2615,21 @@ namespace Microsoft.Xna.Framework.Graphics.PackedVector {
         void Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.PackFromVector4(Microsoft.Xna.Framework.Vector4 vector) { }
         public static bool operator ==(Microsoft.Xna.Framework.Graphics.PackedVector.Bgra4444 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Bgra4444 rhs) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Graphics.PackedVector.Bgra4444 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Bgra4444 rhs) { return default(bool); }
+        public override string ToString() { return default(string); }
+        public Microsoft.Xna.Framework.Vector4 ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Bgra5551 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.UInt16>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Bgra5551> {
+        public Bgra5551(Microsoft.Xna.Framework.Vector4 vector) { throw new System.NotImplementedException(); }
+        public Bgra5551(float x, float y, float z, float w) { throw new System.NotImplementedException(); }
+        [System.CLSCompliantAttribute(false)]
+        public ushort PackedValue { get { return default(ushort); } set { } }
+        public bool Equals(Microsoft.Xna.Framework.Graphics.PackedVector.Bgra5551 other) { return default(bool); }
+        public override bool Equals(object obj) { return default(bool); }
+        public override int GetHashCode() { return default(int); }
+        void Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.PackFromVector4(Microsoft.Xna.Framework.Vector4 vector) { }
+        public static bool operator ==(Microsoft.Xna.Framework.Graphics.PackedVector.Bgra5551 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Bgra5551 rhs) { return default(bool); }
+        public static bool operator !=(Microsoft.Xna.Framework.Graphics.PackedVector.Bgra5551 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Bgra5551 rhs) { return default(bool); }
         public override string ToString() { return default(string); }
         public Microsoft.Xna.Framework.Vector4 ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
     }
@@ -3028,6 +2764,52 @@ namespace Microsoft.Xna.Framework.Graphics.PackedVector {
         public Microsoft.Xna.Framework.Vector4 ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Rg32 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.UInt32>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Rg32> {
+        public Rg32(Microsoft.Xna.Framework.Vector2 vector) { throw new System.NotImplementedException(); }
+        public Rg32(float x, float y) { throw new System.NotImplementedException(); }
+        [System.CLSCompliantAttribute(false)]
+        public uint PackedValue { get { return default(uint); } set { } }
+        public bool Equals(Microsoft.Xna.Framework.Graphics.PackedVector.Rg32 other) { return default(bool); }
+        public override bool Equals(object obj) { return default(bool); }
+        public override int GetHashCode() { return default(int); }
+        void Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.PackFromVector4(Microsoft.Xna.Framework.Vector4 vector) { }
+        Microsoft.Xna.Framework.Vector4 Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
+        public static bool operator ==(Microsoft.Xna.Framework.Graphics.PackedVector.Rg32 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Rg32 rhs) { return default(bool); }
+        public static bool operator !=(Microsoft.Xna.Framework.Graphics.PackedVector.Rg32 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Rg32 rhs) { return default(bool); }
+        public override string ToString() { return default(string); }
+        public Microsoft.Xna.Framework.Vector2 ToVector2() { return default(Microsoft.Xna.Framework.Vector2); }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Rgba1010102 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.UInt32>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Rgba1010102> {
+        public Rgba1010102(Microsoft.Xna.Framework.Vector4 vector) { throw new System.NotImplementedException(); }
+        public Rgba1010102(float x, float y, float z, float w) { throw new System.NotImplementedException(); }
+        [System.CLSCompliantAttribute(false)]
+        public uint PackedValue { get { return default(uint); } set { } }
+        public bool Equals(Microsoft.Xna.Framework.Graphics.PackedVector.Rgba1010102 other) { return default(bool); }
+        public override bool Equals(object obj) { return default(bool); }
+        public override int GetHashCode() { return default(int); }
+        void Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.PackFromVector4(Microsoft.Xna.Framework.Vector4 vector) { }
+        public static bool operator ==(Microsoft.Xna.Framework.Graphics.PackedVector.Rgba1010102 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Rgba1010102 rhs) { return default(bool); }
+        public static bool operator !=(Microsoft.Xna.Framework.Graphics.PackedVector.Rgba1010102 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Rgba1010102 rhs) { return default(bool); }
+        public override string ToString() { return default(string); }
+        public Microsoft.Xna.Framework.Vector4 ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public partial struct Rgba64 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.UInt64>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Rgba64> {
+        public Rgba64(Microsoft.Xna.Framework.Vector4 vector) { throw new System.NotImplementedException(); }
+        public Rgba64(float x, float y, float z, float w) { throw new System.NotImplementedException(); }
+        [System.CLSCompliantAttribute(false)]
+        public ulong PackedValue { get { return default(ulong); } set { } }
+        public bool Equals(Microsoft.Xna.Framework.Graphics.PackedVector.Rgba64 other) { return default(bool); }
+        public override bool Equals(object obj) { return default(bool); }
+        public override int GetHashCode() { return default(int); }
+        void Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector.PackFromVector4(Microsoft.Xna.Framework.Vector4 vector) { }
+        public static bool operator ==(Microsoft.Xna.Framework.Graphics.PackedVector.Rgba64 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Rgba64 rhs) { return default(bool); }
+        public static bool operator !=(Microsoft.Xna.Framework.Graphics.PackedVector.Rgba64 lhs, Microsoft.Xna.Framework.Graphics.PackedVector.Rgba64 rhs) { return default(bool); }
+        public override string ToString() { return default(string); }
+        public Microsoft.Xna.Framework.Vector4 ToVector4() { return default(Microsoft.Xna.Framework.Vector4); }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct Short2 : Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector, Microsoft.Xna.Framework.Graphics.PackedVector.IPackedVector<System.UInt32>, System.IEquatable<Microsoft.Xna.Framework.Graphics.PackedVector.Short2> {
         public Short2(Microsoft.Xna.Framework.Vector2 vector) { throw new System.NotImplementedException(); }
         public Short2(float x, float y) { throw new System.NotImplementedException(); }
@@ -3060,18 +2842,6 @@ namespace Microsoft.Xna.Framework.Graphics.PackedVector {
     }
 }
 namespace Microsoft.Xna.Framework.Input {
-    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
-    public partial struct AccelerometerState {
-        public Microsoft.Xna.Framework.Vector3 Acceleration { get { return default(Microsoft.Xna.Framework.Vector3); } }
-        public bool IsConnected { get { return default(bool); } }
-    }
-    public partial class Axis {
-        public Axis() { }
-        public Microsoft.Xna.Framework.Input.Input Negative { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Positive { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.InputType Type { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.InputType); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public float ReadAxis(System.IntPtr device) { return default(float); }
-    }
     [System.FlagsAttribute]
     public enum Buttons {
         A = 4096,
@@ -3103,19 +2873,6 @@ namespace Microsoft.Xna.Framework.Input {
     public enum ButtonState {
         Pressed = 1,
         Released = 0,
-    }
-    public partial class Capabilities {
-        public Capabilities(System.IntPtr device) { }
-        public int NumberOfAxis { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        public int NumberOfButtons { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        public int NumberOfPovHats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-    }
-    public partial class DPad {
-        public DPad() { }
-        public Microsoft.Xna.Framework.Input.Input Down { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Left { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Right { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Up { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
     public static partial class GamePad {
         public static Microsoft.Xna.Framework.Input.GamePadCapabilities GetCapabilities(Microsoft.Xna.Framework.PlayerIndex playerIndex) { return default(Microsoft.Xna.Framework.Input.GamePadCapabilities); }
@@ -3234,41 +2991,41 @@ namespace Microsoft.Xna.Framework.Input {
         public static bool operator !=(Microsoft.Xna.Framework.Input.GamePadTriggers left, Microsoft.Xna.Framework.Input.GamePadTriggers right) { return default(bool); }
     }
     public enum GamePadType {
-        AlternateGuitar = 6,
-        ArcadeStick = 1,
-        BigButtonPad = 7,
-        DancePad = 2,
+        AlternateGuitar = 7,
+        ArcadeStick = 3,
+        BigButtonPad = 768,
+        DancePad = 5,
         DrumKit = 8,
-        FlightStick = 3,
-        GamePad = 9,
-        Guitar = 4,
+        FlightStick = 4,
+        GamePad = 1,
+        Guitar = 6,
         Unknown = 0,
-        Wheel = 5,
+        Wheel = 2,
     }
-    public partial class Input {
-        public int ID;
-        public Microsoft.Xna.Framework.Input.InputType Type;
-        public Input() { }
-        public bool Negative { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+    public static partial class Joystick {
+        public static Microsoft.Xna.Framework.Input.JoystickCapabilities GetCapabilities(int index) { return default(Microsoft.Xna.Framework.Input.JoystickCapabilities); }
+        public static Microsoft.Xna.Framework.Input.JoystickState GetState(int index) { return default(Microsoft.Xna.Framework.Input.JoystickState); }
     }
-    public enum InputType {
-        Axis = 32,
-        Button = 16,
-        None = -1,
-        PovDown = 4,
-        PovLeft = 8,
-        PovRight = 2,
-        PovUp = 1,
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    public partial struct JoystickCapabilities {
+        public int AxisCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+        public int ButtonCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+        public int HatCount { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+        public bool IsConnected { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
     }
-    public partial class Joystick {
-        public Joystick(int id) { }
-        public Microsoft.Xna.Framework.Input.PadConfig Config { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.PadConfig); } }
-        public Microsoft.Xna.Framework.Input.Capabilities Details { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Capabilities); } }
-        public int ID { get { return default(int); } }
-        public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
-        public bool Open { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        public static System.Collections.Generic.List<Microsoft.Xna.Framework.Input.Joystick> GrabJoysticks() { return default(System.Collections.Generic.List<Microsoft.Xna.Framework.Input.Joystick>); }
-        public static bool Init() { return default(bool); }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    public partial struct JoystickHat {
+        public Microsoft.Xna.Framework.Input.ButtonState Down { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
+        public Microsoft.Xna.Framework.Input.ButtonState Left { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
+        public Microsoft.Xna.Framework.Input.ButtonState Right { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
+        public Microsoft.Xna.Framework.Input.ButtonState Up { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
+    }
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
+    public partial struct JoystickState {
+        public System.Single[] Axes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Single[]); } }
+        public Microsoft.Xna.Framework.Input.ButtonState[] Buttons { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.ButtonState[]); } }
+        public Microsoft.Xna.Framework.Input.JoystickHat[] Hats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.JoystickHat[]); } }
+        public bool IsConnected { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
     }
     public static partial class Keyboard {
         public static Microsoft.Xna.Framework.Input.KeyboardState GetState() { return default(Microsoft.Xna.Framework.Input.KeyboardState); }
@@ -3456,7 +3213,6 @@ namespace Microsoft.Xna.Framework.Input {
     public static partial class Mouse {
         public static System.IntPtr WindowHandle { get { return default(System.IntPtr); } set { } }
         public static Microsoft.Xna.Framework.Input.MouseState GetState() { return default(Microsoft.Xna.Framework.Input.MouseState); }
-        [System.CLSCompliantAttribute(false)]
         public static void SetPosition(int x, int y) { }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
@@ -3468,46 +3224,13 @@ namespace Microsoft.Xna.Framework.Input {
         public Microsoft.Xna.Framework.Input.ButtonState RightButton { get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
         public int ScrollWheelValue { get { return default(int); } }
         public int X { get { return default(int); } }
-        public Microsoft.Xna.Framework.Input.ButtonState XButton1 { get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
-        public Microsoft.Xna.Framework.Input.ButtonState XButton2 { get { return default(Microsoft.Xna.Framework.Input.ButtonState); } }
+        public Microsoft.Xna.Framework.Input.ButtonState XButton1 { get { return default(Microsoft.Xna.Framework.Input.ButtonState); } set { } }
+        public Microsoft.Xna.Framework.Input.ButtonState XButton2 { get { return default(Microsoft.Xna.Framework.Input.ButtonState); } set { } }
         public int Y { get { return default(int); } }
         public override bool Equals(object obj) { return default(bool); }
         public override int GetHashCode() { return default(int); }
         public static bool operator ==(Microsoft.Xna.Framework.Input.MouseState left, Microsoft.Xna.Framework.Input.MouseState right) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Input.MouseState left, Microsoft.Xna.Framework.Input.MouseState right) { return default(bool); }
-    }
-    public partial class PadConfig {
-        public PadConfig(string name, int index) { }
-        public Microsoft.Xna.Framework.Input.Input Button_A { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_B { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_Back { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_LB { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_RB { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_Start { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_X { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input Button_Y { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.DPad Dpad { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.DPad); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public int Index { get { return default(int); } }
-        public Microsoft.Xna.Framework.Input.Input this[int index] { get { return default(Microsoft.Xna.Framework.Input.Input); } }
-        public string JoystickName { get { return default(string); } }
-        public Microsoft.Xna.Framework.Input.Stick LeftStick { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Stick); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input LeftTrigger { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Stick RightStick { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Stick); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Input RightTrigger { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-    }
-    public partial class Settings {
-        public Settings() { }
-        public Microsoft.Xna.Framework.Input.PadConfig this[int index] { get { return default(Microsoft.Xna.Framework.Input.PadConfig); } set { } }
-        public Microsoft.Xna.Framework.Input.PadConfig Player1 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.PadConfig); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.PadConfig Player2 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.PadConfig); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.PadConfig Player3 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.PadConfig); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.PadConfig Player4 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.PadConfig); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-    }
-    public partial class Stick {
-        public Stick() { }
-        public Microsoft.Xna.Framework.Input.Input Press { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Input); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Axis X { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Axis); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public Microsoft.Xna.Framework.Input.Axis Y { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Input.Axis); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
     }
 }
 namespace Microsoft.Xna.Framework.Input.Touch {
@@ -3547,12 +3270,21 @@ namespace Microsoft.Xna.Framework.Input.Touch {
         public bool Contains(Microsoft.Xna.Framework.Input.Touch.TouchLocation item) { return default(bool); }
         public void CopyTo(Microsoft.Xna.Framework.Input.Touch.TouchLocation[] array, int arrayIndex) { }
         public bool FindById(int id, out Microsoft.Xna.Framework.Input.Touch.TouchLocation touchLocation) { touchLocation = default(Microsoft.Xna.Framework.Input.Touch.TouchLocation); return default(bool); }
-        public System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Input.Touch.TouchLocation> GetEnumerator() { return default(System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Input.Touch.TouchLocation>); }
+        public Microsoft.Xna.Framework.Input.Touch.TouchCollection.Enumerator GetEnumerator() { return default(Microsoft.Xna.Framework.Input.Touch.TouchCollection.Enumerator); }
         public int IndexOf(Microsoft.Xna.Framework.Input.Touch.TouchLocation item) { return default(int); }
         public void Insert(int index, Microsoft.Xna.Framework.Input.Touch.TouchLocation item) { }
         public bool Remove(Microsoft.Xna.Framework.Input.Touch.TouchLocation item) { return default(bool); }
         public void RemoveAt(int index) { }
+        System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Input.Touch.TouchLocation> System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.Input.Touch.TouchLocation>.GetEnumerator() { return default(System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Input.Touch.TouchLocation>); }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() { return default(System.Collections.IEnumerator); }
+        [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+        public partial struct Enumerator : System.Collections.Generic.IEnumerator<Microsoft.Xna.Framework.Input.Touch.TouchLocation>, System.Collections.IEnumerator, System.IDisposable {
+            public Microsoft.Xna.Framework.Input.Touch.TouchLocation Current { get { return default(Microsoft.Xna.Framework.Input.Touch.TouchLocation); } }
+            object System.Collections.IEnumerator.Current { get { return default(object); } }
+            public void Dispose() { }
+            public bool MoveNext() { return default(bool); }
+            public void Reset() { }
+        }
     }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct TouchLocation : System.IEquatable<Microsoft.Xna.Framework.Input.Touch.TouchLocation> {
@@ -3611,17 +3343,63 @@ namespace Microsoft.Xna.Framework.Input.Touch {
     }
 }
 namespace Microsoft.Xna.Framework.Media {
+    public sealed partial class Album : System.IDisposable {
+        internal Album() { }
+        public Microsoft.Xna.Framework.Media.Artist Artist { get { return default(Microsoft.Xna.Framework.Media.Artist); } }
+        public System.TimeSpan Duration { get { return default(System.TimeSpan); } }
+        public Microsoft.Xna.Framework.Media.Genre Genre { get { return default(Microsoft.Xna.Framework.Media.Genre); } }
+        public bool HasArt { get { return default(bool); } }
+        public bool IsDisposed { get { return default(bool); } }
+        public string Name { get { return default(string); } }
+        public Microsoft.Xna.Framework.Media.SongCollection Songs { get { return default(Microsoft.Xna.Framework.Media.SongCollection); } }
+        public void Dispose() { }
+        public System.IO.Stream GetAlbumArt() { return default(System.IO.Stream); }
+        public override int GetHashCode() { return default(int); }
+        public System.IO.Stream GetThumbnail() { return default(System.IO.Stream); }
+        public override string ToString() { return default(string); }
+    }
+    public sealed partial class AlbumCollection : System.IDisposable {
+        public AlbumCollection(System.Collections.Generic.List<Microsoft.Xna.Framework.Media.Album> albums) { }
+        public int Count { get { return default(int); } }
+        public bool IsDisposed { get { return default(bool); } }
+        public Microsoft.Xna.Framework.Media.Album this[int index] { get { return default(Microsoft.Xna.Framework.Media.Album); } }
+        public void Dispose() { }
+    }
+    public sealed partial class Artist : System.IDisposable {
+        public Artist(string artist) { }
+        public Microsoft.Xna.Framework.Media.AlbumCollection Albums { get { return default(Microsoft.Xna.Framework.Media.AlbumCollection); } }
+        public bool IsDisposed { get { return default(bool); } }
+        public string Name { get { return default(string); } }
+        public Microsoft.Xna.Framework.Media.SongCollection Songs { get { return default(Microsoft.Xna.Framework.Media.SongCollection); } }
+        public void Dispose() { }
+        public override int GetHashCode() { return default(int); }
+        public override string ToString() { return default(string); }
+    }
+    public sealed partial class Genre : System.IDisposable {
+        public Genre(string genre) { }
+        public Microsoft.Xna.Framework.Media.AlbumCollection Albums { get { return default(Microsoft.Xna.Framework.Media.AlbumCollection); } }
+        public bool IsDisposed { get { return default(bool); } }
+        public string Name { get { return default(string); } }
+        public Microsoft.Xna.Framework.Media.SongCollection Songs { get { return default(Microsoft.Xna.Framework.Media.SongCollection); } }
+        public void Dispose() { }
+        public override int GetHashCode() { return default(int); }
+        public override string ToString() { return default(string); }
+    }
     public partial class MediaLibrary : System.IDisposable {
         public MediaLibrary() { }
         public MediaLibrary(Microsoft.Xna.Framework.Media.MediaSource mediaSource) { }
+        public Microsoft.Xna.Framework.Media.AlbumCollection Albums { get { return default(Microsoft.Xna.Framework.Media.AlbumCollection); } }
+        public bool IsDisposed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+        public Microsoft.Xna.Framework.Media.MediaSource MediaSource { get { return default(Microsoft.Xna.Framework.Media.MediaSource); } }
         public Microsoft.Xna.Framework.Media.SongCollection Songs { get { return default(Microsoft.Xna.Framework.Media.SongCollection); } }
         public void Dispose() { }
+        public void Load(System.Action<System.Int32> progressCallback=null) { }
     }
     public static partial class MediaPlayer {
         public static bool GameHasControl { get { return default(bool); } }
         public static bool IsMuted { get { return default(bool); } set { } }
         public static bool IsRepeating { get { return default(bool); } set { } }
-        public static bool IsShuffled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public static bool IsShuffled { get { return default(bool); } set { } }
         public static bool IsVisualizationEnabled { get { return default(bool); } }
         public static System.TimeSpan PlayPosition { get { return default(System.TimeSpan); } }
         public static Microsoft.Xna.Framework.Media.MediaQueue Queue { get { return default(Microsoft.Xna.Framework.Media.MediaQueue); } }
@@ -3641,6 +3419,7 @@ namespace Microsoft.Xna.Framework.Media {
         public MediaQueue() { }
         public Microsoft.Xna.Framework.Media.Song ActiveSong { get { return default(Microsoft.Xna.Framework.Media.Song); } }
         public int ActiveSongIndex { get { return default(int); } set { } }
+        public Microsoft.Xna.Framework.Media.Song this[int index] { get { return default(Microsoft.Xna.Framework.Media.Song); } }
     }
     public sealed partial class MediaSource {
         internal MediaSource() { }
@@ -3681,7 +3460,10 @@ namespace Microsoft.Xna.Framework.Media {
     }
     public sealed partial class Song : System.IDisposable, System.IEquatable<Microsoft.Xna.Framework.Media.Song> {
         internal Song() { }
+        public Microsoft.Xna.Framework.Media.Album Album { get { return default(Microsoft.Xna.Framework.Media.Album); } }
+        public Microsoft.Xna.Framework.Media.Artist Artist { get { return default(Microsoft.Xna.Framework.Media.Artist); } }
         public System.TimeSpan Duration { get { return default(System.TimeSpan); } }
+        public Microsoft.Xna.Framework.Media.Genre Genre { get { return default(Microsoft.Xna.Framework.Media.Genre); } }
         public bool IsProtected { get { return default(bool); } }
         public bool IsRated { get { return default(bool); } }
         public string Name { get { return default(string); } }
@@ -3692,12 +3474,13 @@ namespace Microsoft.Xna.Framework.Media {
         public bool Equals(Microsoft.Xna.Framework.Media.Song song) { return default(bool); }
         public override bool Equals(object obj) { return default(bool); }
         ~Song() { }
+        public static Microsoft.Xna.Framework.Media.Song FromUri(string name, System.Uri uri) { return default(Microsoft.Xna.Framework.Media.Song); }
         public override int GetHashCode() { return default(int); }
         public static bool operator ==(Microsoft.Xna.Framework.Media.Song song1, Microsoft.Xna.Framework.Media.Song song2) { return default(bool); }
         public static bool operator !=(Microsoft.Xna.Framework.Media.Song song1, Microsoft.Xna.Framework.Media.Song song2) { return default(bool); }
     }
     public partial class SongCollection : System.Collections.Generic.ICollection<Microsoft.Xna.Framework.Media.Song>, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.Media.Song>, System.Collections.IEnumerable, System.IDisposable {
-        public SongCollection() { }
+        internal SongCollection() { }
         public int Count { get { return default(int); } }
         public bool IsReadOnly { get { return default(bool); } }
         public Microsoft.Xna.Framework.Media.Song this[int index] { get { return default(Microsoft.Xna.Framework.Media.Song); } }
@@ -3725,9 +3508,9 @@ namespace Microsoft.Xna.Framework.Media {
     }
     public sealed partial class VideoPlayer : System.IDisposable {
         public VideoPlayer() { }
-        public bool IsDisposed { get { return default(bool); } }
-        public bool IsLooped { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsMuted { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public bool IsDisposed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+        public bool IsLooped { get { return default(bool); } set { } }
+        public bool IsMuted { get { return default(bool); } set { } }
         public System.TimeSpan PlayPosition { get { return default(System.TimeSpan); } }
         public Microsoft.Xna.Framework.Media.MediaState State { get { return default(Microsoft.Xna.Framework.Media.MediaState); } }
         public Microsoft.Xna.Framework.Media.Video Video { get { return default(Microsoft.Xna.Framework.Media.Video); } }
@@ -3740,248 +3523,9 @@ namespace Microsoft.Xna.Framework.Media {
         public void Stop() { }
     }
     public enum VideoSoundtrackType {
-        Dialog = 0,
-        Music = 1,
+        Dialog = 1,
+        Music = 0,
         MusicAndDialog = 2,
-    }
-}
-namespace Microsoft.Xna.Framework.Net {
-    public sealed partial class AvailableNetworkSession {
-        public AvailableNetworkSession() { }
-        public int CurrentGamerCount { get { return default(int); } }
-        public string HostGamertag { get { return default(string); } }
-        public int OpenPrivateGamerSlots { get { return default(int); } }
-        public int OpenPublicGamerSlots { get { return default(int); } }
-        public Microsoft.Xna.Framework.Net.QualityOfService QualityOfService { get { return default(Microsoft.Xna.Framework.Net.QualityOfService); } }
-        public Microsoft.Xna.Framework.Net.NetworkSessionProperties SessionProperties { get { return default(Microsoft.Xna.Framework.Net.NetworkSessionProperties); } }
-    }
-    public sealed partial class AvailableNetworkSessionCollection : System.Collections.ObjectModel.ReadOnlyCollection<Microsoft.Xna.Framework.Net.AvailableNetworkSession>, System.IDisposable {
-        public AvailableNetworkSessionCollection(System.Collections.Generic.IList<Microsoft.Xna.Framework.Net.AvailableNetworkSession> list) : base (default(System.Collections.Generic.IList<Microsoft.Xna.Framework.Net.AvailableNetworkSession>)) { }
-        public void Dispose() { }
-    }
-    public enum CommandEventType {
-        GamerJoined = 0,
-        GamerLeft = 1,
-        GamerStateChange = 5,
-        ReceiveData = 4,
-        SendData = 3,
-        SessionStateChange = 2,
-    }
-    public partial class GameEndedEventArgs : System.EventArgs {
-        public GameEndedEventArgs() { }
-    }
-    public partial class GamerJoinedEventArgs : System.EventArgs {
-        public GamerJoinedEventArgs(Microsoft.Xna.Framework.Net.NetworkGamer aGamer) { }
-        public Microsoft.Xna.Framework.Net.NetworkGamer Gamer { get { return default(Microsoft.Xna.Framework.Net.NetworkGamer); } }
-    }
-    public partial class GamerLeftEventArgs : System.EventArgs {
-        public GamerLeftEventArgs(Microsoft.Xna.Framework.Net.NetworkGamer aGamer) { }
-        public Microsoft.Xna.Framework.Net.NetworkGamer Gamer { get { return default(Microsoft.Xna.Framework.Net.NetworkGamer); } }
-    }
-    [System.FlagsAttribute]
-    public enum GamerStates {
-        Guest = 4096,
-        HasVoice = 256,
-        Host = 16,
-        Local = 1,
-        MutedByLocalUser = 65536,
-        PrivateSlot = 1048576,
-        Ready = 16777216,
-    }
-    public partial class GameStartedEventArgs : System.EventArgs {
-        public GameStartedEventArgs() { }
-    }
-    public partial class HostChangedEventArgs : System.EventArgs {
-        public HostChangedEventArgs(Microsoft.Xna.Framework.Net.NetworkGamer aNewHost, Microsoft.Xna.Framework.Net.NetworkGamer aOldHost) { }
-        public Microsoft.Xna.Framework.Net.NetworkGamer NewHost { get { return default(Microsoft.Xna.Framework.Net.NetworkGamer); } }
-        public Microsoft.Xna.Framework.Net.NetworkGamer OldHost { get { return default(Microsoft.Xna.Framework.Net.NetworkGamer); } }
-    }
-    public partial class InviteAcceptedEventArgs : System.EventArgs {
-        public InviteAcceptedEventArgs(Microsoft.Xna.Framework.GamerServices.SignedInGamer aGamer) { }
-        public Microsoft.Xna.Framework.GamerServices.SignedInGamer Gamer { get { return default(Microsoft.Xna.Framework.GamerServices.SignedInGamer); } }
-        public bool IsCurrentSession { get { return default(bool); } }
-    }
-    public sealed partial class LocalNetworkGamer : Microsoft.Xna.Framework.Net.NetworkGamer {
-        public LocalNetworkGamer() : base (default(Microsoft.Xna.Framework.Net.NetworkSession), default(byte), default(Microsoft.Xna.Framework.Net.GamerStates)) { }
-        public LocalNetworkGamer(Microsoft.Xna.Framework.Net.NetworkSession session, byte id, Microsoft.Xna.Framework.Net.GamerStates state) : base (default(Microsoft.Xna.Framework.Net.NetworkSession), default(byte), default(Microsoft.Xna.Framework.Net.GamerStates)) { }
-        public bool IsDataAvailable { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.SignedInGamer SignedInGamer { get { return default(Microsoft.Xna.Framework.GamerServices.SignedInGamer); } }
-        public int ReceiveData(Microsoft.Xna.Framework.Net.PacketReader data, out Microsoft.Xna.Framework.Net.NetworkGamer sender) { sender = default(Microsoft.Xna.Framework.Net.NetworkGamer); return default(int); }
-        public int ReceiveData(System.Byte[] data, out Microsoft.Xna.Framework.Net.NetworkGamer sender) { sender = default(Microsoft.Xna.Framework.Net.NetworkGamer); return default(int); }
-        public int ReceiveData(System.Byte[] data, int offset, out Microsoft.Xna.Framework.Net.NetworkGamer sender) { sender = default(Microsoft.Xna.Framework.Net.NetworkGamer); return default(int); }
-        public void SendData(Microsoft.Xna.Framework.Net.PacketWriter data, Microsoft.Xna.Framework.Net.SendDataOptions options) { }
-        public void SendData(Microsoft.Xna.Framework.Net.PacketWriter data, Microsoft.Xna.Framework.Net.SendDataOptions options, Microsoft.Xna.Framework.Net.NetworkGamer recipient) { }
-        public void SendData(System.Byte[] data, Microsoft.Xna.Framework.Net.SendDataOptions options) { }
-        public void SendData(System.Byte[] data, Microsoft.Xna.Framework.Net.SendDataOptions options, Microsoft.Xna.Framework.Net.NetworkGamer recipient) { }
-        public void SendData(System.Byte[] data, int offset, int count, Microsoft.Xna.Framework.Net.SendDataOptions options) { }
-        public void SendData(System.Byte[] data, int offset, int count, Microsoft.Xna.Framework.Net.SendDataOptions options, Microsoft.Xna.Framework.Net.NetworkGamer recipient) { }
-    }
-    public partial class NetworkException : System.Exception {
-        public NetworkException() { }
-        public NetworkException(string message) { }
-        public NetworkException(string message, System.Exception innerException) { }
-    }
-    public partial class NetworkGamer : Microsoft.Xna.Framework.GamerServices.Gamer, System.ComponentModel.INotifyPropertyChanged {
-        public NetworkGamer(Microsoft.Xna.Framework.Net.NetworkSession session, byte id, Microsoft.Xna.Framework.Net.GamerStates state) { }
-        public bool HasLeftSession { get { return default(bool); } }
-        public bool HasVoice { get { return default(bool); } }
-        public byte Id { get { return default(byte); } }
-        public bool IsGuest { get { return default(bool); } }
-        public bool IsHost { get { return default(bool); } }
-        public bool IsLocal { get { return default(bool); } }
-        public bool IsMutedByLocalUser { get { return default(bool); } }
-        public bool IsPrivateSlot { get { return default(bool); } }
-        public bool IsReady { get { return default(bool); } set { } }
-        public bool IsTalking { get { return default(bool); } }
-        public Microsoft.Xna.Framework.Net.NetworkMachine Machine { get { return default(Microsoft.Xna.Framework.Net.NetworkMachine); } set { } }
-        public System.TimeSpan RoundtripTime { get { return default(System.TimeSpan); } }
-        public Microsoft.Xna.Framework.Net.NetworkSession Session { get { return default(Microsoft.Xna.Framework.Net.NetworkSession); } }
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged { add { } remove { } }
-        protected void OnPropertyChanged(string name) { }
-    }
-    public sealed partial class NetworkMachine {
-        public NetworkMachine() { }
-        public Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer> Gamers { get { return default(Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer>); } }
-    }
-    public partial class NetworkNotAvailableException : Microsoft.Xna.Framework.Net.NetworkException {
-        public NetworkNotAvailableException() { }
-        public NetworkNotAvailableException(string message) { }
-        public NetworkNotAvailableException(string message, System.Exception innerException) { }
-    }
-    public sealed partial class NetworkSession : System.IDisposable {
-        internal NetworkSession() { }
-        public Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer> AllGamers { get { return default(Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer>); } }
-        public bool AllowHostMigration { get { return default(bool); } set { } }
-        public bool AllowJoinInProgress { get { return default(bool); } set { } }
-        public Microsoft.Xna.Framework.Net.NetworkGamer Host { get { return default(Microsoft.Xna.Framework.Net.NetworkGamer); } }
-        public bool IsDisposed { get { return default(bool); } }
-        public bool IsEveryoneReady { get { return default(bool); } }
-        public bool IsHost { get { return default(bool); } }
-        public Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.LocalNetworkGamer> LocalGamers { get { return default(Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.LocalNetworkGamer>); } }
-        public int MaxGamers { get { return default(int); } set { } }
-        public Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer> PreviousGamers { get { return default(Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer>); } }
-        public int PrivateGamerSlots { get { return default(int); } set { } }
-        public Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer> RemoteGamers { get { return default(Microsoft.Xna.Framework.GamerServices.GamerCollection<Microsoft.Xna.Framework.Net.NetworkGamer>); } }
-        public Microsoft.Xna.Framework.Net.NetworkSessionProperties SessionProperties { get { return default(Microsoft.Xna.Framework.Net.NetworkSessionProperties); } }
-        public Microsoft.Xna.Framework.Net.NetworkSessionState SessionState { get { return default(Microsoft.Xna.Framework.Net.NetworkSessionState); } }
-        public Microsoft.Xna.Framework.Net.NetworkSessionType SessionType { get { return default(Microsoft.Xna.Framework.Net.NetworkSessionType); } }
-        public System.TimeSpan SimulatedLatency { get { return default(System.TimeSpan); } set { } }
-        public float SimulatedPacketLoss { get { return default(float); } set { } }
-        public event System.EventHandler<Microsoft.Xna.Framework.Net.GameEndedEventArgs> GameEnded { add { } remove { } }
-        public event System.EventHandler<Microsoft.Xna.Framework.Net.GamerJoinedEventArgs> GamerJoined { add { } remove { } }
-        public event System.EventHandler<Microsoft.Xna.Framework.Net.GamerLeftEventArgs> GamerLeft { add { } remove { } }
-        public event System.EventHandler<Microsoft.Xna.Framework.Net.GameStartedEventArgs> GameStarted { add { } remove { } }
-        public event System.EventHandler<Microsoft.Xna.Framework.Net.HostChangedEventArgs> HostChanged { add { } remove { } }
-        public static event System.EventHandler<Microsoft.Xna.Framework.Net.InviteAcceptedEventArgs> InviteAccepted { add { } remove { } }
-        public event System.EventHandler<Microsoft.Xna.Framework.Net.NetworkSessionEndedEventArgs> SessionEnded { add { } remove { } }
-        public void AddLocalGamer(Microsoft.Xna.Framework.GamerServices.SignedInGamer gamer) { }
-        public static System.IAsyncResult BeginCreate(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.SignedInGamer> localGamers, int maxGamers, int privateGamerSlots, Microsoft.Xna.Framework.Net.NetworkSessionProperties sessionProperties, System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginCreate(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, int maxGamers, System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginCreate(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, int maxGamers, int privateGamerSlots, Microsoft.Xna.Framework.Net.NetworkSessionProperties sessionProperties, System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginFind(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.SignedInGamer> localGamers, Microsoft.Xna.Framework.Net.NetworkSessionProperties searchProperties, System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginFind(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, Microsoft.Xna.Framework.Net.NetworkSessionProperties searchProperties, System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public static System.IAsyncResult BeginJoin(Microsoft.Xna.Framework.Net.AvailableNetworkSession availableSession, System.AsyncCallback callback, object asyncState) { return default(System.IAsyncResult); }
-        public static Microsoft.Xna.Framework.Net.NetworkSession Create(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.SignedInGamer> localGamers, int maxGamers, int privateGamerSlots, Microsoft.Xna.Framework.Net.NetworkSessionProperties sessionProperties) { return default(Microsoft.Xna.Framework.Net.NetworkSession); }
-        public static Microsoft.Xna.Framework.Net.NetworkSession Create(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, int maxGamers) { return default(Microsoft.Xna.Framework.Net.NetworkSession); }
-        public static Microsoft.Xna.Framework.Net.NetworkSession Create(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, int maxGamers, int privateGamerSlots, Microsoft.Xna.Framework.Net.NetworkSessionProperties sessionProperties) { return default(Microsoft.Xna.Framework.Net.NetworkSession); }
-        public void Dispose() { }
-        public void Dispose(bool disposing) { }
-        public static Microsoft.Xna.Framework.Net.NetworkSession EndCreate(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.Net.NetworkSession); }
-        public static Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection EndFind(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection); }
-        public void EndGame() { }
-        public static Microsoft.Xna.Framework.Net.NetworkSession EndJoin(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.Net.NetworkSession); }
-        ~NetworkSession() { }
-        public static Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection Find(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, System.Collections.Generic.IEnumerable<Microsoft.Xna.Framework.GamerServices.SignedInGamer> localGamers, Microsoft.Xna.Framework.Net.NetworkSessionProperties searchProperties) { return default(Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection); }
-        public static Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection Find(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, Microsoft.Xna.Framework.Net.NetworkSessionProperties searchProperties) { return default(Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection); }
-        public Microsoft.Xna.Framework.Net.NetworkGamer FindGamerById(byte gamerId) { return default(Microsoft.Xna.Framework.Net.NetworkGamer); }
-        public static Microsoft.Xna.Framework.Net.NetworkSession Join(Microsoft.Xna.Framework.Net.AvailableNetworkSession availableSession) { return default(Microsoft.Xna.Framework.Net.NetworkSession); }
-        public void ResetReady() { }
-        public void StartGame() { }
-        public void Update() { }
-    }
-    public delegate Microsoft.Xna.Framework.Net.NetworkSession NetworkSessionAsynchronousCreate(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int maxLocalGamers, int maxGamers, int privateGamerSlots, Microsoft.Xna.Framework.Net.NetworkSessionProperties sessionProperties, int hostGamer, bool isHost);
-    public delegate Microsoft.Xna.Framework.Net.AvailableNetworkSessionCollection NetworkSessionAsynchronousFind(Microsoft.Xna.Framework.Net.NetworkSessionType sessionType, int hostGamer, int maxLocalGamers, Microsoft.Xna.Framework.Net.NetworkSessionProperties searchProperties);
-    public delegate Microsoft.Xna.Framework.Net.NetworkSession NetworkSessionAsynchronousJoin(Microsoft.Xna.Framework.Net.AvailableNetworkSession availableSession);
-    public delegate Microsoft.Xna.Framework.Net.NetworkSession NetworkSessionAsynchronousJoinInvited(int maxLocalGamers);
-    public partial class NetworkSessionEndedEventArgs : System.EventArgs {
-        public NetworkSessionEndedEventArgs(Microsoft.Xna.Framework.Net.NetworkSessionEndReason aEndReason) { }
-        public Microsoft.Xna.Framework.Net.NetworkSessionEndReason EndReason { get { return default(Microsoft.Xna.Framework.Net.NetworkSessionEndReason); } }
-    }
-    public enum NetworkSessionEndReason {
-        ClientSignedOut = 0,
-        Disconnected = 3,
-        HostEndedSession = 1,
-        RemovedByHost = 2,
-    }
-    public enum NetworkSessionJoinError {
-        SessionFull = 2,
-        SessionNotFound = 0,
-        SessionNotJoinable = 1,
-    }
-    public partial class NetworkSessionJoinException : Microsoft.Xna.Framework.Net.NetworkException {
-        public NetworkSessionJoinException() { }
-        public NetworkSessionJoinException(string message) { }
-        public NetworkSessionJoinException(string message, Microsoft.Xna.Framework.Net.NetworkSessionJoinError joinError) { }
-        public NetworkSessionJoinException(string message, System.Exception innerException) { }
-        public Microsoft.Xna.Framework.Net.NetworkSessionJoinError JoinError { get { return default(Microsoft.Xna.Framework.Net.NetworkSessionJoinError); } set { } }
-    }
-    public partial class NetworkSessionProperties : System.Collections.Generic.List<System.Nullable<System.Int32>> {
-        public NetworkSessionProperties() { }
-        public static void ReadProperties(Microsoft.Xna.Framework.Net.NetworkSessionProperties properties, System.Int32[] propertyData) { }
-        public static void WriteProperties(Microsoft.Xna.Framework.Net.NetworkSessionProperties properties, System.Int32[] propertyData) { }
-    }
-    public enum NetworkSessionState {
-        Ended = 2,
-        Lobby = 0,
-        Playing = 1,
-    }
-    public enum NetworkSessionType {
-        Local = 0,
-        PlayerMatch = 2,
-        Ranked = 3,
-        SystemLink = 1,
-    }
-    public partial class PacketReader : System.IO.BinaryReader {
-        public PacketReader() : base (default(System.IO.Stream)) { }
-        public PacketReader(int capacity) : base (default(System.IO.Stream)) { }
-        public int Length { get { return default(int); } }
-        public int Position { get { return default(int); } set { } }
-        public Microsoft.Xna.Framework.Color ReadColor() { return default(Microsoft.Xna.Framework.Color); }
-        public override double ReadDouble() { return default(double); }
-        public Microsoft.Xna.Framework.Matrix ReadMatrix() { return default(Microsoft.Xna.Framework.Matrix); }
-        public Microsoft.Xna.Framework.Quaternion ReadQuaternion() { return default(Microsoft.Xna.Framework.Quaternion); }
-        public Microsoft.Xna.Framework.Vector2 ReadVector2() { return default(Microsoft.Xna.Framework.Vector2); }
-        public Microsoft.Xna.Framework.Vector3 ReadVector3() { return default(Microsoft.Xna.Framework.Vector3); }
-        public Microsoft.Xna.Framework.Vector4 ReadVector4() { return default(Microsoft.Xna.Framework.Vector4); }
-    }
-    public partial class PacketWriter : System.IO.BinaryWriter {
-        public PacketWriter() { }
-        public PacketWriter(int capacity) { }
-        public int Length { get { return default(int); } }
-        public int Position { get { return default(int); } set { } }
-        public void Write(Microsoft.Xna.Framework.Color Value) { }
-        public void Write(Microsoft.Xna.Framework.Matrix Value) { }
-        public void Write(Microsoft.Xna.Framework.Quaternion Value) { }
-        public void Write(Microsoft.Xna.Framework.Vector2 Value) { }
-        public void Write(Microsoft.Xna.Framework.Vector3 Value) { }
-        public void Write(Microsoft.Xna.Framework.Vector4 Value) { }
-        public override void Write(double Value) { }
-        public override void Write(float Value) { }
-    }
-    public partial class QualityOfService {
-        public QualityOfService() { }
-        public System.TimeSpan AverageRoundtripTime { get { return default(System.TimeSpan); } }
-        public int BytesPerSecondDownstream { get { return default(int); } }
-        public int BytesPerSecondUpstream { get { return default(int); } }
-        public bool IsAvailable { get { return default(bool); } }
-        public System.TimeSpan MinimumRoundtripTime { get { return default(System.TimeSpan); } }
-    }
-    public enum SendDataOptions {
-        Chat = 4,
-        InOrder = 2,
-        None = 0,
-        Reliable = 1,
-        ReliableInOrder = 3,
     }
 }
 namespace Microsoft.Xna.Framework.Storage {
@@ -4018,5 +3562,70 @@ namespace Microsoft.Xna.Framework.Storage {
         public static System.IAsyncResult BeginShowSelector(int sizeInBytes, int directoryCount, System.AsyncCallback callback, object state) { return default(System.IAsyncResult); }
         public Microsoft.Xna.Framework.Storage.StorageContainer EndOpenContainer(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.Storage.StorageContainer); }
         public static Microsoft.Xna.Framework.Storage.StorageDevice EndShowSelector(System.IAsyncResult result) { return default(Microsoft.Xna.Framework.Storage.StorageDevice); }
+    }
+}
+namespace MonoGame.Utilities {
+    public enum CompressionLevel {
+        BestCompression = 9,
+        BestSpeed = 1,
+        Default = 6,
+        Level0 = 0,
+        Level1 = 1,
+        Level2 = 2,
+        Level3 = 3,
+        Level4 = 4,
+        Level5 = 5,
+        Level6 = 6,
+        Level7 = 7,
+        Level8 = 8,
+        Level9 = 9,
+        None = 0,
+    }
+    public enum CompressionMode {
+        Compress = 0,
+        Decompress = 1,
+    }
+    public enum FlushType {
+        Finish = 4,
+        Full = 3,
+        None = 0,
+        Partial = 1,
+        Sync = 2,
+    }
+    public partial class ZlibStream : System.IO.Stream {
+        public ZlibStream(System.IO.Stream stream, MonoGame.Utilities.CompressionMode mode) { }
+        public ZlibStream(System.IO.Stream stream, MonoGame.Utilities.CompressionMode mode, MonoGame.Utilities.CompressionLevel level) { }
+        public ZlibStream(System.IO.Stream stream, MonoGame.Utilities.CompressionMode mode, MonoGame.Utilities.CompressionLevel level, bool leaveOpen) { }
+        public ZlibStream(System.IO.Stream stream, MonoGame.Utilities.CompressionMode mode, bool leaveOpen) { }
+        public int BufferSize { get { return default(int); } set { } }
+        public override bool CanRead { get { return default(bool); } }
+        public override bool CanSeek { get { return default(bool); } }
+        public override bool CanWrite { get { return default(bool); } }
+        public virtual MonoGame.Utilities.FlushType FlushMode { get { return default(MonoGame.Utilities.FlushType); } set { } }
+        public override long Length { get { return default(long); } }
+        public override long Position { get { return default(long); } set { } }
+        public virtual long TotalIn { get { return default(long); } }
+        public virtual long TotalOut { get { return default(long); } }
+        public static System.Byte[] CompressBuffer(System.Byte[] b) { return default(System.Byte[]); }
+        public static System.Byte[] CompressString(string s) { return default(System.Byte[]); }
+        protected override void Dispose(bool disposing) { }
+        public override void Flush() { }
+        public override int Read(System.Byte[] buffer, int offset, int count) { return default(int); }
+        public override long Seek(long offset, System.IO.SeekOrigin origin) { return default(long); }
+        public override void SetLength(long value) { }
+        public static System.Byte[] UncompressBuffer(System.Byte[] compressed) { return default(System.Byte[]); }
+        public static string UncompressString(System.Byte[] compressed) { return default(string); }
+        public override void Write(System.Byte[] buffer, int offset, int count) { }
+    }
+}
+namespace MonoGame.Utilities.Png {
+    public partial class PngReader {
+        public PngReader() { }
+        public static bool IsPngImage(System.IO.Stream stream) { return default(bool); }
+        public Microsoft.Xna.Framework.Graphics.Texture2D Read(System.IO.Stream inputStream, Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice) { return default(Microsoft.Xna.Framework.Graphics.Texture2D); }
+    }
+    public partial class PngWriter {
+        public PngWriter() { }
+        public void Write(Microsoft.Xna.Framework.Graphics.Texture2D texture2D, System.IO.Stream outputStream) { }
     }
 }
