@@ -40,7 +40,7 @@ namespace tests
 
         public void pause(float dt)
         {
-            Application.Scheduler.PauseTarget(this);
+            GameView.Scheduler.PauseTarget(this);
         }
     }
 
@@ -94,7 +94,7 @@ namespace tests
 		{
 			if (pausedTargets != null && pausedTargets.Count > 0)
 			{
-                Application.Scheduler.Resume (pausedTargets);
+                GameView.Scheduler.Resume (pausedTargets);
 				pausedTargets.Clear ();
 			}
 			base.OnExit();
@@ -126,7 +126,7 @@ namespace tests
 		public void pause(float dt)
 		{
 			CCLog.Log ("Pausing");
-            pausedTargets = Application.Scheduler.PauseAllTargets();
+            pausedTargets = GameView.Scheduler.PauseAllTargets();
 
 			// should have only 2 items: ActionManager, self
 			Debug.Assert(pausedTargets.Count == 2, "Error: pausedTargets should have only 2 items");
@@ -138,7 +138,7 @@ namespace tests
 		{
 			times = 0;
 			CCLog.Log("Resuming");
-            Application.Scheduler.Resume (pausedTargets);
+            GameView.Scheduler.Resume (pausedTargets);
 			pausedTargets.Clear ();
 			
 		}
@@ -194,7 +194,7 @@ namespace tests
 		{
 			if (pausedTargets != null && pausedTargets.Count > 0)
 			{
-                Application.Scheduler.Resume (pausedTargets);
+                GameView.Scheduler.Resume (pausedTargets);
 				pausedTargets.Clear ();
 			}
 			base.OnExit();
@@ -226,7 +226,7 @@ namespace tests
 		public void pause(float dt)
 		{
 			CCLog.Log ("Pausing");
-            pausedTargets = Application.Scheduler.PauseAllTargets(CCSchedulePriority.User);
+            pausedTargets = GameView.Scheduler.PauseAllTargets(CCSchedulePriority.User);
 
 		}
 
@@ -235,7 +235,7 @@ namespace tests
 		{
 			times = 0;
 			CCLog.Log("Resuming");
-            Application.Scheduler.Resume (pausedTargets);
+            GameView.Scheduler.Resume (pausedTargets);
 			pausedTargets.Clear ();
 
 		}

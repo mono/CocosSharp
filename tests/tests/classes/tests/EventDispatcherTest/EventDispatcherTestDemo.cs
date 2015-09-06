@@ -343,27 +343,27 @@ namespace tests
 				var acc = acceleration.Acceleration;
 				var ptNow  = sprite.Position;
 
-                var orientation = Application.CurrentOrientation;
-
-				//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
-				#if ANDROID || WINDOWS_PHONE8
-				if (orientation == CCDisplayOrientation.LandscapeRight)
-				{
-					ptNow.X -= (float) acc.X * 9.81f;
-					ptNow.Y -= (float) acc.Y * 9.81f;
-				}
-				else
-				{
-					ptNow.X += (float)acc.X * 9.81f;
-					ptNow.Y += (float)acc.Y * 9.81f;
-				}
-				#else
-				ptNow.X += (float)acc.X * 9.81f;
-				ptNow.Y += (float)acc.Y * 9.81f;
-				#endif
-                ptNow.X = MathHelper.Clamp(ptNow.X, (float)(visibleBounds.Origin.X+ballSize.Width / 2.0), (float)(visibleBounds.Origin.X + visibleBounds.Size.Width - ballSize.Width / 2.0));
-                ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(visibleBounds.Origin.Y+ballSize.Height / 2.0), (float)(visibleBounds.Origin.Y + visibleBounds.Size.Height - ballSize.Height / 2.0));
-				sprite.Position = ptNow;
+//                var orientation = Application.CurrentOrientation;
+//
+//				//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
+//				#if ANDROID || WINDOWS_PHONE8
+//				if (orientation == CCDisplayOrientation.LandscapeRight)
+//				{
+//					ptNow.X -= (float) acc.X * 9.81f;
+//					ptNow.Y -= (float) acc.Y * 9.81f;
+//				}
+//				else
+//				{
+//					ptNow.X += (float)acc.X * 9.81f;
+//					ptNow.Y += (float)acc.Y * 9.81f;
+//				}
+//				#else
+//				ptNow.X += (float)acc.X * 9.81f;
+//				ptNow.Y += (float)acc.Y * 9.81f;
+//				#endif
+//                ptNow.X = MathHelper.Clamp(ptNow.X, (float)(visibleBounds.Origin.X+ballSize.Width / 2.0), (float)(visibleBounds.Origin.X + visibleBounds.Size.Width - ballSize.Width / 2.0));
+//                ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(visibleBounds.Origin.Y+ballSize.Height / 2.0), (float)(visibleBounds.Origin.Y + visibleBounds.Size.Height - ballSize.Height / 2.0));
+//				sprite.Position = ptNow;
 			};
 
 			// Now we tell the event dispatcher that the sprite is interested in Accelerometer events
@@ -944,16 +944,16 @@ namespace tests
 			label4.Position = new CCPoint(30,s.Height/2 - 60);
 			AddChild(label4);
 
-			event1 = AddCustomEventListener(CCWindow.EVENT_AFTER_UPDATE, OnEvent1);
-            event2 = AddCustomEventListener(CCWindow.EVENT_AFTER_VISIT, OnEvent2);
-            event3 = AddCustomEventListener(CCWindow.EVENT_AFTER_DRAW, (customEvent) =>
-				{
-					label3.Text = string.Format("Draw: {0}", count3++);
-				});
-            event4 = AddCustomEventListener(CCWindow.EVENT_PROJECTION_CHANGED, (customEvent) =>
-				{
-					label4.Text = string.Format("Projection: {0}", count4++);
-				});
+//			event1 = AddCustomEventListener(CCWindow.EVENT_AFTER_UPDATE, OnEvent1);
+//            event2 = AddCustomEventListener(CCWindow.EVENT_AFTER_VISIT, OnEvent2);
+//            event3 = AddCustomEventListener(CCWindow.EVENT_AFTER_DRAW, (customEvent) =>
+//				{
+//					label3.Text = string.Format("Draw: {0}", count3++);
+//				});
+//            event4 = AddCustomEventListener(CCWindow.EVENT_PROJECTION_CHANGED, (customEvent) =>
+//				{
+//					label4.Text = string.Format("Projection: {0}", count4++);
+//				});
 
 			Schedule();
 

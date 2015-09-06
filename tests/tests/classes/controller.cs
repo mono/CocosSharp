@@ -204,7 +204,7 @@ namespace tests
 
         void CloseCallback(object sender)
         {
-            Application.ExitGame();
+            //Application.ExitGame();
         }
 
         void EnableGamePad()
@@ -343,7 +343,7 @@ namespace tests
         public static Dictionary<string, Func<TestScene>> testCases = new Dictionary<string, Func<TestScene>> 
             {
 
-            {"Accelerometer", () => new AccelerometerTestScene()}, 
+            //{"Accelerometer", () => new AccelerometerTestScene()}, 
             {"ActionManagerTest", () => new ActionManagerTestScene()},
             {"ActionsEaseTest", () => new EaseActionsTestScene()},
             {"ActionsProgressTest", () => new ProgressActionsTestScene()},
@@ -368,7 +368,7 @@ namespace tests
             {"MotionStreakTest", () => new MotionStreakTestScene()},
             {"MultiTouchTest", () => new MultiTouchTestScene()},
             {"NodeTest", () => new CocosNodeTestScene()},
-            {"OrientationTest", () => new OrientationTestScene()},
+            //{"OrientationTest", () => new OrientationTestScene()},
             {"ParallaxTest", () => new ParallaxTestScene()},
             {"ParticleTest", () => new ParticleTestScene()},
             {"PerformanceTest", () => new PerformanceTestScene()},

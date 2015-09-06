@@ -37,7 +37,7 @@ namespace tests
 
             pGrossini.RunAction(new CCScaleBy(2, 2));
 
-            Application.ActionManager.PauseTarget(pGrossini);
+            GameView.ActionManager.PauseTarget(pGrossini);
             pGrossini.RunAction(new CCRotateBy (2, 360));
 
             this.Schedule(resumeGrossini, 3.0f);
@@ -48,7 +48,7 @@ namespace tests
             this.Unschedule(resumeGrossini);
 
             CCNode pGrossini = GetChildByTag((int)KTag.kTagGrossini);
-            Application.ActionManager.ResumeTarget(pGrossini);
+            GameView.ActionManager.ResumeTarget(pGrossini);
         }
     }
 }

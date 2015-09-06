@@ -2923,13 +2923,13 @@ namespace tests
         {
             CCLog.Log("Pausing");
 
-            pausedTargets = Application.ActionManager.PauseAllRunningActions();
+            pausedTargets = GameView.ActionManager.PauseAllRunningActions();
         }
 
         void Resume(float dt)
         {
             CCLog.Log("Resuming");
-            Application.ActionManager.ResumeTargets(pausedTargets);
+            GameView.ActionManager.ResumeTargets(pausedTargets);
         }
     }
 

@@ -24,7 +24,7 @@ namespace tests.Extensions
             var pScene = new CCScene(AppDelegate.SharedWindow);
             var pLayer = new TableViewTestLayer();
             pScene.AddChild(pLayer);
-            AppDelegate.SharedWindow.DefaultDirector.ReplaceScene(pScene);
+            AppDelegate.SharedWindow.Director.ReplaceScene(pScene);
         }
 
         private bool InitTableViewTestLayer()

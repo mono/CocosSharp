@@ -138,7 +138,7 @@ namespace tests
 			base.OnEnter ();
 
 			//Scene.Director.Projection = CCDirectorProjection.Projection3D;
-            Window.IsUseDepthTesting =  (true);
+            GameView.DepthTesting =  (true);
 		}
 
 		public override void OnExit ()
@@ -146,7 +146,7 @@ namespace tests
 			base.OnExit ();
 
             //Scene.Director.Projection = CCDirectorProjection.Projection2D;
-            Window.IsUseDepthTesting =  (false);
+            GameView.DepthTesting =  (false);
 		}
 
 		public override string title()
@@ -215,7 +215,7 @@ namespace tests
 			base.OnEnter ();
 			
             //Scene.Director.Projection = CCDirectorProjection.Projection3D;
-            Window.IsUseDepthTesting =  (true);
+            GameView.DepthTesting =  (true);
 		}
 
 		public override void OnExit ()
@@ -223,7 +223,7 @@ namespace tests
 			base.OnExit ();
 
             //Scene.Director.Projection = CCDirectorProjection.Projection2D;
-            Window.IsUseDepthTesting =  (false);
+            GameView.DepthTesting =  (false);
 		}
 
 		public override string title()

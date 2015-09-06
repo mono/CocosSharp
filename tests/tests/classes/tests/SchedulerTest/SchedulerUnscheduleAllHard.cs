@@ -33,11 +33,11 @@ namespace tests
 		public override void OnExit ()
 		{
 
-            var actionManagerActive = Application.Scheduler.IsActionManagerActive;
+            var actionManagerActive = GameView.Scheduler.IsActionManagerActive;
 
 			if(!actionManagerActive) {
 				// Restore the director's action manager.
-                Application.Scheduler.StartActionManager ();
+                GameView.Scheduler.StartActionManager ();
 			}
 
 			base.OnExit ();
@@ -75,7 +75,7 @@ namespace tests
 
         public void unscheduleAll(float dt)
         {
-            Application.Scheduler.UnscheduleAll();
+            GameView.Scheduler.UnscheduleAll();
         }
     }
 }

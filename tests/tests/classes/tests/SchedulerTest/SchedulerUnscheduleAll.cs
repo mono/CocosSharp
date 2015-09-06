@@ -109,7 +109,7 @@ namespace tests
 
 		public void unscheduleAll(float dt)
 		{
-            Application.Scheduler.UnscheduleAll (CCSchedulePriority.User);
+            GameView.Scheduler.UnscheduleAll (CCSchedulePriority.User);
 		}
 	}
 

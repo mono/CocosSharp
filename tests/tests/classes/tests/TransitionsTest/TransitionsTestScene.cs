@@ -119,7 +119,7 @@ namespace tests
         public static CCTransitionScene createTransition(int index, float time, CCScene scene)
         {
             // fix bug #486, without setDepthTest(false), FlipX,Y will flickers
-            scene.Window.IsUseDepthTesting = false;
+            scene.GameView.DepthTesting = false;
 
             return transitions.Values.ElementAt(index)(time,scene);
         }

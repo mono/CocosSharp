@@ -27,7 +27,7 @@ namespace tests
             ParticleMainScene pScene = new ParticlePerformTest1();
             pScene.initWithSubTest(1, kNodesIncrease);
 
-            AppDelegate.SharedWindow.DefaultDirector.ReplaceScene(pScene);
+            AppDelegate.SharedWindow.Director.ReplaceScene(pScene);
         }
     }
 }

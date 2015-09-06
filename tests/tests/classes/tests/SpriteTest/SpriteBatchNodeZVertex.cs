@@ -52,7 +52,7 @@ namespace tests
             base.AddedToScene();
 
             contentLayer = new CCLayer();
-            Window.IsUseDepthTesting = true;
+            GameView.DepthTesting = true;
             node = new CCNode(Layer.VisibleBoundsWorldspace.Size);
             node.AnchorPoint = CCPoint.AnchorMiddle;
             node.IgnoreAnchorPointForPosition = true;
