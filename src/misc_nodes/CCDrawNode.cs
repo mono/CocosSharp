@@ -739,13 +739,11 @@ namespace CocosSharp
                     extrude[i] = new ExtrudeVerts() { offset = offset, n = n2 };
                 }
 
-                float inset = (!outline ? 0.5f : 0.0f);
-
                 for (int i = 0; i < polycount - 2; i++)
                 {
-                    var v0 = verts[0] - (extrude[0].offset * inset);
-                    var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
-                    var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
+                    var v0 = verts[0];
+                    var v1 = verts[i + 1];
+                    var v2 = verts[i + 2];
 
                     AddTriangleVertex(new CCV3F_C4B(v0, colorFill)); //__t(v2fzero)
                     AddTriangleVertex(new CCV3F_C4B(v1, colorFill)); //__t(v2fzero)
