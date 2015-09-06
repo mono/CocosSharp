@@ -502,7 +502,7 @@ namespace CocosSharp
                 // unichar is a short, and an int is needed on HASH_FIND_INT
                 if (!FontConfiguration.Glyphs.TryGetValue(c, out fontDef))
                 {
-                    CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int)c);
+                    CCLog.Log("CocosSharp: CCLabelBMFont: character not found {0}", (int)c);
                     continue;
                 }
 
@@ -578,7 +578,7 @@ namespace CocosSharp
             // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
             // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
             // box
-            if (fontDef.XAdvance < fontDef.Subrect.Size.Width)
+            if (fontDef != null && fontDef.XAdvance < fontDef.Subrect.Size.Width)
             {
                 tmpSize.Width = longestLine + fontDef.Subrect.Size.Width - fontDef.XAdvance;
             }

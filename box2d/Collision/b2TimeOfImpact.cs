@@ -554,9 +554,9 @@ namespace Box2D.Collision
 					}
 					
 					// Compute 1D root of: f(x) - target = 0
-					int rootIterCount = 0;
+					int rootIterCount;
 					float a1 = t1, a2 = t2;
-					while (true)
+					for (rootIterCount = 0; rootIterCount != 50; ++rootIterCount)
 					{
 						// Use a mix of the secant rule and bisection.
 						float t;
@@ -591,14 +591,8 @@ namespace Box2D.Collision
 							a2 = t;
 							s2 = s;
 						}
-						
-						++rootIterCount;
+
 						++b2_toiRootIters;
-						
-						if (rootIterCount == 50)
-						{
-							break;
-						}
 					}
 					
 					b2_toiMaxRootIters = Math.Max(b2_toiMaxRootIters, rootIterCount);
