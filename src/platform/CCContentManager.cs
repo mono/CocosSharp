@@ -427,7 +427,7 @@ namespace CocosSharp
                 return searchPaths;
             }
 
-            internal set { searchPaths = value; }
+            set { searchPaths = value; }
         }
 
         void CheckDefaultPath(List<string> paths)

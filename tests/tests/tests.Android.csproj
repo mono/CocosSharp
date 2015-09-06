@@ -43,23 +43,20 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.CSharp" />
-    <Reference Include="OpenTK" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="OpenTK-1.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ball-hd.mask" />
     <EmbeddedResource Include="grossini.mask" />
-    <Compile Include="classes\AppDelegate.cs" />
-    <Compile Include="classes\controller.cs" />
     <Compile Include="classes\testBasic.cs" />
     <Compile Include="classes\testResource.cs" />
     <Compile Include="classes\TestNavigationLayer.cs" />
-    <Compile Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTestScene.cs" />
     <Compile Include="classes\tests\ActionManagerTest\CrashTest.cs" />
@@ -365,12 +362,10 @@
     <Compile Include="classes\tests\ZwoptexTest\ZwoptexGenericTest.cs" />
     <Compile Include="classes\tests\ZwoptexTest\ZwoptexTest.cs" />
     <Compile Include="classes\tests\ZwoptexTest\ZwoptexTestScene.cs" />
-    <Compile Include="classes\tests\DeviceTest\OrientationTest.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlPotentiometerTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlStepperTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs" />
@@ -595,7 +590,9 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFont168.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontRenderTexture.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
-    <Compile Include="classes\tests\TextInputTest\CustomIME\Android\UppercaseIMEKeyboardImpl.cs" />
+    <Compile Include="classes\controller.cs" />
+    <Compile Include="classes\AppDelegate.cs" />
+    <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2124,6 +2121,9 @@
     <AndroidAsset Include="Assets\Content\TileMaps\lamp-16x16.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\desert-palace-multi-tileset.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\people.xnb" />
+    <None Include="classes\tests\DeviceTest\OrientationTest.cs" />
+    <None Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
+    <None Include="classes\tests\TextInputTest\CustomIME\Android\UppercaseIMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />

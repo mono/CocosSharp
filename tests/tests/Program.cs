@@ -27,14 +27,14 @@ namespace tests
 {
 #if IPHONE || IOS
     [Register ("AppDelegate")]
-    class Program : UIApplicationDelegate 
+    internal class Program : UIApplicationDelegate 
     {
-        public override void FinishedLaunching(UIApplication app)
+        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            CCApplication application = new CCApplication();
-            application.ApplicationDelegate = new AppDelegate();
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
 
-            application.StartGame();
+            return true;
         }
 
         // This is the main entry point of the application.
@@ -110,21 +110,34 @@ namespace tests
 #if OUYA
     [IntentFilter(new[] { Intent.ActionMain }, Categories = new[] { Intent.CategoryLauncher, "ouya.intent.category.GAME" })]
 #endif
-    public class Activity1 : AndroidGameActivity
+    public class Activity1 : Activity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-#if OUYA
-		    Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
-#endif
-			CCApplication application = new CCApplication();
-			application.ApplicationDelegate = new AppDelegate();
 
-			this.SetContentView(application.AndroidContentView);
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
 
-			application.StartGame();
+            var gameView = (CCGameView)FindViewById(Resource.Id.MyGameView);
+            gameView.ViewCreated += LoadGame;
 
+            AppDelegate.SharedWindow = gameView;
+
+        }
+
+        void LoadGame(object sender, EventArgs e)
+        {
+            CCGameView gameView = sender as CCGameView;
+
+            if (gameView != null) 
+            {
+                gameView.DesignResolution = new CCSizeI (1024, 768);
+                gameView.Stats.Enabled = true;
+                CCScene gameScene = new CCScene (gameView);
+                gameScene.AddLayer(new TestController());
+                gameView.RunWithScene (gameScene);
+            }
         }
     }
 #endif

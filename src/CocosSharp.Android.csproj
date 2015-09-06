@@ -353,7 +353,6 @@
     <Compile Include="EmbeddableView\CCGameView.cs" />
     <Compile Include="EmbeddableView\CCGameView.Android.cs" />
     <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
-    <Compile Include="platform\Keyboard\Android\IMEKeyboardImpl.cs" />
     <Compile Include="text_input_node\CCTextField.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -365,20 +364,6 @@
   </Target>
   -->
   <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\box2d\box2d.Android.csproj">
-      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
-      <Name>box2d.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
-      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
-      <Name>Lidgren.Network.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
-      <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
-      <Name>MonoGame.Framework.Android</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <ItemGroup />
   <ItemGroup />
@@ -388,6 +373,17 @@
   <ItemGroup>
     <None Include="CCWindow.cs" />
     <None Include="platform\CCApplication.cs" />
+    <None Include="platform\Keyboard\Android\IMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
+      <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
+      <Name>MonoGame.Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
+      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
+      <Name>Lidgren.Network.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
