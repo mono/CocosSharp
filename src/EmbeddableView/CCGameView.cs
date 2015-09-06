@@ -13,6 +13,7 @@ using CocosDenshion;
 namespace CocosSharp
 {
     using XnaSurfaceFormat = Microsoft.Xna.Framework.Graphics.SurfaceFormat;
+    using XnaMatrix = Microsoft.Xna.Framework.Matrix;
 
     public enum CCViewResolutionPolicy
     {
@@ -63,7 +64,11 @@ namespace CocosSharp
         CCViewResolutionPolicy resolutionPolicy = CCViewResolutionPolicy.ShowAll;
         CCRect viewportRatio = exactFitViewportRatio;
         CCSizeI designResolution = new CCSizeI(640, 480);
+
+        Matrix defaultViewMatrix, defaultProjMatrix;
+        Viewport defaultViewport;
         Viewport viewport;
+
 
         GraphicsDevice graphicsDevice;
         CCGraphicsDeviceService graphicsDeviceService;
@@ -89,9 +94,11 @@ namespace CocosSharp
         // Instance properties
 
         public CCDirector Director { get; private set; }
+        public CCScheduler Scheduler { get; private set; }
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
         public CCSimpleAudioEngine AudioEngine { get; private set; }
         public CCActionManager ActionManager { get; private set; }
+        public CCStats Stats { get; private set; }
 
         public bool DepthTesting
         {
@@ -118,18 +125,6 @@ namespace CocosSharp
                     PlatformUpdatePaused();
                 }
             }
-        }
-
-        public bool DisplayStats 
-        {
-            get { return Stats.IsEnabled; }
-            set { Stats.IsEnabled = value; }
-        }
-
-        public int StatsScale
-        {
-            get { return Stats.Scale; }
-            set { Stats.Scale = value; }
         }
 
         public CCViewResolutionPolicy ResolutionPolicy 
@@ -191,8 +186,6 @@ namespace CocosSharp
             }
         }
 
-        CCStats Stats { get; set; }
-
         #endregion Properties
 
 
@@ -224,14 +217,17 @@ namespace CocosSharp
             Director = new CCDirector();
             EventDispatcher = new CCEventDispatcher(this);
             AudioEngine = CCSimpleAudioEngine.SharedEngine;
+            Scheduler = CCScheduler.SharedScheduler;
 
-            //Stats.Initialize();
+            Stats = new CCStats ();
 
             InitialiseGraphicsDevice();
 
             InitialiseRunLoop();
 
             InitialiseInputHandling();
+
+            Stats.Initialise();
 
             viewInitialised = true;
         }
@@ -382,10 +378,15 @@ namespace CocosSharp
                 );
             }
 
-            viewportDirty = false;
-
             Viewport = new Viewport((int)(width * viewportRatio.Origin.X), (int)(height * viewportRatio.Origin.Y), 
                 (int)(width * viewportRatio.Size.Width), (int)(height * viewportRatio.Size.Height));
+
+            CCPoint center = new CCPoint(ViewSize.Width / 2.0f, ViewSize.Height / 2.0f);
+            defaultViewMatrix = XnaMatrix.CreateLookAt(new CCPoint3(center, 300.0f).XnaVector, new CCPoint3(center, 0.0f).XnaVector, Vector3.Up);
+            defaultProjMatrix = XnaMatrix.CreateOrthographic(ViewSize.Width, ViewSize.Height, 1024f, -1024);
+            defaultViewport = new Viewport(0, 0, ViewSize.Width, ViewSize.Height);
+
+            viewportDirty = false;
         }
 
         void Draw()
@@ -406,6 +407,22 @@ namespace CocosSharp
 
                 Renderer.VisitRenderQueue();
             }
+
+            if (Stats.Enabled)
+            {
+                Renderer.PushGroup();
+                Renderer.PushViewportGroup(ref defaultViewport);
+                Renderer.PushLayerGroup(ref defaultViewMatrix, ref defaultProjMatrix);
+
+                DrawManager.UpdateStats();
+                Stats.Draw(this);
+
+                Renderer.PopLayerGroup();
+                Renderer.PopViewportGroup();
+                Renderer.PopGroup();
+
+                Renderer.VisitRenderQueue();
+            } 
 
             DrawManager.EndDraw();
         }
@@ -454,6 +471,8 @@ namespace CocosSharp
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            Stats.UpdateStart();
+
             SoundEffectInstancePool.Update();
 
             if (Director.NextScene != null)
@@ -463,6 +482,8 @@ namespace CocosSharp
             ActionManager.Update(deltaTime);
 
             ProcessInput();
+
+            Stats.UpdateEnd(deltaTime);
         }
 
         #endregion Run loop

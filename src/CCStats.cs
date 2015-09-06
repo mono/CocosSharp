@@ -47,8 +47,6 @@ namespace CocosSharp
     /// </summary>
     public class CCStats
     {
-
-
         bool isGCEnabled;
         bool isInitialized, isEnabled;
         uint totalFrames = 0;
@@ -59,7 +57,7 @@ namespace CocosSharp
         float totalDrawTime;
         float totalUpdateTime;
         float startTime;
-        int scale;
+        uint scale;
 
         Stopwatch stopwatch;
 
@@ -75,20 +73,58 @@ namespace CocosSharp
         CCColor3B warnColor = new CCColor3B (255, 151, 151);
         CCColor3B whiteColor = CCColor3B.White;
 
+        #region Properties
 
-        #region Constructor
+        public bool Enabled 
+        {
+            get { return isEnabled; }
+            set 
+            {
+                isEnabled = value;
+
+                if (value) 
+                {
+                    stopwatch.Reset ();
+                    stopwatch.Start ();
+                }
+            }
+        }
+
+        public uint Scale 
+        {
+            get { return scale; }
+            set {
+                var pos = CCPoint.Zero;
+
+                scale = value;
+
+                if (isInitialized) {
+                    var i = 0;
+                    const int step = 14;
+
+                    fpsLabel.Scale = scale;
+                    updateTimeLabel.Scale = scale;
+                    drawTimeLabel.Scale = scale;
+                    drawCallLabel.Scale = scale;
+                    memoryLabel.Scale = scale;
+                    gcLabel.Scale = scale;
+
+                    fpsLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
+                    drawTimeLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
+                    updateTimeLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
+                    gcLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
+                    drawCallLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
+                    memoryLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
+                }
+            }
+        }
+
+        #endregion Properties
 
 
-        #endregion
+        #region Initialisation
 
-
-        #region Public
-
-
-        /// <summary>
-        /// Initialize CCStats.
-        /// </summary>
-        public void Initialize ()
+        internal void Initialise()
         {
             if (!isInitialized) {
                 // There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
@@ -158,8 +194,10 @@ namespace CocosSharp
             }
         }
 
+        #endregion Initialisation
 
-        public void UpdateStart ()
+
+        internal void UpdateStart ()
         {
             if (isEnabled) {
                 startTime = (float)stopwatch.Elapsed.TotalMilliseconds;
@@ -167,7 +205,7 @@ namespace CocosSharp
         }
 
 
-        public void UpdateEnd (float delta)
+        internal void UpdateEnd (float delta)
         {
             if (isEnabled) {
                 deltaAll += delta;
@@ -176,8 +214,7 @@ namespace CocosSharp
             }
         }
 
-
-        public void Draw (CCGameView gameView)
+        internal void Draw (CCGameView gameView)
         {
             if (isEnabled) {
                 totalFrames++;
@@ -228,62 +265,10 @@ namespace CocosSharp
                 }
             }
         }
-
-
-        public int Scale {
-            get { return scale; }
-            set {
-                var pos = CCPoint.Zero;
-
-                scale = value;
-
-                if (isInitialized) {
-                    var i = 0;
-                    const int step = 14;
-
-                    fpsLabel.Scale = scale;
-                    updateTimeLabel.Scale = scale;
-                    drawTimeLabel.Scale = scale;
-                    drawCallLabel.Scale = scale;
-                    memoryLabel.Scale = scale;
-                    gcLabel.Scale = scale;
-
-                    fpsLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
-                    drawTimeLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
-                    updateTimeLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
-                    gcLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
-                    drawCallLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
-                    memoryLabel.Position = new CCPoint (4 * scale, i++ * step * scale + 4) + pos;
-                }
-            }
-        }
-
-
-        public bool IsInitialized {
-            get { return isInitialized; }
-        }
-
-
-        public bool IsEnabled {
-            get { return isEnabled; }
-            set {
-                isEnabled = value;
-
-                if (value) {
-                    stopwatch.Reset ();
-                    stopwatch.Start ();
-                }
-            }
-        }
-
-
-        #endregion Properties
-
-
     }
 
 
-    public static class CCFPSImage
+    internal static class CCFPSImage
     {
 
 
@@ -844,9 +829,5 @@ namespace CocosSharp
             0xad, 0xd2, 0x2a, 0xad, 0xd2, 0x5f, 0x36, 0xfd, 0x3f, 0xc6, 0x3e, 0xd7, 0x42, 0xbf, 0x3b, 0xbc, 
             0xe4, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82
         };
-
-
     }
-
-
 }
