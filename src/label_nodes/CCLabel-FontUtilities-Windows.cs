@@ -156,7 +156,10 @@ namespace CocosSharp
         /// <unmanaged>HRESULT IDWriteFontFileStream::GetFileSize([Out] __int64* fileSize)</unmanaged>
         long FontFileStream.GetFileSize()
         {
-            return _stream.Length;
+            lock (this)
+            {
+                return _stream.Length;
+            }
         }
 
         /// <summary>
