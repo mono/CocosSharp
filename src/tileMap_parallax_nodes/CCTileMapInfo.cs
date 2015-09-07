@@ -742,19 +742,23 @@ namespace CocosSharp
                 {
                     encoded = currentString;
                 }
-                    
-                for (int i = 0; i < layer.TileGIDAndFlags.Length; i++)
+
+                // encoded could be null because the compressed data could not be decompressed
+                if (encoded != null)
                 {
-                    int i4 = i * 4;
+                    for (int i = 0; i < layer.TileGIDAndFlags.Length; i++)
+                    {
+                        int i4 = i * 4;
 
-                    uint gidAndFlags = (uint) (
-                        (uint)encoded[i4] |
-                        (uint)encoded[(int)(i4 + 1)] << 8 |
-                        (uint)encoded[(int)(i4 + 2)] << 16 |
-                        (uint)encoded[(int)(i4 + 3)] << 24);
-                        
+                        uint gidAndFlags = (uint)(
+                            (uint)encoded[i4] |
+                            (uint)encoded[(int)(i4 + 1)] << 8 |
+                            (uint)encoded[(int)(i4 + 2)] << 16 |
+                            (uint)encoded[(int)(i4 + 3)] << 24);
 
-                    layer.TileGIDAndFlags[i] = CCTileMapFileEncodedTileFlags.DecodeGidAndFlags(gidAndFlags);
+
+                        layer.TileGIDAndFlags[i] = CCTileMapFileEncodedTileFlags.DecodeGidAndFlags(gidAndFlags);
+                    }
                 }
 
                 currentString = null;

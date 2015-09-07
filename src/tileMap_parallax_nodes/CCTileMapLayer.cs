@@ -174,12 +174,15 @@ namespace CocosSharp
         void InitialiseDrawBuffers(CCTileSetInfo[] tileSetInfos)
         {
             drawBufferManagers = new List<CCTileMapDrawBufferManager>();
-            foreach (var tileSetInfo in tileSetInfos)
+            if (tileSetInfos != null)
             {
-                // Initialize the QuadsVertexBuffers
-                if (tileSetInfo.TilesheetSize != CCSize.Zero)
+                foreach (var tileSetInfo in tileSetInfos)
                 {
-                    drawBufferManagers.Add(InitialiseDrawBuffer(tileSetInfo));
+                    // Initialize the QuadsVertexBuffers
+                    if (tileSetInfo.TilesheetSize != CCSize.Zero)
+                    {
+                        drawBufferManagers.Add(InitialiseDrawBuffer(tileSetInfo));
+                    }
                 }
             }
         }
@@ -472,7 +475,14 @@ namespace CocosSharp
             CCTileGidAndFlags gidAndFlags = TileGIDAndFlags(column, row);
             int flattendedIndex = FlattenedTileIndex(column, row);
 
-            CCTileSetInfo tileSetInfo = GetDrawBufferManagerByGid(gidAndFlags.Gid).TileSetInfo;
+            var drawBufferManager = GetDrawBufferManagerByGid(gidAndFlags.Gid);
+            if (drawBufferManager == null)
+            {
+                CCLog.Log("Requestd Tile GID for col/row: {0}/{1} can not be extracted because it does not exist.", column, row);
+                return null;
+            }
+
+            CCTileSetInfo tileSetInfo = drawBufferManager.TileSetInfo;
             CCRect texRect = tileSetInfo.TextureRectForGID(gidAndFlags.Gid);
             CCSprite tileSprite = new CCSprite(tileSetInfo.Texture, texRect);
             tileSprite.ContentSize = texRect.Size * CCTileMapLayer.DefaultTexelToContentSizeRatios;
