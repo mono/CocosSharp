@@ -49,11 +49,12 @@ namespace CocosSharp
             {
                 using (var deflateStream = new ZlibStream(dataStream, MonoGame.Utilities.CompressionMode.Decompress))
                 {
-                    using(MemoryStream zipoutStream = new MemoryStream())
-                    {
-                        deflateStream.CopyTo(zipoutStream);
-                        outputBytes = zipoutStream.ToArray();
-                    }
+                    int length = (int)deflateStream.BufferSize;
+                    if (length == 0)
+                        return new byte[0];
+
+                    outputBytes = new byte[length];
+                    deflateStream.Read(outputBytes, 0, length);
 
                 }
             }
@@ -62,15 +63,20 @@ namespace CocosSharp
                 try 
                 {
                     dataStream.Seek (0, SeekOrigin.Begin);
-                    #if !WINDOWS_PHONE
-                    var gzipInputStream = new GZipInputStream (dataStream, System.IO.Compression.CompressionMode.Decompress);
-                    #else
-                    var gzipInputStream = new GZipInputStream(dataStream);
-                    #endif
+#if !WINDOWS_PHONE
+                    using (var gzipInputStream = new GZipInputStream(dataStream, System.IO.Compression.CompressionMode.Decompress))
+#else
+                    using (var gzipInputStream = new GZipInputStream(dataStream))
+#endif
+                    {
+                        int length = (int)gzipInputStream.BaseStream.Length;
+                        if (length == 0)
+                            return new byte[0];
 
-                    MemoryStream zipoutStream = new MemoryStream ();
-                    gzipInputStream.CopyTo (zipoutStream);
-                    outputBytes = zipoutStream.ToArray ();
+                        outputBytes = new byte[length];
+                        gzipInputStream.Read(outputBytes, 0, length);
+
+                    }
                 } 
                 catch (Exception exc) 
                 {
@@ -101,12 +107,12 @@ namespace CocosSharp
                     try {
                         using (var deflateStream = new ZlibStream (dataStream, MonoGame.Utilities.CompressionMode.Decompress)) 
                         {
-                            using (MemoryStream zipoutStream = new MemoryStream ()) 
-                            {
-                                deflateStream.CopyTo (zipoutStream);
-                                outputBytes = zipoutStream.ToArray ();
-                            }
+                            int length = (int)deflateStream.BufferSize;
+                            if (length == 0)
+                                return new byte[0];
 
+                            outputBytes = new byte[length];
+                            deflateStream.Read(outputBytes, 0, length);
                         }
                     } 
                     catch (Exception exc) 
@@ -124,15 +130,19 @@ namespace CocosSharp
 
                 try 
                 {
-                    #if !WINDOWS_PHONE
-                    var gzipInputStream = new GZipInputStream (dataStream, System.IO.Compression.CompressionMode.Decompress);
-                    #else
-                    var gzipInputStream = new GZipInputStream(dataStream);
-                    #endif
+#if !WINDOWS_PHONE
+                    using (var gzipInputStream = new GZipInputStream(dataStream, System.IO.Compression.CompressionMode.Decompress))
+#else
+                    using (var gzipInputStream = new GZipInputStream(dataStream))
+#endif
+                    {
+                        int length = (int)gzipInputStream.BaseStream.Length;
+                        if (length == 0)
+                            return new byte[0];
 
-                    MemoryStream zipoutStream = new MemoryStream ();
-                    gzipInputStream.CopyTo (zipoutStream);
-                    outputBytes = zipoutStream.ToArray ();
+                        outputBytes = new byte[length];
+                        gzipInputStream.Read(outputBytes, 0, length);
+                    }
                 } 
                 catch (Exception exc) 
                 {
