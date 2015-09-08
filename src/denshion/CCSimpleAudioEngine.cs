@@ -268,10 +268,13 @@ namespace CocosDenshion
                 {
                     if (list.ContainsKey(fxid))
                     {
-                        list[fxid].Play(bLoop);
-                        if (bLoop)
+                        lock (loopedSounds)
                         {
-                            loopedSounds[fxid] = fxid;
+                            list[fxid].Play(bLoop);
+                            if (bLoop)
+                            {
+                                loopedSounds[fxid] = fxid;
+                            }
                         }
                     }
                 }
@@ -297,10 +300,13 @@ namespace CocosDenshion
                 {
                     if (list.ContainsKey(nId))
                     {
-                        list[nId].Play(loop);
-                        if (loop)
+                        lock (loopedSounds)
                         {
-                            loopedSounds[nId] = nId;
+                            list[nId].Play(loop);
+                            if (loop)
+                            {
+                                loopedSounds[nId] = nId;
+                            }
                         }
                     }
                 }
