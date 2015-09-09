@@ -187,7 +187,7 @@ namespace CocosSharp
         void accelerometer_CurrentValueChanged(object sender, SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
 
-#if ANDROID
+#if ANDROID || IOS
             var sensorReading = e.SensorReading.Acceleration;
 #elif WINDOWS_PHONE8
             // We have to use reflection to get the Vector3 value out of Acceleration
