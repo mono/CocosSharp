@@ -337,6 +337,9 @@ namespace tests
 			// Create our Accelerometer Listener
 			var listener = new CCEventListenerAccelerometer();
 
+            if (!Window.Accelerometer.Enabled)
+                Window.Accelerometer.Enabled = true;
+
 			// We will use Lambda expressions to attach the event process
 			listener.OnAccelerate = (acceleration) => {
 				var ballSize  = sprite.ContentSize;
@@ -346,21 +349,22 @@ namespace tests
                 var orientation = Application.CurrentOrientation;
 
 				//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
-				#if ANDROID || WINDOWS_PHONE8
-				if (orientation == CCDisplayOrientation.LandscapeRight)
-				{
-					ptNow.X -= (float) acc.X * 9.81f;
-					ptNow.Y -= (float) acc.Y * 9.81f;
-				}
-				else
-				{
-					ptNow.X += (float)acc.X * 9.81f;
-					ptNow.Y += (float)acc.Y * 9.81f;
-				}
-				#else
-				ptNow.X += (float)acc.X * 9.81f;
-				ptNow.Y += (float)acc.Y * 9.81f;
-				#endif
+                if (orientation == CCDisplayOrientation.LandscapeRight || orientation == CCDisplayOrientation.LandscapeLeft)
+                {
+
+#if ANDROID
+            
+                ptNow.X += (float) acc.Y * 9.81f;
+                ptNow.Y -= (float) acc.X * 9.81f;
+
+#elif NETFX_CORE || WINDOWS_PHONE8
+                    ptNow.X -= (float)acc.Y * 9.81f;
+                    ptNow.Y += (float)acc.X * 9.81f;
+#else
+                ptNow.X += (float)acc.X * 9.81f;
+                ptNow.Y += (float)acc.Y * 9.81f;
+#endif
+                }
                 ptNow.X = MathHelper.Clamp(ptNow.X, (float)(visibleBounds.Origin.X+ballSize.Width / 2.0), (float)(visibleBounds.Origin.X + visibleBounds.Size.Width - ballSize.Width / 2.0));
                 ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(visibleBounds.Origin.Y+ballSize.Height / 2.0), (float)(visibleBounds.Origin.Y + visibleBounds.Size.Height - ballSize.Height / 2.0));
 				sprite.Position = ptNow;
