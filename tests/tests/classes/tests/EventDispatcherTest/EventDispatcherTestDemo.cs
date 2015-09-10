@@ -360,9 +360,9 @@ namespace tests
 #elif NETFX_CORE || WINDOWS_PHONE8
                     ptNow.X -= (float)acc.Y * 9.81f;
                     ptNow.Y += (float)acc.X * 9.81f;
-#else
-                ptNow.X += (float)acc.X * 9.81f;
-                ptNow.Y += (float)acc.Y * 9.81f;
+#elif IOS
+                    ptNow.X += (float)acc.Y * 9.81f;
+                    ptNow.Y -= (float)acc.X * 9.81f;
 #endif
                 }
                 ptNow.X = MathHelper.Clamp(ptNow.X, (float)(visibleBounds.Origin.X+ballSize.Width / 2.0), (float)(visibleBounds.Origin.X + visibleBounds.Size.Width - ballSize.Width / 2.0));

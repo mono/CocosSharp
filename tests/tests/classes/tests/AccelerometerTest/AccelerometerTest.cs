@@ -102,7 +102,7 @@ namespace tests
             if (accelEvent.Acceleration.X == 0.0f && accelEvent.Acceleration.Y == 0.0f)
                 return;
 
-            //CCLog.Log("Orientation: {0}", orientation);
+            CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelEvent.Acceleration.X, accelEvent.Acceleration.Y, accelEvent.Acceleration.Z, orientation );
             if (orientation == CCDisplayOrientation.LandscapeRight || orientation == CCDisplayOrientation.LandscapeLeft)
             {
 
@@ -114,9 +114,9 @@ namespace tests
 #elif NETFX_CORE || WINDOWS_PHONE8
                 ptTemp.X -= (float) accelEvent.Acceleration.Y * 9.81f;
                 ptTemp.Y -= (float) accelEvent.Acceleration.X * 9.81f;
-#else
-                ptTemp.X += (float)accelEvent.Acceleration.X * 9.81f;
-                ptTemp.Y += (float)accelEvent.Acceleration.Y * 9.81f;
+#elif IOS
+                ptTemp.X += (float)accelEvent.Acceleration.Y * 9.81f;
+                ptTemp.Y += (float)accelEvent.Acceleration.X * 9.81f;
 #endif
             }
 
