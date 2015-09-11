@@ -6,6 +6,9 @@ using System.Reflection;
 
 #if NETFX_CORE
 using Windows.Devices.Sensors;
+#elif IOS
+using CoreMotion;
+using Foundation;
 #elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
 using Microsoft.Devices.Sensors;
 #endif
@@ -23,8 +26,10 @@ namespace CocosSharp
     public class CCAccelerometer
     {
 
-        
-#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
+        static CoreMotion.CMMotionManager accelerometer = null;
+
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
         // the accelerometer sensor on the device
         static Accelerometer accelerometer = null;
 #endif
@@ -57,7 +62,25 @@ namespace CocosSharp
                 enabled = value;
                 if (enabled && !Active)
                 {
-#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
+                    try
+                    {
+                        if (accelerometer.AccelerometerAvailable)
+                        {
+                            accelerometer.StartAccelerometerUpdates();
+                            Active = true;
+
+                        }
+                        else
+                        {
+                            Active = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Active = false;
+                    }
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
                     try
                     {
                         if(Accelerometer.IsSupported)
@@ -75,8 +98,8 @@ namespace CocosSharp
                     {
                         Active = false;
                     }
-#endif
-#if NETFX_CORE
+
+#elif NETFX_CORE
                     try
                     {
                         if(accelerometer != null)
@@ -109,13 +132,18 @@ namespace CocosSharp
                 {
                     if (Active && !Emulating)
                     {
-                        #if !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
+                    if (accelerometer != null)
+                    {
+                        accelerometer.StopAccelerometerUpdates();
+                    }
+#elif !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
                         if (accelerometer != null)
                         {
                             accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
                             accelerometer.Stop();
                         }
-                        #endif
+#endif
 #if NETFX_CORE
                         if (accelerometer != null)
                         {
@@ -141,7 +169,10 @@ namespace CocosSharp
         {
             Window = window;
 
-            #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
+            accelerometer = new CoreMotion.CMMotionManager();
+            //accelerometer.AccelerometerUpdateInterval = 60f;
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
             try
             {
                 accelerometer = new Accelerometer();
@@ -151,8 +182,8 @@ namespace CocosSharp
                 CCLog.Log(ex.ToString());
                 CCLog.Log("No accelerometer on platform. CCAccelerometer will default to emulation code.");
             }
-            #endif
-#if NETFX_CORE
+
+#elif NETFX_CORE
             accelerometer = Accelerometer.GetDefault();
 #endif
         }
@@ -183,7 +214,7 @@ namespace CocosSharp
 
 #endif
 
-#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !IOS
         void accelerometer_CurrentValueChanged(object sender, SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
 
@@ -257,6 +288,22 @@ namespace CocosSharp
                     accelerationValue.TimeStamp = DateTime.UtcNow.Ticks;
                 }
 
+#if IOS
+            if (accelerometer.AccelerometerAvailable)
+            {
+                var accelerometerData = accelerometer.AccelerometerData;
+            
+                // The accelerometer data is optional and may be null at times even though AccelerometerAvailable is true. 
+                if (accelerometerData != null)
+                {
+                    var acceleration = accelerometerData.Acceleration;
+                    accelerationValue.X = acceleration.X;
+                    accelerationValue.Y = acceleration.Y;
+                    accelerationValue.Z = acceleration.Z;
+                }
+            }
+
+#endif
                 accelerateEvent.Acceleration = accelerationValue;
                 dispatcher.DispatchEvent (accelerateEvent);
             }
