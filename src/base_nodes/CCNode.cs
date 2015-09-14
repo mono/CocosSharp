@@ -792,7 +792,7 @@ namespace CocosSharp
 
         internal CCDrawManager DrawManager 
         {
-            get { return GameView != null ? GameView.DrawManager : null; }
+            get { return GameView != null ? GameView.DrawManager : CCDrawManager.SharedDrawManager; }
         }
 
         internal virtual CCEventDispatcher EventDispatcher 
