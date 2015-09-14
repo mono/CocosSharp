@@ -218,9 +218,9 @@ namespace tests
 
     public class DrawPrimitivesTest : BaseDrawNodeTest
     {
-        protected override void VisitRenderer(ref CCAffineTransform worldTransform)
+        public DrawPrimitivesTest() : base()
         {
-            Renderer.AddCommand(new CCCustomCommand(worldTransform.Tz, worldTransform, RenderDrawPrimTest));
+            RenderDrawPrimTest ();
         }
 
         void RenderDrawPrimTest()
@@ -229,73 +229,52 @@ namespace tests
 
             var visibleRect = VisibleBoundsWorldspace;
 
-            CCDrawingPrimitives.Begin();
+            CCDrawNode drawNode = new CCDrawNode ();
 
 
-			// *NOTE* Using the Director.ContentScaleFactor for now until we work something out with the initialization
-			// CCDrawPriitives should be able to do this converstion themselves.
+            // *NOTE* Using the Director.ContentScaleFactor for now until we work something out with the initialization
+            // CCDrawPriitives should be able to do this converstion themselves.
 
-			// draw a simple line
-			// The default state is:
-			// Line Width: 1
-			// color: 255,255,255,255 (white, non-transparent)
-			// Anti-Aliased
-			//  glEnable(GL_LINE_SMOOTH);
-			CCDrawingPrimitives.LineWidth = 1 ;
-            CCDrawingPrimitives.DrawLine(visibleRect.LeftBottom(), visibleRect.RightTop());
+            // draw a simple line
+            // The default state is:
+            // Line Width: 1
+            // color: 255,255,255,255 (white, non-transparent)
+            // Anti-Aliased
+            //  glEnable(GL_LINE_SMOOTH);
+            float lineWidth = 1.0f;
+            CCColor4B lineColor = CCColor4B.White;
+            drawNode.DrawLine(visibleRect.LeftBottom(), visibleRect.RightTop(), lineWidth);
 
-			// line: color, width, aliased
-			CCDrawingPrimitives.LineWidth = 5 ;
-			CCDrawingPrimitives.DrawColor = CCColor4B.Red;
-            CCDrawingPrimitives.DrawLine(visibleRect.LeftTop(), visibleRect.RightBottom());
+            // line: color, width, aliased
+            lineWidth = 5.0f ;
+            lineColor = CCColor4B.Red;
+            drawNode.DrawLine(visibleRect.LeftTop (), visibleRect.RightBottom (), lineWidth, lineColor);
 
-			// TIP:
-			// If you are going to use always thde same color or width, you don't
-			// need to call it before every draw
-			//
+            // TIP:
+            // If you are going to use always thde same color or width, you don't
+            // need to call it before every draw
+            //
 
-			// draw big point in the center
-			CCDrawingPrimitives.PointSize = 64 ;
-			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 0, 255, 128);
-            CCDrawingPrimitives.DrawPoint(visibleRect.Center());
+            // draw big point in the center
+
+            drawNode.DrawSolidCircle(visibleRect.Center(), 64.0f, new CCColor4B(0, 0, 255, 128));
 
             // draw 4 small points
-			CCPoint[] points = {new CCPoint(60, 60), new CCPoint(70, 70), new CCPoint(60, 70), new CCPoint(70, 60)};
-
-			CCDrawingPrimitives.PointSize = 8 ;
-			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 255, 255, 255);
-            CCDrawingPrimitives.DrawPoints(points);
+            CCPoint[] points = {new CCPoint(60, 60), new CCPoint(70, 70), new CCPoint(60, 70), new CCPoint(70, 60)};
+            foreach (CCPoint point in points)
+            {
+                drawNode.DrawSolidCircle (point, 8.0f, new CCColor4B (0, 255, 255, 255));
+            }
 
             // draw a green circle with 10 segments
-			CCDrawingPrimitives.LineWidth = 16 ;
-			CCDrawingPrimitives.DrawColor = CCColor4B.Green;
-            CCDrawingPrimitives.DrawCircle(visibleRect.Center, 100, 0, 10, false);
+            drawNode.DrawCircle(visibleRect.Center, 100.0f, 10, CCColor4B.Green);
 
-
-            // draw a green circle with 50 segments with line to center
-			CCDrawingPrimitives.LineWidth = 2 ;
-			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 255, 255, 255);
-            CCDrawingPrimitives.DrawCircle(visibleRect.Center, 50, CCMacros.CCDegreesToRadians(45), 50, true);
-
-
-			// draw a pink solid circle with 50 segments
-			CCDrawingPrimitives.LineWidth = 2 ;
-			CCDrawingPrimitives.DrawColor = new CCColor4B(255, 0, 255, 255);
-            CCDrawingPrimitives.DrawSolidCircle(visibleRect.Center + new CCPoint(140, 0), 40, CCMacros.CCDegreesToRadians(90), 50);
-
-
-            // draw an arc within rectangular region
-			CCDrawingPrimitives.LineWidth = 5 ;
-            CCDrawingPrimitives.DrawArc(new CCRect(200, 100, 100, 200), 0, 180, CCColor4B.AliceBlue);
+            // draw an arc
+            drawNode.DrawSolidArc(visibleRect.Center, 10.0f, 0, 180, CCColor4B.AliceBlue);
 
             // draw an ellipse within rectangular region
-			CCDrawingPrimitives.DrawEllipse(new CCRect(100, 100, 100, 200), CCColor4B.Red);
+            drawNode.DrawEllipse(new CCRect(100, 100, 100, 200), 10.0f, CCColor4B.Red);
 
-            // draw an arc within rectangular region
-            CCDrawingPrimitives.DrawPie(new CCRect(350, 0, 100, 100), 20, 100, CCColor4B.AliceBlue);
-
-            // draw an arc within rectangular region
-            CCDrawingPrimitives.DrawPie(new CCRect(347, -5, 100, 100), 120, 260, CCColor4B.Aquamarine);
 
             // open yellow poly
             CCPoint[] vertices =
@@ -303,38 +282,23 @@ namespace tests
                 new CCPoint(0, 0), new CCPoint(50, 50), new CCPoint(100, 50), new CCPoint(100, 100),
                 new CCPoint(50, 100)
             };
-			CCDrawingPrimitives.LineWidth = 10 ;
-			CCDrawingPrimitives.DrawColor = CCColor4B.Yellow;
-            CCDrawingPrimitives.DrawPoly(vertices, 5, false, new CCColor4B(255, 255, 0, 255));
-
-
-			// filled poly
-			CCDrawingPrimitives.LineWidth = 1 ;
-			CCPoint[] filledVertices =
-            {
-                new CCPoint(0, 120), new CCPoint(50, 120), new CCPoint(50, 170),
-                new CCPoint(25, 200), new CCPoint(0, 170)
-            };
-			CCDrawingPrimitives.DrawSolidPoly(filledVertices, new CCColor4F(0.5f, 0.5f, 1, 1 ));
-
-			// closed purple poly
-			CCDrawingPrimitives.LineWidth = 2 ;
-			CCDrawingPrimitives.DrawColor = new CCColor4B(255, 0, 255, 255);
-			CCPoint[] vertices2 = {new CCPoint(30, 130), new CCPoint(30, 230), new CCPoint(50, 200)};
-			CCDrawingPrimitives.DrawPoly(vertices2, true);
-
+                
             // draw quad bezier path
-            CCDrawingPrimitives.DrawQuadBezier(new CCPoint(0, size.Height),
+            drawNode.DrawQuadBezier(
+                new CCPoint(0, size.Height),
                 visibleRect.Center,
                 (CCPoint)visibleRect.Size,
                 50,
+                10.0f,
                 new CCColor4B(255, 0, 255, 255));
 
             // draw cubic bezier path
-            CCDrawingPrimitives.DrawCubicBezier(visibleRect.Center,
+            drawNode.DrawCubicBezier(
+                visibleRect.Center,
                 new CCPoint(size.Width / 2 + 30, size.Height / 2 + 50),
                 new CCPoint(size.Width / 2 + 60, size.Height / 2 - 50),
-                new CCPoint(size.Width, size.Height / 2), 100);
+                new CCPoint(size.Width, size.Height / 2), 100, 10.0f,
+                new CCColor4B(255, 0, 255, 255));
 
             //draw a solid polygon
             CCPoint[] vertices3 =
@@ -342,26 +306,27 @@ namespace tests
                 new CCPoint(60, 160), new CCPoint(70, 190), new CCPoint(100, 190),
                 new CCPoint(90, 160)
             };
-			CCDrawingPrimitives.DrawSolidPoly(vertices3, 4, new CCColor4F(1,1,0,1));
 
-            CCDrawingPrimitives.End();
+            drawNode.DrawPolygon(vertices3, 4, new CCColor4F(1,1,0,1), 1.0f, new CCColor4F(1,1,0,1));
+
+            AddChild(drawNode);
         }
 
-		public override string Title
-		{
-			get
-			{
-				return "Draw Primitives";
-			}
-		}
+        public override string Title
+        {
+            get
+            {
+                return "Draw Primitives";
+            }
+        }
 
-		public override string Subtitle
-		{
-			get
-			{
-				return "Drawing Primitives. Use DrawNode instead";
-			}
-		}
+        public override string Subtitle
+        {
+            get
+            {
+                return "Drawing Primitives. Use DrawNode instead";
+            }
+        }
     }
 
     public class GeometryBatchTest1 : BaseDrawNodeTest
