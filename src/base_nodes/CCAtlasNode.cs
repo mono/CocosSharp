@@ -5,7 +5,9 @@ namespace CocosSharp
 {
     public class CCAtlasNode : CCNode, ICCTexture
     {
-    
+        CCQuadCommand quadCommand;
+
+
         #region Properties
 
         protected bool IsOpacityModifyRGB { get; set; }
@@ -125,14 +127,22 @@ namespace CocosSharp
 
             CalculateMaxItems();
             QuadsToDraw = itemsToRender;
+
+            quadCommand = new CCQuadCommand(QuadsToDraw);
         }
 
         #endregion Constructors
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
-            var quadsCommand = new CCQuadCommand(worldTransform.Tz, worldTransform, Texture, BlendFunc, QuadsToDraw, TextureAtlas.Quads.Elements);
-            Renderer.AddCommand(quadsCommand);
+            quadCommand.GlobalDepth = worldTransform.Tz;
+            quadCommand.WorldTransform = worldTransform;
+            quadCommand.Texture = Texture;
+            quadCommand.BlendType = BlendFunc;
+            quadCommand.QuadCount = QuadsToDraw;
+            quadCommand.Quads = TextureAtlas.Quads.Elements;
+
+            Renderer.AddCommand(quadCommand);
         }
 
         void CalculateMaxItems()
