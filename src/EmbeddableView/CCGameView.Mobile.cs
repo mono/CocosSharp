@@ -8,6 +8,7 @@ namespace CocosSharp
         static readonly TimeSpan TouchTimeLimit = TimeSpan.FromMilliseconds(1000);
 
         bool touchEnabled;
+        bool prevAccelerometerEnabled;
 
         Dictionary<int, CCTouch> touchMap;
         List<CCTouch> incomingNewTouches;
@@ -16,8 +17,6 @@ namespace CocosSharp
 
 
         #region Properties
-
-        public CCAccelerometer Accelerometer { get; set; }
 
         public bool TouchEnabled
         {
@@ -28,6 +27,8 @@ namespace CocosSharp
                 PlatformUpdateTouchEnabled();
             }
         }
+
+        public CCAccelerometer Accelerometer { get; private set; }
 
         #endregion Properties
 
@@ -42,9 +43,27 @@ namespace CocosSharp
             incomingReleaseTouches = new List<CCTouch>();
 
             TouchEnabled = true;
+
+            Accelerometer = new CCAccelerometer(this);
         }
 
         #endregion Initialisation
+
+
+        #region Accelerometer handling
+
+        public void MobilePlatformUpdatePaused()
+        {
+            if (Paused) 
+            {
+                prevAccelerometerEnabled = Accelerometer.Enabled;
+                Accelerometer.Enabled = false;
+            } 
+            else
+                Accelerometer.Enabled = prevAccelerometerEnabled;
+        }
+
+        #endregion Accelerometer handling
 
 
         #region Touch handling

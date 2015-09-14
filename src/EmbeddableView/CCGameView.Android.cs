@@ -169,7 +169,7 @@ namespace CocosSharp
 
         #region Run loop
 
-        public void PlatformUpdatePaused()
+        void PlatformUpdatePaused()
         {
             if (Paused)
             {
@@ -183,6 +183,8 @@ namespace CocosSharp
                 if (!IsFocused)
                     RequestFocus();
             }
+
+            MobilePlatformUpdatePaused();
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
