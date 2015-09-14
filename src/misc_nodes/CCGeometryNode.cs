@@ -47,9 +47,10 @@ namespace CocosSharp
             batchItemList.Clear();
         }
 
-        public CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies)
+        public CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies, PrimitiveType primitiveType = PrimitiveType.TriangleList)
         {
             var item = new CCGeometryInstance();
+            item.InstanceAttributes.PrimitiveType = primitiveType;
 
             if (item.GeometryPacket.Vertices.Length < numberOfVertices) 
                 item.GeometryPacket.Vertices = new CCV3F_C4B_T2F[numberOfVertices];
