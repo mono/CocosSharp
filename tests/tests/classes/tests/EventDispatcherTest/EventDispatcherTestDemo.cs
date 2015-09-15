@@ -9,86 +9,40 @@ using Microsoft.Xna.Framework;
 namespace tests
 {
 
-
-	public enum EventDispatchTests
-	{
-		TOUCHABLE_SPRITE_TEST = 0,
-		FIXED_PRIORITY_TEST,
-		EVENT_MOUSE,
-		TEST_LABEL_KEYBOARD,
-		TEST_ACCELEROMETER,
-		TEST_CUSTOM_EVENT,
-		TEST_REMOVE_RETAIN_NODE,
-		TEST_REMOVE_AFTER_ADDING,
-		TEST_DIRECTOR,
-		TEST_GLOBAL_Z_TOUCH,
-		TEST_PAUSE_RESUME,
-		TEST_REMOVE_ALL,
-		TEST_SMOOTH_FOLLOW,
-		TEST_STOP_PROPAGATION,
-		TEST_CASE_COUNT
-	};
-
 	// the class inherit from TestScene
 	// every Scene each test used must inherit from TestScene,
 	// make sure the test have the menu item for back to main menu
 	public class EventDispatcherTestScene : TestScene
 	{
 		public static int sceneIndex = -1;
+        public static int MaxTests;
+
+        public EventDispatcherTestScene()
+        {
+            MaxTests = eventDispatcherTestFunctions.Count;
+        }
+
+        static List<Func<CCLayer>> eventDispatcherTestFunctions = new List<Func<CCLayer>> ()
+            {
+                () => new TouchableSpriteTest(),
+                () => new FixedPriorityTest(),
+                () => new MouseEventTest(),
+                () => new LabelKeyboardEventTest(),
+                () => new SpriteAccelerationEventTest(),
+                () => new CustomEventTest(),
+                () => new RemoveAndRetainNodeTest(),
+                () => new RemoveListenerAfterAddingTest(),
+                () => new DirectorTest(),
+                () => new GlobalZTouchTest(),
+                () => new PauseResumeTest(),
+                () => new RemoveAllTest(),
+                () => new SmoothFollowTest(),
+                () => new StopPropagationTest(),
+            };
 
 		public static CCLayer CreateLayer(int index)
 		{
-			CCLayer testLayer = null;
-
-			switch (index)
-			{
-			case (int) EventDispatchTests.TOUCHABLE_SPRITE_TEST:
-				testLayer = new TouchableSpriteTest();
-				break;
-			case (int) EventDispatchTests.FIXED_PRIORITY_TEST:
-				testLayer = new FixedPriorityTest();
-				break;
-			case (int) EventDispatchTests.EVENT_MOUSE:
-				testLayer = new MouseEventTest();
-				break;
-			case (int) EventDispatchTests.TEST_LABEL_KEYBOARD:
-				testLayer = new LabelKeyboardEventTest();
-				break;
-			case (int) EventDispatchTests.TEST_ACCELEROMETER:
-				testLayer = new SpriteAccelerationEventTest();
-				break;
-			case (int) EventDispatchTests.TEST_CUSTOM_EVENT:
-				testLayer = new CustomEventTest();
-				break;
-			case (int) EventDispatchTests.TEST_REMOVE_RETAIN_NODE:
-				testLayer = new RemoveAndRetainNodeTest();
-				break;
-			case (int) EventDispatchTests.TEST_REMOVE_AFTER_ADDING:
-				testLayer = new RemoveListenerAfterAddingTest();
-				break;
-			case (int) EventDispatchTests.TEST_DIRECTOR:
-				testLayer = new DirectorTest();
-				break;
-			case (int) EventDispatchTests.TEST_GLOBAL_Z_TOUCH:
-				testLayer = new GlobalZTouchTest();
-				break;
-			case (int) EventDispatchTests.TEST_PAUSE_RESUME:
-				testLayer = new PauseResumeTest();
-				break;
-			case (int) EventDispatchTests.TEST_REMOVE_ALL:
-				testLayer = new RemoveAllTest();
-				break;
-			case (int) EventDispatchTests.TEST_SMOOTH_FOLLOW:
-				testLayer = new SmoothFollowTest();
-				break;
-			case (int) EventDispatchTests.TEST_STOP_PROPAGATION:
-				testLayer = new StopPropagationTest();
-				break;
-			default:
-				break;
-			}
-
-			return testLayer;
+            return eventDispatcherTestFunctions[index]();
 		}
 
 		protected override void NextTestCase()
@@ -107,7 +61,7 @@ namespace tests
 		public static CCLayer NextAction()
 		{
 			++sceneIndex;
-			sceneIndex = sceneIndex % (int)EventDispatchTests.TEST_CASE_COUNT;
+			sceneIndex = sceneIndex % MaxTests;
 
 			var testLayer = CreateLayer(sceneIndex);
 
@@ -118,7 +72,7 @@ namespace tests
 		{
 			--sceneIndex;
 			if (sceneIndex < 0)
-				sceneIndex += (int)EventDispatchTests.TEST_CASE_COUNT;
+				sceneIndex += MaxTests;
 
 			var testLayer = CreateLayer(sceneIndex);
 
