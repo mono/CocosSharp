@@ -127,7 +127,7 @@ namespace CocosSharp
                     lastTexture = textureExists ? geometryPacket.Texture.XNATexture : null;
                     lastAttributes = geometry.InstanceAttributes;
                     DrawManager.XnaGraphicsDevice.Textures[0] = lastTexture;
-                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : null;
+                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : SamplerState.LinearClamp;
                 }
 
                 int[] itemIndicies = geometryPacket.Indicies;
