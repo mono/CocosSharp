@@ -593,6 +593,7 @@
     <Compile Include="classes\controller.cs" />
     <Compile Include="classes\AppDelegate.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlColourPickerTest.cs" />
+    <Compile Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -2122,7 +2123,6 @@
     <AndroidAsset Include="Assets\Content\TileMaps\desert-palace-multi-tileset.xnb" />
     <AndroidAsset Include="Assets\Content\TileMaps\people.xnb" />
     <None Include="classes\tests\DeviceTest\OrientationTest.cs" />
-    <None Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
     <None Include="classes\tests\TextInputTest\CustomIME\Android\UppercaseIMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup>
