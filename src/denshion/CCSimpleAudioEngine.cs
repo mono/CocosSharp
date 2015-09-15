@@ -340,16 +340,13 @@ namespace CocosDenshion
 
         public void StopAllLoopingEffects()
         {
-            lock (loopedSounds)
+            if (loopedSounds.Count > 0)
             {
-                if (loopedSounds.Count > 0)
+                int[] a = new int[loopedSounds.Keys.Count];
+                loopedSounds.Keys.CopyTo(a, 0);
+                foreach (int key in a)
                 {
-                    int[] a = new int[loopedSounds.Keys.Count];
-                    loopedSounds.Keys.CopyTo(a, 0);
-                    foreach (int key in a)
-                    {
-                        StopEffect(key);
-                    }
+                    StopEffect(key);
                 }
             }
         }
