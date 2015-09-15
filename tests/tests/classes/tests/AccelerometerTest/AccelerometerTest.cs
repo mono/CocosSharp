@@ -99,22 +99,22 @@ namespace tests
             CCPoint ptNow = ball.PositionWorldspace;
             CCPoint ptTemp = Layer.WorldToScreenspace(ptNow);
 
-            var orientation = Application.CurrentOrientation;
+            //var orientation = Application.CurrentOrientation;
 
             if (accelEvent.Acceleration.X == 0.0f && accelEvent.Acceleration.Y == 0.0f)
                 return;
 
             #if ANDROID || WINDOWS_PHONE8
-            if (orientation == CCDisplayOrientation.LandscapeRight)
-            {
-                ptTemp.X -= (float) accelEvent.Acceleration.X * 9.81f;
-                ptTemp.Y -= (float) accelEvent.Acceleration.Y * 9.81f;
-            }
-            else
-            {
+//            if (orientation == CCDisplayOrientation.LandscapeRight)
+//            {
+//                ptTemp.X -= (float) accelEvent.Acceleration.X * 9.81f;
+//                ptTemp.Y -= (float) accelEvent.Acceleration.Y * 9.81f;
+//            }
+//            else
+//            {
                 ptTemp.X += (float) accelEvent.Acceleration.X * 9.81f;
                 ptTemp.Y += (float) accelEvent.Acceleration.Y * 9.81f;
-            }
+//            }
             #else
             ptTemp.X += (float)accelEvent.Acceleration.X * 9.81f;
             ptTemp.Y += (float)accelEvent.Acceleration.Y * 9.81f;
