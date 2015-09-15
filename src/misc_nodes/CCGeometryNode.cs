@@ -120,14 +120,14 @@ namespace CocosSharp
 
                 if (shouldFlush)
                 {
-                    FlushVertexArray(geometry.InstanceAttributes, numberOfVertices, numberOfIndices);
+                    FlushVertexArray(lastAttributes, numberOfVertices, numberOfIndices);
                     numberOfVertices = 0;
                     numberOfIndices = 0;
                     bool textureExists = (geometryPacket.Texture != null);
                     lastTexture = textureExists ? geometryPacket.Texture.XNATexture : null;
                     lastAttributes = geometry.InstanceAttributes;
                     DrawManager.XnaGraphicsDevice.Textures[0] = lastTexture;
-                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : SamplerState.LinearClamp;
+                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : SamplerState.PointClamp;
                 }
 
                 int[] itemIndicies = geometryPacket.Indicies;
@@ -151,6 +151,7 @@ namespace CocosSharp
 
             var texture = DrawManager.XnaGraphicsDevice.Textures[0] as Texture2D;
 
+            var numberIndices = instance.PrimitiveType == PrimitiveType.TriangleList ? numberOfIndices / 3 : numberOfIndices / 2;
             DrawManager.XnaGraphicsDevice.BlendState = instance.BlendState;
             basicEffect.Projection = DrawManager.ProjectionMatrix;
             basicEffect.View = DrawManager.ViewMatrix;
@@ -164,7 +165,7 @@ namespace CocosSharp
                 basicEffect.GraphicsDevice.DrawUserIndexedPrimitives(
                     instance.PrimitiveType,
                     verticesArray.Elements, 0, numberOfVerticies,
-                    indicesArray.Elements, 0, numberOfIndices / 3);
+                    indicesArray.Elements, 0, numberIndices);
             }
 
         }
