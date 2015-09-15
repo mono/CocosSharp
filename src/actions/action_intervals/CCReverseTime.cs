@@ -46,6 +46,7 @@ namespace CocosSharp
         protected internal override void Stop ()
         {
             OtherState.Stop ();
+            base.Stop();
         }
 
         public override void Update (float time)
