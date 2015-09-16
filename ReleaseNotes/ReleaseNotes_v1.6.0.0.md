@@ -20,10 +20,6 @@ To enable this you will create an instance of `CCTextField` and add it as a chil
                     22,
                     CCLabelFormat.SpriteFont);
     
-                textField.Position = s.Center;
-    
-                textField.AutoEdit = true;
-    
                 AddChild(textField);
     
 
@@ -125,8 +121,8 @@ View the [CocosSharp Content Pipeline introduction](https://developer.xamarin.co
 
 This also includes changes to the PCL profiles that are supported.  If you have problems updating your PCL projects you will need to update the profile to include Windows 8.1 or the NuGet package will not install.
 
-Mac - .NETPortable Version=v4.5 Profile=Profile111
-Windows - .NETPortable Version=v4.5 Profile=Profile138
+* Mac - .NETPortable Version=v4.5 Profile=Profile111
+* Windows - .NETPortable Version=v4.5 Profile=Profile138
 
 ### SharpDX updates
 
