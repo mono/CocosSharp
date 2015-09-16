@@ -88,8 +88,8 @@ CCLabel is now supported on Windows Phone 8.1.  There were multiple problems acr
 
 ### Release Contributors
 
-Alex Sorokoletov - Fixed Windows Phone 8.1 orientation, also provided valuable feedback on Windows Phone 8.1 CCLabel support.
-Vincent Dondain - Upgrade of CocosSharp Xamarin Studio templates to use the new project wizard pages.
+* Alex Sorokoletov - Fixed Windows Phone 8.1 orientation, also provided valuable feedback on Windows Phone 8.1 CCLabel support.
+* Vincent Dondain - Upgrade of CocosSharp Xamarin Studio templates to use the new project wizard pages.
 
 
 
