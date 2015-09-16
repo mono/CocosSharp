@@ -86,12 +86,18 @@ There were a few problems with CocosSharp's statistics not working correctly acr
 
 CCLabel is now supported on Windows Phone 8.1.  There were multiple problems across devices were it did not work at all and are now fixed in this release.  
 
+### Accelerometer
+
+Support for accelerometer was added in this release for Windows Phone 8.1 and Windows 8.1.  
+
+Also, just as a side note there was also a fix for iOS accelerometer [305](https://github.com/mono/CocosSharp/issues/305) [IOS] Accelerometer not responding.  It has popped up from time to time as a problem but the source of the problem was never tracked down until recently.  Read commit note for more information.
+
+
 ### Release Contributors
 
 * Alex Sorokoletov - Fixed Windows Phone 8.1 orientation, also provided valuable feedback on Windows Phone 8.1 CCLabel support.
 * Vincent Dondain - Upgrade of CocosSharp Xamarin Studio templates to use the new project wizard pages.
-
-
+* Marius Ungureanu - Memory leaks and performance changes. 
 
 ## Breaking changes
  ---
@@ -148,7 +154,7 @@ Ran into this obscure problem with only Visual Studio 2015 installed on Windows 
 * [299](https://github.com/mono/CocosSharp/pull/299) Fix memory leak on Win-based systems when loading Tiffs.
 * [298](https://github.com/mono/CocosSharp/issues/298) Windows 8.1/WinRT/XAML platforms do not use the search paths to load .TTF fonts.
 * [297](https://github.com/mono/CocosSharp/pull/297) Add nowarn on CS1591 for cleaner output.
-* [296](https://github.com/mono/CocosSharp/pull/296) Fix memory overhead
+* [296](https://github.com/mono/CocosSharp/pull/296) Fix memory overhead - Thanks Marius Ungureanu
 * [295](https://github.com/mono/CocosSharp/issues/295) CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fontName, out fontName); cause too much memory overhead
 * [294](https://github.com/mono/CocosSharp/issues/294) Cross-platform PCL project errors out when referencing MonoGame.
 * [293](https://github.com/mono/CocosSharp/issues/293) Way to copy CCDrawNode or duplicate the line lists and triangle lists
