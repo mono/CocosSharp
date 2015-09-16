@@ -96,7 +96,7 @@ CCLabel is now supported on Windows Phone 8.1.  There were multiple problems acr
 ## Breaking changes
  ---
 
-### Windows 8.0 is not longer delivered in our NuGet packages.
+### Windows 8.0 is no longer supported in our NuGet packages.
 
 Due to the way NuGet packages it's support for netcore targets we can only provide one so Windows 8.0 support was replaced with Windows 8.1 assemblies.  For those relying on this support you can still compile from source and use the generated NuGets for Windows 8.0.
 
@@ -122,7 +122,19 @@ This also includes changes to the PCL profiles that are supported.  If you have 
 Mac - .NETPortable Version=v4.5 Profile=Profile111
 Windows - .NETPortable Version=v4.5 Profile=Profile138
 
-    
+### SharpDX updates
+
+This will only be a possible problem if you are referencing SharpDX in your own projects.  SharpDX was updated to the latest release across all platforms.
+
+### Note on Windows 10 and Visual Studio 2015
+
+There have been reports of difficulties getting MonoGame to compile on Visual Studio 2015 and Windows 10.  
+
+We had a few problems getting MonoGame and by proxy CocosSharp to compile with Windows 10 and VS2015.
+
+Ran into this obscure problem with only Visual Studio 2015 installed on Windows 10 - https://social.msdn.microsoft.com/Forums/sqlserver/en-US/8cb70b42-c45c-4d2c-989c-6affa2a88343/w81netcore-error-message-when-building-win81-app-on-win10?forum=wpdevelop which prevented any of the MonoGame projects to build on Visual Studio 2015. Even deleting the lock file it still showed the same problems. Thus ensued more uninstalls of VS and finally an install of VS 2013 community edition which still did not help. Turns out that you can not just do a repair or anything you have to un-install VS 2015 completely AND REBOOT the windows 10 then install VS 2015 from scratch WITH VS 2013 community edition ALREADY installed. Make sure the project.lock.json file is deleted and once all this dancing is done it looks like MG projects are able to be compiled and run.
+
+
 
 ## Fixes and enhancements 
  ---
