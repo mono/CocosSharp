@@ -65,8 +65,8 @@ There are also delegates that can be subscribed to that will notify the develope
 
 `CCTextField` Samples include:
 
-[TextField](https://github.com/mono/cocos-sharp-samples/tree/master/TextField) in CocosSharp Samples
-[TextFieldTest](https://github.com/mono/CocosSharp/tree/master/tests/tests/classes/tests/TextInputTest) in our tests.  
+* [TextField](https://github.com/mono/cocos-sharp-samples/tree/master/TextField) in CocosSharp Samples
+* [TextFieldTest](https://github.com/mono/CocosSharp/tree/master/tests/tests/classes/tests/TextInputTest) in our tests.  
 
 The tests also show an example of customizing how the text field works by implementing a [custom IMEImplementation](https://github.com/mono/CocosSharp/blob/master/tests/tests/classes/tests/TextInputTest/TextInputTest.cs#L556).
 
@@ -87,6 +87,16 @@ CCLabel is now supported on Windows Phone 8.1.  There were multiple problems acr
 Support for accelerometer was added in this release for Windows Phone 8.1 and Windows 8.1.  
 
 Also, just as a side note there was also a fix for iOS accelerometer [305](https://github.com/mono/CocosSharp/issues/305) [IOS] Accelerometer not responding.  It has popped up from time to time as a problem but the source of the problem was never tracked down until recently.  Read commit note for more information.
+
+### GUI Extensions
+
+Major overhaul of the [GUI extensions](https://github.com/mono/CocosSharp/tree/master/Extensions/GUI).  These have not been high priority so have been lagging behind.
+
+Notable improvements
+* All GUI elements now sport a new C# events interface.
+* Major overhaul of CCScale9Sprite to bring it up to current functionality and render correctly.
+* Removal of obsolete CCSpriteBatch where appropriate
+* All other elements are now rendering correctly based on [our tests](https://github.com/mono/CocosSharp/tree/master/tests/tests/classes/tests/ExtensionsTest).
 
 
 ### Release Contributors
