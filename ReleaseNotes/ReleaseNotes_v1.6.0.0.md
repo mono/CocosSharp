@@ -56,9 +56,11 @@ For instance to scroll the text field up the screen when editing begins and scro
 
 ### CCStats Enhancements
 
-There were a few problems with CocosSharp's statistics not working correctly across all platforms.  Big thanks to Václav Vančura for reworking the statistics for us and making it compatible across all platforms.
+There were a few problems with CocosSharp's statistics not working correctly across all platforms. New `CCStats` uses a new font with more characters, which allows us to display even short descriptions of the values.
 
-### Windows Phone 8.1 `CCLabel` 
+![](images/ccstats-2015-09-16.png)
+
+### Windows Phone 8.1 `CCLabel`
 
 CCLabel is now supported on Windows Phone 8.1.  There were multiple problems across devices were it did not work at all and are now fixed in this release.  
 
