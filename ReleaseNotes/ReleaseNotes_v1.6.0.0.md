@@ -54,6 +54,28 @@ For instance to scroll the text field up the screen when editing begins and scro
                 ((CCNode)sender).RunAction(scrollUp);
             }
 
+There are also delegates that can be subscribed to that will notify the developer of keyboard show and hide events:
+
+            void AttachListeners()
+            {
+                // Attach our listeners.
+                var imeImplementation = trackNode.TextFieldIMEImplementation;
+                imeImplementation.KeyboardDidHide += OnKeyboardDidHide;
+                imeImplementation.KeyboardDidShow += OnKeyboardDidShow;
+                imeImplementation.KeyboardWillHide += OnKeyboardWillHide;
+                imeImplementation.KeyboardWillShow += OnKeyboardWillShow;
+    
+            }
+
+`CCTextField` Samples include:
+
+[TextField](https://github.com/mono/cocos-sharp-samples/tree/master/TextField) in CocosSharp Samples
+[TextFieldTest](https://github.com/mono/CocosSharp/tree/master/tests/tests/classes/tests/TextInputTest) in our tests.  
+
+The tests also show an example of customizing how the text field works by implementing a [custom IMEImplementation](https://github.com/mono/CocosSharp/blob/master/tests/tests/classes/tests/TextInputTest/TextInputTest.cs#L556).
+
+
+
 ### CCStats Enhancements
 
 There were a few problems with CocosSharp's statistics not working correctly across all platforms. New `CCStats` uses a new font with more characters, which allows us to display even short descriptions of the values.
@@ -86,6 +108,19 @@ So if you have a project that used to work with .xnb formatted assets and after 
 
 View the [CocosSharp Content Pipeline introduction](https://developer.xamarin.com/guides/cross-platform/game_development/cocossharp/content_pipeline/)
 
+### Unified PCL NuGet changes
+
+*  iOS
+*  Android
+*  Windows DX
+*  Windows 8.1
+*  Windows Phone 8.1
+*  Windows Phone 8.0
+
+This also includes changes to the PCL profiles that are supported.  If you have problems updating your PCL projects you will need to update the profile to include Windows 8.1 or the NuGet package will not install.
+
+Mac - .NETPortable Version=v4.5 Profile=Profile111
+Windows - .NETPortable Version=v4.5 Profile=Profile138
 
     
 
