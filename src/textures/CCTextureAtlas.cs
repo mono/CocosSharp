@@ -219,7 +219,7 @@ namespace CocosSharp
 
         public void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
-            Debug.Assert(index >= 0 && index < Quads.Capacity, "updateQuadWithTexture: Invalid index");
+            Debug.Assert(index >= 0 && index <= Quads.Capacity, "updateQuadWithTexture: Invalid index");
             Quads.Count = Math.Max(index + 1, Quads.Count);
             Quads.Elements[index] = quad;
             Dirty = true;
