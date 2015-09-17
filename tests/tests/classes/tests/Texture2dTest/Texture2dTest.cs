@@ -1290,7 +1290,11 @@ namespace tests
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
-            var sprite = new CCSprite("Images/pattern1.png", new CCRect(0, 0, 4096, 4096));
+            var sprite = new CCSprite("Images/pattern1.png");
+            sprite.ContentSize = new CCSize(4096, 4096);
+            sprite.TextureRectInPixels = new CCRect(0, 0, 4096, 4096);
+
+
             AddChild(sprite, -1, (int) enumTag.kTagSprite1);
             sprite.Position = new CCPoint(size.Width / 2, size.Height / 2);
 
