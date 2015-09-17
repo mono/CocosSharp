@@ -87,8 +87,6 @@ namespace CocosSharp
                 if (TextFieldInFocus.CharacterCount > 0)
                     hiddenKeyInput.Text = TextFieldInFocus.Text;
 
-                //hiddenKeyInput.Delegate = this;
-
                 gameViewController.Add(hiddenKeyInput);
 
                 hiddenKeyInput.BecomeFirstResponder();
@@ -330,6 +328,14 @@ namespace CocosSharp
 
         #region TextField Delegate
 
+        public class HiddenInputDelegate : UITextFieldDelegate
+        {
+            public override bool ShouldChangeCharacters (UITextField textField, NSRange range, string replacementString)
+            {
+                textField.InsertText (replacementString);
+                return true;
+            }
+        }
 
         private class HiddenInput : UITextField
         {
@@ -358,7 +364,11 @@ namespace CocosSharp
             }
 
             public HiddenInput (CGRect frame) : base(frame)
-            {}
+            {
+
+                Delegate = new HiddenInputDelegate();
+
+            }
 
             public override void InsertText (string text)
             {
