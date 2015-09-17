@@ -15,9 +15,13 @@ namespace tests
 
         public OrientationTest()
         {
-            InitOrientationTest();
         }
 
+        public override void OnEnter ()
+        {
+            base.OnEnter ();
+            InitOrientationTest ();
+        }
 
         public static CCLayer CreateTestCaseLayer(int index)
         {
@@ -80,7 +84,7 @@ namespace tests
                 CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2,  NextCallback);
 
                 CCMenu menu = new CCMenu(item1, item2, item3);
-                menu.Position = new CCPoint();
+                menu.Position = s.Center;
                 item1.Position = new CCPoint(s.Width / 2 - 100, 30);
                 item2.Position = new CCPoint(s.Width / 2, 30);
                 item3.Position = new CCPoint(s.Width / 2 + 100, 30);
@@ -128,7 +132,13 @@ namespace tests
 
         public Orientation1()
         {
-            InitOrientation1();
+            
+        }
+
+        public override void OnEnter ()
+        {
+            base.OnEnter ();
+            InitOrientation1 ();
         }
 
         private bool InitOrientation1()
@@ -147,7 +157,7 @@ namespace tests
 
                 CCMenuItem item = new CCMenuItemFont("Rotate Device", RotateDevice);
                 CCMenu menu = new CCMenu(item);
-                menu.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                menu.Position = s.Center;
                 AddChild(menu);
 
                 bRet = true;
@@ -170,6 +180,8 @@ namespace tests
 				s_currentOrientation = CCDisplayOrientation.LandscapeLeft;
                 break;
             }
+
+            CCLog.Log (Window.CurrentDisplayOrientation.ToString());
             // CCDrawManager.SharedDrawManager.SetOrientation(s_currentOrientation);
         }
 
