@@ -81,7 +81,7 @@ namespace CocosSharp
         void ViewInit()
         {
             RenderOnUIThread = false;
-            AutoSetContextOnRenderFrame = false;
+            AutoSetContextOnRenderFrame = true;
             RenderThreadRestartRetries = 100;
             FocusableInTouchMode = true;
             ContextRenderingApi = GLVersion.ES2;
@@ -104,6 +104,8 @@ namespace CocosSharp
 
             screenLockHandler = new CCAndroidScreenReceiver(this);
             context.RegisterReceiver(screenLockHandler, filter);
+
+            Microsoft.Xna.Framework.Threading.GameView = this;
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
