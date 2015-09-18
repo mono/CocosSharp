@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.MacOS</id>
-    <version>1.6.0.0</version>
+    <version>1.6.1.0</version>
     <title>CocosSharp for MacOS</title>
     <authors>Xamarin Inc</authors>
     <owners>Xamarin Inc</owners>
@@ -11,7 +11,7 @@
     <iconUrl>http://github.com/mono/CocosSharp</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>CocosSharp is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
-	<releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.6.0.0.md</releaseNotes>
+	<releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.6.1.0.md</releaseNotes>
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d CocosSharp xna monogame 2D games visualization engine  macos apple</tags>
 
