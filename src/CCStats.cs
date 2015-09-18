@@ -227,7 +227,7 @@ namespace CocosSharp
                 }
 
                 if (isInitialized) {
-                    if (deltaAll > 0.5f) {
+                    if (deltaAll > 1.0f) {
                         var mem = GC.GetTotalMemory (false);
                         var upd = totalUpdateTime / updateCount;
                         var drw = totalDrawTime / totalDrawCount;
