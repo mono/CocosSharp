@@ -45,7 +45,7 @@ sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Tem
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Mobile/Template/WP81/EmptyProject.WP81.vstemplate 
 
 # Update Mobile Portable project NuGet version to be included in built Template
-sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/EmptyProject.Portable.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/Portable/EmptyProject.Portable.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/Android/EmptyProject.Android.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/iOS/EmptyProject.iOS.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/WP81/EmptyProject.WP81.vstemplate 
