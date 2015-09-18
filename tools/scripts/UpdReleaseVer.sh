@@ -38,6 +38,14 @@ sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../..
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/Template/EmptyProject.Win8XAML.vstemplate 
 sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
+# Update Windows Store 8.1 Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Windows81/Template/EmptyProject.Windows81.vstemplate 
+sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows81.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
+# Update Windows8.1 XAML Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Win81XAML/Template/EmptyProject.Win81XAML.vstemplate 
+sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows81.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
 # Update Windows GL Template NuGet version to be included in built Template
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
 sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
