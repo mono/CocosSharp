@@ -108,6 +108,7 @@ namespace CocosSharp
             {
                 actionStates [last].Stop ();
             }
+            base.Stop();
         }
 
         protected internal override void Step (float dt)

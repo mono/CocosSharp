@@ -1494,7 +1494,7 @@ namespace CocosSharp {
         public CCGeometryNode(int bufferSize=256) { }
         protected override void AddedToScene() { }
         public void ClearInstances() { }
-        public CocosSharp.CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies) { return default(CocosSharp.CCGeometryInstance); }
+        public CocosSharp.CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies, Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType=(Microsoft.Xna.Framework.Graphics.PrimitiveType)(0)) { return default(CocosSharp.CCGeometryInstance); }
         protected override void VisitRenderer(ref CocosSharp.CCAffineTransform worldTransform) { }
     }
     public partial class CCGeometryPacket {

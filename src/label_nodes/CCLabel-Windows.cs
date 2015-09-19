@@ -85,9 +85,11 @@ namespace CocosSharp
             if (fontFamily == null)
             {
                 _currentFontCollection = FactoryDWrite.GetSystemFontCollection(true);
-
-                CCLog.Log("{0} not found.  Defaulting to {1}.", fontName, GenericSanSerif().FontFamily.FamilyNames.GetString(0));
-                return GenericSanSerif();
+                var generic = GenericSanSerif();
+                CCLog.Log("{0} not found.  Defaulting to {1}.",
+                    fontName,
+                    generic != null ? generic.FontFamily.FamilyNames.GetString(0) : null);
+                return generic;
             }
 
             // This is generic right now.  We should be able to handle different styles in the future
@@ -96,7 +98,6 @@ namespace CocosSharp
             return font;
         }
 
-        //private string CreateFont(string fontName, float fontSize, CCRawList<char> charset)
         private Font CreateFont(string fontName, float fontSize)
         {
             Font _currentFont;
@@ -145,7 +146,9 @@ namespace CocosSharp
                     catch
                     {
                         _currentFont = GetFont(fontName, fontSize);
-                        CCLog.Log("{0} not found.  Defaulting to {1}.", fontName, _currentFont.FontFamily.FamilyNames.GetString(0));
+                        CCLog.Log("{0} not found.  Defaulting to {1}.", 
+                            fontName,
+                            _currentFont != null ? _currentFont.FontFamily.FamilyNames.GetString(0) : string.Empty);
                     }
                 }
                 else
@@ -217,9 +220,13 @@ namespace CocosSharp
             textDef.Dimensions.Width *= contentScaleFactorWidth;
             textDef.Dimensions.Height *= contentScaleFactorHeight;
 
-            bool hasPremultipliedAlpha;
-
             var font = CreateFont(textDef.FontName, textDef.FontSize);
+            if (font == null)
+            {
+                CCLog.Log("Can not create font {0} with size {1}.", textDef.FontName, textDef.FontSize);
+                return new CCTexture2D();
+            }
+
 
             var _currentFontSizeEm = textDef.FontSize;
             var _currentDIP = ConvertPointSizeToDIP(_currentFontSizeEm);

@@ -6,6 +6,11 @@ Cocos2D-X engine via Cocos2D-XNA.
 
 This library is MIT licensed.
 
+[![coverity][coverity-badge]][coverity-project]
+
+[coverity-project]: https://scan.coverity.com/projects/6245
+[coverity-badge]: https://scan.coverity.com/projects/6245/badge.svg
+
 Forums
 ------
 

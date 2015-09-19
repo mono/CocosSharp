@@ -24,9 +24,7 @@ namespace CocosSharp
 
         #region Properties
 
-        #if !NETFX_CORE
         public CCAccelerometer Accelerometer { get; set; }
-        #endif
 
         public bool GamePadEnabled { get; set; }
         public CCNode NotificationNode { get; set; }
@@ -132,9 +130,7 @@ namespace CocosSharp
             EventDispatcher = new CCEventDispatcher(this);
             Stats = new CCStats();
 
-            #if !NETFX_CORE
             Accelerometer = new CCAccelerometer(this);
-            #endif
 
             eventAfterDraw = new CCEventCustom(EVENT_AFTER_DRAW);
             eventAfterDraw.UserData = this;

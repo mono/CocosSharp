@@ -70,9 +70,8 @@ namespace tests
 
             ball.Position = windowSize.Center;
 
-#if !NETFX_CORE
             GameView.Accelerometer.Enabled = true;
-#endif
+
             // Register Touch Event
             var accelListener = new CCEventListenerAccelerometer();
 
@@ -97,30 +96,31 @@ namespace tests
             CCSize ballSize = ball.ContentSize;
 
             CCPoint ptNow = ball.PositionWorldspace;
-            CCPoint ptTemp = Layer.WorldToScreenspace(ptNow);
-
+            CCPoint ptTemp = WorldToScreenspace(ptNow);
             //var orientation = Application.CurrentOrientation;
 
             if (accelEvent.Acceleration.X == 0.0f && accelEvent.Acceleration.Y == 0.0f)
                 return;
 
-            #if ANDROID || WINDOWS_PHONE8
-//            if (orientation == CCDisplayOrientation.LandscapeRight)
-//            {
-//                ptTemp.X -= (float) accelEvent.Acceleration.X * 9.81f;
-//                ptTemp.Y -= (float) accelEvent.Acceleration.Y * 9.81f;
-//            }
-//            else
-//            {
-                ptTemp.X += (float) accelEvent.Acceleration.X * 9.81f;
-                ptTemp.Y += (float) accelEvent.Acceleration.Y * 9.81f;
-//            }
-            #else
-            ptTemp.X += (float)accelEvent.Acceleration.X * 9.81f;
-            ptTemp.Y += (float)accelEvent.Acceleration.Y * 9.81f;
-            #endif
+            //CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelEvent.Acceleration.X, accelEvent.Acceleration.Y, accelEvent.Acceleration.Z, orientation );
+            //if (orientation == CCDisplayOrientation.LandscapeRight || orientation == CCDisplayOrientation.LandscapeLeft)
+            //{
 
-            CCPoint ptNext = Layer.ScreenToWorldspace(ptTemp);
+#if ANDROID
+            
+                ptTemp.X += (float) accelEvent.Acceleration.Y * 9.81f;
+                ptTemp.Y += (float) accelEvent.Acceleration.X * 9.81f;
+
+#elif NETFX_CORE || WINDOWS_PHONE8
+                ptTemp.X -= (float) accelEvent.Acceleration.Y * 9.81f;
+                ptTemp.Y -= (float) accelEvent.Acceleration.X * 9.81f;
+#elif IOS
+                ptTemp.X += (float)accelEvent.Acceleration.Y * 9.81f;
+                ptTemp.Y += (float)accelEvent.Acceleration.X * 9.81f;
+#endif
+            //}
+
+            CCPoint ptNext = ScreenToWorldspace(ptTemp);
             ptNext.X = MathHelper.Clamp(ptNext.X, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
             ptNext.Y = MathHelper.Clamp(ptNext.Y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
             ball.Position = ball.WorldToParentspace(ptNext);

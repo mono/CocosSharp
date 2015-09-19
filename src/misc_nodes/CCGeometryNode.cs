@@ -47,9 +47,10 @@ namespace CocosSharp
             batchItemList.Clear();
         }
 
-        public CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies)
+        public CCGeometryInstance CreateGeometryInstance(int numberOfVertices, int numberOfIndicies, PrimitiveType primitiveType = PrimitiveType.TriangleList)
         {
             var item = new CCGeometryInstance();
+            item.InstanceAttributes.PrimitiveType = primitiveType;
 
             if (item.GeometryPacket.Vertices.Length < numberOfVertices) 
                 item.GeometryPacket.Vertices = new CCV3F_C4B_T2F[numberOfVertices];
@@ -119,14 +120,14 @@ namespace CocosSharp
 
                 if (shouldFlush)
                 {
-                    FlushVertexArray(geometry.InstanceAttributes, numberOfVertices, numberOfIndices);
+                    FlushVertexArray(lastAttributes, numberOfVertices, numberOfIndices);
                     numberOfVertices = 0;
                     numberOfIndices = 0;
                     bool textureExists = (geometryPacket.Texture != null);
                     lastTexture = textureExists ? geometryPacket.Texture.XNATexture : null;
                     lastAttributes = geometry.InstanceAttributes;
                     DrawManager.XnaGraphicsDevice.Textures[0] = lastTexture;
-                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : null;
+                    DrawManager.XnaGraphicsDevice.SamplerStates[0] = textureExists ? geometryPacket.Texture.SamplerState : SamplerState.PointClamp;
                 }
 
                 int[] itemIndicies = geometryPacket.Indicies;
@@ -150,6 +151,7 @@ namespace CocosSharp
 
             var texture = DrawManager.XnaGraphicsDevice.Textures[0] as Texture2D;
 
+            var numberIndices = instance.PrimitiveType == PrimitiveType.TriangleList ? numberOfIndices / 3 : numberOfIndices / 2;
             DrawManager.XnaGraphicsDevice.BlendState = instance.BlendState;
             basicEffect.Projection = DrawManager.ProjectionMatrix;
             basicEffect.View = DrawManager.ViewMatrix;
@@ -163,7 +165,7 @@ namespace CocosSharp
                 basicEffect.GraphicsDevice.DrawUserIndexedPrimitives(
                     instance.PrimitiveType,
                     verticesArray.Elements, 0, numberOfVerticies,
-                    indicesArray.Elements, 0, numberOfIndices / 3);
+                    indicesArray.Elements, 0, numberIndices);
             }
 
         }

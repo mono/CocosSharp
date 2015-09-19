@@ -28,22 +28,25 @@ namespace CocosSharp
         {
             this.factory = factory;
 
-            var fontBytes = Utilities.ReadStream(CCContentManager.SharedContentManager.GetAssetStream(fontFilePath));
-            var stream = new DataStream(fontBytes.Length, true, true);
-            stream.Write(fontBytes, 0, fontBytes.Length);
-            stream.Position = 0;
+            using (var assetStream = CCContentManager.SharedContentManager.GetAssetStream(fontFilePath))
+            {
+                var fontBytes = Utilities.ReadStream(assetStream);
+                var stream = new DataStream(fontBytes.Length, true, true);
+                stream.Write(fontBytes, 0, fontBytes.Length);
+                stream.Position = 0;
 
-            fontStreams.Add(new FileFontFileStream(stream));
+                fontStreams.Add(new FileFontFileStream(stream));
 
-            // Build a Key storage that stores the index of the font
-            keyStream = new DataStream(sizeof(int) * fontStreams.Count, true, true);
-            for (int i = 0; i < fontStreams.Count; i++)
-                keyStream.Write((int)i);
-            keyStream.Position = 0;
+                // Build a Key storage that stores the index of the font
+                keyStream = new DataStream(sizeof(int) * fontStreams.Count, true, true);
+                for (int i = 0; i < fontStreams.Count; i++)
+                    keyStream.Write((int)i);
+                keyStream.Position = 0;
 
-            // Register the 
-            factory.RegisterFontFileLoader(this);
-            factory.RegisterFontCollectionLoader(this);
+                // Register the 
+                factory.RegisterFontFileLoader(this);
+                factory.RegisterFontCollectionLoader(this);
+            }
         }
 
         /// <summary>
@@ -153,7 +156,10 @@ namespace CocosSharp
         /// <unmanaged>HRESULT IDWriteFontFileStream::GetFileSize([Out] __int64* fileSize)</unmanaged>
         long FontFileStream.GetFileSize()
         {
-            return _stream.Length;
+            lock (this)
+            {
+                return _stream.Length;
+            }
         }
 
         /// <summary>

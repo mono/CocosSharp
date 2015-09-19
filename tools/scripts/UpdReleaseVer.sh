@@ -22,6 +22,10 @@ sed -i '' "s/CocosSharp.iOS\..*.nupkg/CocosSharp.iOS.$1.nupkg/g" ../../ProjectTe
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WP8/Template/EmptyProject.WP8.vstemplate 
 sed -i '' "s/CocosSharp.WindowsPhone8\..*.nupkg/CocosSharp.WindowsPhone8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
+# Update Windows Phone 8.1 Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WP81/Template/EmptyProject.WP81.vstemplate 
+sed -i '' "s/CocosSharp.WindowsPhone81\..*.nupkg/CocosSharp.WindowsPhone81.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
 # Update Windows DX Template NuGet version to be included in built Template
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsDX/Template/EmptyProject.WindowsDX.vstemplate 
 sed -i '' "s/CocosSharp.WindowsDX\..*.nupkg/CocosSharp.WindowsDX.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
@@ -34,6 +38,14 @@ sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../..
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Win8XAML/Template/EmptyProject.Win8XAML.vstemplate 
 sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows8.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
+# Update Windows Store 8.1 Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Windows81/Template/EmptyProject.Windows81.vstemplate 
+sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows81.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
+# Update Windows8.1 XAML Template NuGet version to be included in built Template
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Win81XAML/Template/EmptyProject.Win81XAML.vstemplate 
+sed -i '' "s/CocosSharp.Windows8\..*.nupkg/CocosSharp.Windows81.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+
 # Update Windows GL Template NuGet version to be included in built Template
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/WindowsGL/Template/EmptyProject.WindowsGL.vstemplate 
 sed -i '' "s/CocosSharp.WindowsGL\..*.nupkg/CocosSharp.WindowsGL.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
@@ -45,7 +57,7 @@ sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Tem
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/Mobile/Template/WP81/EmptyProject.WP81.vstemplate 
 
 # Update Mobile Portable project NuGet version to be included in built Template
-sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/EmptyProject.Portable.vstemplate 
+sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/Portable/EmptyProject.Portable.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/Android/EmptyProject.Android.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/iOS/EmptyProject.iOS.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/WP81/EmptyProject.WP81.vstemplate 

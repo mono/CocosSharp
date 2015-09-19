@@ -4,6 +4,15 @@ using Microsoft.Xna;
 using Microsoft.Xna.Framework.Input;
 using System.Reflection;
 
+#if NETFX_CORE
+using Windows.Devices.Sensors;
+#elif IOS
+using CoreMotion;
+using Foundation;
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+using Microsoft.Devices.Sensors;
+#endif
+
 namespace CocosSharp
 {
     public class CCAcceleration
@@ -16,10 +25,18 @@ namespace CocosSharp
 
     public class CCAccelerometer
     {
-        #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+
+#if IOS
+        static CoreMotion.CMMotionManager accelerometer = null;
+
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
         // the accelerometer sensor on the device
-        static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
-        #endif
+        static Accelerometer accelerometer = null;
+#endif
+#if NETFX_CORE
+        // the accelerometer sensor on the device
+        static Accelerometer accelerometer = null;
+#endif
 
         const float TG3_GRAVITY_EARTH = 9.80665f;
         readonly CCAcceleration accelerationValue = new CCAcceleration();
@@ -45,10 +62,28 @@ namespace CocosSharp
                 enabled = value;
                 if (enabled && !Active)
                 {
-                    #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
                     try
                     {
-                        if(Microsoft.Devices.Sensors.Accelerometer.IsSupported)
+                        if (accelerometer.AccelerometerAvailable)
+                        {
+                            accelerometer.StartAccelerometerUpdates();
+                            Active = true;
+
+                        }
+                        else
+                        {
+                            Active = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Active = false;
+                    }
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+                    try
+                    {
+                        if(Accelerometer.IsSupported)
                         {
                             accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
                             accelerometer.Start();
@@ -63,7 +98,25 @@ namespace CocosSharp
                     {
                         Active = false;
                     }
-                    #endif
+
+#elif NETFX_CORE
+                    try
+                    {
+                        if(accelerometer != null)
+                        {
+                            accelerometer.ReadingChanged += accelerometer_ReadingChanged;
+                            Active = true;
+                        }
+                        else
+                        {
+                            Active = false;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Active = false;
+                    }
+#endif
 
                     if (!Active)
                     {
@@ -79,13 +132,24 @@ namespace CocosSharp
                 {
                     if (Active && !Emulating)
                     {
-                        #if !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
+                    if (accelerometer != null)
+                    {
+                        accelerometer.StopAccelerometerUpdates();
+                    }
+#elif !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
                         if (accelerometer != null)
                         {
                             accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
                             accelerometer.Stop();
                         }
-                        #endif
+#endif
+#if NETFX_CORE
+                        if (accelerometer != null)
+                        {
+                            accelerometer.ReadingChanged -= accelerometer_ReadingChanged;
+                        }
+#endif
                     }
 
                     ResetAccelerometer();
@@ -105,17 +169,23 @@ namespace CocosSharp
         {
             GameView = gameView;
 
-            #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
+#if IOS
+            accelerometer = new CoreMotion.CMMotionManager();
+            //accelerometer.AccelerometerUpdateInterval = 60f;
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
             try
             {
-                accelerometer = new Microsoft.Devices.Sensors.Accelerometer();
+                accelerometer = new Accelerometer();
             }
             catch (Exception ex)
             {
                 CCLog.Log(ex.ToString());
                 CCLog.Log("No accelerometer on platform. CCAccelerometer will default to emulation code.");
             }
-            #endif
+
+#elif NETFX_CORE
+            accelerometer = Accelerometer.GetDefault();
+#endif
         }
 
         #endregion Constructors
@@ -128,9 +198,29 @@ namespace CocosSharp
             accelerationValue.Z = 0;
         }
 
-        #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX
-        void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
+#if NETFX_CORE
+        void accelerometer_ReadingChanged(Accelerometer sender, AccelerometerReadingChangedEventArgs args)
         {
+            if (args == null)
+                return;
+
+            var reading = args.Reading;
+            accelerationValue.Y = reading.AccelerationY;
+            accelerationValue.X = reading.AccelerationX;
+            accelerationValue.Z = reading.AccelerationZ;
+
+            accelerationValue.TimeStamp = reading.Timestamp.Ticks;
+        }
+
+#endif
+
+#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !IOS
+        void accelerometer_CurrentValueChanged(object sender, SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
+        {
+
+#if ANDROID || IOS
+            var sensorReading = e.SensorReading.Acceleration;
+#elif WINDOWS_PHONE8
             // We have to use reflection to get the Vector3 value out of Acceleration
             // What happens is that the Sensor used XNA Vector3 and what we have done is replaced
             // the XNA with MonoGame which our Sensor does not compile against.
@@ -143,40 +233,15 @@ namespace CocosSharp
             BindingFlags.Public)
             .GetValue(e.SensorReading, null);
 
-            if (val == null)
-            return;
+            var sensorReading = ParseVector3(val.ToString());
 
-            // store the accelerometer value in our acceleration object to be updated.
-            UpdateAccelerationValue(val.ToString());
+
+#endif
+            accelerationValue.X = sensorReading.X;
+            accelerationValue.Y = sensorReading.Y;
+            accelerationValue.Z = sensorReading.Z;
 
             accelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
-        }
-
-        void UpdateAccelerationValue(string acceleration)
-        {
-            string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
-
-            // The format of the string is {X: 0000 Y: 0000 Z: 0000}
-            // Here we need to parse differently so that we can get a constant value back
-            //  Cocos2D-XNA mapps the Sensor reading of the X value to be our Y value
-            //  and the Y value to our X value.  Also the values need to be negated so that 
-            //  it maps correctly.
-            
-            #if ANDROID 
-            accelerationValue.X = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-            accelerationValue.Y = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
-            accelerationValue.Z = float.Parse(temp[3]);
-
-            #elif WINDOWS_PHONE8
-            accelerationValue.Y = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-            accelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
-            accelerationValue.Z = float.Parse(temp[3]);
-            
-            #else
-            accelerationValue.Y = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-            accelerationValue.X = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
-            accelerationValue.Z = float.Parse(temp[3]);
-            #endif
         }
 
         static Vector3 ParseVector3(string acceleration)
@@ -223,6 +288,22 @@ namespace CocosSharp
                     accelerationValue.TimeStamp = DateTime.UtcNow.Ticks;
                 }
 
+#if IOS
+            if (accelerometer.AccelerometerAvailable)
+            {
+                var accelerometerData = accelerometer.AccelerometerData;
+            
+                // The accelerometer data is optional and may be null at times even though AccelerometerAvailable is true. 
+                if (accelerometerData != null)
+                {
+                    var acceleration = accelerometerData.Acceleration;
+                    accelerationValue.X = acceleration.X;
+                    accelerationValue.Y = acceleration.Y;
+                    accelerationValue.Z = acceleration.Z;
+                }
+            }
+
+#endif
                 accelerateEvent.Acceleration = accelerationValue;
                 dispatcher.DispatchEvent (accelerateEvent);
             }

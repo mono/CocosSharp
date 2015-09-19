@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.ContentBuild.Windows</id>
-    <version>1.6.0.0</version>
+    <version>1.6.1.0</version>
     <title>CocosSharp Content Build for Windows</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>
@@ -11,7 +11,7 @@
     <iconUrl>http://github.com/mono/CocosSharp</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Pipeline tool for building CocosSharp's Content on Windows.</description>
- 	  <releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.6.0.0.md</releaseNotes>
+ 	  <releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.6.1.0.md</releaseNotes>
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d cocossharp xna 2D games visualization engine monogame</tags>
 

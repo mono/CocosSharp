@@ -48,6 +48,7 @@ namespace CocosSharp
         protected internal override void Stop ()
         {
             ActionState.Stop ();
+            base.Stop();
         }
 
         public override void Update (float time)

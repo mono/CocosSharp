@@ -572,6 +572,7 @@ namespace CocosSharp
                 windowSizeInPixels.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 windowSizeInPixels.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
                 #endif
+
             }
 
             xnaDeviceManager.IsFullScreen = isFullscreen;
@@ -581,6 +582,9 @@ namespace CocosSharp
 //                CCDrawManager.SharedDrawManager 
 //                    = new CCDrawManager(xnaDeviceManager, windowSizeInPixels, PlatformSupportedOrientations());
             }
+
+            CurrentOrientation = (CCDisplayOrientation)xnaGame.Window.CurrentOrientation;
+
         }
 
         CCDisplayOrientation PlatformSupportedOrientations()
@@ -811,7 +815,6 @@ namespace CocosSharp
             GameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
             GameTime.TotalGameTime = gameTime.TotalGameTime;
 
-            #if !NETFX_CORE
             foreach(CCWindow window in gameWindows)
             {
                 if (window.Accelerometer != null 
@@ -821,9 +824,6 @@ namespace CocosSharp
                     window.Accelerometer.Update();
                 }
             }
-
-            #endif
-
 
             foreach (CCWindow window in gameWindows)
             {
