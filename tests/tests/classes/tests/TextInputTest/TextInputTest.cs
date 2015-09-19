@@ -583,7 +583,7 @@ namespace tests
                 CCLabelFormat.SpriteFont);
 
             // Override the default implementation
-            textField.TextFieldIMEImplementation = null; //UppercaseIMEKeyboardImpl.SharedInstance;
+            textField.TextFieldIMEImplementation = null; //IMEKeyboardImpl.SharedInstance;
 
             textField.Position = s.Center;
 

@@ -104,7 +104,6 @@
   <ItemGroup>
     <EmbeddedResource Include="ball-hd.mask" />
     <EmbeddedResource Include="grossini.mask" />
-    <Compile Include="classes\AppDelegate.cs" />
     <Compile Include="classes\controller.cs" />
     <Compile Include="classes\testBasic.cs" />
     <Compile Include="classes\testResource.cs" />
@@ -199,7 +198,6 @@
     <Compile Include="classes\tests\CocosDenshionTest\CocosDenshionTest.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\DeviceTest\OrientationTest.cs" />
     <Compile Include="classes\tests\DrawPrimitivesTest\DrawPrimitivesTest.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1169,6 +1167,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColorAndOpacity.cs" />
     <Compile Include="classes\tests\TextInputTest\CustomIME\IOS\UppercaseIMEKeyboardImpl.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
+    <Compile Include="classes\AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\animationbuttonnormal.xnb" />
@@ -1419,6 +1418,7 @@
     <Content Include="..\iOSContent\Content\fonts\debuguncompressed.xnb">
       <Link>Content\fonts\debuguncompressed.xnb</Link>
     </Content>
+    <None Include="classes\tests\DeviceTest\OrientationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

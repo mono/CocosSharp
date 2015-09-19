@@ -31,8 +31,20 @@ namespace tests
     {
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
+            var window = new UIWindow (UIScreen.MainScreen.Bounds);
+
+            var vc = new UIViewController ();
+
+            window.RootViewController = vc;
+
+            CCGameView gameView = new CCGameView (window.Bounds);
+            gameView.ViewCreated += LoadGame;
+
+            vc.Add (gameView);
+
+            window.MakeKeyAndVisible ();
+
+            AppDelegate.SharedWindow = gameView;
 
             return true;
         }
@@ -44,6 +56,20 @@ namespace tests
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
             UIApplication.Main (args, null, "AppDelegate");
+        }
+
+        void LoadGame(object sender, EventArgs e)
+        {
+            CCGameView gameView = sender as CCGameView;
+
+            if (gameView != null) 
+            {
+                gameView.DesignResolution = new CCSizeI (1024, 768);
+                gameView.Stats.Enabled = true;
+                CCScene gameScene = new CCScene (gameView);
+                gameScene.AddLayer(new TestController());
+                gameView.RunWithScene (gameScene);
+            }
         }
     }
 #endif
