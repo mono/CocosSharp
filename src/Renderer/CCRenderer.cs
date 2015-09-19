@@ -46,8 +46,8 @@ namespace CocosSharp
 
         internal CCRenderer(CCDrawManager drawManagerIn)
         {
-            currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(256, true);
-            quadCommands = new CCRawList<CCQuadCommand>(256, true);
+            currentBatchedQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(256, false);
+            quadCommands = new CCRawList<CCQuadCommand>(256, false);
             renderQueue = new CCRawList<CCRenderCommand>();
             drawManager = drawManagerIn;
 
@@ -167,12 +167,22 @@ namespace CocosSharp
 
                 command.RequestRenderCommand(this);
             }
+                
+            // Flush any remaining render commands
+            Flush();
+
+            // Dispose of cloned render commands to lessen burden on GC
+            for (int i = 0, N =  renderQueue.Count; i < N; ++i) 
+            {
+                if (renderQueue[i].Cloned) 
+                {
+                    renderQueue[i].Dispose();
+                    renderQueue[i] = null;
+                }
+            }
 
             // This only resets the count of the queue so is inexpensive
             renderQueue.Clear();
-
-            // Flush any remaining render commands
-            Flush();
 
             currentViewportGroupId = 0;
             currentLayerGroupId = 0;
@@ -240,7 +250,6 @@ namespace CocosSharp
             if(currentBatchedQuads.Count <= 0 || quadCommands.Count == 0)
                 return;
 
-            var quadElements = currentBatchedQuads.Elements;
             uint lastMaterialId = 0;
             bool originalDepthTestState = drawManager.DepthTest;
             bool usingDepthTest = originalDepthTestState;

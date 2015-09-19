@@ -4,8 +4,9 @@ using System.Diagnostics;
 namespace CocosSharp
 {
     [DebuggerDisplay("{DebugDisplayString,nq}")]
-    public abstract class CCRenderCommand : IComparable<CCRenderCommand>
+    public abstract class CCRenderCommand : IComparable<CCRenderCommand>, IDisposable
     {
+        bool disposed;
         long renderFlags;
 
 
@@ -27,6 +28,7 @@ namespace CocosSharp
             }
         }
 
+        internal bool Cloned { get; private set; }
         internal bool UsingDepthTest { get; set; }
         internal uint ArrivalIndex { get; set; }
         internal byte ViewportGroup { get; set; }
@@ -64,6 +66,8 @@ namespace CocosSharp
             renderFlags = copy.renderFlags;
             RenderFlagsDirty = copy.RenderFlagsDirty;
 
+            Cloned = true;
+
             // All other ivars should be updated dy dynamically depending on where it was added
             // to the render queue
         }
@@ -77,6 +81,29 @@ namespace CocosSharp
         public abstract CCRenderCommand Copy();
 
         #endregion Constructors
+
+
+        #region Cleaning up
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if(disposed)
+                return;
+
+            if (disposing) 
+            {
+            }
+
+            disposed = true;
+        }
+
+        #endregion Cleaning up
 
 
         public override string ToString()

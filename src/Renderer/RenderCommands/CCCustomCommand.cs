@@ -8,7 +8,14 @@ namespace CocosSharp
     [DebuggerDisplay("{DebugDisplayString,nq}")]
     public class CCCustomCommand : CCRenderCommand
     {
+        bool disposed;
+
+
+        #region Properties
+
         public Action Action { get; internal set; }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -41,6 +48,29 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Cleaning up
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing) 
+            {
+                if (Action != null)
+                {
+                    Action = null;
+                }
+            }
+
+            base.Dispose(disposing);
+
+            disposed = true;
+        }
+
+        #endregion Cleaning up
 
 
         internal override void RequestRenderCommand(CCRenderer renderer)

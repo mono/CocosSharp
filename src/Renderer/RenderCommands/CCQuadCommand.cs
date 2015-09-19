@@ -6,6 +6,7 @@ namespace CocosSharp
     [DebuggerDisplay("{DebugDisplayString,nq}")]
     internal class CCQuadCommand : CCRenderCommand
     {
+        bool disposed;
         bool materialIdDirty;
         uint materialId;
 
@@ -108,6 +109,30 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Cleaning up
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing) 
+            {
+                if (quads != null)
+                {
+                    quads = null;
+                }
+            }
+
+            base.Dispose(disposing);
+
+            disposed = true;
+        }
+
+        #endregion Cleaning up
+
 
         void GenerateMaterialId()
         {
