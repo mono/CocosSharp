@@ -354,6 +354,7 @@
     <Compile Include="EmbeddableView\CCGameView.Android.cs" />
     <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
     <Compile Include="text_input_node\CCTextField.cs" />
+    <Compile Include="platform\Keyboard\Android\IMEKeyboardImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -373,7 +374,6 @@
   <ItemGroup>
     <None Include="CCWindow.cs" />
     <None Include="platform\CCApplication.cs" />
-    <None Include="platform\Keyboard\Android\IMEKeyboardImpl.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

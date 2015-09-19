@@ -23,7 +23,7 @@ namespace CocosSharp
     /// IME keyboard implementaion for Android.  This class uses an AlerDialog.Builder to create an AlertDialog to be 
     /// presented for input.
     /// </summary>
-    internal class IMEKeyboardImpl : ICCIMEDelegate
+    public class IMEKeyboardImpl : ICCIMEDelegate
     {
         private bool isVisible;
         private string contentText;
@@ -49,10 +49,8 @@ namespace CocosSharp
 
         // Based on MonoGame's Guide implementation for Android
         AlertDialog alertDialog = null;
-        public string ShowKeyboardInput(
-         string defaultText)
-        {
-            
+        public string ShowKeyboardInput(string defaultText)
+        {            
             var waitHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
 
             var kbi = new CCIMEKeyboardNotificationInfo();
@@ -61,41 +59,38 @@ namespace CocosSharp
 
             IsVisible = true;
 
-            
+            var context = Android.App.Application.Context;
 
-            CCGame.Activity.RunOnUiThread(() =>
+            var alert = new AlertDialog.Builder(context);
+
+            var input = new EditText(context) { Text = defaultText };
+            if (defaultText != null)
             {
-                var alert = new AlertDialog.Builder(Game.Activity);
+                input.SetSelection(defaultText.Length);
+            }
+            alert.SetView(input);
 
-                var input = new EditText(Game.Activity) { Text = defaultText };
-                if (defaultText != null)
-                {
-                    input.SetSelection(defaultText.Length);
-                }
-                alert.SetView(input);
-
-                alert.SetPositiveButton("Ok", (dialog, whichButton) =>
-                {
-                    ContentText = input.Text;
-                    waitHandle.Set();
-                    IsVisible = false;
-                    OnKeyboardWillHide();
-                });
-
-                alert.SetNegativeButton("Cancel", (dialog, whichButton) =>
-                {
-                    ContentText = null;
-                    waitHandle.Set();
-                    IsVisible = false;
-                    OnKeyboardWillHide();
-                });
-                alert.SetCancelable(false);
-
-                alertDialog = alert.Create();
-                alertDialog.Show();
-                OnKeyboardDidShow();
-
+            alert.SetPositiveButton("Ok", (dialog, whichButton) =>
+            {
+                ContentText = input.Text;
+                waitHandle.Set();
+                IsVisible = false;
+                OnKeyboardWillHide();
             });
+
+            alert.SetNegativeButton("Cancel", (dialog, whichButton) =>
+            {
+                ContentText = null;
+                waitHandle.Set();
+                IsVisible = false;
+                OnKeyboardWillHide();
+            });
+            alert.SetCancelable(false);
+
+            alertDialog = alert.Create();
+            alertDialog.Show();
+            OnKeyboardDidShow();
+
             waitHandle.WaitOne();
             
             if (alertDialog != null)

@@ -192,7 +192,7 @@ namespace CocosSharp
             AutoRepeat = true;
             placeHolderText = text;
             updateColors();
-            TextFieldIMEImplementation = null; //IMEKeyboardImpl.SharedInstance;
+            TextFieldIMEImplementation = IMEKeyboardImpl.SharedInstance;
 
         }
 
