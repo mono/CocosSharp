@@ -93,6 +93,8 @@ namespace CocosSharp
                 CompositionTarget.Rendering -= OnUpdateFrame;
             else
                 CompositionTarget.Rendering += OnUpdateFrame;
+
+            MobilePlatformUpdatePaused();
         }
 
         void ViewStateChanged(object sender, WindowActivatedEventArgs e)
