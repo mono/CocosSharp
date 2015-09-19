@@ -246,6 +246,8 @@ namespace CocosSharp
                 timeSource.Suspend();
             else
                 timeSource.Resume();
+
+            MobilePlatformUpdatePaused();
         }
 
         internal void RunIteration(NSTimer timer)
