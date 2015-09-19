@@ -187,7 +187,6 @@ namespace CocosSharp
         private static readonly UTF8Encoding utf8Encoder = new UTF8Encoding(false);
 
         public CCGameView GameView { get; set; }
-        public CCViewport Viewport { get; set; }
         public CCCamera Camera { get; set; }
         public CCLayer Layer { get; set; }
         public CCDirector Director { get; set; }

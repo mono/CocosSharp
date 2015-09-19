@@ -119,9 +119,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GamePage.xaml.cs">
-      <DependentUpon>GamePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="NotFiniteNumberException.cs" />
     <Compile Include="..\..\..\tests\tests\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
@@ -145,10 +142,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="GamePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\tests\tests\classes\AppDelegate.cs">
@@ -529,9 +522,9 @@
     <Compile Include="..\..\..\tests\tests\classes\tests\CocosDenshionTest\CocosDenshionTest.cs">
       <Link>classes\tests\CocosDenshionTest\CocosDenshionTest</Link>
     </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\DeviceTest\OrientationTest.cs">
+    <None Include="..\..\..\tests\tests\classes\tests\DeviceTest\OrientationTest.cs">
       <Link>classes\tests\DeviceTest\OrientationTest</Link>
-    </Compile>
+    </None>
     <Compile Include="..\..\..\tests\tests\classes\tests\DrawPrimitivesTest\DrawPrimitivesTest.cs">
       <Link>classes\tests\DrawPrimitivesTest\DrawPrimitivesTest</Link>
     </Compile>

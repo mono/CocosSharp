@@ -1,6 +1,8 @@
 ﻿using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
+using CocosSharp;
+using tests;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -29,14 +31,11 @@ namespace CocosSharp.Tests.WindowsPhone81
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            var gamePage = Window.Current.Content as GamePage;
+            var gamePage = new CCGameView();
+            gamePage.ViewCreated += LoadGame;
 
-            // Do not repeat app initialization when the Window already has content,
-            // just ensure that the window is active
-            if (gamePage == null)
-            {
-                // Create a main GamePage
-                gamePage = new GamePage(args.Arguments);
+            AppDelegate.SharedWindow = gamePage;
+
 
                 if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -45,10 +44,23 @@ namespace CocosSharp.Tests.WindowsPhone81
 
                 // Place the GamePage in the current Window
                 Window.Current.Content = gamePage;
-            }
 
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        void LoadGame(object sender, System.EventArgs e)
+        {
+            CCGameView gameView = sender as CCGameView;
+
+            if (gameView != null)
+            {
+                gameView.DesignResolution = new CCSizeI(1024, 768);
+                gameView.Stats.Enabled = true;
+                CCScene gameScene = new CCScene(gameView);
+                gameScene.AddLayer(new TestController());
+                gameView.RunWithScene(gameScene);
+            }
         }
 
         /// <summary>
