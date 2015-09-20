@@ -200,12 +200,9 @@
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
     <Compile Include="CCCamera.cs" />
-    <Compile Include="CCViewport.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDirector.cs" />
-    <Compile Include="CCDisplayLinkDirector.cs" />
-    <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCScheduler.cs" />
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
@@ -214,8 +211,6 @@
     <Compile Include="effects\CCTiledGrid3D.cs" />
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
-    <Compile Include="label_nodes\CCLabelBMFont.cs" />
-    <Compile Include="label_nodes\CCLabelTtf.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerColor.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
@@ -296,7 +291,6 @@
     <Compile Include="sprite_nodes\CCAnimationCache.cs" />
     <Compile Include="sprite_nodes\CCAnimationFrame.cs" />
     <Compile Include="sprite_nodes\CCSprite.cs" />
-    <Compile Include="sprite_nodes\CCSpriteBatchNode.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrame.cs" />
     <Compile Include="sprite_nodes\CCSpriteFrameCache.cs" />
     <Compile Include="sprite_nodes\CCSpriteSheet.cs" />
@@ -326,7 +320,6 @@
     <Compile Include="support\Converters\CCSizeConverter.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="support\CCUserDefault.cs" />
-    <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\CCFastRandom.cs" />
@@ -428,10 +421,6 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="EmbeddableView\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CCWindow.cs" />
-    <None Include="Platform\CCApplication.cs" />
   </ItemGroup>
   <ItemGroup />
 </Project>
