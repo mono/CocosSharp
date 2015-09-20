@@ -34,6 +34,9 @@ namespace CocosSharp
 
         static readonly CCRect exactFitViewportRatio = new CCRect(0,0,1,1);
 
+        // Currently, we have a limitation that at most one view instance can be active at any point in time
+        static WeakReference currentViewInstance;
+
         class CCGraphicsDeviceService : IGraphicsDeviceService
         {
             public GraphicsDevice GraphicsDevice { get; private set; }
@@ -211,6 +214,9 @@ namespace CocosSharp
             if (viewInitialised)
                 return;
 
+            if (currentViewInstance != null)
+                throw new NotSupportedException("CCGameView: Cannot instantiate multiple views concurrently.");
+
             PlatformInitialise();
 
             ActionManager = new CCActionManager();
@@ -230,6 +236,8 @@ namespace CocosSharp
             Stats.Initialise();
 
             viewInitialised = true;
+
+            currentViewInstance = new WeakReference(this);
         }
 
         void InitialiseGraphicsDevice()
@@ -313,6 +321,8 @@ namespace CocosSharp
                     graphicsDevice = null;
                 }
             }
+
+            currentViewInstance = null;
 
             disposed = true;
 
