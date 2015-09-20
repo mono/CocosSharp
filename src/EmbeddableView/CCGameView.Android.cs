@@ -21,6 +21,7 @@ namespace CocosSharp
     {
         bool startedRunning;
         CCAndroidScreenReceiver screenLockHandler;
+        object androidViewLock = new object();
 
 
         #region Android screen lock handling inner class
@@ -114,17 +115,23 @@ namespace CocosSharp
 
         void PlatformStartGame()
         {
-            Resume();
+            lock (androidViewLock) 
+            {
+                Resume();
+            }
         }
 
         protected override void OnContextSet(EventArgs e)
         {
-            base.OnContextSet(e);
+            lock (androidViewLock) 
+            {
+                base.OnContextSet (e);
 
-            Initialise();
+                Initialise ();
 
-            platformInitialised = true;
-            LoadGame();
+                platformInitialised = true;
+                LoadGame ();
+            }
         }
 
         protected override void CreateFrameBuffer()
@@ -132,18 +139,21 @@ namespace CocosSharp
             // Fetch desired depth / stencil size
             // Need to more robustly handle
 
-            try {
-                base.CreateFrameBuffer();
-                // Kick start the render loop
-                // In particular, graphics context is lazily created, so we need to start this up 
-                // here so that the view is initialised correctly
-                if (!startedRunning)
+            lock (androidViewLock) 
+            {
+                try 
                 {
-                    Run();
-                    startedRunning = true;
-                }
-                return;
-            } catch (Exception ex) {      
+                    base.CreateFrameBuffer();
+                    // Kick start the render loop
+                    // In particular, graphics context is lazily created, so we need to start this up 
+                    // here so that the view is initialised correctly
+                    if (!startedRunning) 
+                    {
+                        Run();
+                        startedRunning = true;
+                    }
+                    return;
+                } catch (Exception) {}
             }
         }
 
@@ -154,10 +164,13 @@ namespace CocosSharp
 
         protected override void OnContextLost(EventArgs e)
         {
-            base.OnContextLost(e);
+            lock (androidViewLock) 
+            {
+                base.OnContextLost (e);
 
-            if (graphicsDevice!= null)
-                graphicsDevice.OnDeviceResetting();
+                if (graphicsDevice != null)
+                    graphicsDevice.OnDeviceResetting ();
+            }
         }
             
         void PlatformDispose(bool disposing)
@@ -235,21 +248,30 @@ namespace CocosSharp
 
         void ISurfaceHolderCallback.SurfaceDestroyed(ISurfaceHolder holder)
         {
-            Paused = true;
-            SurfaceDestroyed(holder);
+            lock (androidViewLock) 
+            {
+                Paused = true;
+                SurfaceDestroyed (holder);
+            }
         }
 
         void ISurfaceHolderCallback.SurfaceCreated(ISurfaceHolder holder)
         {
-            SurfaceCreated(holder);
-            Paused = false;
+            lock (androidViewLock) 
+            {
+                SurfaceCreated (holder);
+                Paused = false;
+            }
         }
 
         void ISurfaceHolderCallback.SurfaceChanged(ISurfaceHolder holder, Android.Graphics.Format format, int width, int height)
         {
-            SurfaceChanged(holder, format, width, height);
-            ViewSize = new CCSizeI(width, height);
-            viewportDirty = true;
+            lock (androidViewLock) 
+            {
+                SurfaceChanged (holder, format, width, height);
+                ViewSize = new CCSizeI (width, height);
+                viewportDirty = true;
+            }
         }
 
         #endregion Rendering
