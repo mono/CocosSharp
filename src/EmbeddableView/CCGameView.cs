@@ -99,7 +99,7 @@ namespace CocosSharp
         public CCDirector Director { get; private set; }
         public CCScheduler Scheduler { get; private set; }
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
-        public CCSimpleAudioEngine AudioEngine { get; private set; }
+        public CCAudioEngine AudioEngine { get; private set; }
         public CCActionManager ActionManager { get; private set; }
         public CCStats Stats { get; private set; }
 
@@ -222,7 +222,7 @@ namespace CocosSharp
             ActionManager = new CCActionManager();
             Director = new CCDirector();
             EventDispatcher = new CCEventDispatcher(this);
-            AudioEngine = CCSimpleAudioEngine.SharedEngine;
+            AudioEngine = CCAudioEngine.SharedEngine;
             Scheduler = CCScheduler.SharedScheduler;
 
             Stats = new CCStats ();
@@ -310,8 +310,7 @@ namespace CocosSharp
             {
                 if (AudioEngine != null)
                 {
-                    //TODO: Implement IDisposable for Audio engine
-                    //AudioEngine.Dispose();
+                    AudioEngine.Dispose();
                     AudioEngine = null;
                 }
 

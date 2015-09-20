@@ -18,10 +18,12 @@ namespace CocosDenshion
 
 namespace CocosSharp
 {
-    public class CCAudioEngine
+    public class CCAudioEngine : IDisposable
     {
         internal static readonly string[] AllowedTypesMac = { "m4a", "aac", "mp3", "wav", "aifc", "caf" };
         static CCAudioEngine instance = new CCAudioEngine();
+
+        bool disposed;
 
         // The list of sounds that are configured for looping. These need to be stopped when the game pauses.
         Dictionary<int, int> loopedSounds = new Dictionary<int, int>();
@@ -68,6 +70,50 @@ namespace CocosSharp
         }
 
         #endregion Properties
+
+
+        #region Cleaning up
+
+        ~CCAudioEngine() 
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if(disposed)
+                return;
+
+            if (disposing) 
+            {
+                if (music != null) 
+                {
+                    music.Dispose();
+                    music = null;
+                }
+
+                if (list != null) 
+                {
+                    foreach (CCEffectPlayer effect in list.Values) 
+                    {
+                        if (effect != null)
+                            effect.Dispose();
+                    }
+
+                    list = null;
+                }
+            }
+
+            disposed = true;
+        }
+
+        #endregion Cleaning up
 
 
         public static string FullPath(string path)
