@@ -414,9 +414,6 @@
     <Compile Include="..\..\..\tests\tests\classes\tests\LabelTestNew\LabelFNTOffset.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTOffset.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTestNew\LabelFNTOldNew.cs">
-      <Link>classes\tests\LabelTestNew\LabelFNTOldNew.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\LabelTestNew\LabelFNTPadding.cs">
       <Link>classes\tests\LabelTestNew\LabelFNTPadding.cs</Link>
     </Compile>
@@ -440,9 +437,6 @@
     </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs">
       <Link>classes\tests\LabelTestNew\LabelSFLongLineWrapping.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTestNew\LabelSFOldNew.cs">
-      <Link>classes\tests\LabelTestNew\LabelSFOldNew.cs</Link>
     </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\LabelTestNew\LabelSystemFont168.cs">
       <Link>classes\tests\LabelTestNew\LabelSystemFont168.cs</Link>
@@ -713,87 +707,6 @@
     </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\IntervalTest\IntervalTestScene.cs">
       <Link>classes\tests\IntervalTest\IntervalTestScene</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\Atlas1.cs">
-      <Link>classes\tests\LabelTest\Atlas1</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\Atlas3.cs">
-      <Link>classes\tests\LabelTest\Atlas3</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\Atlas4.cs">
-      <Link>classes\tests\LabelTest\Atlas4</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\Atlas5.cs">
-      <Link>classes\tests\LabelTest\Atlas5</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\Atlas6.cs">
-      <Link>classes\tests\LabelTest\Atlas6</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\AtlasBitmapColor.cs">
-      <Link>classes\tests\LabelTest\AtlasBitmapColor</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\AtlasFastBitmap.cs">
-      <Link>classes\tests\LabelTest\AtlasFastBitmap</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\AtlasTestScene.cs">
-      <Link>classes\tests\LabelTest\AtlasTestScene</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\BitmapFontMultiLine.cs">
-      <Link>classes\tests\LabelTest\BitmapFontMultiLine</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\BitmapFontMultiLineAlignment.cs">
-      <Link>classes\tests\LabelTest\BitmapFontMultiLineAlignment</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\BMFontInit.cs">
-      <Link>classes\tests\LabelTest\BMFontInit</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\BMFontOneAtlas.cs">
-      <Link>classes\tests\LabelTest\BMFontOneAtlas</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\BMFontUnicode.cs">
-      <Link>classes\tests\LabelTest\BMFontUnicode</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\GitHubIssue5.cs">
-      <Link>classes\tests\LabelTest\GitHubIssue5</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\Issue1343.cs">
-      <Link>classes\tests\LabelTest\Issue1343</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelAtlasColorTest.cs">
-      <Link>classes\tests\LabelTest\LabelAtlasColorTest</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelAtlasHD.cs">
-      <Link>classes\tests\LabelTest\LabelAtlasHD</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelAtlasTest.cs">
-      <Link>classes\tests\LabelTest\LabelAtlasTest</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelBMFontHD.cs">
-      <Link>classes\tests\LabelTest\LabelBMFontHD</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelGlyphDesigner.cs">
-      <Link>classes\tests\LabelTest\LabelGlyphDesigner</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelsEmpty.cs">
-      <Link>classes\tests\LabelTest\LabelsEmpty</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelTest.cs">
-      <Link>classes\tests\LabelTest\LabelTest</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelTTFA8Test.cs">
-      <Link>classes\tests\LabelTest\LabelTTFA8Test</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelTTFChinese.cs">
-      <Link>classes\tests\LabelTest\LabelTTFChinese</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelTTFMultiline.cs">
-      <Link>classes\tests\LabelTest\LabelTTFMultiline</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\LabelTTFTest.cs">
-      <Link>classes\tests\LabelTest\LabelTTFTest</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\LabelTest\TTFFontInit.cs">
-      <Link>classes\tests\LabelTest\TTFFontInit</Link>
     </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\LayerTest\LayerGradient.cs">
       <Link>classes\tests\LayerTest\LayerGradient</Link>
@@ -1121,72 +1034,6 @@
     </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteAnimationSplit.cs">
       <Link>classes\tests\SpriteTest\SpriteAnimationSplit</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNode1.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNode1</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeAliased.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeAliased</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeAnchorPoint.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeAnchorPoint</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeChildren.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeChildren</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeChildrenAnchorPoint.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeChildrenAnchorPoint</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeChildrenChildren.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeChildrenChildren</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeChildrenScale.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeChildrenScale</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeChildrenZ.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeChildrenZ</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeColorOpacity.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeColorOpacity</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeFlip.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeFlip</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeNewTexture.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeNewTexture</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorFlip.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorFlip</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorRotation.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorRotation</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorScale.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorScale</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkew.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkew</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkewScale.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkewScale</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeReorder.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeReorder</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeReorderIssue744.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeReorderIssue744</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeReorderIssue766.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeReorderIssue766</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeReorderIssue767.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeReorderIssue767</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeZOrder.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeZOrder</Link>
-    </Compile>
-    <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteBatchNodeZVertex.cs">
-      <Link>classes\tests\SpriteTest\SpriteBatchNodeZVertex</Link>
     </Compile>
     <Compile Include="..\..\..\tests\tests\classes\tests\SpriteTest\SpriteChildrenAnchorPoint.cs">
       <Link>classes\tests\SpriteTest\SpriteChildrenAnchorPoint</Link>
