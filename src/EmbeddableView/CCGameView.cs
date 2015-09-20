@@ -119,11 +119,16 @@ namespace CocosSharp
                     paused = value;
                     previousTicks = gameTimer.Elapsed.Ticks;
 
-                    // TODO: Pause/resume both background music AND sound effects
                     if (paused) 
+                    {
                         AudioEngine.PauseBackgroundMusic();
-                    else
+                        AudioEngine.PauseAllEffects();
+                    } 
+                    else 
+                    {
                         AudioEngine.ResumeBackgroundMusic();
+                        AudioEngine.ResumeAllEffects();
+                    }
                     
                     PlatformUpdatePaused();
                 }
