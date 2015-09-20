@@ -4,7 +4,7 @@ using CocosSharp;
 
 namespace CocosDenshion
 {   
-    [Obsolete("CCSimpleAudioEngine is obsolete; CCAudioEngine in namespace CocosSharp")]
+    [Obsolete("CCSimpleAudioEngine is obsolete; Use CCAudioEngine in namespace CocosSharp")]
     public class CCSimpleAudioEngine : CCAudioEngine
     {
         static CCSimpleAudioEngine instance = new CCSimpleAudioEngine();
