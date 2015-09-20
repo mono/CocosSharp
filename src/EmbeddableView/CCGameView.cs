@@ -8,8 +8,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Audio;
 
-using CocosDenshion;
-
 namespace CocosSharp
 {
     using XnaSurfaceFormat = Microsoft.Xna.Framework.Graphics.SurfaceFormat;
