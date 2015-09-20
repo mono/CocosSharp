@@ -147,6 +147,11 @@ namespace CocosSharp
             }
         }
 
+        public CCBlendFunc BlendType
+        {
+            set { DrawManager.BlendFunc(value); }
+        }
+
         public CCSizeI DesignResolution
         {
             get { return designResolution; }
