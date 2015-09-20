@@ -163,7 +163,7 @@ namespace CocosSharp
         public static readonly CCColor4B LightGray = new CCColor4B(211, 211, 211, 255);
         public static readonly CCColor4B AliceBlue = new CCColor4B(240, 248, 255, 255);
         public static readonly CCColor4B Aquamarine = new CCColor4B (127, 255, 212, 255);
-        public static readonly CCColor4B Transparent = new CCColor4B(0, 0, 0, 0);
+        public static CCColor4B Transparent = new CCColor4B(0, 0, 0, 0);
 
 
         public byte R { get; set; }
