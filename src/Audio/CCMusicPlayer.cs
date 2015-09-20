@@ -1,8 +1,7 @@
 using System;
 using System.IO;
-using CocosSharp;
 
-namespace CocosDenshion
+namespace CocosSharp
 {
 	public abstract class CCMusicPlayerCore
 	{

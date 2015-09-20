@@ -11,7 +11,7 @@ using AVFoundation;
 using Foundation;
 #endif
 
-namespace CocosDenshion
+namespace CocosSharp
 {
 	public partial class CCMusicPlayer
 	{
@@ -157,7 +157,7 @@ namespace CocosDenshion
 
 			if (string.IsNullOrEmpty(absFilePath))
 			{
-				foreach (string formatType in CCSimpleAudioEngine.AllowedTypesMac)
+                foreach (string formatType in CCAudioEngine.AllowedTypesMac)
 				{
 					absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, formatType);
 					if (absFilePath != null)

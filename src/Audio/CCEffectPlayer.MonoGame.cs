@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
-using CocosSharp;
 
-namespace CocosDenshion
+namespace CocosSharp
 {
 	public partial class CCEffectPlayer
 	{

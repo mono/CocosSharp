@@ -147,7 +147,6 @@
     <Compile Include="Nodes\CCNode.cs" />
     <Compile Include="Audio\CCEffectPlayer.cs" />
     <Compile Include="Audio\CCMusicPlayer.cs" />
-    <Compile Include="Audio\CCSimpleAudioEngine.cs" />
     <Compile Include="Audio\CCMusicPlayer.AVFoundation.cs" />
     <Compile Include="Audio\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="Effects\CCGrid3D.cs" />
@@ -392,6 +391,7 @@
     <Compile Include="Events\CCScheduler.cs" />
     <Compile Include="Nodes\Scenes\CCDirector.cs" />
     <Compile Include="Camera\CCCamera.cs" />
+    <Compile Include="Audio\CCAudioEngine.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup />

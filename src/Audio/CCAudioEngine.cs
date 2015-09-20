@@ -3,11 +3,25 @@ using System;
 using CocosSharp;
 
 namespace CocosDenshion
+{   
+    [Obsolete("CCSimpleAudioEngine is obsolete; CCAudioEngine in namespace CocosSharp")]
+    public class CCSimpleAudioEngine : CCAudioEngine
+    {
+        static CCSimpleAudioEngine instance = new CCSimpleAudioEngine();
+
+        public new static CCSimpleAudioEngine SharedEngine
+        {
+            get { return instance; }
+        }
+    }
+}
+
+namespace CocosSharp
 {
-    public class CCSimpleAudioEngine
+    public class CCAudioEngine
     {
         internal static readonly string[] AllowedTypesMac = { "m4a", "aac", "mp3", "wav", "aifc", "caf" };
-        static CCSimpleAudioEngine instance = new CCSimpleAudioEngine();
+        static CCAudioEngine instance = new CCAudioEngine();
 
         // The list of sounds that are configured for looping. These need to be stopped when the game pauses.
         Dictionary<int, int> loopedSounds = new Dictionary<int, int>();
@@ -16,9 +30,10 @@ namespace CocosDenshion
         CCMusicPlayer music = new CCMusicPlayer();
         float effectsVolume = 1.0f;
 
+
         #region Properties
 
-        public static CCSimpleAudioEngine SharedEngine
+        public static CCAudioEngine SharedEngine
         {
             get { return instance; }
         }

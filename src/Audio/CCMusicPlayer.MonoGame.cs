@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Phone.Shell;
 #endif
 
-namespace CocosDenshion
+namespace CocosSharp
 {
 	public partial class CCMusicPlayer
 	{

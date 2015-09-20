@@ -1,7 +1,6 @@
 ﻿using System;
-using CocosSharp;
 
-namespace CocosDenshion
+namespace CocosSharp
 {
 	public abstract class CCEffectPlayerCore
 	{

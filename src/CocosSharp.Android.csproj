@@ -343,10 +343,10 @@
     <Compile Include="Audio\CCEffectPlayer.cs" />
     <Compile Include="Audio\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="Audio\CCMusicPlayer.cs" />
-    <Compile Include="Audio\CCSimpleAudioEngine.cs" />
     <Compile Include="Math\CCAffineTransform.cs" />
     <Compile Include="Math\CCGeometry.cs" />
     <Compile Include="Nodes\Labels\CCLabel-Android.cs" />
+    <Compile Include="Audio\CCAudioEngine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
