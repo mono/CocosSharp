@@ -361,7 +361,6 @@ namespace tests
             {"ExtensionsTest", () => new ExtensionsTestScene()},
             {"FontTest", () => new FontTestScene()},
             {"IntervalTest", () => new IntervalTestScene()},
-            {"LabelTest", () => new AtlasTestScene()},
             {"LabelTest - New", () => new AtlasTestSceneNew()},
             {"LayerTest", () => new LayerTestScene()},
             {"MenuTest", () => new MenuTestScene()},

@@ -21,7 +21,7 @@ namespace tests
                 for (int i = 0; i < (quantityOfNodes - currentQuantityOfNodes); i++)
                 {
                     CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 32, 32));
-                    batchNode.AddChild(sprite);
+                    AddChild(sprite);
                     sprite.Position = new CCPoint(CCRandom.Next() * s.Width, CCRandom.Next() * s.Height);
                 }
             }
@@ -41,8 +41,7 @@ namespace tests
 
         public override void initWithQuantityOfNodes(int nNodes)
         {
-            batchNode = new CCSpriteBatchNode("Images/spritesheet1");
-            AddChild(batchNode);
+            batchNode = new CCSprite("Images/spritesheet1");
             
             base.initWithQuantityOfNodes(nNodes);
 
@@ -59,7 +58,7 @@ namespace tests
         }
 
 
-        protected CCSpriteBatchNode batchNode;
+        protected CCSprite batchNode;
 
         //#if CC_ENABLE_PROFILERS
         //    CCProfilingTimer    *_profilingTimer;

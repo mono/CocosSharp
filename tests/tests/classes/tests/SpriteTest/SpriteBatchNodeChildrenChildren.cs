@@ -8,7 +8,7 @@ namespace tests
 {
     public class SpriteBatchNodeChildrenChildren : SpriteTestDemo
     {
-        CCSpriteBatchNode aParent;
+        CCSprite aParent;
         CCSprite l1, l2a, l2b, l3a1, l3a2, l3b1, l3b2;
 
         CCRepeatForever seq;
@@ -39,12 +39,11 @@ namespace tests
 
             // SpriteBatchNode: 3 levels of children
 
-            aParent = new CCSpriteBatchNode("animations/ghosts");
-            AddChild(aParent);
+            aParent = new CCSprite("animations/ghosts");
 
             // parent
             l1 = new CCSprite("father.gif");
-            aParent.AddChild(l1);
+            AddChild(l1);
 
 
             // child left
@@ -55,7 +54,7 @@ namespace tests
             // child right
             l2b = new CCSprite("sister2.gif");
 
-            l1.AddChild(l2b);
+            AddChild(l2b);
 
 
             // child left bottom

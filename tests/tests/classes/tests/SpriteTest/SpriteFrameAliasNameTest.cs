@@ -47,9 +47,8 @@ namespace tests
 
             sprite = new CCSprite("grossini_dance_01.png");
 
-            CCSpriteBatchNode spriteBatch = new CCSpriteBatchNode("animations/grossini-aliases");
-            spriteBatch.AddChild(sprite);
-            AddChild(spriteBatch);
+            CCSprite spriteBatch = new CCSprite("animations/grossini-aliases");
+            AddChild(sprite);
         }
 
         #endregion Constructors

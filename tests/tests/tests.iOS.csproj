@@ -342,84 +342,6 @@
     <Compile Include="classes\tests\IntervalTest\IntervalTestScene.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas1.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas3.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas4.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas5.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\Atlas6.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\AtlasBitmapColor.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\AtlasFastBitmap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\AtlasTestScene.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\BitmapFontMultiLine.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\BitmapFontMultiLineAlignment.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\BMFontInit.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\BMFontOneAtlas.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\BMFontUnicode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\Issue1343.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelAtlasColorTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelAtlasHD.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelAtlasTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelBMFontHD.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelGlyphDesigner.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelsEmpty.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelTTFA8Test.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelTTFChinese.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelTTFMultiline.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\LabelTTFTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\LabelTest\TTFFontInit.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="classes\tests\LayerTest\LayerGradient.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -717,72 +639,6 @@
     <Compile Include="classes\tests\SpriteTest\SpriteAnimationSplit.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNode1.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeAliased.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeAnchorPoint.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildren.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenAnchorPoint.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenChildren.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenScale.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeChildrenZ.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeColorOpacity.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeFlip.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeNewTexture.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorFlip.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorRotation.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorScale.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkew.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeOffsetAnchorSkewScale.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorder.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorderIssue744.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorderIssue766.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeReorderIssue767.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeZOrder.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="classes\tests\SpriteTest\SpriteBatchNodeZVertex.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="classes\tests\SpriteTest\SpriteChildrenAnchorPoint.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -942,7 +798,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="classes\tests\LabelTest\GitHubIssue5.cs" />
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene.cs" />
@@ -1155,9 +1010,7 @@
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontColor.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelSystemFontUnicodeJapanese.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelTTFFontsTestNew.cs" />
-    <Compile Include="classes\tests\LabelTestNew\LabelSFOldNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTFlippedY.cs" />
-    <Compile Include="classes\tests\LabelTestNew\LabelFNTOldNew.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTAdditionalKerningTest.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTContentSizeRatios.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFNTLineHeightTest.cs" />

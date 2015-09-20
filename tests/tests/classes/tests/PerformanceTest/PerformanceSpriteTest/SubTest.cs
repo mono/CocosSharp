@@ -5,7 +5,7 @@ namespace tests
 {
     public class SubTest
     {
-        protected CCSpriteBatchNode batchNode;
+        protected CCSprite batchNode;
         protected CCNode parent;
         protected int subtestNumber;
 
@@ -47,7 +47,7 @@ namespace tests
                 case 3:
                     {
                         sprite = new CCSprite(batchNode.Texture, new CCRect(0, 0, 52, 139));
-                        batchNode.AddChild(sprite, 0, tag + 100);
+                        parent.AddChild(sprite, 0, tag + 100);
                         break;
                     }
                 case 4:
@@ -70,7 +70,7 @@ namespace tests
                         x *= 85;
                         y *= 121;
                         sprite = new CCSprite(batchNode.Texture, new CCRect(x, y, 85, 121));
-                        batchNode.AddChild(sprite, 0, tag + 100);
+                        parent.AddChild(sprite, 0, tag + 100);
                         break;
                     }
 
@@ -100,7 +100,7 @@ namespace tests
                         x *= 32;
                         y *= 32;
                         sprite = new CCSprite(batchNode.Texture, new CCRect(x, y, 32, 32));
-                        batchNode.AddChild(sprite, 0, tag + 100);
+                        parent.AddChild(sprite, 0, tag + 100);
                         break;
                     }
 
@@ -149,38 +149,32 @@ namespace tests
 
                 case 2:
 					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
-                    batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
-                    p.AddChild(batchNode, 0);
+                    batchNode = new CCSprite("Images/grossinis_sister1");
                     break;
                 
                 case 3:
 					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Bgra4444;
-                    batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
-                    p.AddChild(batchNode, 0);
+                    batchNode = new CCSprite("Images/grossinis_sister1");
                     break;
 
                 case 5:
 					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
-                    batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
-                    p.AddChild(batchNode, 0);
+                    batchNode = new CCSprite("Images/grossini_dance_atlas");
                     break;
 
                 case 6:
 					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Bgra4444;
-                    batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
-                    p.AddChild(batchNode, 0);
+                    batchNode = new CCSprite("Images/grossini_dance_atlas");
                     break;
 
                     ///
                 case 8:
 					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
-                    batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
-                    p.AddChild(batchNode, 0);
+                    batchNode = new CCSprite("Images/spritesheet1");
                     break;
                 case 9:
 					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Bgra4444;
-                    batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
-                    p.AddChild(batchNode, 0);
+                    batchNode = new CCSprite("Images/spritesheet1");
                     break;
 
                 default:

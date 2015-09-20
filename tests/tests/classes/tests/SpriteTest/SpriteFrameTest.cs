@@ -74,11 +74,10 @@ namespace tests
             animMixed = new CCAnimation(moreFrames, 0.3f);
 
 
-            CCSpriteBatchNode spritebatch = new CCSpriteBatchNode("animations/grossini");
-            AddChild(spritebatch);
+            CCSprite spritebatch = new CCSprite("animations/grossini");
 
             sprite1 = new CCSprite("grossini_dance_01.png");
-            spritebatch.AddChild(sprite1);
+            AddChild(sprite1);
 
             // to test issue #732, uncomment the following line
             sprite1.FlipX = false;

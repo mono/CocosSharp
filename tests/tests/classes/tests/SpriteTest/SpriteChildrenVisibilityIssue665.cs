@@ -33,8 +33,7 @@ namespace tests
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
 
-            aParent = new CCSpriteBatchNode("animations/grossini", 50);
-            AddChild(aParent, 0);
+            aParent = new CCSprite("animations/grossini");
 
             sprite1 = new CCSprite("grossini_dance_01.png");
             sprite2 = new CCSprite("grossini_dance_02.png");
@@ -43,7 +42,7 @@ namespace tests
             // test issue #665
             sprite1.Visible = false;
 
-            aParent.AddChild(sprite1);
+            AddChild(sprite1);
             sprite1.AddChild(sprite2, -2);
             sprite1.AddChild(sprite3, 2);
 

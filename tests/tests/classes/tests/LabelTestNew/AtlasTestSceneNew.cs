@@ -82,8 +82,6 @@ namespace tests
                 () => new LabelTTFFontsTestNew(),
                 () => new LabelSFAlignmentTest(),
                 () => new LabelSystemFontAlignmentTest(),
-                () => new LabelSFOldNew(),
-                () => new LabelFNTOldNew(),
                 () => new LabelFNTFlippedY(),
                 () => new LabelFNTLineHeightTest(),
                 () => new LabelFNTAdditionalKerningTest(),

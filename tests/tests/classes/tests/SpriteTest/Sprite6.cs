@@ -10,7 +10,7 @@ namespace tests
     {
         int tagSpriteBatchNode = 1;
 
-        CCSpriteBatchNode batch;
+        CCSprite batch;
 
         CCRepeatForever action;
         CCScaleBy scale;
@@ -34,7 +34,7 @@ namespace tests
         {
             // small capacity. Testing resizing
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
+            batch = new CCSprite("Images/grossini_dance_atlas");
 
 
             // SpriteBatchNode actions
@@ -50,7 +50,7 @@ namespace tests
             for (int i = 0; i < 3; i++)
             {
                 CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
-                batch.AddChild(sprite, i);
+                AddChild(sprite, i);
             }
         }
 
@@ -68,7 +68,7 @@ namespace tests
             float step = windowSize.Width / 4;
 
             int i = 0;
-            foreach(CCNode node in batch.Children)
+            foreach(CCNode node in Children)
             {
                 CCSprite sprite = (CCSprite)node;
                 sprite.Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));

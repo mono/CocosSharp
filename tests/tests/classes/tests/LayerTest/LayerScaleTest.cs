@@ -36,10 +36,10 @@ namespace tests
             //
             // Add two labels using BM label class
             // CCLabelBMFont
-            var label1 = new CCLabelBMFont("LABEL1", "fonts/konqa32.fnt");
+            var label1 = new CCLabel("LABEL1", "fonts/konqa32.fnt");
             layer.AddChild(label1);
             label1.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.75f);
-            var label2 = new CCLabelBMFont("LABEL2", "fonts/konqa32.fnt");
+            var label2 = new CCLabel("LABEL2", "fonts/konqa32.fnt");
             layer.AddChild(label2);
             label2.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.25f);
 
@@ -93,11 +93,11 @@ namespace tests
             //
             // Add two labels using BM label class
             // CCLabelBMFont
-            CCLabelBMFont label1 = new CCLabelBMFont("LABEL1", "fonts/konqa32.fnt");
+            var label1 = new CCLabel("LABEL1", "fonts/konqa32.fnt");
             label1.Position = new CCPoint(m_pInnerLayer.ContentSize.Width, m_pInnerLayer.ContentSize.Height * 0.75f);
             m_pInnerLayer.AddChild(label1);
             
-            CCLabelBMFont label2 = new CCLabelBMFont("LABEL2", "fonts/konqa32.fnt");
+            var label2 = new CCLabel("LABEL2", "fonts/konqa32.fnt");
             label2.Position = new CCPoint(0, m_pInnerLayer.ContentSize.Height * 0.25f);
             m_pInnerLayer.AddChild(label2);
 

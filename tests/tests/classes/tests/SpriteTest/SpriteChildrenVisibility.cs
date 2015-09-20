@@ -29,14 +29,13 @@ namespace tests
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             // SpriteBatchNode
-            aParent = new CCSpriteBatchNode("animations/grossini", 50);
-            AddChild(aParent, 0);
+            aParent = new CCSprite("animations/grossini");
 
             sprite1 = new CCSprite("grossini_dance_01.png");
             sprite2 = new CCSprite("grossini_dance_02.png");
             sprite3 = new CCSprite("grossini_dance_03.png");
 
-            aParent.AddChild(sprite1);
+            AddChild(sprite1);
             sprite1.AddChild(sprite2, -2);
             sprite1.AddChild(sprite3, 2);
 

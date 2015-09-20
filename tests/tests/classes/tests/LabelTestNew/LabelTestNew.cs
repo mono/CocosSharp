@@ -8,6 +8,58 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
+    public enum TagSprite
+    {
+        kTagTileMap = 1,
+        kTagSpriteManager = 1,
+        kTagAnimation1 = 1,
+        kTagBitmapAtlas1 = 1,
+        kTagBitmapAtlas2 = 2,
+        kTagBitmapAtlas3 = 3,
+
+        kTagSprite1,
+        kTagSprite2,
+        kTagSprite3,
+        kTagSprite4,
+        kTagSprite5,
+        kTagSprite6,
+        kTagSprite7,
+        kTagSprite8
+    }
+
+    public class AlignmentPanel : CCDrawNode
+    {
+
+        public AlignmentPanel (CCColor4B color)
+        {
+            Color = new CCColor3B(color);
+            Opacity = color.A;
+            //AnchorPoint = CCPoint.AnchorLowerLeft;
+        }
+
+        public AlignmentPanel(CCSize size, CCColor4B color)
+        {
+            Color = new CCColor3B(color);
+            Opacity = color.A;
+            //AnchorPoint = CCPoint.AnchorMiddle;
+            ContentSize = size;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            var fillColor = new CCColor4B(Color.R, Color.G, Color.B, Opacity);
+            DrawRect(new CCRect(0,0,ContentSize.Width,ContentSize.Height), fillColor, 1f, CCColor4B.White);
+        }
+
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+            if (ContentSize == CCSize.Zero)
+                ContentSize = VisibleBoundsWorldspace.Size;
+        }
+    }
+
 
     public class AtlasDemoNew : TestNavigationLayer
     {
