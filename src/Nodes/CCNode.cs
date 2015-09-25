@@ -1410,9 +1410,9 @@ namespace CocosSharp
 
             // We want all our children to have the same layer as us
             // Set this before we call child.OnEnter
+            child.GameView = this.GameView;
             child.Layer = this.Layer;
             child.Scene = this.Scene;
-            child.GameView = this.GameView;
 
 #if USE_PHYSICS
 			// Recursive add children with which have physics body.
