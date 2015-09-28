@@ -37,6 +37,13 @@ namespace CocosSharp
     internal class CCDrawManager
     {
         const int DefaultQuadBufferSize = 1024 * 4;
+        const int NumOfIndicesPerQuad = 6;
+        const int NumOfVerticesPerQuad = 4;
+
+        const int MaxNumQuads = 200;
+        const int MaxNumQuadVertices = NumOfVerticesPerQuad * MaxNumQuads;
+        const int MaxNumQuadIndices = NumOfIndicesPerQuad * MaxNumQuads;
+
 
         bool needReinitResources;
         bool textureEnabled;
@@ -64,7 +71,10 @@ namespace CocosSharp
 
         CCQuadVertexBuffer quadsBuffer;
         CCIndexBuffer<short> quadsIndexBuffer;
-        CCV3F_C4B_T2F[] quadVertices;
+
+        CCV3F_C4B_T2F[] quadsVertices;
+        short[] quadsIndices;
+
 
         readonly Matrix[] matrixStack;
         Matrix worldMatrix;
@@ -278,7 +288,7 @@ namespace CocosSharp
         #endregion Properties
 
 
-        #region Constructors
+        #region Initialization
 
         internal CCDrawManager(GraphicsDeviceManager deviceManager, CCSize proposedScreenSize, 
             CCDisplayOrientation supportedOrientations)
@@ -299,10 +309,11 @@ namespace CocosSharp
             blendStates = new Dictionary<CCBlendFunc, BlendState>();
             effectStack = new Stack<Effect>();
 
+            InitializeRawQuadBuffers();
+
             rasterizerStatesCache = new List<RasterizerState>();
         
             hasStencilBuffer = (deviceManager.PreferredDepthStencilFormat == DepthFormat.Depth24Stencil8);
-
 
             if (deviceManager.GraphicsDevice == null)
             {
@@ -312,6 +323,27 @@ namespace CocosSharp
                 graphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)supportedOrientations;
                 graphicsDeviceMgr.DeviceCreated += GraphicsDeviceCreated;
                 graphicsDeviceMgr.PreparingDeviceSettings += PreparingDeviceSettings;
+            }
+        }
+
+        void InitializeRawQuadBuffers()
+        {
+            quadsIndices = new short[MaxNumQuadIndices];
+            quadsVertices = new CCV3F_C4B_T2F[MaxNumQuadVertices];
+
+            int i6 = 0;
+            short i4 = 0;
+            for (int i = 0; i < MaxNumQuads; i++) 
+            {
+                quadsIndices [i6 + 0] = (short)(i4 + 0);
+                quadsIndices [i6 + 1] = (short)(i4 + 1);
+                quadsIndices [i6 + 2] = (short)(i4 + 2);
+                quadsIndices [i6 + 3] = (short)(i4 + 3);
+                quadsIndices [i6 + 4] = (short)(i4 + 2);
+                quadsIndices [i6 + 5] = (short)(i4 + 1);
+
+                i4 += 4;
+                i6 += 6;
             }
         }
 
@@ -409,7 +441,7 @@ namespace CocosSharp
             DepthTest = false;
         }
 
-        #endregion Constructors
+        #endregion Initialization
 
 
         #region Updating view
@@ -520,7 +552,8 @@ namespace CocosSharp
 
             currentTexture = null;
 
-            quadVertices = null;
+            quadsVertices = null;
+            quadsIndices = null;
             TmpVertices.Clear();
         }
 
@@ -688,50 +721,41 @@ namespace CocosSharp
             }
         }
 
-        public void DrawQuad(ref CCV3F_C4B_T2F_Quad quad)
-        {
-            CCV3F_C4B_T2F[] vertices = quadVertices;
-
-            if (vertices == null)
-            {
-                vertices = quadVertices = new CCV3F_C4B_T2F[4];
-                CheckQuadsIndexBuffer(1);
-            }
-
-            vertices[0] = quad.TopLeft;
-            vertices[1] = quad.BottomLeft;
-            vertices[2] = quad.TopRight;
-            vertices[3] = quad.BottomRight;
-
-            DrawIndexedPrimitives(PrimitiveType.TriangleList, vertices, 0, 4, quadsIndexBuffer.Data.Elements, 0, 2);
-        }
-
-        public void DrawQuads(CCRawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
+        internal void DrawQuads(CCRawList<CCV3F_C4B_T2F_Quad> quads, int start, int n)
         {
             if (n == 0)
-            {
                 return;
-            }
-
-            CheckQuadsIndexBuffer(start + n);
-            CheckQuadsVertexBuffer(start + n);
-
-            quadsBuffer.UpdateBuffer(quads, start, n);
-
-            graphicsDevice.SetVertexBuffer(quadsBuffer.VertexBuffer);
-            graphicsDevice.Indices = quadsIndexBuffer.IndexBuffer;
 
             ApplyEffectParams();
 
-            EffectPassCollection passes = currentEffect.CurrentTechnique.Passes;
-            for (int i = 0; i < passes.Count; i++)
+            // We unbox our quads into our vertex array that is passed onto MonoGame
+            // Our vertex array is of a fixed size, so split up into multiple draw calls if required
+            while (n > 0) 
             {
-                passes[i].Apply();
-                graphicsDevice.DrawIndexedPrimitives(PrimitiveType.TriangleList, 0, 0, n * 4, start * 6, n * 2);
-            }
+                int nIteration = Math.Min (n, MaxNumQuads);
 
-            graphicsDevice.SetVertexBuffer(null);
-            graphicsDevice.Indices = null;
+                int i4 = 0;
+                for (int i = start, N = start + nIteration; i < N; i++)
+                {
+                    quadsVertices[i4 + 0] = quads[i].TopLeft;
+                    quadsVertices[i4 + 1] = quads[i].BottomLeft;
+                    quadsVertices[i4 + 2] = quads[i].TopRight;
+                    quadsVertices[i4 + 3] = quads[i].BottomRight;
+
+                    i4 += 4;
+                }
+
+                EffectPassCollection passes = currentEffect.CurrentTechnique.Passes;
+                for (int i = 0; i < passes.Count; i++) 
+                {
+                    passes[i].Apply();
+                    graphicsDevice.DrawUserIndexedPrimitives(
+                        PrimitiveType.TriangleList, quadsVertices, 0, nIteration, quadsIndices, 0, nIteration * 2);
+                }
+
+                n -= nIteration;
+                start += nIteration;
+            }
         }
 
         internal void DrawBuffer<T, T2>(CCVertexBuffer<T> vertexBuffer, CCIndexBuffer<T2> indexBuffer, int start, int count)
