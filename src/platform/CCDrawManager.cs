@@ -750,7 +750,7 @@ namespace CocosSharp
                 {
                     passes[i].Apply();
                     graphicsDevice.DrawUserIndexedPrimitives(
-                        PrimitiveType.TriangleList, quadsVertices, 0, nIteration, quadsIndices, 0, nIteration * 2);
+                        PrimitiveType.TriangleList, quadsVertices, 0, nIteration * NumOfVerticesPerQuad, quadsIndices, 0, nIteration * 2);
                 }
 
                 n -= nIteration;
