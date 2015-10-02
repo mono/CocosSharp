@@ -130,7 +130,7 @@ So to get started we have placed a number of samples here: [Samples](https://git
 
 ### Statistics
 
-There is a special case for Xamarin iOS MonoTouch running on the simulator where they aggresively call garbage collection themselves.  This should not affect the devices though.  On the Simulator the GC label will always be 0 (zero)
+There is a special case for Xamarin iOS MonoTouch running on the simulator where they aggressively call garbage collection themselves.  This should not affect the devices though.  On the Simulator the GC label will always be 0 (zero)
 
 
 History
