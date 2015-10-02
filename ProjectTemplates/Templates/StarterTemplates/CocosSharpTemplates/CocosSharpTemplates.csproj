@@ -117,8 +117,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.1.6.1.0.nupkg">
-      <Link>Packages\CocosSharp.PCL.Shared.1.6.1.0.nupkg</Link>
+    <Content Include="..\..\..\NuGet\bin\CocosSharp.PCL.Shared.1.6.2.0.nupkg">
+      <Link>Packages\CocosSharp.PCL.Shared.1.6.2.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <None Include="source.extension.vsixmanifest">
