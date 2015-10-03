@@ -1021,6 +1021,10 @@
     <Compile Include="classes\tests\TextInputTest\CustomIME\IOS\UppercaseIMEKeyboardImpl.cs" />
     <Compile Include="classes\tests\LabelTestNew\LabelFSTextureView.cs" />
     <Compile Include="classes\AppDelegate.cs" />
+    <Compile Include="GameViewController.cs" />
+    <Compile Include="GameViewController.designer.cs">
+      <DependentUpon>GameViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Images\animationbuttonnormal.xnb" />
@@ -1740,5 +1744,8 @@
   <ItemGroup>
     <Folder Include="classes\tests\TextInputTest\CustomIME\" />
     <Folder Include="classes\tests\TextInputTest\CustomIME\IOS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="TestsStoryboard.storyboard" />
   </ItemGroup>
 </Project>
