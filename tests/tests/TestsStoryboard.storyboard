@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4443" systemVersion="13A451" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="4">
+            <objects>
+                <viewController id="5" sceneMemberID="viewController" customClass="GameViewController" storyboardIdentifier="GameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2"/>
+                        <viewControllerLayoutGuide type="bottom" id="3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6" customClass="CCGameView">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="362" y="-93"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+    <resources>
+        <image name="Content/fonts/arial-26-en-ru_0.png" width="512" height="512"/>
+        <image name="Content/fonts/tahoma.ttf" width="0" height="0"/>
+        <image name="Content/fonts/boundsTestFont_0.png" width="512" height="512"/>
+        <image name="Content/fonts/HKYuanMini.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Schwarzwald.ttf" width="0" height="0"/>
+        <image name="Content/fonts/American Typewriter.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Courier New.ttf" width="0" height="0"/>
+        <image name="Content/fonts/MorrisRoman-Black.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Marker Felt.ttf" width="0" height="0"/>
+        <image name="PhoneGameThumb_iPad.png" width="72" height="72"/>
+        <image name="PhoneGameThumb_iPhone.png" width="57" height="57"/>
+        <image name="PhoneGameThumb.png" width="64" height="64"/>
+        <image name="Content/fonts/A Damn Mess.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Abberancy.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Abduction.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Paint Boy.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Schwarzwald Regular.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Scissor Cuts.ttf" width="0" height="0"/>
+        <image name="Content/fonts/Thonburi.ttf" width="0" height="0"/>
+        <image name="Content/fonts/ThonburiBold.ttf" width="0" height="0"/>
+        <image name="Default-568h.png" width="640" height="1136"/>
+    </resources>
+</document>

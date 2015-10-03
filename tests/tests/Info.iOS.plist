@@ -31,5 +31,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>TestsStoryboard</string>
+	<key>UIMainStoryboardFile</key>
+	<string>TestsStoryboard</string>
 </dict>
 </plist>
