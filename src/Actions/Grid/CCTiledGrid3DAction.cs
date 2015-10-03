@@ -40,7 +40,7 @@ namespace CocosSharp
         {
             get 
             {
-                CCSize gridTextureSizeInPixels = Target.Scene.VisibleBoundsScreenspace.Size;
+                CCSize gridTextureSizeInPixels = Target.GameView.DesignResolution;
                 var gridTexture = new CCRenderTexture( 
                     gridTextureSizeInPixels, gridTextureSizeInPixels, CCSurfaceFormat.Color);
                 tiledGrid3D = new CCTiledGrid3D (GridSize, gridTexture);
