@@ -96,7 +96,7 @@ namespace CocosSharp
                     hiddenKeyInput.IsSpellCheckEnabled = false;
 
                     // Get our Current SwapChainPanel.  This is for our WP8.1 implementation
-                    var content = Windows.UI.Xaml.Window.Current.Content as Windows.UI.Xaml.Controls.SwapChainBackgroundPanel;
+                    var content = Windows.UI.Xaml.Window.Current.Content as CCGameView;
                     if (content == null)
                     {
                         // Do our detach stuff

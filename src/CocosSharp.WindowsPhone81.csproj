@@ -368,7 +368,7 @@
     <Compile Include="Platform\ContentReaders\KerningHashElementReader.cs" />
     <Compile Include="Platform\ICCFocusable.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
-    <Compile Include="Platform\Keyboard\Windows\WinRT\IMEKeyboardImpl.cs" />
+    <Compile Include="Platform\Keyboard\Windows\Wp81\IMEKeyboardImpl.cs" />
     <Compile Include="Platform\PList\PlistArray.cs" />
     <Compile Include="Platform\PList\PlistBoolean.cs" />
     <Compile Include="Platform\PList\PlistData.cs" />
