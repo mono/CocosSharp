@@ -256,7 +256,6 @@ namespace CocosSharp
             presParams.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             presParams.DepthStencilFormat = DepthFormat.Depth24Stencil8;
             presParams.BackBufferFormat = XnaSurfaceFormat.Color;
-            presParams.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             PlatformInitialiseGraphicsDevice(ref presParams);
 
             graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, graphicsProfile, presParams);
