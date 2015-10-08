@@ -110,10 +110,20 @@ namespace CocosSharp
             }
         }
 
-        public void AddLayer(CCLayer layer)
+        [Obsolete("CCScene: AddChild is obsolete. Use AddLayer instead")]
+        public override void AddChild(CCNode child, int zOrder, int tag)
         {
-            gameView.ViewportChanged += layer.OnViewportChanged; 
-            AddChild(layer);
+            CCLayer layer = child as CCLayer;
+
+            if(layer != null)
+                gameView.ViewportChanged += layer.OnViewportChanged; 
+
+            base.AddChild(child, zOrder, tag);
+        }
+
+        public void AddLayer(CCLayer layer, int zOrder = 0, int tag = 0)
+        {
+            AddChild(layer, zOrder, tag);
         }
     }
 }
