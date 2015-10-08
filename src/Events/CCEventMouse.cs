@@ -30,16 +30,27 @@ namespace CocosSharp
         public float ScrollX { get; internal set; }
         public float ScrollY { get; internal set; }
 
-        // Set mouse position
-        public float CursorX { get; internal set; }
-        public float CursorY { get; internal set; }
+        CCPoint point;
+
+        // returns the current touch location in world coordinates 
+        public CCPoint Cursor
+        {
+            get { return CurrentTarget.ScreenToWorldspace(point); }
+        }
+
+        // returns the current touch location in screen coordinates 
+        public CCPoint CursorOnScreen
+        {
+            get { return point; }
+        }
 
 		public CCMouseButton MouseButton { get; internal set; }
 
-        internal CCEventMouse(CCMouseEventType mouseEventType)
+        internal CCEventMouse(CCMouseEventType mouseEventType, CCPoint point)
             : base (CCEventType.MOUSE)
         {
             MouseEventType = mouseEventType;
+            this.point = point;
         }
     }
 }

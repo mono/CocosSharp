@@ -24,6 +24,8 @@ namespace tests
 
         static List<Func<CCLayer>> eventDispatcherTestFunctions = new List<Func<CCLayer>> ()
             {
+                                () => new MouseEventTest(),
+
                 () => new TouchableSpriteTest(),
                 () => new FixedPriorityTest(),
                 () => new MouseEventTest(),
@@ -152,6 +154,12 @@ namespace tests
 		CCLabel mouseButtonUp;
 		CCLabel scrollWheel;
 
+        public MouseEventTest()
+        {
+            Color = CCColor3B.Blue;
+            Opacity = 255;
+        }
+
 		public override void OnEnter ()
 		{
             CCRect visibleBounds = VisibleBoundsWorldspace;
@@ -204,7 +212,8 @@ namespace tests
 		}
 		void OnMouseMove(CCEventMouse mouseEvent)
 		{
-			mousePosition.Text = "Mouse Position: X: " + mouseEvent.CursorX + " Y: " + mouseEvent.CursorY;
+            var cursor = mouseEvent.Cursor;
+			mousePosition.Text = "Mouse Position: X: " + cursor.X + " Y: " + cursor.Y;
 		}
 		public override string Title
 		{

@@ -162,8 +162,9 @@ namespace tests
     {
         static void Main() 
         {
-            CCApplication.Create(new AppDelegate());
+            //CCApplication.Create(new AppDelegate());
         }
+
     }
 #endif
 }

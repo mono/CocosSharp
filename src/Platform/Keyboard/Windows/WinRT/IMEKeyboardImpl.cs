@@ -32,7 +32,7 @@ namespace CocosSharp
 
         private static CoreDispatcher dispatcher;
         static Windows.UI.Xaml.Controls.TextBox hiddenKeyInput;
-        static SwapChainBackgroundPanel content;
+        static SwapChainPanel content;
 
         static bool IsXAML = false;
 
@@ -56,7 +56,7 @@ namespace CocosSharp
                     // and it is of type Windows.UI.Xaml.Controls.SwapChainBackgroundPanel then we are in 
                     // XAML territory so we can do some soft keyboarding 
                     content = Window.Current != null ?
-                        Window.Current.Content as SwapChainBackgroundPanel
+                        Window.Current.Content as SwapChainPanel
                         : null;
 
                     if (content != null)
@@ -142,7 +142,7 @@ namespace CocosSharp
             IsVisible = false;
 
             // Get our Current SwapChainPanel
-            var content = Windows.UI.Xaml.Window.Current.Content as Windows.UI.Xaml.Controls.SwapChainBackgroundPanel;
+            var content = Windows.UI.Xaml.Window.Current.Content as Windows.UI.Xaml.Controls.SwapChainPanel;
             if (content == null)
             {
                 // Do our detach stuff

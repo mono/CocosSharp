@@ -117,546 +117,519 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="platform\Keyboard\Windows\WinRT\IMEKeyboardImpl.cs" />
-    <Compile Include="text_input_node\CCIMEKeyboardEventArgs.cs" />
-    <Compile Include="text_input_node\CCTextField.cs" />
-    <None Include="label_nodes\CCLabel-Gdi.cs" />
-    <Compile Include="actions\action\CCAmplitudeAction.cs" />
-    <Compile Include="events\CCEvent.cs" />
-    <Compile Include="events\CCEventAccelerate.cs" />
-    <Compile Include="events\CCEventDispatcher.cs" />
-    <Compile Include="events\CCEventKeyboard.cs" />
-    <Compile Include="events\CCEventListener.cs" />
-    <Compile Include="events\CCEventListenerAccelerometer.cs" />
-    <Compile Include="events\CCEventListenerKeyboard.cs" />
-    <Compile Include="events\CCEventListenerMouse.cs" />
-    <Compile Include="events\CCEventListenerTouchAllAtOnce.cs" />
-    <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
-    <Compile Include="events\CCEventMouse.cs" />
-    <Compile Include="events\CCEventTouch.cs" />
-    <Compile Include="events\CCEventListenerGamePad.cs" />
-    <Compile Include="events\CCEventGamePadButton.cs" />
-    <Compile Include="events\CCEventGamePad.cs" />
-    <Compile Include="events\CCEventGamePadDPad.cs" />
-    <Compile Include="events\CCEventGamePadStick.cs" />
-    <Compile Include="events\CCEventGamePadTrigger.cs" />
-    <Compile Include="events\CCEventGamePadConnection.cs" />
-    <Compile Include="events\CCEventCustom.cs" />
-    <Compile Include="events\CCEventListenerCustom.cs" />
-    <Compile Include="label_nodes\CCFont.cs" />
-    <Compile Include="label_nodes\CCFontAtlas.cs" />
-    <Compile Include="label_nodes\CCFontAtlasCache.cs" />
-    <Compile Include="label_nodes\CCFontFNT.cs" />
-    <Compile Include="label_nodes\CCFontSpriteFont.cs" />
-    <Compile Include="label_nodes\CCLabel-FontUtilities-Win8.cs" />
-    <Compile Include="label_nodes\CCLabel-FontUtilities.cs" />
-    <Compile Include="label_nodes\CCLabel-Windows.cs" />
-    <Compile Include="label_nodes\CCLabel.cs" />
-    <Compile Include="label_nodes\CCTextLayout.cs" />
-    <Compile Include="misc_nodes\CCGeometryNode.cs" />
-    <Compile Include="misc_nodes\CCNodeGrid.cs" />
-    <Compile Include="platform\CCArrayPool.cs" />
+    <Compile Include="EmbeddableView\CCGameView.cs" />
+    <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
+    <Compile Include="EmbeddableView\CCGameView.WindowsRT.cs" />
+    <Compile Include="Nodes\CCNode.cs" />
+    <Compile Include="Nodes\Other\CCNodeGrid.cs" />
+    <Compile Include="Platform\CCContent.cs" />
+    <Compile Include="Platform\CCPrimitiveBatch.cs" />
+    <Compile Include="Platform\Keyboard\Windows\WinRT\IMEKeyboardImpl.cs" />
+    <Compile Include="Nodes\TextInput\CCIMEKeyboardEventArgs.cs" />
+    <Compile Include="Nodes\TextInput\CCTextField.cs" />
+    <None Include="Nodes\Labels\CCLabel-Gdi.cs" />
+    <Compile Include="Actions\Base\CCAmplitudeAction.cs" />
+    <Compile Include="Events\CCEvent.cs" />
+    <Compile Include="Events\CCEventAccelerate.cs" />
+    <Compile Include="Events\CCEventDispatcher.cs" />
+    <Compile Include="Events\CCEventKeyboard.cs" />
+    <Compile Include="Events\CCEventListener.cs" />
+    <Compile Include="Events\CCEventListenerAccelerometer.cs" />
+    <Compile Include="Events\CCEventListenerKeyboard.cs" />
+    <Compile Include="Events\CCEventListenerMouse.cs" />
+    <Compile Include="Events\CCEventListenerTouchAllAtOnce.cs" />
+    <Compile Include="Events\CCEventListenerTouchOneByOne.cs" />
+    <Compile Include="Events\CCEventMouse.cs" />
+    <Compile Include="Events\CCEventTouch.cs" />
+    <Compile Include="Events\CCEventListenerGamePad.cs" />
+    <Compile Include="Events\CCEventGamePadButton.cs" />
+    <Compile Include="Events\CCEventGamePad.cs" />
+    <Compile Include="Events\CCEventGamePadDPad.cs" />
+    <Compile Include="Events\CCEventGamePadStick.cs" />
+    <Compile Include="Events\CCEventGamePadTrigger.cs" />
+    <Compile Include="Events\CCEventGamePadConnection.cs" />
+    <Compile Include="Events\CCEventCustom.cs" />
+    <Compile Include="Events\CCEventListenerCustom.cs" />
+    <Compile Include="Nodes\Labels\CCFont.cs" />
+    <Compile Include="Nodes\Labels\CCFontAtlas.cs" />
+    <Compile Include="Nodes\Labels\CCFontAtlasCache.cs" />
+    <Compile Include="Nodes\Labels\CCFontFNT.cs" />
+    <Compile Include="Nodes\Labels\CCFontSpriteFont.cs" />
+    <Compile Include="Nodes\Labels\CCLabel-FontUtilities-Win8.cs" />
+    <Compile Include="Nodes\Labels\CCLabel-FontUtilities.cs" />
+    <Compile Include="Nodes\Labels\CCLabel-Windows.cs" />
+    <Compile Include="Nodes\Labels\CCLabel.cs" />
+    <Compile Include="Nodes\Labels\CCTextLayout.cs" />
+    <Compile Include="Nodes\Other\CCGeometryNode.cs" />
+    <Compile Include="Platform\CCArrayPool.cs" />
     <Compile Include="Renderer\CCRenderer.cs" />
     <Compile Include="Renderer\RenderCommands\CCCustomCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCQuadCommand.cs" />
     <Compile Include="Renderer\RenderCommands\CCRenderCommand.cs" />
-    <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
-    <Compile Include=".\actions\action\CCAction.cs">
-      <LogicalName>actions\action\CCAction</LogicalName>
+    <Compile Include="Nodes\Sprites\CCMaskedSprite.cs" />
+    <Compile Include=".\Actions\Base\CCAction.cs">
+      <LogicalName>Actions\Base\CCAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action\CCFiniteTimeAction.cs">
-      <LogicalName>actions\action\CCFiniteTimeAction</LogicalName>
+    <Compile Include=".\Actions\Base\CCFiniteTimeAction.cs">
+      <LogicalName>Actions\Base\CCFiniteTimeAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action\CCFollow.cs">
-      <LogicalName>actions\action\CCFollow</LogicalName>
+    <Compile Include=".\Actions\Base\CCFollow.cs">
+      <LogicalName>Actions\Base\CCFollow</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action\CCSpeed.cs">
-      <LogicalName>actions\action\CCSpeed</LogicalName>
+    <Compile Include=".\Actions\Base\CCSpeed.cs">
+      <LogicalName>Actions\Base\CCSpeed</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_camera\CCActionCamera.cs">
-      <LogicalName>actions\action_camera\CCActionCamera</LogicalName>
+    <Compile Include=".\Actions\Camera\CCActionCamera.cs">
+      <LogicalName>Actions\Camera\CCActionCamera</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_camera\CCOrbitCamera.cs">
-      <LogicalName>actions\action_camera\CCOrbitCamera</LogicalName>
+    <Compile Include=".\Actions\Camera\CCOrbitCamera.cs">
+      <LogicalName>Actions\Camera\CCOrbitCamera</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_catmull_rom\CCCardinalSplineTo.cs">
-      <LogicalName>actions\action_catmull_rom\CCCardinalSplineTo</LogicalName>
+    <Compile Include=".\Actions\Catmull\CCCardinalSplineTo.cs">
+      <LogicalName>Actions\Catmull\CCCardinalSplineTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCActionEase.cs">
-      <LogicalName>actions\action_ease\CCActionEase</LogicalName>
+    <Compile Include=".\Actions\Ease\CCActionEase.cs">
+      <LogicalName>Actions\Ease\CCActionEase</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBackIn.cs">
-      <LogicalName>actions\action_ease\CCEaseBackIn</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseBackIn.cs">
+      <LogicalName>Actions\Ease\CCEaseBackIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBackInOut.cs">
-      <LogicalName>actions\action_ease\CCEaseBackInOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseBackInOut.cs">
+      <LogicalName>Actions\Ease\CCEaseBackInOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBackOut.cs">
-      <LogicalName>actions\action_ease\CCEaseBackOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseBackOut.cs">
+      <LogicalName>Actions\Ease\CCEaseBackOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBounceIn.cs">
-      <LogicalName>actions\action_ease\CCEaseBounceIn</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseBounceIn.cs">
+      <LogicalName>Actions\Ease\CCEaseBounceIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBounceInOut.cs">
-      <LogicalName>actions\action_ease\CCEaseBounceInOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseBounceInOut.cs">
+      <LogicalName>Actions\Ease\CCEaseBounceInOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseBounceOut.cs">
-      <LogicalName>actions\action_ease\CCEaseBounceOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseBounceOut.cs">
+      <LogicalName>Actions\Ease\CCEaseBounceOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseCustom.cs">
-      <LogicalName>actions\action_ease\CCEaseCustom</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseCustom.cs">
+      <LogicalName>Actions\Ease\CCEaseCustom</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseElastic.cs">
-      <LogicalName>actions\action_ease\CCEaseElastic</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseElastic.cs">
+      <LogicalName>Actions\Ease\CCEaseElastic</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseElasticIn.cs">
-      <LogicalName>actions\action_ease\CCEaseElasticIn</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseElasticIn.cs">
+      <LogicalName>Actions\Ease\CCEaseElasticIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseElasticInOut.cs">
-      <LogicalName>actions\action_ease\CCEaseElasticInOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseElasticInOut.cs">
+      <LogicalName>Actions\Ease\CCEaseElasticInOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseElasticOut.cs">
-      <LogicalName>actions\action_ease\CCEaseElasticOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseElasticOut.cs">
+      <LogicalName>Actions\Ease\CCEaseElasticOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseExponentialIn.cs">
-      <LogicalName>actions\action_ease\CCEaseExponentialIn</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseExponentialIn.cs">
+      <LogicalName>Actions\Ease\CCEaseExponentialIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseExponentialInOut.cs">
-      <LogicalName>actions\action_ease\CCEaseExponentialInOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseExponentialInOut.cs">
+      <LogicalName>Actions\Ease\CCEaseExponentialInOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseExponentialOut.cs">
-      <LogicalName>actions\action_ease\CCEaseExponentialOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseExponentialOut.cs">
+      <LogicalName>Actions\Ease\CCEaseExponentialOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseIn.cs">
-      <LogicalName>actions\action_ease\CCEaseIn</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseIn.cs">
+      <LogicalName>Actions\Ease\CCEaseIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseInOut.cs">
-      <LogicalName>actions\action_ease\CCEaseInOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseInOut.cs">
+      <LogicalName>Actions\Ease\CCEaseInOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseOut.cs">
-      <LogicalName>actions\action_ease\CCEaseOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseOut.cs">
+      <LogicalName>Actions\Ease\CCEaseOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseRateAction.cs">
-      <LogicalName>actions\action_ease\CCEaseRateAction</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseRateAction.cs">
+      <LogicalName>Actions\Ease\CCEaseRateAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseSineIn.cs">
-      <LogicalName>actions\action_ease\CCEaseSineIn</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseSineIn.cs">
+      <LogicalName>Actions\Ease\CCEaseSineIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseSineInOut.cs">
-      <LogicalName>actions\action_ease\CCEaseSineInOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseSineInOut.cs">
+      <LogicalName>Actions\Ease\CCEaseSineInOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_ease\CCEaseSineOut.cs">
-      <LogicalName>actions\action_ease\CCEaseSineOut</LogicalName>
+    <Compile Include=".\Actions\Ease\CCEaseSineOut.cs">
+      <LogicalName>Actions\Ease\CCEaseSineOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCFlipX3D.cs">
-      <LogicalName>actions\action_grid3d\CCFlipX3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCFlipX3D.cs">
+      <LogicalName>Actions\Grid3d\CCFlipX3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCFlipY3D.cs">
-      <LogicalName>actions\action_grid3d\CCFlipY3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCFlipY3D.cs">
+      <LogicalName>Actions\Grid3d\CCFlipY3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCLens3D.cs">
-      <LogicalName>actions\action_grid3d\CCLens3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCLens3D.cs">
+      <LogicalName>Actions\Grid3d\CCLens3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCLiquid.cs">
-      <LogicalName>actions\action_grid3d\CCLiquid</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCLiquid.cs">
+      <LogicalName>Actions\Grid3d\CCLiquid</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCPageTurn3D.cs">
-      <LogicalName>actions\action_grid3d\CCPageTurn3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCPageTurn3D.cs">
+      <LogicalName>Actions\Grid3d\CCPageTurn3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCRipple3D.cs">
-      <LogicalName>actions\action_grid3d\CCRipple3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCRipple3D.cs">
+      <LogicalName>Actions\Grid3d\CCRipple3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCShaky3D.cs">
-      <LogicalName>actions\action_grid3d\CCShaky3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCShaky3D.cs">
+      <LogicalName>Actions\Grid3d\CCShaky3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCTwirl.cs">
-      <LogicalName>actions\action_grid3d\CCTwirl</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCTwirl.cs">
+      <LogicalName>Actions\Grid3d\CCTwirl</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCWaves.cs">
-      <LogicalName>actions\action_grid3d\CCWaves</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCWaves.cs">
+      <LogicalName>Actions\Grid3d\CCWaves</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid3d\CCWaves3D.cs">
-      <LogicalName>actions\action_grid3d\CCWaves3D</LogicalName>
+    <Compile Include=".\Actions\Grid3d\CCWaves3D.cs">
+      <LogicalName>Actions\Grid3d\CCWaves3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid\CCAccelAmplitude.cs">
-      <LogicalName>actions\action_grid\CCAccelAmplitude</LogicalName>
+    <Compile Include=".\Actions\Grid\CCAccelAmplitude.cs">
+      <LogicalName>Actions\Grid\CCAccelAmplitude</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid\CCAccelDeccelAmplitude.cs">
-      <LogicalName>actions\action_grid\CCAccelDeccelAmplitude</LogicalName>
+    <Compile Include=".\Actions\Grid\CCAccelDeccelAmplitude.cs">
+      <LogicalName>Actions\Grid\CCAccelDeccelAmplitude</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid\CCDeccelAmplitude.cs">
-      <LogicalName>actions\action_grid\CCDeccelAmplitude</LogicalName>
+    <Compile Include=".\Actions\Grid\CCDeccelAmplitude.cs">
+      <LogicalName>Actions\Grid\CCDeccelAmplitude</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid\CCGrid3DAction.cs">
-      <LogicalName>actions\action_grid\CCGrid3DAction</LogicalName>
+    <Compile Include=".\Actions\Grid\CCGrid3DAction.cs">
+      <LogicalName>Actions\Grid\CCGrid3DAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid\CCGridAction.cs">
-      <LogicalName>actions\action_grid\CCGridAction</LogicalName>
+    <Compile Include=".\Actions\Grid\CCGridAction.cs">
+      <LogicalName>Actions\Grid\CCGridAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_grid\CCTiledGrid3DAction.cs">
-      <LogicalName>actions\action_grid\CCTiledGrid3DAction</LogicalName>
+    <Compile Include=".\Actions\Grid\CCTiledGrid3DAction.cs">
+      <LogicalName>Actions\Grid\CCTiledGrid3DAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\callfunc\CCCallFunc.cs">
-      <LogicalName>actions\action_instants\callfunc\CCCallFunc</LogicalName>
+    <Compile Include=".\Actions\Instants\callfunc\CCCallFunc.cs">
+      <LogicalName>Actions\Instants\callfunc\CCCallFunc</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\callfunc\CCCallFuncN.cs">
-      <LogicalName>actions\action_instants\callfunc\CCCallFuncN</LogicalName>
+    <Compile Include=".\Actions\Instants\callfunc\CCCallFuncN.cs">
+      <LogicalName>Actions\Instants\callfunc\CCCallFuncN</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\callfunc\CCCallFuncND.cs">
-      <LogicalName>actions\action_instants\callfunc\CCCallFuncND</LogicalName>
+    <Compile Include=".\Actions\Instants\callfunc\CCCallFuncND.cs">
+      <LogicalName>Actions\Instants\callfunc\CCCallFuncND</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\callfunc\CCCallFuncO.cs">
-      <LogicalName>actions\action_instants\callfunc\CCCallFuncO</LogicalName>
+    <Compile Include=".\Actions\Instants\callfunc\CCCallFuncO.cs">
+      <LogicalName>Actions\Instants\callfunc\CCCallFuncO</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCActionInstant.cs">
-      <LogicalName>actions\action_instants\CCActionInstant</LogicalName>
+    <Compile Include=".\Actions\Instants\CCActionInstant.cs">
+      <LogicalName>Actions\Instants\CCActionInstant</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCFlipX.cs">
-      <LogicalName>actions\action_instants\CCFlipX</LogicalName>
+    <Compile Include=".\Actions\Instants\CCFlipX.cs">
+      <LogicalName>Actions\Instants\CCFlipX</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCFlipY.cs">
-      <LogicalName>actions\action_instants\CCFlipY</LogicalName>
+    <Compile Include=".\Actions\Instants\CCFlipY.cs">
+      <LogicalName>Actions\Instants\CCFlipY</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCHide.cs">
-      <LogicalName>actions\action_instants\CCHide</LogicalName>
+    <Compile Include=".\Actions\Instants\CCHide.cs">
+      <LogicalName>Actions\Instants\CCHide</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCPlace.cs">
-      <LogicalName>actions\action_instants\CCPlace</LogicalName>
+    <Compile Include=".\Actions\Instants\CCPlace.cs">
+      <LogicalName>Actions\Instants\CCPlace</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCReuseGrid.cs">
-      <LogicalName>actions\action_instants\CCReuseGrid</LogicalName>
+    <Compile Include=".\Actions\Instants\CCReuseGrid.cs">
+      <LogicalName>Actions\Instants\CCReuseGrid</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCShow.cs">
-      <LogicalName>actions\action_instants\CCShow</LogicalName>
+    <Compile Include=".\Actions\Instants\CCShow.cs">
+      <LogicalName>Actions\Instants\CCShow</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCStopGrid.cs">
-      <LogicalName>actions\action_instants\CCStopGrid</LogicalName>
+    <Compile Include=".\Actions\Instants\CCStopGrid.cs">
+      <LogicalName>Actions\Instants\CCStopGrid</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_instants\CCToggleVisibility.cs">
-      <LogicalName>actions\action_instants\CCToggleVisibility</LogicalName>
+    <Compile Include=".\Actions\Instants\CCToggleVisibility.cs">
+      <LogicalName>Actions\Instants\CCToggleVisibility</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCExtraAction.cs">
-      <LogicalName>actions\action_intervals\CCExtraAction</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCExtraAction.cs">
+      <LogicalName>Actions\Intervals\CCExtraAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCActionTween.cs">
-      <LogicalName>actions\action_intervals\CCActionTween</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCActionTween.cs">
+      <LogicalName>Actions\Intervals\CCActionTween</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCAnimate.cs">
-      <LogicalName>actions\action_intervals\CCAnimate</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCAnimate.cs">
+      <LogicalName>Actions\Intervals\CCAnimate</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCBezierBy.cs">
-      <LogicalName>actions\action_intervals\CCBezierBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCBezierBy.cs">
+      <LogicalName>Actions\Intervals\CCBezierBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCBezierTo.cs">
-      <LogicalName>actions\action_intervals\CCBezierTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCBezierTo.cs">
+      <LogicalName>Actions\Intervals\CCBezierTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCBlink.cs">
-      <LogicalName>actions\action_intervals\CCBlink</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCBlink.cs">
+      <LogicalName>Actions\Intervals\CCBlink</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCDelayTime.cs">
-      <LogicalName>actions\action_intervals\CCDelayTime</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCDelayTime.cs">
+      <LogicalName>Actions\Intervals\CCDelayTime</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCFadeIn.cs">
-      <LogicalName>actions\action_intervals\CCFadeIn</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCFadeIn.cs">
+      <LogicalName>Actions\Intervals\CCFadeIn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCFadeOut.cs">
-      <LogicalName>actions\action_intervals\CCFadeOut</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCFadeOut.cs">
+      <LogicalName>Actions\Intervals\CCFadeOut</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCFadeTo.cs">
-      <LogicalName>actions\action_intervals\CCFadeTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCFadeTo.cs">
+      <LogicalName>Actions\Intervals\CCFadeTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCJumpBy.cs">
-      <LogicalName>actions\action_intervals\CCJumpBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCJumpBy.cs">
+      <LogicalName>Actions\Intervals\CCJumpBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCJumpTo.cs">
-      <LogicalName>actions\action_intervals\CCJumpTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCJumpTo.cs">
+      <LogicalName>Actions\Intervals\CCJumpTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCMoveBy.cs">
-      <LogicalName>actions\action_intervals\CCMoveBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCMoveBy.cs">
+      <LogicalName>Actions\Intervals\CCMoveBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCMoveTo.cs">
-      <LogicalName>actions\action_intervals\CCMoveTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCMoveTo.cs">
+      <LogicalName>Actions\Intervals\CCMoveTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCRepeat.cs">
-      <LogicalName>actions\action_intervals\CCRepeat</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCRepeat.cs">
+      <LogicalName>Actions\Intervals\CCRepeat</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCRepeatForever.cs">
-      <LogicalName>actions\action_intervals\CCRepeatForever</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCRepeatForever.cs">
+      <LogicalName>Actions\Intervals\CCRepeatForever</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCReverseTime.cs">
-      <LogicalName>actions\action_intervals\CCReverseTime</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCReverseTime.cs">
+      <LogicalName>Actions\Intervals\CCReverseTime</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCRotateBy.cs">
-      <LogicalName>actions\action_intervals\CCRotateBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCRotateBy.cs">
+      <LogicalName>Actions\Intervals\CCRotateBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCRotateTo.cs">
-      <LogicalName>actions\action_intervals\CCRotateTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCRotateTo.cs">
+      <LogicalName>Actions\Intervals\CCRotateTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCScaleBy.cs">
-      <LogicalName>actions\action_intervals\CCScaleBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCScaleBy.cs">
+      <LogicalName>Actions\Intervals\CCScaleBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCScaleTo.cs">
-      <LogicalName>actions\action_intervals\CCScaleTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCScaleTo.cs">
+      <LogicalName>Actions\Intervals\CCScaleTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCSequence.cs">
-      <LogicalName>actions\action_intervals\CCSequence</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCSequence.cs">
+      <LogicalName>Actions\Intervals\CCSequence</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCSkewBy.cs">
-      <LogicalName>actions\action_intervals\CCSkewBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCSkewBy.cs">
+      <LogicalName>Actions\Intervals\CCSkewBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCSkewTo.cs">
-      <LogicalName>actions\action_intervals\CCSkewTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCSkewTo.cs">
+      <LogicalName>Actions\Intervals\CCSkewTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCSpawn.cs">
-      <LogicalName>actions\action_intervals\CCSpawn</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCSpawn.cs">
+      <LogicalName>Actions\Intervals\CCSpawn</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCTargetedAction.cs">
-      <LogicalName>actions\action_intervals\CCTargetedAction</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCTargetedAction.cs">
+      <LogicalName>Actions\Intervals\CCTargetedAction</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCTintBy.cs">
-      <LogicalName>actions\action_intervals\CCTintBy</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCTintBy.cs">
+      <LogicalName>Actions\Intervals\CCTintBy</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCTintTo.cs">
-      <LogicalName>actions\action_intervals\CCTintTo</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCTintTo.cs">
+      <LogicalName>Actions\Intervals\CCTintTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCParallel.cs">
-      <LogicalName>actions\action_intervals\CCParallel</LogicalName>
+    <Compile Include=".\Actions\Intervals\CCParallel.cs">
+      <LogicalName>Actions\Intervals\CCParallel</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_progress_timer\CCProgressFromTo.cs">
-      <LogicalName>actions\action_progress_timer\CCProgressFromTo</LogicalName>
+    <Compile Include=".\Actions\ProgressTimer\CCProgressFromTo.cs">
+      <LogicalName>Actions\ProgressTimer\CCProgressFromTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_progress_timer\CCProgressTo.cs">
-      <LogicalName>actions\action_progress_timer\CCProgressTo</LogicalName>
+    <Compile Include=".\Actions\ProgressTimer\CCProgressTo.cs">
+      <LogicalName>Actions\ProgressTimer\CCProgressTo</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCFadeOutBLTiles.cs">
-      <LogicalName>actions\action_tiled_grid\CCFadeOutBLTiles</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCFadeOutBLTiles.cs">
+      <LogicalName>Actions\TiledGrid\CCFadeOutBLTiles</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCFadeOutDownTiles.cs">
-      <LogicalName>actions\action_tiled_grid\CCFadeOutDownTiles</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCFadeOutDownTiles.cs">
+      <LogicalName>Actions\TiledGrid\CCFadeOutDownTiles</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCFadeOutTRTiles.cs">
-      <LogicalName>actions\action_tiled_grid\CCFadeOutTRTiles</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCFadeOutTRTiles.cs">
+      <LogicalName>Actions\TiledGrid\CCFadeOutTRTiles</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCFadeOutUpTiles.cs">
-      <LogicalName>actions\action_tiled_grid\CCFadeOutUpTiles</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCFadeOutUpTiles.cs">
+      <LogicalName>Actions\TiledGrid\CCFadeOutUpTiles</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCJumpTiles3D.cs">
-      <LogicalName>actions\action_tiled_grid\CCJumpTiles3D</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCJumpTiles3D.cs">
+      <LogicalName>Actions\TiledGrid\CCJumpTiles3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCShakyTiles3D.cs">
-      <LogicalName>actions\action_tiled_grid\CCShakyTiles3D</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCShakyTiles3D.cs">
+      <LogicalName>Actions\TiledGrid\CCShakyTiles3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCShatteredTiles3D.cs">
-      <LogicalName>actions\action_tiled_grid\CCShatteredTiles3D</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCShatteredTiles3D.cs">
+      <LogicalName>Actions\TiledGrid\CCShatteredTiles3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCShuffleTiles.cs">
-      <LogicalName>actions\action_tiled_grid\CCShuffleTiles</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCShuffleTiles.cs">
+      <LogicalName>Actions\TiledGrid\CCShuffleTiles</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCSplitCols.cs">
-      <LogicalName>actions\action_tiled_grid\CCSplitCols</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCSplitCols.cs">
+      <LogicalName>Actions\TiledGrid\CCSplitCols</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCSplitRows.cs">
-      <LogicalName>actions\action_tiled_grid\CCSplitRows</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCSplitRows.cs">
+      <LogicalName>Actions\TiledGrid\CCSplitRows</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCTurnOffTiles.cs">
-      <LogicalName>actions\action_tiled_grid\CCTurnOffTiles</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCTurnOffTiles.cs">
+      <LogicalName>Actions\TiledGrid\CCTurnOffTiles</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCWavesTiles3D.cs">
-      <LogicalName>actions\action_tiled_grid\CCWavesTiles3D</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCWavesTiles3D.cs">
+      <LogicalName>Actions\TiledGrid\CCWavesTiles3D</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_tiled_grid\CCTile.cs">
-      <LogicalName>actions\action_tiled_grid\Tile</LogicalName>
+    <Compile Include=".\Actions\TiledGrid\CCTile.cs">
+      <LogicalName>Actions\TiledGrid\Tile</LogicalName>
     </Compile>
-    <Compile Include=".\actions\CCActionManager.cs">
-      <LogicalName>actions\CCActionManager</LogicalName>
+    <Compile Include=".\Actions\CCActionManager.cs">
+      <LogicalName>Actions\CCActionManager</LogicalName>
     </Compile>
-    <Compile Include=".\base_nodes\CCAtlasNode.cs">
-      <LogicalName>base_nodes\CCAtlasNode</LogicalName>
+    <Compile Include=".\Nodes\Other\CCAtlasNode.cs">
+      <LogicalName>Nodes\Other\CCAtlasNode</LogicalName>
     </Compile>
-    <Compile Include=".\base_nodes\CCNode.cs">
-      <LogicalName>base_nodes\CCNode</LogicalName>
+    <Compile Include=".\Camera\CCCamera.cs">
+      <LogicalName>Camera\CCCamera</LogicalName>
     </Compile>
-    <Compile Include=".\CCCamera.cs">
-      <LogicalName>CCCamera</LogicalName>
+    <Compile Include=".\Support\CCStats.cs">
+      <LogicalName>Support\CCStats</LogicalName>
     </Compile>
-    <Compile Include=".\CCWindow.cs">
-      <LogicalName>CCWindow</LogicalName>
+    <Compile Include=".\Nodes\Scenes\CCDirector.cs">
+      <LogicalName>Nodes\Scenes\CCDirector</LogicalName>
     </Compile>
-    <Compile Include=".\CCViewport.cs">
-      <LogicalName>CCViewport</LogicalName>
+    <Compile Include=".\Events\CCScheduler.cs">
+      <LogicalName>Events\CCScheduler</LogicalName>
     </Compile>
-    <Compile Include=".\CCConfiguration.cs">
-      <LogicalName>CCConfiguration</LogicalName>
+    <Compile Include=".\Math\CCAffineTransform.cs">
+      <LogicalName>Math\CCAffineTransform</LogicalName>
     </Compile>
-    <Compile Include=".\CCContent.cs">
-      <LogicalName>CCContent</LogicalName>
+    <Compile Include=".\Math\CCGeometry.cs">
+      <LogicalName>Math\CCGeometry</LogicalName>
     </Compile>
-    <Compile Include=".\CCStats.cs">
-      <LogicalName>CCStats</LogicalName>
+    <Compile Include=".\Audio\CCEffectPlayer.cs">
+      <LogicalName>Audio\EffectPlayer</LogicalName>
     </Compile>
-    <Compile Include=".\CCDirector.cs">
-      <LogicalName>CCDirector</LogicalName>
+    <Compile Include="Audio\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include=".\Audio\CCMusicPlayer.cs">
+      <LogicalName>Audio\MusicPlayer</LogicalName>
     </Compile>
-    <Compile Include=".\CCDisplayLinkDirector.cs">
-      <LogicalName>CCDisplayLinkDirector</LogicalName>
+    <Compile Include="Audio\CCMusicPlayer.MonoGame.cs" />
+    <Compile Include=".\Audio\CCAudioEngine.cs">
+      <LogicalName>Audio\AudioEngine</LogicalName>
     </Compile>
-    <Compile Include=".\CCDrawingPrimitives.cs">
-      <LogicalName>CCDrawingPrimitives</LogicalName>
+    <Compile Include=".\Effects\CCGrid3D.cs">
+      <LogicalName>Effects\CCGrid3D</LogicalName>
     </Compile>
-    <Compile Include=".\CCDrawingPrimitives-DrawEllipticleArc.cs">
-      <LogicalName>CCDrawingPrimitives-DrawEllipticleArc</LogicalName>
+    <Compile Include=".\Effects\CCGridBase.cs">
+      <LogicalName>Effects\CCGridBase</LogicalName>
     </Compile>
-    <Compile Include=".\CCScheduler.cs">
-      <LogicalName>CCScheduler</LogicalName>
+    <Compile Include=".\Effects\CCTiledGrid3D.cs">
+      <LogicalName>Effects\CCTiledGrid3D</LogicalName>
     </Compile>
-    <Compile Include=".\cocoa\CCAffineTransform.cs">
-      <LogicalName>cocoa\CCAffineTransform</LogicalName>
+    <Compile Include=".\Nodes\Labels\\CCBMFontConfiguration.cs">
+      <LogicalName>Nodes\Labels\CCBMFontConfiguration</LogicalName>
     </Compile>
-    <Compile Include=".\cocoa\CCGeometry.cs">
-      <LogicalName>cocoa\CCGeometry</LogicalName>
+    <Compile Include=".\Nodes\Labels\\CCLabelAtlas.cs">
+      <LogicalName>Nodes\Labels\CCLabelAtlas</LogicalName>
     </Compile>
-    <Compile Include=".\denshion\CCEffectPlayer.cs">
-      <LogicalName>denshion\EffectPlayer</LogicalName>
+    <Compile Include=".\\Nodes\Layers\CCLayer.cs">
+      <LogicalName>\Nodes\Layers\CCLayer</LogicalName>
     </Compile>
-    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
-    <Compile Include=".\denshion\CCMusicPlayer.cs">
-      <LogicalName>denshion\MusicPlayer</LogicalName>
+    <Compile Include=".\\Nodes\Layers\CCLayerColor.cs">
+      <LogicalName>\Nodes\Layers\CCLayerColor</LogicalName>
     </Compile>
-    <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
-    <Compile Include=".\denshion\CCSimpleAudioEngine.cs">
-      <LogicalName>denshion\SimpleAudioEngine</LogicalName>
+    <Compile Include=".\\Nodes\Layers\CCLayerGradient.cs">
+      <LogicalName>\Nodes\Layers\CCLayerGradient</LogicalName>
     </Compile>
-    <Compile Include=".\effects\CCGrabber.cs">
-      <LogicalName>effects\CCGrabber</LogicalName>
+    <Compile Include=".\\Nodes\Layers\CCLayerMultiplex.cs">
+      <LogicalName>\Nodes\Layers\CCLayerMultiplex</LogicalName>
     </Compile>
-    <Compile Include=".\effects\CCGrid3D.cs">
-      <LogicalName>effects\CCGrid3D</LogicalName>
+    <Compile Include=".\Nodes\Scenes\CCScene.cs">
+      <LogicalName>Nodes\Scenes\CCScene</LogicalName>
     </Compile>
-    <Compile Include=".\effects\CCGridBase.cs">
-      <LogicalName>effects\CCGridBase</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionCrossFade.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionCrossFade</LogicalName>
     </Compile>
-    <Compile Include=".\effects\CCTiledGrid3D.cs">
-      <LogicalName>effects\CCTiledGrid3D</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFade.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFade</LogicalName>
     </Compile>
-    <Compile Include=".\label_nodes\CCBMFontConfiguration.cs">
-      <LogicalName>label_nodes\CCBMFontConfiguration</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFadeBL.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFadeBL</LogicalName>
     </Compile>
-    <Compile Include=".\label_nodes\CCLabelAtlas.cs">
-      <LogicalName>label_nodes\CCLabelAtlas</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFadeDown.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFadeDown</LogicalName>
     </Compile>
-    <Compile Include=".\label_nodes\CCLabelBMFont.cs">
-      <LogicalName>label_nodes\CCLabelBMFont</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFadeTR.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFadeTR</LogicalName>
     </Compile>
-    <Compile Include=".\label_nodes\CCLabelTtf.cs">
-      <LogicalName>label_nodes\CCLabelTTF</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFadeUp.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFadeUp</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\CCLayer.cs">
-      <LogicalName>layers_scenes_transitions_nodes\CCLayer</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFlipAngular.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFlipAngular</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\CCLayerColor.cs">
-      <LogicalName>layers_scenes_transitions_nodes\CCLayerColor</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFlipX.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFlipX</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\CCLayerGradient.cs">
-      <LogicalName>layers_scenes_transitions_nodes\CCLayerGradient</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionFlipY.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionFlipY</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\CCLayerMultiplex.cs">
-      <LogicalName>layers_scenes_transitions_nodes\CCLayerMultiplex</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionJumpZoom.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionJumpZoom</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\CCScene.cs">
-      <LogicalName>layers_scenes_transitions_nodes\CCScene</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionMoveInB.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionMoveInB</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionCrossFade</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionMoveInL.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionMoveInL</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFade.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFade</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionMoveInR.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionMoveInR</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFadeBL.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFadeBL</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionMoveInT.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionMoveInT</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFadeDown.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFadeDown</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionPageTurn.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionPageTurn</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFadeTR.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFadeTR</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionProgress.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionProgress</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFadeUp.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFadeUp</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionRotoZoom.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionRotoZoom</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFlipAngular.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFlipAngular</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionScene.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionScene</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFlipX.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFlipX</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSceneOriented.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSceneOriented</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionFlipY.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionFlipY</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionShrinkGrow.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionShrinkGrow</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionJumpZoom.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionJumpZoom</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSlideInB.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSlideInB</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionMoveInB.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionMoveInB</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSlideInL.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSlideInL</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionMoveInL.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionMoveInL</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSlideInR.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSlideInR</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionMoveInR.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionMoveInR</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSlideInT.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSlideInT</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionMoveInT.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionMoveInT</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSplitCols.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSplitCols</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionPageTurn.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionPageTurn</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionSplitRows.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionSplitRows</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionProgress.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionProgress</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionTurnOffTiles.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionTurnOffTiles</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionRotoZoom.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionRotoZoom</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionZoomFlipAngular.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionZoomFlipAngular</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionScene.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionScene</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionZoomFlipX.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionZoomFlipX</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSceneOriented.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSceneOriented</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\CCTransitionZoomFlipY.cs">
+      <LogicalName>Nodes\Scenes\Transitions\CCTransitionZoomFlipY</LogicalName>
     </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionShrinkGrow.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionShrinkGrow</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSlideInB.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSlideInB</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSlideInL.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSlideInL</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSlideInR.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSlideInR</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSlideInT.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSlideInT</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSplitCols.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSplitCols</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionSplitRows.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionSplitRows</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionTurnOffTiles.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionTurnOffTiles</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipAngular.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipAngular</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipX.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipX</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipY.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionZoomFlipY</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene.cs">
-      <LogicalName>layers_scenes_transitions_nodes\transition\ICCTransitionEaseScene</LogicalName>
+    <Compile Include=".\Nodes\Scenes\Transitions\ICCTransitionEaseScene.cs">
+      <LogicalName>Nodes\Scenes\Transitions\ICCTransitionEaseScene</LogicalName>
     </Compile>
     <Compile Include=".\Math\CCEaseMath.cs">
       <LogicalName>Math\Ease</LogicalName>
@@ -673,262 +646,250 @@
     <Compile Include=".\Math\CCSplineMath.cs">
       <LogicalName>Math\Spline</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenu.cs">
-      <LogicalName>menu_nodes\CCMenu</LogicalName>
+    <Compile Include=".\Nodes\Menus\CCMenu.cs">
+      <LogicalName>Nodes\Menus\CCMenu</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItem.cs">
-      <LogicalName>menu_nodes\CCMenuItem</LogicalName>
+    <Compile Include=".\Nodes\Menus\CCMenuItem.cs">
+      <LogicalName>Nodes\Menus\CCMenuItem</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemFont.cs">
-      <LogicalName>menu_nodes\CCMenuItemFont</LogicalName>
+    <Compile Include=".\Nodes\Menus\CCMenuItemFont.cs">
+      <LogicalName>Nodes\Menus\CCMenuItemFont</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemImage.cs">
-      <LogicalName>menu_nodes\CCMenuItemImage</LogicalName>
+    <Compile Include=".\Nodes\Menus\CCMenuItemImage.cs">
+      <LogicalName>Nodes\Menus\CCMenuItemImage</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemLabel.cs">
-      <LogicalName>menu_nodes\CCMenuItemLabel</LogicalName>
+    <Compile Include=".\Nodes\Menus\CCMenuItemLabel.cs">
+      <LogicalName>Nodes\Menus\CCMenuItemLabel</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemToggle.cs">
-      <LogicalName>menu_nodes\CCMenuItemToggle</LogicalName>
+    <Compile Include=".\Nodes\Menus\CCMenuItemToggle.cs">
+      <LogicalName>Nodes\Menus\CCMenuItemToggle</LogicalName>
     </Compile>
-    <Compile Include=".\misc_nodes\CCMotionStreak.cs">
-      <LogicalName>misc_nodes\CCMotionStreak</LogicalName>
+    <Compile Include=".\Nodes\Other\CCMotionStreak.cs">
+      <LogicalName>Nodes\Other\CCMotionStreak</LogicalName>
     </Compile>
-    <Compile Include=".\misc_nodes\CCProgressTimer.cs">
-      <LogicalName>misc_nodes\CCProgressTimer</LogicalName>
+    <Compile Include=".\Nodes\Other\CCProgressTimer.cs">
+      <LogicalName>Nodes\Other\CCProgressTimer</LogicalName>
     </Compile>
-    <Compile Include=".\misc_nodes\CCRenderTexture.cs">
-      <LogicalName>misc_nodes\CCRenderTexture</LogicalName>
+    <Compile Include=".\Nodes\Other\CCRenderTexture.cs">
+      <LogicalName>Nodes\Other\CCRenderTexture</LogicalName>
     </Compile>
-    <Compile Include=".\misc_nodes\CCClippingNode.cs">
-      <LogicalName>misc_nodes\CCClippingNode</LogicalName>
+    <Compile Include=".\Nodes\Other\CCClippingNode.cs">
+      <LogicalName>Nodes\Other\CCClippingNode</LogicalName>
     </Compile>
-    <Compile Include=".\misc_nodes\CCDrawNode.cs">
-      <LogicalName>misc_nodes\CCDrawNode</LogicalName>
+    <Compile Include=".\Nodes\Other\CCDrawNode.cs">
+      <LogicalName>Nodes\Other\CCDrawNode</LogicalName>
     </Compile>
-    <Compile Include=".\particle_nodes\CCParticleExamples.cs">
-      <LogicalName>particle_nodes\CCParticleExamples</LogicalName>
+    <Compile Include=".\Nodes\Particles\CCParticleExamples.cs">
+      <LogicalName>Nodes\Particles\CCParticleExamples</LogicalName>
     </Compile>
-    <Compile Include=".\particle_nodes\CCParticleSystem.cs">
-      <LogicalName>particle_nodes\CCParticleSystem</LogicalName>
+    <Compile Include=".\Nodes\Particles\CCParticleSystem.cs">
+      <LogicalName>Nodes\Particles\CCParticleSystem</LogicalName>
     </Compile>
-    <Compile Include=".\particle_nodes\CCParticleSystemQuad.cs">
-      <LogicalName>particle_nodes\CCParticleSystemQuad</LogicalName>
+    <Compile Include=".\Nodes\Particles\CCParticleSystemQuad.cs">
+      <LogicalName>Nodes\Particles\CCParticleSystemQuad</LogicalName>
     </Compile>
-    <Compile Include=".\particle_nodes\CCParticleSystemConfig.cs">
-      <LogicalName>particle_nodes\CCParticleSystemConfig</LogicalName>
+    <Compile Include=".\Nodes\Particles\CCParticleSystemConfig.cs">
+      <LogicalName>Nodes\Particles\CCParticleSystemConfig</LogicalName>
     </Compile>
-    <Compile Include=".\particle_nodes\CCParticleSystemCache.cs">
-      <LogicalName>particle_nodes\CCParticleSystemCache</LogicalName>
+    <Compile Include=".\Nodes\Particles\CCParticleSystemCache.cs">
+      <LogicalName>Nodes\Particles\CCParticleSystemCache</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCAccelerometer.cs">
-      <LogicalName>platform\CCAccelerometer</LogicalName>
+    <Compile Include=".\Platform\CCAccelerometer.cs">
+      <LogicalName>Platform\CCAccelerometer</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCApplication.cs">
-      <LogicalName>platform\CCApplication</LogicalName>
+    <Compile Include=".\Platform\CCDevice.cs">
+      <LogicalName>Platform\CCDevice</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCDevice.cs">
-      <LogicalName>platform\CCDevice</LogicalName>
+    <Compile Include=".\Platform\CCDictMaker.cs">
+      <LogicalName>Platform\CCDictMaker</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCDictMaker.cs">
-      <LogicalName>platform\CCDictMaker</LogicalName>
+    <Compile Include=".\Platform\CCFileUtils.cs">
+      <LogicalName>Platform\CCFileUtils</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCFileUtils.cs">
-      <LogicalName>platform\CCFileUtils</LogicalName>
+    <Compile Include=".\Platform\CCFocusManager.cs">
+      <LogicalName>Platform\CCFocusManager</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCFocusManager.cs">
-      <LogicalName>platform\CCFocusManager</LogicalName>
+    <Compile Include=".\Platform\ICCFocusable.cs">
+      <LogicalName>Platform\ICCFocusable</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ICCFocusable.cs">
-      <LogicalName>platform\ICCFocusable</LogicalName>
+    <Compile Include=".\Platform\CCLog.cs">
+      <LogicalName>Platform\CCLog</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCLog.cs">
-      <LogicalName>platform\CCLog</LogicalName>
+    <Compile Include=".\Platform\CCSAXParser.cs">
+      <LogicalName>Platform\CCSAXParser</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCSAXParser.cs">
-      <LogicalName>platform\CCSAXParser</LogicalName>
+    <Compile Include=".\Platform\CCSpriteFontCache.cs">
+      <LogicalName>Platform\CCSpriteFontCache</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCSpriteFontCache.cs">
-      <LogicalName>platform\CCSpriteFontCache</LogicalName>
+    <Compile Include=".\Platform\ContentReaders\CCBMFontPaddingReader.cs">
+      <LogicalName>Platform\ContentReaders\CCBMFontPaddingReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ContentReaders\CCBMFontPaddingReader.cs">
-      <LogicalName>platform\ContentReaders\CCBMFontPaddingReader</LogicalName>
+    <Compile Include=".\Platform\ContentReaders\CCPointReader.cs">
+      <LogicalName>Platform\ContentReaders\CCPointReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ContentReaders\CCPointReader.cs">
-      <LogicalName>platform\ContentReaders\CCPointReader</LogicalName>
+    <Compile Include=".\Platform\ContentReaders\CCRectReader.cs">
+      <LogicalName>Platform\ContentReaders\CCRectReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ContentReaders\CCRectReader.cs">
-      <LogicalName>platform\ContentReaders\CCRectReader</LogicalName>
+    <Compile Include=".\Platform\ContentReaders\CCSizeReader.cs">
+      <LogicalName>Platform\ContentReaders\CCSizeReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ContentReaders\CCSizeReader.cs">
-      <LogicalName>platform\ContentReaders\CCSizeReader</LogicalName>
+    <Compile Include=".\Platform\ContentReaders\KerningHashElementReader.cs">
+      <LogicalName>Platform\ContentReaders\KerningHashElementReader</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ContentReaders\KerningHashElementReader.cs">
-      <LogicalName>platform\ContentReaders\KerningHashElementReader</LogicalName>
+    <Compile Include=".\Platform\CCDrawManager.cs">
+      <LogicalName>Platform\CCDrawManager</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCDrawManager.cs">
-      <LogicalName>platform\CCDrawManager</LogicalName>
+    <Compile Include=".\Platform\ICCSAXDelegator.cs">
+      <LogicalName>Platform\ICCSAXDelegator</LogicalName>
     </Compile>
-    <Compile Include=".\platform\ICCSAXDelegator.cs">
-      <LogicalName>platform\ICCSAXDelegator</LogicalName>
+    <Compile Include=".\Platform\CCOGLES.cs">
+      <LogicalName>Platform\OGLES</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCOGLES.cs">
-      <LogicalName>platform\OGLES</LogicalName>
+    <Compile Include=".\Platform\PList\PlistArray.cs">
+      <LogicalName>Platform\PList\PlistArray</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistArray.cs">
-      <LogicalName>platform\PList\PlistArray</LogicalName>
+    <Compile Include=".\Platform\PList\PlistBoolean.cs">
+      <LogicalName>Platform\PList\PlistBoolean</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistBoolean.cs">
-      <LogicalName>platform\PList\PlistBoolean</LogicalName>
+    <Compile Include=".\Platform\PList\PlistData.cs">
+      <LogicalName>Platform\PList\PlistData</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistData.cs">
-      <LogicalName>platform\PList\PlistData</LogicalName>
+    <Compile Include=".\Platform\PList\PlistDate.cs">
+      <LogicalName>Platform\PList\PlistDate</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistDate.cs">
-      <LogicalName>platform\PList\PlistDate</LogicalName>
+    <Compile Include=".\Platform\PList\PlistDictionary.cs">
+      <LogicalName>Platform\PList\PlistDictionary</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistDictionary.cs">
-      <LogicalName>platform\PList\PlistDictionary</LogicalName>
+    <Compile Include=".\Platform\PList\PlistDocument.cs">
+      <LogicalName>Platform\PList\PlistDocument</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistDocument.cs">
-      <LogicalName>platform\PList\PlistDocument</LogicalName>
+    <Compile Include=".\Platform\PList\PlistInteger.cs">
+      <LogicalName>Platform\PList\PlistInteger</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistInteger.cs">
-      <LogicalName>platform\PList\PlistInteger</LogicalName>
+    <Compile Include=".\Platform\PList\PListNull.cs">
+      <LogicalName>Platform\PList\PListNull</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PListNull.cs">
-      <LogicalName>platform\PList\PListNull</LogicalName>
+    <Compile Include=".\Platform\PList\PlistObject.cs">
+      <LogicalName>Platform\PList\PlistObject</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistObject.cs">
-      <LogicalName>platform\PList\PlistObject</LogicalName>
+    <Compile Include=".\Platform\PList\PlistObjectBase.cs">
+      <LogicalName>Platform\PList\PlistObjectBase</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistObjectBase.cs">
-      <LogicalName>platform\PList\PlistObjectBase</LogicalName>
+    <Compile Include=".\Platform\PList\PlistReal.cs">
+      <LogicalName>Platform\PList\PlistReal</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistReal.cs">
-      <LogicalName>platform\PList\PlistReal</LogicalName>
+    <Compile Include=".\Platform\PList\PlistString.cs">
+      <LogicalName>Platform\PList\PlistString</LogicalName>
     </Compile>
-    <Compile Include=".\platform\PList\PlistString.cs">
-      <LogicalName>platform\PList\PlistString</LogicalName>
+    <Compile Include=".\Platform\CCRawList.cs">
+      <LogicalName>Platform\RawList</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCPrimitiveBatch.cs">
-      <LogicalName>platform\PrimitiveBatch</LogicalName>
+    <Compile Include=".\Platform\CCReusedObject.cs">
+      <LogicalName>Platform\ReusedObject</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCRawList.cs">
-      <LogicalName>platform\RawList</LogicalName>
+    <Compile Include=".\Predefine\CCMacros.cs">
+      <LogicalName>Predefine\ccMacros</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCReusedObject.cs">
-      <LogicalName>platform\ReusedObject</LogicalName>
+    <Compile Include=".\Predefine\CCProtocols.cs">
+      <LogicalName>Predefine\CCProtocols</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\CCMacros.cs">
-      <LogicalName>predefine\ccMacros</LogicalName>
+    <Compile Include=".\Predefine\CCTouch.cs">
+      <LogicalName>Predefine\CCTouch</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\CCProtocols.cs">
-      <LogicalName>predefine\CCProtocols</LogicalName>
+    <Compile Include=".\Predefine\CCTypes.cs">
+      <LogicalName>Predefine\CCTypes</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\CCTouch.cs">
-      <LogicalName>predefine\CCTouch</LogicalName>
+    <Compile Include=".\Nodes\Sprites\CCAnimation.cs">
+      <LogicalName>Nodes\Sprites\CCAnimation</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\CCTypes.cs">
-      <LogicalName>predefine\CCTypes</LogicalName>
+    <Compile Include=".\Nodes\Sprites\CCAnimationCache.cs">
+      <LogicalName>Nodes\Sprites\CCAnimationCache</LogicalName>
     </Compile>
-    <Compile Include=".\script_support\CCScriptEngineManager.cs">
-      <LogicalName>script_support\CCScriptEngineManager</LogicalName>
+    <Compile Include=".\Nodes\Sprites\CCAnimationFrame.cs">
+      <LogicalName>Nodes\Sprites\CCAnimationFrame</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCAnimation.cs">
-      <LogicalName>sprite_nodes\CCAnimation</LogicalName>
+    <Compile Include=".\Nodes\Sprites\CCSprite.cs">
+      <LogicalName>Nodes\Sprites\CCSprite</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCAnimationCache.cs">
-      <LogicalName>sprite_nodes\CCAnimationCache</LogicalName>
+    <Compile Include=".\Nodes\Sprites\CCSpriteFrame.cs">
+      <LogicalName>Nodes\Sprites\CCSpriteFrame</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCAnimationFrame.cs">
-      <LogicalName>sprite_nodes\CCAnimationFrame</LogicalName>
+    <Compile Include=".\Nodes\Sprites\CCSpriteFrameCache.cs">
+      <LogicalName>Nodes\Sprites\CCSpriteFrameCache</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCSprite.cs">
-      <LogicalName>sprite_nodes\CCSprite</LogicalName>
+    <Compile Include="Nodes\Sprites\CCSpriteSheet.cs" />
+    <Compile Include="Nodes\Sprites\CCSpriteSheetCache.cs" />
+    <Compile Include=".\Support\CCUserDefault.cs">
+      <LogicalName>Support\CCUserDefault</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCSpriteBatchNode.cs">
-      <LogicalName>sprite_nodes\CCSpriteBatchNode</LogicalName>
+    <Compile Include=".\Support\CCUtils.cs">
+      <LogicalName>Support\CCUtils</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCSpriteFrame.cs">
-      <LogicalName>sprite_nodes\CCSpriteFrame</LogicalName>
+    <Compile Include=".\Support\Converters\CCPointConverter.cs">
+      <LogicalName>Support\Converters\CCPointConverter</LogicalName>
     </Compile>
-    <Compile Include=".\sprite_nodes\CCSpriteFrameCache.cs">
-      <LogicalName>sprite_nodes\CCSpriteFrameCache</LogicalName>
+    <Compile Include=".\Support\Converters\CCRectConverter.cs">
+      <LogicalName>Support\Converters\CCRectConverter</LogicalName>
     </Compile>
-    <Compile Include="sprite_nodes\CCSpriteSheet.cs" />
-    <Compile Include="sprite_nodes\CCSpriteSheetCache.cs" />
-    <Compile Include=".\support\CCUserDefault.cs">
-      <LogicalName>support\CCUserDefault</LogicalName>
+    <Compile Include=".\Support\Converters\CCSizeConverter.cs">
+      <LogicalName>Support\Converters\CCSizeConverter</LogicalName>
     </Compile>
-    <Compile Include=".\support\CCUtils.cs">
-      <LogicalName>support\CCUtils</LogicalName>
+    <Compile Include=".\Support\ImageSupport\CCTGALib.cs">
+      <LogicalName>Support\ImageSupport\TGAlib</LogicalName>
     </Compile>
-    <Compile Include=".\support\Converters\CCPointConverter.cs">
-      <LogicalName>support\Converters\CCPointConverter</LogicalName>
+    <Compile Include=".\Support\Serialization\CCSerialization.cs">
+      <LogicalName>Support\Serialization\CCSerialization</LogicalName>
     </Compile>
-    <Compile Include=".\support\Converters\CCRectConverter.cs">
-      <LogicalName>support\Converters\CCRectConverter</LogicalName>
+    <Compile Include=".\Support\TransformUtils.cs">
+      <LogicalName>Support\TransformUtils</LogicalName>
     </Compile>
-    <Compile Include=".\support\Converters\CCSizeConverter.cs">
-      <LogicalName>support\Converters\CCSizeConverter</LogicalName>
+    <Compile Include=".\Support\ZipSupport\ZipUtils.cs">
+      <LogicalName>Support\ZipSupport\ZipUtils</LogicalName>
     </Compile>
-    <Compile Include=".\support\image_support\CCTGALib.cs">
-      <LogicalName>support\image_support\TGAlib</LogicalName>
+    <Compile Include=".\Textures\CCTexture2D.cs">
+      <LogicalName>Textures\CCTexture2D</LogicalName>
     </Compile>
-    <Compile Include=".\support\Serialization\CCSerialization.cs">
-      <LogicalName>support\Serialization\CCSerialization</LogicalName>
+    <Compile Include=".\Textures\CCTextureAtlas.cs">
+      <LogicalName>Textures\CCTextureAtlas</LogicalName>
     </Compile>
-    <Compile Include=".\support\TransformUtils.cs">
-      <LogicalName>support\TransformUtils</LogicalName>
+    <Compile Include=".\Textures\CCTextureCache.cs">
+      <LogicalName>Textures\CCTextureCache</LogicalName>
     </Compile>
-    <Compile Include=".\support\zip_support\ZipUtils.cs">
-      <LogicalName>support\zip_support\ZipUtils</LogicalName>
+    <Compile Include=".\Nodes\TextInput\CCIMEKeyboardNotificationInfo.cs">
+      <LogicalName>Nodes\TextInput\CCIMEKeyboardNotificationInfo</LogicalName>
     </Compile>
-    <Compile Include=".\textures\CCTexture2D.cs">
-      <LogicalName>textures\CCTexture2D</LogicalName>
+    <Compile Include=".\Nodes\TextInput\ICCIMEDelegate.cs">
+      <LogicalName>Nodes\TextInput\ICCIMEDelegate</LogicalName>
     </Compile>
-    <Compile Include=".\textures\CCTextureAtlas.cs">
-      <LogicalName>textures\CCTextureAtlas</LogicalName>
+    <Compile Include=".\Nodes\Parallax\CCParallaxNode.cs">
+      <LogicalName>Nodes\Parallax\CCParallaxNode</LogicalName>
     </Compile>
-    <Compile Include=".\textures\CCTextureCache.cs">
-      <LogicalName>textures\CCTextureCache</LogicalName>
+    <Compile Include=".\Nodes\Parallax\CCPointObject.cs">
+      <LogicalName>Nodes\Parallax\CCPointObject</LogicalName>
     </Compile>
-    <Compile Include=".\text_input_node\CCIMEKeyboardNotificationInfo.cs">
-      <LogicalName>text_input_node\CCIMEKeyboardNotificationInfo</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileLayerInfo.cs">
+      <LogicalName>Nodes\TileMaps\CCTileLayerInfo</LogicalName>
     </Compile>
-    <Compile Include=".\text_input_node\ICCIMEDelegate.cs">
-      <LogicalName>text_input_node\ICCIMEDelegate</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileMap.cs">
+      <LogicalName>Nodes\TileMaps\CCTileMap</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCParallaxNode.cs">
-      <LogicalName>tileMap_parallax_nodes\CCParallaxNode</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileMapInfo.cs">
+      <LogicalName>Nodes\TileMaps\CCTileMapInfo</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCPointObject.cs">
-      <LogicalName>tileMap_parallax_nodes\CCPointObject</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileMapLayer.cs">
+      <LogicalName>Nodes\TileMaps\CCTileMapLayer</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileLayerInfo.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileLayerInfo</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileMapObjectGroup.cs">
+      <LogicalName>Nodes\TileMaps\CCTileMapObjectGroup</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileMap.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileMap</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileMapStructs.cs">
+      <LogicalName>Nodes\TileMaps\CCTileMapStructs</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileMapInfo.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileMapInfo</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileSetInfo.cs">
+      <LogicalName>Nodes\TileMaps\CCTileSetInfo</LogicalName>
     </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileMapLayer.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileMapLayer</LogicalName>
-    </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileMapObjectGroup.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileMapObjectGroup</LogicalName>
-    </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileMapStructs.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileMapStructs</LogicalName>
-    </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileSetInfo.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileSetInfo</LogicalName>
-    </Compile>
-    <Compile Include=".\tileMap_parallax_nodes\CCTileAnimation.cs">
-      <LogicalName>tileMap_parallax_nodes\CCTileAnimation</LogicalName>
+    <Compile Include=".\Nodes\TileMaps\CCTileAnimation.cs">
+      <LogicalName>Nodes\TileMaps\CCTileAnimation</LogicalName>
     </Compile>
     <Compile Include=".\Win8IOExtensions.cs">
       <LogicalName>Win8IOExtensions</LogicalName>
@@ -937,11 +898,10 @@
       <LogicalName>Win8StoreIOUtility</LogicalName>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
+    <Compile Include="Actions\Instants\CCRemoveSelf.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCTask.cs" />
-    <Compile Include="predefine\ICCUpdatable.cs" />
-    <Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="Predefine\ICCUpdatable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="SharpDX">
