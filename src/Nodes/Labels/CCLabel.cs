@@ -610,7 +610,7 @@ namespace CocosSharp
         /// <param name="fntFile">Font definition file to use.</param>
         /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
         /// <param name="hAlignment">Horizontal alignment of the text.</param>
-        /// <param name="vAlignement">Vertical alignement of the text.</param>
+        /// <param name="vAlignment">Vertical alignement of the text.</param>
         /// <param name="imageOffset">Image offset.</param>
         /// <param name="texture">Texture Atlas to be used.</param>
         public CCLabel(string str, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
@@ -676,8 +676,6 @@ namespace CocosSharp
         /// <param name="size">Font point size.</param>
         /// <param name="dimensions">Dimensions that the label should use to layout it's text.</param>
         /// <param name="labelFormat">Label format <see cref="CocosSharp.CCLabelFormat"/>.</param>
-        /// <param name="imageOffset">Image offset.</param>
-        /// <param name="texture">Texture atlas to be used.</param>
         public CCLabel(CCFontFNT fntFontConfig, string str, CCSize dimensions, CCLabelFormat labelFormat)
         {
             quadCommand = new CCQuadCommand(str.Length);
