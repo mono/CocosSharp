@@ -136,8 +136,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmbeddableView\CCGameView.cs" />
-    <Compile Include="EmbeddableView\CCGameView.DeskTop.cs" />
+    <Compile Include="EmbeddableView\CCGameView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EmbeddableView\CCGameView.Desktop.cs" />
     <Compile Include="EmbeddableView\CCGameView.DX.cs" />
     <Compile Include="Events\CCEvent.cs" />
     <Compile Include="Events\CCEventAccelerate.cs" />

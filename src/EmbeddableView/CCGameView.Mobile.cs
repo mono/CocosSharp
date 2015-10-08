@@ -16,13 +16,7 @@ namespace CocosSharp
         List<CCTouch> incomingMoveTouches;
         List<CCTouch> incomingReleaseTouches;
 
-        Dictionary<int, CCEventMouse> mouseMap;
-        List<CCEventMouse> incomingNewMouses;
-        List<CCEventMouse> incomingMoveMouses;
-        List<CCEventMouse> incomingReleaseMouses;
-
         object touchLock = new object();
-        object mouseLock = new object();
 
         #region Properties
 
@@ -49,11 +43,6 @@ namespace CocosSharp
             incomingNewTouches = new List<CCTouch>();
             incomingMoveTouches = new List<CCTouch>();
             incomingReleaseTouches = new List<CCTouch>();
-
-            mouseMap = new Dictionary<int, CCEventMouse>();
-            incomingNewMouses = new List<CCEventMouse>();
-            incomingMoveMouses = new List<CCEventMouse>();
-            incomingReleaseMouses = new List<CCEventMouse>();
 
             TouchEnabled = true;
 
@@ -93,14 +82,6 @@ namespace CocosSharp
                     touchMap.Add (touchId, touch);
                     incomingNewTouches.Add (touch);
                 }
-
-                if (!mouseMap.ContainsKey(touchId))
-                {
-                    //var touch = new CCTouch(touchId, position, gameTime.TotalGameTime);
-                    //touchMap.Add(touchId, touch);
-                    //incomingNewTouches.Add(touch);
-                }
-
             }
         }
 
@@ -118,17 +99,6 @@ namespace CocosSharp
                         existingTouch.UpdateTouchInfo (touchId, position.X, position.Y, gameTime.TotalGameTime);
                     }
                 }
-            }
-        }
-
-        void UpdateIncomingMoveMouse(int touchId, ref CCPoint position)
-        {
-            lock (mouseLock)
-            {
-
-                var mouse = new CCEventMouse(CCMouseEventType.MOUSE_MOVE, position);
-                incomingMoveMouses.Add(mouse);
-
             }
         }
 
@@ -177,16 +147,6 @@ namespace CocosSharp
                     incomingNewTouches.Clear ();
                     incomingMoveTouches.Clear ();
                     incomingReleaseTouches.Clear ();
-                }
-
-                if (EventDispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID))
-                {
-                    if (incomingMoveMouses.Count > 0)
-                    {
-                        EventDispatcher.DispatchEvent(incomingMoveMouses[0]);
-                    }
-
-                    incomingMoveMouses.Clear();
                 }
             }
         }
