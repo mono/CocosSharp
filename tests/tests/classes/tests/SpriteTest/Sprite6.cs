@@ -70,10 +70,13 @@ namespace tests
             int i = 0;
             foreach(CCNode node in Children)
             {
-                CCSprite sprite = (CCSprite)node;
-                sprite.Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
-                sprite.RunAction(action);
-                ++i;
+                CCSprite sprite = node as CCSprite;
+                if (sprite != null)
+                {
+                    sprite.Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
+                    sprite.RunAction(action);
+                    ++i;
+                }
             }
 
             batch.IgnoreAnchorPointForPosition = true;
