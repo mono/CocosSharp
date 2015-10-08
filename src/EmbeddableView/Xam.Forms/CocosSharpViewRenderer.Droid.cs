@@ -1,7 +1,5 @@
 ﻿using System;
 using CocosSharp;
-using CocosSharpFormsSample;
-using CocosSharpFormsSample.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
