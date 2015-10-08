@@ -61,15 +61,6 @@
     <file src="MonoGame\MonoGame.Framework\bin\Windows81\AnyCPU\Release\Themes**\*.*" target="lib\netcore\MonoGame.Framework"/>
     <file src="MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
 
-    <!--Windows Phone 8-->
-		<file src="src\bin\WindowsPhone\x86\Release\*.dll" target="build\wp8\x86" exclude="src\bin\WindowsPhone\x86\Release\MonoGame*.*;src\bin\WindowsPhone\x86\Release\Sharp*.*" />
-		<file src="src\bin\WindowsPhone\x86\Release\*.xml" target="build\wp8\x86" exclude="src\bin\WindowsPhone\x86\Release\MonoGame*.xml;src\bin\WindowsPhone\x86\Release\Sharp*.xml" />
-		<file src="MonoGame\MonoGame.Framework\bin\WindowsPhone\x86\Release\*.*" target="build\wp8\x86" />
-		<file src="src\bin\WindowsPhone\ARM\Release\*.dll" target="build\wp8\ARM" exclude="src\bin\WindowsPhone\ARM\Release\MonoGame*.*;src\bin\WindowsPhone\ARM\Release\Sharp*.*" />
-		<file src="src\bin\WindowsPhone\ARM\Release\*.xml" target="build\wp8\ARM" exclude="src\bin\WindowsPhone\ARM\Release\MonoGame*.xml;src\bin\WindowsPhone\ARM\Release\Sharp*.xml" />
-		<file src="MonoGame\MonoGame.Framework\bin\WindowsPhone\ARM\Release\*.*" target="build\wp8\ARM" />
-        <file src="ProjectTemplates\NuGet\build\wp8\CocosSharp.targets" target="build\wp8\CocosSharp.WindowsPhone8.targets" />
-
     <!--Windows Phone 8.1-->
     <file src="src\bin\WindowsPhone81\AnyCPU\Release\*.dll" target="lib\wpa81" />
     <file src="src\bin\WindowsPhone81\AnyCPU\Release\*.xml" target="lib\wpa81" />

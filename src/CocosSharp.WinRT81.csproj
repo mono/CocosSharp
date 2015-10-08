@@ -917,11 +917,11 @@
       <Name>box2d.Windows81</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows81.csproj">
-      <Project>{a65b8326-1ddd-4e5d-8130-e74f70919e81}</Project>
+      <Project>{135d1bab-a761-47f0-9a8b-41f04c8a8692}</Project>
       <Name>MonoGame.Framework.Net.Windows81</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows81.csproj">
-      <Project>{0518563c-acca-4a14-8c5d-ddbe93e2605f}</Project>
+      <Project>{04d13c33-cf41-407f-a610-a791cafdbb89}</Project>
       <Name>MonoGame.Framework.Windows81</Name>
     </ProjectReference>
   </ItemGroup>
