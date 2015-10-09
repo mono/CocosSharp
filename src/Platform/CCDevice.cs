@@ -4,6 +4,9 @@ using Android.App;
 using Android.Util;
 #endif
 
+#if NETFX_CORE
+using Windows.Devices;
+#endif
 #if WINDOWS || WINDOWSGL
 
 #endif
@@ -32,6 +35,19 @@ namespace CocosSharp
 
 				return dpi;
 			}
+        }
+
+        public static bool IsMousePresent
+        {
+            get
+            {
+#if NETFX_CORE
+                var MouseCapabilities = new Windows.Devices.Input.MouseCapabilities();
+                return (MouseCapabilities.MousePresent != 0);
+#else
+                return false;
+#endif
+            }
         }
     }
 }
