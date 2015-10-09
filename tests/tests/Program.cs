@@ -69,10 +69,10 @@ namespace tests
         public override void DidFinishLaunching (MonoMac.Foundation.NSNotification notification)
         {
 
-            CCApplication application = new CCApplication(false, new CCSize(1024f, 768f));
-            application.ApplicationDelegate = new AppDelegate();
-
-            application.StartGame();
+//            CCApplication application = new CCApplication(false, new CCSize(1024f, 768f));
+//            application.ApplicationDelegate = new AppDelegate();
+//
+//            application.StartGame();
         }
 
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
