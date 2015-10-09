@@ -98,5 +98,18 @@ namespace CocosSharp
             }
         }
         #endregion Touch handling
+
+        #region Mouse handling
+
+        void PlatformUpdateMouseEnabled()
+        {
+            if (MouseEnabled)
+            {
+            }
+            else
+            {
+            }
+        }
+        #endregion Mouse handling
     }
 }
