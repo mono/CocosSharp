@@ -1,96 +1,8 @@
 namespace CocosDenshion {
-    public partial class CCEffectPlayer : CocosDenshion.CCEffectPlayerCore, System.IDisposable {
-        public CCEffectPlayer() { }
-        public override bool Playing { get { return default(bool); } }
-        public override float Volume { get { return default(float); } set { } }
-        public override void Close() { }
-        public void Dispose() { }
-        protected virtual void Dispose(bool disposing) { }
-        protected override void DisposeManagedResources() { }
-        public override void Open(string filename, int uid) { }
-        public override void Pause() { }
-        public override void Play(bool loop=false) { }
-        public override void Resume() { }
-        public override void Rewind() { }
-        public override void Stop() { }
-    }
-    public abstract partial class CCEffectPlayerCore {
-        protected CCEffectPlayerCore() { }
-        public abstract bool Playing { get; }
-        public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        public abstract float Volume { get; set; }
-        public virtual void Close() { }
-        protected abstract void DisposeManagedResources();
-        public virtual void Open(string filename, int soundId) { }
-        public abstract void Pause();
-        public abstract void Play(bool loop=false);
-        public abstract void Resume();
-        public abstract void Rewind();
-        public abstract void Stop();
-    }
-    public partial class CCMusicPlayer : CocosDenshion.CCMusicPlayerCore, System.IDisposable {
-        public CCMusicPlayer() { }
-        public override bool Playing { get { return default(bool); } }
-        public override bool PlayingMySong { get { return default(bool); } }
-        public override float Volume { get { return default(float); } set { } }
-        public override void Close() { }
-        public void Dispose() { }
-        protected virtual void Dispose(bool disposing) { }
-        protected override void DisposeManagedResources() { }
-        ~CCMusicPlayer() { }
-        public override void Open(string fileName, int soundId) { }
-        public override void Pause() { }
-        public override void Play(bool loop=false) { }
-        public override void Resume() { }
-        public override void Rewind() { }
-        public override void Stop() { }
-    }
-    public abstract partial class CCMusicPlayerCore {
-        protected CCMusicPlayerCore() { }
-        public abstract bool Playing { get; }
-        public abstract bool PlayingMySong { get; }
-        public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        public abstract float Volume { get; set; }
-        public virtual void Close() { }
-        protected abstract void DisposeManagedResources();
-        public virtual void Open(string fileName, int soundId) { }
-        public abstract void Pause();
-        public abstract void Play(bool loop=false);
-        public virtual void RestoreMediaState() { }
-        public abstract void Resume();
-        public abstract void Rewind();
-        public virtual void SaveMediaState() { }
-        public abstract void Stop();
-    }
-    public partial class CCSimpleAudioEngine {
+    [System.ObsoleteAttribute("CCSimpleAudioEngine is obsolete; Use CCAudioEngine in namespace CocosSharp")]
+    public partial class CCSimpleAudioEngine : CocosSharp.CCAudioEngine {
         public CCSimpleAudioEngine() { }
-        public bool BackgroundMusicPlaying { get { return default(bool); } }
-        public float BackgroundMusicVolume { get { return default(float); } set { } }
-        public float EffectsVolume { get { return default(float); } set { } }
-        public static CocosDenshion.CCSimpleAudioEngine SharedEngine { get { return default(CocosDenshion.CCSimpleAudioEngine); } }
-        public void End() { }
-        public static string FullPath(string path) { return default(string); }
-        public void PauseAllEffects() { }
-        public void PauseBackgroundMusic() { }
-        public void PauseEffect(int fxid) { }
-        public void PlayBackgroundMusic(string filename, bool loop=false) { }
-        public int PlayEffect(int fxid) { return default(int); }
-        public int PlayEffect(int fxid, bool bLoop) { return default(int); }
-        public int PlayEffect(string filename, bool loop=false) { return default(int); }
-        public void PreloadBackgroundMusic(string filename) { }
-        public void PreloadEffect(string filename) { }
-        public void RestoreMediaState() { }
-        public void ResumeAllEffects() { }
-        public void ResumeBackgroundMusic() { }
-        public void ResumeEffect(int fxid) { }
-        public void RewindBackgroundMusic() { }
-        public void SaveMediaState() { }
-        public void StopAllEffects() { }
-        public void StopAllLoopingEffects() { }
-        public void StopBackgroundMusic(bool releaseData=false) { }
-        public void StopEffect(int soundId) { }
-        public void UnloadEffect(string filename) { }
-        public bool WillPlayBackgroundMusic() { return default(bool); }
+        public static new CocosDenshion.CCSimpleAudioEngine SharedEngine { get { return default(CocosDenshion.CCSimpleAudioEngine); } }
     }
 }
 namespace CocosSharp {
@@ -124,9 +36,9 @@ namespace CocosSharp {
         public CCAcceleration() { }
     }
     public partial class CCAccelerometer {
-        public CCAccelerometer(CocosSharp.CCWindow window) { }
+        public CCAccelerometer(CocosSharp.CCGameView gameView) { }
         public bool Enabled { get { return default(bool); } set { } }
-        public CocosSharp.CCWindow Window { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCWindow); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public CocosSharp.CCGameView GameView { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCGameView); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void Update() { }
     }
     public abstract partial class CCAction {
@@ -341,40 +253,6 @@ namespace CocosSharp {
         public object UserInfo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(object); } }
         public CocosSharp.CCAnimationFrame Copy() { return default(CocosSharp.CCAnimationFrame); }
     }
-    public partial class CCApplication : Microsoft.Xna.Framework.DrawableGameComponent {
-        public CCApplication(bool isFullScreen=true, System.Nullable<CocosSharp.CCSize> mainWindowSizeInPixels=null) : base (default(Microsoft.Xna.Framework.Game)) { }
-        public CocosSharp.CCActionManager ActionManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCActionManager); } }
-        public virtual double AnimationInterval { get { return default(double); } set { } }
-        public CocosSharp.CCApplicationDelegate ApplicationDelegate { get { return default(CocosSharp.CCApplicationDelegate); } set { } }
-        public string ContentRootDirectory { get { return default(string); } set { } }
-        public System.Collections.Generic.List<System.String> ContentSearchPaths { get { return default(System.Collections.Generic.List<System.String>); } set { } }
-        public System.Collections.Generic.List<System.String> ContentSearchResolutionOrder { get { return default(System.Collections.Generic.List<System.String>); } set { } }
-        public CocosSharp.CCDisplayOrientation CurrentOrientation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDisplayOrientation); } }
-        public static float DefaultTexelToContentSizeRatio { set { } }
-        public static CocosSharp.CCSize DefaultTexelToContentSizeRatios { set { } }
-        public bool HandleMediaStateAutomatically { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public CocosSharp.CCWindow MainWindow { get { return default(CocosSharp.CCWindow); } }
-        public bool Paused { get { return default(bool); } set { } }
-        public bool PreferMultiSampling { get { return default(bool); } set { } }
-        public CocosSharp.CCScheduler Scheduler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCScheduler); } }
-        public void ClearTouches() { }
-        protected override void Dispose(bool disposing) { }
-        public override void Draw(Microsoft.Xna.Framework.GameTime gameTime) { }
-        public void ExitGame() { }
-        public override void Initialize() { }
-        public virtual bool InitInstance() { return default(bool); }
-        protected override void LoadContent() { }
-        public void PurgeAllCachedData() { }
-        public void StartGame() { }
-        public void ToggleFullScreen() { }
-        public override void Update(Microsoft.Xna.Framework.GameTime gameTime) { }
-    }
-    public partial class CCApplicationDelegate {
-        public CCApplicationDelegate() { }
-        public virtual void ApplicationDidEnterBackground(CocosSharp.CCApplication application) { }
-        public virtual void ApplicationDidFinishLaunching(CocosSharp.CCApplication application, CocosSharp.CCWindow mainWindow) { }
-        public virtual void ApplicationWillEnterForeground(CocosSharp.CCApplication application) { }
-    }
     public partial class CCAtlasNode : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
         public CCAtlasNode(CocosSharp.CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender) { }
         public CCAtlasNode(string tile, int tileWidth, int tileHeight, int itemsToRender) { }
@@ -395,6 +273,39 @@ namespace CocosSharp {
         protected int UniformColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual void UpdateAtlasValues() { }
         protected override void VisitRenderer(ref CocosSharp.CCAffineTransform worldTransform) { }
+    }
+    public partial class CCAudioEngine : System.IDisposable {
+        public CCAudioEngine() { }
+        public bool BackgroundMusicPlaying { get { return default(bool); } }
+        public float BackgroundMusicVolume { get { return default(float); } set { } }
+        public float EffectsVolume { get { return default(float); } set { } }
+        public static CocosSharp.CCAudioEngine SharedEngine { get { return default(CocosSharp.CCAudioEngine); } }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        public void End() { }
+        ~CCAudioEngine() { }
+        public static string FullPath(string path) { return default(string); }
+        public void PauseAllEffects() { }
+        public void PauseBackgroundMusic() { }
+        public void PauseEffect(int fxid) { }
+        public void PlayBackgroundMusic(string filename, bool loop=false) { }
+        public int PlayEffect(int fxid) { return default(int); }
+        public int PlayEffect(int fxid, bool bLoop) { return default(int); }
+        public int PlayEffect(string filename, bool loop=false) { return default(int); }
+        public void PreloadBackgroundMusic(string filename) { }
+        public void PreloadEffect(string filename) { }
+        public void RestoreMediaState() { }
+        public void ResumeAllEffects() { }
+        public void ResumeBackgroundMusic() { }
+        public void ResumeEffect(int fxid) { }
+        public void RewindBackgroundMusic() { }
+        public void SaveMediaState() { }
+        public void StopAllEffects() { }
+        public void StopAllLoopingEffects() { }
+        public void StopBackgroundMusic(bool releaseData=false) { }
+        public void StopEffect(int soundId) { }
+        public void UnloadEffect(string filename) { }
+        public bool WillPlayBackgroundMusic() { return default(bool); }
     }
     public partial class CCBezierBy : CocosSharp.CCFiniteTimeAction {
         public CCBezierBy(float t, CocosSharp.CCBezierConfig config) { }
@@ -674,25 +585,11 @@ namespace CocosSharp {
         public static CocosSharp.CCColor4F Parse(string s) { return default(CocosSharp.CCColor4F); }
         public override string ToString() { return default(string); }
     }
-    public partial class CCConfiguration {
-        internal CCConfiguration() { }
-        public CocosSharp.CCGlesVersion GlesVersion { get { return default(CocosSharp.CCGlesVersion); } }
-        protected bool Inited { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        public bool IsSupportsBGRA8888 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        public bool IsSupportsDiscardFramebuffer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        public bool IsSupportsNPOT { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        public bool IsSupportsPVRTC { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-        public int MaxModelviewStackDepth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        public int MaxTextureSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-        public uint OSVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } }
-        public static CocosSharp.CCConfiguration SharedConfiguration { get { return default(CocosSharp.CCConfiguration); } }
-        public bool CheckForGLExtension(string searchName) { return default(bool); }
-    }
     public partial class CCContentManager : Microsoft.Xna.Framework.Content.ContentManager {
         public static CocosSharp.CCContentManager SharedContentManager;
         public CCContentManager(System.IServiceProvider serviceProvider) : base (default(System.IServiceProvider)) { }
         public CCContentManager(System.IServiceProvider serviceProvider, string rootDirectory) : base (default(System.IServiceProvider)) { }
-        public System.Collections.Generic.List<System.String> SearchPaths { get { return default(System.Collections.Generic.List<System.String>); } }
+        public System.Collections.Generic.List<System.String> SearchPaths { get { return default(System.Collections.Generic.List<System.String>); } set { } }
         public System.Collections.Generic.List<System.String> SearchResolutionsOrder { get { return default(System.Collections.Generic.List<System.String>); } }
         public System.IO.Stream GetAssetStream(string assetName) { return default(System.IO.Stream); }
         public System.IO.Stream GetAssetStream(string assetName, out string fileName) { fileName = default(string); return default(System.IO.Stream); }
@@ -712,6 +609,7 @@ namespace CocosSharp {
         public CCCustomCommand(float globalZOrder, System.Action action) { }
         public System.Action Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Action); } }
         public override CocosSharp.CCRenderCommand Copy() { return default(CocosSharp.CCRenderCommand); }
+        protected override void Dispose(bool disposing) { }
         public override string ToString() { return default(string); }
     }
     public partial class CCDeccelAmplitude : CocosSharp.CCAccelAmplitude {
@@ -740,6 +638,8 @@ namespace CocosSharp {
     }
     public static partial class CCDevice {
         public static float DPI { get { return default(float); } }
+        public static bool IsKeyboardPresent { get { return default(bool); } }
+        public static bool IsMousePresent { get { return default(bool); } }
     }
     public partial class CCDirector {
         public CCDirector() { }
@@ -757,73 +657,6 @@ namespace CocosSharp {
         public void ResetSceneStack() { }
         public void RunWithScene(CocosSharp.CCScene scene) { }
         public void SerializeState() { }
-    }
-    public partial class CCDisplayLinkDirector : CocosSharp.CCDirector {
-        public CCDisplayLinkDirector() { }
-    }
-    [System.FlagsAttribute]
-    public enum CCDisplayOrientation {
-        Default = 0,
-        LandscapeLeft = 1,
-        LandscapeRight = 2,
-        Portrait = 4,
-        PortraitDown = 8,
-        Unknown = 16,
-    }
-    [System.ObsoleteAttribute("CCDrawPrimitives is obsolete - Please use CCDrawNode")]
-    public partial class CCDrawingPrimitives {
-        public CCDrawingPrimitives() { }
-        public static CocosSharp.CCColor4B DrawColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor4B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static float LineWidth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static float PointSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static void Begin() { }
-        public static void DrawArc(CocosSharp.CCRect rect, int startAngle, int sweepAngle) { }
-        public static void DrawArc(CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
-        public static void DrawArc(int x, int y, int width, int height, int startAngle, int sweepAngle) { }
-        public static void DrawArc(int x, int y, int width, int height, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
-        public static void DrawCardinalSpline(System.Collections.Generic.List<CocosSharp.CCPoint> config, float tension, int segments) { }
-        public static void DrawCatmullRom(System.Collections.Generic.List<CocosSharp.CCPoint> points, int segments) { }
-        public static void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CocosSharp.CCColor4B color, float scaleX=1f, float scaleY=1f) { }
-        public static void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, float scaleX=1f, float scaleY=1f) { }
-        public static void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments) { }
-        public static void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color) { }
-        public static void DrawEllipse(CocosSharp.CCRect rect) { }
-        public static void DrawEllipse(CocosSharp.CCRect rect, CocosSharp.CCColor4B color) { }
-        public static void DrawEllipse(int x, int y, int width, int height) { }
-        public static void DrawEllipse(int x, int y, int width, int height, CocosSharp.CCColor4B color) { }
-        public static void DrawLine(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination) { }
-        public static void DrawLine(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color) { }
-        public void DrawLineList(CocosSharp.CCV3F_C4B[] verts) { }
-        public static void DrawPie(CocosSharp.CCRect rect, int startAngle, int sweepAngle) { }
-        public static void DrawPie(CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
-        public static void DrawPie(int x, int y, int width, int height, int startAngle, int sweepAngle) { }
-        public static void DrawPie(int x, int y, int width, int height, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
-        public static void DrawPoint(CocosSharp.CCPoint point) { }
-        public static void DrawPoint(CocosSharp.CCPoint point, float size) { }
-        public static void DrawPoint(CocosSharp.CCPoint p, float size, CocosSharp.CCColor4B color) { }
-        public static void DrawPoints(CocosSharp.CCPoint[] points) { }
-        public static void DrawPoints(CocosSharp.CCPoint[] points, int numberOfPoints, float size, CocosSharp.CCColor4B color) { }
-        public static void DrawPoints(CocosSharp.CCPoint[] points, float size) { }
-        public static void DrawPoints(CocosSharp.CCPoint[] points, float size, CocosSharp.CCColor4B color) { }
-        public static void DrawPoly(CocosSharp.CCPoint[] vertices, CocosSharp.CCColor4B color, bool closePolygon=false) { }
-        public static void DrawPoly(CocosSharp.CCPoint[] vertices, bool closePolygon=false) { }
-        public static void DrawPoly(CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon) { }
-        public static void DrawPoly(CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon, CocosSharp.CCColor4B color) { }
-        public static void DrawPoly(CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon, bool fill, CocosSharp.CCColor4B color) { }
-        public static void DrawQuadBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments) { }
-        public static void DrawQuadBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color) { }
-        public static void DrawRect(CocosSharp.CCRect rect, CocosSharp.CCColor4B color) { }
-        public static void DrawSolidCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, CocosSharp.CCColor4B color, float scaleX=1f, float scaleY=1f) { }
-        public static void DrawSolidCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, float scaleX=1f, float scaleY=1f) { }
-        public static void DrawSolidPoly(CocosSharp.CCPoint[] vertices, CocosSharp.CCColor4B color) { }
-        public static void DrawSolidPoly(CocosSharp.CCPoint[] vertices, int count, CocosSharp.CCColor4B color) { }
-        public static void DrawSolidPoly(CocosSharp.CCPoint[] vertices, int count, CocosSharp.CCColor4B color, bool outline) { }
-        public static void DrawSolidRect(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color) { }
-        public void DrawTriangleList(CocosSharp.CCV3F_C4B[] verts) { }
-        public static void End() { }
-        public static void PopMatrix() { }
-        public static void PushMatrix() { }
-        public static void Translate(float x, float y, int z) { }
     }
     public partial class CCDrawNode : CocosSharp.CCNode {
         public CCDrawNode() { }
@@ -1065,6 +898,35 @@ namespace CocosSharp {
         public CCEaseSineOutState(CocosSharp.CCEaseSineOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
         public override void Update(float time) { }
     }
+    public partial class CCEffectPlayer : CocosSharp.CCEffectPlayerCore, System.IDisposable {
+        public CCEffectPlayer() { }
+        public override bool Playing { get { return default(bool); } }
+        public override float Volume { get { return default(float); } set { } }
+        public override void Close() { }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        protected override void DisposeManagedResources() { }
+        public override void Open(string filename, int uid) { }
+        public override void Pause() { }
+        public override void Play(bool loop=false) { }
+        public override void Resume() { }
+        public override void Rewind() { }
+        public override void Stop() { }
+    }
+    public abstract partial class CCEffectPlayerCore {
+        protected CCEffectPlayerCore() { }
+        public abstract bool Playing { get; }
+        public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+        public abstract float Volume { get; set; }
+        public virtual void Close() { }
+        protected abstract void DisposeManagedResources();
+        public virtual void Open(string filename, int soundId) { }
+        public abstract void Pause();
+        public abstract void Play(bool loop=false);
+        public abstract void Resume();
+        public abstract void Rewind();
+        public abstract void Stop();
+    }
     public enum CCEmitterMode {
         Gravity = 0,
         Radius = 1,
@@ -1226,8 +1088,8 @@ namespace CocosSharp {
     }
     public partial class CCEventMouse : CocosSharp.CCEvent {
         internal CCEventMouse() { }
-        public float CursorX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
-        public float CursorY { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
+        public CocosSharp.CCPoint Cursor { get { return default(CocosSharp.CCPoint); } }
+        public CocosSharp.CCPoint CursorOnScreen { get { return default(CocosSharp.CCPoint); } }
         public CocosSharp.CCMouseButton MouseButton { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCMouseButton); } }
         public CocosSharp.CCMouseEventType MouseEventType { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCMouseEventType); } }
         public float ScrollX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
@@ -1438,15 +1300,6 @@ namespace CocosSharp {
         public override System.Int32[] HorizontalKerningForText(string text, out int numLetters) { numLetters = default(int); return default(System.Int32[]); }
         public void PurgeCachedData() { }
     }
-    public static partial class CCFPSImage {
-        public static System.Byte[] PngData;
-    }
-    public partial class CCGame : Microsoft.Xna.Framework.Game {
-        public CCGame() { }
-        protected override void Draw(Microsoft.Xna.Framework.GameTime gameTime) { }
-        protected override void Initialize() { }
-        protected override void Update(Microsoft.Xna.Framework.GameTime gameTime) { }
-    }
     public enum CCGamePadButtonStatus {
         NotApplicable = 3,
         Pressed = 0,
@@ -1467,13 +1320,31 @@ namespace CocosSharp {
         public bool IsDown;
         public float Magnitude;
     }
-    public partial class CCGameTime {
-        public CCGameTime() { }
-        public CCGameTime(System.TimeSpan totalGameTime, System.TimeSpan elapsedGameTime) { }
-        public CCGameTime(System.TimeSpan totalRealTime, System.TimeSpan elapsedRealTime, bool isRunningSlowly) { }
-        public System.TimeSpan ElapsedGameTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.TimeSpan); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsRunningSlowly { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public System.TimeSpan TotalGameTime { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.TimeSpan); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+    public partial class CCGameView : CocosSharp.GameDesktop, System.IDisposable {
+        public CCGameView() { }
+        public CocosSharp.CCAccelerometer Accelerometer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAccelerometer); } }
+        public CocosSharp.CCActionManager ActionManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCActionManager); } }
+        public CocosSharp.CCAudioEngine AudioEngine { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAudioEngine); } }
+        public CocosSharp.CCBlendFunc BlendType { set { } }
+        public bool DepthTesting { get { return default(bool); } set { } }
+        public CocosSharp.CCSizeI DesignResolution { get { return default(CocosSharp.CCSizeI); } set { } }
+        public CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } }
+        public bool MouseEnabled { get { return default(bool); } set { } }
+        public bool Paused { get { return default(bool); } set { } }
+        public CocosSharp.CCRenderer Renderer { get { return default(CocosSharp.CCRenderer); } }
+        public CocosSharp.CCViewResolutionPolicy ResolutionPolicy { get { return default(CocosSharp.CCViewResolutionPolicy); } set { } }
+        public CocosSharp.CCScheduler Scheduler { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCScheduler); } }
+        public CocosSharp.CCStats Stats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCStats); } }
+        public bool TouchEnabled { get { return default(bool); } set { } }
+        public CocosSharp.CCRect ViewportRectRatio { get { return default(CocosSharp.CCRect); } set { } }
+        public CocosSharp.CCSizeI ViewSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSizeI); } }
+        public event System.EventHandler<System.EventArgs> ViewCreated { add { } remove { } }
+        public void Dispose() { }
+        protected override void Dispose(bool disposing) { }
+        ~CCGameView() { }
+        public void MobilePlatformUpdatePaused() { }
+        public void RunWithScene(CocosSharp.CCScene scene) { }
+        public void StartGame() { }
     }
     public partial class CCGeometryInstance {
         internal CCGeometryInstance() { }
@@ -1505,18 +1376,6 @@ namespace CocosSharp {
         public CocosSharp.CCTexture2D Texture;
         public CocosSharp.CCV3F_C4B_T2F[] Vertices;
     }
-    public enum CCGlesVersion {
-        GLES_VER_1_0 = 1,
-        GLES_VER_1_1 = 2,
-        GLES_VER_2_0 = 3,
-        GLES_VER_INVALID = 0,
-    }
-    public partial class CCGrabber {
-        internal CCGrabber() { }
-        public void AfterRender(CocosSharp.CCTexture2D texture) { }
-        public void BeforeRender(CocosSharp.CCTexture2D texture) { }
-        public void Grab(CocosSharp.CCTexture2D texture) { }
-    }
     public partial class CCGraphicsResource : System.IDisposable {
         public CCGraphicsResource() { }
         public bool IsDisposed { get { return default(bool); } }
@@ -1526,7 +1385,7 @@ namespace CocosSharp {
         public virtual void ReinitResource() { }
     }
     public partial class CCGrid3D : CocosSharp.CCGridBase {
-        public CCGrid3D(CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped=false) : base (default(CocosSharp.CCGridSize), default(CocosSharp.CCTexture2D), default(bool)) { }
+        public CCGrid3D(CocosSharp.CCGridSize gridSize, CocosSharp.CCRenderTexture renderTexture, bool flipped=false) : base (default(CocosSharp.CCGridSize), default(CocosSharp.CCRenderTexture), default(bool)) { }
         protected System.UInt16[] Indices { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.UInt16[]); } }
         public CocosSharp.CCVertex3F this[CocosSharp.CCGridSize pos] { get { return default(CocosSharp.CCVertex3F); } set { } }
         public CocosSharp.CCVertex3F this[int x, int y] { get { return default(CocosSharp.CCVertex3F); } set { } }
@@ -1567,15 +1426,15 @@ namespace CocosSharp {
         public CCGridActionState(CocosSharp.CCGridAction action, CocosSharp.CCNodeGrid target) : base (default(CocosSharp.CCAmplitudeAction), default(CocosSharp.CCNode)) { }
         public virtual CocosSharp.CCGridBase Grid { get { return default(CocosSharp.CCGridBase); } protected set { } }
         protected CocosSharp.CCGridSize GridSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCGridSize); } }
+        protected internal override void Stop() { }
     }
     public abstract partial class CCGridBase {
-        protected CCGridBase(CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped=false) { }
+        protected CCGridBase(CocosSharp.CCGridSize gridSize, CocosSharp.CCRenderTexture renderTexture, bool flipped=false) { }
         public bool Active { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        protected CocosSharp.CCGrabber Grabber { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCGrabber); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCGridSize GridSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCGridSize); } }
+        protected CocosSharp.CCRenderTexture RenderTexture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCRenderTexture); } }
         public int ReuseGrid { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCPoint Step { get { return default(CocosSharp.CCPoint); } }
-        protected CocosSharp.CCTexture2D Texture { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTexture2D); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public bool TextureFlipped { get { return default(bool); } set { } }
         public virtual void AfterDraw(CocosSharp.CCNode target) { }
         public virtual void BeforeDraw() { }
@@ -1915,56 +1774,6 @@ namespace CocosSharp {
         public string Text { get { return default(string); } set { } }
         public override void UpdateAtlasValues() { }
     }
-    [System.ObsoleteAttribute("Use CCLabel instead.")]
-    public partial class CCLabelBMFont : CocosSharp.CCNode, CocosSharp.ICCTextContainer {
-        public const int AutomaticWidth = -1;
-        protected string fntConfigFile;
-        protected CocosSharp.CCTextAlignment horzAlignment;
-        protected bool isColorModifiedByOpacity;
-        protected CocosSharp.CCSize labelDimensions;
-        protected string labelInitialText;
-        protected string labelText;
-        protected bool lineBreakWithoutSpaces;
-        protected CocosSharp.CCVerticalTextAlignment vertAlignment;
-        public CCLabelBMFont() { }
-        public CCLabelBMFont(string str, string fntFile) { }
-        public CCLabelBMFont(string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public CCLabelBMFont(string str, string fntFile, float width) { }
-        public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment) { }
-        public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset) { }
-        public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public override CocosSharp.CCPoint AnchorPoint { get { return default(CocosSharp.CCPoint); } set { } }
-        public CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
-        public static float DefaultTexelToContentSizeRatio { set { } }
-        public static CocosSharp.CCSize DefaultTexelToContentSizeRatios { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public CocosSharp.CCSize Dimensions { get { return default(CocosSharp.CCSize); } set { } }
-        public string FntFile { get { return default(string); } set { } }
-        public CocosSharp.CCTextAlignment HorizontalAlignment { get { return default(CocosSharp.CCTextAlignment); } set { } }
-        protected CocosSharp.CCPoint ImageOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public override bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
-        protected bool IsDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool LineBreakWithoutSpace { get { return default(bool); } set { } }
-        protected int LineHeight { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public override CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
-        public override float PositionX { get { return default(float); } set { } }
-        public override float PositionY { get { return default(float); } set { } }
-        public override float Scale { set { } }
-        public override float ScaleX { get { return default(float); } set { } }
-        public override float ScaleY { get { return default(float); } set { } }
-        public virtual string Text { get { return default(string); } set { } }
-        public CocosSharp.CCTextureAtlas TextureAtlas { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTextureAtlas); } }
-        public CocosSharp.CCVerticalTextAlignment VerticalAlignment { get { return default(CocosSharp.CCVerticalTextAlignment); } set { } }
-        protected override void AddedToScene() { }
-        public void CreateFontChars() { }
-        protected void InitCCLabelBMFont(string theString, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
-        public static void PurgeCachedData() { }
-        public virtual void SetString(string newString, bool needUpdateLabel) { }
-        public override void UpdateColor() { }
-        protected void UpdateLabel() { }
-        protected override void VisitRenderer(ref CocosSharp.CCAffineTransform worldTransform) { }
-    }
     public sealed partial class CCLabelFormat : System.IDisposable {
         public CCLabelFormat() { }
         public CCLabelFormat(CocosSharp.CCLabelFormat format) { }
@@ -1993,23 +1802,6 @@ namespace CocosSharp {
         None = 0,
         Word = 2,
     }
-    [System.ObsoleteAttribute("Use CCLabel instead.")]
-    public partial class CCLabelTtf : CocosSharp.CCSprite, CocosSharp.ICCTextContainer {
-        protected string labelText;
-        public CCLabelTtf() { }
-        public CCLabelTtf(string text, string fontName, float fontSize) { }
-        public CCLabelTtf(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment) { }
-        public CCLabelTtf(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment) { }
-        public static new float DefaultTexelToContentSizeRatio { set { } }
-        public static new CocosSharp.CCSize DefaultTexelToContentSizeRatios { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public CocosSharp.CCSize Dimensions { get { return default(CocosSharp.CCSize); } set { } }
-        public string FontName { get { return default(string); } set { } }
-        public float FontSize { get { return default(float); } set { } }
-        public CocosSharp.CCTextAlignment HorizontalAlignment { get { return default(CocosSharp.CCTextAlignment); } set { } }
-        public string Text { get { return default(string); } set { } }
-        public CocosSharp.CCVerticalTextAlignment VerticalAlignment { get { return default(CocosSharp.CCVerticalTextAlignment); } set { } }
-        public override string ToString() { return default(string); }
-    }
     [System.FlagsAttribute]
     public enum CCLabelType {
         BitMapFont = 1,
@@ -2029,7 +1821,6 @@ namespace CocosSharp {
         public CocosSharp.CCClipMode ChildClippingMode { get { return default(CocosSharp.CCClipMode); } set { } }
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
         public override CocosSharp.CCLayer Layer { get { return default(CocosSharp.CCLayer); } }
-        public CocosSharp.CCSize LayerSizeInPixels { get { return default(CocosSharp.CCSize); } }
         public new CocosSharp.CCRect VisibleBoundsWorldspace { get { return default(CocosSharp.CCRect); } }
         protected override void AddedToScene() { }
         public new CocosSharp.CCPoint ScreenToWorldspace(CocosSharp.CCPoint point) { return default(CocosSharp.CCPoint); }
@@ -2305,6 +2096,40 @@ namespace CocosSharp {
         public CCMoveToState(CocosSharp.CCMoveTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCMoveBy), default(CocosSharp.CCNode)) { }
         public override void Update(float time) { }
     }
+    public partial class CCMusicPlayer : CocosSharp.CCMusicPlayerCore, System.IDisposable {
+        public CCMusicPlayer() { }
+        public override bool Playing { get { return default(bool); } }
+        public override bool PlayingMySong { get { return default(bool); } }
+        public override float Volume { get { return default(float); } set { } }
+        public override void Close() { }
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
+        protected override void DisposeManagedResources() { }
+        ~CCMusicPlayer() { }
+        public override void Open(string fileName, int soundId) { }
+        public override void Pause() { }
+        public override void Play(bool loop=false) { }
+        public override void Resume() { }
+        public override void Rewind() { }
+        public override void Stop() { }
+    }
+    public abstract partial class CCMusicPlayerCore {
+        protected CCMusicPlayerCore() { }
+        public abstract bool Playing { get; }
+        public abstract bool PlayingMySong { get; }
+        public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+        public abstract float Volume { get; set; }
+        public virtual void Close() { }
+        protected abstract void DisposeManagedResources();
+        public virtual void Open(string fileName, int soundId) { }
+        public abstract void Pause();
+        public abstract void Play(bool loop=false);
+        public virtual void RestoreMediaState() { }
+        public abstract void Resume();
+        public abstract void Rewind();
+        public virtual void SaveMediaState() { }
+        public abstract void Stop();
+    }
     [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
     public partial struct CCNearAndFarClipping {
         public float Far;
@@ -2326,7 +2151,6 @@ namespace CocosSharp {
         public CocosSharp.CCAffineTransform AffineWorldTransform { get { return default(CocosSharp.CCAffineTransform); } }
         public virtual CocosSharp.CCPoint AnchorPoint { get { return default(CocosSharp.CCPoint); } set { } }
         public virtual CocosSharp.CCPoint AnchorPointInPoints { get { return default(CocosSharp.CCPoint); } }
-        public virtual CocosSharp.CCApplication Application { get { return default(CocosSharp.CCApplication); } }
         public CocosSharp.CCRect BoundingBox { get { return default(CocosSharp.CCRect); } }
         public CocosSharp.CCRect BoundingBoxTransformedToParent { get { return default(CocosSharp.CCRect); } }
         public CocosSharp.CCRect BoundingBoxTransformedToWorld { get { return default(CocosSharp.CCRect); } }
@@ -2339,6 +2163,7 @@ namespace CocosSharp {
         public virtual CocosSharp.CCDirector Director { get { return default(CocosSharp.CCDirector); } set { } }
         public CocosSharp.CCColor3B DisplayedColor { get { return default(CocosSharp.CCColor3B); } protected set { } }
         public byte DisplayedOpacity { get { return default(byte); } protected set { } }
+        public virtual CocosSharp.CCGameView GameView { get { return default(CocosSharp.CCGameView); } protected set { } }
         public virtual bool HasFocus { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual bool IgnoreAnchorPointForPosition { get { return default(bool); } set { } }
         public virtual bool IsColorCascaded { get { return default(bool); } set { } }
@@ -2374,10 +2199,8 @@ namespace CocosSharp {
         public object UserData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(object); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public object UserObject { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(object); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual float VertexZ { get { return default(float); } set { } }
-        public virtual CocosSharp.CCViewport Viewport { get { return default(CocosSharp.CCViewport); } set { } }
         public virtual bool Visible { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCRect VisibleBoundsWorldspace { get { return default(CocosSharp.CCRect); } }
-        public virtual CocosSharp.CCWindow Window { get { return default(CocosSharp.CCWindow); } set { } }
         public int ZOrder { get { return default(int); } set { } }
         public void AddAction(CocosSharp.CCAction action, bool paused=false) { }
         public void AddActions(bool paused, params CocosSharp.CCFiniteTimeAction[] actions) { }
@@ -2518,10 +2341,6 @@ namespace CocosSharp {
         protected float RadX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected float RadZ { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void Update(float time) { }
-    }
-    public static partial class CCOrientationExtension {
-        public static bool IsLandscape(this CocosSharp.CCDisplayOrientation orientation) { return default(bool); }
-        public static bool IsPortrait(this CocosSharp.CCDisplayOrientation orientation) { return default(bool); }
     }
     public partial class CCPageTurn3D : CocosSharp.CCGrid3DAction {
         public CCPageTurn3D(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
@@ -2668,7 +2487,7 @@ namespace CocosSharp {
         }
     }
     public partial class CCParticleSystemCache : CocosSharp.ICCUpdatable, System.IDisposable {
-        public CCParticleSystemCache(CocosSharp.CCApplication application) { }
+        public CCParticleSystemCache() { }
         public CocosSharp.CCParticleSystemConfig this[string key] { get { return default(CocosSharp.CCParticleSystemConfig); } }
         public static CocosSharp.CCParticleSystemCache SharedParticleSystemCache { get { return default(CocosSharp.CCParticleSystemCache); } }
         public CocosSharp.CCParticleSystemConfig AddParticleSystem(string fileConfig, string directoryName=null) { return default(CocosSharp.CCParticleSystemConfig); }
@@ -3068,7 +2887,7 @@ namespace CocosSharp {
         public override void Update(float time) { }
     }
     [System.Diagnostics.DebuggerDisplayAttribute("{DebugDisplayString,nq}")]
-    public abstract partial class CCRenderCommand : System.IComparable<CocosSharp.CCRenderCommand> {
+    public abstract partial class CCRenderCommand : System.IComparable<CocosSharp.CCRenderCommand>, System.IDisposable {
         public CCRenderCommand() { }
         protected CCRenderCommand(CocosSharp.CCRenderCommand copy) { }
         public CCRenderCommand(float gobalDepth, CocosSharp.CCAffineTransform worldTransform) { }
@@ -3078,6 +2897,8 @@ namespace CocosSharp {
         public CocosSharp.CCAffineTransform WorldTransform { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAffineTransform); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public int CompareTo(CocosSharp.CCRenderCommand otherCommand) { return default(int); }
         public abstract CocosSharp.CCRenderCommand Copy();
+        public void Dispose() { }
+        protected virtual void Dispose(bool disposing) { }
         protected virtual void GenerateFlags(ref long renderFlags) { }
         public override string ToString() { return default(string); }
     }
@@ -3241,34 +3062,19 @@ namespace CocosSharp {
         public override void Update(float time) { }
     }
     public partial class CCScene : CocosSharp.CCNode {
+        public CCScene(CocosSharp.CCGameView gameView) { }
         public CCScene(CocosSharp.CCScene scene) { }
-        public CCScene(CocosSharp.CCWindow window) { }
-        public CCScene(CocosSharp.CCWindow window, CocosSharp.CCDirector director) { }
-        public CCScene(CocosSharp.CCWindow window, CocosSharp.CCViewport viewport, CocosSharp.CCDirector director=null) { }
         public override CocosSharp.CCAffineTransform AffineLocalTransform { get { return default(CocosSharp.CCAffineTransform); } }
         public override CocosSharp.CCCamera Camera { get { return default(CocosSharp.CCCamera); } set { } }
-        public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
-        public static CocosSharp.CCSceneResolutionPolicy DefaultDesignResolutionPolicy { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSceneResolutionPolicy); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static CocosSharp.CCSize DefaultDesignResolutionSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public CocosSharp.CCSize DesignResolutionSize { get { return default(CocosSharp.CCSize); } }
-        public override CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+        public override CocosSharp.CCDirector Director { get { return default(CocosSharp.CCDirector); } }
+        public override CocosSharp.CCGameView GameView { get { return default(CocosSharp.CCGameView); } protected set { } }
         public virtual bool IsTransition { get { return default(bool); } }
         public override CocosSharp.CCLayer Layer { get { return default(CocosSharp.CCLayer); } }
         public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
-        public CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy { get { return default(CocosSharp.CCSceneResolutionPolicy); } set { } }
-        public override CocosSharp.CCViewport Viewport { get { return default(CocosSharp.CCViewport); } set { } }
         public CocosSharp.CCRect VisibleBoundsScreenspace { get { return default(CocosSharp.CCRect); } }
-        public override CocosSharp.CCWindow Window { get { return default(CocosSharp.CCWindow); } set { } }
-        public static void SetDefaultDesignResolution(float width, float height, CocosSharp.CCSceneResolutionPolicy resPolicy) { }
-        public override void Visit(ref CocosSharp.CCAffineTransform parentWorldTransform) { }
-    }
-    public enum CCSceneResolutionPolicy {
-        Custom = 0,
-        ExactFit = 1,
-        FixedHeight = 4,
-        FixedWidth = 5,
-        NoBorder = 2,
-        ShowAll = 3,
+        [System.ObsoleteAttribute("CCScene: AddChild is obsolete. Use AddLayer instead")]
+        public override void AddChild(CocosSharp.CCNode child, int zOrder, int tag) { }
+        public void AddLayer(CocosSharp.CCLayer layer, int zOrder=0, int tag=0) { }
     }
     public static partial class CCSchedulePriority {
         public const uint RepeatForever = (uint)4294967294;
@@ -3293,12 +3099,6 @@ namespace CocosSharp {
         public void UnscheduleAll() { }
         public void UnscheduleAll(CocosSharp.ICCUpdatable target) { }
         public void UnscheduleAll(int minPriority) { }
-    }
-    public partial class CCScriptEngineManager {
-        public CCScriptEngineManager() { }
-        public CocosSharp.ICCScriptingEngine ScriptEngine { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.ICCScriptingEngine); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public static CocosSharp.CCScriptEngineManager SharedScriptEngineManager { get { return default(CocosSharp.CCScriptEngineManager); } }
-        public void RemoveScriptEngine() { }
     }
     public partial class CCSequence : CocosSharp.CCFiniteTimeAction {
         public CCSequence(CocosSharp.CCFiniteTimeAction action1, CocosSharp.CCFiniteTimeAction action2) { }
@@ -3528,21 +3328,6 @@ namespace CocosSharp {
         public void UpdateLocalTransformedSpriteTextureQuads() { }
         protected override void VisitRenderer(ref CocosSharp.CCAffineTransform worldTransform) { }
     }
-    [System.ObsoleteAttribute("This class is now obsolete and has been made redundant by CCRenderer.")]
-    public partial class CCSpriteBatchNode : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
-        public CCSpriteBatchNode() { }
-        public CCSpriteBatchNode(CocosSharp.CCTexture2D tex, int capacity=29) { }
-        public CCSpriteBatchNode(string fileImage, int capacity=29) { }
-        public CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public CocosSharp.CCRawList<CocosSharp.CCSprite> Descendants { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCRawList<CocosSharp.CCSprite>); } }
-        public bool IsAntialiased { get { return default(bool); } set { } }
-        public virtual CocosSharp.CCTexture2D Texture { get { return default(CocosSharp.CCTexture2D); } set { } }
-        public CocosSharp.CCTextureAtlas TextureAtlas { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCTextureAtlas); } }
-        protected override void AddedToScene() { }
-        protected CocosSharp.CCSpriteBatchNode AddSpriteWithoutQuad(CocosSharp.CCSprite child, int z, int aTag) { return default(CocosSharp.CCSpriteBatchNode); }
-        public void AppendChild(CocosSharp.CCSprite sprite) { }
-        public void RemoveSpriteFromAtlas(CocosSharp.CCSprite sprite) { }
-    }
     public partial class CCSpriteFontCache {
         internal CCSpriteFontCache() { }
         public static string DefaultFont;
@@ -3610,13 +3395,8 @@ namespace CocosSharp {
     }
     public partial class CCStats {
         public CCStats() { }
-        public bool IsEnabled { get { return default(bool); } set { } }
-        public bool IsInitialized { get { return default(bool); } }
-        public int Scale { get { return default(int); } set { } }
-        public void Draw(CocosSharp.CCWindow window) { }
-        public void Initialize() { }
-        public void UpdateEnd(float delta) { }
-        public void UpdateStart() { }
+        public bool Enabled { get { return default(bool); } set { } }
+        public uint Scale { get { return default(uint); } set { } }
     }
     public partial class CCStopGrid : CocosSharp.CCActionInstant {
         public CCStopGrid() { }
@@ -3718,29 +3498,6 @@ namespace CocosSharp {
         public void TouchMoved(CocosSharp.CCTouch touch) { }
     }
     public delegate void CCTextFieldDelegate(object sender, ref string text, ref bool canceled);
-    public partial class CCTextFieldTTF : CocosSharp.CCLabel {
-        public CCTextFieldTTF(string text, string fontName, float fontSize) { }
-        public CCTextFieldTTF(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment) { }
-        public CCTextFieldTTF(string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment) { }
-        public bool AutoEdit { get { return default(bool); } set { } }
-        public string EditDescription { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public string EditTitle { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool ReadOnly { get { return default(bool); } set { } }
-        public event CocosSharp.CCTextFieldTTFDelegate BeginEditing { add { } remove { } }
-        public event CocosSharp.CCTextFieldTTFDelegate EndEditing { add { } remove { } }
-        protected virtual void DoBeginEditing(ref string newText, ref bool canceled) { }
-        protected virtual void DoEndEditing(ref string newText, ref bool canceled) { }
-        public void Edit() { }
-        public void Edit(string title, string defaultText) { }
-        public void EndEdit() { }
-        public override void OnEnter() { }
-        public override void OnExit() { }
-        public bool TouchBegan(CocosSharp.CCTouch touch) { return default(bool); }
-        public void TouchCancelled(CocosSharp.CCTouch pTouch) { }
-        public void TouchEnded(CocosSharp.CCTouch touch) { }
-        public void TouchMoved(CocosSharp.CCTouch touch) { }
-    }
-    public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
     public partial class CCTexture2D : CocosSharp.CCGraphicsResource {
         public static CocosSharp.CCSurfaceFormat DefaultAlphaPixelFormat;
         public static bool DefaultIsAntialiased;
@@ -3800,7 +3557,7 @@ namespace CocosSharp {
     }
     public partial class CCTextureCache : CocosSharp.ICCUpdatable, System.IDisposable {
         protected System.Collections.Generic.Dictionary<System.String, CocosSharp.CCTexture2D> textures;
-        public CCTextureCache(CocosSharp.CCApplication application) { }
+        public CCTextureCache() { }
         public CocosSharp.CCTexture2D this[string key] { get { return default(CocosSharp.CCTexture2D); } }
         public static CocosSharp.CCTextureCache SharedTextureCache { get { return default(CocosSharp.CCTextureCache); } }
         public CocosSharp.CCTexture2D AddImage(System.Byte[] data, string assetName, CocosSharp.CCSurfaceFormat format) { return default(CocosSharp.CCTexture2D); }
@@ -3842,7 +3599,7 @@ namespace CocosSharp {
         Zlib = 8,
     }
     public partial class CCTiledGrid3D : CocosSharp.CCGridBase {
-        public CCTiledGrid3D(CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped=false) : base (default(CocosSharp.CCGridSize), default(CocosSharp.CCTexture2D), default(bool)) { }
+        public CCTiledGrid3D(CocosSharp.CCGridSize gridSize, CocosSharp.CCRenderTexture renderTexture, bool flipped=false) : base (default(CocosSharp.CCGridSize), default(CocosSharp.CCRenderTexture), default(bool)) { }
         protected System.Int16[] Indices { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Int16[]); } }
         public CocosSharp.CCQuad3 this[CocosSharp.CCGridSize pos] { get { return default(CocosSharp.CCQuad3); } set { } }
         public CocosSharp.CCQuad3 this[int x, int y] { get { return default(CocosSharp.CCQuad3); } set { } }
@@ -4196,7 +3953,7 @@ namespace CocosSharp {
         protected override void InitialiseScenes() { }
     }
     public partial class CCTransitionScene : CocosSharp.CCScene {
-        public CCTransitionScene(float duration, CocosSharp.CCScene scene) : base (default(CocosSharp.CCWindow), default(CocosSharp.CCViewport), default(CocosSharp.CCDirector)) { }
+        public CCTransitionScene(float duration, CocosSharp.CCScene scene) : base (default(CocosSharp.CCGameView)) { }
         protected float Duration { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         protected virtual CocosSharp.CCFiniteTimeAction InSceneAction { get { return default(CocosSharp.CCFiniteTimeAction); } }
         protected CocosSharp.CCNode InSceneNodeContainer { get { return default(CocosSharp.CCNode); } }
@@ -4493,12 +4250,13 @@ namespace CocosSharp {
         Center = 1,
         Top = 0,
     }
-    public partial class CCViewport {
-        public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
-        public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCRect exactFitPortraitRatioIn, CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
-        public float AspectRatio { get { return default(float); } }
-        public CocosSharp.CCRect ExactFitLandscapeRatio { get { return default(CocosSharp.CCRect); } set { } }
-        public CocosSharp.CCRect ExactFitPortraitRatio { get { return default(CocosSharp.CCRect); } set { } }
+    public enum CCViewResolutionPolicy {
+        Custom = 0,
+        ExactFit = 1,
+        FixedHeight = 4,
+        FixedWidth = 5,
+        NoBorder = 2,
+        ShowAll = 3,
     }
     public partial class CCWaves : CocosSharp.CCLiquid {
         public CCWaves(float duration, CocosSharp.CCGridSize gridSize, int waves=0, float amplitude=0f, bool horizontal=true, bool vertical=true) : base (default(float), default(CocosSharp.CCGridSize), default(int), default(float)) { }
@@ -4530,38 +4288,9 @@ namespace CocosSharp {
         public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override void Update(float time) { }
     }
-    public partial class CCWindow {
-        internal CCWindow() { }
-        public static string EVENT_AFTER_DRAW;
-        public static string EVENT_AFTER_UPDATE;
-        public static string EVENT_AFTER_VISIT;
-        public static string EVENT_PROJECTION_CHANGED;
-        public CocosSharp.CCAccelerometer Accelerometer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAccelerometer); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool AllowUserResizing { get { return default(bool); } set { } }
-        public CocosSharp.CCApplication Application { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCApplication); } }
-        public CocosSharp.CCDisplayOrientation CurrentDisplayOrientation { get { return default(CocosSharp.CCDisplayOrientation); } }
-        public CocosSharp.CCDirector DefaultDirector { get { return default(CocosSharp.CCDirector); } set { } }
-        public bool DisplayStats { get { return default(bool); } set { } }
-        public bool FullScreen { get { return default(bool); } set { } }
-        public bool GamePadEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool IsUseAlphaBlending { set { } }
-        public bool IsUseDepthTesting { get { return default(bool); } set { } }
-        public CocosSharp.CCNode NotificationNode { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public bool PreferMultiSampling { get { return default(bool); } set { } }
-        protected CocosSharp.CCStats Stats { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCStats); } }
-        public int StatsScale { get { return default(int); } set { } }
-        public CocosSharp.CCDisplayOrientation SupportedDisplayOrientations { get { return default(CocosSharp.CCDisplayOrientation); } }
-        public CocosSharp.CCSize WindowSizeInPixels { get { return default(CocosSharp.CCSize); } }
-        public void AddSceneDirector(CocosSharp.CCDirector sceneDirector) { }
-        protected void Draw(CocosSharp.CCGameTime gameTime) { }
-        public void EndAllSceneDirectors() { }
-        public virtual void MainLoop(CocosSharp.CCGameTime gameTime) { }
-        public void RemoveAllSceneDirectors() { }
-        public void RemoveSceneDirector(CocosSharp.CCDirector sceneDirector) { }
-        public void RunWithScene(CocosSharp.CCScene scene) { }
-        public void SetDefaultDirector(int index) { }
-        [System.ObsoleteAttribute("Use CCScene.SetDefaultDesignResolution instead")]
-        public void SetDesignResolutionSize(float width, float height, CocosSharp.CCSceneResolutionPolicy resolutionPolicy) { }
+    public partial class GameDesktop {
+        public GameDesktop() { }
+        protected virtual void Dispose(bool disposing) { }
     }
     public enum GlyphCollection {
         Ascii = 2,
@@ -4596,29 +4325,8 @@ namespace CocosSharp {
         bool DidAttachWithIME();
         bool DidDetachWithIME();
     }
-    public partial class ICCScriptingEngine {
-        public ICCScriptingEngine() { }
-        public virtual bool AddSearchPath(string path) { return default(bool); }
-        public virtual bool ExecuteCallFunc(string funcName) { return default(bool); }
-        public virtual bool ExecuteCallFunc0(string funcName, object pObject) { return default(bool); }
-        public virtual bool ExecuteCallFuncN(string funcName, CocosSharp.CCNode node) { return default(bool); }
-        public virtual bool ExecuteCallFuncNd(string funcName, CocosSharp.CCNode node, object pData) { return default(bool); }
-        public virtual int ExecuteFuction(string funcName) { return default(int); }
-        public virtual bool ExecuteSchedule(string funcName, float t) { return default(bool); }
-        public virtual bool ExecuteScriptFile(string filename) { return default(bool); }
-        public virtual bool ExecuteString(string codes) { return default(bool); }
-        public virtual bool ExecuteTouchesEvent(string funcName, System.Collections.Generic.List<CocosSharp.CCTouch> touches) { return default(bool); }
-        public virtual bool ExecuteTouchEvent(string funcName, CocosSharp.CCTouch touch) { return default(bool); }
-    }
     public partial interface ICCTextContainer {
         string Text { get; set; }
-    }
-    public partial interface ICCTextFieldDelegate {
-        bool onDraw(CocosSharp.CCTextFieldTTF sender);
-        bool onTextFieldAttachWithIME(CocosSharp.CCTextFieldTTF sender);
-        bool onTextFieldDeleteBackward(CocosSharp.CCTextFieldTTF sender, string delText, int nLen);
-        bool onTextFieldDetachWithIME(CocosSharp.CCTextFieldTTF sender);
-        bool onTextFieldInsertText(CocosSharp.CCTextFieldTTF sender, string text, int nLen);
     }
     public partial interface ICCTexture : CocosSharp.ICCBlendable {
         CocosSharp.CCTexture2D Texture { get; set; }
