@@ -6,6 +6,7 @@ using Android.Util;
 
 #if NETFX_CORE
 using Windows.Devices;
+using Windows.Graphics.Display;
 #endif
 #if WINDOWS || WINDOWSGL
 
@@ -28,6 +29,9 @@ namespace CocosSharp
 				display.GetMetrics(metrics);
 
 				dpi = metrics.Density * 160.0f;
+#elif NETFX_CORE
+                DisplayInformation displayInformation = DisplayInformation.GetForCurrentView();
+                dpi = displayInformation.LogicalDpi;
 #else
 				//TODO: Implementing GetDPI for all platforms
 				dpi = 96;
@@ -42,8 +46,20 @@ namespace CocosSharp
             get
             {
 #if NETFX_CORE
-                var MouseCapabilities = new Windows.Devices.Input.MouseCapabilities();
-                return (MouseCapabilities.MousePresent != 0);
+                var mouseCapabilities = new Windows.Devices.Input.MouseCapabilities();
+                return (mouseCapabilities.MousePresent != 0);
+#else
+                return false;
+#endif
+            }
+        }
+        public static bool IsKeyboardPresent
+        {
+            get
+            {
+#if NETFX_CORE
+                var keyboardCapabilities = new Windows.Devices.Input.KeyboardCapabilities();
+                return (keyboardCapabilities.KeyboardPresent != 0);
 #else
                 return false;
 #endif
