@@ -10,8 +10,6 @@ namespace tests
     {
         int tagSpriteBatchNode = 1;
 
-        CCSprite batch;
-
         CCRepeatForever action;
         CCScaleBy scale;
         CCFiniteTimeAction scale_back;
@@ -32,11 +30,6 @@ namespace tests
 
         public Sprite6()
         {
-            // small capacity. Testing resizing
-            // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            batch = new CCSprite("Images/grossini_dance_atlas");
-
-
             // SpriteBatchNode actions
             rotate = new CCRotateBy(5, 360);
             action = new CCRepeatForever(rotate);
@@ -49,7 +42,7 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * i, 121 * 1, 85, 121));
+                CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * i, 121 * 1, 85, 121));
                 AddChild(sprite, i);
             }
         }
@@ -62,8 +55,6 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
-
-            Layer.AddChild(batch);
 
             float step = windowSize.Width / 4;
 
@@ -78,11 +69,6 @@ namespace tests
                     ++i;
                 }
             }
-
-            batch.IgnoreAnchorPointForPosition = true;
-            batch.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            batch.ContentSize = (new CCSize(windowSize.Width, windowSize.Height));
-
         }
 
         #endregion Setup content
