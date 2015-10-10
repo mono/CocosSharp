@@ -50,9 +50,9 @@ namespace CocosSharp
         }
 
         public CCTransitionSceneContainerLayer(CCScene inScene, CCScene outScene) 
-            : base(new CCCamera(CCCameraProjection.Projection3D, outScene.VisibleBoundsScreenspace.Size))
+            : base(new CCCamera(CCCameraProjection.Projection3D, outScene.GameView.DesignResolution))
         {
-            CCSize contentSize = outScene.VisibleBoundsScreenspace.Size;
+            CCSize contentSize = outScene.GameView.DesignResolution;
 
             AnchorPoint = new CCPoint(0.5f, 0.5f);
 
