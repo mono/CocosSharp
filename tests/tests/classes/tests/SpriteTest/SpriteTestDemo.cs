@@ -63,9 +63,8 @@ namespace tests
 
         void ClearCaches()
         {
-
-            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
-            CCTextureCache.PurgeSharedTextureCache();
+//            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
+//            CCTextureCache.PurgeSharedTextureCache();
         }
     }
 }
