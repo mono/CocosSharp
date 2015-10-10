@@ -797,7 +797,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
     <Compile Include="classes\tests\FontTest\SystemFontTest.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene.cs" />
