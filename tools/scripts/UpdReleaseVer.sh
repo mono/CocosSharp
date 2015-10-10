@@ -62,7 +62,7 @@ sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Tem
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/iOS/EmptyProject.iOS.vstemplate 
 sed -i '' "s/version=\".*\" \/>/version=\"$1\" \/>/g" ../../ProjectTemplates/Templates/StarterTemplates/MobilePortable/Template/WP81/EmptyProject.WP81.vstemplate 
 
-sed -i '' "s/CocosSharp.PCL.Shared\..*.nupkg/CocosSharp.PCL.Shared.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
+sed -i '' "s/CocosSharp\..*.nupkg/CocosSharp.$1.nupkg/g" ../../ProjectTemplates/Templates/StarterTemplates/CocosSharpTemplates/CocosSharpTemplates.csproj
 
 
 # Update CocosSharpTemplates PCL NuGet version to be included in built Template
@@ -83,7 +83,7 @@ sed -i '' "1,/version.*=\".*\".*>/s/version.*=\".*\".*>/version         =\"$1\">
 sed -i '' "s/CocosSharp\.Android\..*.nupkg/CocosSharp\.Android\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
 sed -i '' "s/CocosSharp\.iOS\..*.nupkg/CocosSharp\.iOS\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
 sed -i '' "s/CocosSharp\.MacOS\..*.nupkg/CocosSharp\.MacOS\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
-sed -i '' "s/CocosSharp\.PCL.Shared\..*.nupkg/CocosSharp\.PCL\.Shared\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
+sed -i '' "s/CocosSharp\.PCL.Shared\..*.nupkg/CocosSharp\.$1\.nupkg/g" ../../ProjectTemplates/XamarinStudio/MonoDevelop.CocosSharp.addin.xml
 
 # Update CocosSharp core library assembly version
 sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../src/Properties/AssemblyInfo.cs
@@ -92,3 +92,16 @@ sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\
 # Update CocosSharp PCL assembly version
 sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../PCL/CocosSharpPCLShared/Properties/AssemblyInfo.cs
 sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../PCL/CocosSharpPCLShared/Properties/AssemblyInfo.cs
+
+# Update CocosSharp.Forms assemblies
+sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.PCL/Properties/AssemblyInfo.cs
+sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.PCL/Properties/AssemblyInfo.cs
+
+sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.iOS/Properties/AssemblyInfo.cs
+sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.iOS/Properties/AssemblyInfo.cs
+
+sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.Android/Properties/AssemblyInfo.cs
+sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.Android/Properties/AssemblyInfo.cs
+
+sed -i '' "s/AssemblyVersion(\".*\")/AssemblyVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.WP/Properties/AssemblyInfo.cs
+sed -i '' "s/AssemblyInformationalVersion(\".*\")/AssemblyInformationalVersion(\"$1\")/g" ../../CocosSharp.Forms/CocosSharp.Forms.WP/Properties/AssemblyInfo.cs
