@@ -15,7 +15,7 @@ namespace CocosSharp
             if (e.OldElement != null || this.Element == null)
                 return;
 
-            var nativeView = new CCGameView (Forms.Context);
+            var nativeView = new CCGameView (Context);
 
             CommonOnElementChanged(nativeView);
         }
