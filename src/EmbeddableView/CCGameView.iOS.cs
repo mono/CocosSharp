@@ -80,16 +80,16 @@ namespace CocosSharp
         public CCGameView(NSCoder coder) 
             : base(coder)
         {
-            BeginInitiliase();
+            BeginInitialise();
         }
 
         public CCGameView(RectangleF frame)
             : base(frame)
         {
-            BeginInitiliase();
+            BeginInitialise();
         }
 
-        void BeginInitiliase()
+        void BeginInitialise()
         {
             LayerRetainsBacking = true;
             LayerColorFormat = EAGLColorFormat.RGBA8;
