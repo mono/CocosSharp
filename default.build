@@ -184,8 +184,8 @@
 
   <target name="buildforms" description="Build for Xamarin.Forms" depends="clean">
     <if test="${os == 'Win32NT'}">
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:${configuration} CocosSharp.Forms/CocosSharp.Forms.sln" />
-        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:${configuration} CocosSharp.Forms/CocosSharp.Forms.sln" />
+        <exec program="msbuild" commandline='CocosSharp.Forms/CocosSharp.Forms.sln /t:Clean /p:Configuration=${configuration} /p:Platform="Any CPU"' />
+        <exec program="msbuild" commandline='CocosSharp.Forms/CocosSharp.Forms.sln /t:Build /p:Configuration=${configuration} /p:Platform="Any CPU"' />
     </if>
   </target>
 
