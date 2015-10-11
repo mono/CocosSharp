@@ -49,7 +49,7 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.6.2.0")]
-[assembly: AssemblyInformationalVersion("1.6.2.0")]
+[assembly: AssemblyVersion("1.7.0.0-pre1")]
+[assembly: AssemblyInformationalVersion("1.7.0.0-pre1")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 
