@@ -787,7 +787,7 @@ namespace CocosSharp
 
         public CCRenderer Renderer
         {
-            get { return GameView != null ? GameView.Renderer : null; }
+            get { return GameView != null ? GameView.Renderer : DrawManager.Renderer; }
         }
 
         internal CCDrawManager DrawManager 
