@@ -661,6 +661,11 @@ namespace CocosSharp
             Height = height;
         }
 
+        public override string ToString()
+        {
+            return String.Format("CCSizeI: {0} x {1}", Width, Height);
+        }
+
         public static implicit operator CCSize(CCSizeI p)
         {
             return new CCSize(p.Width, p.Height);
