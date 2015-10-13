@@ -65,6 +65,11 @@ namespace CocosSharp
             NSNotificationCenter.DefaultCenter.AddObserver(NSApplication.WillTerminateNotification, (n)=> { RenderFrame -= RenderScene; });
             NSNotificationCenter.DefaultCenter.AddObserver(NSWindow.WillCloseNotification, (n)=> { RenderFrame -= RenderScene; });
 
+            NSNotificationCenter.DefaultCenter.AddObserver(NSWindow.WillEnterFullScreenNotification, (n)=> { RenderFrame -= RenderScene; });
+            NSNotificationCenter.DefaultCenter.AddObserver(NSWindow.DidEnterFullScreenNotification, (n)=> { RenderFrame += RenderScene; });
+
+            NSNotificationCenter.DefaultCenter.AddObserver(NSWindow.WillExitFullScreenNotification, (n)=> { RenderFrame -= RenderScene; });
+            NSNotificationCenter.DefaultCenter.AddObserver(NSWindow.DidExitFullScreenNotification, (n)=> { RenderFrame += RenderScene; });
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -75,6 +80,7 @@ namespace CocosSharp
         {
 
             Run(1 / targetElapsedTime.TotalSeconds);
+            NeedsLayout = true;
             // Reminder: We may need to do something like this later.
             //OpenGLContext.SwapInterval = graphicsDeviceManager.SynchronizeWithVerticalRetrace;
         }
