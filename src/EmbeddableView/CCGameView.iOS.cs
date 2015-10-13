@@ -94,6 +94,7 @@ namespace CocosSharp
             LayerRetainsBacking = true;
             LayerColorFormat = EAGLColorFormat.RGBA8;
             ContextRenderingApi = EAGLRenderingAPI.OpenGLES2;
+            ContentScaleFactor = UIScreen.MainScreen.Scale;
         }
 
         #endregion Constructors
@@ -139,8 +140,8 @@ namespace CocosSharp
             CAEAGLLayer eaglLayer = (CAEAGLLayer) Layer;
 
             var newSize = new System.Drawing.Size(
-                (int) Math.Round(eaglLayer.Bounds.Size.Width), 
-                (int) Math.Round(eaglLayer.Bounds.Size.Height));
+                (int) Math.Round(eaglLayer.Bounds.Size.Width * Layer.ContentsScale), 
+                (int) Math.Round(eaglLayer.Bounds.Size.Height * Layer.ContentsScale));
 
             GL.GenRenderbuffers(1, out depthbuffer);
             GL.BindRenderbuffer(RenderbufferTarget.Renderbuffer, depthbuffer);
@@ -178,8 +179,8 @@ namespace CocosSharp
                 return;
 
             var newSize = new System.Drawing.Size(
-                (int) Math.Round(Layer.Bounds.Size.Width), 
-                (int) Math.Round(Layer.Bounds.Size.Height));
+                (int) Math.Round(Layer.Bounds.Size.Width * Layer.ContentsScale), 
+                (int) Math.Round(Layer.Bounds.Size.Height * Layer.ContentsScale));
 
             Size = newSize;
 
@@ -332,7 +333,7 @@ namespace CocosSharp
             foreach (UITouch touch in touches) 
             {
                 var location = touch.LocationInView(touch.View);
-                var position = new CCPoint((float)location.X, (float)location.Y);
+                var position = new CCPoint((float)(location.X * Layer.ContentsScale), (float)(location.Y * Layer.ContentsScale));
 
                 var id = touch.Handle.ToInt32();
 
