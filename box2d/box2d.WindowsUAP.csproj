@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7AFFB149-6311-4854-A068-B974B4AC2872}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>box2d.WindowsUAP</RootNamespace>
+    <AssemblyName>box2d.WindowsUAP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <PlatformTarget>ARM</PlatformTarget>
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Properties\box2d.WindowsUAP.rd.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="b2FlagExtensions.cs" />
+    <Compile Include="b2InternalClasses.cs" />
+    <Compile Include="Collision\b2AABB.cs" />
+    <Compile Include="Collision\b2BroadPhase.cs" />
+    <Compile Include="Collision\b2Collision.cs" />
+    <Compile Include="Collision\b2ContactFeature.cs" />
+    <Compile Include="Collision\b2Distance.cs" />
+    <Compile Include="Collision\b2DistanceProxy.cs" />
+    <Compile Include="Collision\b2DynamicTree.cs" />
+    <Compile Include="Collision\b2EPCollider.cs" />
+    <Compile Include="Collision\b2Manifold.cs" />
+    <Compile Include="Collision\b2TimeOfImpact.cs" />
+    <Compile Include="Collision\Shapes\b2ChainShape.cs" />
+    <Compile Include="Collision\Shapes\b2CircleShape.cs" />
+    <Compile Include="Collision\Shapes\b2EdgeShape.cs" />
+    <Compile Include="Collision\Shapes\b2PolygonShape.cs" />
+    <Compile Include="Collision\Shapes\b2Shape.cs" />
+    <Compile Include="Common\b2Color.cs" />
+    <Compile Include="Common\b2Draw.cs" />
+    <Compile Include="Common\b2Mat22.cs" />
+    <Compile Include="Common\b2Mat33.cs" />
+    <Compile Include="Common\b2Math.cs" />
+    <Compile Include="Common\b2Rot.cs" />
+    <Compile Include="Common\b2Settings.cs" />
+    <Compile Include="Common\b2Sweep.cs" />
+    <Compile Include="Common\b2Timer.cs" />
+    <Compile Include="Common\b2Transform.cs" />
+    <Compile Include="Common\b2Vec2.cs" />
+    <Compile Include="Common\b2Vec3.cs" />
+    <Compile Include="Dynamics\b2Body.cs" />
+    <Compile Include="Dynamics\b2BodyDef.cs" />
+    <Compile Include="Dynamics\b2ContactFilter.cs" />
+    <Compile Include="Dynamics\b2ContactListener.cs" />
+    <Compile Include="Dynamics\b2ContactManager.cs" />
+    <Compile Include="Dynamics\b2DestructionListener.cs" />
+    <Compile Include="Dynamics\b2Fixture.cs" />
+    <Compile Include="Dynamics\b2FixtureDef.cs" />
+    <Compile Include="Dynamics\b2Island.cs" />
+    <Compile Include="Dynamics\b2QueryCallback.cs" />
+    <Compile Include="Dynamics\b2RayCastCallback.cs" />
+    <Compile Include="Dynamics\b2TimeStep.cs" />
+    <Compile Include="Dynamics\b2World.cs" />
+    <Compile Include="Dynamics\b2WorldQueryWrapper.cs" />
+    <Compile Include="Dynamics\b2WorldRayCastWrapper.cs" />
+    <Compile Include="Dynamics\Contacts\b2ChainAndCircleContact.cs" />
+    <Compile Include="Dynamics\Contacts\b2ChainAndPolygonContact.cs" />
+    <Compile Include="Dynamics\Contacts\b2CircleContact.cs" />
+    <Compile Include="Dynamics\Contacts\b2Contact.cs" />
+    <Compile Include="Dynamics\Contacts\b2ContactSolver.cs" />
+    <Compile Include="Dynamics\Contacts\b2EdgeAndCircleContact.cs" />
+    <Compile Include="Dynamics\Contacts\b2EdgeAndPolygonContact.cs" />
+    <Compile Include="Dynamics\Contacts\b2PolygonAndCircleContact.cs" />
+    <Compile Include="Dynamics\Contacts\b2PolygonContact.cs" />
+    <Compile Include="Dynamics\Ib2QueryCallback.cs" />
+    <Compile Include="Dynamics\Ib2RayCastCallback.cs" />
+    <Compile Include="Dynamics\Joints\b2DistanceJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2DistanceJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2FrictionJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2FrictionJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2GearJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2GearJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2Joint.cs" />
+    <Compile Include="Dynamics\Joints\b2JointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2MouseJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2MouseJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2PrismaticJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2PrismaticJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2PulleyJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2PullyJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2RevoluteJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2RevoluteJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2RopeJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2RopeJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2WeldJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2WeldJointDef.cs" />
+    <Compile Include="Dynamics\Joints\b2WheelJoint.cs" />
+    <Compile Include="Dynamics\Joints\b2WheelJointDef.cs" />
+    <Compile Include="Rope\b2Rope.cs" />
+    <Compile Include="Rope\b2RopeDef.cs" />
+  </ItemGroup>  
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
