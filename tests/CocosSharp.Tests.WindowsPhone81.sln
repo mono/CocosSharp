@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Tests.WindowsPhone81", "tests\WindowsPhone81\CocosSharp.Tests.WindowsPhone81.csproj", "{AC1DF8F5-48B4-44F9-A6E3-0F71D061321C}"
 EndProject
@@ -13,7 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsPhone81", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsPhone81", "..\src\CocosSharp.WindowsPhone81.csproj", "{1D51A5A6-0DB5-49E5-868D-7D0E1FD14D8F}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Common", "tests\classes\CocosSharp.Tests.Common.shproj", "{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Mobile", "tests\classes\CocosSharp.Tests.Mobile.shproj", "{813ADEF4-8197-458C-A870-0AD23C610C8A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		tests\classes\CocosSharp.Tests.Mobile.projitems*{ac1df8f5-48b4-44f9-a6e3-0f71d061321c}*SharedItemsImports = 4
+		tests\classes\CocosSharp.Tests.Common.projitems*{ac1df8f5-48b4-44f9-a6e3-0f71d061321c}*SharedItemsImports = 4
+		tests\classes\CocosSharp.Tests.Mobile.projitems*{813adef4-8197-458c-a870-0ad23c610c8a}*SharedItemsImports = 13
+		tests\classes\CocosSharp.Tests.Common.projitems*{9f5a43ea-ff24-4167-9d3c-2f182e8454af}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
