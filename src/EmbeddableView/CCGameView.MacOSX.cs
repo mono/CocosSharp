@@ -135,7 +135,6 @@ namespace CocosSharp
             else
                 RenderFrame += RenderScene;
             
-            MobilePlatformUpdatePaused();
         }
 
         void RenderScene (object sender, FrameEventArgs e)

@@ -9,6 +9,8 @@
     <Description>CocosSharp for MonoMac</Description>
     <RootNamespace>CocosSharp</RootNamespace>
     <AssemblyName>CocosSharp</AssemblyName>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -410,7 +412,7 @@
     <Compile Include="Audio\CCAudioEngine.cs" />
     <Compile Include="Platform\Keyboard\MacOSX\IMEKeyboardImpl.cs" />
     <Compile Include="EmbeddableView\CCGameView.MacOSX.cs" />
-    <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
+    <Compile Include="EmbeddableView\CCGameView.Desktop.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EmbeddableView\" />

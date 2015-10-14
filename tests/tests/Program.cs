@@ -64,15 +64,15 @@ namespace tests
 #endif
 
 #if MACOS
+    [MonoMac.Foundation.Register("AppDelegate")]
     class Program : NSApplicationDelegate 
     {
+        MacGameController mainWindowController;
         public override void DidFinishLaunching (MonoMac.Foundation.NSNotification notification)
         {
+            mainWindowController = new MacGameController();
+            mainWindowController.Window.MakeKeyAndOrderFront(this);
 
-//            CCApplication application = new CCApplication(false, new CCSize(1024f, 768f));
-//            application.ApplicationDelegate = new AppDelegate();
-//
-//            application.StartGame();
         }
 
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
@@ -80,16 +80,10 @@ namespace tests
             return true;
         }
 
-        // This is the main entry point of the application.
-        static void Main (string[] args)
+        static void Main(string[] args)
         {
-            NSApplication.Init ();
-
-            using (var p = new MonoMac.Foundation.NSAutoreleasePool ()) 
-            {
-                NSApplication.SharedApplication.Delegate = new Program();
-                NSApplication.Main(args);
-            }
+            NSApplication.Init();
+            NSApplication.Main(args);
         }
     }
 #endif

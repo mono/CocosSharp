@@ -343,7 +343,9 @@ namespace tests
         public static Dictionary<string, Func<TestScene>> testCases = new Dictionary<string, Func<TestScene>> 
             {
 
+            #if !MACOS
             {"Accelerometer", () => new AccelerometerTestScene()}, 
+            #endif
             {"ActionManagerTest", () => new ActionManagerTestScene()},
             {"ActionsEaseTest", () => new EaseActionsTestScene()},
             {"ActionsProgressTest", () => new ProgressActionsTestScene()},
