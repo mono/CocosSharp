@@ -13,7 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WinRT81", "..\sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Tests.WindowsRT81", "tests\WindowsRT81\CocosSharp.Tests.WindowsRT81.csproj", "{E7633BBC-A50F-4880-A8DD-A6E46846F8E6}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Common", "tests\classes\CocosSharp.Tests.Common.shproj", "{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Mobile", "tests\classes\CocosSharp.Tests.Mobile.shproj", "{813ADEF4-8197-458C-A870-0AD23C610C8A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		tests\classes\CocosSharp.Tests.Mobile.projitems*{e7633bbc-a50f-4880-a8dd-a6e46846f8e6}*SharedItemsImports = 4
+		tests\classes\CocosSharp.Tests.Common.projitems*{e7633bbc-a50f-4880-a8dd-a6e46846f8e6}*SharedItemsImports = 4
+		tests\classes\CocosSharp.Tests.Mobile.projitems*{813adef4-8197-458c-a870-0ad23c610c8a}*SharedItemsImports = 13
+		tests\classes\CocosSharp.Tests.Common.projitems*{9f5a43ea-ff24-4167-9d3c-2f182e8454af}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
