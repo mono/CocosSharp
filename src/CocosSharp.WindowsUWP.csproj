@@ -109,9 +109,10 @@
     <None Include="Win8IOExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmbeddableView\CCGameView.WindowsUAP.cs" />
+    <Compile Include="EmbeddableView\CCGameView.WindowsUWP.cs" />
     <Compile Include="Nodes\Labels\CCLabel-RendererUAP.cs" />
     <Compile Include="Nodes\Labels\CCLabel-WindowsUAP.cs" />
+    <Compile Include="Platform\Keyboard\Windows\WinRT\IMEKeyboardImpl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Win8StoreIOUtility.cs" />
     <Content Include="Properties\CocosSharp.WindowsUAP.rd.xml" />
@@ -382,7 +383,6 @@
     <Compile Include="Platform\ContentReaders\KerningHashElementReader.cs" />
     <Compile Include="Platform\ICCFocusable.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
-    <Compile Include="Platform\Keyboard\Windows\Wp81\IMEKeyboardImpl.cs" />
     <Compile Include="Platform\PList\PlistArray.cs" />
     <Compile Include="Platform\PList\PlistBoolean.cs" />
     <Compile Include="Platform\PList\PlistData.cs" />
