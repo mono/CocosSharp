@@ -41,6 +41,21 @@ namespace CocosSharp
 			}
         }
 
+        /// <summary>
+        /// Gets the scale factor of the Display Device
+        /// </summary>
+        public static float ResolutionScaleFactor
+        {
+            get
+            {
+#if NETFX_CORE
+                return (float)DisplayInformation.GetForCurrentView().ResolutionScale / 100f;
+#else
+                return 1;
+#endif
+            }
+        }
+
         public static bool IsMousePresent
         {
             get

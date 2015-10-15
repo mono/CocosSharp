@@ -6,6 +6,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
+using Windows.Graphics.Display;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -21,6 +22,9 @@ namespace CocosSharp
 
     public partial class CCGameView : GameSwapChainPanel
     {
+
+        private float ScaleFactor; //Variable to hold the device scale factor (use to determine phone screen resolution)
+
         #region Constructors
 
         public CCGameView()
@@ -37,6 +41,7 @@ namespace CocosSharp
         {
             SizeChanged += ViewSizeChanged;
             Window.Current.Activated += ViewStateChanged;
+            ScaleFactor = CCDevice.ResolutionScaleFactor;
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -67,7 +72,9 @@ namespace CocosSharp
 
         void ViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ViewSize = new CCSizeI((int)e.NewSize.Width, (int)e.NewSize.Height);
+
+            ViewSize = new CCSizeI((int)Math.Ceiling(e.NewSize.Width * ScaleFactor), 
+                (int)Math.Ceiling(e.NewSize.Height * ScaleFactor));
 
             // We need to ask the graphics device to resize the underlying swapchain/buffers
             graphicsDevice.PresentationParameters.BackBufferWidth = ViewSize.Width;
@@ -147,7 +154,7 @@ namespace CocosSharp
             ((UIElement)sender).CapturePointer(args.Pointer);
 
             var pointerPoint = args.GetCurrentPoint(this);
-            var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+            var pos = new CCPoint((float)pointerPoint.Position.X * ScaleFactor, (float)pointerPoint.Position.Y * ScaleFactor);
 
             AddIncomingNewTouch((int)pointerPoint.PointerId, ref pos);
 
@@ -157,7 +164,7 @@ namespace CocosSharp
         void TouchesMoved(object sender, PointerRoutedEventArgs args)
         {
             var pointerPoint = args.GetCurrentPoint(this);
-            var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+            var pos = new CCPoint((float)pointerPoint.Position.X * ScaleFactor, (float)pointerPoint.Position.Y * ScaleFactor);
 
             UpdateIncomingMoveTouch((int)pointerPoint.PointerId, ref pos);
 
