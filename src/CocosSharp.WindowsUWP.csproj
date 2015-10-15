@@ -106,7 +106,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
-    <Compile Include="Win8IOExtensions.cs" />
+    <None Include="Win8IOExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmbeddableView\CCGameView.WindowsUAP.cs" />
@@ -117,9 +117,9 @@
     <Content Include="Properties\CocosSharp.WindowsUAP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\box2d\box2d.WindowsUAP.csproj">
+    <ProjectReference Include="..\box2d\box2d.WindowsUWP.csproj">
       <Project>{7affb149-6311-4854-a068-b974b4ac2872}</Project>
-      <Name>box2d.WindowsUAP</Name>
+      <Name>box2d.WindowsUWP</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsUAP.csproj">
       <Project>{09c41a48-7bf3-4a46-9eb8-ce95b4c27ca9}</Project>

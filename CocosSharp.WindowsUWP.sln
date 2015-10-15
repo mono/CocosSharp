@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsUAP", "src\CocosSharp.WindowsUAP.csproj", "{A7EF2963-0D43-48BA-A34A-4F799471BB92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsUWP", "src\CocosSharp.WindowsUWP.csproj", "{A7EF2963-0D43-48BA-A34A-4F799471BB92}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.WindowsUAP", "MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsUAP.csproj", "{09C41A48-7BF3-4A46-9EB8-CE95B4C27CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsUAP", "box2d\box2d.WindowsUAP.csproj", "{7AFFB149-6311-4854-A068-B974B4AC2872}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsUWP", "box2d\box2d.WindowsUWP.csproj", "{7AFFB149-6311-4854-A068-B974B4AC2872}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
