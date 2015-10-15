@@ -1,8 +1,8 @@
 ﻿<Page
-    x:Class="CocosSharp.Tests.WindowsUAP.MainPage"
+    x:Class="CocosSharp.Tests.WindowsUWP.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:CocosSharp.Tests.WindowsUAP"
+    xmlns:local="using:CocosSharp.Tests.WindowsUWP"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">

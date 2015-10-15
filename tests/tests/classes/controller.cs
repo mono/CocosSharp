@@ -8,6 +8,10 @@ using tests.FontTest;
 using tests.Extensions;
 using Box2D.TestBed;
 
+#if WINDOWS_UWP
+using System.Reflection;
+#endif
+
 namespace tests
 {
     public class TestController : CCLayer
@@ -45,11 +49,14 @@ namespace tests
 
 
             #if !PSM && !WINDOWS_PHONE
-            #if NETFX_CORE
+            #if NETFX_CORE && !WINDOWS_UWP
             versionLabel = new CCLabel("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 30);
-            #else
+#elif WINDOWS_UWP
+            
+            versionLabel = new CCLabel("v" + this.GetType().GetTypeInfo().Assembly.GetName().Version.ToString(), "arial", 30);
+#else
             versionLabel = new CCLabel("v" + this.GetType().Assembly.GetName().Version.ToString(), "fonts/arial", 24, CCLabelFormat.SpriteFont);
-            #endif
+#endif
             AddChild(versionLabel, 20000);
             #endif
 

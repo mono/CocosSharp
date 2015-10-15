@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Tests.WindowsUAP", "tests\WindowsUAP\CocosSharp.Tests.WindowsUAP.csproj", "{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Tests.WindowsUAP", "tests\WindowsUAP\CocosSharp.Tests.WindowsUWP.csproj", "{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.WindowsUAP", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsUAP.csproj", "{09C41A48-7BF3-4A46-9EB8-CE95B4C27CA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsUAP", "..\box2d\box2d.WindowsUAP.csproj", "{7AFFB149-6311-4854-A068-B974B4AC2872}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsUAP", "..\box2d\box2d.WindowsUWP.csproj", "{7AFFB149-6311-4854-A068-B974B4AC2872}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsUAP", "..\src\CocosSharp.WindowsUAP.csproj", "{A7EF2963-0D43-48BA-A34A-4F799471BB92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsUAP", "..\src\CocosSharp.WindowsUWP.csproj", "{A7EF2963-0D43-48BA-A34A-4F799471BB92}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Common", "tests\classes\CocosSharp.Tests.Common.shproj", "{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}"
 EndProject
@@ -34,6 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|Any CPU.Build.0 = Debug|x86
+		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|ARM.ActiveCfg = Debug|ARM
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|ARM.Build.0 = Debug|ARM
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -44,6 +46,8 @@ Global
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|x86.Build.0 = Debug|x86
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Debug|x86.Deploy.0 = Debug|x86
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Release|Any CPU.ActiveCfg = Release|x86
+		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Release|Any CPU.Build.0 = Release|x86
+		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Release|Any CPU.Deploy.0 = Release|x86
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Release|ARM.ActiveCfg = Release|ARM
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Release|ARM.Build.0 = Release|ARM
 		{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}.Release|ARM.Deploy.0 = Release|ARM

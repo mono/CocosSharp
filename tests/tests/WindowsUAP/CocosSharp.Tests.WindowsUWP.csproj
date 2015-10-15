@@ -7,8 +7,8 @@
     <ProjectGuid>{8D2C7095-88C7-42DE-98DD-DFF5F68948A1}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CocosSharp.Tests.WindowsUAP</RootNamespace>
-    <AssemblyName>CocosSharp.Tests.WindowsUAP</AssemblyName>
+    <RootNamespace>CocosSharp.Tests.WindowsUWP</RootNamespace>
+    <AssemblyName>CocosSharp.Tests.WindowsUWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
@@ -17,7 +17,8 @@
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <PackageCertificateKeyFile>CocosSharp.Tests.WindowsUAP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>CocosSharp.Tests.WindowsUWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>F354EFAC780AA0EE601710CE74C392A1A3C15988</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +93,7 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="project.json" />
   </ItemGroup>
@@ -111,7 +113,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="CocosSharp.Tests.WindowsUAP_TemporaryKey.pfx" />
+    <None Include="CocosSharp.Tests.WindowsUWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\Default.rd.xml" />
@@ -134,23 +136,38 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\box2d\box2d.WindowsUAP.csproj">
+    <ProjectReference Include="..\..\..\box2d\box2d.WindowsUWP.csproj">
       <Project>{7affb149-6311-4854-a068-b974b4ac2872}</Project>
-      <Name>box2d.WindowsUAP</Name>
+      <Name>box2d.WindowsUWP</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsUAP.csproj">
       <Project>{09c41a48-7bf3-4a46-9eb8-ce95b4c27ca9}</Project>
       <Name>MonoGame.Framework.WindowsUAP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\src\CocosSharp.WindowsUAP.csproj">
+    <ProjectReference Include="..\..\..\src\CocosSharp.WindowsUWP.csproj">
       <Project>{a7ef2963-0d43-48ba-a34a-4f799471bb92}</Project>
-      <Name>CocosSharp.WindowsUAP</Name>
+      <Name>CocosSharp.WindowsUWP</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\Extensions\**\*.*">
       <Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\tests\tests\Assets\Content\**\*.*">
+      <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\testsContent\TileMaps\iso-test-zorder1.tmx">
+      <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="..\classes\CocosSharp.Tests.Common.projitems" Label="Shared" />
   <Import Project="..\classes\CocosSharp.Tests.Mobile.projitems" Label="Shared" />
