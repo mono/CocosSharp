@@ -77,7 +77,7 @@ namespace CocosSharp
 
         GameTime gameTime;
         TimeSpan accumulatedElapsedTime;
-        protected TimeSpan targetElapsedTime;
+        TimeSpan targetElapsedTime;
         TimeSpan maxElapsedTime;
         Stopwatch gameTimer;
         long previousTicks;
