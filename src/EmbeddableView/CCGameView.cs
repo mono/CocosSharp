@@ -308,7 +308,10 @@ namespace CocosSharp
 
         protected override void Dispose(bool disposing)
         {
-            if(disposed)
+            // Here we check this == null just in case we are coming from a visual designer
+            // like Visual Studio XAML designer.  This may need to be revisited later
+            // after other platforms and devices have been implemented.
+            if(disposed || this == null)
                 return;
 
             PlatformDispose(disposing);

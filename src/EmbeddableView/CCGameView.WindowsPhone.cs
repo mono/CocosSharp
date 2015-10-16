@@ -25,6 +25,9 @@ namespace CocosSharp
 
         public CCGameView()
         {
+
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+                return;
             Initialise();
         }
 
@@ -57,6 +60,9 @@ namespace CocosSharp
 
         void PlatformDispose(bool disposing)
         {
+            if (this == null)
+                return;
+
             Window.Current.Activated -= ViewStateChanged;
         }
 
