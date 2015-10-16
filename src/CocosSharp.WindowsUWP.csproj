@@ -109,6 +109,7 @@
     <None Include="Win8IOExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmbeddableView\CCGameView.Desktop.cs" />
     <Compile Include="EmbeddableView\CCGameView.WindowsUWP.cs" />
     <Compile Include="Nodes\Labels\CCLabel-RendererUAP.cs" />
     <Compile Include="Nodes\Labels\CCLabel-WindowsUAP.cs" />

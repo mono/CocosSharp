@@ -47,7 +47,11 @@ namespace CocosSharp
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
         {
+#if WINDOWS_UWP
             presParams.SwapChainPanel = this;
+#else
+            presParams.SwapChainBackgroundPanel = this;
+#endif
         }
 
         void PlatformStartGame()
@@ -186,5 +190,41 @@ namespace CocosSharp
         }
 
         #endregion Touch handling
+
+        #region Mouse handling
+
+        PointerEventHandler mouseMovedHandler;
+
+        void PlatformUpdateMouseEnabled()
+        {
+            if (mouseMovedHandler == null)
+                mouseMovedHandler = new PointerEventHandler(MouseMoved);
+
+            if (MouseEnabled)
+            {
+                AddHandler(UIElement.PointerMovedEvent, mouseMovedHandler, true);
+            }
+            else
+            {
+                RemoveHandler(UIElement.PointerMovedEvent, mouseMovedHandler);
+            }
+        }
+
+        void MouseMoved(object sender, PointerRoutedEventArgs args)
+        {
+            var pointerPoint = args.GetCurrentPoint(this);
+            if (pointerPoint.PointerDevice.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse)
+            {
+
+                var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+
+                UpdateIncomingMoveMouse((int)pointerPoint.PointerId, ref pos);
+
+                args.Handled = true;
+            }
+        }
+
+        #endregion Mouse handling
+
     }
 }

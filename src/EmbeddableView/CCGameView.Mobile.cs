@@ -70,6 +70,12 @@ namespace CocosSharp
         #endregion Accelerometer handling
 
 
+        public void DesktopPlatformUpdatePaused()
+        {
+
+        }
+
+
         #region Touch handling
 
         void AddIncomingNewTouch(int touchId, ref CCPoint position)

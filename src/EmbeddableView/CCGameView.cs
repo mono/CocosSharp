@@ -241,6 +241,10 @@ namespace CocosSharp
 
             InitialiseInputHandling();
 
+#if NETFX_CORE && !WINDOWS_PHONE81
+            InitialiseDesktopInputHandling();
+#endif
+
             Stats.Initialise();
 
             viewInitialised = true;
@@ -290,10 +294,10 @@ namespace CocosSharp
             }
         }
 
-        #endregion Initialisation
+#endregion Initialisation
 
 
-        #region Cleaning up
+#region Cleaning up
 
         ~CCGameView() 
         {
@@ -338,10 +342,10 @@ namespace CocosSharp
             base.Dispose(disposing);
         }
 
-        #endregion Cleaning up
+#endregion Cleaning up
 
 
-        #region Drawing
+#region Drawing
 
         internal void Present()
         {
@@ -446,10 +450,10 @@ namespace CocosSharp
             DrawManager.EndDraw();
         }
 
-        #endregion Drawing
+#endregion Drawing
 
 
-        #region Run loop
+#region Run loop
 
         void Tick()
         {
@@ -502,10 +506,14 @@ namespace CocosSharp
 
             ProcessInput();
 
+#if NETFX_CORE && !WINDOWS_PHONE81
+            ProcessMouseInput();
+#endif
+
             Stats.UpdateEnd(deltaTime);
         }
 
-        #endregion Run loop
+#endregion Run loop
 
     }
 }

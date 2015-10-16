@@ -118,8 +118,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="EmbeddableView\CCGameView.cs" />
+    <Compile Include="EmbeddableView\CCGameView.Desktop.cs" />
     <Compile Include="EmbeddableView\CCGameView.Mobile.cs" />
-    <Compile Include="EmbeddableView\CCGameView.WindowsPhone.cs" />
+    <Compile Include="EmbeddableView\CCGameView.WindowsUWP.cs" />
     <Compile Include="Nodes\CCNode.cs" />
     <Compile Include="Nodes\Other\CCNodeGrid.cs" />
     <Compile Include="Platform\CCContent.cs" />
