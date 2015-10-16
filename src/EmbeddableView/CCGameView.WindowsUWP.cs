@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Xaml;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
-using Windows.Graphics.Display;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
@@ -20,6 +17,7 @@ namespace CocosSharp
         }
     }
 
+    
     public partial class CCGameView : GameSwapChainPanel
     {
 
@@ -27,8 +25,11 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCGameView()
+        public CCGameView() : base()
         {
+            if (Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+                return;
+
             Initialise();
         }
 
@@ -62,6 +63,9 @@ namespace CocosSharp
 
         void PlatformDispose(bool disposing)
         {
+            if (this == null)
+                return;
+
             Window.Current.Activated -= ViewStateChanged;
         }
 
@@ -72,7 +76,6 @@ namespace CocosSharp
 
         void ViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
-
             ViewSize = new CCSizeI((int)Math.Ceiling(e.NewSize.Width * ScaleFactor), 
                 (int)Math.Ceiling(e.NewSize.Height * ScaleFactor));
 

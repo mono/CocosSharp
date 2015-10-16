@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using tests;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace CocosSharp.Tests.WindowsUWP
@@ -25,6 +27,26 @@ namespace CocosSharp.Tests.WindowsUWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            GameView.ViewCreated += LoadGame;
+
+            AppDelegate.SharedWindow = GameView;
+
+        }
+
+        void LoadGame(object sender, System.EventArgs e)
+        {
+            CCGameView gameView = sender as CCGameView;
+
+            if (gameView != null)
+            {
+                gameView.DesignResolution = new CCSizeI(1024, 768);
+                gameView.Stats.Enabled = true;
+                gameView.ResolutionPolicy = CCViewResolutionPolicy.ShowAll;
+                CCScene gameScene = new CCScene(gameView);
+                gameScene.AddLayer(new TestController());
+                gameView.RunWithScene(gameScene);
+            }
         }
     }
 }
