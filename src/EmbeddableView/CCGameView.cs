@@ -164,7 +164,7 @@ namespace CocosSharp
 
         public CCSizeI ViewSize
         {
-            get; set;
+            get; private set;
         }
 
         public CCRect ViewportRectRatio
