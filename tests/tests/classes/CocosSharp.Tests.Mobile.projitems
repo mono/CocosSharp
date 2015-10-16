@@ -3,7 +3,7 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
     <HasSharedItems>true</HasSharedItems>
-    <SharedGUID>{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}</SharedGUID>
+    <SharedGUID>{8FCD7508-C15C-4078-B4D7-1533A8F54767}</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
     <Import_RootNamespace>CocosSharp.TestForms</Import_RootNamespace>

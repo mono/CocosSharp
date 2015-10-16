@@ -149,6 +149,9 @@ namespace CocosSharp
                     incomingReleaseTouches.Clear ();
                 }
             }
+
+            if (Accelerometer.Enabled)
+                Accelerometer.Update ();
         }
 
         // Prevent memory leaks by removing stale touches
