@@ -99,6 +99,7 @@ namespace CocosSharp
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
         public CCAudioEngine AudioEngine { get; private set; }
         public CCActionManager ActionManager { get; private set; }
+        public CCContentManager ContentManager { get { return CCContentManager.SharedContentManager; } }
         public CCStats Stats { get; private set; }
 
         public bool DepthTesting
