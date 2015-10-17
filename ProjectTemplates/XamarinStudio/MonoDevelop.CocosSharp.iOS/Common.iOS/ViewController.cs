@@ -1,35 +1,31 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-
-using Android.App;
-using Android.Content;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
-
+using UIKit;
 using CocosSharp;
 
 namespace ${Namespace}
 {
-	[Activity (Label = "${ProjectName}", MainLauncher = true, Icon = "@drawable/icon", 
-		AlwaysRetainTaskState = true,
-		LaunchMode = LaunchMode.SingleInstance,
-		ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.ScreenSize | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)]
-	public class MainActivity : Activity
-	{
-		protected override void OnCreate (Bundle bundle)
+public partial class ViewController : UIViewController
+{
+		public ViewController (IntPtr handle) : base (handle)
 		{
-			base.OnCreate (bundle);
+		}
 
-			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();
 
-			// Get our game view from the layout resource,
-			// and attach the view created event to it
-			CCGameView gameView = (CCGameView)FindViewById(Resource.Id.GameView);
-			gameView.ViewCreated += LoadGame;
+			if (GameView != null) 
+			{
+				// Set loading event to be called once game view is fully initialised
+				GameView.ViewCreated += LoadGame;
+			}
+		}
+
+		public override void DidReceiveMemoryWarning ()
+		{
+			base.DidReceiveMemoryWarning ();
+			// Release any cached data, images, etc that aren't in use.
 		}
 
 		void LoadGame(object sender, EventArgs e)
@@ -43,7 +39,7 @@ namespace ${Namespace}
 
 				int width = 1024;
 				int height = 768;
-
+				
 				// Set world dimensions
 				gameView.DesignResolution = new CCSizeI (width, height);
 
@@ -67,4 +63,3 @@ namespace ${Namespace}
 		}
 	}
 }
-

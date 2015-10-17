@@ -19,19 +19,29 @@
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
+		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
+		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 </dict>
 </plist>

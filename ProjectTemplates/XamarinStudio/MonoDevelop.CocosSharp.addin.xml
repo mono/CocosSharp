@@ -5,7 +5,7 @@
         author          ="Rami Tabbara" 
         copyright       ="MIT X11" 
         url             ="https://github.com/mono/CocosSharp" 
-        description     ="Setup CocosSharp projects for either mobile (iOS/Android) or Mac targets"
+        description     ="Setup CocosSharp projects for iOS or Android targets"
         category        ="CocosSharp"
         version         ="1.7.0.0-pre1">
 
@@ -13,29 +13,37 @@
         <!---iOS files -->
         <Import file    ="MonoDevelop.CocosSharp.iOS/SingleWindowed.iOS/MonoDevelop.CocosSharp.iOS.Project.xpt.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Empty.iOS/MonoDevelop.CocosSharp.iOS.EmptyProject.xpt.xml" />
+
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPhone.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPad.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal_Old.plist.xml" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Info.plist.xml" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Default-568h.png" />
         <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/ViewController.cs" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/ViewController.designer.cs" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Main.cs" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/Main.storyboard" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/LaunchScreen.xib" />
+        <Import file    ="MonoDevelop.CocosSharp.iOS/Common.iOS/AppIcons.json" />
 
         <!---Android files -->
         <Import file    ="MonoDevelop.CocosSharp.Android/SingleWindowed.Android/MonoDevelop.CocosSharp.Android.AndroidProject.xpt.xml" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Empty.Android/MonoDevelop.CocosSharp.Android.EmptyProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/Icon-md.png" />
+
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AboutAssets.txt" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AboutResources.txt" />
-        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AssemblyInfo.Android.cs" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/icon-hdpi.png" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/icon-mdpi.png" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/icon-xhdpi.png" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/icon-xxhdpi.png" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/icon-xxxhdpi.png" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AndroidManifest.xml" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/Main.axml" />
+        <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/AssemblyInfo.cs" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/MainActivity.cs" />
         <Import file    ="MonoDevelop.CocosSharp.Android/Common.Android/Resource.cs" />
-
-        <!---Mac files -->
-        <Import file    ="MonoDevelop.CocosSharp.Mac/SingleWindowed.Mac/MonoDevelop.CocosSharp.Mac.MacProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.Mac/Empty.Mac/MonoDevelop.CocosSharp.Mac.EmptyProject.xpt.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.Mac/Common.Mac/Info_Mac.plist.xml" />
-        <Import file    ="MonoDevelop.CocosSharp.Mac/Common.Mac/AppDelegate.cs" />
 
         <!---PCL Mobile files -->
         <Import file    ="MonoDevelop.CocosSharp.Mobile/SingleWindowed.Mobile/MonoDevelop.CocosSharp.Mobile.MobileProject.xpt.xml" />
@@ -48,7 +56,6 @@
         <Import file    ="Common/monkey.xnb" />
         <Import file    ="Common/monkey_hd.png" />
         <Import file    ="Common/monkey_hd.xnb" />
-        <Import file    ="Common/GameAppDelegate.cs" />
         <Import file    ="Common/GameLayer.cs" />
 
         <!-- NuGet packages -->

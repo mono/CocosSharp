@@ -8,11 +8,11 @@
         <LanguageName>C#</LanguageName>
         <Wizard>MonoDevelop.MonoDroid.ProjectTemplateWizard</Wizard>
         <SupportedParameters>AppName,AppIdentifier</SupportedParameters>
-        <_Description>An empty CocosSharp project for Android.</_Description>
+        <_Description>Creates an empty CocosSharp game with an Activity.</_Description>
     </TemplateConfiguration>
     
     <Actions>
-        <Open filename ="GameLayer.cs"/>
+        <Open filename ="MainActivity.cs"/>
     </Actions>
     
     <Combine name ="${ProjectName}" directory =".">
@@ -30,43 +30,58 @@
                 <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
                 <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
                 <Reference type="Gac" refto="Mono.Android" />
+                <Reference type="Gac" refto="OpenTK-1.0" />
             </References>
             <Files>
                 <File name="MainActivity.cs" src="../Common.Android/MainActivity.cs" />
                 <Directory name="Resources">
                     <File name="Resource.designer.cs" src="../Common.Android/Resource.cs" />
                     <RawFile name="AboutResources.txt" src="../Common.Android/AboutResources.txt" />
+                    <Directory name="layout">
+                        <File name="Main.axml" src="../Common.Android/Main.axml" />
+                    </Directory>
                     <Directory name="values">
                         <File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">${ProjectName}</string>
 </resources>]]></File>
                     </Directory>
-                    <Directory name ="drawable">
-                        <RawFile name="Icon.png" src="../Common.Android/Icon-md.png" />
+                    <Directory name="drawable-hdpi">
+                        <RawFile name="Icon.png" src="../Common.Android/icon-hdpi.png" />
+                    </Directory>
+                    <Directory name="drawable-mdpi">
+                        <RawFile name="Icon.png" src="../Common.Android/icon-mdpi.png" />
+                    </Directory>
+                    <Directory name="drawable-xhdpi">
+                        <RawFile name="Icon.png" src="../Common.Android/icon-xhdpi.png" />
+                    </Directory>
+                    <Directory name="drawable-xxhdpi">
+                        <RawFile name="Icon.png" src="../Common.Android/icon-xxhdpi.png" />
+                    </Directory>
+                    <Directory name="drawable-xxxhdpi">
+                        <RawFile name="Icon.png" src="../Common.Android/icon-xxxhdpi.png" />
                     </Directory>
                 </Directory>
                 <Directory name="Properties">
-                    <File name="AssemblyInfo.cs" src="../Common.Android/AssemblyInfo.Android.cs" />
+                    <File name="AssemblyInfo.cs" src="../Common.Android/AssemblyInfo.cs" />
+                    <File name="AndroidManifest.xml" src="../Common.Android/AndroidManifest.xml" />
                 </Directory>
                 <Directory name="Assets">
                     <RawFile name="AboutAssets.txt" src="../Common.Android/AboutAssets.txt" BuildAction="None" />
                     <Directory name="Content">
-                        <Directory name="animations"></Directory>
-                        <Directory name="fonts"></Directory>
-                        <Directory name="images">
-                            <Directory name="hd" />
-                            <Directory name="ld" />
+                        <Directory name="Fonts"></Directory>
+                        <Directory name="Images">
+                            <Directory name="Hd" />
+                            <Directory name="Ld" />
                         </Directory>
-                        <Directory name="sounds"></Directory>
+                        <Directory name="Sounds"></Directory>
                     </Directory>
                 </Directory>
-                <File name="GameAppDelegate.cs" AddStandardHeader="True" src="../../Common/GameAppDelegate.cs" />
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
             </Files>
 
             <Packages>
-                <Package id="CocosSharp.PCL.Shared" />
+                <Package id="CocosSharp" />
             </Packages>
         </Project>
     </Combine>
