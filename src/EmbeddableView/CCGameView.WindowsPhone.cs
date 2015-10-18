@@ -53,6 +53,11 @@ namespace CocosSharp
             viewportDirty = true;
         }
 
+        void InitialiseInputHandling()
+        {
+            InitialiseMobileInputHandling();
+        }
+
         #endregion Initialisation
 
 
@@ -125,6 +130,10 @@ namespace CocosSharp
                 graphicsDevice.Present();
         }
 
+        void ProcessInput()
+        {
+            ProcessMobileInput();
+        }
         #endregion Run loop
 
 

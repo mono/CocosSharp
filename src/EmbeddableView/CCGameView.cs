@@ -242,10 +242,6 @@ namespace CocosSharp
 
             InitialiseInputHandling();
 
-#if NETFX_CORE && !WINDOWS_PHONE81
-            InitialiseDesktopInputHandling();
-#endif
-
             Stats.Initialise();
 
             viewInitialised = true;
@@ -506,10 +502,6 @@ namespace CocosSharp
             ActionManager.Update(deltaTime);
 
             ProcessInput();
-
-#if NETFX_CORE && !WINDOWS_PHONE81
-            ProcessMouseInput();
-#endif
 
             Stats.UpdateEnd(deltaTime);
         }

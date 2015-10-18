@@ -159,7 +159,7 @@ namespace CocosSharp
 
         void InitialiseInputHandling()
         {
-            InitializeMobileInputHandling();
+            InitialiseMobileInputHandling();
         }
 
         #endregion Initialisation

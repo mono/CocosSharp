@@ -37,7 +37,7 @@ namespace CocosSharp
 
         #region Initialisation
 
-        void InitializeMobileInputHandling()
+        void InitialiseMobileInputHandling()
         {
             touchMap = new Dictionary<int, CCTouch>();
             incomingNewTouches = new List<CCTouch>();

@@ -60,6 +60,12 @@ namespace CocosSharp
             viewportDirty = true;
         }
 
+        void InitialiseInputHandling ()
+        {
+            InitialiseMobileInputHandling();
+            InitialiseDesktopInputHandling();
+        }
+
         #endregion Initialisation
 
 
@@ -133,6 +139,11 @@ namespace CocosSharp
                 graphicsDevice.Present();
         }
 
+        void ProcessInput()
+        {
+            ProcessMobileInput();
+            ProcessDesktopInput();
+        }
         #endregion Run loop
 
 
@@ -210,6 +221,10 @@ namespace CocosSharp
             }
         }
 
+        void PlatformUpdateMouseVisible()
+        {
+        }
+
         void MouseMoved(object sender, PointerRoutedEventArgs args)
         {
             var pointerPoint = args.GetCurrentPoint(this);
@@ -218,7 +233,7 @@ namespace CocosSharp
 
                 var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
 
-                UpdateIncomingMoveMouse((int)pointerPoint.PointerId, ref pos);
+//                UpdateIncomingMoveMouse((int)pointerPoint.PointerId, ref pos);
 
                 args.Handled = true;
             }
