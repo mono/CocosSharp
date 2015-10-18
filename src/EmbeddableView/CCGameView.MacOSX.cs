@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -22,7 +23,32 @@ namespace CocosSharp
     public partial class CCGameView  : MonoMac.OpenGL.MonoMacGameView
     {
 
+        Dictionary<int, CCTouch> touchMap;
+        List<CCTouch> incomingNewTouches;
+        List<CCTouch> incomingMoveTouches;
+        List<CCTouch> incomingReleaseTouches;
+
+        bool touchEnabled;
+
+        object touchLock = new object();
+
         private NSTrackingArea _trackingArea;
+
+
+        #region Properties
+
+        public bool TouchEnabled
+        {
+            get { return touchEnabled; }
+            set
+            {
+                touchEnabled = value;
+            }
+        }
+
+        #endregion Properties
+
+        #region Constructors
 
         [Export("initWithFrame:")]
         public CCGameView (CGRect frame) : this(frame, null)
@@ -36,27 +62,24 @@ namespace CocosSharp
 
             BeginInitialise();
         }
+ 
+        #endregion Constructors
 
-        #region Constructors
+
+        #region Initialisation
 
         void BeginInitialise()
         {
             RenderFrame += RenderScene;
         }
 
-        #endregion Constructors
-
-
-        #region Initialisation
         public override bool AcceptsFirstResponder()
         {
-            return true;//return base.AcceptsFirstResponder();
+            return true;
         }
+
         void PlatformInitialise()
         {
-            IsMouseVisible = true;
-
-
 
             NSNotificationCenter.DefaultCenter.AddObserver(NSApplication.DidBecomeActiveNotification, (n)=> Paused = false);
             NSNotificationCenter.DefaultCenter.AddObserver(NSApplication.DidResignActiveNotification, (n)=> Paused = true);
@@ -80,7 +103,6 @@ namespace CocosSharp
         {
 
             Run(1 / targetElapsedTime.TotalSeconds);
-            NeedsLayout = true;
             // Reminder: We may need to do something like this later.
             //OpenGLContext.SwapInterval = graphicsDeviceManager.SynchronizeWithVerticalRetrace;
         }
@@ -100,6 +122,18 @@ namespace CocosSharp
 
             Initialise();
             platformInitialised = true;
+        }
+
+        void InitialiseInputHandling ()
+        {
+            touchMap = new Dictionary<int, CCTouch>();
+            incomingNewTouches = new List<CCTouch>();
+            incomingMoveTouches = new List<CCTouch>();
+            incomingReleaseTouches = new List<CCTouch>();
+
+            TouchEnabled = CCDevice.IsMousePresent;
+
+            InitialiseDesktopInputHandling();
         }
 
         #endregion Initialisation
@@ -152,12 +186,137 @@ namespace CocosSharp
                 graphicsDevice.Present();
         }
 
+        void ProcessInput()
+        {
+            lock (touchLock)
+            {
+                if (EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
+                    || EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
+                {
+                    var touchEvent = new CCEventTouch(CCEventCode.BEGAN);
+
+                    RemoveOldTouches();
+
+                    if (incomingNewTouches.Count > 0)
+                    {
+                        touchEvent.EventCode = CCEventCode.BEGAN;
+                        touchEvent.Touches = incomingNewTouches;
+                        EventDispatcher.DispatchEvent(touchEvent);
+                    }
+
+                    if (incomingMoveTouches.Count > 0)
+                    {
+                        touchEvent.EventCode = CCEventCode.MOVED;
+                        touchEvent.Touches = incomingMoveTouches;
+                        EventDispatcher.DispatchEvent(touchEvent);
+                    }
+
+                    if (incomingReleaseTouches.Count > 0)
+                    {
+                        touchEvent.EventCode = CCEventCode.ENDED;
+                        touchEvent.Touches = incomingReleaseTouches;
+                        EventDispatcher.DispatchEvent(touchEvent);
+                    }
+
+                    incomingNewTouches.Clear();
+                    incomingMoveTouches.Clear();
+                    incomingReleaseTouches.Clear();
+                }
+            }
+
+            // The desktop implementation already takes care of the mouse input so just call it
+            ProcessDesktopInput();
+
+        }
         #endregion Run loop
 
-
+ 
         #region Touch handling
 
-        private bool IsMouseVisible { get; set; }
+        void PlatformUpdateTouchEnabled()
+        {
+            
+        }
+
+        void AddIncomingNewTouch(int touchId, ref CCPoint position)
+        {
+            lock (touchLock) 
+            {
+                if (!touchMap.ContainsKey (touchId)) 
+                {
+                    var touch = new CCTouch (touchId, position, gameTime.TotalGameTime);
+                    touchMap.Add (touchId, touch);
+                    incomingNewTouches.Add (touch);
+                }
+            }
+        }
+
+        void UpdateIncomingMoveTouch(int touchId, ref CCPoint position)
+        {
+            lock (touchLock) 
+            {
+                CCTouch existingTouch;
+                if (touchMap.TryGetValue (touchId, out existingTouch)) 
+                {
+                    var delta = existingTouch.LocationOnScreen - position;
+                    if (delta.LengthSquared > 1.0f) 
+                    {
+                        incomingMoveTouches.Add (existingTouch);
+                        existingTouch.UpdateTouchInfo (touchId, position.X, position.Y, gameTime.TotalGameTime);
+                    }
+                }
+            }
+        }
+
+        void UpdateIncomingReleaseTouch(int id)
+        {
+            lock (touchLock) 
+            {
+                CCTouch existingTouch;
+                if (touchMap.TryGetValue (id, out existingTouch)) 
+                {
+                    incomingReleaseTouches.Add (existingTouch);
+                    touchMap.Remove (id);
+                }
+            }
+        }
+
+        static readonly TimeSpan TouchTimeLimit = TimeSpan.FromMilliseconds(1000);
+        // Prevent memory leaks by removing stale touches
+        // In particular, in the case of the game entering the background
+        // a release touch event may not have been triggered within the view
+        void RemoveOldTouches()
+        {
+            lock (touchLock) 
+            {
+                var currentTime = gameTime.ElapsedGameTime;
+
+                foreach (CCTouch touch in touchMap.Values) 
+                {
+                    if (!incomingReleaseTouches.Contains (touch)
+                        && (currentTime - touch.TimeStamp) > TouchTimeLimit) 
+                    {
+                        incomingReleaseTouches.Add (touch);
+                        touchMap.Remove (touch.Id);
+                    }
+                }
+            }
+        }
+
+        #endregion Touch handling
+
+
+        #region Mouse handling
+
+        void PlatformUpdateMouseEnabled()
+        {
+            UpdateTrackingAreas();
+        }
+
+        void PlatformUpdateMouseVisible()
+        {
+            ResetCursorRects();
+        }
 
         public override void UpdateTrackingAreas()
         {
@@ -171,7 +330,7 @@ namespace CocosSharp
             _trackingArea = new NSTrackingArea (RectangleF.Empty, NSTrackingAreaOptions.ActiveAlways
                 | NSTrackingAreaOptions.InVisibleRect 
                 | NSTrackingAreaOptions.MouseEnteredAndExited 
-                | NSTrackingAreaOptions.MouseMoved
+                | ((MouseEnabled) ? NSTrackingAreaOptions.MouseMoved : NSTrackingAreaOptions.ActiveAlways)
                 , this, null);
             this.AddTrackingArea(_trackingArea);
         }
@@ -179,25 +338,29 @@ namespace CocosSharp
         public override void MouseEntered (NSEvent theEvent)
         {
             base.MouseEntered (theEvent);
-            OnDragChange ("Mouse Entered");
         }
 
         public override void MouseExited (NSEvent theEvent)
         {
             base.MouseExited (theEvent);
-            OnDragChange ("Mouse Exited");
         }
 
         public override void MouseMoved (NSEvent theEvent)
         {
             base.MouseMoved (theEvent);
-            OnDragChange ("Mouse Moved");
+            if (MouseEnabled)
+            {
+                var location = ConvertPointFromView(theEvent.LocationInWindow, null);
 
-        }
+                if (!IsFlipped)
+                    location.Y = Frame.Size.Height - location.Y;
 
-        void OnDragChange (string description)
-        {
-            //Console.WriteLine(description);
+                var position = new CCPoint((float)location.X, (float)location.Y);
+                var id = theEvent.EventNumber;
+
+                AddIncomingMouse(id, ref position);
+            }
+
         }
 
         // These variables are to handle our custom cursor for when IsMouseVisible is false.
@@ -225,11 +388,6 @@ namespace CocosSharp
 
         NSTouchPhase touchPhase = NSTouchPhase.Any;
 
-        void PlatformUpdateTouchEnabled()
-        {
-            
-        }
-
         public override void MouseDown(NSEvent theEvent)
         {
             base.MouseDown(theEvent);
@@ -252,6 +410,35 @@ namespace CocosSharp
             touchPhase = NSTouchPhase.Any;
         }
 
+
+        public override void RightMouseDown (NSEvent theEvent)
+        {
+            base.RightMouseDown(theEvent);
+            touchPhase = NSTouchPhase.Began;
+            UpdateMousePosition (theEvent);
+        }
+
+        public override void RightMouseUp (NSEvent theEvent)
+        {
+            base.RightMouseUp(theEvent);
+            touchPhase = NSTouchPhase.Ended;
+            UpdateMousePosition (theEvent);
+            touchPhase = NSTouchPhase.Any;
+        }
+
+        public override void RightMouseDragged (NSEvent theEvent)
+        {
+            base.RightMouseDragged(theEvent);
+            touchPhase = NSTouchPhase.Moved;
+            UpdateMousePosition (theEvent);
+        }
+
+        #endregion Mouse handling
+
+        #region Common Input Handling
+
+        CCMouseButton buttons = CCMouseButton.None;
+
         void UpdateMousePosition (NSEvent theEvent)
         {
             var location = ConvertPointFromView(theEvent.LocationInWindow, null);
@@ -262,35 +449,62 @@ namespace CocosSharp
             var position = new CCPoint((float)location.X, (float)location.Y);
             var id = theEvent.EventNumber;
 
-            //Console.WriteLine("mouse event: " + location + " view " + locationInView);
-            switch (touchPhase)
+            if (TouchEnabled)
             {
-                case NSTouchPhase.Began:
-                    AddIncomingNewTouch(id, ref position);
-                    break;
-                case NSTouchPhase.Moved:
-                    UpdateIncomingMoveTouch(id, ref position); 
-                    break;
-                case NSTouchPhase.Ended:
-                case NSTouchPhase.Cancelled:
-                    UpdateIncomingReleaseTouch(id); 
-                    break;
-                default:
-                    break;
+                switch (touchPhase)
+                {
+                    case NSTouchPhase.Began:
+                        AddIncomingNewTouch(id, ref position);
+                        break;
+                    case NSTouchPhase.Moved:
+                        UpdateIncomingMoveTouch(id, ref position);
+                        break;
+                    case NSTouchPhase.Ended:
+                    case NSTouchPhase.Cancelled:
+                        UpdateIncomingReleaseTouch(id); 
+                        break;
+                    default:
+                        break;
 
+                }
             }
+
+            if (MouseEnabled)
+            {
+
+                switch (touchPhase)
+                {
+
+                    case NSTouchPhase.Began:
+                        if (theEvent.Type == NSEventType.LeftMouseDown)
+                            buttons |= CCMouseButton.LeftButton; 
+                        if (theEvent.Type == NSEventType.RightMouseDown)
+                            buttons |= CCMouseButton.RightButton; 
+                        AddIncomingMouse(id, ref position, buttons);
+                        break;
+                    case NSTouchPhase.Moved:
+                        if (buttons == CCMouseButton.None)
+                        {
+
+                        }
+                        UpdateIncomingMouse(id, ref position, buttons);
+                        break;
+                    case NSTouchPhase.Ended:
+                    case NSTouchPhase.Cancelled:
+                        if (theEvent.Type == NSEventType.LeftMouseUp)
+                            buttons &= CCMouseButton.LeftButton; 
+                        if (theEvent.Type == NSEventType.RightMouseUp)
+                            buttons &= CCMouseButton.RightButton; 
+                        UpdateIncomingReleaseMouse(id, buttons);
+                        break;
+                    default:
+                        break;
+
+                }
+            }
+
         }
-
-        #endregion Touch handling
-
-        #region Mouse handling
-
-        void PlatformUpdateMouseEnabled()
-        {
-        }
-
-
-        #endregion Mouse handling
+        #endregion Common Input Handling
     }
 }
 

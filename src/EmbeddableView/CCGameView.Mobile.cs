@@ -37,7 +37,7 @@ namespace CocosSharp
 
         #region Initialisation
 
-        void InitialiseInputHandling()
+        void InitializeMobileInputHandling()
         {
             touchMap = new Dictionary<int, CCTouch>();
             incomingNewTouches = new List<CCTouch>();
@@ -47,7 +47,6 @@ namespace CocosSharp
             TouchEnabled = true;
 
             Accelerometer = new CCAccelerometer(this);
-
 
         }
 
@@ -121,7 +120,7 @@ namespace CocosSharp
             }
         }
 
-        void ProcessInput()
+        void ProcessMobileInput()
         {
             lock (touchLock) 
             {

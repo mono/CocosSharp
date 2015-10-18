@@ -157,6 +157,11 @@ namespace CocosSharp
             }
         }
 
+        void InitialiseInputHandling()
+        {
+            InitializeMobileInputHandling();
+        }
+
         #endregion Initialisation
 
 
@@ -221,6 +226,11 @@ namespace CocosSharp
             base.OnUpdateFrame(e);
 
             Tick();
+        }
+
+        void ProcessInput()
+        {
+            ProcessMobileInput();
         }
 
         #endregion Run loop

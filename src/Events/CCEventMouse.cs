@@ -32,6 +32,9 @@ namespace CocosSharp
 
         CCPoint point;
 
+        internal TimeSpan TimeStamp { get; private set; }
+        public int Id { get; private set; }
+
         // returns the current touch location in world coordinates 
         public CCPoint Cursor
         {
@@ -42,13 +45,16 @@ namespace CocosSharp
         public CCPoint CursorOnScreen
         {
             get { return point; }
+            internal set { point = value; }
         }
 
 		public CCMouseButton MouseButton { get; internal set; }
 
-        internal CCEventMouse(CCMouseEventType mouseEventType, CCPoint point)
+        internal CCEventMouse(CCMouseEventType mouseEventType, int id, CCPoint point, TimeSpan timeStamp)
             : base (CCEventType.MOUSE)
         {
+            Id = id;
+            TimeStamp = timeStamp;
             MouseEventType = mouseEventType;
             this.point = point;
         }

@@ -204,6 +204,11 @@ namespace CocosSharp
             LoadGame();
         }
 
+        void InitialiseInputHandling()
+        {
+            InitializeMobileInputHandling ();
+        }
+
         #endregion Initialisation
 
 
@@ -290,6 +295,12 @@ namespace CocosSharp
 
             Tick();
         }
+
+        void ProcessInput()
+        {
+            ProcessMobileInput ();
+        }
+
 
         #endregion Run loop
 
