@@ -220,9 +220,14 @@ namespace tests
     {
         public DrawPrimitivesTest() : base()
         {
-            RenderDrawPrimTest ();
+            //RenderDrawPrimTest ();
         }
 
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            RenderDrawPrimTest();
+        }
         void RenderDrawPrimTest()
         {
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
@@ -230,7 +235,6 @@ namespace tests
             var visibleRect = VisibleBoundsWorldspace;
 
             CCDrawNode drawNode = new CCDrawNode ();
-
 
             // *NOTE* Using the Director.ContentScaleFactor for now until we work something out with the initialization
             // CCDrawPriitives should be able to do this converstion themselves.
@@ -308,7 +312,7 @@ namespace tests
             };
 
             drawNode.DrawPolygon(vertices3, 4, new CCColor4F(1,1,0,1), 1.0f, new CCColor4F(1,1,0,1));
-
+            
             AddChild(drawNode);
         }
 
