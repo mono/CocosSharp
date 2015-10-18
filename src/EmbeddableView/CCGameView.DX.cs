@@ -39,6 +39,10 @@ namespace CocosSharp
             viewportDirty = true;
         }
 
+        void InitialiseInputHandling()
+        {
+
+        }
         #endregion Initialisation
 
 
@@ -62,7 +66,7 @@ namespace CocosSharp
         void PlatformUpdatePaused()
         {
 
-            MobilePlatformUpdatePaused();
+            //MobilePlatformUpdatePaused();
         }
 
         void OnUpdateFrame(object sender, object e)
@@ -82,20 +86,38 @@ namespace CocosSharp
                 graphicsDevice.Present();
         }
 
+        void ProcessInput ()
+        {
+
+        }
+
         #endregion Run loop
 
 
         #region Touch handling
 
-        void PlatformUpdateTouchEnabled()
-        {
-            if (TouchEnabled)
-            {
-            }
-            else
-            {
-            }
-        }
+        //void PlatformUpdateTouchEnabled()
+        //{
+        //    if (TouchEnabled)
+        //    {
+        //    }
+        //    else
+        //    {
+        //    }
+        //}
         #endregion Touch handling
+
+        #region Mouse Handling
+        void PlatformUpdateMouseEnabled ()
+        {
+
+        }
+
+        void PlatformUpdateMouseVisible()
+        {
+
+        }
+        #endregion Mouse Handling
+
     }
 }
