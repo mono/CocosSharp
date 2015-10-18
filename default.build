@@ -238,7 +238,7 @@
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}/ProjectTemplates/NuGet/" overwrite="true" />
 	<property name="nuspec.physics.file.dir.path" value="${project::get-base-directory()}/src/external lib/ChipmunkSharp/NuGet/" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
-      <property name="monodir" value="/usr/bin"/>
+      <property name="monodir" value="/Library/Frameworks/Mono.framework/Commands"/>
 
                 <echo message="" />
                 <echo message="" />
