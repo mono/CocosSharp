@@ -8,6 +8,14 @@ using Android.Util;
 using Windows.Devices;
 using Windows.Graphics.Display;
 #endif
+#if IOS
+using CoreAnimation;
+using UIKit;
+using Foundation;
+#endif
+#if MACOS
+using MonoMac.AppKit;
+#endif
 #if WINDOWS || WINDOWSGL
 
 #endif
@@ -50,6 +58,10 @@ namespace CocosSharp
             {
 #if NETFX_CORE
                 return (float)DisplayInformation.GetForCurrentView().ResolutionScale / 100f;
+#elif IOS
+                return (float)UIScreen.MainScreen.Scale;
+#elif MACOS
+                return NSScreen.MainScreen.BackingScaleFactor;
 #else
                 return 1;
 #endif
@@ -63,6 +75,9 @@ namespace CocosSharp
 #if NETFX_CORE
                 var mouseCapabilities = new Windows.Devices.Input.MouseCapabilities();
                 return (mouseCapabilities.MousePresent != 0);
+#elif MACOS
+                // We will just always assume that it does
+                return true;
 #else
                 return false;
 #endif
@@ -75,6 +90,9 @@ namespace CocosSharp
 #if NETFX_CORE
                 var keyboardCapabilities = new Windows.Devices.Input.KeyboardCapabilities();
                 return (keyboardCapabilities.KeyboardPresent != 0);
+#elif MACOS
+                // We will just always assume that it does
+                return true;
 #else
                 return false;
 #endif
