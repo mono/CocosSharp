@@ -17,7 +17,7 @@ namespace CocosSharp
         }
     }
 
-    
+
     public partial class CCGameView : GameSwapChainPanel
     {
 
@@ -60,7 +60,7 @@ namespace CocosSharp
             viewportDirty = true;
         }
 
-        void InitialiseInputHandling ()
+        void InitialiseInputHandling()
         {
             InitialiseMobileInputHandling();
             InitialiseDesktopInputHandling();
@@ -86,7 +86,7 @@ namespace CocosSharp
 
         void ViewSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            ViewSize = new CCSizeI((int)Math.Ceiling(e.NewSize.Width * ScaleFactor), 
+            ViewSize = new CCSizeI((int)Math.Ceiling(e.NewSize.Width * ScaleFactor),
                 (int)Math.Ceiling(e.NewSize.Height * ScaleFactor));
 
             // We need to ask the graphics device to resize the underlying swapchain/buffers
@@ -204,25 +204,66 @@ namespace CocosSharp
 
         #region Mouse handling
 
+        PointerEventHandler mousePressedHandler;
         PointerEventHandler mouseMovedHandler;
+        PointerEventHandler mouseReleasedHandler;
+        PointerEventHandler mouseWheelHandler;
 
         void PlatformUpdateMouseEnabled()
         {
+
+            if (mousePressedHandler == null)
+                mousePressedHandler = new PointerEventHandler(MousePressed);
+
             if (mouseMovedHandler == null)
                 mouseMovedHandler = new PointerEventHandler(MouseMoved);
 
+            if (mouseReleasedHandler == null)
+                mouseReleasedHandler = new PointerEventHandler(MouseReleased);
+
+            if (mouseWheelHandler == null)
+                mouseWheelHandler = new PointerEventHandler(MouseWheelChanged);
+
             if (MouseEnabled)
             {
+                AddHandler(UIElement.PointerPressedEvent, mousePressedHandler, true);
                 AddHandler(UIElement.PointerMovedEvent, mouseMovedHandler, true);
+                AddHandler(UIElement.PointerReleasedEvent, mouseReleasedHandler, true);
+                AddHandler(UIElement.PointerWheelChangedEvent, mouseWheelHandler, true);
             }
             else
             {
+                RemoveHandler(UIElement.PointerPressedEvent, mousePressedHandler);
                 RemoveHandler(UIElement.PointerMovedEvent, mouseMovedHandler);
+                RemoveHandler(UIElement.PointerReleasedEvent, mouseReleasedHandler);
+                RemoveHandler(UIElement.PointerWheelChangedEvent, mouseWheelHandler);
             }
         }
 
         void PlatformUpdateMouseVisible()
         {
+        }
+
+        CCMouseButton buttons = CCMouseButton.None;
+
+        void MousePressed(object sender, PointerRoutedEventArgs args)
+        {
+            var pointerPoint = args.GetCurrentPoint(this);
+            if (pointerPoint.PointerDevice.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse)
+            {
+
+                var pos = new CCPoint((float)pointerPoint.Position.X * ScaleFactor, (float)pointerPoint.Position.Y * ScaleFactor);
+
+                var state = pointerPoint.Properties;
+
+                buttons = CCMouseButton.None;
+                buttons |= state.IsLeftButtonPressed ? CCMouseButton.LeftButton : CCMouseButton.None;
+                buttons |= state.IsRightButtonPressed ? CCMouseButton.RightButton : CCMouseButton.None;
+                buttons |= state.IsMiddleButtonPressed ? CCMouseButton.MiddleButton : CCMouseButton.None;
+
+                AddIncomingMouse((int)pointerPoint.PointerId, ref pos, buttons);
+                args.Handled = true;
+            }
         }
 
         void MouseMoved(object sender, PointerRoutedEventArgs args)
@@ -231,14 +272,61 @@ namespace CocosSharp
             if (pointerPoint.PointerDevice.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse)
             {
 
-                var pos = new CCPoint((float)pointerPoint.Position.X, (float)pointerPoint.Position.Y);
+                var pos = new CCPoint((float)pointerPoint.Position.X * ScaleFactor, (float)pointerPoint.Position.Y * ScaleFactor);
 
-//                UpdateIncomingMoveMouse((int)pointerPoint.PointerId, ref pos);
+                var state = pointerPoint.Properties;
+
+                if (mouseMap.ContainsKey((int)pointerPoint.PointerId))
+                    UpdateIncomingMouse((int)pointerPoint.PointerId, ref pos, buttons);
+                else
+                {
+                    buttons = CCMouseButton.None;
+                    AddIncomingMouse((int)pointerPoint.PointerId, ref pos);
+                }
 
                 args.Handled = true;
             }
         }
 
+        void MouseReleased(object sender, PointerRoutedEventArgs args)
+        {
+            var pointerPoint = args.GetCurrentPoint(this);
+            if (pointerPoint.PointerDevice.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse)
+            {
+
+                var pos = new CCPoint((float)pointerPoint.Position.X * ScaleFactor, (float)pointerPoint.Position.Y * ScaleFactor);
+
+                var state = pointerPoint.Properties;
+
+                var buttonsReleased = CCMouseButton.None;
+                if (buttons.HasFlag(CCMouseButton.LeftButton) && !state.IsLeftButtonPressed)
+                    buttonsReleased = CCMouseButton.LeftButton;
+                if (buttons.HasFlag(CCMouseButton.RightButton) && !state.IsRightButtonPressed)
+                    buttonsReleased |= CCMouseButton.RightButton;
+                if (buttons.HasFlag(CCMouseButton.MiddleButton) && !state.IsMiddleButtonPressed)
+                    buttonsReleased |= CCMouseButton.MiddleButton;
+                UpdateIncomingReleaseMouse((int)pointerPoint.PointerId, buttonsReleased);
+
+                args.Handled = true;
+            }
+
+        }
+
+        void MouseWheelChanged(object sender, PointerRoutedEventArgs args)
+        {
+            var pointerPoint = args.GetCurrentPoint(this);
+            if (pointerPoint.PointerDevice.PointerDeviceType == Windows.Devices.Input.PointerDeviceType.Mouse)
+            {
+
+                var pos = new CCPoint((float)pointerPoint.Position.X * ScaleFactor, (float)pointerPoint.Position.Y * ScaleFactor);
+
+                var state = pointerPoint.Properties;
+
+                AddIncomingScrollMouse((int)pointerPoint.PointerId, ref pos, state.MouseWheelDelta);
+
+                args.Handled = true;
+            }
+        }
         #endregion Mouse handling
 
     }

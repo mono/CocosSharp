@@ -14,6 +14,8 @@ namespace CocosSharp
         List<CCEventMouse> incomingNewMouse;
         List<CCEventMouse> incomingMoveMouse;
         List<CCEventMouse> incomingReleaseMouse;
+        List<CCEventMouse> incomingScrollMouse;
+
         object mouseLock = new object();
 
         bool mouseVisible;
@@ -52,6 +54,7 @@ namespace CocosSharp
             incomingNewMouse = new List<CCEventMouse>();
             incomingMoveMouse = new List<CCEventMouse>();
             incomingReleaseMouse = new List<CCEventMouse>();
+            incomingScrollMouse = new List<CCEventMouse>();
 
             IsMouseVisible = MouseEnabled = CCDevice.IsMousePresent;
 
@@ -63,14 +66,14 @@ namespace CocosSharp
 
         void AddIncomingMouse(int id, ref CCPoint position, CCMouseButton buttons = CCMouseButton.None)
         {
-            lock (mouseLock) 
+            lock (mouseLock)
             {
-                if (!mouseMap.ContainsKey (id)) 
+                if (!mouseMap.ContainsKey(id))
                 {
                     var mouse = new CCEventMouse(((buttons == CCMouseButton.None) ? CCMouseEventType.MOUSE_MOVE : CCMouseEventType.MOUSE_DOWN),
                         id, position, gameTime.ElapsedGameTime);
                     mouse.MouseButton = buttons;
-                    incomingNewMouse.Add (mouse);
+                    incomingNewMouse.Add(mouse);
                     mouseMap.Add(id, mouse);
                 }
             }
@@ -78,10 +81,10 @@ namespace CocosSharp
 
         void UpdateIncomingMouse(int id, ref CCPoint position, CCMouseButton buttons = CCMouseButton.None)
         {
-            lock (mouseLock) 
+            lock (mouseLock)
             {
                 CCEventMouse existingMouse;
-                if (mouseMap.TryGetValue (id, out existingMouse)) 
+                if (mouseMap.TryGetValue(id, out existingMouse))
                 {
                     existingMouse.MouseEventType = CCMouseEventType.MOUSE_MOVE;
                     existingMouse.MouseButton = buttons;
@@ -91,31 +94,46 @@ namespace CocosSharp
             }
         }
 
-        void UpdateIncomingReleaseMouse(int id, CCMouseButton buttons = CCMouseButton.None )
+        void UpdateIncomingReleaseMouse(int id, CCMouseButton buttons = CCMouseButton.None)
         {
-            lock (mouseLock) 
+            lock (mouseLock)
             {
                 CCEventMouse existingMouse;
-                if (mouseMap.TryGetValue (id, out existingMouse)) 
+                if (mouseMap.TryGetValue(id, out existingMouse))
                 {
                     existingMouse.MouseEventType = CCMouseEventType.MOUSE_UP;
                     existingMouse.MouseButton = buttons;
 
-                    incomingReleaseMouse.Add (existingMouse);
-                    mouseMap.Remove (id);
+                    incomingReleaseMouse.Add(existingMouse);
+                    mouseMap.Remove(id);
+                }
+            }
+        }
+
+        void AddIncomingScrollMouse(int id, ref CCPoint position, int wheelDelta)
+        {
+            lock (mouseLock)
+            {
+                if (!mouseMap.ContainsKey(id))
+                {
+                    var mouse = new CCEventMouse(CCMouseEventType.MOUSE_SCROLL,
+                        id, position, gameTime.ElapsedGameTime);
+                    mouse.ScrollY += wheelDelta;
+                    incomingScrollMouse.Add(mouse);
+                    mouseMap.Add(id, mouse);
                 }
             }
         }
 
         void ProcessDesktopInput()
         {
-            lock (mouseLock) 
+            lock (mouseLock)
             {
 
-                if (EventDispatcher.IsEventListenersFor (CCEventListenerMouse.LISTENER_ID))
+                if (EventDispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID))
                 {
 
-                    foreach(var mouseEvent in incomingNewMouse)
+                    foreach (var mouseEvent in incomingNewMouse)
                     {
                         EventDispatcher.DispatchEvent(mouseEvent);
 
@@ -126,19 +144,26 @@ namespace CocosSharp
                             mouseMap.Remove(mouseEvent.Id);
                     }
 
-                    foreach(var mouseEvent in incomingMoveMouse)
+                    foreach (var mouseEvent in incomingMoveMouse)
                     {
                         EventDispatcher.DispatchEvent(mouseEvent);
                     }
 
-                    foreach(var mouseEvent in incomingReleaseMouse)
+                    foreach (var mouseEvent in incomingReleaseMouse)
                     {
                         EventDispatcher.DispatchEvent(mouseEvent);
                     }
 
-                    incomingNewMouse.Clear ();
-                    incomingMoveMouse.Clear ();
-                    incomingReleaseMouse.Clear ();
+                    foreach (var mouseEvent in incomingScrollMouse)
+                    {
+                        EventDispatcher.DispatchEvent(mouseEvent);
+                        mouseMap.Remove(mouseEvent.Id);
+                    }
+
+                    incomingNewMouse.Clear();
+                    incomingMoveMouse.Clear();
+                    incomingReleaseMouse.Clear();
+                    incomingScrollMouse.Clear();
                 }
 
             }
