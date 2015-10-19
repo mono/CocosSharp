@@ -392,6 +392,7 @@ namespace CocosSharp
         {
             base.MouseDown(theEvent);
             touchPhase = NSTouchPhase.Began;
+            IsLeftButtonPressed = true;
             UpdateMousePosition (theEvent);
         }
 
@@ -407,6 +408,7 @@ namespace CocosSharp
             base.MouseUp(theEvent);
             touchPhase = NSTouchPhase.Ended;
             UpdateMousePosition (theEvent);
+            IsLeftButtonPressed = false;
             touchPhase = NSTouchPhase.Any;
         }
 
@@ -415,6 +417,7 @@ namespace CocosSharp
         {
             base.RightMouseDown(theEvent);
             touchPhase = NSTouchPhase.Began;
+            IsRightButtonPressed = true;
             UpdateMousePosition (theEvent);
         }
 
@@ -423,6 +426,7 @@ namespace CocosSharp
             base.RightMouseUp(theEvent);
             touchPhase = NSTouchPhase.Ended;
             UpdateMousePosition (theEvent);
+            IsRightButtonPressed = false;
             touchPhase = NSTouchPhase.Any;
         }
 
@@ -433,11 +437,47 @@ namespace CocosSharp
             UpdateMousePosition (theEvent);
         }
 
+        public override void ScrollWheel(NSEvent theEvent)
+        {
+            base.ScrollWheel(theEvent);
+            var location = ConvertPointFromView(theEvent.LocationInWindow, null);
+
+            if (!IsFlipped)
+                location.Y = Frame.Size.Height - location.Y;
+
+            var position = new CCPoint((float)location.X, (float)location.Y);
+
+            switch (theEvent.Type) 
+            { 
+                case NSEventType.ScrollWheel: 
+                    if (theEvent.ScrollingDeltaY != 0) 
+                    { 
+
+                        var id = theEvent.Handle.ToInt32();
+                        var wheelDeltaY = 0f;
+                        if (theEvent.ScrollingDeltaY > 0) 
+                        { 
+                            wheelDeltaY += (theEvent.ScrollingDeltaY * 0.1f + 0.09f) * 1200; 
+                        } 
+                        else 
+                        { 
+                            wheelDeltaY += (theEvent.ScrollingDeltaY * 0.1f - 0.09f) * 1200; 
+                        } 
+                        AddIncomingScrollMouse(id, ref position, wheelDeltaY);
+
+                    } 
+                    break; 
+            } 
+
+        }
+
         #endregion Mouse handling
 
         #region Common Input Handling
 
         CCMouseButton buttons = CCMouseButton.None;
+        bool IsLeftButtonPressed;
+        bool IsRightButtonPressed;
 
         void UpdateMousePosition (NSEvent theEvent)
         {
@@ -476,25 +516,21 @@ namespace CocosSharp
                 {
 
                     case NSTouchPhase.Began:
-                        if (theEvent.Type == NSEventType.LeftMouseDown)
-                            buttons |= CCMouseButton.LeftButton; 
-                        if (theEvent.Type == NSEventType.RightMouseDown)
-                            buttons |= CCMouseButton.RightButton; 
+                        buttons = CCMouseButton.None;
+                        buttons |= IsLeftButtonPressed ? CCMouseButton.LeftButton : CCMouseButton.None;
+                        buttons |= IsRightButtonPressed ? CCMouseButton.RightButton : CCMouseButton.None;
                         AddIncomingMouse(id, ref position, buttons);
                         break;
                     case NSTouchPhase.Moved:
-                        if (buttons == CCMouseButton.None)
-                        {
-
-                        }
                         UpdateIncomingMouse(id, ref position, buttons);
                         break;
                     case NSTouchPhase.Ended:
                     case NSTouchPhase.Cancelled:
-                        if (theEvent.Type == NSEventType.LeftMouseUp)
-                            buttons &= CCMouseButton.LeftButton; 
-                        if (theEvent.Type == NSEventType.RightMouseUp)
-                            buttons &= CCMouseButton.RightButton; 
+                        var buttonsReleased = CCMouseButton.None;
+                        if (buttons.HasFlag(CCMouseButton.LeftButton) && !IsLeftButtonPressed)
+                            buttonsReleased = CCMouseButton.LeftButton;
+                        if (buttons.HasFlag(CCMouseButton.RightButton) && !IsRightButtonPressed)
+                            buttonsReleased |= CCMouseButton.RightButton;
                         UpdateIncomingReleaseMouse(id, buttons);
                         break;
                     default:
