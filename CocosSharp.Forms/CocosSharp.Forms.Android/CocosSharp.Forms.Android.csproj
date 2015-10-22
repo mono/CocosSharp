@@ -98,18 +98,22 @@
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
       <Project>{ba9476cf-99ba-4d03-92f2-73d2c5e58883}</Project>
       <Name>MonoGame.Framework.Android</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
       <Project>{713ee5ca-c850-42ad-ac67-b6546ac8bffb}</Project>
       <Name>MonoGame.Framework.Net.Android</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
       <Project>{565129e0-4ee5-4f6f-b403-c3484c9740be}</Project>
       <Name>Lidgren.Network.Android</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\src\CocosSharp.Android.csproj">
       <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
       <Name>CocosSharp.Android</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
 </Project>

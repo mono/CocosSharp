@@ -120,6 +120,7 @@
     <ProjectReference Include="..\..\src\CocosSharp.WindowsPhone81.csproj">
       <Project>{1d51a5a6-0db5-49e5-868d-7d0e1fd14d8f}</Project>
       <Name>CocosSharp.WindowsPhone81</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

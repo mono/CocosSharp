@@ -79,22 +79,26 @@
       <Name>box2d.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj">
       <Project>{db8508bb-9849-4cc2-bc0f-8eb5dacb3c47}</Project>
       <Name>MonoGame.Framework.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.iOS.csproj">
       <Project>{d4838656-8545-4dc5-8822-d4ad313e17ac}</Project>
       <Name>MonoGame.Framework.Net.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\src\CocosSharp.iOS.csproj">
       <Project>{511B1B80-F539-4CEC-AB62-3652A9275E7E}</Project>
       <Name>CocosSharp.iOS</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
 </Project>
