@@ -110,7 +110,7 @@ namespace CocosSharp
             }
         }
 
-        void AddIncomingScrollMouse(int id, ref CCPoint position, int wheelDelta)
+        void AddIncomingScrollMouse(int id, ref CCPoint position, float wheelDelta)
         {
             lock (mouseLock)
             {
