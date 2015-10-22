@@ -11,26 +11,27 @@
     <iconUrl>http://CocosSharp.xamarin.com</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>CocosSharp is a simple game engine typically used for 2D games, educational software and 2D visualizations. This code allows games to be built with a write-once, run-anywhere approach.</description>
-	<releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.7.0.0-pre1.md</releaseNotes>
+    <releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.7.0.0-pre1.md</releaseNotes>
     <summary>CocosSharp is a C# implementation of the Cocos2D and Cocos3D APIs that runs on any platform where MonoGame runs.</summary>
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d cocossharp xna 2D games visualization engine forms </tags>
 
     <references>
       <group targetFramework="netcore">
-        <reference file="box2d.dll"></reference>
-        <reference file="CocosSharp.dll"></reference>
         <reference file="CocosSharp.Forms.dll"></reference>
-        <reference file="MonoGame.Framework.dll"></reference>
-        <reference file="MonoGame.Framework.Net.dll"></reference>
       </group>
     </references>
+
+    <dependencies>
+      <dependency id="Xamarin.Forms" />
+      <dependency id="CocosSharp" />
+    </dependencies>
 
   </metadata>
 
   <files>
 
-	 <!--PCL -->
+     <!--PCL -->
      <!-- http://blog.xamarin.com/how-to-update-nuget-packages-for-64-bit/ -->
      <file src="CocosSharp.Forms\CocosSharp.Forms.PCL\bin\Release\*.dll" target="lib\portable-net45+win+wpa81+wp81" />
 
