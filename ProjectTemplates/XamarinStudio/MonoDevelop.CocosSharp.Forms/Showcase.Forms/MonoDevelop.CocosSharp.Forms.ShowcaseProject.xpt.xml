@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<Template>
+    <TemplateConfiguration>
+        <_Name>CocosSharp.Forms Game Showcase</_Name>
+        <Category>crossplat/app/games</Category>
+        <Image id="md-xamarin-forms-project" />
+        <LanguageName>C#</LanguageName>
+        <Wizard>Xamarin.Forms.ProjectTemplateWizard</Wizard>
+        <_Description><![CDATA[Creates a sample showcase CocosSharp.Forms project using a Shared Project or Portable Class Library Project for code sharing.]]></_Description>
+    </TemplateConfiguration>
+
+    <Combine name = "${ProjectName}" directory = ".">
+        <Options>
+            <StartupProject>${ProjectName}.iOS</StartupProject>
+        </Options>
+
+        <Actions>
+            <Open filename = "App.cs"/>
+        </Actions>
+
+        <Project name = "${ProjectName}" directory = "." type = "SharedAssetsProject" if = "CreateSharedAssetsProject">
+            <Files>
+                <File name="${ProjectName}.cs" AddStandardHeader="True" src="../Common.Forms/App.cs" />
+                <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
+            </Files>
+        </Project>
+
+        <Project name = "${ProjectName}" directory = "." type = "PortableDotNet" if = "CreatePortableDotNetProject" >
+            <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile136"/>
+            <Files>
+                <File name="${ProjectName}.cs" AddStandardHeader="True" src="../Common.Forms/App.cs" />
+                <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
+            </Files>
+            <Packages>
+                <Package Id="Xamarin.Forms" Version="1.3.3.6323"/> 
+                <Package Id="CocosSharp.Forms" Version="1.7.0.0-pre1"/>
+            </Packages>
+        </Project>
+       
+        <!-- iOS project -->
+        <Project name = "${ProjectName}.iOS" directory = "./iOS" namespace="${ProjectName}" type = "XamarinIOS" if = "CreateMonoTouchProject">
+            <References>
+                <Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="Xamarin.iOS" />
+                <Reference type="Gac" refto="OpenTK-1.0" />
+                <Reference type="Project" refto="${ProjectName}"/>
+            </References>
+            <Files>
+                <Directory name="Resources">
+                    <RawFile name="Default.png" src="../iOS.Forms/Default.png" />
+                    <RawFile name="Default@2x.png" src="../iOS.Forms/Default@2x.png" />
+                    <RawFile name="Default-568h@2x.png" src="../iOS.Forms/Default-568h@2x.png" />
+                    <RawFile name="Default-Portrait.png" src="../iOS.Forms/Default-Portrait.png" />
+                    <RawFile name="Default-Portrait@2x.png" src="../iOS.Forms/Default-Portrait@2x.png" />
+                    <RawFile name="Icon-60@2x.png" src="../iOS.Forms/Icon-60@2x.png" />
+                    <RawFile name="Icon-60@3x.png" src="../iOS.Forms/Icon-60@3x.png" />
+                    <RawFile name="Icon-76.png" src="../iOS.Forms/Icon-76.png" />
+                    <RawFile name="Icon-76@2x.png" src="../iOS.Forms/Icon-76@2x.png" />
+                    <RawFile name="Icon-Small.png" src="../iOS.Forms/Icon-Small.png" />
+                    <RawFile name="Icon-Small@2x.png" src="../iOS.Forms/Icon-Small@2x.png" />
+                    <RawFile name="Icon-Small@3x.png" src="../iOS.Forms/Icon-Small@3x.png" />
+                    <RawFile name="Icon-Small-40.png" src="../iOS.Forms/Icon-Small-40.png" />
+                    <RawFile name="Icon-Small-40@2x.png" src="../iOS.Forms/Icon-Small-40@2x.png" />
+                    <RawFile name="Icon-Small-40@3x.png" src="../iOS.Forms/Icon-Small-40@3x.png" />
+                    <RawFile name="LaunchScreen.storyboard" src="../iOS.Forms/LaunchScreen.storyboard" />
+                </Directory>
+                <File name="Info.plist" AddStandardHeader="False" src="../iOS.Forms/Info_Universal.plist.xml" />
+                <File name="Entitlements.plist" AddStandardHeader="False" src="../iOS.Forms/Entitlements.plist.xml" />
+                <File name="Main.cs" AddStandardHeader="True" src="../iOS.Forms/Main.cs" />
+                <File name="AppDelegate.cs" AddStandardHeader="True" src="../iOS.Forms/AppDelegate.cs" />
+                <RawFileNoExtension name="ITunesArtwork" src="../iOS.Forms/iTunesArtwork" BuildAction="ITunesArtwork" />
+                <RawFileNoExtension name="ITunesArtwork@2x" src="../iOS.Forms/iTunesArtwork@2x" BuildAction="ITunesArtwork" />
+
+                <Directory name="Content">
+                    <Directory name="Fonts"></Directory>
+                    <Directory name="Images">
+                        <Directory name="Ld"><RawFile name="monkey.png" src="../../Common/monkey.png" /></Directory>
+                        <Directory name="Hd"><RawFile name="monkey.png" src="../../Common/monkey_hd.png" /></Directory>
+                    </Directory>
+                    <Directory name="Sounds"></Directory>
+                </Directory>
+            </Files>
+            <Packages>
+                <Package Id="Xamarin.Forms" Version="1.3.3.6323"/> 
+                <Package Id="CocosSharp.Forms" Version="1.7.0.0-pre1"/>
+            </Packages>
+        </Project>
+        
+        <!-- Android project -->
+        <Project name = "${ProjectName}.Droid" directory = "./Droid" namespace="${ProjectName}" type = "MonoDroid" if = "CreateAndroidProject">
+            <Options
+                AndroidApplication="true"
+                AndroidResgenFile="Resources/Resource.designer.cs"
+                AndroidResgenClass="Resource"
+                AndroidUseLatestPlatformSdk="True" />
+            <References>
+                <Reference type="Gac" refto="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e" />
+                <Reference type="Gac" refto="Mono.Android" />
+                <Reference type="Gac" refto="OpenTK-1.0" />
+                <Reference type="Project" refto="${ProjectName}"/>
+            </References>
+            <Files>
+                <File name="MainActivity.cs" src="../Android.Forms/MainActivity.cs" />
+                <Directory name="Resources">
+                    <File name="Resource.designer.cs" src="../Android.Forms/Resource.cs" />
+                    <RawFile name="AboutResources.txt" src="../Android.Forms/AboutResources.txt" />
+                    <Directory name="layout">
+                    </Directory>
+                    <Directory name="values">
+                        <File name="Strings.xml"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ApplicationName">${ProjectName}</string>
+    <string name="Hello">Hello world!</string>
+</resources>]]></File>
+                    </Directory>
+                    <Directory name ="drawable">
+                        <RawFile name="icon.png" src="../Android.Forms/icondrawable.png" />
+                    </Directory>
+                    <Directory name ="drawable-hdpi">
+                        <RawFile name="icon.png" src="../Android.Forms/icondrawablehdpi.png" />
+                    </Directory>
+                    <Directory name ="drawable-xhdpi">
+                        <RawFile name="icon.png" src="../Android.Forms/icondrawablexhdpi.png" />
+                    </Directory>
+                    <Directory name ="drawable-xxhdpi">
+                        <RawFile name="icon.png" src="../Android.Forms/icondrawablexxhdpi.png" />
+                    </Directory>
+                </Directory>
+                <Directory name="Properties">
+                    <File name="AssemblyInfo.cs" src="../Android.Forms/AssemblyInfo.cs" />
+                    <File name="AndroidManifest.xml" AddStandardHeader="False" src="../Android.Forms/AndroidManifest.xml" BuildAction="None" />
+                </Directory>
+                <Directory name="Assets">
+                    <RawFile name="AboutAssets.txt" src="../Android.Forms/AboutAssets.txt" BuildAction="None" />
+                    <Directory name="Content">
+                        <Directory name="Fonts"></Directory>
+                        <Directory name="Images">
+                         <Directory name="Ld"><RawFile name="monkey.xnb" src="../../Common/monkey.xnb" /></Directory>
+                         <Directory name="Hd"><RawFile name="monkey.xnb" src="../../Common/monkey_hd.xnb" /></Directory>
+                        </Directory>
+                        <Directory name="Sounds"></Directory>
+                    </Directory>
+                </Directory>
+            </Files>
+            <Packages>
+                <Package Id="Xamarin.Android.Support.v4" Version="21.0.3.0" />
+                <Package Id="Xamarin.Forms" Version="1.3.3.6323"/>
+                <Package Id="CocosSharp.Forms" Version="1.7.0.0-pre1"/>
+            </Packages>
+        </Project>
+
+    </Combine>
+</Template>
