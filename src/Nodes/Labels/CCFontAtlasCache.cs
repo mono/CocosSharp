@@ -14,6 +14,8 @@ namespace CocosSharp
             {
                 atlas.PurgeTexturesAtlas();
             }
+
+            atlasMap.Clear();
         }
 
 

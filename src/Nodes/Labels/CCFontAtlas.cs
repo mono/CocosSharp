@@ -130,7 +130,10 @@ namespace CocosSharp
 
         public void PurgeTexturesAtlas ()
         {
-
+            if (Texture != null)
+                Texture.Dispose();
+            
+            Texture = null;
         }
     }
         
