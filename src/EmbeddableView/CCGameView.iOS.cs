@@ -73,6 +73,8 @@ namespace CocosSharp
 
         GameViewTimeSource timeSource;
 
+        NSObject backgroundObserver;
+        NSObject foregroundObserver;
 
         #region Constructors
 
@@ -105,8 +107,10 @@ namespace CocosSharp
         void PlatformInitialise()
         {
             AutoResize = true;
-            NSNotificationCenter.DefaultCenter.AddObserver(UIApplication.DidEnterBackgroundNotification, (n)=> Paused = true);
-            NSNotificationCenter.DefaultCenter.AddObserver(UIApplication.WillEnterForegroundNotification, (n)=> Paused = false);
+            backgroundObserver = NSNotificationCenter.DefaultCenter.AddObserver(
+                UIApplication.DidEnterBackgroundNotification, (n)=> Paused = true);
+            foregroundObserver = NSNotificationCenter.DefaultCenter.AddObserver(
+                UIApplication.WillEnterForegroundNotification, (n)=> Paused = false);
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -225,8 +229,11 @@ namespace CocosSharp
                 }
             }
 
-            NSNotificationCenter.DefaultCenter.RemoveObserver(this, UIApplication.DidEnterBackgroundNotification);
-            NSNotificationCenter.DefaultCenter.RemoveObserver(this, UIApplication.WillEnterForegroundNotification);
+            if (backgroundObserver != null)
+                NSNotificationCenter.DefaultCenter.RemoveObserver(backgroundObserver);
+
+            if (foregroundObserver != null)
+                NSNotificationCenter.DefaultCenter.RemoveObserver(foregroundObserver);
         }
 
         protected override void DestroyFrameBuffer()
