@@ -134,6 +134,8 @@ namespace CocosSharp
             // Fetch desired depth / stencil size
             // Need to more robustly handle
 
+            RemoveExistingView();
+
             if (bufferCreated)
                 return;
 
@@ -220,6 +222,8 @@ namespace CocosSharp
 
         void PlatformDispose(bool disposing)
         {
+            MakeCurrent();
+
             if (disposing)
             {
                 if (timeSource != null)
@@ -265,6 +269,9 @@ namespace CocosSharp
 
         internal void RunIteration(NSTimer timer)
         {
+            if (GL.GetErrorCode() != ErrorCode.NoError)
+                return;
+
             OnUpdateFrame(null);
 
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, Framebuffer);
@@ -278,7 +285,6 @@ namespace CocosSharp
 
             if (GraphicsContext == null || GraphicsContext.IsDisposed)
                 return;
-
 
             if (!GraphicsContext.IsCurrent)
                 MakeCurrent();

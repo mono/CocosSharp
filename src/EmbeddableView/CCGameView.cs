@@ -223,9 +223,6 @@ namespace CocosSharp
             if (viewInitialised)
                 return;
 
-            if (currentViewInstance != null)
-                throw new NotSupportedException("CCGameView: Cannot instantiate multiple views concurrently.");
-
             PlatformInitialise();
 
             ActionManager = new CCActionManager();
@@ -262,7 +259,6 @@ namespace CocosSharp
             graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, graphicsProfile, presParams);
             DrawManager = new CCDrawManager(graphicsDevice);
 
-            // Fix this!
             CCDrawManager.SharedDrawManager = DrawManager;
 
             graphicsDeviceService = new CCGraphicsDeviceService(graphicsDevice);
@@ -291,10 +287,10 @@ namespace CocosSharp
             }
         }
 
-#endregion Initialisation
+        #endregion Initialisation
 
 
-#region Cleaning up
+        #region Cleaning up
 
         ~CCGameView() 
         {
@@ -335,6 +331,14 @@ namespace CocosSharp
             var serviceProvider = CCContentManager.SharedContentManager.ServiceProvider as GameServiceContainer;
             serviceProvider.RemoveService(typeof(IGraphicsDeviceService));
 
+            CCFontAtlasCache.PurgeCachedData();
+            CCSpriteFontCache.SharedInstance.Clear();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveSpriteFrames();
+            CCParticleSystemCache.PurgeSharedParticleSystemCache();
+            CCTextureCache.SharedTextureCache.RemoveAllTextures();
+            CCAnimationCache.PurgeSharedAnimationCached();
+            CCContentManager.SharedContentManager.Unload();
+
             currentViewInstance = null;
 
             disposed = true;
@@ -342,10 +346,28 @@ namespace CocosSharp
             base.Dispose(disposing);
         }
 
-#endregion Cleaning up
+        // MonoGame maintains static references to the underlying context, and more generally, 
+        // there's no guarantee that a previous instance of CCGameView will have been disposed by the GC.
+        // However, given the limitation imposed by MonoGame to only have one active instance, we need
+        // to ensure that this indeed the case and explicitly Dispose of any old game views.
+        void RemoveExistingView()
+        {
+            if (currentViewInstance != null && currentViewInstance.Target != this) 
+            {
+                var prevGameView = currentViewInstance.Target as CCGameView;
+
+                if (prevGameView != null) 
+                {
+                    prevGameView.Paused = true;
+                    prevGameView.Dispose();
+                }
+            }
+        }
+
+        #endregion Cleaning up
 
 
-#region Drawing
+        #region Drawing
 
         internal void Present()
         {
@@ -450,10 +472,10 @@ namespace CocosSharp
             DrawManager.EndDraw();
         }
 
-#endregion Drawing
+        #endregion Drawing
 
 
-#region Run loop
+        #region Run loop
 
         void Tick()
         {
@@ -509,7 +531,7 @@ namespace CocosSharp
             Stats.UpdateEnd(deltaTime);
         }
 
-#endregion Run loop
+        #endregion Run loop
 
     }
 }
