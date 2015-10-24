@@ -332,6 +332,9 @@ namespace CocosSharp
                 }
             }
 
+            var serviceProvider = CCContentManager.SharedContentManager.ServiceProvider as GameServiceContainer;
+            serviceProvider.RemoveService(typeof(IGraphicsDeviceService));
+
             currentViewInstance = null;
 
             disposed = true;
