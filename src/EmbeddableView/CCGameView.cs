@@ -99,7 +99,15 @@ namespace CocosSharp
         public CCRenderer Renderer { get { return DrawManager != null ? DrawManager.Renderer : null; } }
         public CCAudioEngine AudioEngine { get; private set; }
         public CCActionManager ActionManager { get; private set; }
-        public CCContentManager ContentManager { get { return CCContentManager.SharedContentManager; } }
+
+        public CCContentManager ContentManager { get; private set; }
+        internal CCFontAtlasCache FontAtlasCache { get; private set; }
+        public CCSpriteFontCache SpriteFontCache { get; private set; }
+        public CCSpriteFrameCache SpriteFrameCache { get; private set; }
+        public CCParticleSystemCache ParticleSystemCache { get; private set; }
+        public CCTextureCache TextureCache { get; private set; }
+        public CCAnimationCache AnimationCache { get; private set; }
+
         public CCStats Stats { get; private set; }
 
         public bool DepthTesting
@@ -231,9 +239,11 @@ namespace CocosSharp
             AudioEngine = CCAudioEngine.SharedEngine;
             Scheduler = CCScheduler.SharedScheduler;
 
-            Stats = new CCStats ();
+            Stats = new CCStats();
 
             InitialiseGraphicsDevice();
+
+            InitialiseResourceCaches();
 
             InitialiseRunLoop();
 
@@ -262,8 +272,30 @@ namespace CocosSharp
             CCDrawManager.SharedDrawManager = DrawManager;
 
             graphicsDeviceService = new CCGraphicsDeviceService(graphicsDevice);
+        }
 
-            var serviceProvider = CCContentManager.SharedContentManager.ServiceProvider as GameServiceContainer;
+        void InitialiseResourceCaches()
+        {
+            ContentManager = new CCContentManager(new GameServiceContainer());
+            FontAtlasCache = new CCFontAtlasCache();
+            SpriteFontCache = new CCSpriteFontCache(ContentManager);
+            SpriteFrameCache = new CCSpriteFrameCache();
+            ParticleSystemCache = new CCParticleSystemCache(Scheduler);
+            TextureCache = new CCTextureCache(Scheduler);
+            AnimationCache = new CCAnimationCache();
+
+            // Link new caches to singleton instances
+            // For now, this is required because a layer's resources (e.g. sprite)
+            // may be loaded prior to a gameview being associated with that layer
+            CCContentManager.SharedContentManager = ContentManager;
+            CCFontAtlasCache.SharedFontAtlasCache = FontAtlasCache;
+            CCSpriteFontCache.SharedSpriteFontCache = SpriteFontCache;
+            CCSpriteFrameCache.SharedSpriteFrameCache = SpriteFrameCache;
+            CCParticleSystemCache.SharedParticleSystemCache = ParticleSystemCache;
+            CCTextureCache.SharedTextureCache = TextureCache;
+            CCAnimationCache.SharedAnimationCache = AnimationCache;
+
+            var serviceProvider = ContentManager.ServiceProvider as GameServiceContainer;
             serviceProvider.AddService(typeof(IGraphicsDeviceService), graphicsDeviceService);
         }
 
@@ -330,14 +362,6 @@ namespace CocosSharp
 
             var serviceProvider = CCContentManager.SharedContentManager.ServiceProvider as GameServiceContainer;
             serviceProvider.RemoveService(typeof(IGraphicsDeviceService));
-
-            CCFontAtlasCache.PurgeCachedData();
-            CCSpriteFontCache.SharedInstance.Clear();
-            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveSpriteFrames();
-            CCParticleSystemCache.PurgeSharedParticleSystemCache();
-            CCTextureCache.SharedTextureCache.RemoveAllTextures();
-            CCAnimationCache.PurgeSharedAnimationCached();
-            CCContentManager.SharedContentManager.Unload();
 
             currentViewInstance = null;
 
