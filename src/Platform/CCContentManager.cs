@@ -73,7 +73,7 @@ namespace CocosSharp
 		#endregion Asset entry private class
 
 
-        public static CCContentManager SharedContentManager = new CCContentManager(new GameServiceContainer());
+        public static CCContentManager SharedContentManager { get; internal set; }
 
 		Dictionary<string, AssetEntry> loadedAssets;
 		Dictionary<string, string> assetLookupDict = new Dictionary<string, string>();

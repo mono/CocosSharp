@@ -12,17 +12,9 @@ namespace CocosSharp
 
         #region Properties
 
-        public static CCAnimationCache SharedAnimationCache
-        {
-            get
-            {
-                if (sharedAnimationCache == null)
-                {
-                    sharedAnimationCache = new CCAnimationCache();
-                }
-
-                return sharedAnimationCache;
-            }
+        public static CCAnimationCache SharedAnimationCache {
+            get;
+            internal set;
         }
 
         public CCAnimation this[string index]
@@ -50,16 +42,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
-
-        #region Cleaning up
-
-        public static void PurgeSharedAnimationCached()
-        {
-            sharedAnimationCache = null;
-        }
-
-        #endregion Cleaning up
 
 
         public void AddAnimation(CCAnimation animation, string name)

@@ -25,8 +25,6 @@ namespace CocosSharp
 
         #endregion Structs
 
-        static CCTextureCache sharedTextureCache;
-
         List<AsyncStruct> asyncLoadedImages = new List<AsyncStruct>();
         List<DataAsyncStruct> dataAsyncLoadedImages = new List<DataAsyncStruct>();
 
@@ -36,18 +34,7 @@ namespace CocosSharp
 
         #region Properties
 
-        public static CCTextureCache SharedTextureCache
-        {
-            get 
-            {
-                if (sharedTextureCache == null) 
-                {
-                    sharedTextureCache = new CCTextureCache(new CCScheduler ());
-                }
-
-                return sharedTextureCache;
-            }
-        }
+        public static CCTextureCache SharedTextureCache { get; internal set; }
 
         Action ProcessingAction { get; set; }
         Action ProcessingDataAction { get; set; }
@@ -83,12 +70,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTextureCache() : this(CCScheduler.SharedScheduler)
-        {
-            sharedTextureCache = this;
-        }
-
-        CCTextureCache(CCScheduler scheduler)
+        internal CCTextureCache(CCScheduler scheduler)
         {
             Scheduler = scheduler;
 
@@ -183,15 +165,6 @@ namespace CocosSharp
 
 
         #region Cleaning up
-
-        public static void PurgeSharedTextureCache()
-        {
-            if(sharedTextureCache != null) 
-            {
-                sharedTextureCache.Dispose();
-                sharedTextureCache = null;
-            }
-        }
 
         // No unmanaged resources, so no need for finalizer
         public void Dispose()
@@ -355,15 +328,13 @@ namespace CocosSharp
                 assetName = CCFileUtils.RemoveExtension (assetName);
             }
 
-            lock (dictLock) {
+            lock (dictLock) 
+            {
                 textures.TryGetValue (assetName, out texture);
-            }
-            if (texture == null) {
-                texture = new CCTexture2D(fileimage);
-
-                lock(dictLock) 
+                if (texture == null) 
                 {
-                    textures[assetName] = texture;
+                    texture = new CCTexture2D (fileimage);
+                    textures [assetName] = texture;
                 }
             }
 
