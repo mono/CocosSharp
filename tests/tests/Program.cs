@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 
 #if ANDROID
 using Android.Content.PM;
@@ -141,6 +142,19 @@ namespace tests
 
             if (gameView != null) 
             {
+                CCSpriteFontCache sharedCache = gameView.SpriteFontCache;
+                sharedCache.RegisterFont("arial", 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 50, 64);
+                sharedCache.RegisterFont("MarkerFelt", 16, 18, 22, 32);
+                sharedCache.RegisterFont("MarkerFelt-Thin", 12, 18);
+                sharedCache.RegisterFont("Paint Boy", 26);
+                sharedCache.RegisterFont("Schwarzwald Regular", 26);
+                sharedCache.RegisterFont("Scissor Cuts", 26);
+                sharedCache.RegisterFont("A Damn Mess", 26);
+                sharedCache.RegisterFont("Abberancy", 26);
+                sharedCache.RegisterFont("Abduction", 26);
+
+                gameView.ContentManager.SearchPaths = new List<string>() { "", "images", "fonts" };
+
                 gameView.DesignResolution = new CCSizeI (1024, 768);
                 gameView.Stats.Enabled = true;
                 CCScene gameScene = new CCScene (gameView);
