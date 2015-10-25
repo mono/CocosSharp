@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -13,6 +14,7 @@ using OpenTK.Graphics.ES20;
 
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework;
 
 
 namespace CocosSharp
@@ -20,6 +22,7 @@ namespace CocosSharp
     public partial class CCGameView : AndroidGameView, View.IOnTouchListener, ISurfaceHolderCallback
     {
         bool startedRunning;
+
         CCAndroidScreenReceiver screenLockHandler;
         object androidViewLock = new object();
 
@@ -106,7 +109,8 @@ namespace CocosSharp
             screenLockHandler = new CCAndroidScreenReceiver(this);
             context.RegisterReceiver(screenLockHandler, filter);
 
-            Microsoft.Xna.Framework.Threading.GameView = this;
+            Threading.mainThreadId = Thread.CurrentThread.ManagedThreadId;
+            Threading.GameView = this;
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -125,12 +129,12 @@ namespace CocosSharp
         {
             lock (androidViewLock) 
             {
-                base.OnContextSet (e);
+                base.OnContextSet(e);
 
-                Initialise ();
+                Initialise();
 
                 platformInitialised = true;
-                LoadGame ();
+                LoadGame();
             }
         }
 
