@@ -187,7 +187,8 @@ namespace CocosSharp
 
         public void PauseBackgroundMusic()
         {
-            music.Pause();
+            if (music != null)
+                music.Pause();
         }
 
         public void ResumeBackgroundMusic()
@@ -226,6 +227,9 @@ namespace CocosSharp
 
         public void PauseAllEffects()
         {
+            if (disposed)
+                return;
+
             List<CCEffectPlayer> l = new List<CCEffectPlayer>();
 
             lock (list)
