@@ -80,6 +80,43 @@ ipch/
 *.psess
 *.vsp
 
+#Visual Studio files
+*.pidb
+*.userprefs
+*.[Oo]bj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+.vs/
+artifacts/
+
+# UWP project lock files
+/box2d/box2d.WindowsUWP.project.lock.json
+/src/CocosSharp.WindowsUWP.project.lock.json
+
 # ReSharper is a .NET coding add-in
 _ReSharper*
 
@@ -165,3 +202,5 @@ pip-log.txt
 # Mac crap
 .DS_Store
 /ProjectTemplates/NuGet/output
+
+
