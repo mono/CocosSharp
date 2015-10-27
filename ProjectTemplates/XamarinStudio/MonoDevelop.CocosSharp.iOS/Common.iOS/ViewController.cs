@@ -21,6 +21,22 @@ public partial class ViewController : UIViewController
 				GameView.ViewCreated += LoadGame;
 			}
 		}
+		
+		public override void ViewWillDisappear (bool animated)
+		{
+			base.ViewWillDisappear (animated);
+
+			if (GameView != null)
+				GameView.Paused = true;
+		}
+
+		public override void ViewDidAppear (bool animated)
+		{
+			base.ViewDidAppear (animated);
+
+			if (GameView != null)
+				GameView.Paused = false;
+		}
 
 		public override void DidReceiveMemoryWarning ()
 		{
