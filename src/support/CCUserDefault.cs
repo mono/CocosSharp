@@ -329,7 +329,7 @@ namespace CocosSharp
     		bool bRet = false;
 
     #if NETFX_CORE
-            using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate)))
+            using (StreamWriter writeFile = new StreamWriter(myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Create)))
     #elif WINDOWS || LINUX || MACOS || WINDOWSGL
     		using (StreamWriter writeFile = new StreamWriter(XML_FILE_NAME)) 
     #else
@@ -347,7 +347,7 @@ namespace CocosSharp
     	public void Flush()
     	{
     #if NETFX_CORE
-            using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
+            using (Stream stream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Create))
     #elif WINDOWS || LINUX || MACOS || WINDOWSGL
     		using (StreamWriter stream = new StreamWriter(XML_FILE_NAME)) 
     #else
