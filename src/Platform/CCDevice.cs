@@ -2,6 +2,8 @@
 #if ANDROID
 using Android.App;
 using Android.Util;
+using Android.Runtime;
+using Android.Views;
 #endif
 
 #if NETFX_CORE
@@ -31,12 +33,14 @@ namespace CocosSharp
 			{
 				float dpi;
 #if ANDROID
-				var display = Game.Activity.WindowManager.DefaultDisplay;
+                var context = Android.App.Application.Context;
+                var windowManager = context.GetSystemService("window").JavaCast<IWindowManager>(); 
+                var display = windowManager.DefaultDisplay;
 				var metrics = new DisplayMetrics();
 
 				display.GetMetrics(metrics);
 
-				dpi = metrics.Density * 160.0f;
+                dpi = metrics.Density * 160.0f;
 #elif NETFX_CORE
                 DisplayInformation displayInformation = DisplayInformation.GetForCurrentView();
                 dpi = displayInformation.LogicalDpi;
@@ -62,6 +66,15 @@ namespace CocosSharp
                 return (float)UIScreen.MainScreen.Scale;
 #elif MACOS
                 return NSScreen.MainScreen.BackingScaleFactor;
+#elif ANDROID
+                var context = Android.App.Application.Context;
+                var windowManager = context.GetSystemService("window").JavaCast<IWindowManager>(); 
+                var display = windowManager.DefaultDisplay;
+				var metrics = new DisplayMetrics();
+
+				display.GetMetrics(metrics);
+
+				return metrics.ScaledDensity;
 #else
                 return 1;
 #endif
