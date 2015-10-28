@@ -425,7 +425,7 @@ namespace CocosSharp
 
                 float loadedSize = fontSize;
 
-                SpriteFont font = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
+                SpriteFont font = CCSpriteFontCache.SharedSpriteFontCache.TryLoadFont(fontName, fontSize, out loadedSize);
 
                 if (font == null)
                 {
@@ -437,7 +437,7 @@ namespace CocosSharp
 
                 if (loadedSize != 0)
                 {
-                    scale = fontSize / loadedSize * CCSpriteFontCache.FontScale;
+                    scale = fontSize / loadedSize * CCSpriteFontCache.SharedSpriteFontCache.FontScale;
                 }
 
                 if (dimensions.Equals(CCSize.Zero))

@@ -4,11 +4,28 @@ using System.Text;
 
 namespace CocosSharp
 {
-    internal static class CCFontAtlasCache
+    internal class CCFontAtlasCache
     {
-        static Dictionary<string, CCFontAtlas> atlasMap = new Dictionary<string, CCFontAtlas> ();
+        Dictionary<string, CCFontAtlas> atlasMap;
 
-        public static void PurgeCachedData () 
+        #region Properties
+
+        public static CCFontAtlasCache SharedFontAtlasCache { get; internal set; }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCFontAtlasCache()
+        {
+            atlasMap = new Dictionary<string, CCFontAtlas>();
+        }
+
+        #endregion Constructors
+
+
+        public void PurgeCachedData() 
         {
             foreach (var atlas in atlasMap.Values)
             {
@@ -18,8 +35,7 @@ namespace CocosSharp
             atlasMap.Clear();
         }
 
-
-        static string GenerateFontName (string fontFileName, int size, GlyphCollection type, bool useDistanceField)
+        string GenerateFontName(string fontFileName, int size, GlyphCollection type, bool useDistanceField)
         {
             var tempName = new StringBuilder(fontFileName);
 
@@ -34,7 +50,7 @@ namespace CocosSharp
             return tempName.ToString();
         }
 
-        public static CCFontAtlas GetFontAtlasFNT (string fontFileName, CCVector2 imageOffset = default(CCVector2))
+        public CCFontAtlas GetFontAtlasFNT (string fontFileName, CCVector2 imageOffset = default(CCVector2))
         {
             string atlasName = GenerateFontName(fontFileName, 0, GlyphCollection.Custom,false);
             var atlasAlreadyExists = atlasMap.ContainsKey(atlasName);
@@ -61,7 +77,7 @@ namespace CocosSharp
             return null;
         }
 
-        public static CCFontAtlas GetFontAtlasFNT(CCFontFNT font, CCVector2 imageOffset = default(CCVector2))
+        public CCFontAtlas GetFontAtlasFNT(CCFontFNT font, CCVector2 imageOffset = default(CCVector2))
         {
             if (font != null)
             {
@@ -78,7 +94,7 @@ namespace CocosSharp
             return null;
         }
 
-        public static CCFontAtlas GetFontAtlasSpriteFont (string fontFileName, float fontSize, CCVector2 imageOffset = default(CCVector2))
+        public CCFontAtlas GetFontAtlasSpriteFont (string fontFileName, float fontSize, CCVector2 imageOffset = default(CCVector2))
         {
             string atlasName = GenerateFontName(fontFileName, (int)fontSize, GlyphCollection.Custom,false);
             var atlasAlreadyExists = atlasMap.ContainsKey(atlasName);
@@ -100,7 +116,6 @@ namespace CocosSharp
             {
                 return atlasMap[atlasName];
             }
-
 
             return null;
         }

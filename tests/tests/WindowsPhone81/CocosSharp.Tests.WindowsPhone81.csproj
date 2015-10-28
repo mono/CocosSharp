@@ -104,6 +104,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPage.xaml.cs" />
     <Compile Include="NotFiniteNumberException.cs" />
     <Compile Include="..\..\..\tests\tests\Properties\AssemblyInfo.cs">
       <Link>Properties\AssemblyInfo.cs</Link>
@@ -147,6 +148,12 @@
       <Link>Content\TileMaps\iso-test-zorder1.tmx</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <Import Project="..\classes\CocosSharp.Tests.Common.projitems" Label="Shared" />
   <Import Project="..\classes\CocosSharp.Tests.Mobile.projitems" Label="Shared" />

@@ -78,7 +78,7 @@ namespace CocosSharp
                 spriteFontName = fontName;
                 float loadedSize;
 
-                spriteFont = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
+                spriteFont = CCSpriteFontCache.SharedSpriteFontCache.TryLoadFont(fontName, fontSize, out loadedSize);
 
                 if (spriteFont == null)
                 {

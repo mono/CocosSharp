@@ -437,7 +437,7 @@ namespace CocosSharp
 
         void GraphicsDeviceDeviceResetting(object sender, EventArgs e)
         {
-            CCSpriteFontCache.SharedInstance.Clear();
+            CCSpriteFontCache.SharedSpriteFontCache.Clear();
             #if XNA
             CCContentManager.SharedContentManager.ReloadGraphicsAssets();
             #endif

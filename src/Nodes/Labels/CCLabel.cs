@@ -685,7 +685,7 @@ namespace CocosSharp
 
             try
             {
-                FontAtlas = CCFontAtlasCache.GetFontAtlasFNT(fntFontConfig);
+                FontAtlas = CCFontAtlasCache.SharedFontAtlasCache.GetFontAtlasFNT(fntFontConfig);
             }
             catch { }
 
@@ -855,7 +855,7 @@ namespace CocosSharp
             {
                 try
                 {
-                    FontAtlas = CCFontAtlasCache.GetFontAtlasFNT(fntFile, imageOffset);
+                    FontAtlas = CCFontAtlasCache.SharedFontAtlasCache.GetFontAtlasFNT(fntFile, imageOffset);
                 }
                 catch {}
 
@@ -922,7 +922,7 @@ namespace CocosSharp
             {
                 try
                 {
-                    FontAtlas = CCFontAtlasCache.GetFontAtlasSpriteFont(fntFile, fontSize, imageOffset);
+                    FontAtlas = CCFontAtlasCache.SharedFontAtlasCache.GetFontAtlasSpriteFont(fntFile, fontSize, imageOffset);
                     Scale = FontAtlas.Font.FontScale;
                 }
                 catch {}

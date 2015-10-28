@@ -27,16 +27,7 @@ namespace CocosSharp
 
 		#region Properties
 
-		public static CCParticleSystemCache SharedParticleSystemCache
-		{
-			get
-			{
-				if (sharedParticleSystemCache == null)
-					sharedParticleSystemCache = new CCParticleSystemCache(new CCScheduler());
-
-				return sharedParticleSystemCache;
-			}
-		}
+		public static CCParticleSystemCache SharedParticleSystemCache { get; internal set; }
 
 
 		object Task { get; set; }
@@ -97,7 +88,7 @@ namespace CocosSharp
             sharedParticleSystemCache = this;
 		}
 
-		CCParticleSystemCache(CCScheduler scheduler)
+		internal CCParticleSystemCache(CCScheduler scheduler)
 		{
 			Scheduler = scheduler;
 

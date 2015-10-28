@@ -8,24 +8,13 @@ namespace CocosSharp
 {
     public class CCSpriteFrameCache
     {
-        static CCSpriteFrameCache sharedSpriteFrameCache;
-
         Dictionary<string, CCSpriteFrame> spriteFrames;
         Dictionary<string, string> spriteFramesAliases;
 
 
         #region Properties
 
-        public static CCSpriteFrameCache SharedSpriteFrameCache 
-        {
-            get 
-            {
-                if (sharedSpriteFrameCache == null)
-                    sharedSpriteFrameCache = new CCSpriteFrameCache();
-
-                return sharedSpriteFrameCache;
-            }
-        }
+        public static CCSpriteFrameCache SharedSpriteFrameCache { get; internal set; }
 
         // When false, an exception is thrown if an animation frame is overwritten.
         public bool AllowFrameOverwrite { get; set; }
@@ -66,16 +55,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
-
-        #region Cleaning up
-
-        public static void PurgeSharedSpriteFrameCache()
-        {
-            sharedSpriteFrameCache = null;
-        }
-
-        #endregion Cleaning up
 
 
         #region Adding frames

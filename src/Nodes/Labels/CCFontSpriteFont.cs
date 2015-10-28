@@ -39,7 +39,7 @@ namespace CocosSharp
         internal override CCFontAtlas CreateFontAtlas()
         {
             float loadedSize = fontSize;
-            SpriteFont font = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
+            SpriteFont font = CCSpriteFontCache.SharedSpriteFontCache.TryLoadFont(fontName, fontSize, out loadedSize);
             if (font == null)
             {
                 return null;
@@ -52,7 +52,7 @@ namespace CocosSharp
 
             if (loadedSize != 0)
             {
-                fontScale = fontSize / loadedSize * CCSpriteFontCache.FontScale;
+                fontScale = fontSize / loadedSize * CCSpriteFontCache.SharedSpriteFontCache.FontScale;
             }
 
             var atlas = new CCFontAtlas(this);

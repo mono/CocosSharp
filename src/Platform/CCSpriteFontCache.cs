@@ -20,23 +20,18 @@ namespace CocosSharp
         #endregion Structs
 
         public static string DefaultFont = "arial";
-
-        static CCSpriteFontCache instance = new CCSpriteFontCache();
-        static ContentManager contentManager;
         public static string FontRoot = "fonts";
 
-        static Dictionary<string, int[]> registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
-        static Dictionary<string, FontMapEntry> loadedFontsMap = new Dictionary<string, FontMapEntry>();
+        CCContentManager contentManager;
+        Dictionary<string, int[]> registeredFonts;
+        Dictionary<string, FontMapEntry> loadedFontsMap;
 
 
         #region Properties
 
-        public static CCSpriteFontCache SharedInstance
-        {
-            get { return instance; }
-        }
+        public static CCSpriteFontCache SharedSpriteFontCache { get; internal set; }
 
-        public static float FontScale { get; set; }
+        public float FontScale { get; set; }
 
         public SpriteFont this[string fontName]
         {
@@ -59,22 +54,19 @@ namespace CocosSharp
 
         #region Constructors
 
-        static CCSpriteFontCache()
+        internal CCSpriteFontCache(CCContentManager cm)
         {
-            var cm = CCContentManager.SharedContentManager;
-            //contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
-            contentManager = new ContentManager(cm.ServiceProvider, cm.RootDirectory);
             FontScale = 1.0f;
-        }
 
-        CCSpriteFontCache()
-        {
-            // You don't create this, we do.
+            registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
+            loadedFontsMap = new Dictionary<string, FontMapEntry>();
+            contentManager = new CCContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
         }
 
         #endregion Constructors
 
-        public static void RegisterFont(string fontName, params int[] sizes)
+
+        public void RegisterFont(string fontName, params int[] sizes)
         {
             Array.Sort(sizes);
             registeredFonts[fontName] = sizes;
