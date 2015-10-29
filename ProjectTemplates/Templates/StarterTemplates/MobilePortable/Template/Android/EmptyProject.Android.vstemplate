@@ -51,7 +51,7 @@
 	<WizardData>
 		<packages repository="extension"
 			  repositoryId="Xamarin.CocosSharpTemplates">
-			<package id="CocosSharp.PCL.Shared" version="1.7.0.0-pre1" />
+			<package id="CocosSharp" version="1.7.0.0-pre1" />
 		</packages>
 	</WizardData>
 </VSTemplate>
