@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC1DF8F5-48B4-44F9-A6E3-0F71D061321C}</ProjectGuid>
+    <ProjectGuid>$guid1$</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CocosSharp.Tests.WindowsPhone81</RootNamespace>
-    <AssemblyName>CocosSharp.Tests.WindowsPhone81</AssemblyName>
+    <RootNamespace>$safeprojectname$</RootNamespace>
+    <AssemblyName>$safeprojectname$</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>
@@ -85,10 +85,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="IntroLayer.cs" />
-    <Compile Include="GamePage.xaml.cs">
-      <DependentUpon>GamePage.xaml</DependentUpon>
+    <Compile Include="GameLayer.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -97,7 +96,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="GamePage.xaml">
+    <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,7 +107,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\fonts\MarkerFelt-22.xnb" />
+    <Content Include="Content\Fonts\MarkerFelt-22.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Logo.scale-240.png" />
@@ -119,13 +118,10 @@
     <Content Include="Assets\WideLogo.scale-240.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\hd\images" />
-    <Folder Include="Content\hd\animations" />
-    <Folder Include="Content\hd\fonts" />
-    <Folder Include="Content\ld\images" />
-    <Folder Include="Content\ld\animations" />
-    <Folder Include="Content\ld\fonts" />
-    <Folder Include="Content\sounds" />
+    <Folder Include="Content\Fonts" />
+    <Folder Include="Content\Images\Hd" />
+    <Folder Include="Content\Images\Ld" />
+    <Folder Include="Content\Sounds" />
   </ItemGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->

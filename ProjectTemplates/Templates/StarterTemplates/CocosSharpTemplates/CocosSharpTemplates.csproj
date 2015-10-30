@@ -97,11 +97,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\Wp8\Template\bin\EmptyProject.WP8.zip">
-      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.WP8.zip</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
     <Content Include="..\Wp81\Template\bin\EmptyProject.WP81.zip">
       <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.WP81.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UIKit;
 
 using CocosSharp;
-using $ext_projectname$.Shared;
+using $ext_projectname$;
 
 
 namespace $safeprojectname$
