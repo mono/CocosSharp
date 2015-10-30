@@ -14,8 +14,8 @@
   <TemplateContent>
     <Project File="EmptyProject.Shared.shproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="EmptyProject.Shared.projitems">EmptyProject.Shared.projitems</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="AppDelegate.cs">AppDelegate.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="IntroLayer.cs">IntroLayer.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GameDelegate.cs">GameDelegate.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GameLayer.cs">GameLayer.cs</ProjectItem>
     </Project>
   </TemplateContent>
 </VSTemplate>

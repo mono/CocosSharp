@@ -9,7 +9,7 @@
     <Import_RootNamespace>$ext_safeprojectname$</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)AppDelegate.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IntroLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameDelegate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameLayer.cs" />
   </ItemGroup>
 </Project>

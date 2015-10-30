@@ -1,18 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using CocosSharp;
 using Microsoft.Xna.Framework;
 
 namespace $safeprojectname$
 {
-    public class IntroLayer : CCLayerColor
+    public class GameLayer : CCLayerColor
     {
 
         // Define a label variable
         CCLabel label;
 
-        public IntroLayer()
-            : base(CCColor4B.Blue)
+        public GameLayer() : base(CCColor4B.Blue)
         {
 
             // create and initialize a Label
@@ -46,6 +45,6 @@ namespace $safeprojectname$
                 // Perform touch handling here
             }
         }
-    }
+	}
 }
 
