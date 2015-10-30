@@ -1321,13 +1321,10 @@ namespace CocosSharp {
         public bool IsDown;
         public float Magnitude;
     }
-    [MonoMac.Foundation.RegisterAttribute("CCGameView")]
-    [System.ComponentModel.DesignTimeVisibleAttribute(true)]
-    Unable to resolve assembly 'Assembly(Name=XamMac, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065)' referenced by 'Assembly(Name=CocosSharp, Version=1.7.0.0, Culture=neutral, PublicKeyToken=null, Location=CocosSharp.dll)'.
-    public partial class CCGameView : MonoMac.OpenGL.MonoMacGameView, System.IDisposable {
-        [MonoMac.Foundation.ExportAttribute("initWithFrame:")]
-        public CCGameView(System.Drawing.RectangleF frame) { }
-        public CCGameView(System.Drawing.RectangleF frame, MonoMac.AppKit.NSOpenGLContext context) { }
+
+    public partial class CCGameView : System.IDisposable
+    {
+        public CCGameView() { }
         public CocosSharp.CCActionManager ActionManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCActionManager); } }
         public CocosSharp.CCAnimationCache AnimationCache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAnimationCache); } }
         public CocosSharp.CCAudioEngine AudioEngine { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAudioEngine); } }
@@ -1336,8 +1333,6 @@ namespace CocosSharp {
         public bool DepthTesting { get { return default(bool); } set { } }
         public CocosSharp.CCSizeI DesignResolution { get { return default(CocosSharp.CCSizeI); } set { } }
         public CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } }
-        public bool IsMouseVisible { get { return default(bool); } set { } }
-        public bool MouseEnabled { get { return default(bool); } set { } }
         public CocosSharp.CCParticleSystemCache ParticleSystemCache { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCParticleSystemCache); } }
         public bool Paused { get { return default(bool); } set { } }
         public CocosSharp.CCRenderer Renderer { get { return default(CocosSharp.CCRenderer); } }
@@ -1351,27 +1346,11 @@ namespace CocosSharp {
         public CocosSharp.CCRect ViewportRectRatio { get { return default(CocosSharp.CCRect); } set { } }
         public CocosSharp.CCSizeI ViewSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSizeI); } }
         public event System.EventHandler<System.EventArgs> ViewCreated { add { } remove { } }
-        public override bool AcceptsFirstResponder() { return default(bool); }
         public void Dispose() { }
-        protected override void Dispose(bool disposing) { }
         ~CCGameView() { }
-        public override void MouseDown(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void MouseDragged(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void MouseEntered(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void MouseExited(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void MouseMoved(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void MouseUp(MonoMac.AppKit.NSEvent theEvent) { }
-        protected override void OnResize(System.EventArgs e) { }
         public void PlatformUpdatePaused() { }
-        public override void ResetCursorRects() { }
-        public override void RightMouseDown(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void RightMouseDragged(MonoMac.AppKit.NSEvent theEvent) { }
-        public override void RightMouseUp(MonoMac.AppKit.NSEvent theEvent) { }
         public void RunWithScene(CocosSharp.CCScene scene) { }
-        public override void ScrollWheel(MonoMac.AppKit.NSEvent theEvent) { }
         public void StartGame() { }
-        public override void UpdateTrackingAreas() { }
-        public override void ViewDidMoveToWindow() { }
     }
     public partial class CCGeometryInstance {
         internal CCGeometryInstance() { }
