@@ -1,55 +1,58 @@
-using System.Reflection;
-using Microsoft.Xna.Framework;
-using CocosSharp;
-using CocosDenshion;
+using Foundation;
+using UIKit;
 
 namespace $safeprojectname$
 {
-    public class AppDelegate : CCApplicationDelegate
+    // The UIApplicationDelegate for the application. This class is responsible for launching the
+    // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
+    [Register("AppDelegate")]
+    public class AppDelegate : UIApplicationDelegate
     {
+        // class-level declarations
 
-        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
+        public override UIWindow Window
         {
-            application.ContentRootDirectory = "Content";
-            var windowSize = mainWindow.WindowSizeInPixels;
-
-            var desiredWidth = 1024.0f;
-            var desiredHeight = 768.0f;
-            
-            // This will set the world bounds to be (0,0, w, h)
-            // CCSceneResolutionPolicy.ShowAll will ensure that the aspect ratio is preserved
-            CCScene.SetDefaultDesignResolution(desiredWidth, desiredHeight, CCSceneResolutionPolicy.ShowAll);
-            
-            // Determine whether to use the high or low def versions of our images
-            // Make sure the default texel to content size ratio is set correctly
-            // Of course you're free to have a finer set of image resolutions e.g (ld, hd, super-hd)
-            if (desiredWidth < windowSize.Width)
-            {
-                application.ContentSearchPaths.Add("hd");
-                CCSprite.DefaultTexelToContentSizeRatio = 2.0f;
-            }
-            else
-            {
-                application.ContentSearchPaths.Add("ld");
-                CCSprite.DefaultTexelToContentSizeRatio = 1.0f;
-            }
-            
-            var scene = new CCScene(mainWindow);
-            var introLayer = new IntroLayer();
-
-            scene.AddChild(introLayer);
-
-            mainWindow.RunWithScene(scene);
+            get;
+            set;
         }
 
-        public override void ApplicationDidEnterBackground(CCApplication application)
+        public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            application.Paused = true;
+            // Override point for customization after application launch.
+            // If not required for your application you can safely delete this method
+
+            return true;
         }
 
-        public override void ApplicationWillEnterForeground(CCApplication application)
+        public override void OnResignActivation(UIApplication application)
         {
-            application.Paused = false;
+            // Invoked when the application is about to move from active to inactive state.
+            // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) 
+            // or when the user quits the application and it begins the transition to the background state.
+            // Games should use this method to pause the game.
+        }
+
+        public override void DidEnterBackground(UIApplication application)
+        {
+            // Use this method to release shared resources, save user data, invalidate timers and store the application state.
+            // If your application supports background exection this method is called instead of WillTerminate when the user quits.
+        }
+
+        public override void WillEnterForeground(UIApplication application)
+        {
+            // Called as part of the transiton from background to active state.
+            // Here you can undo many of the changes made on entering the background.
+        }
+
+        public override void OnActivated(UIApplication application)
+        {
+            // Restart any tasks that were paused (or not yet started) while the application was inactive. 
+            // If the application was previously in the background, optionally refresh the user interface.
+        }
+
+        public override void WillTerminate(UIApplication application)
+        {
+            // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
         }
     }
 }
