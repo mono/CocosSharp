@@ -26,7 +26,7 @@
         </Project>
 
         <Project name = "${ProjectName}" directory = "." type = "PortableDotNet" if = "CreatePortableDotNetProject" >
-            <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile136"/>
+            <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile111"/>
             <Files>
                 <File name="${ProjectName}.cs" AddStandardHeader="True" src="../Common.Forms/App.cs" />
                 <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />

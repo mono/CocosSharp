@@ -4,9 +4,9 @@ using CocosSharp;
 
 namespace ${SolutionName}
 {
-    public class ${Name} : CCLayer
+    public class ${Name} : CCLayerColor
     {
-        public ${Name}()
+        public ${Name}() : base (CCColor4B.AliceBlue)
         {
             // Load and instantate your assets here
 
