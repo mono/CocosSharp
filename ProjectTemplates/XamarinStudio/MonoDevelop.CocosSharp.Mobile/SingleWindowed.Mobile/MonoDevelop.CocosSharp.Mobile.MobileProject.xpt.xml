@@ -43,9 +43,7 @@
                     <Directory name="Sounds"></Directory>
                 </Directory>
                 
-                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" if="UseUniversal"/>
-                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPhone.plist.xml" if="UseIPhone"/>
-                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_iPad.plist.xml" if="UseIPad"/>
+                <File name="Info.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Info_Universal.plist.xml" />
                 <File name="Entitlements.plist" AddStandardHeader="False" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Entitlements.plist.xml" />
                 <File name="Main.cs" AddStandardHeader="True" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/Main.cs" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../../MonoDevelop.CocosSharp.iOS/Common.iOS/AppDelegate.cs" />
