@@ -5,17 +5,17 @@ using Microsoft.Xna.Framework;
 
 namespace $safeprojectname$
 {
-    public class IntroLayer : CCLayerColor
+    public class GameLayer : CCLayerColor
     {
 
         // Define a label variable
         CCLabel label;
 
-        public IntroLayer() : base(CCColor4B.Blue)
+        public GameLayer() : base(CCColor4B.Blue)
         {
 
             // create and initialize a Label
-            label = new CCLabel("Hello CocosSharp", "fonts/MarkerFelt", 22, CCLabelFormat.SpriteFont);
+            label = new CCLabel("Hello CocosSharp", "Fonts/MarkerFelt", 22, CCLabelFormat.SpriteFont);
 
             // add the label as a child to this Layer
             AddChild(label);
