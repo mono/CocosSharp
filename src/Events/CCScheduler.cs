@@ -205,17 +205,12 @@ namespace CocosSharp
 		}
 
 
-        internal static CCScheduler SharedScheduler { get; private set; }
+        internal static CCScheduler SharedScheduler { get; set; }
 
 		#endregion Properties
 
 
 		#region Constructors
-
-        static CCScheduler()
-        {
-            SharedScheduler = new CCScheduler();
-        }
 
         internal CCScheduler(CCActionManager actionManager = null)
 		{

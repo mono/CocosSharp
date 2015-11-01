@@ -236,8 +236,13 @@ namespace CocosSharp
             ActionManager = new CCActionManager();
             Director = new CCDirector();
             EventDispatcher = new CCEventDispatcher(this);
-            AudioEngine = CCAudioEngine.SharedEngine;
-            Scheduler = CCScheduler.SharedScheduler;
+            AudioEngine = new CCAudioEngine();
+            Scheduler = new CCScheduler();
+
+            // Latest instance of game view should be setting shared resources
+            // Ideally, we should move towards removing these singletons altogetehr
+            CCAudioEngine.SharedEngine = AudioEngine;
+            CCScheduler.SharedScheduler = Scheduler;
 
             Stats = new CCStats();
 

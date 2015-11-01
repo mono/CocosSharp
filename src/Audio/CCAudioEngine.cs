@@ -21,7 +21,6 @@ namespace CocosSharp
     public class CCAudioEngine : IDisposable
     {
         internal static readonly string[] AllowedTypesMac = { "m4a", "aac", "mp3", "wav", "aifc", "caf" };
-        static CCAudioEngine instance = new CCAudioEngine();
 
         bool disposed;
 
@@ -35,10 +34,7 @@ namespace CocosSharp
 
         #region Properties
 
-        public static CCAudioEngine SharedEngine
-        {
-            get { return instance; }
-        }
+        public static CCAudioEngine SharedEngine { get; internal set; }
 
         public bool BackgroundMusicPlaying
         {
@@ -193,12 +189,14 @@ namespace CocosSharp
 
         public void ResumeBackgroundMusic()
         {
-            music.Resume();
+            if (music != null)
+                music.Resume();
         }
 
         public void RewindBackgroundMusic()
         {
-            music.Rewind();
+            if (music != null)
+                music.Rewind();
         }
 
         public bool WillPlayBackgroundMusic()
