@@ -24,6 +24,9 @@ namespace CocosSharp
         public static readonly BindableProperty ResolutionPolicyProperty = 
             BindableProperty.Create<CocosSharpView, ViewResolutionPolicy> (p=> p.ResolutionPolicy, ViewResolutionPolicy.ShowAll);
 
+        public static readonly BindableProperty PausedProperty =
+            BindableProperty.Create<CocosSharpView, bool> (p=> p.Paused, false);
+
 
         #region Bindable properties
 
@@ -43,6 +46,12 @@ namespace CocosSharp
         {
             get { return (Size) GetValue (DesignResolutionProperty); }
             set { SetValue (DesignResolutionProperty, value); }
+        }
+
+        public bool Paused
+        {
+            get { return (bool) GetValue (PausedProperty); }
+            set { SetValue (PausedProperty, value); }
         }
 
         #endregion Bindable properties

@@ -49,13 +49,14 @@ namespace CocosSharp
             base.OnElementPropertyChanged (sender, e);
             if (this.Element == null || this.Control == null)
                 return;
-
             else if (e.PropertyName == CocosSharpView.ViewCreatedProperty.PropertyName)
                 Control.ViewCreated += Element.ViewCreated;
             else if (e.PropertyName == CocosSharpView.DesignResolutionProperty.PropertyName)
                 Control.DesignResolution = Element.DesignResolution.NativeSize ();
             else if (e.PropertyName == CocosSharpView.ResolutionPolicyProperty.PropertyName)
-                Control.ResolutionPolicy = Element.ResolutionPolicy.NativePolicy();
+                Control.ResolutionPolicy = Element.ResolutionPolicy.NativePolicy ();
+            else if (e.PropertyName == CocosSharpView.PausedProperty.PropertyName)
+                Control.Paused = Element.Paused;
         }
 
         void CommonOnElementChanged(CCGameView nativeView)
