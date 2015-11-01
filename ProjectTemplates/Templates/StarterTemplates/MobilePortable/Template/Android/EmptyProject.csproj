@@ -44,45 +44,38 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="OpenTK" />
+    <Reference Include="OpenTK-1.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs">
+    <Compile Include="MainActivity.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-22.xnb" />
+    <AndroidAsset Include="Assets\Content\Fonts\MarkerFelt-22.xnb" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\Content\hd\images" />
-    <Folder Include="Assets\Content\hd\animations" />
-    <Folder Include="Assets\Content\hd\fonts" />
-    <Folder Include="Assets\Content\ld\images" />
-    <Folder Include="Assets\Content\ld\animations" />
-    <Folder Include="Assets\Content\ld\fonts" />
-    <Folder Include="Assets\Content\sounds" />
-    <Folder Include="Resources\Layout\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Values\Styles.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\icon.png" />
+    <Folder Include="Assets\Content\Fonts\" />
+    <Folder Include="Assets\Content\Images\Ld\" />
+    <Folder Include="Assets\Content\Images\Hd\" />
+    <Folder Include="Assets\Content\Sounds\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\$ext_projectname$\$ext_projectname$.csproj">
