@@ -20,7 +20,6 @@ namespace CocosSharp
         #endregion Structs
 
         public static string DefaultFont = "arial";
-        public static string FontRoot = "fonts";
 
         CCContentManager contentManager;
         Dictionary<string, int[]> registeredFonts;
@@ -60,7 +59,7 @@ namespace CocosSharp
 
             registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
             loadedFontsMap = new Dictionary<string, FontMapEntry>();
-            contentManager = new CCContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
+            contentManager = cm;
         }
 
         #endregion Constructors
