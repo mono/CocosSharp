@@ -28,15 +28,15 @@
 
     <call target="buildphysics"/>
     <call target="buildPCL"/>
-    <call target="buildwindows"/>
+    <!--call target="buildwindows"/-->
     <call target="buildpipeline"/>
     <!--call target="buildwindowsphone8"/-->
     <call target="buildwindowsphone81"/>
     <call target="buildios"/>
-    <call target="buildmac"/>
+    <!--call target="buildmac"/-->
     <call target="buildandroid"/>
     <!--call target="buildwindows8"/-->
-    <call target="buildwindows81"/>
+    <!--call target="buildwindows81"/-->
 	<call target="buildforms" />
     <call target="buildnugets"/>
     <call target="buildXStemplates" />
@@ -218,19 +218,19 @@
       
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Forms.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
 
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.DX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.DX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.GL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.Wrench.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
 
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows81.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone81.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows81.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsPhone81.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' /-->
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.ContentBuild.Windows.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath .\' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
     </if>
     <if test="${os == 'MacOS'}">
 
