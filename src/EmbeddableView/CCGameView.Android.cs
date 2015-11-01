@@ -188,6 +188,19 @@ namespace CocosSharp
             context.UnregisterReceiver(screenLockHandler);
         }
 
+        bool PlatformCanDisposeGraphicsDevice()
+        {
+            bool canDispose = true;
+
+            try {
+                MakeCurrent();
+            } catch (Exception) {
+                canDispose = false;
+            }
+
+            return canDispose;
+        }
+
         #endregion Cleaning up
 
 

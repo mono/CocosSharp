@@ -350,6 +350,10 @@ namespace CocosSharp
 
             PlatformDispose(disposing);
 
+            // We can't guarantee when Dispose will be called, so
+            // check if we can safely attempt to dispose of graphics device
+            bool canDisposeGraphics = PlatformCanDisposeGraphicsDevice();
+
             if (disposing) 
             {
                 if (AudioEngine != null)
@@ -358,7 +362,7 @@ namespace CocosSharp
                     AudioEngine = null;
                 }
 
-                if (graphicsDevice != null)
+                if (graphicsDevice != null && canDisposeGraphics)
                 {
                     graphicsDevice.Dispose();
                     graphicsDevice = null;
@@ -372,7 +376,10 @@ namespace CocosSharp
 
             disposed = true;
 
-            base.Dispose(disposing);
+            // If the graphics context is lost, then it's probably not safe to call
+            // the native view's base Dispose method which would rely on an active context
+            if (canDisposeGraphics)
+                base.Dispose(disposing);
         }
 
         // MonoGame maintains static references to the underlying context, and more generally, 

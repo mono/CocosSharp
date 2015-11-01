@@ -240,6 +240,19 @@ namespace CocosSharp
                 NSNotificationCenter.DefaultCenter.RemoveObserver(foregroundObserver);
         }
 
+        bool PlatformCanDisposeGraphicsDevice()
+        {
+            bool canDispose = true;
+
+            try {
+                MakeCurrent();
+            } catch (Exception) {
+                canDispose = false;
+            }
+
+            return canDispose;
+        }
+
         protected override void DestroyFrameBuffer()
         {
             MakeCurrent();
