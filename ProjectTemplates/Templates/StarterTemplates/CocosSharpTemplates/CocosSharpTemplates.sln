@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpTemplates", "CocosSharpTemplates.csproj", "{6CE6388D-DD88-4EB9-9566-91081FA29D82}"
 EndProject
@@ -54,11 +54,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsGL", "WindowsGL", "{
 		..\WindowsGL\Template\EmptyProject.WindowsGL.vstemplate = ..\WindowsGL\Template\EmptyProject.WindowsGL.vstemplate
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WP8", "WP8", "{6BAA23EE-B28D-4373-B020-D98C33DAE314}"
-	ProjectSection(SolutionItems) = preProject
-		..\WP8\Template\EmptyProject.WP8.vstemplate = ..\WP8\Template\EmptyProject.WP8.vstemplate
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WP81", "WP81", "{B2817662-2E31-4ED3-A8D4-147DE2F1519D}"
 	ProjectSection(SolutionItems) = preProject
 		..\WP81\Template\EmptyProject.WP81.vstemplate = ..\WP81\Template\EmptyProject.WP81.vstemplate
@@ -97,7 +92,6 @@ Global
 		{C3992C61-1DB4-4D7B-8714-C4708250A3AC} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{2E637AF2-1E9C-4A2A-886D-648C3ECA09DB} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{2805EA7C-3D88-4A63-AD74-54304378BC3E} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
-		{6BAA23EE-B28D-4373-B020-D98C33DAE314} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{B2817662-2E31-4ED3-A8D4-147DE2F1519D} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{E32EC7CC-2B3E-460D-AF16-DC7560267023} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{2D96DDCA-8EFF-4C4B-983A-877C472C7076} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
