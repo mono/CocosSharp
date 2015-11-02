@@ -89,6 +89,7 @@
         <Import file    ="MonoDevelop.CocosSharp.Forms/iOS.Forms/Main.cs" />
 
         <Import file    ="MonoDevelop.CocosSharp.Forms/Common.Forms/App.cs" />
+        <Import file    ="MonoDevelop.CocosSharp.Forms/Common.Forms/GamePage.cs" />
 
         <!---Common files -->
         <Import file    ="Common/MonoDevelop.CocosSharp.NewLayer.xft.xml" />

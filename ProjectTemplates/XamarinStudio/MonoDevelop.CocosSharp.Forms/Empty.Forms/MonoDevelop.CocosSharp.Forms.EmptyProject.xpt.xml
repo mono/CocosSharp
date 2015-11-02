@@ -21,6 +21,7 @@
         <Project name = "${ProjectName}" directory = "." type = "SharedAssetsProject" if = "CreateSharedAssetsProject">
             <Files>
                 <File name="${ProjectName}.cs" AddStandardHeader="True" src="../Common.Forms/App.cs" />
+                <File name="GamePage.cs" AddStandardHeader="True" src="../Common.Forms/GamePage.cs" />
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
             </Files>
         </Project>
@@ -29,6 +30,7 @@
             <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile111"/>
             <Files>
                 <File name="${ProjectName}.cs" AddStandardHeader="True" src="../Common.Forms/App.cs" />
+                <File name="GamePage.cs" AddStandardHeader="True" src="../Common.Forms/GamePage.cs" />
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/EmptyLayer.cs" />
                 <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
             </Files>
