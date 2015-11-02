@@ -1,6 +1,6 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="ProjectGroup">
   <TemplateData>
-    <Name>Empty Game - Mobile Portable</Name>
+    <Name>CocosSharp Game (Portable)</Name>
     <Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for a PCL project containing Windows Phone 8.1, iOS and Android.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>

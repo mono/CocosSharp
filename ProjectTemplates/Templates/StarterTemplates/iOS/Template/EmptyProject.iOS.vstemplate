@@ -1,6 +1,6 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
 	<TemplateData>
-		<Name>CocosSharp Empty Game iOS</Name>
+		<Name>CocosSharp Game (iOS)</Name>
 		<Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for iOS.</Description>
 		<ProjectType>CSharp</ProjectType>
 		<ProjectSubType>

@@ -73,42 +73,62 @@
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\Android\Template\bin\EmptyProject.Android.zip">
-      <Link>ProjectTemplates\CocosSharp\Android\EmptyProject.Android.zip</Link>
+      <Link>ProjectTemplates\Android\EmptyProject.Android.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\Android\Template\bin\EmptyProject.Android.zip">
+      <Link>ProjectTemplates\CocosSharp\EmptyProject.Android.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\iOS\Template\bin\EmptyProject.iOS.zip">
-      <Link>ProjectTemplates\CocosSharp\iOS\EmptyProject.iOS.zip</Link>
+      <Link>ProjectTemplates\iOS\Universal\EmptyProject.iOS.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="..\Win81XAML\Template\bin\EmptyProject.Win81XAML.zip">
+    <Content Include="..\iOS\Template\bin\EmptyProject.iOS.zip">
+      <Link>ProjectTemplates\CocosSharp\EmptyProject.iOS.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>    
+    <!--Content Include="..\Win81XAML\Template\bin\EmptyProject.Win81XAML.zip">
       <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.Win81XAML.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="..\Windows81\Template\bin\EmptyProject.Windows81.zip">
+    </Content-->
+    <!--Content Include="..\Windows81\Template\bin\EmptyProject.Windows81.zip">
       <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.Windows81.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <Content Include="..\WindowsDX\Template\bin\EmptyProject.WindowsDX.zip">
+    </Content-->
+    <!--Content Include="..\WindowsDX\Template\bin\EmptyProject.WindowsDX.zip">
       <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.WindowsDX.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
+    </Content-->
     <Content Include="..\Wp81\Template\bin\EmptyProject.WP81.zip">
-      <Link>ProjectTemplates\CocosSharp\Windows\EmptyProject.WP81.zip</Link>
+      <Link>ProjectTemplates\CocosSharp\EmptyProject.WP81.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\Mobile\Template\bin\EmptyProject.Mobile.zip">
-      <Link>ProjectTemplates\CocosSharp\Mobile\Shared\EmptyProject.Mobile.zip</Link>
+      <Link>ProjectTemplates\Mobile Apps\EmptyProject.Mobile.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\Mobile\Template\bin\EmptyProject.Mobile.zip">
+      <Link>ProjectTemplates\CocosSharp\EmptyProject.Mobile.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
     <Content Include="..\MobilePortable\Template\bin\EmptyProject.Portable.zip">
-      <Link>ProjectTemplates\CocosSharp\Mobile\Portable\EmptyProject.Portable.zip</Link>
+      <Link>ProjectTemplates\Mobile Apps\EmptyProject.Portable.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\MobilePortable\Template\bin\EmptyProject.Portable.zip">
+      <Link>ProjectTemplates\CocosSharp\EmptyProject.Portable.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

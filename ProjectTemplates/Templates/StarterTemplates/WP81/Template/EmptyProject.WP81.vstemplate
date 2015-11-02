@@ -1,6 +1,6 @@
 <VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
   <TemplateData>
-    <Name>Empty Game Windows Phone 8.1</Name>
+    <Name>CocosSharp Game (Windows Phone)</Name>
     <Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Windows Phone 8.1.</Description>
     <ProjectType>CSharp</ProjectType>
     <ProjectSubType>
