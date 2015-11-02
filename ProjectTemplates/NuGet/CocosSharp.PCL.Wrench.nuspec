@@ -46,16 +46,16 @@
     <file src="src\bin\MacOS\Release\*.xml" target="lib\Xamarin.Mac20" /-->
 
      <!--Windows DX-->
-    <file src="src\bin\WindowsDX\Release\*.*" target="lib\net40" exclude="src\bin\WindowsDX\Release\MonoGame*.*;src\bin\WindowsDX\Release\Sharp*.*;src\bin\WindowsDX\Release\Lidgren*.*"/>
-    <file src="MonoGame\MonoGame.Framework\bin\Windows\AnyCPU\Release\*.*" target="lib\net40"/>
+    <!--file src="src\bin\WindowsDX\Release\*.*" target="lib\net40" exclude="src\bin\WindowsDX\Release\MonoGame*.*;src\bin\WindowsDX\Release\Sharp*.*;src\bin\WindowsDX\Release\Lidgren*.*"/>
+    <file src="MonoGame\MonoGame.Framework\bin\Windows\AnyCPU\Release\*.*" target="lib\net40"/-->
 
     <!--Windows81-->
-    <file src="src\bin\Windows81\AnyCPU\Release\*.dll" target="lib\netcore" exclude="src\bin\Windows81\AnyCPU\Release\MonoGame*.*;src\bin\Windows81\AnyCPU\Release\Sharp*.*"/>
+    <!--file src="src\bin\Windows81\AnyCPU\Release\*.dll" target="lib\netcore" exclude="src\bin\Windows81\AnyCPU\Release\MonoGame*.*;src\bin\Windows81\AnyCPU\Release\Sharp*.*"/>
     <file src="src\bin\Windows81\AnyCPU\Release\*.xml" target="lib\netcore" exclude="src\bin\Windows81\AnyCPU\Release\MonoGame*.xml;src\bin\Windows81\AnyCPU\Release\Sharp*.xml"/>
     <file src="MonoGame\MonoGame.Framework\bin\Windows81\AnyCPU\Release\MonoGame*.dll" target="lib\netcore"/>
     <file src="MonoGame\MonoGame.Framework\bin\Windows81\AnyCPU\Release\MonoGame*.xml" target="lib\netcore"/>
     <file src="MonoGame\MonoGame.Framework\bin\Windows81\AnyCPU\Release\Themes**\*.*" target="lib\netcore\MonoGame.Framework"/>
-    <file src="MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/>
+    <file src="MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\Sharp*.*" target="lib\netcore"/-->
 
     <!--Windows Phone 8.1-->
     <file src="src\bin\WindowsPhone81\AnyCPU\Release\*.dll" target="lib\wpa81" />

@@ -53,6 +53,11 @@ namespace CocosSharp
             
         }
 
+        bool PlatformCanDisposeGraphicsDevice()
+        {
+            return true;
+        }
+
         #endregion Cleaning up
 
 
