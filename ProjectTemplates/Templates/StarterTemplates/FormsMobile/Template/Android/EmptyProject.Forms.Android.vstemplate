@@ -1,0 +1,72 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+	<TemplateData>
+		<Name>Empty Game - Mobile</Name>
+		<Description>Creates a simple CocosSharp minimal skeleton game solution and project to get developers up and running fast.  This particular template is for Android.</Description>
+		<ProjectType>CSharp</ProjectType>
+		<ProjectSubType>
+		</ProjectSubType>
+		<SortOrder>1001</SortOrder>
+		<CreateNewFolder>true</CreateNewFolder>
+		<CreateInPlace>true</CreateInPlace>
+		<DefaultName>CocosSharpGame</DefaultName>
+		<ProvideDefaultName>true</ProvideDefaultName>
+		<LocationField>Enabled</LocationField>
+		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+		<Icon>__TemplateIcon.ico</Icon>
+		<PreviewImage>__PreviewImage.png</PreviewImage>
+	</TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="EmptyProject.csproj" File="EmptyProject.csproj" ReplaceParameters="true">
+      <Folder Name="Assets" TargetFolderName="Assets">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AboutAssets.txt">AboutAssets.txt</ProjectItem>
+        <Folder Name="Content" TargetFolderName="Content">
+          <Folder Name="Fonts" TargetFolderName="Fonts">
+            <ProjectItem ReplaceParameters="false" TargetFileName="MarkerFelt-22.xnb">MarkerFelt-22.xnb</ProjectItem>
+          </Folder>
+        </Folder>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="MainActivity.cs">MainActivity.cs</ProjectItem>
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AssemblyInfo.cs">AssemblyInfo.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Resources" TargetFolderName="Resources">
+        <ProjectItem ReplaceParameters="true" TargetFileName="AboutResources.txt">AboutResources.txt</ProjectItem>
+        <Folder Name="drawable-hdpi" TargetFolderName="drawable-hdpi">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Icon.png">icon.png</ProjectItem>
+        </Folder>
+        <Folder Name="drawable" TargetFolderName="drawable">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Icon.png">icon.png</ProjectItem>
+        </Folder>
+        <Folder Name="drawable-mdpi" TargetFolderName="drawable-mdpi">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Icon.png">icon.png</ProjectItem>
+        </Folder>
+        <Folder Name="drawable-xhdpi" TargetFolderName="drawable-xhdpi">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Icon.png">icon.png</ProjectItem>
+        </Folder>
+        <Folder Name="drawable-xxhdpi" TargetFolderName="drawable-xxhdpi">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Icon.png">icon.png</ProjectItem>
+        </Folder>
+        <Folder Name="drawable-xxxhdpi" TargetFolderName="drawable-xxxhdpi">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Icon.png">icon.png</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Resource.Designer.cs">Resource.Designer.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+  <WizardExtension>
+		<Assembly>NuGet.VisualStudio.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+		<FullClassName>NuGet.VisualStudio.TemplateWizard</FullClassName>
+	</WizardExtension>
+	<WizardData>
+    <packages>
+      
+    </packages>
+    <packages repository="extension"
+		    repositoryId="Xamarin.CocosSharpTemplates">
+	    <package id="CocosSharp.Forms" version="1.7.0.0-pre1" />
+      <package id="CocosSharp" version="1.7.0.0-pre1" />
+      <package id="Xamarin.Forms" version="1.5.0.6447" />
+      <package id="Xamarin.Android.Support.v4" version="23.0.1.1" />
+    </packages>
+  </WizardData>
+</VSTemplate>

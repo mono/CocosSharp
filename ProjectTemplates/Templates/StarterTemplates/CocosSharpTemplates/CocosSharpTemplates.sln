@@ -69,6 +69,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Win81XAML", "Win81XAML", "{
 		..\Win81XAML\Template\EmptyProject.Win81XAML.vstemplate = ..\Win81XAML\Template\EmptyProject.Win81XAML.vstemplate
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormsMobileShared", "FormsMobileShared", "{6E489727-F62A-4924-8E47-A7EEB3862345}"
+	ProjectSection(SolutionItems) = preProject
+		..\FormsMobile\Template\Android\EmptyProject.Forms.Android.vstemplate = ..\FormsMobile\Template\Android\EmptyProject.Forms.Android.vstemplate
+		..\FormsMobile\Template\iOS\EmptyProject.Forms.iOS.vstemplate = ..\FormsMobile\Template\iOS\EmptyProject.Forms.iOS.vstemplate
+		..\FormsMobile\Template\EmptyProject.Forms.Mobile.vstemplate = ..\FormsMobile\Template\EmptyProject.Forms.Mobile.vstemplate
+		..\FormsMobile\Template\WP81\EmptyProject.Forms.WP81.vstemplate = ..\FormsMobile\Template\WP81\EmptyProject.Forms.WP81.vstemplate
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,5 +103,6 @@ Global
 		{B2817662-2E31-4ED3-A8D4-147DE2F1519D} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{E32EC7CC-2B3E-460D-AF16-DC7560267023} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{2D96DDCA-8EFF-4C4B-983A-877C472C7076} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{6E489727-F62A-4924-8E47-A7EEB3862345} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 	EndGlobalSection
 EndGlobal

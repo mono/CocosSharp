@@ -1,0 +1,22 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>$ext_safeprojectname$.Shared</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>EmptyProject.Shared</DefaultName>
+    <CreateInPlace>true</CreateInPlace>
+    <ProvideDefaultName>false</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+  </TemplateData>
+  <TemplateContent>
+    <Project File="EmptyProject.Shared.shproj" ReplaceParameters="true">
+      <ProjectItem ReplaceParameters="true" TargetFileName="EmptyProject.Shared.projitems">EmptyProject.Shared.projitems</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="App.cs">App.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GamePage.cs">GamePage.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="GameLayer.cs">GameLayer.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
