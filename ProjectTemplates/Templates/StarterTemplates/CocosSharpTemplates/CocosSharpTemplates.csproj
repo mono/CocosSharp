@@ -132,6 +132,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="..\FormsMobilePortable\Template\bin\EmptyProject.Forms.Portable.zip">
+      <Link>ProjectTemplates\Mobile Apps\EmptyProject.Forms.Portable.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\FormsMobilePortable\Template\bin\EmptyProject.Forms.Portable.zip">
+      <Link>ProjectTemplates\CocosSharp\EmptyProject.Forms.Portable.zip</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="..\MobilePortable\Template\bin\EmptyProject.Portable.zip">
       <Link>ProjectTemplates\Mobile Apps\EmptyProject.Portable.zip</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

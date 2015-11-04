@@ -77,6 +77,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormsMobileShared", "FormsM
 		..\FormsMobile\Template\WP81\EmptyProject.Forms.WP81.vstemplate = ..\FormsMobile\Template\WP81\EmptyProject.Forms.WP81.vstemplate
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FormsMobilePortable", "FormsMobilePortable", "{F1307B4B-086D-474F-A2D5-0F4C878C07AF}"
+	ProjectSection(SolutionItems) = preProject
+		..\FormsMobilePortable\Template\Android\EmptyProject.Forms.Android.vstemplate = ..\FormsMobilePortable\Template\Android\EmptyProject.Forms.Android.vstemplate
+		..\FormsMobilePortable\Template\iOS\EmptyProject.Forms.iOS.vstemplate = ..\FormsMobilePortable\Template\iOS\EmptyProject.Forms.iOS.vstemplate
+		..\FormsMobilePortable\Template\Portable\EmptyProject.Forms.Portable.vstemplate = ..\FormsMobilePortable\Template\Portable\EmptyProject.Forms.Portable.vstemplate
+		..\FormsMobilePortable\Template\EmptyProject.Forms.Portable.vstemplate = ..\FormsMobilePortable\Template\EmptyProject.Forms.Portable.vstemplate
+		..\FormsMobilePortable\Template\WP81\EmptyProject.Forms.WP81.vstemplate = ..\FormsMobilePortable\Template\WP81\EmptyProject.Forms.WP81.vstemplate
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,5 +113,6 @@ Global
 		{E32EC7CC-2B3E-460D-AF16-DC7560267023} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{2D96DDCA-8EFF-4C4B-983A-877C472C7076} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 		{6E489727-F62A-4924-8E47-A7EEB3862345} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
+		{F1307B4B-086D-474F-A2D5-0F4C878C07AF} = {735CF19E-552A-450B-BDE4-FAC0A23EE13A}
 	EndGlobalSection
 EndGlobal
