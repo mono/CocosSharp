@@ -18,11 +18,15 @@ Please keep in mind that as this is currently a prerelease, your NuGet package m
  ---
 We have also updated our suite of Xamarin Studio and Visual Studio project templates to reflect the changes in initialisation. Remember, to install these templates for Xamarin Studio and Visual Studio refer to the guides [here](http://forums.xamarin.com/discussion/26822/cocossharp-project-templates-for-xamarin-studio) and [here](http://forums.xamarin.com/discussion/30701/cocossharp-project-templates-for-visual-studio) respectively. 
 
+## Samples
+ ---
+Over the next few weeks, we will be updating the CocosSharp samples repository [<code>xamarin_forms</code>](https://github.com/mono/cocos-sharp-samples/tree/xamarin_forms) branch to incorporate both the new embeddable native and Xamarin.Forms views, as well as modernising the code-base to reflect other API changes and more generally polishing up the quality of these samples.
+
 ## Pitfalls
  ---
 * The design document [here](https://github.com/mono/CocosSharp/blob/forms_support/ReleaseNotes/Forms.md) covers some of the limitations of using the new <code>CCGameView</code>.
 
-* Additionally, for Xamarin.Forms users targeting the Android platform, please ensure that you're compile target is for API 23 (6.0). 
+* Additionally, for Xamarin.Forms users targeting the Android platform, please ensure that you're *__compile target is set to API 23 (6.0).__* 
 
 ## Other breaking changes
  ---
