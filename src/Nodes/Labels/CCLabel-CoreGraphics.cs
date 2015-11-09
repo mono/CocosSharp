@@ -128,10 +128,9 @@ namespace CocosSharp
                 // later.
                 try {
 
-                    var filePath = string.Empty;
-                    CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fileName, out filePath);
+                    var buffer = CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fileName);
 
-                    var dataProvider = new CGDataProvider (filePath);
+                    var dataProvider = new CGDataProvider (buffer, 0, buffer.Length);
                     var cgFont = CGFont.CreateFromProvider (dataProvider);
 
                     try 

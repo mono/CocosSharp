@@ -385,7 +385,7 @@ namespace CocosSharp
             fileName = string.Empty;
             try
             {
-                using (Stream assetStream = GetAssetStream(assetName))
+                using (Stream assetStream = GetAssetStream(assetName, out fileName))
                 {
                     // This used to use a MemoryStream, which could hold a length up to an int.
                     int length = (int)assetStream.Length;
