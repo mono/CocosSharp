@@ -73,8 +73,8 @@
                 <File name="Entitlements.plist" AddStandardHeader="False" src="../iOS.Forms/Entitlements.plist.xml" />
                 <File name="Main.cs" AddStandardHeader="True" src="../iOS.Forms/Main.cs" />
                 <File name="AppDelegate.cs" AddStandardHeader="True" src="../iOS.Forms/AppDelegate.cs" />
-                <RawFileNoExtension name="ITunesArtwork" src="../iOS.Forms/iTunesArtwork" BuildAction="ITunesArtwork" />
-                <RawFileNoExtension name="ITunesArtwork@2x" src="../iOS.Forms/iTunesArtwork@2x" BuildAction="ITunesArtwork" />
+                <RawFile name="ITunesArtwork" src="../iOS.Forms/iTunesArtwork" BuildAction="ITunesArtwork" DefaultExtension=""/>
+                <RawFile name="ITunesArtwork@2x" src="../iOS.Forms/iTunesArtwork@2x" BuildAction="ITunesArtwork" DefaultExtension=""/>
 
                 <Directory name="Content">
                     <Directory name="Fonts"></Directory>
