@@ -61,8 +61,12 @@ namespace tests
 
             if (gameView != null) 
             {
+                var contentSearchPaths = new List<string>() { "fonts", "sounds" };
                 gameView.DesignResolution = new CCSizeI (1024, 768);
                 gameView.Stats.Enabled = true;
+
+                gameView.ContentManager.SearchPaths = contentSearchPaths;
+
                 CCScene gameScene = new CCScene (gameView);
 
                 gameScene.AddLayer(new TestController());

@@ -157,6 +157,19 @@ namespace CocosSharp
             NSNotificationCenter.DefaultCenter.RemoveObserver(NSWindow.WillCloseNotification);
         }
 
+        bool PlatformCanDisposeGraphicsDevice()
+        {
+            bool canDispose = true;
+
+            try {
+                MakeCurrent();
+            } catch (Exception) {
+                canDispose = false;
+            }
+
+            return canDispose;
+        }
+
         #endregion Cleaning up 
 
 

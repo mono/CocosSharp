@@ -14,8 +14,16 @@ namespace tests
 	[Register ("GameViewController")]
 	partial class GameViewController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		CocosSharp.CCGameView GameView { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (GameView != null) {
+				GameView.Dispose ();
+				GameView = null;
+			}
 		}
 	}
 }

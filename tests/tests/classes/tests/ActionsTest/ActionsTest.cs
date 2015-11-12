@@ -15,6 +15,7 @@ namespace tests
 
         static List<Func<CCLayer>> actionTestFunctions = new List<Func<CCLayer>> ()
             {
+
                 () => new ActionManual(),
                 () => new ActionMove(),
                 () => new ActionScale(),
@@ -63,6 +64,7 @@ namespace tests
                 () => new ActionParallel(),
                 () => new ActionSequenceAsync(),
                 () => new ActionSequenceAsync2(),
+                () => new ActionSequenceAsync3(),
             };
 
 
@@ -1291,6 +1293,107 @@ namespace tests
             var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabel("callback 3 called", "arial", 16, CCLabelFormat.SpriteFont);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
+
+            AddChild(label);
+        }
+
+        #endregion Callbacks
+    }
+
+    public class ActionSequenceAsync3 : ActionsDemo
+    {
+
+        CCSequence action;
+
+        CCSequence action2;
+
+        CCSequence action3;
+        
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Async Task.WhenAll Callbacks\nCallFunc and friends"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
+        public override void OnEnter()
+        {
+
+            base.OnEnter(); 
+
+            CenterSprites(3);
+
+
+            action = new CCSequence(
+                new CCMoveBy (2, new CCPoint(200, 0)),
+                new CCCallFunc(Callback1));
+
+            action2 = new CCSequence(
+                new CCScaleBy(2, 2),
+                new CCFadeOut  (2),
+                new CCCallFuncN(Callback2));
+
+            action3 = new CCSequence(
+                new CCRotateBy (3, 360),
+                new CCFadeOut  (5),
+                new CCCallFuncND(Callback3, 0xbebabeba));
+            
+            RunAsyncActions ();
+
+        }
+
+        #endregion Setup content
+
+        async void RunAsyncActions ()
+        {
+            var task1 = Grossini.RunActionAsync(action2);
+            var task2 = Tamara.RunActionAsync(action);
+            var task3 = Kathia.RunActionAsync(action3);
+
+            await Task.WhenAll (task1, task2, task3);
+
+            Callback4 ();
+
+        }
+
+        #region Callbacks
+
+        void Callback1()
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabel("Tamara callback 1 called", "arial", 16, CCLabelFormat.SpriteFont);
+            label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
+
+            AddChild(label);
+        }
+
+        void Callback2(CCNode sender)
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabel("Grossini callback 2 called", "arial", 16, CCLabelFormat.SpriteFont);
+            label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
+
+            AddChild(label);
+        }
+
+        void Callback3(CCNode target, object data)
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabel("Kathia callback 3 called", "arial", 16, CCLabelFormat.SpriteFont);
+            label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
+            AddChild(label);
+        }
+
+        void Callback4()
+        {
+            var s = Layer.VisibleBoundsWorldspace.Size;
+            var label = new CCLabel("WhenAll callback 4 called", "arial", 16, CCLabelFormat.SpriteFont);
+            label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 3);
 
             AddChild(label);
         }

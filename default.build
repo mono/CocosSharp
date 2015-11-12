@@ -253,6 +253,7 @@
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.iOS.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Android.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.tvOS.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.ContentBuild.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath "./src/external lib/ChipmunkSharp/"' /> 
     </if>
@@ -272,7 +273,8 @@
         <delete dir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/Packages" />
         <copy todir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/Packages" >
         <fileset basedir="${project::get-base-directory()}/ProjectTemplates/NuGet/bin">
-            <include name="CocosSharp.PCL.Shared.*.nupkg" />
+            <include name="CocosSharp.*.nupkg" />
+            <include name="CocosSharp.Forms.*.nupkg" />
         </fileset>
         </copy>
         <exec program="mdtool" basedir="${mdtooldir}" workingdir="${project::get-base-directory()}/ProjectTemplates/XamarinStudio/" commandline="setup pack MonoDevelop.CocosSharp.addin.xml" />
