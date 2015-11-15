@@ -6,10 +6,9 @@ namespace CocosSharp
 	{
 
 		public bool IsConnected { get; internal set; }
-		public CCPlayerIndex Player { get; internal set; }
 
-		internal CCEventGamePadConnection()
-			: base(CCGamePadEventType.GAMEPAD_CONNECTION)
+        internal CCEventGamePadConnection(int id, TimeSpan timeStamp)
+            : base(CCGamePadEventType.GAMEPAD_CONNECTION, id, timeStamp)
 		{ }
 	}
 }

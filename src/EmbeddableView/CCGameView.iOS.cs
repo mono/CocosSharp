@@ -213,6 +213,9 @@ namespace CocosSharp
         void InitialiseInputHandling()
         {
             InitialiseMobileInputHandling ();
+            #if __TVOS__
+            InitialiseGamePadInputHandling ();
+            #endif
         }
 
         #endregion Initialisation
@@ -325,6 +328,9 @@ namespace CocosSharp
         void ProcessInput()
         {
             ProcessMobileInput ();
+            #if __TVOS__
+            ProcessGamePadInput ();
+            #endif
         }
 
 
@@ -335,8 +341,21 @@ namespace CocosSharp
 
         void PlatformUpdateTouchEnabled()
         {
+            // Setting UserInteractionEnabled to "true" interferres with the 
+            // micro gamepad profile button press interaction.  it seems that
+            // once set you can not toggle it the other way so we need to set it
+            // up front.  
+            //
+            // This may need some adjustment in the future but right
+            // now this is the only way to get Presses events to fire reliably.
+            // It also seems that any manipulation of UserInteractionEnabled even to
+            // set it to false causes the gamepad to not respond for some reason.
+            // Could be the type of View Controller attached, UIViewController vs GCEventViewController??
+            #if !__TVOS__
             UserInteractionEnabled = TouchEnabled;
+            #endif
         }
+
 
         public override void TouchesBegan(NSSet touches, UIEvent evt)
         {
@@ -391,8 +410,8 @@ namespace CocosSharp
                 }
             }
         }
-
         #endregion Touch handling
+
     }
 }
 

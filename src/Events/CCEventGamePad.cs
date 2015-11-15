@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CocosSharp
 {
@@ -19,8 +20,8 @@ namespace CocosSharp
 	/// </summary>
 	public enum CCGamePadButtonStatus
 	{
-		Pressed,
 		Released,
+		Pressed,
 		/// <summary>
 		/// A pressed and released action was merged
 		/// </summary>
@@ -33,10 +34,11 @@ namespace CocosSharp
 
 	public enum CCPlayerIndex
 	{
-		One = 0,
-		Two = 1,
-		Three = 2,
-		Four = 3
+        Unset = 0,
+		One = 1,
+		Two = 2,
+		Three = 3,
+		Four = 4,
 	}
 
 	/// <summary>
@@ -44,7 +46,8 @@ namespace CocosSharp
 	/// stick is down or up and the direction and magnitude of the stick movement
 	/// in [u,v] coordinates.
 	/// </summary>
-	public struct CCGameStickStatus
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
+    public struct CCGameStickStatus
 	{
 		/// <summary>
 		/// When true, the stick is down, otherwise it is up.
@@ -59,18 +62,58 @@ namespace CocosSharp
 		/// the stick.
 		/// </summary>
 		public float Magnitude;
+
+        internal string DebugDisplayString
+        {
+            get
+            {
+                return ToString ();
+            }
+        }
+
+        public override string ToString ()
+        {
+            return string.Concat("IsDown: ", IsDown,
+                " Direction: ", Direction,
+                " Magnitude: ", Magnitude
+            );
+        }
 	}
 
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
 	public class CCEventGamePad : CCEvent
 	{
 
 		public CCGamePadEventType GamePadEventType { get; internal set; }
 
-		internal CCEventGamePad(CCGamePadEventType gamePadEventType)
+        internal TimeSpan TimeStamp { get; private set; }
+        public int Id { get; private set; }
+        public CCPlayerIndex Player { get; internal set; }
+
+        internal CCEventGamePad(CCGamePadEventType gamePadEventType, int id, TimeSpan timeStamp)
 			: base (CCEventType.GAMEPAD)
 		{
+            Id = id;
+            TimeStamp = timeStamp;
 			GamePadEventType = gamePadEventType;
+            Player = CCPlayerIndex.Unset;
 		}
+
+        internal string DebugDisplayString
+        {
+            get
+            {
+                return ToString ();
+            }
+        }
+
+        public override string ToString()
+        {
+            return string.Concat("Player: ", 
+                Player
+            );
+        }
+
 	}
 }
 

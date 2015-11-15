@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace CocosSharp
 {
@@ -7,10 +8,15 @@ namespace CocosSharp
 		public float Left { get; internal set; }
 		public float Right { get; internal set; }
 
-		public CCPlayerIndex Player { get; internal set; }
-
-		internal CCEventGamePadTrigger()
-			: base(CCGamePadEventType.GAMEPAD_TRIGGER)
+        internal CCEventGamePadTrigger(int id, TimeSpan timeStamp)
+            : base(CCGamePadEventType.GAMEPAD_TRIGGER, id, timeStamp)
 		{ }
+
+        public override string ToString()
+        {
+            return string.Concat("Left: ", Left, 
+                " Right: ", Right
+            );
+        }
 	}
 }

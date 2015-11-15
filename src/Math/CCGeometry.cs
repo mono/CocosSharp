@@ -1246,7 +1246,9 @@ namespace CocosSharp
         }
     }
 
+    #if !__TVOS__
 	[DataContract]
+    #endif
 	public struct CCVector2 : IEquatable<CCVector2>
 	{
 		static CCVector2 zeroVector = new CCVector2(0f, 0f);
@@ -1254,10 +1256,14 @@ namespace CocosSharp
 		static CCVector2 unitXVector = new CCVector2(1f, 0f);
 		static CCVector2 unitYVector = new CCVector2(0f, 1f);
 
-		[DataMember]
+        #if !__TVOS__
+        [DataMember]
+        #endif
 		public float X;
 
-		[DataMember]
+        #if !__TVOS__
+        [DataMember]
+        #endif
 		public float Y;
 
 
