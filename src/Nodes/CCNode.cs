@@ -2080,6 +2080,9 @@ namespace CocosSharp
                 for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].OnEnterTransitionDidFinish();
+                    elements[i].AttachEvents();
+                    elements[i].AttachActions();
+                    elements[i].AttachSchedules ();
                 }
             }
         }
