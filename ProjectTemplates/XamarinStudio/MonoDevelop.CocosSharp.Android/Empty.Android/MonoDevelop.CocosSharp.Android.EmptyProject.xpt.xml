@@ -2,7 +2,7 @@
 <Template>
     <TemplateConfiguration>
         <_Name>CocosSharp Game</_Name>
-        <Category>android/app/general</Category>
+        <Category>android/app/games</Category>
         <Icon>monodroid-project</Icon>
         <Image id="md-android-app" />
         <LanguageName>C#</LanguageName>
