@@ -80,13 +80,46 @@ namespace CocosSharp
         }
 	}
 
+    /// <summary>
+    /// Mapped from the gamepad game trigger status, will tell you when the game
+    /// trigger is down or up and the magnitude of the stick movement
+    /// </summary>
+    [DebuggerDisplay("{DebugDisplayString,nq}")]
+    public struct CCGameTriggerStatus
+    {
+        /// <summary>
+        /// When true, the stick is down, otherwise it is up.
+        /// </summary>
+        public CCGamePadButtonStatus IsDown;
+        /// <summary>
+        /// The magnitude of the trigger movement, used to control soft or hard movements using
+        /// the trigger.
+        /// </summary>
+        public float Magnitude;
+
+        internal string DebugDisplayString
+        {
+            get
+            {
+                return ToString ();
+            }
+        }
+
+        public override string ToString ()
+        {
+            return string.Concat("IsDown: ", IsDown,
+                " Magnitude: ", Magnitude
+            );
+        }
+    }
+
     [DebuggerDisplay("{DebugDisplayString,nq}")]
 	public class CCEventGamePad : CCEvent
 	{
 
 		public CCGamePadEventType GamePadEventType { get; internal set; }
 
-        internal TimeSpan TimeStamp { get; private set; }
+        internal TimeSpan TimeStamp { get; set; }
         public int Id { get; private set; }
         public CCPlayerIndex Player { get; internal set; }
 

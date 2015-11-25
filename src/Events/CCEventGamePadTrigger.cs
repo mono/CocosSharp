@@ -5,8 +5,8 @@ namespace CocosSharp
 {
 	public class CCEventGamePadTrigger : CCEventGamePad
 	{
-		public float Left { get; internal set; }
-		public float Right { get; internal set; }
+        public CCGameTriggerStatus Left { get; internal set; }
+        public CCGameTriggerStatus Right { get; internal set; }
 
         internal CCEventGamePadTrigger(int id, TimeSpan timeStamp)
             : base(CCGamePadEventType.GAMEPAD_TRIGGER, id, timeStamp)
