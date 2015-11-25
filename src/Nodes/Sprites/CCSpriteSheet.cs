@@ -249,10 +249,31 @@ namespace CocosSharp
 
                 path = Path.Combine(plistFilePath, CCFileUtils.RemoveExtension(path));
 
-                if (!CCTextureCache.SharedTextureCache.Contains (path))
-                    texture = CCTextureCache.SharedTextureCache.AddImage(path);
-                else
-                    texture = CCTextureCache.SharedTextureCache[path];
+                if (!CCTextureCache.SharedTextureCache.Contains (path)) 
+                {
+                    texture = CCTextureCache.SharedTextureCache.AddImage (path);
+                }
+                else 
+                {
+                    // Fix for SpriteKit texture atlases
+                    // Backgrounds.1.png
+                    // Example is that after stripping the extension when passing the value in
+                    // the ".1" is considered an extension so it is stripped as well resulting
+                    // in the texture not being found.  So we try with the texture key first and
+                    // only if it is not found then we check for extension and continue with normal
+                    // processing.
+                    if (Path.HasExtension(path))
+                    {
+                        var extension = Path.GetExtension (path);
+                        var sequence = 0;
+                        if (Int32.TryParse(extension.Substring(1), out sequence))
+                        {
+                            path = imageDict ["path"].AsString;
+                            path = Path.Combine(plistFilePath, path);
+                        }
+                    }
+                    texture = CCTextureCache.SharedTextureCache [path];
+                }
 
 
 
