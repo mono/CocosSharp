@@ -103,6 +103,33 @@ namespace CocosSharp
 //            stream.CopyTo(fileStream);
 //            fileStream.Dispose();
 //        }
+        CGDataProvider GetFontDataProvider(string fileName)
+        {
+            CGDataProvider dataProvider = null;
+            foreach (var searchPath in CCContentManager.SharedContentManager.SearchPaths)
+            {
+                foreach (string resolutionOrder in CCContentManager.SharedContentManager.SearchResolutionsOrder)
+                {
+                    var path = Path.Combine(Path.Combine(CCContentManager.SharedContentManager.RootDirectory, Path.Combine(searchPath, resolutionOrder)),
+                        fileName);
+
+                    try
+                    {
+                        if (File.Exists(path))
+                        {
+                            dataProvider = new CGDataProvider (path);
+                            return dataProvider;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // try other path
+                    }
+                }
+            }
+
+            throw new System.IO.FileNotFoundException (fileName);
+        }
         static Dictionary<string, string> nativeFontDescriptors;
 
         string LoadFontFile (string fileName)
@@ -120,7 +147,7 @@ namespace CocosSharp
                 string fd = null;
                 if (nativeFontDescriptors.TryGetValue(fileName, out fd))
                     return fd;
-                        
+
                 // We will not use CTFontManager.RegisterFontsForUrl (url, CTFontManagerScope.Process);
                 // here.  The reason is that there is no way we can be sure that the font can be created to
                 // to identify the family name afterwards.  So instead we will create a CGFont from a data provider.
@@ -128,9 +155,7 @@ namespace CocosSharp
                 // later.
                 try {
 
-                    var buffer = CCContentManager.SharedContentManager.GetAssetStreamAsBytes(fileName);
-
-                    var dataProvider = new CGDataProvider (buffer, 0, buffer.Length);
+                    var dataProvider = GetFontDataProvider(fileName);
                     var cgFont = CGFont.CreateFromProvider (dataProvider);
 
                     try 
