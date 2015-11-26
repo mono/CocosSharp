@@ -165,7 +165,6 @@
     <Compile Include="Nodes\CCNode.cs" />
     <Compile Include="Audio\CCEffectPlayer.cs" />
     <Compile Include="Audio\CCMusicPlayer.cs" />
-    <Compile Include="Audio\CCMusicPlayer.AVFoundation.cs" />
     <Compile Include="Audio\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="Effects\CCGrid3D.cs" />
     <Compile Include="Effects\CCGridBase.cs" />
@@ -413,6 +412,7 @@
     <Compile Include="Platform\Keyboard\MacOSX\IMEKeyboardImpl.cs" />
     <Compile Include="EmbeddableView\CCGameView.MacOSX.cs" />
     <Compile Include="EmbeddableView\CCGameView.Desktop.cs" />
+    <Compile Include="Audio\CCMusicPlayer.MonoGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="EmbeddableView\" />
