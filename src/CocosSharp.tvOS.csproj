@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>{511B1B80-F539-4CEC-AB62-3652A9275E7E}</ProjectGuid>
+    <ProjectGuid>{C57AC317-FF38-4DC5-835B-2DC87F4B1353}</ProjectGuid>
     <ProjectTypeGuids>{06FA79CB-D6CD-4721-BB4B-1BD202089C55};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <Description>CocosSharp</Description>
@@ -420,7 +420,7 @@
   <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.tvOS.csproj">
-      <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
+      <Project>{A26C918B-3352-4B19-A6AE-4F9F32DEAD6A}</Project>
       <Name>box2d.tvOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.tvOS.csproj">
