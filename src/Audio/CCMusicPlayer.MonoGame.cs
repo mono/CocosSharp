@@ -1,6 +1,7 @@
 ﻿using System;
 using CocosSharp;
 using Microsoft.Xna.Framework.Media;
+using XnaMediaPlayer = Microsoft.Xna.Framework.Media.MediaPlayer;
 
 #if WINDOWS_PHONE8
 using Microsoft.Phone.Shell;
@@ -19,24 +20,23 @@ namespace CocosSharp
         Song songToPlayAfterClose;
         Song music;
 
-
         #region Properties
 
         public override float Volume
         {
-            get { return MediaPlayer.Volume; }
+            get { return XnaMediaPlayer.Volume; }
 
             set
             {
                 value = CCMathHelper.Clamp(value, 0.0f, 1.0f);
-                MediaPlayer.Volume = value;
+                XnaMediaPlayer.Volume = value;
             }
         }
 
         // Returns true if any song is playing in the media player, even if it is not one of the songs in the game.
         public override bool Playing
         {
-            get { return (MediaState.Playing == MediaPlayer.State); }
+            get { return (MediaState.Playing == XnaMediaPlayer.State); }
         }
 
         // Returns true if one of the game songs is playing.
@@ -48,7 +48,7 @@ namespace CocosSharp
                 {
                     return false;
                 }
-                if (MediaState.Playing == MediaPlayer.State) 
+                if (MediaState.Playing == XnaMediaPlayer.State) 
                 {
                     return true;
                 }
@@ -64,7 +64,7 @@ namespace CocosSharp
 
         public CCMusicPlayer()
         {
-            if(MediaPlayer.State == MediaState.Playing) SaveMediaState();
+            if(XnaMediaPlayer.State == MediaState.Playing) SaveMediaState();
         }
 
         #endregion Constructor
@@ -87,40 +87,40 @@ namespace CocosSharp
         {
             if (music !=null)
             {
-                MediaPlayer.IsRepeating = loop;
-                MediaPlayer.Play(music);
+                XnaMediaPlayer.IsRepeating = loop;
+                XnaMediaPlayer.Play(music);
                 didPlayGameSong = true;
             }
         }
 
         public override void Pause()
         {
-            MediaPlayer.Pause();
+            XnaMediaPlayer.Pause();
         }
 
         public override void Resume()
         {
-            MediaPlayer.Resume();
+            XnaMediaPlayer.Resume();
         }
 
         public override void Stop()
         {
-            MediaPlayer.Stop();
+            XnaMediaPlayer.Stop();
         }
 
         public override void Rewind()
         {
-            Song s = MediaPlayer.Queue.ActiveSong;
+            Song s = XnaMediaPlayer.Queue.ActiveSong;
 
             Stop();
 
             if (null != music)
             {
-                MediaPlayer.Play(music);
+                XnaMediaPlayer.Play(music);
             }
             else if (s != null)
             {
-                MediaPlayer.Play(s);
+                XnaMediaPlayer.Play(s);
             }
         }
 
@@ -132,10 +132,10 @@ namespace CocosSharp
             try
             {
                 // User is playing a song, so remember the song state.
-                songToPlayAfterClose = MediaPlayer.Queue.ActiveSong;
-                volumeAfterClose = MediaPlayer.Volume;
-                isRepeatingAfterClose = MediaPlayer.IsRepeating;
-                isShuffleAfterClose = MediaPlayer.IsShuffled;
+                songToPlayAfterClose = XnaMediaPlayer.Queue.ActiveSong;
+                volumeAfterClose = XnaMediaPlayer.Volume;
+                isRepeatingAfterClose = XnaMediaPlayer.IsRepeating;
+                isShuffleAfterClose = XnaMediaPlayer.IsShuffled;
             }
             catch (Exception ex)
             {
@@ -150,10 +150,10 @@ namespace CocosSharp
             {
                 try
                 {
-                    MediaPlayer.IsShuffled = isShuffleAfterClose;
-                    MediaPlayer.IsRepeating = isRepeatingAfterClose;
-                    MediaPlayer.Volume = volumeAfterClose;
-                    MediaPlayer.Play(songToPlayAfterClose);
+                    XnaMediaPlayer.IsShuffled = isShuffleAfterClose;
+                    XnaMediaPlayer.IsRepeating = isRepeatingAfterClose;
+                    XnaMediaPlayer.Volume = volumeAfterClose;
+                    XnaMediaPlayer.Play(songToPlayAfterClose);
                 }
                 catch(Exception ex)
                 {
