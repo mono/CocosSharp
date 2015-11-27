@@ -79,6 +79,11 @@ namespace CocosSharp
             Window.Current.Activated -= ViewStateChanged;
         }
 
+        bool PlatformCanDisposeGraphicsDevice()
+        {
+            return true;
+        }
+
         #endregion Cleaning up
 
 
