@@ -215,7 +215,8 @@ namespace tests
 		{
             var cursor = mouseEvent.Cursor;
 			mousePosition.Text = "Mouse Position: X: " + cursor.X + " Y: " + cursor.Y;
-		}
+            mouseButtonDown.Text = "Mouse Button Down: " + mouseEvent.MouseButton;
+        }
 		public override string Title
 		{
 			get
