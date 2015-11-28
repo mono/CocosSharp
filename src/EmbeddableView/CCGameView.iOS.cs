@@ -213,7 +213,7 @@ namespace CocosSharp
         void InitialiseInputHandling()
         {
             InitialiseMobileInputHandling ();
-            #if __TVOS__
+            #if TVOS
             InitialiseGamePadInputHandling ();
             #endif
         }
@@ -328,7 +328,7 @@ namespace CocosSharp
         void ProcessInput()
         {
             ProcessMobileInput ();
-            #if __TVOS__
+            #if TVOS
             ProcessGamePadInput ();
             #endif
         }
@@ -351,7 +351,7 @@ namespace CocosSharp
             // It also seems that any manipulation of UserInteractionEnabled even to
             // set it to false causes the gamepad to not respond for some reason.
             // Could be the type of View Controller attached, UIViewController vs GCEventViewController??
-            #if !__TVOS__
+            #if !TVOS
             UserInteractionEnabled = TouchEnabled;
             #endif
         }

@@ -6,10 +6,10 @@ using System.Reflection;
 
 #if NETFX_CORE
 using Windows.Devices.Sensors;
-#elif IOS && !__TVOS__
+#elif IOS && !TVOS
 using CoreMotion;
 using Foundation;
-#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !__TVOS__
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !TVOS
 using Microsoft.Devices.Sensors;
 #endif
 
@@ -26,10 +26,10 @@ namespace CocosSharp
     public class CCAccelerometer
     {
 
-#if IOS && !__TVOS__
+#if IOS && !TVOS
         static CoreMotion.CMMotionManager accelerometer = null;
 
-#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !__TVOS__
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !TVOS
         // the accelerometer sensor on the device
         static Accelerometer accelerometer = null;
 #endif
@@ -62,7 +62,7 @@ namespace CocosSharp
                 enabled = value;
                 if (enabled && !Active)
                 {
-#if IOS && !__TVOS__
+#if IOS && !TVOS
                     try
                     {
                         if (accelerometer.AccelerometerAvailable)
@@ -80,7 +80,7 @@ namespace CocosSharp
                     {
                         Active = false;
                     }
-#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !__TVOS__
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !TVOS
                     try
                     {
                         if(Accelerometer.IsSupported)
@@ -132,12 +132,12 @@ namespace CocosSharp
                 {
                     if (Active && !Emulating)
                     {
-#if IOS && !__TVOS__
+#if IOS && !TVOS
                     if (accelerometer != null)
                     {
                         accelerometer.StopAccelerometerUpdates();
                     }
-#elif !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !__TVOS__
+#elif !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !TVOS
                         if (accelerometer != null)
                         {
                             accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
@@ -169,10 +169,10 @@ namespace CocosSharp
         {
             GameView = gameView;
 
-#if IOS && !__TVOS__
+#if IOS && !TVOS
             accelerometer = new CoreMotion.CMMotionManager();
             //accelerometer.AccelerometerUpdateInterval = 60f;
-#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !__TVOS__
+#elif !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL && !WINDOWSDX && !TVOS
             try
             {
                 accelerometer = new Accelerometer();
@@ -288,7 +288,7 @@ namespace CocosSharp
                     accelerationValue.TimeStamp = DateTime.UtcNow.Ticks;
                 }
 
-#if IOS && !__TVOS__
+#if IOS && !TVOS
             if (accelerometer.AccelerometerAvailable)
             {
                 var accelerometerData = accelerometer.AccelerometerData;

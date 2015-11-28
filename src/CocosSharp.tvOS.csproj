@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\tvOS\iPhoneSimulator\Debug</OutputPath>
-    <DefineConstants>DEBUG;IOS;__TVOS__;OPENGL;GLES</DefineConstants>
+    <DefineConstants>DEBUG;IOS;TVOS;OPENGL;GLES</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -44,7 +44,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <NoWarn>1591</NoWarn>
-    <DefineConstants>IOS;__TVOS__;OPENGL;GLES</DefineConstants>
+    <DefineConstants>IOS;TVOS;OPENGL;GLES</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <Optimize>true</Optimize>
@@ -58,14 +58,14 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseSGen>true</MtouchUseSGen>
     <NoWarn>1591</NoWarn>
-    <DefineConstants>IOS;__TVOS__;</DefineConstants>
+    <DefineConstants>IOS;TVOS;</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\tvOS\iPhone\Debug</OutputPath>
-    <DefineConstants>DEBUG;IOS;__TVOS__;OPENGL;GLES</DefineConstants>
+    <DefineConstants>DEBUG;IOS;TVOS;OPENGL;GLES</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
