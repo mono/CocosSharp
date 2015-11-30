@@ -26,8 +26,12 @@ namespace CocosSharp
         protected void DpadUp(GCControllerButtonInput dpadButton, float buttonValue, bool pressed )
         {
             var id = dpadButton.Handle.ToInt32 ();
-            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan());
-            dpadEvent.Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex);
+            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan ()) 
+            {
+                Magnitude = buttonValue,
+                Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex)
+            };
+
             dpadEvent.Up = pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
             DispatchGamePadEventHandler (dpadEvent);
         }
@@ -35,8 +39,12 @@ namespace CocosSharp
         protected void DpadDown(GCControllerButtonInput dpadButton, float buttonValue, bool pressed )
         {
             var id = dpadButton.Handle.ToInt32 ();
-            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan());
-            dpadEvent.Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex);
+            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan()) 
+            {
+                Magnitude = buttonValue,
+                Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex)
+            };
+
             dpadEvent.Down = pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
             DispatchGamePadEventHandler (dpadEvent);
         }
@@ -44,17 +52,26 @@ namespace CocosSharp
         protected void DpadLeft(GCControllerButtonInput dpadButton, float buttonValue, bool pressed )
         {
             var id = dpadButton.Handle.ToInt32 ();
-            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan());
-            dpadEvent.Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex);
+            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan()) 
+            {
+                Magnitude = buttonValue,
+                Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex)
+            };
+
             dpadEvent.Left = pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+            Console.WriteLine (buttonValue);
             DispatchGamePadEventHandler (dpadEvent);
         }
 
         protected void DpadRight(GCControllerButtonInput dpadButton, float buttonValue, bool pressed )
         {
             var id = dpadButton.Handle.ToInt32 ();
-            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan());
-            dpadEvent.Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex);
+            var dpadEvent = new CCEventGamePadDPad (id, new TimeSpan()) 
+            {
+                Magnitude = buttonValue,
+                Player = CCGameView.ConvertToPlayerIndex (controller.PlayerIndex)
+            };
+
             dpadEvent.Right = pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
             DispatchGamePadEventHandler (dpadEvent);
 
@@ -202,7 +219,7 @@ namespace CocosSharp
             Id = microGamePad.Handle.ToInt32 ();
             microGamePad.ButtonA.SetValueChangedHandler (ButtonA);
             microGamePad.ButtonX.SetValueChangedHandler (ButtonX);
-            microGamePad.Dpad.ValueChangedHandler = DPadValueChangeHandler;
+            //microGamePad.Dpad.ValueChangedHandler = DPadValueChangeHandler;
             microGamePad.Dpad.Up.SetValueChangedHandler (DpadUp);
             microGamePad.Dpad.Down.SetValueChangedHandler (DpadDown);
             microGamePad.Dpad.Left.SetValueChangedHandler (DpadLeft);
