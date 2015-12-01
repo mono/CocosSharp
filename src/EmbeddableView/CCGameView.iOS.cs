@@ -136,14 +136,14 @@ namespace CocosSharp
 
             RemoveExistingView();
 
-            if (bufferCreated)
+            CAEAGLLayer eaglLayer = (CAEAGLLayer) Layer;
+
+            if (bufferCreated || eaglLayer.Bounds.Size.Width == 0 || eaglLayer.Bounds.Size.Height == 0)
                 return;
 
             base.CreateFrameBuffer();
 
             MakeCurrent();
-
-            CAEAGLLayer eaglLayer = (CAEAGLLayer) Layer;
 
             var newSize = new System.Drawing.Size(
                 (int) Math.Round(eaglLayer.Bounds.Size.Width * Layer.ContentsScale), 
@@ -178,15 +178,17 @@ namespace CocosSharp
         {
             // Called when the dimensions of our view change
             // E.g. When rotating the device and autoresizing
+            var newSize = new System.Drawing.Size(
+                (int) Math.Round(Layer.Bounds.Size.Width * Layer.ContentsScale), 
+                (int) Math.Round(Layer.Bounds.Size.Height * Layer.ContentsScale));
+
+            if (newSize.Width == 0 || newSize.Height == 0)
+                return;
 
             CreateFrameBuffer();
 
             if((Framebuffer + depthbuffer + Renderbuffer == 0) || EAGLContext == null)
                 return;
-
-            var newSize = new System.Drawing.Size(
-                (int) Math.Round(Layer.Bounds.Size.Width * Layer.ContentsScale), 
-                (int) Math.Round(Layer.Bounds.Size.Height * Layer.ContentsScale));
 
             Size = newSize;
 
