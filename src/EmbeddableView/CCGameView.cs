@@ -263,15 +263,23 @@ namespace CocosSharp
 
         void InitialiseGraphicsDevice()
         {
-            var graphicsProfile = GraphicsProfile.HiDef;
-
             var presParams = new PresentationParameters();
             presParams.RenderTargetUsage = RenderTargetUsage.PreserveContents;
             presParams.DepthStencilFormat = DepthFormat.Depth24Stencil8;
             presParams.BackBufferFormat = XnaSurfaceFormat.Color;
             PlatformInitialiseGraphicsDevice(ref presParams);
 
-            graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, graphicsProfile, presParams);
+            // Try to create graphics device with hi-def profile
+            try 
+            {
+                graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, GraphicsProfile.HiDef, presParams);
+            }
+            // Otherwise, if unsupported defer to using the low-def profile
+            catch (NotSupportedException)
+            {
+                graphicsDevice = new GraphicsDevice(GraphicsAdapter.DefaultAdapter, GraphicsProfile.Reach, presParams);
+            }
+
             DrawManager = new CCDrawManager(graphicsDevice);
 
             CCDrawManager.SharedDrawManager = DrawManager;
