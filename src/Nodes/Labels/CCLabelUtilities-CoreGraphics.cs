@@ -112,7 +112,13 @@ namespace CocosSharp
 
 		internal static CGImage GetImage (this CGBitmapContext bitmapContext)
 		{
-			var provider = new CGDataProvider (bitmapContext.Data, (int)bitmapContext.BytesPerRow * (int)bitmapContext.Height, true);
+
+            // This gets around a compile error on tvOS for now but will need to be looked at
+            // for the freeing of memory.  This routine is used for internal debugging when
+            // dumping the label textures and is not used internally in the platform.
+			var provider = new CGDataProvider (bitmapContext.Data, 
+                (int)bitmapContext.BytesPerRow * (int)bitmapContext.Height, 
+                handle => { Marshal.FreeHGlobal(handle); });
 
 			var NativeCGImage = new CGImage ((int)bitmapContext.Width, 
 			                                 (int)bitmapContext.Height, 
