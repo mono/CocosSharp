@@ -114,9 +114,8 @@ namespace CocosSharp
                             }
 
                             if (encoding == "base64") {
-                                int dataSize = (Width * Height * 4) + 1024;
-                                buffer = new byte[dataSize];
-                                xmlReader.ReadElementContentAsBase64 (buffer, 0, dataSize);
+                                var base64String = xmlReader.ReadElementContentAsString().Trim();
+                                buffer = Convert.FromBase64String(base64String);
                             } else {
                                 string value = xmlReader.ReadElementContentAsString ();
                                 buffer = Encoding.UTF8.GetBytes (value);
