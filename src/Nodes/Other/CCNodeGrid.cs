@@ -8,6 +8,7 @@ namespace CocosSharp
         CCGridBase grid;
         CCCustomCommand renderGrid;
 
+        bool disposed;
 
         #region Properties
 
@@ -47,6 +48,27 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Clean up
+
+        protected override void Dispose (bool disposing)
+        {
+            base.Dispose (disposing);
+
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                if (grid != null)
+                    grid.Dispose();
+            }
+
+            disposed = true;
+        }
+
+        #endregion Clean up
 
 
         public override void Visit (ref CCAffineTransform parentWorldTransform)
