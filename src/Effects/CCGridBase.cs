@@ -98,7 +98,8 @@ namespace CocosSharp
         {
             if(disposing) 
             {
-                // Dispose of managed resources
+                if(RenderTexture != null)
+                    RenderTexture.Dispose();
             }
         }
 
