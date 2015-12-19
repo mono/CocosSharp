@@ -227,7 +227,16 @@ namespace CocosSharp
 
             // Before replacing, save the "send cleanup to scene"
             IsSendCleanupToScene = Director.IsSendCleanupToScene;
+
             Director.ReplaceScene(transitionSceneContainerLayer.InScene);
+
+            // Dispose of our transition nodes that may include render textures
+
+            if (transitionSceneContainerLayer.InSceneNodeContainer != null)
+                transitionSceneContainerLayer.InSceneNodeContainer.Dispose();
+
+            if (transitionSceneContainerLayer.OutSceneNodeContainer != null)
+                transitionSceneContainerLayer.OutSceneNodeContainer.Dispose();
         }
     }
 }
