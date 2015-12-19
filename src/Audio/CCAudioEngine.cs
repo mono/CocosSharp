@@ -382,6 +382,21 @@ namespace CocosSharp
 
             return nId;
         }
+            
+        public bool EffectPlaying(int fxid)
+        {
+            bool playing = false;
+
+            lock (list)
+            {
+                CCEffectPlayer effect = null;
+
+                if (list.TryGetValue(fxid, out effect))
+                    playing = effect.Playing;
+            }
+
+            return playing;
+        }
 
         public void StopEffect(int soundId)
         {

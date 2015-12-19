@@ -361,6 +361,16 @@ namespace tests
                 audio.StopAllEffects();
             };
             AddChildAt(btnStopAll, 0.9f, 0.6f);
+
+            var effectsIsPlaying = new Button("Effects playing");
+            effectsIsPlaying.Triggered += (sender, e) =>
+            {
+                if (audio.EffectPlaying(soundId))
+                    CCLog.Log("sound effect is playing");
+                else
+                    CCLog.Log("sound effect is not playing");
+            };
+            AddChildAt(effectsIsPlaying, 0.7f, 0.4f);
         }
 
         AudioSlider sliderPitch, sliderMusicVolume, sliderEffectsVolume, sliderPan, sliderGain;
