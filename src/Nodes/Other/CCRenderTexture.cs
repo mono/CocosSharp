@@ -13,7 +13,7 @@ namespace CocosSharp
         PlatformContents
     }
 
-    public class CCRenderTexture
+    public class CCRenderTexture : IDisposable
     {
         [Flags]
         enum ClearFlags
@@ -24,6 +24,8 @@ namespace CocosSharp
             StencilBuffer = 0x4,
             All = ~0x0
         }
+
+        bool disposed;
 
         bool shouldClear;
         CCColor4B clearColor;
@@ -106,6 +108,39 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Cleaning up
+
+        ~CCRenderTexture() 
+        {
+            Dispose(false);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                if (renderTarget2D != null)
+                {
+                    renderTarget2D.Dispose();
+                    renderTarget2D = null;
+                }
+            }
+
+            disposed = true;
+        }
+
+        #endregion Cleaning up
 
 
         public void Begin()
