@@ -23,6 +23,8 @@ namespace CocosSharp
         float minVertexZ;
 
         bool antialiased;
+        bool halfTexelOffset;
+        bool tileQuadsDirty;
 
         CCColor4B tileColor;
 
@@ -75,6 +77,19 @@ namespace CocosSharp
                 foreach (var drawBufferManager in drawBufferManagers)
                 {
                     drawBufferManager.TileSetInfo.Texture.IsAntialiased = antialiased;
+                }
+            }
+        }
+
+        public bool HalfTexelOffset
+        {
+            get { return halfTexelOffset; }
+            set
+            {
+                if (halfTexelOffset != value)
+                {
+                    halfTexelOffset = value;
+                    tileQuadsDirty = true;
                 }
             }
         }
@@ -141,6 +156,8 @@ namespace CocosSharp
             TileCoordOffset = new CCTileMapCoordinates(layerInfo.TileCoordOffset);
             ContentSize = LayerSize.Size * TileTexelSize * CCTileMapLayer.DefaultTexelToContentSizeRatios;
 
+            HalfTexelOffset = CCTileMap.DefaultHalfTexelOffset;
+
             TileGIDAndFlagsArray = layerInfo.TileGIDAndFlags;
 
             UpdateTileCoordsToNodeTransform();
@@ -185,6 +202,8 @@ namespace CocosSharp
                     }
                 }
             }
+
+            tileQuadsDirty = false;
         }
 
         CCTileMapDrawBufferManager InitialiseDrawBuffer(CCTileSetInfo tileSetInfo)
@@ -201,7 +220,6 @@ namespace CocosSharp
             drawBufferManager.UpdateQuadBuffers();
             return drawBufferManager;
         }
-
 
         void InitialiseTileAnimations()
         {
@@ -278,6 +296,23 @@ namespace CocosSharp
 
 
         #region Drawing
+
+        void UpdateAllTileQuads()
+        {
+            foreach (CCTileMapDrawBufferManager drawBufferManager in drawBufferManagers)
+            {
+                for (int y = 0; y < LayerSize.Row; y++)
+                {
+                    for (int x = 0; x < LayerSize.Column; x++)
+                    {
+                        UpdateQuadAt(drawBufferManager, x, y, false);
+                    }
+                }
+                drawBufferManager.UpdateQuadBuffers();
+            }
+
+            tileQuadsDirty = false;
+        }
 
         void UpdateTileCoordsToNodeTransform()
         {
@@ -368,6 +403,9 @@ namespace CocosSharp
 
         protected override void VisitRenderer(ref CCAffineTransform worldTransform)
         {
+            if (tileQuadsDirty)
+                UpdateAllTileQuads();
+
             tileRenderCommand.GlobalDepth = worldTransform.Tz + minVertexZ;
             tileRenderCommand.WorldTransform = worldTransform;
             DrawManager.Renderer.AddCommand(tileRenderCommand);
@@ -1187,7 +1225,6 @@ namespace CocosSharp
 
                 if ((tileGID.Flags & CCTileFlags.TileDiagonal) != 0)
                 {
-                    // FIXME: not working correcly
                     quad.BottomLeft.Vertices = new CCVertex3F(left, bottom, vertexZ);
                     quad.BottomRight.Vertices = new CCVertex3F(left, top, vertexZ);
                     quad.TopLeft.Vertices = new CCVertex3F(right, bottom, vertexZ);
@@ -1201,12 +1238,15 @@ namespace CocosSharp
                     quad.TopRight.Vertices = new CCVertex3F(right, top, vertexZ);
                 }
 
+                float offsetW = TileMapLayer.HalfTexelOffset ? 0.5f / texSize.Width : 0.0f;
+                float offsetH = TileMapLayer.HalfTexelOffset? 0.5f / texSize.Height : 0.0f;
+
                 // texcoords
                 CCRect tileTexture = TileSetInfo.TextureRectForGID(tileGID.Gid);
-                left = ((tileTexture.Origin.X) / texSize.Width) + 0.5f / texSize.Width;
-                right = left + ((tileTexture.Size.Width) / texSize.Width) - 1.0f / texSize.Width;
-                bottom = ((tileTexture.Origin.Y) / texSize.Height) + 0.5f / texSize.Height;
-                top = bottom + ((tileTexture.Size.Height) / texSize.Height) - 1.0f / texSize.Height;
+                left = tileTexture.Origin.X / texSize.Width + offsetW;
+                right = (tileTexture.Origin.X + tileTexture.Size.Width) / texSize.Width - offsetW;
+                bottom = tileTexture.Origin.Y / texSize.Height + offsetH;
+                top = (tileTexture.Origin.Y + tileTexture.Size.Height) / texSize.Height - offsetH;
 
                 quad.BottomLeft.TexCoords = new CCTex2F(left, bottom);
                 quad.BottomRight.TexCoords = new CCTex2F(right, bottom);

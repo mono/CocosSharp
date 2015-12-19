@@ -9,6 +9,8 @@ namespace CocosSharp
     {
         #region Properties
 
+        public static bool DefaultHalfTexelOffset { get; set; }
+
         public CCTileMapType Type { get; private set; }
         public CCTileMapCoordinates MapDimensions { get; private set; }
         public CCSize TileTexelSize { get; private set; }
@@ -34,10 +36,30 @@ namespace CocosSharp
             }
         }
 
+        public bool HalfTexelOffset
+        {
+            set
+            {
+                foreach (CCNode child in TileLayersContainer.Children)
+                {
+                    var layer = child as CCTileMapLayer;
+                    if (layer != null)
+                    {
+                        layer.HalfTexelOffset = value;
+                    }
+                }
+            }
+        }
+
         #endregion Properties
 
 
         #region Constructors
+
+        static CCTileMap()
+        {
+            DefaultHalfTexelOffset = true;
+        }
 
         public CCTileMap(CCTileMapInfo mapInfo)
             : base(CCCameraProjection.Projection2D)
