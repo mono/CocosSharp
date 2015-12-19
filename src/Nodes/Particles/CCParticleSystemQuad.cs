@@ -228,7 +228,7 @@ namespace CocosSharp
         {
             CCPoint newPosition;
 
-            if(PositionType == CCPositionType.Free || PositionType == CCPositionType.Relative)
+            if(PositionType == CCPositionType.Free)
             {
                 newPosition.X = particle.Position.X - (currentPosition.X - particle.StartPosition.X);
                 newPosition.Y = particle.Position.Y - (currentPosition.Y - particle.StartPosition.Y);
@@ -331,10 +331,6 @@ namespace CocosSharp
             currentPosition = CCPoint.Zero;
 
             if (PositionType == CCPositionType.Free)
-            {
-                currentPosition = Layer.VisibleBoundsWorldspace.Origin;
-            }
-            else if (PositionType == CCPositionType.Relative)
             {
                 currentPosition = Position;
             }

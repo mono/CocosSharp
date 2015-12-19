@@ -554,15 +554,7 @@ namespace CocosSharp
             float endSpin = EndSpin + EndSpinVar * CCRandom.Float_Minus1_1();
             particleBase.Rotation = startSpin;
             particleBase.DeltaRotation = (endSpin - startSpin) / timeToLive;
-
-            if (PositionType == CCPositionType.Free)
-            {
-                particleBase.StartPosition = Layer.VisibleBoundsWorldspace.Origin;
-            }
-            else if (PositionType == CCPositionType.Relative)
-            {
-                particleBase.StartPosition = Position;
-            }
+            particleBase.StartPosition = Position;
         }
 
         // Update particle
