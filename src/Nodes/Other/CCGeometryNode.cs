@@ -159,15 +159,44 @@ namespace CocosSharp
             basicEffect.TextureEnabled = texture != null;
             basicEffect.Texture = texture;
 
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-                basicEffect.GraphicsDevice.DrawUserIndexedPrimitives(
-                    instance.PrimitiveType,
-                    verticesArray.Elements, 0, numberOfVerticies,
-                    indicesArray.Elements, 0, numberIndices);
-            }
+            var vOffset = 0;
 
+            // figure out how many slices we need to break the vertices into depending on 
+            // short.MaxValue.  Some platforms only support short value indices.
+            var slices = (float)Math.Ceiling(numberOfVerticies / (float)short.MaxValue);
+
+            // compute the amount of vertices and indices to be rendered in a single pass
+            var sliceOfVertices = (int)Math.Min(numberOfVerticies, short.MaxValue);
+            var sliceOfIndices = (int)(numberIndices / (numberOfVerticies / (float)sliceOfVertices));
+
+            // If we have more than one slice then we need to increment the indices so that
+            // the triangle is continued correctly when rendering the next slice.  If not then we
+            // will get artifacts.
+            if (slices > 1)
+                sliceOfIndices++;
+
+            int slice = 0;
+
+            for (; slice < slices; slice++)
+            {
+
+                foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
+                {
+                    pass.Apply();
+
+                    basicEffect.GraphicsDevice.DrawUserIndexedPrimitives(
+                        instance.PrimitiveType,
+                        verticesArray.Elements, vOffset, sliceOfVertices,
+                        indicesArray.Elements, 0, sliceOfIndices);
+
+                }
+
+                vOffset += sliceOfVertices + 1;
+
+                sliceOfVertices = (int)Math.Min(numberOfVerticies - vOffset, short.MaxValue);
+                sliceOfIndices = (int)(numberIndices / (numberOfVerticies / (float)sliceOfVertices)) + 1;
+
+            }
         }
 
         #endregion Rendering
@@ -208,6 +237,7 @@ namespace CocosSharp
                 && this.PrimitiveType == other.PrimitiveType;
         }
  
+
         public static bool operator ==(CCGeometryInstanceAttributes item1, CCGeometryInstanceAttributes item2)
         {
             if (object.ReferenceEquals(item1, item2)) { return true; }
