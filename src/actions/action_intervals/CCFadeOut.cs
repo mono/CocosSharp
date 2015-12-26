@@ -4,7 +4,7 @@
     {
         #region Constructors
 
-        public CCFadeOut (float durtaion) : base (durtaion)
+        public CCFadeOut (float duration) : base (duration)
         {
         }
 
