@@ -54,22 +54,32 @@ namespace CocosSharp
 
         #endregion Structs
 
+
         #region Constructors
 
-        public CCDrawNode()
+        public CCDrawNode() : this(DefaultBufferSize)
+        {
+        }
+
+        public CCDrawNode(uint bufferSize) : this(bufferSize, bufferSize)
+        {
+        }
+
+        public CCDrawNode(uint triangleBufferSize, uint lineBufferSize)
         {
             renderTriangles = new CCCustomCommand(FlushTriangles);
             renderLines = new CCCustomCommand(FlushLines);
             renderStrings = new CCCustomCommand(DrawStrings);
 
             BlendFunc = CCBlendFunc.AlphaBlend;
-            triangleVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
-            lineVertices = new CCRawList<CCV3F_C4B>(DefaultBufferSize);
+            triangleVertices = new CCRawList<CCV3F_C4B>((int)triangleBufferSize);
+            lineVertices = new CCRawList<CCV3F_C4B>((int)lineBufferSize);
 
             verticeBounds = CCRect.Zero;
         }
 
         #endregion Constructors
+
 
         public void SelectFont (string fontName, float fontSize)
         {
