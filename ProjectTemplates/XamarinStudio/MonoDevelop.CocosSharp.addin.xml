@@ -7,7 +7,7 @@
         url             ="https://github.com/mono/CocosSharp" 
         description     ="Setup CocosSharp projects for iOS or Android targets"
         category        ="CocosSharp"
-        version         ="1.7.0.0-pre1">
+        version         ="1.7.1.0">
 
     <Runtime>
         <!---iOS files -->

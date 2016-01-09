@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.Windows8</id>
-    <version>1.7.0.0-pre1</version>
+    <version>1.7.1.0</version>
     <title>CocosSharp for Windows 8</title>
     <authors>Xamarin</authors>
     <owners>Xamarin</owners>
@@ -11,7 +11,7 @@
     <iconUrl>http://github.com/mono/CocosSharp</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>CocosSharp for Windows RT is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
-	<releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.7.0.0-pre1.md</releaseNotes>
+	<releaseNotes>See https://github.com/mono/CocosSharp/blob/master/ReleaseNotes/ReleaseNotes_v1.7.1.0.md</releaseNotes>
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d CocosSharp xna monogame 2D games visualization engine  surface windowsrt</tags>
 
