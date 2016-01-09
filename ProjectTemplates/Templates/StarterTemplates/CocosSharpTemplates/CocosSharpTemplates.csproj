@@ -160,14 +160,14 @@
       <Link>Packages\CocosSharp.Forms.1.7.1.0.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <!--Content Include="..\..\..\..\CocosSharp.1.7.1.0.nupkg">
+    <Content Include="..\..\..\..\CocosSharp.Forms\packages\Xamarin.Forms.1.5.0.6447\Xamarin.Forms.1.5.0.6447.nupkg">
       <Link>Packages\Xamarin.Forms.1.5.0.6447.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content-->
-      <!--Content Include="..\..\..\..\CocosSharpForms.1.7.1.0.nupkg">
+    </Content>
+    <Content Include="..\..\..\..\CocosSharp.Forms\packages\Xamarin.Android.Support.v4.23.0.1.1\Xamarin.Android.Support.v4.23.0.1.1.nupkg">
       <Link>Packages\Xamarin.Forms.1.5.0.6447.nupkg</Link>
       <IncludeInVSIX>true</IncludeInVSIX>
-    </Content-->
+    </Content>
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
