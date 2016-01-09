@@ -36,7 +36,7 @@
             </Files>
             <Packages>
                 <Package Id="Xamarin.Forms" Version="1.5.1.6471"/> 
-                <Package Id="CocosSharp.Forms" Version="1.7.0.0-pre1"/>
+                <Package Id="CocosSharp.Forms" Version="1.7.1.0"/>
             </Packages>
         </Project>
        
@@ -87,7 +87,7 @@
             </Files>
             <Packages>
                 <Package Id="Xamarin.Forms" Version="1.5.1.6471"/>
-                <Package Id="CocosSharp.Forms" Version="1.7.0.0-pre1"/>
+                <Package Id="CocosSharp.Forms" Version="1.7.1.0"/>
             </Packages>
         </Project>
         
