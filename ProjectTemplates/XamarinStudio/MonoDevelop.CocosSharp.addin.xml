@@ -101,8 +101,8 @@
         <Import file    ="Common/GameLayer.cs" />
 
         <!-- NuGet packages -->
-        <Import file    ="Packages/CocosSharp.1.7.0.0-pre1.nupkg" />
-        <Import file    ="Packages/CocosSharp.Forms.1.7.0.0-pre1.nupkg" />
+        <Import file    ="Packages/CocosSharp.1.7.1.0.nupkg" />
+        <Import file    ="Packages/CocosSharp.Forms.1.7.1.0.nupkg" />
     </Runtime>
 
     <!--- Common dependencies -->
