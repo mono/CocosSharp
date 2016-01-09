@@ -18,7 +18,6 @@
     <InstallationTarget Version="[11.0,)" Id="Microsoft.VisualStudio.VSWinDesktopExpress" />
   </Installation>
   <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.0,)" />
   </Dependencies>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.ProjectTemplate" d:Source="File" Path="ProjectTemplates" d:TargetPath="ProjectTemplates\CocosSharp\Android\EmptyProject.Android.zip" />
