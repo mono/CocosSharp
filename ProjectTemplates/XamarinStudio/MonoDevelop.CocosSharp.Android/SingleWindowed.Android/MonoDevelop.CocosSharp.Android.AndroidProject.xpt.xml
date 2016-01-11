@@ -81,7 +81,7 @@
                 </Files>
 
                 <Packages>
-                    <Package id="CocosSharp" />
+                    <Package id="CocosSharp" version="1.7.1.0"/>
                 </Packages>
             </Project>
         </Combine>

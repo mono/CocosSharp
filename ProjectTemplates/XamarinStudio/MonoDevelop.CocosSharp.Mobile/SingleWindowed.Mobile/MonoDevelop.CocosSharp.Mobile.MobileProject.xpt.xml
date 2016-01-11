@@ -129,7 +129,7 @@
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
             </Files>
             <Packages>
-                <Package Id="CocosSharp" /> 
+                <Package id="CocosSharp" version="1.7.1.0"/> 
             </Packages>
         </Project>
     </Combine>
