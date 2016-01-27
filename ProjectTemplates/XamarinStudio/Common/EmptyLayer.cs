@@ -6,9 +6,9 @@ namespace ${SolutionName}
 {
     public class ${Name} : CCLayerColor
     {
-        public ${Name}() : base (CCColor4B.AliceBlue)
+        public ${Name}() : base (CCColor4B.Gray)
         {
-            // Load and instantate your assets here
+            // Load and instantiate your assets here
 
             // Make any renderable node objects (e.g. sprites) children of this layer
         }
