@@ -267,6 +267,12 @@ namespace CocosSharp
             bufferCreated = false;
         }
 
+        public override void WillMoveToWindow(UIWindow window)
+        {
+            if (window != null)
+                base.WillMoveToWindow (window);
+        }
+
         #endregion Cleaning up 
 
 
