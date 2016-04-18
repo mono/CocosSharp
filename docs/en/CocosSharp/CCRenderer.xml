@@ -1,0 +1,33 @@
+<Type Name="CCRenderer" FullName="CocosSharp.CCRenderer">
+  <TypeSignature Language="C#" Value="public class CCRenderer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRenderer extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AddCommand">
+      <MemberSignature Language="C#" Value="public void AddCommand (CocosSharp.CCRenderCommand command);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddCommand(class CocosSharp.CCRenderCommand command) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="command" Type="CocosSharp.CCRenderCommand" />
+      </Parameters>
+      <Docs>
+        <param name="command">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

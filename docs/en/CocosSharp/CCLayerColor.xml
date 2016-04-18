@@ -32,80 +32,89 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerColor (Nullable&lt;CocosSharp.CCColor4B&gt; color = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Nullable`1&lt;valuetype CocosSharp.CCColor4B&gt; color) cil managed" />
       <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="color" Type="System.Nullable&lt;CocosSharp.CCColor4B&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCCamera camera, Nullable&lt;CocosSharp.CCColor4B&gt; color = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCamera camera, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCColor4B&gt; color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="camera" Type="CocosSharp.CCCamera" />
+        <Parameter Name="color" Type="System.Nullable&lt;CocosSharp.CCColor4B&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="camera">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCCameraProjection cameraProjection, Nullable&lt;CocosSharp.CCColor4B&gt; color = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCCameraProjection cameraProjection, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCColor4B&gt; color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="cameraProjection" Type="CocosSharp.CCCameraProjection" />
+        <Parameter Name="color" Type="System.Nullable&lt;CocosSharp.CCColor4B&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="cameraProjection">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCSize visibleBoundsDimensions, Nullable&lt;CocosSharp.CCColor4B&gt; color = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize visibleBoundsDimensions, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCColor4B&gt; color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="visibleBoundsDimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="color" Type="System.Nullable&lt;CocosSharp.CCColor4B&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="visibleBoundsDimensions">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCCameraProjection projection, Nullable&lt;CocosSharp.CCColor4B&gt; color = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize visibleBoundsDimensions, valuetype CocosSharp.CCCameraProjection projection, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCColor4B&gt; color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="visibleBoundsDimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="projection" Type="CocosSharp.CCCameraProjection" />
+        <Parameter Name="color" Type="System.Nullable&lt;CocosSharp.CCColor4B&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="visibleBoundsDimensions">To be added.</param>
+        <param name="projection">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddedToScene">
+      <MemberSignature Language="C#" Value="protected override void AddedToScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void AddedToScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>creates a  with color. Width and height are the window size. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCCamera camera);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCamera camera) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="camera" Type="CocosSharp.CCCamera" />
-      </Parameters>
-      <Docs>
-        <param name="camera">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B color) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-      </Parameters>
-      <Docs>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCSize visibleBoundsDimensions);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize visibleBoundsDimensions) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="visibleBoundsDimensions" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="visibleBoundsDimensions">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCCamera camera, CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCamera camera, valuetype CocosSharp.CCColor4B color) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="camera" Type="CocosSharp.CCCamera" />
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-      </Parameters>
-      <Docs>
-        <param name="camera">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize visibleBoundsDimensions, valuetype CocosSharp.CCColor4B color) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="visibleBoundsDimensions" Type="CocosSharp.CCSize" />
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-      </Parameters>
-      <Docs>
-        <param name="visibleBoundsDimensions">To be added.</param>
-        <param name="color">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -155,38 +164,6 @@
           <see cref="T:CocosSharp.CCLayer" />
           <see cref="T:CocosSharp.CCScene" />
           <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
-        <remarks>
-          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          <item>
-            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-          </item>
-          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
       </Docs>
     </Member>
@@ -241,6 +218,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisitRenderer">
+      <MemberSignature Language="C#" Value="protected override void VisitRenderer (ref CocosSharp.CCAffineTransform worldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void VisitRenderer(valuetype CocosSharp.CCAffineTransform worldTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="worldTransform">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

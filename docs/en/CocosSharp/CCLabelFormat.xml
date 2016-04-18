@@ -1,0 +1,188 @@
+<Type Name="CCLabelFormat" FullName="CocosSharp.CCLabelFormat">
+  <TypeSignature Language="C#" Value="public sealed class CCLabelFormat : IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit CCLabelFormat extends System.Object implements class System.IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelFormat ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelFormat (CocosSharp.CCLabelFormat format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLabelFormat format) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="format" Type="CocosSharp.CCLabelFormat" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelFormat (CocosSharp.CCLabelFormatFlags options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCLabelFormatFlags options) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="options" Type="CocosSharp.CCLabelFormatFlags" />
+      </Parameters>
+      <Docs>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Alignment">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextAlignment Alignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTextAlignment Alignment" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BitMapFont">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCLabelFormat BitMapFont { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCLabelFormat BitMapFont" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clone">
+      <MemberSignature Language="C#" Value="public object Clone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object Clone() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finalize">
+      <MemberSignature Language="C#" Value="~CCLabelFormat ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FormatFlags">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelFormatFlags FormatFlags { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCLabelFormatFlags FormatFlags" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineAlignment">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVerticalTextAlignment LineAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVerticalTextAlignment LineAlignment" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineBreaking">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelLineBreak LineBreaking { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCLabelLineBreak LineBreaking" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelLineBreak</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SpriteFont">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCLabelFormat SpriteFont { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCLabelFormat SpriteFont" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SystemFont">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCLabelFormat SystemFont { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCLabelFormat SystemFont" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

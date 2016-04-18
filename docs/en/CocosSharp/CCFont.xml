@@ -1,0 +1,120 @@
+<Type Name="CCFont" FullName="CocosSharp.CCFont">
+  <TypeSignature Language="C#" Value="public class CCFont" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFont extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCFont ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentGlyphCollection">
+      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;char&gt; CurrentGlyphCollection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;char&gt; CurrentGlyphCollection" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;System.Char&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FontMaxHeight">
+      <MemberSignature Language="C#" Value="public virtual int FontMaxHeight { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 FontMaxHeight" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FontScale">
+      <MemberSignature Language="C#" Value="public virtual float FontScale { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 FontScale" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetGlyphCollection">
+      <MemberSignature Language="C#" Value="public string GetGlyphCollection (CocosSharp.GlyphCollection glyphs);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetGlyphCollection(valuetype CocosSharp.GlyphCollection glyphs) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="glyphs" Type="CocosSharp.GlyphCollection" />
+      </Parameters>
+      <Docs>
+        <param name="glyphs">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HorizontalKerningForText">
+      <MemberSignature Language="C#" Value="public virtual int[] HorizontalKerningForText (string text, out int numLetters);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32[] HorizontalKerningForText(string text, int32 numLetters) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="numLetters" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <param name="numLetters">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetCurrentGlyphCollection">
+      <MemberSignature Language="C#" Value="public virtual void SetCurrentGlyphCollection (CocosSharp.GlyphCollection glyphs, string customGlyphs);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetCurrentGlyphCollection(valuetype CocosSharp.GlyphCollection glyphs, string customGlyphs) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="glyphs" Type="CocosSharp.GlyphCollection" />
+        <Parameter Name="customGlyphs" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="glyphs">To be added.</param>
+        <param name="customGlyphs">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

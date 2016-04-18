@@ -1,6 +1,6 @@
 <Type Name="CCSprite" FullName="CocosSharp.CCSprite">
   <TypeSignature Language="C#" Value="public class CCSprite : CocosSharp.CCNode, CocosSharp.ICCTexture" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSprite extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CCSprite extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -149,30 +149,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="child" Type="CocosSharp.CCNode" />
-        <Parameter Name="zOrder" Type="System.Int32" />
-        <Parameter Name="tag" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="child">A child node </param>
-        <param name="zOrder">Z order for drawing priority. Please refer to setZOrder(int)</param>
-        <param name="tag">A interger to identify the node easily. Please refer to setTag(int)</param>
-        <summary>Adds a child to the container with z order and tag</summary>
-        <remarks>
-          <para>Adds a child to the container with z order and tag</para>
-          <para>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AtlasIndex">
       <MemberSignature Language="C#" Value="public int AtlasIndex { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 AtlasIndex" />
@@ -182,19 +158,6 @@
       </ReturnValue>
       <Docs>
         <summary>Sets the index used on the . Don't modify this value unless you know what you are doing </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="BatchNode">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteBatchNode BatchNode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSpriteBatchNode BatchNode" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSpriteBatchNode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets the batch node to sprite This method is not recommended for game developers. Sample code for using batch node SpriteBatchNode*batch=SpriteBatchNode::create("Images/grossini_dance_atlas.png",15);Sprite*sprite=Sprite::createWithTexture(batch-&gt;getTexture(),Rect(0,0,57,57));batch-&gt;addChild(sprite);layer-&gt;addChild(batch);</summary>
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -248,52 +211,43 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Deserialize">
-      <MemberSignature Language="C#" Value="public override void Deserialize (System.IO.Stream stream);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Deserialize(class System.IO.Stream stream) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="DefaultHalfTexelOffset">
+      <MemberSignature Language="C#" Value="public static bool DefaultHalfTexelOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool DefaultHalfTexelOffset" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="stream" Type="System.IO.Stream" />
-      </Parameters>
       <Docs>
-        <param name="stream">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="DefaultTexelToContentSizeRatio">
+      <MemberSignature Language="C#" Value="public static float DefaultTexelToContentSizeRatio { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 DefaultTexelToContentSizeRatio" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
-        <remarks>
-          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          <item>
-            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-          </item>
-          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-        </remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultTexelToContentSizeRatios">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize DefaultTexelToContentSizeRatios { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCSize DefaultTexelToContentSizeRatios" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FlipX">
@@ -326,6 +280,19 @@
           <para>Sets whether the sprite should be flipped vertically or not.</para>
           <para />
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HalfTexelOffset">
+      <MemberSignature Language="C#" Value="public bool HalfTexelOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HalfTexelOffset" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsAntialiased">
@@ -384,6 +351,19 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="MaximizeTextureRect">
+      <MemberSignature Language="C#" Value="public void MaximizeTextureRect ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MaximizeTextureRect() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Opacity">
       <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
@@ -400,72 +380,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="ParentUpdatedTransform">
-      <MemberSignature Language="C#" Value="protected override void ParentUpdatedTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ParentUpdatedTransform() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCPoint Position { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the position (x,y) of the node in OpenGL coordinates</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the position (x,y) of the node in OpenGL coordinates</para>
-          <para>Usually we use Point(x,y) to compose Point object. The original point (0,0) is at the left-bottom corner of screen. For example, this codesnip sets the node in the center of screen. <programlisting><codeline><highlight class="normal">Size<sp />size<sp />=<sp /><ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance</ref>()-&gt;<ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member">getWinSize</ref>();</highlight></codeline><codeline><highlight class="normal">node-&gt;setPosition(<sp />Point(size.width/2,<sp />size.height/2)<sp />)</highlight></codeline></programlisting></para>
-          <programlisting>
-            <codeline>
-              <highlight class="normal">Size<sp />size<sp />=<sp /><ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance</ref>()-&gt;<ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member">getWinSize</ref>();</highlight>
-            </codeline>
-            <codeline>
-              <highlight class="normal">node-&gt;setPosition(<sp />Point(size.width/2,<sp />size.height/2)<sp />)</highlight>
-            </codeline>
-          </programlisting>
-          <codeline>
-            <highlight class="normal">Size<sp />size<sp />=<sp /><ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance</ref>()-&gt;<ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member">getWinSize</ref>();</highlight>
-          </codeline>
-          <highlight class="normal">Size<sp />size<sp />=<sp /><ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance</ref>()-&gt;<ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member">getWinSize</ref>();</highlight>
-          <sp />
-          <sp />
-          <sp />
-          <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance</ref>
-          <ref refid="classcocos2d_1_1_director_1a760fff09a5469c8e8be57257df312695" kindref="member">getWinSize</ref>
-          <codeline>
-            <highlight class="normal">node-&gt;setPosition(<sp />Point(size.width/2,<sp />size.height/2)<sp />)</highlight>
-          </codeline>
-          <highlight class="normal">node-&gt;setPosition(<sp />Point(size.width/2,<sp />size.height/2)<sp />)</highlight>
-          <sp />
-          <sp />
-          <sp />
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="quad">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCV3F_C4B_T2F_Quad quad;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCV3F_C4B_T2F_Quad quad" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCV3F_C4B_T2F_Quad</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Quad">
       <MemberSignature Language="C#" Value="protected CocosSharp.CCV3F_C4B_T2F_Quad Quad { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCV3F_C4B_T2F_Quad Quad" />
@@ -477,43 +391,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveAllChildren">
-      <MemberSignature Language="C#" Value="public override void RemoveAllChildren (bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveAllChildren(bool cleanup) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="cleanup" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="cleanup">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveChild">
-      <MemberSignature Language="C#" Value="public override void RemoveChild (CocosSharp.CCNode child, bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class CocosSharp.CCNode child, bool cleanup) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="child" Type="CocosSharp.CCNode" />
-        <Parameter Name="cleanup" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="child">The child node which will be removed. </param>
-        <param name="cleanup">true if all running actions and callbacks on the child node will be cleanup, false otherwise. </param>
-        <summary>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</summary>
-        <remarks>
-          <para>Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.</para>
-          <para />
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
@@ -537,132 +414,20 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Rotation">
-      <MemberSignature Language="C#" Value="public override float Rotation { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 Rotation" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets the rotation (angle) of the node in degrees.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets the rotation (angle) of the node in degrees.</para>
-          <para>0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RotationX">
-      <MemberSignature Language="C#" Value="public override float RotationX { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 RotationX" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets the X rotation (angle) of the node in degrees which performs a horizontal rotational skew.</para>
-          <para>0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RotationY">
-      <MemberSignature Language="C#" Value="public override float RotationY { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 RotationY" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets the Y rotation (angle) of the node in degrees which performs a vertical rotational skew.</para>
-          <para>0 is the default rotation angle. Positive values rotate node clockwise, and negative values for anti-clockwise.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ScaleTo">
-      <MemberSignature Language="C#" Value="public virtual void ScaleTo (CocosSharp.CCSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ScaleTo(valuetype CocosSharp.CCSize size) cil managed" />
+    <Member MemberName="ReplaceTexture">
+      <MemberSignature Language="C#" Value="public void ReplaceTexture (CocosSharp.CCTexture2D texture, CocosSharp.CCRect textureRectInPixels);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReplaceTexture(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect textureRectInPixels) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="textureRectInPixels" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ScaleX">
-      <MemberSignature Language="C#" Value="public override float ScaleX { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleX" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the scale factor on X axis of this node</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the scale factor on X axis of this node</para>
-          <para>The deafult value is 1.0 if you haven't changed it before</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ScaleY">
-      <MemberSignature Language="C#" Value="public override float ScaleY { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleY" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the scale factor on Y axis of this node</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the scale factor on Y axis of this node</para>
-          <para>The Default value is 1.0 if you haven't changed it before.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Serialize">
-      <MemberSignature Language="C#" Value="public override void Serialize (System.IO.Stream stream);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Serialize(class System.IO.Stream stream) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="stream" Type="System.IO.Stream" />
-      </Parameters>
-      <Docs>
-        <param name="stream">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetReorderChildDirtyRecursively">
-      <MemberSignature Language="C#" Value="public virtual void SetReorderChildDirtyRecursively ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetReorderChildDirtyRecursively() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
+        <param name="texture">To be added.</param>
+        <param name="textureRectInPixels">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -685,53 +450,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SkewX">
-      <MemberSignature Language="C#" Value="public override float SkewX { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 SkewX" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the X skew angle of the node in degrees.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the X skew angle of the node in degrees.</para>
-          <para>This angle describes the shear distortion in the X direction. Thus, it is the angle between the Y axis and the left edge of the shape The default skewX angle is 0. Positive values distort the node in a CW direction.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SkewY">
-      <MemberSignature Language="C#" Value="public override float SkewY { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 SkewY" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the Y skew angle of the node in degrees.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the Y skew angle of the node in degrees.</para>
-          <para>This angle describes the shear distortion in the Y direction. Thus, it is the angle between the X axis and the bottom edge of the shape The default skewY angle is 0. Positive values distort the node in a CCW direction.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SortAllChildren">
-      <MemberSignature Language="C#" Value="public override void SortAllChildren ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void SortAllChildren() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Sorts the children array once before drawing, instead of every time when a child is added or reordered. This appraoch can improves the performance massively. Don't call this manually unless a child added needs to be removed in the same frame </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="SpriteFrame">
       <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteFrame SpriteFrame { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSpriteFrame SpriteFrame" />
@@ -746,7 +464,7 @@
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D Texture { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -777,12 +495,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TransformedQuad">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCV3F_C4B_T2F_Quad TransformedQuad { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCV3F_C4B_T2F_Quad TransformedQuad" />
+    <Member MemberName="UntrimmedSizeInPixels">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize UntrimmedSizeInPixels { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize UntrimmedSizeInPixels" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCV3F_C4B_T2F_Quad</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -816,15 +534,44 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UpdateTransformedSpriteTextureQuads">
-      <MemberSignature Language="C#" Value="public void UpdateTransformedSpriteTextureQuads ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateTransformedSpriteTextureQuads() cil managed" />
+    <Member MemberName="UpdateLocalTransformedSpriteTextureQuads">
+      <MemberSignature Language="C#" Value="public void UpdateLocalTransformedSpriteTextureQuads ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateLocalTransformedSpriteTextureQuads() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visible">
+      <MemberSignature Language="C#" Value="public override bool Visible { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Visible" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisitRenderer">
+      <MemberSignature Language="C#" Value="protected override void VisitRenderer (ref CocosSharp.CCAffineTransform worldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void VisitRenderer(valuetype CocosSharp.CCAffineTransform worldTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="worldTransform">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

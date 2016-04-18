@@ -97,7 +97,7 @@
       </Docs>
     </Member>
     <Member MemberName="CollisionMask">
-      <MemberSignature Language="C#" Value="public virtual byte[] CollisionMask { get; }" />
+      <MemberSignature Language="C#" Value="public byte[] CollisionMask { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] CollisionMask" />
       <MemberType>Property</MemberType>
       <ReturnValue>

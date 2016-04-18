@@ -1,0 +1,76 @@
+<Type Name="CCLabelFormatFlags" FullName="CocosSharp.CCLabelFormatFlags">
+  <TypeSignature Language="C#" Value="public enum CCLabelFormatFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCLabelFormatFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="BitmapFont">
+      <MemberSignature Language="C#" Value="BitmapFont" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelFormatFlags BitmapFont = int32(4)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CharacterMap">
+      <MemberSignature Language="C#" Value="CharacterMap" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelFormatFlags CharacterMap = int32(8)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SpriteFont">
+      <MemberSignature Language="C#" Value="SpriteFont" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelFormatFlags SpriteFont = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SystemFont">
+      <MemberSignature Language="C#" Value="SystemFont" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelFormatFlags SystemFont = int32(16)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unknown">
+      <MemberSignature Language="C#" Value="Unknown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelFormatFlags Unknown = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormatFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

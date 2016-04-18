@@ -30,38 +30,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
-        <remarks>
-          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          <item>
-            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-          </item>
-          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="InitialiseScenes">
       <MemberSignature Language="C#" Value="protected override void InitialiseScenes ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitialiseScenes() cil managed" />
@@ -73,19 +41,6 @@
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnExit">
-      <MemberSignature Language="C#" Value="public override void OnExit ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnExit() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Event callback that is invoked every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., Node::onExit(). </summary>
-        <remarks />
       </Docs>
     </Member>
   </Members>

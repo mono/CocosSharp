@@ -790,6 +790,25 @@
       </Docs>
     </Member>
     <Member MemberName="op_Division">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Division (CocosSharp.CCPoint p, CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Division(valuetype CocosSharp.CCPoint p, valuetype CocosSharp.CCSize size) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Division">
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Division (CocosSharp.CCPoint p, float value);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Division(valuetype CocosSharp.CCPoint p, float32 value) cil managed" />
       <MemberType>Method</MemberType>
@@ -921,6 +940,25 @@
         <returns>Result of the multiplication.</returns>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Multiply (CocosSharp.CCPoint point, CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Multiply(valuetype CocosSharp.CCPoint point, valuetype CocosSharp.CCSize size) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Multiply">
@@ -1108,6 +1146,20 @@
         <summary>Rotates a point counter clockwise by the angle around a pivot the rotated point v2.1.4 </summary>
         <returns>Rotated point.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="RoundToInteger">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint RoundToInteger ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint RoundToInteger() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SegmentIntersect">

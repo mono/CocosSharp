@@ -47,18 +47,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Color">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4B Color;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4B Color" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor4B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="InitialiseScenes">
       <MemberSignature Language="C#" Value="protected override void InitialiseScenes ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitialiseScenes() cil managed" />

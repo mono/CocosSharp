@@ -58,6 +58,61 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetAssetStream">
+      <MemberSignature Language="C#" Value="public System.IO.Stream GetAssetStream (string assetName, out string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.IO.Stream GetAssetStream(string assetName, string fileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.IO.Stream</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="assetName" Type="System.String" />
+        <Parameter Name="fileName" Type="System.String&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="assetName">To be added.</param>
+        <param name="fileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAssetStreamAsBytes">
+      <MemberSignature Language="C#" Value="public byte[] GetAssetStreamAsBytes (string assetName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] GetAssetStreamAsBytes(string assetName) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="assetName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="assetName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAssetStreamAsBytes">
+      <MemberSignature Language="C#" Value="public byte[] GetAssetStreamAsBytes (string assetName, out string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] GetAssetStreamAsBytes(string assetName, string fileName) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="assetName" Type="System.String" />
+        <Parameter Name="fileName" Type="System.String&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="assetName">To be added.</param>
+        <param name="fileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Load&lt;T&gt;">
       <MemberSignature Language="C#" Value="public override T Load&lt;T&gt; (string assetName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance !!T Load&lt;T&gt;(string assetName) cil managed" />
@@ -116,7 +171,7 @@
       </Docs>
     </Member>
     <Member MemberName="SearchPaths">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;string&gt; SearchPaths { get; }" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;string&gt; SearchPaths { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;string&gt; SearchPaths" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -142,14 +197,15 @@
       </Docs>
     </Member>
     <Member MemberName="SharedContentManager">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCContentManager SharedContentManager;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class CocosSharp.CCContentManager SharedContentManager" />
-      <MemberType>Field</MemberType>
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCContentManager SharedContentManager { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCContentManager SharedContentManager" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCContentManager</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

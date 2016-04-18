@@ -109,16 +109,19 @@
       </Docs>
     </Member>
     <Member MemberName="Visit">
-      <MemberSignature Language="C#" Value="public override void Visit ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
+      <MemberSignature Language="C#" Value="public override void Visit (ref CocosSharp.CCAffineTransform parentWorldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit(valuetype CocosSharp.CCAffineTransform parentWorldTransform) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="parentWorldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
       <Docs>
-        <summary>Visits this node's children and draw them recursively. </summary>
-        <remarks />
+        <param name="parentWorldTransform">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

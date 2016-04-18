@@ -27,6 +27,23 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="GridNode">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNodeGrid GridNode (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class CocosSharp.CCNodeGrid GridNode(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNodeGrid</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="StartAction">
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />

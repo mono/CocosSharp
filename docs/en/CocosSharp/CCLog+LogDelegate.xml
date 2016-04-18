@@ -1,0 +1,29 @@
+<Type Name="CCLog+LogDelegate" FullName="CocosSharp.CCLog+LogDelegate">
+  <TypeSignature Language="C#" Value="public delegate void CCLog.LogDelegate(string value, object[] args);" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed CCLog/LogDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="value" Type="System.String" />
+    <Parameter Name="args" Type="System.Object[]">
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ParamArray</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Parameter>
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="value">To be added.</param>
+    <param name="args">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

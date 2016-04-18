@@ -14,12 +14,12 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFadeOutUpTilesState (CocosSharp.CCFadeOutUpTiles action, CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFadeOutUpTiles action, class CocosSharp.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFadeOutUpTilesState (CocosSharp.CCFadeOutUpTiles action, CocosSharp.CCNodeGrid target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFadeOutUpTiles action, class CocosSharp.CCNodeGrid target) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCFadeOutUpTiles" />
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNodeGrid" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>

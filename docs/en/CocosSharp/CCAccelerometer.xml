@@ -15,14 +15,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAccelerometer (CocosSharp.CCWindow window);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAccelerometer (CocosSharp.CCGameView gameView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCGameView gameView) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="window" Type="CocosSharp.CCWindow" />
+        <Parameter Name="gameView" Type="CocosSharp.CCGameView" />
       </Parameters>
       <Docs>
-        <param name="window">To be added.</param>
+        <param name="gameView">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -41,6 +41,19 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GameView">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCGameView GameView { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGameView GameView" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGameView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Update">
       <MemberSignature Language="C#" Value="public void Update ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Update() cil managed" />
@@ -53,19 +66,6 @@
         <summary>Update the accelerometer and generate corresponding events.</summary>
         <remarks>
         </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Window">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCWindow Window { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCWindow Window" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCWindow</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

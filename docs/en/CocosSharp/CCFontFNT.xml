@@ -1,0 +1,111 @@
+<Type Name="CCFontFNT" FullName="CocosSharp.CCFontFNT">
+  <TypeSignature Language="C#" Value="public class CCFontFNT : CocosSharp.CCFont" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFontFNT extends CocosSharp.CCFont" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCFont</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCFontFNT (string fntFilePath, Nullable&lt;CocosSharp.CCVector2&gt; imageOffset = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fntFilePath, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVector2&gt; imageOffset) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="fntFilePath" Type="System.String" />
+        <Parameter Name="imageOffset" Type="System.Nullable&lt;CocosSharp.CCVector2&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="fntFilePath">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCFontFNT (string configInfo, CocosSharp.CCTexture2D atlasTexture, Nullable&lt;CocosSharp.CCVector2&gt; imageOffset = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string configInfo, class CocosSharp.CCTexture2D atlasTexture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVector2&gt; imageOffset) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="configInfo" Type="System.String" />
+        <Parameter Name="atlasTexture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="imageOffset" Type="System.Nullable&lt;CocosSharp.CCVector2&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="configInfo">To be added.</param>
+        <param name="atlasTexture">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCFontFNT (string configInfo, System.IO.Stream atlasStream, Nullable&lt;CocosSharp.CCVector2&gt; imageOffset = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string configInfo, class System.IO.Stream atlasStream, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVector2&gt; imageOffset) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="configInfo" Type="System.String" />
+        <Parameter Name="atlasStream" Type="System.IO.Stream" />
+        <Parameter Name="imageOffset" Type="System.Nullable&lt;CocosSharp.CCVector2&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="configInfo">To be added.</param>
+        <param name="atlasStream">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HorizontalKerningForText">
+      <MemberSignature Language="C#" Value="public override int[] HorizontalKerningForText (string text, out int numLetters);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32[] HorizontalKerningForText(string text, int32 numLetters) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="numLetters" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <param name="numLetters">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsFontConfigValid">
+      <MemberSignature Language="C#" Value="public bool IsFontConfigValid { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsFontConfigValid" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeCachedData">
+      <MemberSignature Language="C#" Value="public void PurgeCachedData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeCachedData() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

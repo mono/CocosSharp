@@ -143,19 +143,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PurgeSharedSpriteFrameCache">
-      <MemberSignature Language="C#" Value="public static void PurgeSharedSpriteFrameCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedSpriteFrameCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="RemoveSpriteFrame">
       <MemberSignature Language="C#" Value="public void RemoveSpriteFrame (string frameName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFrame(string frameName) cil managed" />

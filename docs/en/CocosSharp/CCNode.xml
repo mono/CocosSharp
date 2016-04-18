@@ -48,7 +48,8 @@
       <Parameters />
       <Docs>
         <summary>Default Constructor for CCNode.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -61,7 +62,8 @@
       <Docs>
         <param name="contentSize">A CCSize structure that specifies the ContentSize of the CCNode being created.</param>
         <summary>Constructor that creates a CCNode with the ContentSize initialized to contentSize</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddAction">
@@ -114,27 +116,7 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public void AddChild (CocosSharp.CCNode child);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class CocosSharp.CCNode child) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="child" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="child">A child node </param>
-        <summary>Adds a child to the container with z order and tag</summary>
-        <remarks>
-          <para>Adds a child to the container with z order and tag</para>
-          <para>If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public void AddChild (CocosSharp.CCNode child, int zOrder);" />
+      <MemberSignature Language="C#" Value="public void AddChild (CocosSharp.CCNode child, int zOrder = 0);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class CocosSharp.CCNode child, int32 zOrder) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
@@ -148,7 +130,8 @@
         <param name="child">A child node</param>
         <param name="zOrder">The order which the child will be drawin in the Scene Graph</param>
         <summary>Adds a child to the container with the z order specified</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -168,7 +151,8 @@
         <param name="zOrder">The order which the child will be drawn in the Scene Graph</param>
         <param name="tag">User defined value given to the child so that it can be referenced later</param>
         <summary>Adds a child to the container with the z order specifed and a user defined value</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddCustomEventListener">
@@ -186,8 +170,10 @@
         <param name="eventName">The custom event name to be added</param>
         <param name="callback">The action that is triggered.</param>
         <summary>Adds a custom event listener to this node that will trigger the Action passed.</summary>
-        <returns></returns>
-        <remarks></remarks>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddedToScene">
@@ -937,19 +923,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Application">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCApplication Application { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCApplication Application" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCApplication</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="BoundingBox">
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect BoundingBox { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect BoundingBox" />
@@ -1400,7 +1373,7 @@
     </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public void Dispose ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Dispose() cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1427,19 +1400,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected virtual void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Override this method to draw your own node.</summary>
-        <remarks>When extending a CCNode this is usually one of the methods that is overridden if user wants to represent something to the user.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~CCNode ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
@@ -1450,6 +1410,19 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GameView">
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCGameView GameView { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGameView GameView" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGameView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1508,35 +1481,6 @@
           </para>
           <para>a <see cref="T:CocosSharp.CCNode" /> object whose tag equals to the input parameter </para>
           <see cref="T:CocosSharp.CCNode" />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GlobalZOrder">
-      <MemberSignature Language="C#" Value="public float GlobalZOrder { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 GlobalZOrder" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Grid">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCGridBase Grid { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGridBase Grid" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCGridBase</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes a grid object that is used when applying effects</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes a grid object that is used when applying effects</para>
-          <para />
         </remarks>
       </Docs>
     </Member>
@@ -1717,19 +1661,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LocalZOrder">
-      <MemberSignature Language="C#" Value="public int LocalZOrder { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 LocalZOrder" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Name" />
@@ -1819,32 +1750,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OrderOfArrival">
-      <MemberSignature Language="C#" Value="protected uint OrderOfArrival { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 OrderOfArrival" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Returns the arrival order, indecates which children is added previously.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Returns the arrival order, indecates which children is added previously.</para>
-          <para>
-            <para>
-              <ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member">setOrderOfArrival(unsigned int)</ref>
-            </para>
-            <para>The arrival order. </para>
-          </para>
-          <para>
-            <ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member">setOrderOfArrival(unsigned int)</ref>
-          </para>
-          <ref refid="group__base__nodes_1ga1d187df548d25d92730ea855aa25967c" kindref="member">setOrderOfArrival(unsigned int)</ref>
-          <para>The arrival order. </para>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Parent">
@@ -1964,7 +1869,7 @@
       </Docs>
     </Member>
     <Member MemberName="PositionX">
-      <MemberSignature Language="C#" Value="public float PositionX { get; set; }" />
+      <MemberSignature Language="C#" Value="public virtual float PositionX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 PositionX" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -1977,7 +1882,7 @@
       </Docs>
     </Member>
     <Member MemberName="PositionY">
-      <MemberSignature Language="C#" Value="public float PositionY { get; set; }" />
+      <MemberSignature Language="C#" Value="public virtual float PositionY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 PositionY" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -2177,6 +2082,19 @@
       <Docs>
         <param name="cleanup">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Renderer">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRenderer Renderer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRenderer Renderer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRenderer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2429,12 +2347,52 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="RunActionAsync">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;CocosSharp.CCActionState&gt; RunActionAsync (CocosSharp.CCFiniteTimeAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class CocosSharp.CCActionState&gt; RunActionAsync(class CocosSharp.CCFiniteTimeAction action) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;CocosSharp.CCActionState&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RunActions">
       <MemberSignature Language="C#" Value="public CocosSharp.CCActionState RunActions (CocosSharp.CCFiniteTimeAction[] actions);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState RunActions(class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="actions">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunActionsAsync">
+      <MemberSignature Language="C#" Value="public System.Threading.Tasks.Task&lt;CocosSharp.CCActionState&gt; RunActionsAsync (CocosSharp.CCFiniteTimeAction[] actions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Threading.Tasks.Task`1&lt;class CocosSharp.CCActionState&gt; RunActionsAsync(class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Threading.Tasks.Task&lt;CocosSharp.CCActionState&gt;</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
@@ -2765,8 +2723,8 @@
       </Docs>
     </Member>
     <Member MemberName="SortAllChildren">
-      <MemberSignature Language="C#" Value="public virtual void SortAllChildren ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SortAllChildren() cil managed" />
+      <MemberSignature Language="C#" Value="public void SortAllChildren ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SortAllChildren() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2869,32 +2827,6 @@
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public void Transform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Performs OpenGL view-matrix transformation based on position, scale, rotation and other attributes. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="TransformAncestors">
-      <MemberSignature Language="C#" Value="public void TransformAncestors ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TransformAncestors() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Performs OpenGL view-matrix transformation of it's ancestors. Generally the ancestors are already transformed, but in certain cases (eg: attaching a FBO) It's necessary to transform the ancestors again. </summary>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Unschedule">
@@ -3008,10 +2940,7 @@
         <param name="parentColor">Color of parent</param>
         <summary>Propagates the children nodes with the Color of their parent</summary>
         <remarks>Override this method to control how the color value is propogated to the children of this node.
-        <see cref="T:CocosSharp.CCSprite" />
-        <see cref="T:CocosSharp.CCLayer" />
-        <see cref="T:CocosSharp.CCLayerColor" />
-        </remarks>
+        <see cref="T:CocosSharp.CCSprite" /><see cref="T:CocosSharp.CCLayer" /><see cref="T:CocosSharp.CCLayerColor" /></remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedOpacity">
@@ -3028,10 +2957,7 @@
         <param name="parentOpacity">Opacity of parent</param>
         <summary>Propogates the children nodes with Opacity of their parent</summary>
         <remarks>Override this method to control how the opacity value is propogated to the children of this node.
-        <see cref="T:CocosSharp.CCSprite" />
-        <see cref="T:CocosSharp.CCLayer" />
-        <see cref="T:CocosSharp.CCLayerColor" />
-        </remarks>
+        <see cref="T:CocosSharp.CCSprite" /><see cref="T:CocosSharp.CCLayer" /><see cref="T:CocosSharp.CCLayerColor" /></remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateTransform">
@@ -3102,20 +3028,8 @@
       <Docs>
         <summary>Gets/Sets Z vertex of this node.</summary>
         <value>Float value of the Z vertex</value>
-        <remarks></remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Viewport">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCViewport Viewport { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCViewport Viewport" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCViewport</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Viewport of the Scene</summary>
-        <value>A viewport that is specified on the Scene</value>
-        <remarks>This is automatically created by the scene if a custom viewport is not passed to the scene constructor.</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ViewportChanged">
@@ -3128,7 +3042,8 @@
       <Parameters />
       <Docs>
         <summary>Override this method when developer wants to be notified when the Scenes viewport values change.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Visible">
@@ -3158,7 +3073,8 @@
       <Parameters />
       <Docs>
         <summary>Override this method when you want to be notified when the Visible Bounds of the node changes.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="VisibleBoundsWorldspace">
@@ -3175,8 +3091,8 @@
       </Docs>
     </Member>
     <Member MemberName="Visit">
-      <MemberSignature Language="C#" Value="public virtual void Visit ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Visit() cil managed" />
+      <MemberSignature Language="C#" Value="public void Visit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Visit() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3187,17 +3103,36 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="Window">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCWindow Window { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCWindow Window" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="Visit">
+      <MemberSignature Language="C#" Value="public virtual void Visit (ref CocosSharp.CCAffineTransform parentWorldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Visit(valuetype CocosSharp.CCAffineTransform parentWorldTransform) cil managed" />
+      <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCWindow</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="parentWorldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
       <Docs>
-        <summary>This is the windows that this node is associated to</summary>
-        <value>Created Window</value>
-        <remarks>The window is set during scene creationg.</remarks>
+        <param name="parentWorldTransform">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisitRenderer">
+      <MemberSignature Language="C#" Value="protected virtual void VisitRenderer (ref CocosSharp.CCAffineTransform worldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void VisitRenderer(valuetype CocosSharp.CCAffineTransform worldTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="worldTransform">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WorldToParentspace">
@@ -3214,20 +3149,8 @@
         <param name="point">Point to be transformed.</param>
         <summary>This will transform the x,y values to the Parent space.</summary>
         <returns>A CCPoint with transformed x,y values</returns>
-        <remarks></remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="XnaWorldMatrix">
-      <MemberSignature Language="C#" Value="protected Microsoft.Xna.Framework.Matrix XnaWorldMatrix { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Microsoft.Xna.Framework.Matrix XnaWorldMatrix" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Matrix</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ZOrder">

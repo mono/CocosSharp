@@ -1,0 +1,60 @@
+<Type Name="GlyphCollection" FullName="CocosSharp.GlyphCollection">
+  <TypeSignature Language="C#" Value="public enum GlyphCollection" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed GlyphCollection extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Ascii">
+      <MemberSignature Language="C#" Value="Ascii" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.GlyphCollection Ascii = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.GlyphCollection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Custom">
+      <MemberSignature Language="C#" Value="Custom" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.GlyphCollection Custom = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.GlyphCollection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Dynamic">
+      <MemberSignature Language="C#" Value="Dynamic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.GlyphCollection Dynamic = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.GlyphCollection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="NEHE">
+      <MemberSignature Language="C#" Value="NEHE" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.GlyphCollection NEHE = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.GlyphCollection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

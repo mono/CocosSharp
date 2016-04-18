@@ -114,6 +114,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetDirectoryName">
+      <MemberSignature Language="C#" Value="public static bool GetDirectoryName (string fileName, out string directory);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool GetDirectoryName(string fileName, string directory) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="directory" Type="System.String&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
+        <param name="directory">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetFileBytes">
       <MemberSignature Language="C#" Value="public static byte[] GetFileBytes (string filename);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] GetFileBytes(string filename) cil managed" />

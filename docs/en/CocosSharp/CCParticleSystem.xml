@@ -1,6 +1,6 @@
 <Type Name="CCParticleSystem" FullName="CocosSharp.CCParticleSystem">
-  <TypeSignature Language="C#" Value="public class CCParticleSystem : CocosSharp.CCNode, CocosSharp.ICCTexture" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystem extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
+  <TypeSignature Language="C#" Value="public abstract class CCParticleSystem : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCParticleSystem extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -8,9 +8,6 @@
     <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCTexture</InterfaceName>
-    </Interface>
   </Interfaces>
   <Docs>
     <summary>
@@ -277,45 +274,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="BatchNode">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCParticleBatchNode BatchNode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCParticleBatchNode BatchNode" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCParticleBatchNode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>setBatchNode </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="BlendAdditive">
-      <MemberSignature Language="C#" Value="public bool BlendAdditive { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool BlendAdditive" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="BlendFunc">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>setBlendFunc </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Duration">
       <MemberSignature Language="C#" Value="public float Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Duration" />
@@ -543,19 +501,6 @@
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Layer">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCLayer Layer { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer Layer" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCLayer</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -827,19 +772,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Scene">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCScene Scene { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene Scene" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScene</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SourcePosition">
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint SourcePosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint SourcePosition" />
@@ -1022,19 +954,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>setTexture </summary>
-        <value>To be added.</value>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="TotalParticles">

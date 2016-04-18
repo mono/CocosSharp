@@ -133,6 +133,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="One">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCSize One;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCSize One" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="op_Addition">
       <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Addition (CocosSharp.CCSize p, float f);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Addition(valuetype CocosSharp.CCSize p, float32 f) cil managed" />
@@ -147,6 +159,25 @@
       <Docs>
         <param name="p">To be added.</param>
         <param name="f">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Division">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Division (CocosSharp.CCSize p1, CocosSharp.CCSize p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Division(valuetype CocosSharp.CCSize p1, valuetype CocosSharp.CCSize p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCSize" />
+        <Parameter Name="p2" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -213,6 +244,25 @@
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCSize" />
+        <Parameter Name="p2" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Multiply (CocosSharp.CCSize p1, CocosSharp.CCSize p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Multiply(valuetype CocosSharp.CCSize p1, valuetype CocosSharp.CCSize p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="p1" Type="CocosSharp.CCSize" />
