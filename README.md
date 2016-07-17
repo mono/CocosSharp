@@ -11,6 +11,12 @@ This library is MIT licensed.
 [coverity-project]: https://scan.coverity.com/projects/6245
 [coverity-badge]: https://scan.coverity.com/projects/6245/badge.svg
 
+Website
+-------
+
+We have a dedicated website at [http://mono.github.io/CocosSharp](http://mono.github.io/CocosSharp). In particular,
+check out the [contribute](http://mono.github.io/CocosSharp/contribute) section for how to be part of the CococsSharp community.
+
 Forums
 ------
 
