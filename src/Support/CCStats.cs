@@ -124,6 +124,10 @@ namespace CocosSharp
 
         #region Initialisation
 
+        internal CCStats()
+        {
+        }
+
         internal void Initialise()
         {
             if (!isInitialized) {
