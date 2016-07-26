@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.iOS", "src\CocosSharp.iOS.csproj", "{511B1B80-F539-4CEC-AB62-3652A9275E7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.iOS", "Core\CocosSharp.iOS.csproj", "{511B1B80-F539-4CEC-AB62-3652A9275E7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.iOS", "box2d\box2d.iOS.csproj", "{7877D4F9-F781-465A-9C1F-D113F246A994}"
 EndProject

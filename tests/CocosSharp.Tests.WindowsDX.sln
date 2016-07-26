@@ -8,11 +8,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Windows"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsDX", "..\box2d\box2d.WindowsDX.csproj", "{B81B6701-7A78-4846-BF6F-04E0591F0F38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsDX", "..\src\CocosSharp.WindowsDX.csproj", "{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsDX", "..\Core\CocosSharp.WindowsDX.csproj", "{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Windows", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows.csproj", "{87A71215-7CAC-4B80-9D43-1700DECFB828}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipmunkSharp.Win32", "..\src\external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Win32.csproj", "{FD50437F-B756-4BD8-99BE-B723F6E1EB45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

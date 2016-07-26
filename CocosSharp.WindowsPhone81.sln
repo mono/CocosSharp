@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Wind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsPhone81", "box2d\box2d.WindowsPhone81.csproj", "{5C334780-3639-4AF9-922D-46CAC187BA93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsPhone81", "src\CocosSharp.WindowsPhone81.csproj", "{1D51A5A6-0DB5-49E5-868D-7D0E1FD14D8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsPhone81", "Core\CocosSharp.WindowsPhone81.csproj", "{1D51A5A6-0DB5-49E5-868D-7D0E1FD14D8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

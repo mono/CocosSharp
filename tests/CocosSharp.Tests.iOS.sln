@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.iOS", "..\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.iOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.iOS.csproj", "{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.iOS", "..\src\CocosSharp.iOS.csproj", "{511B1B80-F539-4CEC-AB62-3652A9275E7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.iOS", "..\Core\CocosSharp.iOS.csproj", "{511B1B80-F539-4CEC-AB62-3652A9275E7E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.iOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.iOS.csproj", "{D4838656-8545-4DC5-8822-D4AD313E17AC}"
 EndProject

@@ -9,11 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.MacOS", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.MacOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj", "{36C538E6-C32A-4A8D-A39C-566173D7118E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.MacOS", "..\src\CocosSharp.MacOS.csproj", "{A83510D8-7AED-411E-9616-DCFEA180969E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.MacOS", "..\Core\CocosSharp.MacOS.csproj", "{A83510D8-7AED-411E-9616-DCFEA180969E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.MacOS", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.MacOS.csproj", "{1294038B-66C2-4359-AFE9-EA06A758CA94}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipmunkSharp.Mac", "..\src\external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Mac.csproj", "{FD50437F-B756-4BD8-99BE-B723F6E1EB45}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Common", "tests\classes\CocosSharp.Tests.Common.shproj", "{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}"
 EndProject

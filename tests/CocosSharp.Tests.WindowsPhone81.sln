@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Wind
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsPhone81", "..\box2d\box2d.WindowsPhone81.csproj", "{5C334780-3639-4AF9-922D-46CAC187BA93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsPhone81", "..\src\CocosSharp.WindowsPhone81.csproj", "{1D51A5A6-0DB5-49E5-868D-7D0E1FD14D8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsPhone81", "..\Core\CocosSharp.WindowsPhone81.csproj", "{1D51A5A6-0DB5-49E5-868D-7D0E1FD14D8F}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Common", "tests\classes\CocosSharp.Tests.Common.shproj", "{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}"
 EndProject

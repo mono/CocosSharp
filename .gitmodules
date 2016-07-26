@@ -1,14 +1,4 @@
-
-[submodule "tools/ouya"]
-
-	path = tools/ouya
-
-	url = https://github.com/slygamer/ouya-csharp.git
-
 [submodule "MonoGame"]
 	path = MonoGame
 	url = https://github.com/mono/MonoGame.git
 	branch = xamarin
-[submodule "src/external lib/ChipmunkSharp"]
-	path = src/external lib/ChipmunkSharp
-	url = https://github.com/netonjm/ChipmunkSharp.git

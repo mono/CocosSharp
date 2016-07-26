@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.Android", "..\box2d\b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Android", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj", "{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Android", "..\src\CocosSharp.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Android", "..\Core\CocosSharp.Android.csproj", "{64725C5B-A1BC-4974-8538-A1158BABF572}"
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocosSharp.Tests.Common", "tests\classes\CocosSharp.Tests.Common.shproj", "{9F5A43EA-FF24-4167-9D3C-2F182E8454AF}"
 EndProject
