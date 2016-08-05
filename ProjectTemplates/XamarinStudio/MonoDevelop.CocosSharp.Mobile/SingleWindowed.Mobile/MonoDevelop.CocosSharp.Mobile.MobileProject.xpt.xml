@@ -123,7 +123,7 @@
         </Project>
 
         <!---PCL project -->
-        <Project name = "${ProjectName}.Common" directory = "${ProjectName}/${ProjectName}.Common" type = "PortableDotNet">
+        <Project name = "${ProjectName}.Common" directory = "${ProjectName}/${ProjectName}.Common" type = "C#PortableLibrary">
             <Options Target = "Library" TargetFrameworkVersion = ".NETPortable,Version=v4.5,Profile=Profile111"/>
             <Files>
                 <File name="GameLayer.cs" AddStandardHeader="True" src="../../Common/GameLayer.cs" />
