@@ -297,8 +297,8 @@ namespace CocosSharp
     			return;
     		}
 
-    		// convert to string
-			SetValueForKey(key, value.ToString());
+    		// no conversion needed as value is already a string
+			SetValueForKey(key, value);
     	}
 
 		bool IsXMLFileExist()
