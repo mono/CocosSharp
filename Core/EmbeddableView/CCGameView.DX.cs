@@ -124,5 +124,12 @@ namespace CocosSharp
         }
         #endregion Mouse Handling
 
+        #region Keyboard handling
+
+        void PlatformUpdateKeyboardEnabled()
+        {
+        }
+
+        #endregion Keyboard handling
     }
 }

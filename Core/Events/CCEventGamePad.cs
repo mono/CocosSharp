@@ -19,7 +19,8 @@ namespace CocosSharp
 	/// </summary>
 	public enum CCGamePadButtonStatus
 	{
-		Pressed,
+        None,
+        Pressed,
 		Released,
 		/// <summary>
 		/// A pressed and released action was merged
