@@ -224,9 +224,9 @@ namespace CocosSharp
 
 		public void RemoveJoint(CCPhysicsJoint joint)
 		{
-			var it = _joints.Find((j) => j == joint);
-			if (it != null)
-				_joints.Remove(it);
+			int it = _joints.FindIndex((j) => j == joint);
+			if (it != -1)
+				_joints.RemoveAt(it);
 		}
 
 		protected void UpdateDamping() { _isDamping = _linearDamping != 0.0f || _angularDamping != 0.0f; }
@@ -690,7 +690,7 @@ namespace CocosSharp
 		}
 		/** 
 		 * A mask that defines which categories of bodies cause intersection notifications with this physics body.
-		 * When two bodies share the same space, each body’s category mask is tested against the other body’s contact mask by performing a logical AND operation. If either comparison results in a non-zero value, an PhysicsContact object is created and passed to the physics world’s delegate. For best performance, only set bits in the contacts mask for interactions you are interested in.
+		 * When two bodies share the same space, each bodyÂ’s category mask is tested against the other bodyÂ’s contact mask by performing a logical AND operation. If either comparison results in a non-zero value, an PhysicsContact object is created and passed to the physics worldÂ’s delegate. For best performance, only set bits in the contacts mask for interactions you are interested in.
 		 * The default value is 0x00000000 (all bits cleared).
 		 */
 		public void SetContactTestBitmask(int bitmask)
@@ -704,7 +704,7 @@ namespace CocosSharp
 		}
 		/**
 		 * A mask that defines which categories of physics bodies can collide with this physics body.
-		 * When two physics bodies contact each other, a collision may occur. This body’s collision mask is compared to the other body’s category mask by performing a logical AND operation. If the result is a non-zero value, then this body is affected by the collision. Each body independently chooses whether it wants to be affected by the other body. For example, you might use this to avoid collision calculations that would make negligible changes to a body’s velocity.
+		 * When two physics bodies contact each other, a collision may occur. This bodyÂ’s collision mask is compared to the other bodyÂ’s category mask by performing a logical AND operation. If the result is a non-zero value, then this body is affected by the collision. Each body independently chooses whether it wants to be affected by the other body. For example, you might use this to avoid collision calculations that would make negligible changes to a bodyÂ’s velocity.
 		 * The default value is 0xFFFFFFFF (all bits set).
 		 */
 		public void SetCollisionBitmask(int bitmask)
@@ -1135,7 +1135,7 @@ namespace CocosSharp
 			}
 		}
 
-		/** whether this physics body is affected by the physics world’s gravitational force. */
+		/** whether this physics body is affected by the physics worldÂ’s gravitational force. */
 		public bool IsGravityEnabled() { return _gravityEnabled; }
 		/** set the body is affected by the physics world's gravitational force or not. */
 		public void SetGravityEnable(bool enable)
