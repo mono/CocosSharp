@@ -107,8 +107,8 @@
 
     <!--- Common dependencies -->
     <Dependencies>
-        <Addin id="Core"        version="5.0"/>
-        <Addin id="Ide"         version="5.0"/>
+        <Addin id="Core"        version="6.0"/>
+        <Addin id="Ide"         version="6.0"/>
     </Dependencies>
 
 
@@ -142,7 +142,7 @@
     <!-- Android project templates -->
     <Module>
         <Dependencies>
-            <Addin id="MonoAndroid" version="5.0"/>
+            <Addin id="MonoAndroid" version="6.0"/>
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
@@ -157,7 +157,7 @@
     <!-- iOS project templates -->
     <Module>
         <Dependencies>
-            <Addin id="IPhone" version="5.0"/>
+            <Addin id="IPhone" version="6.0"/>
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
@@ -172,7 +172,7 @@
     <!-- Mobile project templates -->
     <Module>
         <Dependencies>
-            <Addin id="MonoAndroid" version="5.0"/>
+            <Addin id="MonoAndroid" version="6.0"/>
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
@@ -188,8 +188,8 @@
     <!-- Xamarin.Forms project templates -->
     <Module>
         <Dependencies>
-            <Addin id="MonoAndroid" version="5.0"/>
-            <Addin id="IPhone" version="5.0"/>
+            <Addin id="MonoAndroid" version="6.0"/>
+            <Addin id="IPhone" version="6.0"/>
         </Dependencies>
         <Extension path="/MonoDevelop/Ide/ProjectTemplates">
             <ProjectTemplate
