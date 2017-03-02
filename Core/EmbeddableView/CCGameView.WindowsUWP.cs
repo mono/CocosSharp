@@ -6,6 +6,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Controls;
 using Microsoft.Xna.Framework.Graphics;
+using Windows.Gaming.Input;
 
 
 namespace CocosSharp
@@ -43,6 +44,9 @@ namespace CocosSharp
             SizeChanged += ViewSizeChanged;
             Window.Current.Activated += ViewStateChanged;
             ScaleFactor = CCDevice.ResolutionScaleFactor;
+            currentPointerCursor = Window.Current.CoreWindow.PointerCursor;
+            eventGamePadButton = new CCEventGamePadButton();
+            eventGamePadDPad = new CCEventGamePadDPad();
         }
 
         void PlatformInitialiseGraphicsDevice(ref PresentationParameters presParams)
@@ -129,6 +133,8 @@ namespace CocosSharp
 
         void OnUpdateFrame(object sender, object e)
         {
+            ReadGamePadState();
+
             Tick();
 
             graphicsDevice.ResetRenderTargets();
@@ -247,9 +253,14 @@ namespace CocosSharp
 
         void PlatformUpdateMouseVisible()
         {
+            Window.Current.CoreWindow.PointerCursor = mouseVisible ? currentPointerCursor : null;
         }
 
         CCMouseButton buttons = CCMouseButton.None;
+        GamepadButtons previousGamepadButtons;
+        CoreCursor currentPointerCursor;
+        CCEventGamePadButton eventGamePadButton;
+        CCEventGamePadDPad eventGamePadDPad;
 
         void MousePressed(object sender, PointerRoutedEventArgs args)
         {
@@ -334,5 +345,134 @@ namespace CocosSharp
         }
         #endregion Mouse handling
 
+        #region Keyboard handling
+
+        void PlatformUpdateKeyboardEnabled()
+        {
+            if (KeyboardEnabled)
+            {
+                Window.Current.CoreWindow.KeyDown += OnKeyDown;
+                Window.Current.CoreWindow.KeyUp += OnKeyUp;
+            }
+            else
+            {
+                Window.Current.CoreWindow.KeyDown -= OnKeyDown;
+                Window.Current.CoreWindow.KeyUp -= OnKeyUp;
+            }
+        }
+
+        void OnKeyDown(object sender, KeyEventArgs args)
+        {
+            AddIncomingKeyDown((CCKeys)(int)args.VirtualKey);
+            args.Handled = true;
+        }
+
+        void OnKeyUp(object sender, KeyEventArgs args)
+        {
+            AddIncomingKeyUp((CCKeys)(int)args.VirtualKey);
+            args.Handled = true;
+        }
+
+        #endregion Keyboard handling
+
+        #region Gamepad handling
+
+        void ReadGamePadState()
+        {
+            if (Gamepad.Gamepads.Count > 0)
+            {
+                var gamepad = Gamepad.Gamepads[0];
+                var gamepadReading = gamepad.GetCurrentReading();
+                var gamepadButtons = gamepadReading.Buttons;
+
+                var buttonStateChanged = false;
+                eventGamePadButton.A = CCGamePadButtonStatus.None;
+                eventGamePadButton.B = CCGamePadButtonStatus.None;
+                eventGamePadButton.X = CCGamePadButtonStatus.None;
+                eventGamePadButton.Y = CCGamePadButtonStatus.None;
+                eventGamePadButton.LeftShoulder = CCGamePadButtonStatus.None;
+                eventGamePadButton.RightShoulder = CCGamePadButtonStatus.None;
+                eventGamePadButton.Start = CCGamePadButtonStatus.None;
+                eventGamePadButton.Back = CCGamePadButtonStatus.None;
+                if (previousGamepadButtons.HasFlag(GamepadButtons.A) != gamepadButtons.HasFlag(GamepadButtons.A))
+                {
+                    eventGamePadButton.A = gamepadButtons.HasFlag(GamepadButtons.A) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.B) != gamepadButtons.HasFlag(GamepadButtons.B))
+                {
+                    eventGamePadButton.B = gamepadButtons.HasFlag(GamepadButtons.B) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.X) != gamepadButtons.HasFlag(GamepadButtons.X))
+                {
+                    eventGamePadButton.X = gamepadButtons.HasFlag(GamepadButtons.X) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.Y) != gamepadButtons.HasFlag(GamepadButtons.Y))
+                {
+                    eventGamePadButton.Y = gamepadButtons.HasFlag(GamepadButtons.Y) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.LeftShoulder) != gamepadButtons.HasFlag(GamepadButtons.LeftShoulder))
+                {
+                    eventGamePadButton.LeftShoulder = gamepadButtons.HasFlag(GamepadButtons.LeftShoulder) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.RightShoulder) != gamepadButtons.HasFlag(GamepadButtons.RightShoulder))
+                {
+                    eventGamePadButton.RightShoulder = gamepadButtons.HasFlag(GamepadButtons.RightShoulder) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.Menu) != gamepadButtons.HasFlag(GamepadButtons.Menu))
+                {
+                    eventGamePadButton.Start = gamepadButtons.HasFlag(GamepadButtons.Menu) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.View) != gamepadButtons.HasFlag(GamepadButtons.View))
+                {
+                    eventGamePadButton.Back = gamepadButtons.HasFlag(GamepadButtons.View) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    buttonStateChanged = true;
+                }
+                if (buttonStateChanged)
+                {
+                    AddIncomingGamePadButton(eventGamePadButton);
+                }
+
+                var dPadStateChanged = false;
+                eventGamePadDPad.Left = CCGamePadButtonStatus.None;
+                eventGamePadDPad.Right = CCGamePadButtonStatus.None;
+                eventGamePadDPad.Up = CCGamePadButtonStatus.None;
+                eventGamePadDPad.Down = CCGamePadButtonStatus.None;
+                if (previousGamepadButtons.HasFlag(GamepadButtons.DPadLeft) != gamepadButtons.HasFlag(GamepadButtons.DPadLeft))
+                {
+                    eventGamePadDPad.Left = gamepadButtons.HasFlag(GamepadButtons.DPadLeft) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    dPadStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.DPadRight) != gamepadButtons.HasFlag(GamepadButtons.DPadRight))
+                {
+                    eventGamePadDPad.Right = gamepadButtons.HasFlag(GamepadButtons.DPadRight) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    dPadStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.DPadUp) != gamepadButtons.HasFlag(GamepadButtons.DPadUp))
+                {
+                    eventGamePadDPad.Up = gamepadButtons.HasFlag(GamepadButtons.DPadUp) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    dPadStateChanged = true;
+                }
+                if (previousGamepadButtons.HasFlag(GamepadButtons.DPadDown) != gamepadButtons.HasFlag(GamepadButtons.DPadDown))
+                {
+                    eventGamePadDPad.Down = gamepadButtons.HasFlag(GamepadButtons.DPadDown) ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released;
+                    dPadStateChanged = true;
+                }
+                if (dPadStateChanged)
+                {
+                    AddIncomingGamePadDPad(eventGamePadDPad);
+                }
+
+                previousGamepadButtons = gamepadButtons;
+            }
+        }
+
+        #endregion Gamepad
     }
 }

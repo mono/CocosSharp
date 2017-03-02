@@ -37,7 +37,7 @@ namespace CocosSharp
     public class CCLayerColor : CCLayer, ICCBlendable
     {
         bool verticesPositionDirty;
-        internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
+        protected VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
         CCCustomCommand layerRenderCommand;
 
@@ -187,7 +187,7 @@ namespace CocosSharp
             SquareVertices[3].Color = color;
         }
 
-        void UpdateVerticesPosition()
+        protected virtual void UpdateVerticesPosition()
         {
             CCRect visibleBounds = VisibleBoundsWorldspace;
 

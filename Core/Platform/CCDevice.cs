@@ -81,6 +81,22 @@ namespace CocosSharp
             }
         }
 
+        public static bool IsTouchScreenPresent
+        {
+            get
+            {
+#if NETFX_CORE
+                var touchCapabilities = new Windows.Devices.Input.TouchCapabilities();
+                return (touchCapabilities.TouchPresent != 0);
+#elif MACOS
+                // We will just always assume that it doesn't
+                return false;
+#else
+                return true;
+#endif
+            }
+        }
+
         public static bool IsMousePresent
         {
             get
@@ -96,6 +112,7 @@ namespace CocosSharp
 #endif
             }
         }
+
         public static bool IsKeyboardPresent
         {
             get
@@ -106,6 +123,18 @@ namespace CocosSharp
 #elif MACOS
                 // We will just always assume that it does
                 return true;
+#else
+                return false;
+#endif
+            }
+        }
+
+        public static bool IsGamepadPresent
+        {
+            get
+            {
+#if NETFX_CORE
+                return Windows.Gaming.Input.Gamepad.Gamepads.Count > 0;
 #else
                 return false;
 #endif

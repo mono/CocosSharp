@@ -9,6 +9,8 @@ namespace CocosSharp
     {
 
         bool mouseEnabled;
+        bool keyboardEnabled;
+        bool gamepadEnabled;
 
         Dictionary<int, CCEventMouse> mouseMap;
         List<CCEventMouse> incomingNewMouse;
@@ -16,7 +18,15 @@ namespace CocosSharp
         List<CCEventMouse> incomingReleaseMouse;
         List<CCEventMouse> incomingScrollMouse;
 
+        List<CCEventKeyboard> incomingNewKeyDown;
+        List<CCEventKeyboard> incomingNewKeyUp;
+
+        List<CCEventGamePadButton> incomingGamePadButton;
+        List<CCEventGamePadDPad> incomingGamePadDPad;
+
         object mouseLock = new object();
+        object keyLock = new object();
+        object gamepadLock = new object();
 
         bool mouseVisible;
 
@@ -42,6 +52,22 @@ namespace CocosSharp
             }
         }
 
+        public bool KeyboardEnabled
+        {
+            get { return keyboardEnabled; }
+            set
+            {
+                keyboardEnabled = value;
+                PlatformUpdateKeyboardEnabled();
+            }
+        }
+
+        public bool GamepadEnabled
+        {
+            get { return gamepadEnabled; }
+            set { gamepadEnabled = value; }
+        }
+
         #endregion Properties
 
 
@@ -56,8 +82,15 @@ namespace CocosSharp
             incomingReleaseMouse = new List<CCEventMouse>();
             incomingScrollMouse = new List<CCEventMouse>();
 
-            IsMouseVisible = MouseEnabled = CCDevice.IsMousePresent;
+            incomingNewKeyDown = new List<CCEventKeyboard>();
+            incomingNewKeyUp = new List<CCEventKeyboard>();
 
+            incomingGamePadButton = new List<CCEventGamePadButton>();
+            incomingGamePadDPad = new List<CCEventGamePadDPad>();
+
+            IsMouseVisible = MouseEnabled = CCDevice.IsMousePresent;
+            KeyboardEnabled = CCDevice.IsKeyboardPresent;
+            GamepadEnabled = CCDevice.IsGamepadPresent;
         }
 
         #endregion Initialisation
@@ -125,6 +158,50 @@ namespace CocosSharp
             }
         }
 
+        #endregion Mouse handling
+
+        #region Keyboard handling
+
+        void AddIncomingKeyDown(CCKeys key)
+        {
+            lock (keyLock)
+            {
+                var mouse = new CCEventKeyboard(CCKeyboardEventType.KEYBOARD_PRESS) { Keys = (CCKeys)(int)key };
+                incomingNewKeyDown.Add(mouse);
+            }
+        }
+
+        void AddIncomingKeyUp(CCKeys key)
+        {
+            lock (keyLock)
+            {
+                var mouse = new CCEventKeyboard(CCKeyboardEventType.KEYBOARD_RELEASE) { Keys = (CCKeys)(int)key };
+                incomingNewKeyUp.Add(mouse);
+            }
+        }
+
+        #endregion Keyboard handling
+
+        #region Gamepad handling
+
+        void AddIncomingGamePadButton(CCEventGamePadButton button)
+        {
+            lock (gamepadLock)
+            {
+                incomingGamePadButton.Add(button);
+            }
+        }
+
+        void AddIncomingGamePadDPad(CCEventGamePadDPad dPad)
+        {
+            lock (gamepadLock)
+            {
+                incomingGamePadDPad.Add(dPad);
+            }
+        }
+
+        #endregion Gamepad handling
+
         void ProcessDesktopInput()
         {
             lock (mouseLock)
@@ -165,11 +242,43 @@ namespace CocosSharp
                     incomingReleaseMouse.Clear();
                     incomingScrollMouse.Clear();
                 }
+            }
+            lock (keyLock)
+            {
+                if (EventDispatcher.IsEventListenersFor(CCEventListenerKeyboard.LISTENER_ID))
+                {
+                    foreach (var keyEvent in incomingNewKeyDown)
+                    {
+                        EventDispatcher.DispatchEvent(keyEvent);
+                    }
 
+                    foreach (var keyEvent in incomingNewKeyUp)
+                    {
+                        EventDispatcher.DispatchEvent(keyEvent);
+                    }
+
+                    incomingNewKeyDown.Clear();
+                    incomingNewKeyUp.Clear();
+                }
+            }
+            lock (gamepadLock)
+            {
+                if (EventDispatcher.IsEventListenersFor(CCEventListenerGamePad.LISTENER_ID))
+                {
+                    foreach (var button in incomingGamePadButton)
+                    {
+                        EventDispatcher.DispatchEvent(button);
+                    }
+                    incomingGamePadButton.Clear();
+
+                    foreach (var dPad in incomingGamePadDPad)
+                    {
+                        EventDispatcher.DispatchEvent(dPad);
+                    }
+                    incomingGamePadDPad.Clear();
+                }
             }
         }
-
-        #endregion Mouse handling
     }
 }
 

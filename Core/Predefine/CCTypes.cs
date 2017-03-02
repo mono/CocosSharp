@@ -165,11 +165,15 @@ namespace CocosSharp
         public static readonly CCColor4B Aquamarine = new CCColor4B (127, 255, 212, 255);
         public static readonly CCColor4B Transparent = new CCColor4B(0, 0, 0, 0);
 
+        private byte _r;
+        private byte _g;
+        private byte _b;
+        private byte _a;
 
-        public byte R { get; set; }
-        public byte G { get; set; }
-        public byte B { get; set; }
-        public byte A { get; set; }
+        public byte R { get { return _r; } set { _r = value; } }
+        public byte G { get { return _g; } set { _g = value; } }
+        public byte B { get { return _b; } set { _b = value; } }
+        public byte A { get { return _a; } set { _a = value; } }
 
 
         #region Constructors
@@ -415,10 +419,13 @@ namespace CocosSharp
     public struct CCVertex3F
     {
         public static readonly CCVertex3F Zero = new CCVertex3F();
+        private float _x;
+        private float _y;
+        private float _z;
 
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
+        public float X { get { return _x; } set { _x = value; } }
+        public float Y { get { return _y; } set { _y = value; } }
+        public float Z { get { return _z; } set { _z = value; } }
 
 
         internal Vector3 XnaVector
@@ -471,8 +478,11 @@ namespace CocosSharp
     /// </summary>
     public struct CCTex2F
     {
-        public float U { get; set; }
-        public float V { get; set; }
+        private float _u;
+        private float _v;
+
+        public float U { get { return _u; } set { _u = value; } }
+        public float V { get { return _v; } set { _v = value; } }
 
         public CCTex2F(float u, float v) : this()
         {
