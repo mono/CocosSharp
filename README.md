@@ -15,7 +15,7 @@ Website
 -------
 
 We have a dedicated website at [http://mono.github.io/CocosSharp](http://mono.github.io/CocosSharp). In particular,
-check out the [contribute](http://mono.github.io/CocosSharp/contribute) section for how to be part of the CococsSharp community.
+check out the [contribute](http://mono.github.io/CocosSharp/contribute) section for how to be part of the CocosSharp community.
 
 Forums
 ------

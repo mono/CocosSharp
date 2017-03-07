@@ -144,10 +144,6 @@ namespace CocosSharp
                 try {
                     var surfaceFormat = CCSurfaceFormat.Color;
 
-                    #if WINDOWS_PHONE81
-                    surfaceFormat = CCSurfaceFormat.Color;
-                    #endif
-
                     texture = !textureCache.Contains ("cc_fps_images") ? textureCache.AddImage (CCFPSImage.PngData, "cc_fps_images", surfaceFormat) : textureCache ["cc_fps_images"];
 
                     // analysis disable CompareOfFloatsByEqualityOperator
