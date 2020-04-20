@@ -11,12 +11,10 @@
   <Docs>
     <summary>Represents a camera whose properties specify the underlying view and projection matrices.</summary>
     <remarks>
-
       <para>
 	A user can alter a camera’s position, target, projection etc. and in-turn this will update the camera’s corresponding view and projection matrices.
       </para>
-
-	<para>
+      <para>
 	A camera is associated with a <see cref="T:CocosSharp.CCLayer" />  layer when rendering. All children of the layer will then be rendered relative to the parent's camera.
 	</para>
       <example>
@@ -49,30 +47,73 @@ public class AppDelegate : CCApplicationDelegate
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCSize orthographicViewSizeWorldspaceIn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize orthographicViewSizeWorldspaceIn) cil managed" />
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCRect targetVisibleBoundsWorldspace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCRect targetVisibleBoundsWorldspace) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="orthographicViewSizeWorldspaceIn" Type="CocosSharp.CCSize" />
+        <Parameter Name="targetVisibleBoundsWorldspace" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
-        <param name="orthographicViewSizeWorldspaceIn">To be added.</param>
+        <param name="targetVisibleBoundsWorldspace">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCSize orthographicViewSizeWorldspaceIn, CocosSharp.CCPoint3 cameraCenterPositionWorldspaceIn, CocosSharp.CCPoint3 targetInWorldspaceIn);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize orthographicViewSizeWorldspaceIn, valuetype CocosSharp.CCPoint3 cameraCenterPositionWorldspaceIn, valuetype CocosSharp.CCPoint3 targetInWorldspaceIn) cil managed" />
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCSize targetVisibleDimensionsWorldspace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize targetVisibleDimensionsWorldspace) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="orthographicViewSizeWorldspaceIn" Type="CocosSharp.CCSize" />
-        <Parameter Name="cameraCenterPositionWorldspaceIn" Type="CocosSharp.CCPoint3" />
+      </Parameters>
+      <Docs>
+        <param name="targetVisibleDimensionsWorldspace">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCCameraProjection projection, CocosSharp.CCRect targetVisibleBoundsWorldspace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCCameraProjection projection, valuetype CocosSharp.CCRect targetVisibleBoundsWorldspace) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="projection" Type="CocosSharp.CCCameraProjection" />
+        <Parameter Name="targetVisibleBoundsWorldspace" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="projection">To be added.</param>
+        <param name="targetVisibleBoundsWorldspace">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCCameraProjection projection, CocosSharp.CCSize targetVisibleDimensionsWorldspace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCCameraProjection projection, valuetype CocosSharp.CCSize targetVisibleDimensionsWorldspace) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="projection" Type="CocosSharp.CCCameraProjection" />
+        <Parameter Name="targetVisibleDimensionsWorldspace" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="projection">To be added.</param>
+        <param name="targetVisibleDimensionsWorldspace">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCCameraProjection projection, CocosSharp.CCSize targetVisibleDimensionsWorldspace, CocosSharp.CCPoint3 targetInWorldspaceIn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCCameraProjection projection, valuetype CocosSharp.CCSize targetVisibleDimensionsWorldspace, valuetype CocosSharp.CCPoint3 targetInWorldspaceIn) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="projection" Type="CocosSharp.CCCameraProjection" />
+        <Parameter Name="targetVisibleDimensionsWorldspace" Type="CocosSharp.CCSize" />
         <Parameter Name="targetInWorldspaceIn" Type="CocosSharp.CCPoint3" />
       </Parameters>
       <Docs>
-        <param name="orthographicViewSizeWorldspaceIn">To be added.</param>
-        <param name="cameraCenterPositionWorldspaceIn">To be added.</param>
+        <param name="projection">To be added.</param>
+        <param name="targetVisibleDimensionsWorldspace">To be added.</param>
         <param name="targetInWorldspaceIn">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -111,11 +152,11 @@ public class AppDelegate : CCApplicationDelegate
       </Docs>
     </Member>
     <Member MemberName="NearAndFarOrthographicZClipping">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint NearAndFarOrthographicZClipping { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint NearAndFarOrthographicZClipping" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNearAndFarClipping NearAndFarOrthographicZClipping { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCNearAndFarClipping NearAndFarOrthographicZClipping" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCNearAndFarClipping</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -124,11 +165,11 @@ public class AppDelegate : CCApplicationDelegate
       </Docs>
     </Member>
     <Member MemberName="NearAndFarPerspectiveClipping">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint NearAndFarPerspectiveClipping { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint NearAndFarPerspectiveClipping" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNearAndFarClipping NearAndFarPerspectiveClipping { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCNearAndFarClipping NearAndFarPerspectiveClipping" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCNearAndFarClipping</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -198,6 +239,40 @@ public class AppDelegate : CCApplicationDelegate
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdatePerspectiveCameraTargetBounds">
+      <MemberSignature Language="C#" Value="public void UpdatePerspectiveCameraTargetBounds (CocosSharp.CCRect targetVisibleBoundsWorldspaceIn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdatePerspectiveCameraTargetBounds(valuetype CocosSharp.CCRect targetVisibleBoundsWorldspaceIn) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targetVisibleBoundsWorldspaceIn" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="targetVisibleBoundsWorldspaceIn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdatePerspectiveCameraTargetBounds">
+      <MemberSignature Language="C#" Value="public void UpdatePerspectiveCameraTargetBounds (CocosSharp.CCSize targetVisibleDimensionsWorldspaceIn, CocosSharp.CCPoint3 targetWorldspaceIn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdatePerspectiveCameraTargetBounds(valuetype CocosSharp.CCSize targetVisibleDimensionsWorldspaceIn, valuetype CocosSharp.CCPoint3 targetWorldspaceIn) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targetVisibleDimensionsWorldspaceIn" Type="CocosSharp.CCSize" />
+        <Parameter Name="targetWorldspaceIn" Type="CocosSharp.CCPoint3" />
+      </Parameters>
+      <Docs>
+        <param name="targetVisibleDimensionsWorldspaceIn">To be added.</param>
+        <param name="targetWorldspaceIn">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

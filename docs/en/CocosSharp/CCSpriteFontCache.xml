@@ -1,6 +1,6 @@
 <Type Name="CCSpriteFontCache" FullName="CocosSharp.CCSpriteFontCache">
   <TypeSignature Language="C#" Value="public class CCSpriteFontCache" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi CCSpriteFontCache extends System.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteFontCache extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -38,21 +38,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FontRoot">
-      <MemberSignature Language="C#" Value="public static string FontRoot;" />
-      <MemberSignature Language="ILAsm" Value=".field public static string FontRoot" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FontScale">
-      <MemberSignature Language="C#" Value="public static float FontScale { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property float32 FontScale" />
+      <MemberSignature Language="C#" Value="public float FontScale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 FontScale" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -81,8 +69,8 @@
       </Docs>
     </Member>
     <Member MemberName="RegisterFont">
-      <MemberSignature Language="C#" Value="public static void RegisterFont (string fontName, int[] sizes);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegisterFont(string fontName, int32[] sizes) cil managed" />
+      <MemberSignature Language="C#" Value="public void RegisterFont (string fontName, int[] sizes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RegisterFont(string fontName, int32[] sizes) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -104,9 +92,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SharedInstance">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFontCache SharedInstance { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCSpriteFontCache SharedInstance" />
+    <Member MemberName="SharedSpriteFontCache">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFontCache SharedSpriteFontCache { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCSpriteFontCache SharedSpriteFontCache" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSpriteFontCache</ReturnType>

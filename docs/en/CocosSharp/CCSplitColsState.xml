@@ -14,12 +14,12 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSplitColsState (CocosSharp.CCSplitCols action, CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSplitCols action, class CocosSharp.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSplitColsState (CocosSharp.CCSplitCols action, CocosSharp.CCNodeGrid target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSplitCols action, class CocosSharp.CCNodeGrid target) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCSplitCols" />
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNodeGrid" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
@@ -49,12 +49,12 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="VisibleBounds">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCRect VisibleBounds { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect VisibleBounds" />
+    <Member MemberName="VisibleSize">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize VisibleSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize VisibleSize" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

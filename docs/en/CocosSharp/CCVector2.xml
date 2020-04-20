@@ -23,6 +23,19 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCVector2 (CocosSharp.CCVector2 value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCVector2 value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="value" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCVector2 (float value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 value) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -85,6 +98,49 @@
         <param name="value1">To be added.</param>
         <param name="value2">To be added.</param>
         <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Angle">
+      <MemberSignature Language="C#" Value="public float Angle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Angle" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AngleOf">
+      <MemberSignature Language="C#" Value="public static float AngleOf (CocosSharp.CCVector2 value1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 AngleOf(valuetype CocosSharp.CCVector2 value1) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value1" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="value1">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AntiClockwise">
+      <MemberSignature Language="C#" Value="public const int AntiClockwise = -1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 AntiClockwise = (-1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-1</MemberValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -230,6 +286,19 @@
         <param name="min">To be added.</param>
         <param name="max">To be added.</param>
         <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clockwise">
+      <MemberSignature Language="C#" Value="public const int Clockwise = 1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 Clockwise = (1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1039,6 +1108,40 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PerpendicularCCW">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCVector2 PerpendicularCCW (CocosSharp.CCVector2 v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCVector2 PerpendicularCCW(valuetype CocosSharp.CCVector2 v) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVector2</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PerpendicularCW">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCVector2 PerpendicularCW (CocosSharp.CCVector2 v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCVector2 PerpendicularCW(valuetype CocosSharp.CCVector2 v) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVector2</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Reflect">
       <MemberSignature Language="C#" Value="public static CocosSharp.CCVector2 Reflect (CocosSharp.CCVector2 vector, CocosSharp.CCVector2 normal);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCVector2 Reflect(valuetype CocosSharp.CCVector2 vector, valuetype CocosSharp.CCVector2 normal) cil managed" />
@@ -1075,6 +1178,23 @@
         <param name="normal">To be added.</param>
         <param name="result">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sign">
+      <MemberSignature Language="C#" Value="public int Sign (CocosSharp.CCVector2 v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Sign(valuetype CocosSharp.CCVector2 v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v2" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1275,6 +1395,22 @@
         <param name="normal">To be added.</param>
         <param name="affineTransform">To be added.</param>
         <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Truncate">
+      <MemberSignature Language="C#" Value="public void Truncate (float max);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Truncate(float32 max) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="max" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="max">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

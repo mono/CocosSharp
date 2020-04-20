@@ -1,0 +1,65 @@
+<Type Name="CCLabelType" FullName="CocosSharp.CCLabelType">
+  <TypeSignature Language="C#" Value="public enum CCLabelType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCLabelType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="BitMapFont">
+      <MemberSignature Language="C#" Value="BitMapFont" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelType BitMapFont = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="CharacterMap">
+      <MemberSignature Language="C#" Value="CharacterMap" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelType CharacterMap = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SpriteFont">
+      <MemberSignature Language="C#" Value="SpriteFont" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelType SpriteFont = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SystemFont">
+      <MemberSignature Language="C#" Value="SystemFont" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCLabelType SystemFont = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

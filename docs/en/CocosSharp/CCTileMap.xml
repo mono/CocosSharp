@@ -1,0 +1,215 @@
+<Type Name="CCTileMap" FullName="CocosSharp.CCTileMap">
+  <TypeSignature Language="C#" Value="public class CCTileMap : CocosSharp.CCLayerColor" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CCTileMap extends CocosSharp.CCLayerColor" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCLayerColor</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTileMap (CocosSharp.CCTileMapInfo mapInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTileMapInfo mapInfo) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="mapInfo" Type="CocosSharp.CCTileMapInfo" />
+      </Parameters>
+      <Docs>
+        <param name="mapInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTileMap (System.IO.StreamReader tmxFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.StreamReader tmxFile) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="tmxFile" Type="System.IO.StreamReader" />
+      </Parameters>
+      <Docs>
+        <param name="tmxFile">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTileMap (string tmxFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string tmxFile) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="tmxFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="tmxFile">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Antialiased">
+      <MemberSignature Language="C#" Value="public bool Antialiased { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Antialiased" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultHalfTexelOffset">
+      <MemberSignature Language="C#" Value="public static bool DefaultHalfTexelOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool DefaultHalfTexelOffset" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HalfTexelOffset">
+      <MemberSignature Language="C#" Value="public bool HalfTexelOffset { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HalfTexelOffset" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LayerNamed">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTileMapLayer LayerNamed (string layerName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTileMapLayer LayerNamed(string layerName) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapLayer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layerName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="layerName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapDimensions">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTileMapCoordinates MapDimensions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTileMapCoordinates MapDimensions" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapCoordinates</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapPropertyNamed">
+      <MemberSignature Language="C#" Value="public string MapPropertyNamed (string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string MapPropertyNamed(string propertyName) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="propertyName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="propertyName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectGroupNamed">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTileMapObjectGroup ObjectGroupNamed (string groupName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTileMapObjectGroup ObjectGroupNamed(string groupName) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapObjectGroup</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="groupName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="groupName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TileLayersContainer">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode TileLayersContainer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode TileLayersContainer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TilePropertiesForGID">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,string&gt; TilePropertiesForGID (short tileGid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.Dictionary`2&lt;string, string&gt; TilePropertiesForGID(int16 tileGid) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tileGid" Type="System.Int16" />
+      </Parameters>
+      <Docs>
+        <param name="tileGid">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TileTexelSize">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize TileTexelSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize TileTexelSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTileMapType Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTileMapType Type" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

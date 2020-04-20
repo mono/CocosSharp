@@ -1,0 +1,93 @@
+<Type Name="CCTileMapProperty" FullName="CocosSharp.CCTileMapProperty">
+  <TypeSignature Language="C#" Value="public enum CCTileMapProperty" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTileMapProperty extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Layer">
+      <MemberSignature Language="C#" Value="Layer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty Layer = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Map">
+      <MemberSignature Language="C#" Value="Map" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty Map = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty None = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Object">
+      <MemberSignature Language="C#" Value="Object" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty Object = int32(4)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectGroup">
+      <MemberSignature Language="C#" Value="ObjectGroup" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty ObjectGroup = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Tile">
+      <MemberSignature Language="C#" Value="Tile" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty Tile = int32(5)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="TileAnimation">
+      <MemberSignature Language="C#" Value="TileAnimation" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapProperty TileAnimation = int32(6)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapProperty</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

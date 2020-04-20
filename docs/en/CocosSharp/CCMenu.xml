@@ -296,6 +296,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Scene">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCScene Scene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene Scene" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SelectedMenuItem">
       <MemberSignature Language="C#" Value="protected CocosSharp.CCMenuItem SelectedMenuItem { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCMenuItem SelectedMenuItem" />

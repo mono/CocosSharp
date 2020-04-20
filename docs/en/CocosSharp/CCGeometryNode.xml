@@ -1,0 +1,93 @@
+<Type Name="CCGeometryNode" FullName="CocosSharp.CCGeometryNode">
+  <TypeSignature Language="C#" Value="public class CCGeometryNode : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGeometryNode extends CocosSharp.CCNode" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCGeometryNode (int bufferSize = 256);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 bufferSize) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="bufferSize" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="bufferSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddedToScene">
+      <MemberSignature Language="C#" Value="protected override void AddedToScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void AddedToScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClearInstances">
+      <MemberSignature Language="C#" Value="public void ClearInstances ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearInstances() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateGeometryInstance">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCGeometryInstance CreateGeometryInstance (int numberOfVertices, int numberOfIndicies, Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType = Microsoft.Xna.Framework.Graphics.PrimitiveType.TriangleList);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCGeometryInstance CreateGeometryInstance(int32 numberOfVertices, int32 numberOfIndicies, valuetype Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGeometryInstance</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="numberOfVertices" Type="System.Int32" />
+        <Parameter Name="numberOfIndicies" Type="System.Int32" />
+        <Parameter Name="primitiveType" Type="Microsoft.Xna.Framework.Graphics.PrimitiveType" />
+      </Parameters>
+      <Docs>
+        <param name="numberOfVertices">To be added.</param>
+        <param name="numberOfIndicies">To be added.</param>
+        <param name="primitiveType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisitRenderer">
+      <MemberSignature Language="C#" Value="protected override void VisitRenderer (ref CocosSharp.CCAffineTransform worldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void VisitRenderer(valuetype CocosSharp.CCAffineTransform worldTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="worldTransform">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -70,6 +70,26 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddVertex">
+      <MemberSignature Language="C#" Value="public void AddVertex (CocosSharp.CCVertex3F vertex, CocosSharp.CCColor4B color, Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddVertex(valuetype CocosSharp.CCVertex3F vertex, valuetype CocosSharp.CCColor4B color, valuetype Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertex" Type="CocosSharp.CCVertex3F" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="primitiveType" Type="Microsoft.Xna.Framework.Graphics.PrimitiveType" />
+      </Parameters>
+      <Docs>
+        <param name="vertex">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="primitiveType">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Begin">
       <MemberSignature Language="C#" Value="public void Begin ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Begin() cil managed" />
@@ -136,35 +156,6 @@
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetProjection">
-      <MemberSignature Language="C#" Value="public void SetProjection (ref Microsoft.Xna.Framework.Matrix projection);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetProjection(valuetype Microsoft.Xna.Framework.Matrix projection) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="projection" Type="Microsoft.Xna.Framework.Matrix&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <param name="projection">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateMatrix">
-      <MemberSignature Language="C#" Value="public void UpdateMatrix ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateMatrix() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

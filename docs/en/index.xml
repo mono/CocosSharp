@@ -1,18 +1,18 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="CocosSharp" Version="2.2.4.0">
+    <Assembly Name="CocosSharp" Version="1.7.1.0">
       <Attributes>
         <Attribute>
-          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints | System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations)</AttributeName>
+          <AttributeName>System.Diagnostics.Debuggable(System.Diagnostics.DebuggableAttribute+DebuggingModes.DisableOptimizations | System.Diagnostics.DebuggableAttribute+DebuggingModes.IgnoreSymbolStoreSequencePoints)</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("Open Source Software Provided As-Is")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyCopyright("Copyright © Cocos2D-XNA Team; TotallyEvil Entertainment, LLC.")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyDescription("CocosSharp for Mac OSX")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyDescription("Cocos2D-XNA for Mac OSX")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyInformationalVersion("1.7.1.0")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyProduct("CocosSharp")</AttributeName>
@@ -25,6 +25,36 @@
         </Attribute>
         <Attribute>
           <AttributeName>System.Resources.NeutralResourcesLanguage("en-US")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Microsoft.Xna.Framework.Content")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Microsoft.Xna.Framework.Content")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Microsoft.Xna.Framework.Content")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Microsoft.Xna.Framework.Content")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("Microsoft.Xna.Framework.Content")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")</AttributeName>
@@ -56,10 +86,6 @@
     <Namespace Name="Cocos2D.Compression.Zlib">
     </Namespace>
     <Namespace Name="CocosDenshion">
-      <Type Name="CCEffectPlayer" Kind="Class" />
-      <Type Name="CCEffectPlayerCore" Kind="Class" />
-      <Type Name="CCMusicPlayer" Kind="Class" />
-      <Type Name="CCMusicPlayerCore" Kind="Class" />
       <Type Name="CCSimpleAudioEngine" Kind="Class" />
     </Namespace>
     <Namespace Name="CocosSharp">
@@ -89,9 +115,8 @@
       <Type Name="CCAnimation" Kind="Class" />
       <Type Name="CCAnimationCache" Kind="Class" />
       <Type Name="CCAnimationFrame" Kind="Class" />
-      <Type Name="CCApplication" Kind="Class" />
-      <Type Name="CCApplicationDelegate" Kind="Class" />
       <Type Name="CCAtlasNode" Kind="Class" />
+      <Type Name="CCAudioEngine" Kind="Class" />
       <Type Name="CCBezierBy" Kind="Class" />
       <Type Name="CCBezierByState" Kind="Class" />
       <Type Name="CCBezierConfig" Kind="Structure" />
@@ -122,8 +147,8 @@
       <Type Name="CCColor3B" Kind="Structure" />
       <Type Name="CCColor4B" Kind="Structure" />
       <Type Name="CCColor4F" Kind="Structure" />
-      <Type Name="CCConfiguration" Kind="Class" />
       <Type Name="CCContentManager" Kind="Class" />
+      <Type Name="CCCustomCommand" Kind="Class" />
       <Type Name="CCDeccelAmplitude" Kind="Class" />
       <Type Name="CCDeccelAmplitudeState" Kind="Class" />
       <Type Name="CCDelayTime" Kind="Class" />
@@ -131,9 +156,6 @@
       <Type Name="CCDepthFormat" Kind="Enumeration" />
       <Type Name="CCDevice" Kind="Class" />
       <Type Name="CCDirector" Kind="Class" />
-      <Type Name="CCDisplayLinkDirector" Kind="Class" />
-      <Type Name="CCDisplayOrientation" Kind="Enumeration" />
-      <Type Name="CCDrawingPrimitives" Kind="Class" />
       <Type Name="CCDrawNode" Kind="Class" />
       <Type Name="CCEaseBackIn" Kind="Class" />
       <Type Name="CCEaseBackInOut" Kind="Class" />
@@ -177,6 +199,8 @@
       <Type Name="CCEaseSineInState" Kind="Class" />
       <Type Name="CCEaseSineOut" Kind="Class" />
       <Type Name="CCEaseSineOutState" Kind="Class" />
+      <Type Name="CCEffectPlayer" Kind="Class" />
+      <Type Name="CCEffectPlayerCore" Kind="Class" />
       <Type Name="CCEmitterMode" Kind="Enumeration" />
       <Type Name="CCEvent" Kind="Class" />
       <Type Name="CCEventAccelerate" Kind="Class" />
@@ -230,14 +254,17 @@
       <Type Name="CCFocusChangeDelegate" Kind="Delegate" />
       <Type Name="CCFocusManager" Kind="Class" />
       <Type Name="CCFollow" Kind="Class" />
-      <Type Name="CCFPSImage" Kind="Class" />
-      <Type Name="CCGame" Kind="Class" />
+      <Type Name="CCFont" Kind="Class" />
+      <Type Name="CCFontFNT" Kind="Class" />
+      <Type Name="CCFontSpriteFont" Kind="Class" />
       <Type Name="CCGamePadButtonStatus" Kind="Enumeration" />
       <Type Name="CCGamePadEventType" Kind="Enumeration" />
       <Type Name="CCGameStickStatus" Kind="Structure" />
-      <Type Name="CCGameTime" Kind="Class" />
-      <Type Name="CCGlesVersion" Kind="Enumeration" />
-      <Type Name="CCGrabber" Kind="Class" />
+      <Type Name="CCGameView" Kind="Class" />
+      <Type Name="CCGeometryInstance" Kind="Class" />
+      <Type Name="CCGeometryInstanceAttributes" Kind="Class" />
+      <Type Name="CCGeometryNode" Kind="Class" />
+      <Type Name="CCGeometryPacket" Kind="Class" />
       <Type Name="CCGraphicsResource" Kind="Class" />
       <Type Name="CCGrid3D" Kind="Class" />
       <Type Name="CCGrid3DAction" Kind="Class" />
@@ -249,6 +276,7 @@
       <Type Name="CCHide" Kind="Class" />
       <Type Name="CCHideState" Kind="Class" />
       <Type Name="CCImageFormat" Kind="Enumeration" />
+      <Type Name="CCIMEKeybardEventArgs" Kind="Class" />
       <Type Name="CCIMEKeyboardNotificationInfo" Kind="Class" />
       <Type Name="CCJumpBy" Kind="Class" />
       <Type Name="CCJumpByState" Kind="Class" />
@@ -261,19 +289,22 @@
       <Type Name="CCKeys" Kind="Enumeration" />
       <Type Name="CCKeyState" Kind="Enumeration" />
       <Type Name="CCLabel" Kind="Class" />
-      <Type Name="CCLabel+ivec4" Kind="Structure" />
       <Type Name="CCLabelAtlas" Kind="Class" />
-      <Type Name="CCLabelBMFont" Kind="Class" />
-      <Type Name="CCLabelTtf" Kind="Class" />
+      <Type Name="CCLabelFormat" Kind="Class" />
+      <Type Name="CCLabelFormatFlags" Kind="Enumeration" />
+      <Type Name="CCLabelLineBreak" Kind="Enumeration" />
+      <Type Name="CCLabelType" Kind="Enumeration" />
       <Type Name="CCLayer" Kind="Class" />
       <Type Name="CCLayerColor" Kind="Class" />
       <Type Name="CCLayerGradient" Kind="Class" />
       <Type Name="CCLayerMultiplex" Kind="Class" />
       <Type Name="CCLens3D" Kind="Class" />
       <Type Name="CCLens3DState" Kind="Class" />
+      <Type Name="CCLineCap" Kind="Enumeration" />
       <Type Name="CCLiquid" Kind="Class" />
       <Type Name="CCLiquidState" Kind="Class" />
       <Type Name="CCLog" Kind="Class" />
+      <Type Name="CCLog+LogDelegate" Kind="Delegate" />
       <Type Name="CCMacros" Kind="Class" />
       <Type Name="CCMaskedSprite" Kind="Class" />
       <Type Name="CCMathHelper" Kind="Class" />
@@ -284,8 +315,6 @@
       <Type Name="CCMenuItemLabel" Kind="Class" />
       <Type Name="CCMenuItemLabelAtlas" Kind="Class" />
       <Type Name="CCMenuItemLabelBase" Kind="Class" />
-      <Type Name="CCMenuItemLabelBMFont" Kind="Class" />
-      <Type Name="CCMenuItemLabelTTF" Kind="Class" />
       <Type Name="CCMenuItemToggle" Kind="Class" />
       <Type Name="CCMenuState" Kind="Enumeration" />
       <Type Name="CCMotionStreak" Kind="Class" />
@@ -295,7 +324,11 @@
       <Type Name="CCMoveByState" Kind="Class" />
       <Type Name="CCMoveTo" Kind="Class" />
       <Type Name="CCMoveToState" Kind="Class" />
+      <Type Name="CCMusicPlayer" Kind="Class" />
+      <Type Name="CCMusicPlayerCore" Kind="Class" />
+      <Type Name="CCNearAndFarClipping" Kind="Structure" />
       <Type Name="CCNode" Kind="Class" />
+      <Type Name="CCNodeGrid" Kind="Class" />
       <Type Name="CCOGLES" Kind="Class" />
       <Type Name="CCOrbitCamera" Kind="Class" />
       <Type Name="CCOrbitCameraState" Kind="Class" />
@@ -304,7 +337,6 @@
       <Type Name="CCParallaxNode" Kind="Class" />
       <Type Name="CCParallel" Kind="Class" />
       <Type Name="CCParallelState" Kind="Class" />
-      <Type Name="CCParticleBatchNode" Kind="Class" />
       <Type Name="CCParticleExplosion" Kind="Class" />
       <Type Name="CCParticleFire" Kind="Class" />
       <Type Name="CCParticleFireworks" Kind="Class" />
@@ -350,6 +382,8 @@
       <Type Name="CCRect" Kind="Structure" />
       <Type Name="CCRemoveSelf" Kind="Class" />
       <Type Name="CCRemoveSelfState" Kind="Class" />
+      <Type Name="CCRenderCommand" Kind="Class" />
+      <Type Name="CCRenderer" Kind="Class" />
       <Type Name="CCRenderTargetUsage" Kind="Enumeration" />
       <Type Name="CCRenderTexture" Kind="Class" />
       <Type Name="CCRepeat" Kind="Class" />
@@ -372,10 +406,8 @@
       <Type Name="CCScaleTo" Kind="Class" />
       <Type Name="CCScaleToState" Kind="Class" />
       <Type Name="CCScene" Kind="Class" />
-      <Type Name="CCSceneResolutionPolicy" Kind="Enumeration" />
       <Type Name="CCSchedulePriority" Kind="Class" />
       <Type Name="CCScheduler" Kind="Class" />
-      <Type Name="CCScriptEngineManager" Kind="Class" />
       <Type Name="CCSequence" Kind="Class" />
       <Type Name="CCSequenceState" Kind="Class" />
       <Type Name="CCSerialization" Kind="Class" />
@@ -403,7 +435,6 @@
       <Type Name="CCSplitRows" Kind="Class" />
       <Type Name="CCSplitRowsState" Kind="Class" />
       <Type Name="CCSprite" Kind="Class" />
-      <Type Name="CCSpriteBatchNode" Kind="Class" />
       <Type Name="CCSpriteFontCache" Kind="Class" />
       <Type Name="CCSpriteFrame" Kind="Class" />
       <Type Name="CCSpriteFrameCache" Kind="Class" />
@@ -418,30 +449,32 @@
       <Type Name="CCTask" Kind="Class" />
       <Type Name="CCTex2F" Kind="Structure" />
       <Type Name="CCTextAlignment" Kind="Enumeration" />
-      <Type Name="CCTextFieldTTF" Kind="Class" />
-      <Type Name="CCTextFieldTTFDelegate" Kind="Delegate" />
+      <Type Name="CCTextField" Kind="Class" />
+      <Type Name="CCTextFieldDelegate" Kind="Delegate" />
       <Type Name="CCTexture2D" Kind="Class" />
       <Type Name="CCTextureAtlas" Kind="Class" />
       <Type Name="CCTextureCache" Kind="Class" />
       <Type Name="CCTile" Kind="Class" />
+      <Type Name="CCTileAnimationKeyFrame" Kind="Structure" />
+      <Type Name="CCTileDataCompressionType" Kind="Enumeration" />
       <Type Name="CCTiledGrid3D" Kind="Class" />
       <Type Name="CCTiledGrid3DAction" Kind="Class" />
       <Type Name="CCTiledGrid3DActionState" Kind="Class" />
-      <Type Name="CCTileMapAtlas" Kind="Class" />
+      <Type Name="CCTileFlags" Kind="Enumeration" />
+      <Type Name="CCTileGidAndFlags" Kind="Structure" />
+      <Type Name="CCTileLayerInfo" Kind="Class" />
+      <Type Name="CCTileMap" Kind="Class" />
+      <Type Name="CCTileMapCoordinates" Kind="Structure" />
+      <Type Name="CCTileMapInfo" Kind="Class" />
+      <Type Name="CCTileMapLayer" Kind="Class" />
+      <Type Name="CCTileMapObjectGroup" Kind="Class" />
+      <Type Name="CCTileMapProperty" Kind="Enumeration" />
+      <Type Name="CCTileMapType" Kind="Enumeration" />
+      <Type Name="CCTileSetInfo" Kind="Class" />
       <Type Name="CCTintBy" Kind="Class" />
       <Type Name="CCTintByState" Kind="Class" />
       <Type Name="CCTintTo" Kind="Class" />
       <Type Name="CCTintToState" Kind="Class" />
-      <Type Name="CCTMXLayer" Kind="Class" />
-      <Type Name="CCTMXLayerAttrib" Kind="Enumeration" />
-      <Type Name="CCTMXLayerInfo" Kind="Class" />
-      <Type Name="CCTMXMapInfo" Kind="Class" />
-      <Type Name="CCTMXObjectGroup" Kind="Class" />
-      <Type Name="CCTMXOrientation" Kind="Enumeration" />
-      <Type Name="CCTMXProperty" Kind="Enumeration" />
-      <Type Name="CCTMXTiledMap" Kind="Class" />
-      <Type Name="CCTMXTileFlags" Kind="Class" />
-      <Type Name="CCTMXTilesetInfo" Kind="Class" />
       <Type Name="CCToggleVisibility" Kind="Class" />
       <Type Name="CCToggleVisibilityState" Kind="Class" />
       <Type Name="CCTouch" Kind="Class" />
@@ -491,32 +524,29 @@
       <Type Name="CCV2F_C4B_T2F_Quad" Kind="Class" />
       <Type Name="CCV2F_C4F_T2F" Kind="Class" />
       <Type Name="CCV2F_C4F_T2F_Quad" Kind="Class" />
+      <Type Name="CCV3F_C4B" Kind="Structure" />
       <Type Name="CCV3F_C4B_T2F" Kind="Structure" />
       <Type Name="CCV3F_C4B_T2F_Quad" Kind="Structure" />
       <Type Name="CCVector2" Kind="Structure" />
       <Type Name="CCVertex2F" Kind="Structure" />
       <Type Name="CCVertex3F" Kind="Structure" />
       <Type Name="CCVerticalTextAlignment" Kind="Enumeration" />
-      <Type Name="CCViewport" Kind="Class" />
-      <Type Name="CCViewportResolutionPolicy" Kind="Enumeration" />
+      <Type Name="CCViewResolutionPolicy" Kind="Enumeration" />
       <Type Name="CCWaves" Kind="Class" />
       <Type Name="CCWaves3D" Kind="Class" />
       <Type Name="CCWaves3DState" Kind="Class" />
       <Type Name="CCWavesState" Kind="Class" />
       <Type Name="CCWavesTiles3D" Kind="Class" />
       <Type Name="CCWavesTiles3DState" Kind="Class" />
-      <Type Name="CCWindow" Kind="Class" />
+      <Type Name="GlyphCollection" Kind="Enumeration" />
       <Type Name="ICCActionTweenDelegate" Kind="Interface" />
       <Type Name="ICCBlendable" Kind="Interface" />
       <Type Name="ICCFocusable" Kind="Interface" />
       <Type Name="ICCIMEDelegate" Kind="Interface" />
-      <Type Name="ICCScriptingEngine" Kind="Class" />
       <Type Name="ICCTextContainer" Kind="Interface" />
-      <Type Name="ICCTextFieldDelegate" Kind="Interface" />
       <Type Name="ICCTexture" Kind="Interface" />
       <Type Name="ICCTransitionEaseScene" Kind="Interface" />
       <Type Name="ICCUpdatable" Kind="Interface" />
-      <Type Name="OrientationExtension" Kind="Class" />
       <Type Name="PlistArray" Kind="Class" />
       <Type Name="PlistBoolean" Kind="Class" />
       <Type Name="PlistData" Kind="Class" />
@@ -532,27 +562,4 @@
     </Namespace>
   </Types>
   <Title>CocosSharp</Title>
-  <ExtensionMethods>
-    <ExtensionMethod>
-      <Targets>
-        <Target Type="T:CocosSharp.CCDisplayOrientation" />
-      </Targets>
-      <Member MemberName="IsPortrait">
-        <MemberSignature Language="C#" Value="public static bool IsPortrait (this CocosSharp.CCDisplayOrientation orientation);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsPortrait(valuetype CocosSharp.CCDisplayOrientation orientation) cil managed" />
-        <MemberType>ExtensionMethod</MemberType>
-        <ReturnValue>
-          <ReturnType>System.Boolean</ReturnType>
-        </ReturnValue>
-        <Parameters>
-          <Parameter Name="orientation" Type="CocosSharp.CCDisplayOrientation" RefType="this" />
-        </Parameters>
-        <Docs>
-          <param name="orientation">To be added.</param>
-          <summary>To be added.</summary>
-        </Docs>
-        <Link Type="CocosSharp.OrientationExtension" Member="M:CocosSharp.OrientationExtension.IsPortrait(CocosSharp.CCDisplayOrientation)" />
-      </Member>
-    </ExtensionMethod>
-  </ExtensionMethods>
 </Overview>

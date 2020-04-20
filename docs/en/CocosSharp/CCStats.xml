@@ -23,38 +23,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public void Draw (CocosSharp.CCWindow window);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Draw(class CocosSharp.CCWindow window) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="window" Type="CocosSharp.CCWindow" />
-      </Parameters>
-      <Docs>
-        <param name="window">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Initialize">
-      <MemberSignature Language="C#" Value="public void Initialize ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Initialize() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsEnabled">
-      <MemberSignature Language="C#" Value="public bool IsEnabled { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsEnabled" />
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -65,45 +36,16 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsInitialized">
-      <MemberSignature Language="C#" Value="public bool IsInitialized { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsInitialized" />
+    <Member MemberName="Scale">
+      <MemberSignature Language="C#" Value="public uint Scale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Scale" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateEnd">
-      <MemberSignature Language="C#" Value="public void UpdateEnd (float delta);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateEnd(float32 delta) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="delta" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="delta">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateStart">
-      <MemberSignature Language="C#" Value="public void UpdateStart ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateStart() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

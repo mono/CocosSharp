@@ -1,0 +1,82 @@
+<Type Name="CCViewResolutionPolicy" FullName="CocosSharp.CCViewResolutionPolicy">
+  <TypeSignature Language="C#" Value="public enum CCViewResolutionPolicy" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCViewResolutionPolicy extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Custom">
+      <MemberSignature Language="C#" Value="Custom" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCViewResolutionPolicy Custom = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ExactFit">
+      <MemberSignature Language="C#" Value="ExactFit" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCViewResolutionPolicy ExactFit = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FixedHeight">
+      <MemberSignature Language="C#" Value="FixedHeight" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCViewResolutionPolicy FixedHeight = int32(4)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FixedWidth">
+      <MemberSignature Language="C#" Value="FixedWidth" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCViewResolutionPolicy FixedWidth = int32(5)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="NoBorder">
+      <MemberSignature Language="C#" Value="NoBorder" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCViewResolutionPolicy NoBorder = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShowAll">
+      <MemberSignature Language="C#" Value="ShowAll" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCViewResolutionPolicy ShowAll = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

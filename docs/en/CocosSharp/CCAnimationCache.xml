@@ -87,19 +87,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PurgeSharedAnimationCached">
-      <MemberSignature Language="C#" Value="public static void PurgeSharedAnimationCached ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedAnimationCached() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="RemoveAnimation">
       <MemberSignature Language="C#" Value="public void RemoveAnimation (string animationName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAnimation(string animationName) cil managed" />

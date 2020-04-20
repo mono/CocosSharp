@@ -14,17 +14,17 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D texture, bool flipped) cil managed" />
+      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCRenderTexture renderTexture, bool flipped = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCRenderTexture renderTexture, bool flipped) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="renderTexture" Type="CocosSharp.CCRenderTexture" />
         <Parameter Name="flipped" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
-        <param name="texture">To be added.</param>
+        <param name="renderTexture">To be added.</param>
         <param name="flipped">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -52,6 +52,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

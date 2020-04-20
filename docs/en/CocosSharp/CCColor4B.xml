@@ -249,6 +249,18 @@ v3.0 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LightGray">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor4B LightGray;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor4B LightGray" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Magenta">
       <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor4B Magenta;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor4B Magenta" />

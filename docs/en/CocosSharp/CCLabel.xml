@@ -1,13 +1,17 @@
 <Type Name="CCLabel" FullName="CocosSharp.CCLabel">
-  <TypeSignature Language="C#" Value="public class CCLabel : CocosSharp.CCLabelBMFont" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabel extends CocosSharp.CCLabelBMFont" />
+  <TypeSignature Language="C#" Value="public class CCLabel : CocosSharp.CCNode, CocosSharp.ICCTextContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi CCLabel extends CocosSharp.CCNode implements class CocosSharp.ICCTextContainer" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCLabelBMFont</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCTextContainer</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -24,44 +28,133 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, CocosSharp.CCSize dimensions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
         <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
         <param name="dimensions">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCTextAlignment hAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (CocosSharp.CCFontFNT fntFontConfig, string str, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFontFNT fntFontConfig, string str, valuetype CocosSharp.CCSize dimensions, class CocosSharp.CCLabelFormat labelFormat) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="fntFontConfig" Type="CocosSharp.CCFontFNT" />
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+      </Parameters>
+      <Docs>
+        <param name="fntFontConfig">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions, class CocosSharp.CCLabelFormat labelFormat) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCLabelFormat labelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, class CocosSharp.CCLabelFormat labelFormat) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCTextAlignment alignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, valuetype CocosSharp.CCTextAlignment alignment) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
@@ -70,140 +163,221 @@
         <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
       </Parameters>
       <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <param name="hAlignment">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="alignment">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignement);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignement) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
         <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
         <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignement" Type="CocosSharp.CCVerticalTextAlignment" />
       </Parameters>
       <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
         <param name="dimensions">To be added.</param>
         <param name="hAlignment">To be added.</param>
+        <param name="vAlignement">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, valuetype CocosSharp.CCSize dimensions, class CocosSharp.CCLabelFormat labelFormat) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, valuetype CocosSharp.CCTextAlignment alignment, valuetype CocosSharp.CCPoint imageOffset) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="alignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="alignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions, class CocosSharp.CCLabelFormat labelFormat, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, valuetype CocosSharp.CCTextAlignment alignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="alignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="alignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
         <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
         <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
         <param name="hAlignment">To be added.</param>
         <param name="vAlignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, valuetype CocosSharp.CCSize dimensions, class CocosSharp.CCLabelFormat labelFormat, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="size" Type="System.Single" />
         <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
-        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
-        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
         <param name="dimensions">To be added.</param>
-        <param name="hAlignment">To be added.</param>
-        <param name="vAlignment">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddedToScene">
-      <MemberSignature Language="C#" Value="protected override void AddedToScene ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void AddedToScene() cil managed" />
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabel (string str, string fntFile, float size, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 size, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder = 0, int tag = -1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AllocateRegion">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCLabel.ivec4 AllocateRegion (int width, int height);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCLabel/ivec4 AllocateRegion(int32 width, int32 height) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCLabel+ivec4</ReturnType>
-      </ReturnValue>
       <Parameters>
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+        <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <param name="tag">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FontName">
-      <MemberSignature Language="C#" Value="public string FontName { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="FontSize">
-      <MemberSignature Language="C#" Value="public float FontSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 FontSize" />
+    <Member MemberName="AdditionalKerning">
+      <MemberSignature Language="C#" Value="public float AdditionalKerning { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 AdditionalKerning" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -214,46 +388,452 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitializeTTFAtlas">
-      <MemberSignature Language="C#" Value="public static void InitializeTTFAtlas (int width, int height);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void InitializeTTFAtlas(int32 width, int32 height) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="AnchorPoint">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCPoint AnchorPoint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint AnchorPoint" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
-      </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlendFunc">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentSize">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultTexelToContentSizeRatio">
+      <MemberSignature Language="C#" Value="public static float DefaultTexelToContentSizeRatio { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 DefaultTexelToContentSizeRatio" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultTexelToContentSizeRatios">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize DefaultTexelToContentSizeRatios { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCSize DefaultTexelToContentSizeRatios" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Descendants">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt; Descendants { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRawList`1&lt;class CocosSharp.CCSprite&gt; Descendants" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dimensions">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize Dimensions { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize Dimensions" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="fntConfigFile">
+      <MemberSignature Language="C#" Value="protected string fntConfigFile;" />
+      <MemberSignature Language="ILAsm" Value=".field family string fntConfigFile" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetRegionData">
-      <MemberSignature Language="C#" Value="public static void SetRegionData (CocosSharp.CCLabel.ivec4 region, int[] data, int stride);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRegionData(valuetype CocosSharp.CCLabel/ivec4 region, int32[] data, int32 stride) cil managed" />
+    <Member MemberName="HorizontalAlignment">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextAlignment HorizontalAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTextAlignment HorizontalAlignment" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="horzAlignment">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTextAlignment horzAlignment;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCTextAlignment horzAlignment" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageOffset">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint ImageOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint ImageOffset" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncreaseAtlasCapacity">
+      <MemberSignature Language="C#" Value="protected void IncreaseAtlasCapacity ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void IncreaseAtlasCapacity() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitBMFont">
+      <MemberSignature Language="C#" Value="protected void InitBMFont (string theString, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InitBMFont(string theString, string fntFile, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="region" Type="CocosSharp.CCLabel+ivec4" />
-        <Parameter Name="data" Type="System.Int32[]" />
-        <Parameter Name="stride" Type="System.Int32" />
+        <Parameter Name="theString" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
-        <param name="region">To be added.</param>
-        <param name="data">To be added.</param>
-        <param name="stride">To be added.</param>
+        <param name="theString">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitSpriteFont">
+      <MemberSignature Language="C#" Value="protected void InitSpriteFont (string theString, string fntFile, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCLabelFormat labelFormat, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InitSpriteFont(string theString, string fntFile, float32 fontSize, valuetype CocosSharp.CCSize dimensions, class CocosSharp.CCLabelFormat labelFormat, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="theString" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="labelFormat" Type="CocosSharp.CCLabelFormat" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="theString">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="labelFormat">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsAntialiased">
+      <MemberSignature Language="C#" Value="public bool IsAntialiased { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsAntialiased" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="protected bool isColorModifiedByOpacity;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool isColorModifiedByOpacity" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="public override bool IsColorModifiedByOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsDirty">
+      <MemberSignature Language="C#" Value="protected bool IsDirty { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsDirty" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode this[int letterIndex] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Item(int32)" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="letterIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="letterIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="labelDimensions">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize labelDimensions;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize labelDimensions" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelFormat">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelFormat LabelFormat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelFormat LabelFormat" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="labelText">
+      <MemberSignature Language="C#" Value="protected string labelText;" />
+      <MemberSignature Language="ILAsm" Value=".field family string labelText" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelType">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelType LabelType { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCLabelType LabelType" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="lineBreak">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCLabelLineBreak lineBreak;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCLabelLineBreak lineBreak" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelLineBreak</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineBreak">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelLineBreak LineBreak { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCLabelLineBreak LineBreak" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelLineBreak</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineHeight">
+      <MemberSignature Language="C#" Value="public float LineHeight { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LineHeight" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeCachedData">
+      <MemberSignature Language="C#" Value="public static void PurgeCachedData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeCachedData() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scale">
+      <MemberSignature Language="C#" Value="public override float Scale { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleX">
+      <MemberSignature Language="C#" Value="public override float ScaleX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleX" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleY">
+      <MemberSignature Language="C#" Value="public override float ScaleY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleY" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SystemFont">
+      <MemberSignature Language="C#" Value="public string SystemFont { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string SystemFont" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SystemFontSize">
+      <MemberSignature Language="C#" Value="public float SystemFontSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 SystemFontSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Text">
-      <MemberSignature Language="C#" Value="public override string Text { get; set; }" />
+      <MemberSignature Language="C#" Value="public virtual string Text { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Text" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -262,6 +842,160 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextureAtlas">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureAtlas TextureAtlas { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTextureAtlas TextureAtlas" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateColor">
+      <MemberSignature Language="C#" Value="public override void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateContent">
+      <MemberSignature Language="C#" Value="protected void UpdateContent ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateContent() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDisplayedColor">
+      <MemberSignature Language="C#" Value="public override void UpdateDisplayedColor (CocosSharp.CCColor3B parentColor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B parentColor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parentColor" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="parentColor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDisplayedOpacity">
+      <MemberSignature Language="C#" Value="protected override void UpdateDisplayedOpacity (byte parentOpacity);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void UpdateDisplayedOpacity(unsigned int8 parentOpacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parentOpacity" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="parentOpacity">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateFont">
+      <MemberSignature Language="C#" Value="protected void UpdateFont ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateFont() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="vertAlignment">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCVerticalTextAlignment vertAlignment;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCVerticalTextAlignment vertAlignment" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VerticalAlignment">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVerticalTextAlignment VerticalAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVerticalTextAlignment VerticalAlignment" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visit">
+      <MemberSignature Language="C#" Value="public override void Visit (ref CocosSharp.CCAffineTransform parentWorldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit(valuetype CocosSharp.CCAffineTransform parentWorldTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parentWorldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="parentWorldTransform">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisitRenderer">
+      <MemberSignature Language="C#" Value="protected override void VisitRenderer (ref CocosSharp.CCAffineTransform worldTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void VisitRenderer(valuetype CocosSharp.CCAffineTransform worldTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="worldTransform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="worldTransform">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

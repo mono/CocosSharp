@@ -1,0 +1,77 @@
+<Type Name="CCGeometryPacket" FullName="CocosSharp.CCGeometryPacket">
+  <TypeSignature Language="C#" Value="public class CCGeometryPacket" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGeometryPacket extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Indicies">
+      <MemberSignature Language="C#" Value="public int[] Indicies;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32[] Indicies" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfIndicies">
+      <MemberSignature Language="C#" Value="public int NumberOfIndicies;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberOfIndicies" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberOfVertices">
+      <MemberSignature Language="C#" Value="public int NumberOfVertices;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberOfVertices" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D Texture;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCTexture2D Texture" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Vertices">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCV3F_C4B_T2F[] Vertices;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCV3F_C4B_T2F[] Vertices" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCV3F_C4B_T2F[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

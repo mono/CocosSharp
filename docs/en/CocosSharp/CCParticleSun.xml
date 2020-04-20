@@ -16,29 +16,33 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSun (CocosSharp.CCPoint position);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position) cil managed" />
+      <MemberSignature Language="C#" Value="public CCParticleSun (CocosSharp.CCPoint position, CocosSharp.CCEmitterMode emitterMode = CocosSharp.CCEmitterMode.Gravity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position, valuetype CocosSharp.CCEmitterMode emitterMode) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="position" Type="CocosSharp.CCPoint" />
+        <Parameter Name="emitterMode" Type="CocosSharp.CCEmitterMode" />
       </Parameters>
       <Docs>
         <param name="position">To be added.</param>
+        <param name="emitterMode">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSun (CocosSharp.CCPoint position, int num);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position, int32 num) cil managed" />
+      <MemberSignature Language="C#" Value="public CCParticleSun (CocosSharp.CCPoint position, int num, CocosSharp.CCEmitterMode emitterMode = CocosSharp.CCEmitterMode.Gravity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position, int32 num, valuetype CocosSharp.CCEmitterMode emitterMode) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="position" Type="CocosSharp.CCPoint" />
         <Parameter Name="num" Type="System.Int32" />
+        <Parameter Name="emitterMode" Type="CocosSharp.CCEmitterMode" />
       </Parameters>
       <Docs>
         <param name="position">To be added.</param>
         <param name="num">To be added.</param>
+        <param name="emitterMode">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

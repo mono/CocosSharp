@@ -1,0 +1,127 @@
+<Type Name="CCGeometryInstanceAttributes" FullName="CocosSharp.CCGeometryInstanceAttributes">
+  <TypeSignature Language="C#" Value="public class CCGeometryInstanceAttributes" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGeometryInstanceAttributes extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AdditionalTransform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform AdditionalTransform;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCAffineTransform AdditionalTransform" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlendState">
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.BlendState BlendState;" />
+      <MemberSignature Language="ILAsm" Value=".field public class Microsoft.Xna.Framework.Graphics.BlendState BlendState" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.BlendState</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (CocosSharp.CCGeometryInstanceAttributes other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(class CocosSharp.CCGeometryInstanceAttributes other) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="CocosSharp.CCGeometryInstanceAttributes" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object other) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCGeometryInstanceAttributes item1, CocosSharp.CCGeometryInstanceAttributes item2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(class CocosSharp.CCGeometryInstanceAttributes item1, class CocosSharp.CCGeometryInstanceAttributes item2) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item1" Type="CocosSharp.CCGeometryInstanceAttributes" />
+        <Parameter Name="item2" Type="CocosSharp.CCGeometryInstanceAttributes" />
+      </Parameters>
+      <Docs>
+        <param name="item1">To be added.</param>
+        <param name="item2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCGeometryInstanceAttributes item1, CocosSharp.CCGeometryInstanceAttributes item2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(class CocosSharp.CCGeometryInstanceAttributes item1, class CocosSharp.CCGeometryInstanceAttributes item2) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item1" Type="CocosSharp.CCGeometryInstanceAttributes" />
+        <Parameter Name="item2" Type="CocosSharp.CCGeometryInstanceAttributes" />
+      </Parameters>
+      <Docs>
+        <param name="item1">To be added.</param>
+        <param name="item2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

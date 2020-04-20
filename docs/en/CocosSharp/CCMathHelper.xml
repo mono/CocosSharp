@@ -93,6 +93,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Lerp">
+      <MemberSignature Language="C#" Value="public static float Lerp (float value1, float value2, float amount);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Lerp(float32 value1, float32 value2, float32 amount) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value1" Type="System.Single" />
+        <Parameter Name="value2" Type="System.Single" />
+        <Parameter Name="amount" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="value1">To be added.</param>
+        <param name="value2">To be added.</param>
+        <param name="amount">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Pi">
       <MemberSignature Language="C#" Value="public const float Pi = 3.141593;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal float32 Pi = (3.141593)" />
@@ -101,6 +122,32 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <MemberValue>3.141593</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pi_2">
+      <MemberSignature Language="C#" Value="public const float Pi_2 = 1.570796;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal float32 Pi_2 = (1.570796)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <MemberValue>1.570796</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pi_4">
+      <MemberSignature Language="C#" Value="public const float Pi_4 = 0.7853982;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal float32 Pi_4 = (0.7853982)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <MemberValue>0.7853982</MemberValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

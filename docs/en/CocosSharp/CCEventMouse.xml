@@ -13,12 +13,12 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="CursorX">
-      <MemberSignature Language="C#" Value="public float CursorX { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 CursorX" />
+    <Member MemberName="Cursor">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Cursor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Cursor" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -26,12 +26,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CursorY">
-      <MemberSignature Language="C#" Value="public float CursorY { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 CursorY" />
+    <Member MemberName="CursorOnScreen">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint CursorOnScreen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint CursorOnScreen" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Id">
+      <MemberSignature Language="C#" Value="public int Id { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Id" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

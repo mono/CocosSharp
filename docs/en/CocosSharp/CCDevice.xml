@@ -26,5 +26,44 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="IsKeyboardPresent">
+      <MemberSignature Language="C#" Value="public static bool IsKeyboardPresent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool IsKeyboardPresent" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsMousePresent">
+      <MemberSignature Language="C#" Value="public static bool IsMousePresent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool IsMousePresent" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResolutionScaleFactor">
+      <MemberSignature Language="C#" Value="public static float ResolutionScaleFactor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 ResolutionScaleFactor" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

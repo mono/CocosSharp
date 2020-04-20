@@ -21,14 +21,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSystemCache (CocosSharp.CCApplication application);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCApplication application) cil managed" />
+      <MemberSignature Language="C#" Value="public CCParticleSystemCache ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="application" Type="CocosSharp.CCApplication" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="application">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -29,16 +29,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters />
-      <Docs>
-        <summary>creates a  with one or more layers using a variable argument list. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCLayer[] layers);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLayer[] layers) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -58,12 +48,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCAction inAction, CocosSharp.CCAction outAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction inAction, class CocosSharp.CCAction outAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCFiniteTimeAction inAction, CocosSharp.CCFiniteTimeAction outAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction inAction, class CocosSharp.CCFiniteTimeAction outAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inAction" Type="CocosSharp.CCAction" />
-        <Parameter Name="outAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="inAction" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="outAction" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="inAction">To be added.</param>
@@ -73,12 +63,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCAction inAction, CocosSharp.CCAction outAction, CocosSharp.CCLayer[] layers);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction inAction, class CocosSharp.CCAction outAction, class CocosSharp.CCLayer[] layers) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCFiniteTimeAction inAction, CocosSharp.CCFiniteTimeAction outAction, CocosSharp.CCLayer[] layers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction inAction, class CocosSharp.CCFiniteTimeAction outAction, class CocosSharp.CCLayer[] layers) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inAction" Type="CocosSharp.CCAction" />
-        <Parameter Name="outAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="inAction" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="outAction" Type="CocosSharp.CCFiniteTimeAction" />
         <Parameter Name="layers" Type="CocosSharp.CCLayer[]">
           <Attributes>
             <Attribute>
@@ -96,7 +86,7 @@
       </Docs>
     </Member>
     <Member MemberName="ActiveLayer">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCLayer ActiveLayer { get; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLayer ActiveLayer { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer ActiveLayer" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -108,25 +98,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddLayer">
-      <MemberSignature Language="C#" Value="public void AddLayer (CocosSharp.CCLayer layer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddLayer(class CocosSharp.CCLayer layer) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="layer" Type="CocosSharp.CCLayer" />
-      </Parameters>
-      <Docs>
-        <param name="layer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EnabledLayer">
-      <MemberSignature Language="C#" Value="protected int EnabledLayer { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 EnabledLayer" />
+    <Member MemberName="EnabledLayerIndex">
+      <MemberSignature Language="C#" Value="public int EnabledLayerIndex { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 EnabledLayerIndex" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -138,24 +112,11 @@
       </Docs>
     </Member>
     <Member MemberName="InAction">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAction InAction { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAction InAction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction InAction { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction InAction" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCAction</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Layers">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;int,CocosSharp.CCLayer&gt; Layers { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.Dictionary`2&lt;int32, class CocosSharp.CCLayer&gt; Layers" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,CocosSharp.CCLayer&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -190,11 +151,11 @@
       </Docs>
     </Member>
     <Member MemberName="OutAction">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAction OutAction { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAction OutAction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction OutAction { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction OutAction" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -229,8 +190,8 @@
       </Docs>
     </Member>
     <Member MemberName="SwitchTo">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCLayer SwitchTo (int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCLayer SwitchTo(int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLayer SwitchTo (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCLayer SwitchTo(int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCLayer</ReturnType>
@@ -239,24 +200,7 @@
         <Parameter Name="n" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="n">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SwitchToAndRemovePreviousLayer">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCLayer SwitchToAndRemovePreviousLayer (int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCLayer SwitchToAndRemovePreviousLayer(int32 n) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCLayer</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="n" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="n">To be added.</param>
+        <param name="index">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

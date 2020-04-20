@@ -60,6 +60,19 @@ public class AppDelegate : CCApplicationDelegate
   </Docs>
   <Members>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCGameView gameView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCGameView gameView) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="gameView" Type="CocosSharp.CCGameView" />
+      </Parameters>
+      <Docs>
+        <param name="gameView">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCScene scene);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -73,52 +86,49 @@ public class AppDelegate : CCApplicationDelegate
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCWindow window);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window) cil managed" />
-      <MemberType>Constructor</MemberType>
+    <Member MemberName="AddChild">
+      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("CCScene: AddChild is obsolete. Use AddLayer instead")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
       <Parameters>
-        <Parameter Name="window" Type="CocosSharp.CCWindow" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+        <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="window">Window associated with the new scene.</param>
-        <summary>Creates a scene and sets the window associated with it.</summary>
-        <remarks>
-        </remarks>
+        <param name="child">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCWindow window, CocosSharp.CCDirector director);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window, class CocosSharp.CCDirector director) cil managed" />
-      <MemberType>Constructor</MemberType>
+    <Member MemberName="AddLayer">
+      <MemberSignature Language="C#" Value="public void AddLayer (CocosSharp.CCLayer layer, int zOrder = 0, int tag = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddLayer(class CocosSharp.CCLayer layer, int32 zOrder, int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
       <Parameters>
-        <Parameter Name="window" Type="CocosSharp.CCWindow" />
-        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+        <Parameter Name="layer" Type="CocosSharp.CCLayer" />
+        <Parameter Name="zOrder" Type="System.Int32" />
+        <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="window">Window associated with the new scene.</param>
-        <param name="director">Director associated with the new scene.</param>
-        <summary>Creates a scene and sets the window and director associated with it.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCWindow window, CocosSharp.CCViewport viewport, CocosSharp.CCDirector director = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window, class CocosSharp.CCViewport viewport, class CocosSharp.CCDirector director) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="window" Type="CocosSharp.CCWindow" />
-        <Parameter Name="viewport" Type="CocosSharp.CCViewport" />
-        <Parameter Name="director" Type="CocosSharp.CCDirector" />
-      </Parameters>
-      <Docs>
-        <param name="window">Window associated with the new scene.</param>
-        <param name="viewport">Viewport associated with the new scene.</param>
-        <param name="director">Director associated with the new scene.</param>
-        <summary>Creates a scene and sets the window, viewport and director associated with it.</summary>
-        <remarks>
-        </remarks>
+        <param name="layer">To be added.</param>
+        <param name="zOrder">To be added.</param>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AffineLocalTransform">
@@ -149,21 +159,8 @@ public class AppDelegate : CCApplicationDelegate
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="ContentSize">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSize</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Director">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; set; }" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -177,12 +174,38 @@ public class AppDelegate : CCApplicationDelegate
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GameView">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCGameView GameView { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGameView GameView" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGameView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsTransition">
       <MemberSignature Language="C#" Value="public virtual bool IsTransition { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsTransition" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Layer">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCLayer Layer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer Layer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -204,34 +227,6 @@ public class AppDelegate : CCApplicationDelegate
         <remarks>This is an overwritten method from CCNode that just returns this instance.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SceneResolutionPolicy">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Viewport">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCViewport Viewport { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCViewport Viewport" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCViewport</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The viewport associated with this scene.</summary>
-        <value>
-        </value>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="VisibleBoundsScreenspace">
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect VisibleBoundsScreenspace { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect VisibleBoundsScreenspace" />
@@ -241,32 +236,6 @@ public class AppDelegate : CCApplicationDelegate
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Visit">
-      <MemberSignature Language="C#" Value="public override void Visit ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Window">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCWindow Window { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCWindow Window" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCWindow</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The window associated with this scene.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

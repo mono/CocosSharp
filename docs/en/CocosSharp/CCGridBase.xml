@@ -14,17 +14,17 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCGridBase (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped = false);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D texture, bool flipped) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCGridBase (CocosSharp.CCGridSize gridSize, CocosSharp.CCRenderTexture renderTexture, bool flipped = false);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCRenderTexture renderTexture, bool flipped) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="renderTexture" Type="CocosSharp.CCRenderTexture" />
         <Parameter Name="flipped" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
-        <param name="texture">To be added.</param>
+        <param name="renderTexture">To be added.</param>
         <param name="flipped">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -98,16 +98,45 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Grabber">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCGrabber Grabber { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGrabber Grabber" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCGrabber</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
+      <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finalize">
+      <MemberSignature Language="C#" Value="~CCGridBase ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -138,6 +167,19 @@
         <param name="x">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderTexture">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCRenderTexture RenderTexture { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRenderTexture RenderTexture" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRenderTexture</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -176,19 +218,6 @@
       </ReturnValue>
       <Docs>
         <summary>pixels between the grids </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

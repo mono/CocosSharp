@@ -1,0 +1,41 @@
+<Type Name="CCGeometryInstance" FullName="CocosSharp.CCGeometryInstance">
+  <TypeSignature Language="C#" Value="public class CCGeometryInstance" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGeometryInstance extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GeometryPacket">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCGeometryPacket GeometryPacket;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCGeometryPacket GeometryPacket" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGeometryPacket</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InstanceAttributes">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCGeometryInstanceAttributes InstanceAttributes;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCGeometryInstanceAttributes InstanceAttributes" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGeometryInstanceAttributes</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

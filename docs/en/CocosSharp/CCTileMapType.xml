@@ -1,0 +1,71 @@
+<Type Name="CCTileMapType" FullName="CocosSharp.CCTileMapType">
+  <TypeSignature Language="C#" Value="public enum CCTileMapType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTileMapType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Hex">
+      <MemberSignature Language="C#" Value="Hex" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapType Hex = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Iso">
+      <MemberSignature Language="C#" Value="Iso" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapType Iso = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapType None = int32(-1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Ortho">
+      <MemberSignature Language="C#" Value="Ortho" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapType Ortho = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Staggered">
+      <MemberSignature Language="C#" Value="Staggered" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTileMapType Staggered = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTileMapType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

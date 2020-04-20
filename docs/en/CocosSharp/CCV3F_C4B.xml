@@ -1,0 +1,100 @@
+<Type Name="CCV3F_C4B" FullName="CocosSharp.CCV3F_C4B">
+  <TypeSignature Language="C#" Value="public struct CCV3F_C4B : Microsoft.Xna.Framework.Graphics.IVertexType" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed CCV3F_C4B extends System.ValueType implements class Microsoft.Xna.Framework.Graphics.IVertexType" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Microsoft.Xna.Framework.Graphics.IVertexType</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCV3F_C4B (CocosSharp.CCPoint position, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="position" Type="CocosSharp.CCPoint" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="position">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCV3F_C4B (CocosSharp.CCVertex3F position, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCVertex3F position, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="position" Type="CocosSharp.CCVertex3F" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="position">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Colors">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4B Colors;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCColor4B Colors" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Microsoft.Xna.Framework.Graphics.IVertexType.VertexDeclaration">
+      <MemberSignature Language="C#" Value="Microsoft.Xna.Framework.Graphics.VertexDeclaration Microsoft.Xna.Framework.Graphics.IVertexType.VertexDeclaration { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Graphics.VertexDeclaration Microsoft.Xna.Framework.Graphics.IVertexType.VertexDeclaration" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.VertexDeclaration</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VertexDeclaration">
+      <MemberSignature Language="C#" Value="public static readonly Microsoft.Xna.Framework.Graphics.VertexDeclaration VertexDeclaration;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly class Microsoft.Xna.Framework.Graphics.VertexDeclaration VertexDeclaration" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.VertexDeclaration</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Vertices">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F Vertices;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex3F Vertices" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
